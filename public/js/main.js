@@ -1,29 +1,10 @@
-// Verifica o estado de login ao carregar a página de chat
-document.addEventListener('DOMContentLoaded', function() {
-    if (sessionStorage.getItem('loggedIn') !== 'true') {
-        window.location.href = 'login.html';
-    }
-});
-
-function login() {
-    // Simulação de um login bem-sucedido
-    sessionStorage.setItem('loggedIn', 'true');
-    window.location.href = 'chat.html';
-}
-
-function logout() {
-    sessionStorage.removeItem('loggedIn');
-    window.location.href = 'login.html';
-}
-
-// Funções adicionais do seu projeto
-
 var socket = io('/');
 var info = {
     numberMessages: 0,
     connected: 0
 }
 var author = ''
+
 
 socket.on('receivedMessage', function(message){
     renderMessage(message)
@@ -35,6 +16,7 @@ socket.on('previousMessages', function(messages){
     };
 
     renderConnectionsInfo()
+
 });
 
 socket.on('ConnectionsInfo', function(connectionsInfo){
@@ -71,15 +53,7 @@ function generateMessageTemplate({ message, author, time }) {
     const messageContentElement = document.createElement('div');
 
     const authorInfoElement = document.createElement('h2');
-
-    // Verifica se o usuário é "adm3214" e aplica as configurações especiais
-    if (author === 'adm3214') {
-        authorInfoElement.textContent = 'Auza Services';
-        authorInfoElement.style.color = 'darkred';
-        authorInfoElement.style.fontWeight = 'bold';
-    } else {
-        authorInfoElement.textContent = author;
-    }
+    authorInfoElement.textContent = author;
 
     const messageTimeElement = document.createElement('span');
     messageTimeElement.textContent = time;
