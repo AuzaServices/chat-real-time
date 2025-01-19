@@ -1,10 +1,34 @@
+// Verifica o estado de login ao carregar a página de chat
+document.addEventListener('DOMContentLoaded', function() {
+    if (sessionStorage.getItem('loggedIn') !== 'true') {
+        window.location.href = 'login.html';
+    }
+});
+
+// Adiciona um evento para detectar quando a janela está sendo fechada ou recarregada
+window.addEventListener('unload', function() {
+    // Esta lógica foi removida para evitar conflitos
+});
+
+function login() {
+    // Simulação de um login bem-sucedido
+    sessionStorage.setItem('loggedIn', 'true');
+    window.location.href = 'chat.html';
+}
+
+function logout() {
+    sessionStorage.removeItem('loggedIn');
+    window.location.href = 'login.html';
+}
+
+// Funções adicionais do seu projeto
+
 var socket = io('/');
 var info = {
     numberMessages: 0,
     connected: 0
 }
 var author = ''
-
 
 socket.on('receivedMessage', function(message){
     renderMessage(message)
@@ -16,7 +40,6 @@ socket.on('previousMessages', function(messages){
     };
 
     renderConnectionsInfo()
-
 });
 
 socket.on('ConnectionsInfo', function(connectionsInfo){
