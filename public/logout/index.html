@@ -7,30 +7,30 @@
 </head>
 <body>
     <script>
-        // Simulação de login bem-sucedido: Armazenar o estado de login
-        function login() {
-            sessionStorage.setItem('user', 'loggedIn');
-            alert('Login bem-sucedido');
-        }
-
-        // Verificar o estado de login ao carregar a página
+        // Verificar ao carregar a página se o chat foi fechado anteriormente
         window.onload = function() {
-            if (!sessionStorage.getItem('user')) {
-                // Se não houver dados de usuário, redireciona para a página de login
+            if (!localStorage.getItem('chatActive')) {
+                // Se não houver dados indicando chat ativo, redireciona para a página de login
                 window.location = '/login';
             }
         };
 
-        // Limpar o estado de login ao sair
+        // Função para iniciar o chat
+        function startChat() {
+            localStorage.setItem('chatActive', 'true');
+            alert('Chat iniciado');
+        }
+
+        // Função para limpar o chat e redirecionar para a página de login ao sair
         function logout() {
-            sessionStorage.removeItem('user');
-            alert('Dados limpos');
+            localStorage.removeItem('chatActive');
+            alert('Chat encerrado e dados limpos');
             window.location = '/login';
         }
     </script>
 
     <h1>Gerenciamento de Sessão</h1>
-    <button onclick="login()">Login</button>
-    <button onclick="logout()">Logout</button>
+    <button onclick="startChat()">Iniciar Chat</button>
+    <button onclick="logout()">Sair do Chat</button>
 </body>
 </html>
