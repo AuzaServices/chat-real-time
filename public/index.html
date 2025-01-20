@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#222429" />
-    <meta name="theme-color" content="#222429" />
     <title>Chat | Auza Services</title>
 
     <script rel="preconect preload" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -22,20 +21,19 @@
         <section id="chat-area">
 
             <div>
-                <i id="toggleInfo" class="fal fa-info-circle" onclick="handleToggleLeftBar()" ></i>
+                <i id="toggleInfo" class="fal fa-info-circle" onclick="handleToggleLeftBar()"></i>
                 
                 <div id="messages" class="messages">
                     <div id="initialMessage"></div>
                 </div>
             </div>
 
-            <div id="send-messages" >
-                <input  type="text" id="input-message" name="message" autocomplete="off" autofocus onkeypress="
-                event.target.value += '\n'
+            <div id="send-messages">
+                <input type="text" id="input-message" name="message" autocomplete="off" autofocus onkeypress="
                 if(event.key == 'Enter'){
-                    Submit(event)}
-                    event.target.value += '\n'
-                ">
+                    Submit(event);
+                    event.target.value = '';
+                }">
                 <i class="fas fa-paper-plane" onclick="Submit(event)"></i>
             </div>
         </section>
@@ -44,7 +42,7 @@
             <div>
                 <h2>Informações do chat</h2>
     
-                <h3 id="online"><i style="color: green;" class="fas fa-circle"></i>0 Online</h3>
+                <h3 id="online"><i style="color: green;" class="fas fa-circle"></i> 0 Online</h3>
                 <h3 id="messages-received"><i class="fad fa-inbox-in"></i> 0 Mensagens </h3>
             </div>
 
@@ -61,13 +59,25 @@
         <div id="enter-user">
             <div class="content">
                 <h1>Bem Vindo ao Chat de Negociação</h1>
-                <p aria-expanded="truex">Por favor, digite abaixo o seu nome.</p>
+                <p aria-expanded="true">Por favor, digite abaixo o seu nome.</p>
 
                 <input type="text" id="input-user" autofocus required minlength="4">
                 <button onclick="toggleBoxForNewUser('get')">Entrar</button>
             </div>
         </div>
+
+        <div id="end-session">
+            <button onclick="endSession()">Finalizar Negociação</button>
+        </div>
     </div>
+
     <script src="./js/main.js"></script>
+    <script>
+        function endSession() {
+            localStorage.clear('user');
+            alert('Sessão finalizada.');
+            window.location = '/';
+        }
+    </script>
 </body>
 </html>
