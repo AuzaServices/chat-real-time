@@ -3,37 +3,30 @@ var info = {
     numberMessages: 0,
     connected: 0
 }
-var author = ''
-
+var author = '';
 
 socket.on('receivedMessage', function(message){
-    renderMessage(message)
+    renderMessage(message);
 });
 
 socket.on('previousMessages', function(messages){
-    for (message of messages){
-        renderMessage(message)
-    };
-
-    renderConnectionsInfo()
-
+    messages.forEach(renderMessage);
+    renderConnectionsInfo();
 });
 
 socket.on('ConnectionsInfo', function(connectionsInfo){
     info.connected = connectionsInfo.connections._connections;
     renderConnectionsInfo();
-})
+});
 
-getAuthor()
-        
 function getAuthor(){
-    let user = localStorage.getItem('user')
-
+    let user = localStorage.getItem('user');
     if(user){
-        author = user
-    }
-    else if(!user){
-        toggleBoxForNewUser('tog')
+        author = user;
+        renderPreviousMessages();  // Função para renderizar as mensagens anteriores, se necessário
+    } else {
+        clearChat();
+        toggleBoxForNewUser('tog');
     }
 }
 
@@ -85,28 +78,25 @@ function renderMessage(message) {
 }
 
 function renderConnectionsInfo(){
-    $('#online').html(`<h3><i class="fas fa-circle"></i> ${info.connected} Online</h3>`)
-
-    $('#messages-received').html(`<h3 id="messages-received"><i class="fad fa-inbox-in"></i> ${info.numberMessages} ${info.numberMessages === 1 ? "Mensagem" : "Mensagens"}</h3>`)
+    $('#online').html(`<h3><i class="fas fa-circle"></i> ${info.connected} Online</h3>`);
+    $('#messages-received').html(`<h3 id="messages-received"><i class="fad fa-inbox-in"></i> ${info.numberMessages} ${info.numberMessages === 1 ? "Mensagem" : "Mensagens"}</h3>`);
 }
 
 function toggleBoxForNewUser(met){
     if(met === 'tog'){
         let input = document.getElementById('enter-user');
         input.classList.toggle('active');
-        input.focus()
+        input.focus();
     }
     if(met === 'get'){
         let newUser = document.getElementById('input-user').value;
-
         if (newUser.length < 4 ){
-            alert('Erro ao cadastrar usuário, tente um nome mais longo.')
-            return null
+            alert('Erro ao cadastrar usuário, tente um nome mais longo.');
+            return null;
         }
-        
-        localStorage.setItem('user', newUser)
-        author = newUser
-        toggleBoxForNewUser('tog')
+        localStorage.setItem('user', newUser);
+        author = newUser;
+        toggleBoxForNewUser('tog');
     }
 }
 
@@ -117,21 +107,16 @@ function moveScroll(){
 
 function Submit(event){
     event.preventDefault();
-
-    getAuthor()
-
+    getAuthor();
     var message = document.querySelector('input[name=message]').value;
-    $('#input-message').val('')
+    $('#input-message').val('');
 
     if(message.length){
-        let now = new Date
-        let time = now.getHours() + ':' + now.getMinutes()
-        if (now.getHours() > 12){
-            time += 'pm';
-        }
-        else{
-            time += 'am';
-        };
+        let now = new Date;
+        let hours = now.getHours();
+        let period = hours >= 12 ? 'pm' : 'am';
+        hours = hours % 12 || 12; // Converte para formato 12 horas
+        let time = hours + ':' + String(now.getMinutes()).padStart(2, '0') + period;
 
         var messageObject = {
             author,
@@ -139,12 +124,11 @@ function Submit(event){
             time,
         }
 
-        renderMessage(messageObject)
-        moveScroll()
-
+        renderMessage(messageObject);
+        moveScroll();
         socket.emit('sendMessage', messageObject);
     } 
-};
+}
 
 function handleToggleLeftBar(){
     const bar = document.querySelector('#left-bar');
@@ -156,3 +140,14 @@ function handleToggleLeftBar(){
 
     icon.className = icon.className === 'fal fa-info-circle' ? 'fal fa-times' : 'fal fa-info-circle';
 }
+
+function clearChat() {
+    const messagesContainer = document.querySelector('.messages');
+    messagesContainer.innerHTML = '';
+    info.numberMessages = 0;
+    renderConnectionsInfo();
+}
+
+window.onload = function() {
+    getAuthor();
+};

@@ -3,37 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerenciamento de Sessão</title>
+    <title>Clear cache</title>
 </head>
 <body>
     <script>
-        // Função para iniciar o chat
-        function startChat() {
-            localStorage.setItem('chatActive', 'true');
-            alert('Chat iniciado');
-        }
+        localStorage.clear('user')
 
-        // Função para limpar o chat e redirecionar para a página de login ao sair
-        function logout() {
-            localStorage.removeItem('chatActive');
-            alert('Chat encerrado e dados limpos');
-            window.location = '/login';
-        }
+        alert('dados limpos')
 
-        // Verificar ao carregar a página se o chat está ativo
-        window.onload = function() {
-            if (!localStorage.getItem('chatActive')) {
-                // Se não houver dados indicando chat ativo, redireciona para a página de login
-                window.location = '/login';
-            } else {
-                // Caso contrário, limpa o indicador de chat ativo
-                localStorage.removeItem('chatActive');
-            }
-        };
+        window.location = '/'
     </script>
-
-    <h1>Gerenciamento de Sessão</h1>
-    <button onclick="startChat()">Iniciar Chat</button>
-    <button onclick="logout()">Sair do Chat</button>
 </body>
 </html>
