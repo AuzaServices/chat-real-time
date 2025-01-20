@@ -29,7 +29,6 @@ function getAuthor(){
     if(user){
         if (user === 'adm3214') {
             author = 'Auza Services';
-            document.getElementById('clear-chat').style.display = 'block'; // Exibir botão Limpar o Chat
         } else {
             author = user;
         }
@@ -167,4 +166,22 @@ function handleToggleLeftBar(){
 
     bar.classList.toggle('active');
     chat.classList.toggle('active');
+
+    icon.className = icon.className === 'fal fa-info-circle' ? 'fal fa-times' : 'fal fa-info-circle';
 }
+
+function endSession() {
+    localStorage.clear('user');
+    alert('Suas mensagens serão apagadas e você retornará à tela de login.');
+    window.location = '/';
+}
+
+window.addEventListener('beforeunload', function (event) {
+    event.preventDefault();
+    event.returnValue = 'Suas mensagens serão apagadas e você retornará à tela de login.';
+    endSession();
+});
+
+window.addEventListener('unload', function (event) {
+    endSession();
+});
