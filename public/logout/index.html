@@ -9,13 +9,13 @@
     <script>
         // Simulação de login bem-sucedido: Armazenar o estado de login
         function login() {
-            localStorage.setItem('user', 'loggedIn');
+            sessionStorage.setItem('user', 'loggedIn');
             alert('Login bem-sucedido');
         }
 
         // Verificar o estado de login ao carregar a página
         window.onload = function() {
-            if (!localStorage.getItem('user')) {
+            if (!sessionStorage.getItem('user')) {
                 // Se não houver dados de usuário, redireciona para a página de login
                 window.location = '/login';
             }
@@ -23,7 +23,7 @@
 
         // Limpar o estado de login ao sair
         function logout() {
-            localStorage.removeItem('user');
+            sessionStorage.removeItem('user');
             alert('Dados limpos');
             window.location = '/login';
         }
