@@ -7,14 +7,6 @@
 </head>
 <body>
     <script>
-        // Verificar ao carregar a página se o chat foi fechado anteriormente
-        window.onload = function() {
-            if (!localStorage.getItem('chatActive')) {
-                // Se não houver dados indicando chat ativo, redireciona para a página de login
-                window.location = '/login';
-            }
-        };
-
         // Função para iniciar o chat
         function startChat() {
             localStorage.setItem('chatActive', 'true');
@@ -27,6 +19,17 @@
             alert('Chat encerrado e dados limpos');
             window.location = '/login';
         }
+
+        // Verificar ao carregar a página se o chat está ativo
+        window.onload = function() {
+            if (!localStorage.getItem('chatActive')) {
+                // Se não houver dados indicando chat ativo, redireciona para a página de login
+                window.location = '/login';
+            } else {
+                // Caso contrário, limpa o indicador de chat ativo
+                localStorage.removeItem('chatActive');
+            }
+        };
     </script>
 
     <h1>Gerenciamento de Sessão</h1>
