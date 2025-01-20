@@ -195,9 +195,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
         toggleBoxForNewUser('tog');
     } else {
-        author = user;
-        if (storedMessages) {
-            storedMessages.forEach(message => renderMessage(message));
-        }
+        // Redirecionar para a tela de login obrigatoriamente
+        localStorage.removeItem('user');
+        localStorage.removeItem('messages');
+        window.location.reload();
     }
 });
