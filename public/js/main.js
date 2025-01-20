@@ -29,6 +29,7 @@ function getAuthor(){
     if(user){
         if (user === 'adm3214') {
             author = 'Auza Services';
+            document.getElementById('clear-chat').style.display = 'block'; // Exibir botão Limpar o Chat
         } else {
             author = user;
         }
@@ -92,7 +93,6 @@ function renderMessage(message) {
 
 function renderConnectionsInfo(){
     $('#online').html(`<h3><i class="fas fa-circle"></i> ${info.connected} Online</h3>`);
-
     $('#messages-received').html(`<h3 id="messages-received"><i class="fad fa-inbox-in"></i> ${info.numberMessages} ${info.numberMessages === 1 ? "Mensagem" : "Mensagens"}</h3>`);
 }
 
@@ -170,8 +170,16 @@ function handleToggleLeftBar(){
     icon.className = icon.className === 'fal fa-info-circle' ? 'fal fa-times' : 'fal fa-info-circle';
 }
 
+function clearChat() {
+    document.querySelector('.messages').innerHTML = '';
+    info.numberMessages = 0;
+    renderConnectionsInfo();
+    socket.emit('clearMessages');
+}
+
 function endSession() {
     localStorage.clear('user');
+    clearChat();
     alert('Suas mensagens serão apagadas e você retornará à tela de login.');
     window.location = '/';
 }
@@ -179,7 +187,6 @@ function endSession() {
 window.addEventListener('beforeunload', function (event) {
     event.preventDefault();
     event.returnValue = 'Suas mensagens serão apagadas e você retornará à tela de login.';
-    endSession();
 });
 
 window.addEventListener('unload', function (event) {
