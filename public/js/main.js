@@ -58,7 +58,7 @@ function generateMessageTemplate({ message, author, time }) {
     messageTextElement.textContent = message;
 
     messageContentElement.appendChild(authorInfoElement);
-    messageContentElement.appendChild(messageTextElement);
+    messageContentContentElement.appendChild(messageTextElement);
 
     messageElement.appendChild(userImageElement);
     messageElement.appendChild(messageContentElement);
