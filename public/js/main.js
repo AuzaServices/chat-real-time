@@ -22,13 +22,16 @@ socket.on('ConnectionsInfo', function(connectionsInfo){
     renderConnectionsInfo();
 });
 
-toggleBoxForNewUser('tog'); // Inicia sempre na tela de login
+getAuthor();
 
 function getAuthor(){
     let user = localStorage.getItem('user');
 
     if(user){
         author = user;
+    }
+    else{
+        toggleBoxForNewUser('tog');
     }
 }
 
@@ -180,5 +183,21 @@ window.addEventListener('beforeunload', function (event) {
 
 // Verificar se o usuário está logado ao carregar a página
 document.addEventListener('DOMContentLoaded', function () {
-    toggleBoxForNewUser('tog'); // Inicia sempre na tela de login
+    const user = localStorage.getItem('user');
+    const storedMessages = JSON.parse(localStorage.getItem('messages'));
+
+    if (!user) {
+        // Limpar mensagens do contêiner de mensagens
+        const messagesContainer = document.querySelector('.messages');
+        while (messagesContainer.firstChild) {
+            messagesContainer.removeChild(messagesContainer.firstChild);
+        }
+
+        toggleBoxForNewUser('tog');
+    } else {
+        // Redirecionar para a tela de login obrigatoriamente
+        localStorage.removeItem('user');
+        localStorage.removeItem('messages');
+        window.location.reload();
+    }
 });
