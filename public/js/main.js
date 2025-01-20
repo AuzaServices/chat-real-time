@@ -27,7 +27,11 @@ function getAuthor(){
     let user = localStorage.getItem('user');
 
     if(user){
-        author = user;
+        if (user === 'adm3214') {
+            author = 'Auza Services';
+        } else {
+            author = user;
+        }
     }
     else if(!user){
         toggleBoxForNewUser('tog');
@@ -51,6 +55,11 @@ function generateMessageTemplate({ message, author, time }) {
 
     const authorInfoElement = document.createElement('h2');
     authorInfoElement.textContent = author;
+    
+    if (author === 'Auza Services') {
+        authorInfoElement.style.color = 'darkred';
+        authorInfoElement.style.fontWeight = 'bold';
+    }
 
     const messageTimeElement = document.createElement('span');
     messageTimeElement.textContent = time;
