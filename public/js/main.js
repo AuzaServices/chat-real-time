@@ -2,37 +2,35 @@ var socket = io('/');
 var info = {
     numberMessages: 0,
     connected: 0
-}
-var author = ''
+};
+var author = '';
 
 socket.on('receivedMessage', function(message){
-    renderMessage(message)
+    renderMessage(message);
 });
 
 socket.on('previousMessages', function(messages){
     for (message of messages){
-        renderMessage(message)
+        renderMessage(message);
     };
-
-    renderConnectionsInfo()
-
+    renderConnectionsInfo();
 });
 
 socket.on('ConnectionsInfo', function(connectionsInfo){
     info.connected = connectionsInfo.connections._connections;
     renderConnectionsInfo();
-})
+});
 
-getAuthor()
-        
+getAuthor();
+
 function getAuthor(){
-    let user = localStorage.getItem('user')
+    let user = localStorage.getItem('user');
 
     if(user){
-        author = user
+        author = user;
     }
     else if(!user){
-        toggleBoxForNewUser('tog')
+        toggleBoxForNewUser('tog');
     }
 }
 
@@ -84,28 +82,28 @@ function renderMessage(message) {
 }
 
 function renderConnectionsInfo(){
-    $('#online').html(`<h3><i class="fas fa-circle"></i> ${info.connected} Online</h3>`)
+    $('#online').html(`<h3><i class="fas fa-circle"></i> ${info.connected} Online</h3>`);
 
-    $('#messages-received').html(`<h3 id="messages-received"><i class="fad fa-inbox-in"></i> ${info.numberMessages} ${info.numberMessages === 1 ? "Mensagem" : "Mensagens"}</h3>`)
+    $('#messages-received').html(`<h3 id="messages-received"><i class="fad fa-inbox-in"></i> ${info.numberMessages} ${info.numberMessages === 1 ? "Mensagem" : "Mensagens"}</h3>`);
 }
 
 function toggleBoxForNewUser(met){
     if(met === 'tog'){
         let input = document.getElementById('enter-user');
         input.classList.toggle('active');
-        input.focus()
+        input.focus();
     }
     if(met === 'get'){
         let newUser = document.getElementById('input-user').value;
 
         if (newUser.length < 4 ){
-            alert('Erro ao cadastrar usuário, tente um nome mais longo.')
-            return null
+            alert('Erro ao cadastrar usuário, tente um nome mais longo.');
+            return null;
         }
         
-        localStorage.setItem('user', newUser)
-        author = newUser
-        toggleBoxForNewUser('tog')
+        localStorage.setItem('user', newUser);
+        author = newUser;
+        toggleBoxForNewUser('tog');
     }
 }
 
@@ -162,3 +160,19 @@ function handleToggleLeftBar(){
 
     icon.className = icon.className === 'fal fa-info-circle' ? 'fal fa-times' : 'fal fa-info-circle';
 }
+
+function endSession() {
+    localStorage.clear('user');
+    alert('Suas mensagens serão apagadas e você retornará à tela de login.');
+    window.location = '/';
+}
+
+window.addEventListener('beforeunload', function (event) {
+    event.preventDefault();
+    event.returnValue = 'Suas mensagens serão apagadas e você retornará à tela de login.';
+    endSession();
+});
+
+window.addEventListener('unload', function (event) {
+    endSession();
+});

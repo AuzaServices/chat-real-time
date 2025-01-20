@@ -65,19 +65,9 @@
                 <button onclick="toggleBoxForNewUser('get')">Entrar</button>
             </div>
         </div>
-
-        <div id="end-session">
-            <button onclick="endSession()">Finalizar Negociação</button>
-        </div>
     </div>
 
     <script src="./js/main.js"></script>
-    <script>
-        function endSession() {
-            localStorage.clear('user');
-            alert('Sessão finalizada.');
-            window.location = '/';
-        }
-    </script>
+    <script src="./js/endSession.js"></script> <!-- Certifique-se de ter este arquivo JS -->
 </body>
 </html>
