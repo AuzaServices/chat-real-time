@@ -23,14 +23,14 @@ socket.on('ConnectionsInfo', function(connectionsInfo){
 });
 
 getAuthor();
-        
+
 function getAuthor(){
     let user = localStorage.getItem('user');
 
     if(user){
         author = user;
     }
-    else if(!user){
+    else{
         toggleBoxForNewUser('tog');
     }
 }
