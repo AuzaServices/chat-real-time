@@ -30,8 +30,9 @@ function getAuthor(){
 
     if(user){
         author = user
-    } else {
-        window.location.href = '/login';  // Redireciona para a tela de login
+    }
+    else if(!user){
+        toggleBoxForNewUser('tog')
     }
 }
 
