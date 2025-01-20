@@ -187,6 +187,12 @@ document.addEventListener('DOMContentLoaded', function () {
     const storedMessages = JSON.parse(localStorage.getItem('messages'));
 
     if (!user) {
+        // Limpar mensagens do contêiner de mensagens
+        const messagesContainer = document.querySelector('.messages');
+        while (messagesContainer.firstChild) {
+            messagesContainer.removeChild(messagesContainer.firstChild);
+        }
+
         toggleBoxForNewUser('tog');
     } else {
         author = user;
