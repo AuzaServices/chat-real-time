@@ -188,16 +188,4 @@ function clearChat() {
 function endSession() {
     localStorage.clear('user');
     clearChat();
-    alert('Suas mensagens serão apagadas e você retornará à tela de login.');
-    window.location = '/';
 }
-
-window.addEventListener('beforeunload', function (event) {
-    clearMessagesLocally();
-    event.preventDefault();
-    event.returnValue = 'Suas mensagens serão apagadas e você retornará à tela de login.';
-});
-
-window.addEventListener('unload', function (event) {
-    endSession();
-});
