@@ -193,7 +193,7 @@ function endSession() {
 }
 
 window.addEventListener('beforeunload', function (event) {
-    clearChat();
+    clearMessagesLocally();
     event.preventDefault();
     event.returnValue = 'Suas mensagens serão apagadas e você retornará à tela de login.';
 });
