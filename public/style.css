@@ -5,6 +5,13 @@
     font-family: 'Roboto';
 }
 
+body {
+    background-image: url('background.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
 .container{
     position: absolute;
     width: 100vw;
