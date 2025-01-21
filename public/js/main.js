@@ -21,6 +21,10 @@ socket.on('ConnectionsInfo', function(connectionsInfo){
     renderConnectionsInfo();
 });
 
+socket.on('clearMessages', function() {
+    clearMessagesLocally();
+});
+
 getAuthor();
 
 function getAuthor(){
@@ -170,10 +174,14 @@ function handleToggleLeftBar(){
     icon.className = icon.className === 'fal fa-info-circle' ? 'fal fa-times' : 'fal fa-info-circle';
 }
 
-function clearChat() {
+function clearMessagesLocally() {
     document.querySelector('.messages').innerHTML = '';
     info.numberMessages = 0;
     renderConnectionsInfo();
+}
+
+function clearChat() {
+    clearMessagesLocally();
     socket.emit('clearMessages');
 }
 
@@ -185,6 +193,7 @@ function endSession() {
 }
 
 window.addEventListener('beforeunload', function (event) {
+    clearChat();
     event.preventDefault();
     event.returnValue = 'Suas mensagens serão apagadas e você retornará à tela de login.';
 });
