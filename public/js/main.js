@@ -48,7 +48,7 @@ function getAuthor() {
         const userObj = JSON.parse(user);
         if (userObj.userType === 'adm3214') {
             author = 'Auza Services';
-            document.getElementById('clear-chat').style.display = 'block';
+            document.getElementById('clear-chat').style.display = 'block'; // Exibir botão Limpar o Chat
         } else {
             author = `${userObj.name} | ${userObj.bairro || userObj.profissao}`;
         }
@@ -71,43 +71,32 @@ function toggleBoxForNewUser(met) {
             return;
         }
 
-        let name = '';
-        let bairro = '';
-        let profissao = '';
-
+        let name, bairro, profissao;
         if (userType === 'Cliente') {
             name = document.getElementById('input-nome-cliente').value;
             bairro = document.getElementById('input-bairro-cliente').value;
-            if (name === 'adm3214') {
-                author = 'Auza Services';
-                document.getElementById('clear-chat').style.display = 'block';
-            } else if (name.length < 4 || bairro.length < 4) {
+            if (name.length < 4 || bairro.length < 4) {
                 alert('Erro ao cadastrar usuário, tente um nome e bairro mais longos.');
                 return null;
             }
         } else if (userType === 'Profissional') {
             name = document.getElementById('input-nome-profissional').value;
             profissao = document.getElementById('input-profissao').value;
-            if (name === 'adm3214') {
-                author = 'Auza Services';
-                document.getElementById('clear-chat').style.display = 'block';
-            } else if (name.length < 4 || profissao.length < 4) {
+            if (name.length < 4 || profissao.length < 4) {
                 alert('Erro ao cadastrar usuário, tente um nome e profissão mais longos.');
                 return null;
             }
         }
 
-        if (name !== 'adm3214') {
-            const user = {
-                userType,
-                name,
-                bairro,
-                profissao
-            };
-            localStorage.setItem('user', JSON.stringify(user));
-            author = `${name} | ${bairro || profissao}`;
-        }
+        const user = {
+            userType,
+            name,
+            bairro,
+            profissao
+        };
 
+        localStorage.setItem('user', JSON.stringify(user));
+        author = `${name} | ${bairro || profissao}`;
         toggleBoxForNewUser('tog');
     }
 }
@@ -194,6 +183,7 @@ function Submit(event) {
     var message = document.querySelector('input[name=message]').value;
     $('#input-message').val('');
 
+    // Expressão regular para identificar números de telefone nos formatos especificados
     var phoneNumberPattern = /\(?\d{2}\)?\d{4,5}-?\d{4}|\d{4,5}-?\d{4}/g;
 
     if (phoneNumberPattern.test(message)) {
