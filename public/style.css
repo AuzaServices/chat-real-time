@@ -482,4 +482,14 @@
         border-radius: 10px;
         cursor: pointer;
     }
+    /* Adiciona a marca d'água */
+.watermark {
+    position: fixed;
+    bottom: 10px; /* Ajuste a posição conforme necessário */
+    right: 10px;  /* Ajuste a posição conforme necessário */
+    opacity: 0.1; /* Ajuste a opacidade conforme necessário */
+    width: 150px; /* Ajuste o tamanho conforme necessário */
+    z-index: 1000; /* Mantém a marca d'água acima de outros elementos */
+}
+
 }
