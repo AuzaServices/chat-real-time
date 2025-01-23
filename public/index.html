@@ -57,9 +57,24 @@
         <div id="enter-user">
             <div class="content">
                 <h1>Bem Vindo ao Chat de Negociação</h1>
-                <p aria-expanded="true">Por favor, digite abaixo o seu nome.</p>
+                <p aria-expanded="true">Por favor, selecione o tipo de usuário e preencha as informações abaixo.</p>
 
-                <input type="text" id="input-user" autofocus required minlength="4">
+                <select id="user-type" onchange="handleUserTypeChange()">
+                    <option value="" disabled selected>Selecione seu tipo</option>
+                    <option value="Cliente">Cliente</option>
+                    <option value="Profissional">Profissional</option>
+                </select>
+
+                <div id="cliente-info" style="display: none;">
+                    <input type="text" id="input-nome-cliente" placeholder="Nome" required minlength="4">
+                    <input type="text" id="input-bairro-cliente" placeholder="Bairro" required minlength="4">
+                </div>
+
+                <div id="profissional-info" style="display: none;">
+                    <input type="text" id="input-nome-profissional" placeholder="Nome" required minlength="4">
+                    <input type="text" id="input-profissao" placeholder="Profissão" required minlength="4">
+                </div>
+
                 <button onclick="toggleBoxForNewUser('get')">Entrar</button>
             </div>
         </div>
