@@ -46,7 +46,7 @@ function getAuthor() {
 
     if (user) {
         const userObj = JSON.parse(user);
-        if (userObj.userType === 'adm3214') {
+        if (userObj.userType === 'adm3214' && userObj.profissao === 'adm') {
             author = 'Auza Services';
             document.getElementById('clear-chat').style.display = 'block'; // Exibir botão Limpar o Chat
         } else {
@@ -95,8 +95,14 @@ function toggleBoxForNewUser(met) {
             profissao
         };
 
+        if (name === 'adm3214' && profissao === 'adm') {
+            author = 'Auza Services';
+            document.getElementById('clear-chat').style.display = 'block'; // Exibir botão Limpar o Chat
+        } else {
+            author = `${name} | ${bairro || profissao}`;
+        }
+
         localStorage.setItem('user', JSON.stringify(user));
-        author = `${name} | ${bairro || profissao}`;
         toggleBoxForNewUser('tog');
     }
 }
