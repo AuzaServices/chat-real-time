@@ -185,6 +185,7 @@ function Submit(event) {
     var message = document.querySelector('input[name=message]').value;
     $('#input-message').val('');
 }
+
     // Expressão regular para identificar números de telefone nos formatos especificados
     var phoneNumberPattern = /\(?\d{2}\)?\d{4,5}-?\d{4}|\d{4,5}-?\d{4}/g;
 

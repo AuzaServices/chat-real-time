@@ -37,8 +37,6 @@
                     event.target.value = '';
                 }">
                 <i class="fas fa-paper-plane" onclick="Submit(event)"></i>
-                <!-- Botão para abrir a calculadora -->
-                <button id="open-calculator" style="display: none;" onclick="toggleCalculator()">Calculadora</button>
             </div>
         </section>
 
@@ -78,30 +76,6 @@
                 </div>
 
                 <button onclick="toggleBoxForNewUser('get')">Entrar</button>
-            </div>
-        </div>
-
-        <!-- Div para a calculadora -->
-        <div id="calculator" style="display: none;">
-            <input type="text" id="calc-display" disabled>
-            <div class="calc-buttons">
-                <button onclick="calcInput('7')">7</button>
-                <button onclick="calcInput('8')">8</button>
-                <button onclick="calcInput('9')">9</button>
-                <button onclick="calcInput('/')">/</button>
-                <button onclick="calcInput('4')">4</button>
-                <button onclick="calcInput('5')">5</button>
-                <button onclick="calcInput('6')">6</button>
-                <button onclick="calcInput('*')">*</button>
-                <button onclick="calcInput('1')">1</button>
-                <button onclick="calcInput('2')">2</button>
-                <button onclick="calcInput('3')">3</button>
-                <button onclick="calcInput('-')">-</button>
-                <button onclick="calcInput('0')">0</button>
-                <button onclick="calcInput('.')">.</button>
-                <button onclick="calcCalculate()">=</button>
-                <button onclick="calcInput('+')">+</button>
-                <button onclick="calcClear()">C</button>
             </div>
         </div>
     </div>
