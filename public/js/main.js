@@ -35,9 +35,11 @@ function handleUserTypeChange() {
     if (userType === 'Cliente') {
         clienteInfo.style.display = 'block';
         profissionalInfo.style.display = 'none';
+        document.getElementById('open-calculator').style.display = 'none';
     } else if (userType === 'Profissional') {
         clienteInfo.style.display = 'none';
         profissionalInfo.style.display = 'block';
+        document.getElementById('open-calculator').style.display = 'block';
     }
 }
 
@@ -182,7 +184,7 @@ function Submit(event) {
 
     var message = document.querySelector('input[name=message]').value;
     $('#input-message').val('');
-
+}
     // Expressão regular para identificar números de telefone nos formatos especificados
     var phoneNumberPattern = /\(?\d{2}\)?\d{4,5}-?\d{4}|\d{4,5}-?\d{4}/g;
 
@@ -199,46 +201,4 @@ function Submit(event) {
 
         renderMessage(messageObject);
         moveScroll();
-
-        socket.emit('sendMessage', messageObject);
     }
-}
-
-function handleToggleLeftBar() {
-    const bar = document.querySelector('#left-bar');
-    const chat = document.querySelector('#chat-area');
-    const icon = document.querySelector('#toggleInfo');
-
-    bar.classList.toggle('active');
-    chat.classList.toggle('active');
-
-    icon.className = icon.className === 'fal fa-info-circle' ? 'fal fa-times' : 'fal fa-info-circle';
-}
-
-function clearMessagesLocally() {
-    document.querySelector('.messages').innerHTML = '';
-    info.numberMessages = 0;
-    renderConnectionsInfo();
-}
-
-function clearChat() {
-    clearMessagesLocally();
-    socket.emit('clearMessages');
-}
-
-function endSession() {
-    localStorage.clear('user');
-    clearChat();
-    alert('Suas mensagens serão apagadas e você retornará à tela de login.');
-    window.location = '/';
-}
-
-window.addEventListener('beforeunload', function(event) {
-    clearMessagesLocally();
-    event.preventDefault();
-    event.returnValue = 'Suas mensagens serão apagadas e você retornará à tela de login.';
-});
-
-window.addEventListener('unload', function(event) {
-    endSession();
-});

@@ -495,4 +495,30 @@
     margin-top: 5px;
 }
 
+/* Estilo básico para a calculadora */
+#calculator {
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 200px;
+    margin-top: 10px;
+}
+
+#calc-display {
+    width: 100%;
+    height: 30px;
+    margin-bottom: 10px;
+    text-align: right;
+}
+
+.calc-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+}
+
+.calc-buttons button {
+    height: 40px;
+    font-size: 16px;
+}
+
 }
