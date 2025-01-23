@@ -12,7 +12,7 @@ socket.on('receivedMessage', function(message) {
 socket.on('previousMessages', function(messages) {
     for (message of messages) {
         renderMessage(message);
-    };
+    }
     renderConnectionsInfo();
 });
 
@@ -116,18 +116,24 @@ function generateMessageTemplate({ message, author, time, type, data }) {
 
     const messageContentElement = document.createElement('div');
 
-    const authorInfoElement = document.createElement('h2');
-    authorInfoElement.textContent = author;
+    const authorInfoElement = document.createElement('div');
+    authorInfoElement.classList.add('author-info');
+
+    const authorNameElement = document.createElement('h2');
+    authorNameElement.textContent = author;
 
     if (author === 'Auza Services') {
-        authorInfoElement.style.color = 'darkred';
-        authorInfoElement.style.fontWeight = 'bold';
+        authorNameElement.style.color = 'darkred';
+        authorNameElement.style.fontWeight = 'bold';
     }
 
     const messageTimeElement = document.createElement('span');
     messageTimeElement.textContent = time;
 
+    authorInfoElement.appendChild(authorNameElement);
     authorInfoElement.appendChild(messageTimeElement);
+
+    messageContentElement.appendChild(authorInfoElement);
 
     if (type === 'image') {
         const imgElement = document.createElement('img');
@@ -145,8 +151,6 @@ function generateMessageTemplate({ message, author, time, type, data }) {
         messageTextElement.textContent = message;
         messageContentElement.appendChild(messageTextElement);
     }
-
-    messageContentElement.appendChild(authorInfoElement);
 
     messageElement.appendChild(userImageElement);
     messageElement.appendChild(messageContentElement);
@@ -242,12 +246,12 @@ function endSession() {
     window.location = '/';
 }
 
-window.addEventListener('beforeunload', function (event) {
+window.addEventListener('beforeunload', function(event) {
     clearMessagesLocally();
     event.preventDefault();
     event.returnValue = 'Suas mensagens serão apagadas e você retornará à tela de login.';
 });
 
-window.addEventListener('unload', function (event) {
+window.addEventListener('unload', function(event) {
     endSession();
 });

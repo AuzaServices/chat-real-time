@@ -482,5 +482,17 @@
         border-radius: 10px;
         cursor: pointer;
     }
-    
+    /* Adicione isso ao seu arquivo CSS */
+.message .author-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.message p {
+    margin: 0;
+    margin-top: 5px;
+}
+
 }
