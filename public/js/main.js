@@ -101,7 +101,7 @@ function toggleBoxForNewUser(met) {
     }
 }
 
-function generateMessageTemplate({ message, author, time, type, data }) {
+function generateMessageTemplate({ message, author, type, data }) {
     const messageElement = document.createElement('div');
     messageElement.classList.add('message');
 
@@ -127,11 +127,7 @@ function generateMessageTemplate({ message, author, time, type, data }) {
         authorNameElement.style.fontWeight = 'bold';
     }
 
-    const messageTimeElement = document.createElement('span');
-    messageTimeElement.textContent = time;
-
     authorInfoElement.appendChild(authorNameElement);
-    authorInfoElement.appendChild(messageTimeElement);
 
     messageContentElement.appendChild(authorInfoElement);
 
@@ -196,18 +192,9 @@ function Submit(event) {
     }
 
     if (message.length) {
-        let now = new Date();
-        let time = now.getHours() + ':' + now.getMinutes();
-        if (now.getHours() > 12) {
-            time += 'pm';
-        } else {
-            time += 'am';
-        }
-
         var messageObject = {
             author,
             message,
-            time,
         };
 
         renderMessage(messageObject);
