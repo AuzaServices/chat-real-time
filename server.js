@@ -1,13 +1,24 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+const compression = require('compression'); // Importando o middleware de compressão
+const morgan = require('morgan'); // Importando o morgan para logs
 
 const { join } = path;
 
 const port = process.env.PORT || 4000;
 const server = require('http').createServer(app);
-const io = require('socket.io')(server);
+const io = require('socket.io')(server, {
+  cors: {
+    origin: "*"
+  },
+  perMessageDeflate: {
+    threshold: 1024, // Comprime apenas mensagens acima de 1KB
+  }
+});
 
+app.use(compression()); // Habilitando a compressão
+app.use(morgan('dev')); // Habilitando logs com morgan
 app.use(express.static(join(__dirname, 'public')));
 app.set('views', join(__dirname, 'public'));
 app.engine('html', require('ejs').renderFile);
