@@ -1,27 +1,42 @@
-const express = require('express');
-const path = require('path');
-const app = express();
-const server = require('http').createServer(app);
-const io = require('socket.io')(server);
+const express = require( 'express' )
+const app = express()
+const path = require( 'path' )
 
-const port = process.env.PORT || 4000;
+const { join } = path
 
-app.use(express.static(path.join(__dirname, 'public')));
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
-});
+const port = process.env.PORT || 4000
+const server = require( 'http' ).createServer( app )
+const io = require( 'socket.io' )( server )
 
-let messages = [];
+app.use( express.static( join( __dirname , 'public' ) ) )
+app.set( 'views' , join( __dirname , 'public' ) )
+app.engine( 'html' , require('ejs').renderFile )
+app.set( 'view engine' , 'html' )
 
-io.on('connection', (socket) => {
-    socket.emit('previousMessages', messages);
+app.use( '/' , ( req , res ) => {
+  res.render( 'index.html' )
+} )
 
-    socket.on('sendMessage', (data) => {
-        messages.push(data);
-        socket.broadcast.emit('receivedMessage', data);
-    });
-});
+let messages = []
+let connectionsInfo = {
+  connections: 0
+}
 
-server.listen(port, () => {
-    console.log(`Servidor rodando na porta ${port}`);
-});
+io.on( 'connection' , socket => {
+
+  connectionsInfo.connections = server.getConnections( ( err , count ) => {
+    return count
+  } )
+  
+  socket.emit( 'ConnectionsInfo' , connectionsInfo )
+  socket.emit( 'previousMessages' , messages )
+
+  socket.on( 'sendMessage' , data => {
+    messages.push( data )
+    socket.broadcast.emit( 'receivedMessage' , data )
+  } )
+} )
+
+server.listen( port , () => {
+  console.log( `Server running on localhost:${port}` )
+} )
