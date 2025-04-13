@@ -248,3 +248,42 @@ window.addEventListener('beforeunload', function(event) {
 window.addEventListener('unload', function(event) {
     endSession();
 });
+let inactivityTimer;
+const INACTIVITY_LIMIT = 10 * 60 * 1000; // 10 minutos em milissegundos
+
+function resetInactivityTimer() {
+    clearTimeout(inactivityTimer);
+    inactivityTimer = setTimeout(() => {
+        const adminUser = messages.find(
+            message => message.author === 'Auza Services'
+        );
+
+        // Limpar mensagens somente se não houver mensagens do admin
+        if (!adminUser) {
+            messages = [];
+            io.emit('clearMessages');
+            console.log('Chat limpo por inatividade.');
+        }
+    }, INACTIVITY_LIMIT);
+}
+
+io.on('connection', socket => {
+    console.log('Novo usuário conectado.');
+    resetInactivityTimer();
+
+    socket.on('sendMessage', data => {
+        messages.push(data);
+        socket.broadcast.emit('receivedMessage', data);
+        resetInactivityTimer();
+    });
+
+    socket.on('clearMessages', () => {
+        messages = [];
+        io.emit('clearMessages');
+    });
+
+    socket.on('disconnect', () => {
+        console.log('Usuário desconectado.');
+        resetInactivityTimer();
+    });
+});
