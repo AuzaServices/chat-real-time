@@ -4,14 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat em Tempo Real</title>
-
     <!-- Bibliotecas Externas -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
+    <!-- Página de Login -->
+    <div id="login-page" class="active">
+        <h1>Bem-vindo!</h1>
+        <p>Selecione sua categoria:</p>
+        <label><input type="radio" name="userType" value="Cliente" onchange="updateFields()"> Cliente</label>
+        <label><input type="radio" name="userType" value="Profissional" onchange="updateFields()"> Profissional</label>
+        <div id="user-fields">
+            <input type="text" id="input-name" placeholder="Nome">
+            <input type="text" id="input-detail" placeholder="Detalhe">
+        </div>
+        <button onclick="submitLogin()">Entrar</button>
+    </div>
+
+    <!-- Página de Chat -->
+    <div id="chat-page" class="hidden">
         <section id="chat-area">
             <div>
                 <i id="toggleInfo" class="fal fa-info-circle" onclick="handleToggleLeftBar()"></i>
@@ -32,17 +45,6 @@
                 <h3 id="messages-received"><i class="fad fa-inbox-in"></i>0 Mensagens</h3>
             </div>
         </section>
-        <div id="enter-user" class="content">
-            <h1>Bem-vindo!</h1>
-            <p>Selecione sua categoria:</p>
-            <label><input type="radio" name="userType" value="Cliente" onchange="updateFields()"> Cliente</label>
-            <label><input type="radio" name="userType" value="Profissional" onchange="updateFields()"> Profissional</label>
-            <div id="user-fields">
-                <input type="text" id="input-name" placeholder="Nome">
-                <input type="text" id="input-detail" placeholder="Detalhe">
-            </div>
-            <button onclick="toggleBoxForNewUser('get')">Entrar</button>
-        </div>
     </div>
     <script src="./js/main.js"></script>
 </body>
