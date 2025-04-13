@@ -3,42 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#222429" />
-    <title>Chat em Tempo Real</title>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
-
+    <title>Chat de Negociação</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" 
-        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" 
-        crossorigin="anonymous">
 </head>
 <body>
-    <div class="container">
+    <!-- Tela de Login -->
+    <div id="login-screen" class="active">
+        <h1>Bem-vindo ao Chat de Negociação</h1>
+        <p>Selecione sua categoria:</p>
+        <label><input type="radio" name="userType" value="Cliente" onchange="updateLoginFields()"> Cliente</label>
+        <label><input type="radio" name="userType" value="Profissional" onchange="updateLoginFields()"> Profissional</label>
+        <div id="login-fields">
+            <!-- Campos dinâmicos serão adicionados aqui -->
+            <input type="text" id="input-name" placeholder="Nome">
+            <input type="text" id="input-detail" placeholder="Detalhe">
+        </div>
+        <button onclick="handleLogin()">Entrar</button>
+    </div>
+
+    <!-- Tela do Chat -->
+    <div id="chat-screen" class="hidden">
         <section id="chat-area">
-            <div>
-                <i id="toggleInfo" class="fal fa-info-circle" onclick="handleToggleLeftBar()"></i>
-                <div id="messages" class="messages">
-                    <div id="initialMessage"></div>
-                </div>
+            <div id="messages" class="messages">
+                <div id="initialMessage"></div>
             </div>
             <div id="send-messages">
-                <input type="text" id="input-message" name="message" autocomplete="off" autofocus 
-                    onkeypress="event.key === 'Enter' && Submit(event)">
-                <i class="fas fa-paper-plane" onclick="Submit(event)"></i>
+                <input type="text" id="input-message" name="message" autocomplete="off" onkeypress="event.key === 'Enter' && Submit(event)">
+                <button onclick="Submit(event)">Enviar</button>
             </div>
         </section>
         <section id="left-bar">
             <div>
                 <h2 style="color: darkred;">Chat de Negociação</h2>
-                <h3 id="online"><i style="color: green;" class="fas fa-circle"></i>0 Online</h3>
-                <h3 id="messages-received"><i class="fad fa-inbox-in"></i>0 Mensagens</h3>
+                <h3 id="online"><i style="color: green;" class="fas fa-circle"></i> 0 Online</h3>
+                <h3 id="messages-received"><i class="fad fa-inbox-in"></i> 0 Mensagens</h3>
             </div>
         </section>
     </div>
+
     <script src="./js/main.js"></script>
 </body>
 </html>

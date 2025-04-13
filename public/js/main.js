@@ -134,3 +134,77 @@ function handleToggleLeftBar() {
 
     icon.className = icon.className === 'fal fa-info-circle' ? 'fal fa-times' : 'fal fa-info-circle';
 }
+let author = '';
+
+// Função para alternar os campos da tela de login
+function updateLoginFields() {
+    const userType = document.querySelector('input[name=userType]:checked').value;
+    const detailField = document.getElementById('input-detail');
+
+    if (userType === 'Cliente') {
+        detailField.placeholder = 'Bairro';
+    } else if (userType === 'Profissional') {
+        detailField.placeholder = 'Profissão';
+    }
+}
+
+// Função para lidar com o login
+function handleLogin() {
+    const userType = document.querySelector('input[name=userType]:checked');
+    const userName = document.getElementById('input-name').value;
+    const userDetail = document.getElementById('input-detail').value;
+
+    if (!userType || userName.length < 4 || userDetail.length < 3) {
+        alert('Por favor, preencha todos os campos corretamente.');
+        return;
+    }
+
+    // Formata o autor com base no tipo selecionado
+    author = userType.value === 'Cliente'
+        ? `${userName} | ${userDetail}`
+        : `${userName} | ${userDetail}`;
+
+    // Salva o autor no localStorage
+    localStorage.setItem('user', author);
+
+    // Alterna para a tela do chat
+    document.getElementById('login-screen').classList.add('hidden');
+    document.getElementById('chat-screen').classList.remove('hidden');
+}
+
+// Função para carregar o autor armazenado
+function getAuthor() {
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+        author = storedUser;
+    }
+}
+
+// Demais funções do chat permanecem as mesmas
+function Submit(event) {
+    event.preventDefault();
+
+    const message = document.querySelector('input[name=message]').value;
+    document.getElementById('input-message').value = '';
+
+    if (message.length) {
+        const messageObject = {
+            author,
+            message,
+        };
+
+        renderMessage(messageObject);
+        socket.emit('sendMessage', messageObject);
+    }
+}
+
+function renderMessage(message) {
+    const messagesContainer = document.querySelector('.messages');
+    const messageElement = document.createElement('div');
+    messageElement.classList.add('message');
+
+    const messageContent = `<h2>${message.author}</h2><p>${message.message}</p>`;
+    messageElement.innerHTML = messageContent;
+
+    messagesContainer.appendChild(messageElement);
+}
