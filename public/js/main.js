@@ -2,38 +2,42 @@ var socket = io('/');
 var info = {
     numberMessages: 0,
     connected: 0
-};
-var author = '';
+}
+var author = ''
 
-socket.on('receivedMessage', function(message) {
-    renderMessage(message);
+
+socket.on('receivedMessage', function(message){
+    renderMessage(message)
 });
 
-socket.on('previousMessages', function(messages) {
-    for (message of messages) {
-        renderMessage(message);
+socket.on('previousMessages', function(messages){
+    for (message of messages){
+        renderMessage(message)
     };
-    renderConnectionsInfo();
+
+    renderConnectionsInfo()
+
 });
 
-socket.on('ConnectionsInfo', function(connectionsInfo) {
+socket.on('ConnectionsInfo', function(connectionsInfo){
     info.connected = connectionsInfo.connections._connections;
     renderConnectionsInfo();
-});
+})
 
-getAuthor();
+getAuthor()
+        
+function getAuthor(){
+    let user = localStorage.getItem('user')
 
-function getAuthor() {
-    let user = localStorage.getItem('user');
-
-    if (user) {
-        author = user;
-    } else if (!user) {
-        toggleBoxForNewUser('tog');
+    if(user){
+        author = user
+    }
+    else if(!user){
+        toggleBoxForNewUser('tog')
     }
 }
 
-function generateMessageTemplate({ message, author }) {
+function generateMessageTemplate({ message, author, time }) {
     const messageElement = document.createElement('div');
     messageElement.classList.add('message');
 
@@ -41,13 +45,20 @@ function generateMessageTemplate({ message, author }) {
     userImageElement.classList.add('user-image');
 
     const userIconElement = document.createElement('i');
-    userIconElement.classList.add('fal', 'fa-user-circle');
+    userIconElement.classList.add('fal');
+    userIconElement.classList.add('fa-user-circle');
+
     userImageElement.appendChild(userIconElement);
 
     const messageContentElement = document.createElement('div');
 
     const authorInfoElement = document.createElement('h2');
     authorInfoElement.textContent = author;
+
+    const messageTimeElement = document.createElement('span');
+    messageTimeElement.textContent = time;
+
+    authorInfoElement.appendChild(messageTimeElement);
 
     const messageTextElement = document.createElement('p');
     messageTextElement.setAttribute('aria-expanded', true);
@@ -73,58 +84,69 @@ function renderMessage(message) {
     renderConnectionsInfo();
 }
 
-function renderConnectionsInfo() {
-    $('#online').html(`<h3><i class="fas fa-circle"></i> ${info.connected} Online</h3>`);
-    $('#messages-received').html(`<h3 id="messages-received"><i class="fad fa-inbox-in"></i> ${info.numberMessages} ${info.numberMessages === 1 ? "Mensagem" : "Mensagens"}</h3>`);
+function renderConnectionsInfo(){
+    $('#online').html(`<h3><i class="fas fa-circle"></i> ${info.connected} Online</h3>`)
+
+    $('#messages-received').html(`<h3 id="messages-received"><i class="fad fa-inbox-in"></i> ${info.numberMessages} ${info.numberMessages === 1 ? "Mensagem" : "Mensagens"}</h3>`)
 }
 
-function toggleBoxForNewUser(met) {
-    if (met === 'tog') {
+function toggleBoxForNewUser(met){
+    if(met === 'tog'){
         let input = document.getElementById('enter-user');
         input.classList.toggle('active');
-        input.focus();
+        input.focus()
     }
-    if (met === 'get') {
+    if(met === 'get'){
         let newUser = document.getElementById('input-user').value;
 
-        if (newUser.length < 4) {
-            alert('Erro ao cadastrar usuário, tente um nome mais longo.');
-            return null;
+        if (newUser.length < 4 ){
+            alert('Erro ao cadastrar usuário, tente um nome mais longo.')
+            return null
         }
         
-        localStorage.setItem('user', newUser);
-        author = newUser;
-        toggleBoxForNewUser('tog');
+        localStorage.setItem('user', newUser)
+        author = newUser
+        toggleBoxForNewUser('tog')
     }
 }
 
-function moveScroll() {
+function moveScroll(){
     var objDiv = document.getElementById("messages");
     objDiv.scrollTop = objDiv.scrollHeight;
 }
 
-function Submit(event) {
+function Submit(event){
     event.preventDefault();
 
-    getAuthor();
+    getAuthor()
 
     var message = document.querySelector('input[name=message]').value;
-    $('#input-message').val('');
+    $('#input-message').val('')
 
-    if (message.length) {
+    if(message.length){
+        let now = new Date
+        let time = now.getHours() + ':' + now.getMinutes()
+        if (now.getHours() > 12){
+            time += 'pm';
+        }
+        else{
+            time += 'am';
+        };
+
         var messageObject = {
             author,
             message,
-        };
+            time,
+        }
 
-        renderMessage(messageObject);
-        moveScroll();
+        renderMessage(messageObject)
+        moveScroll()
 
         socket.emit('sendMessage', messageObject);
-    }
-}
+    } 
+};
 
-function handleToggleLeftBar() {
+function handleToggleLeftBar(){
     const bar = document.querySelector('#left-bar');
     const chat = document.querySelector('#chat-area');
     const icon = document.querySelector('#toggleInfo');
