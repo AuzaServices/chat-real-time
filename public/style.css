@@ -483,3 +483,51 @@
         cursor: pointer;
     }
 }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: auto 25vw;
+    overflow: hidden;
+}
+
+#chat-area {
+    background: #222429;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#messages {
+    max-height: 88vh;
+    overflow-y: scroll;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+#send-messages {
+    height: 12vh;
+    background: #141419;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#send-messages input {
+    width: 98%;
+    height: 70%;
+    background: #333539;
+    border: 1px solid #646464;
+    border-radius: 8px;
+    padding-left: 12px;
+    color: #f5f5f5;
+}
