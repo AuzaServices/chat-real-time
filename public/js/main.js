@@ -136,73 +136,62 @@ function handleToggleLeftBar() {
 }
 let author = '';
 
-// Função para alternar os campos da tela de login
+// Atualiza os campos do login de acordo com o tipo selecionado
 function updateLoginFields() {
     const userType = document.querySelector('input[name=userType]:checked');
     const detailField = document.getElementById('input-detail');
 
-    if (userType && userType.value === 'Cliente') {
-        detailField.placeholder = 'Bairro';
-    } else if (userType && userType.value === 'Profissional') {
-        detailField.placeholder = 'Profissão';
+    if (userType) {
+        detailField.placeholder = userType.value === 'Cliente' ? 'Bairro' : 'Profissão';
     }
 }
 
-// Função para lidar com o login
+// Lógica para o botão de login
 function handleLogin() {
     const userType = document.querySelector('input[name=userType]:checked');
-    const userName = document.getElementById('input-name').value;
-    const userDetail = document.getElementById('input-detail').value;
+    const userName = document.getElementById('input-name').value.trim();
+    const userDetail = document.getElementById('input-detail').value.trim();
 
-    if (!userType || userName.trim().length < 4 || userDetail.trim().length < 3) {
-        alert('Por favor, selecione sua categoria e preencha todos os campos corretamente.');
+    if (!userType || userName.length < 4 || userDetail.length < 3) {
+        alert('Por favor, selecione a categoria e preencha todos os campos corretamente.');
         return;
     }
 
-    // Formata o autor com base no tipo selecionado
-    author = userType.value === 'Cliente'
-        ? `${userName} | ${userDetail}`
-        : `${userName} | ${userDetail}`;
-
-    // Salva o autor no localStorage
+    // Define o autor e alterna para o chat
+    author = `${userName} | ${userDetail}`;
     localStorage.setItem('user', author);
 
-    // Alterna para a tela do chat
+    document.getElementById('login-screen').classList.remove('visible');
     document.getElementById('login-screen').classList.add('hidden');
     document.getElementById('chat-screen').classList.remove('hidden');
 }
 
-// Adiciona o evento ao botão de login
-document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('login-button').addEventListener('click', handleLogin);
-});
-
-// Função para enviar mensagem
+// Lógica para enviar mensagens
 function Submit(event) {
     event.preventDefault();
 
-    const message = document.querySelector('input[name=message]').value;
-    document.getElementById('input-message').value = '';
+    const messageInput = document.getElementById('input-message');
+    const message = messageInput.value.trim();
 
-    if (message.trim().length) {
-        const messageObject = {
-            author,
-            message,
-        };
-
+    if (message.length > 0) {
+        const messageObject = { author, message };
         renderMessage(messageObject);
-        socket.emit('sendMessage', messageObject);
+
+        // Emita para o servidor se necessário
+        // socket.emit('sendMessage', messageObject);
+
+        messageInput.value = '';
     }
 }
 
-// Função para renderizar mensagem
-function renderMessage(message) {
-    const messagesContainer = document.querySelector('.messages');
+// Renderiza mensagens no chat
+function renderMessage({ author, message }) {
+    const messagesContainer = document.getElementById('messages');
     const messageElement = document.createElement('div');
     messageElement.classList.add('message');
-
-    const messageContent = `<h2>${message.author}</h2><p>${message.message}</p>`;
-    messageElement.innerHTML = messageContent;
-
+    messageElement.innerHTML = `<h3>${author}</h3><p>${message}</p>`;
     messagesContainer.appendChild(messageElement);
 }
+
+// Evento para o botão de login
+document.getElementById('login-button').addEventListener('click', handleLogin);

@@ -8,7 +8,7 @@
 </head>
 <body>
     <!-- Tela de Login -->
-    <div id="login-screen" class="active">
+    <div id="login-screen" class="visible">
         <h1>Bem-vindo ao Chat de Negociação</h1>
         <p>Selecione sua categoria:</p>
         <label><input type="radio" name="userType" value="Cliente" onchange="updateLoginFields()"> Cliente</label>
@@ -23,12 +23,10 @@
     <!-- Tela do Chat -->
     <div id="chat-screen" class="hidden">
         <section id="chat-area">
-            <div id="messages" class="messages">
-                <div id="initialMessage"></div>
-            </div>
+            <div id="messages" class="messages"></div>
             <div id="send-messages">
-                <input type="text" id="input-message" name="message" autocomplete="off" onkeypress="event.key === 'Enter' && Submit(event)">
-                <button onclick="Submit(event)">Enviar</button>
+                <input type="text" id="input-message" name="message" autocomplete="off" placeholder="Digite sua mensagem...">
+                <button id="send-button">Enviar</button>
             </div>
         </section>
         <section id="left-bar">
@@ -39,6 +37,7 @@
             </div>
         </section>
     </div>
+
     <script src="./js/main.js"></script>
 </body>
 </html>
