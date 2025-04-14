@@ -225,3 +225,26 @@ function submitUserInfo() {
     document.getElementById('chat-screen').classList.add('active');
     document.getElementById('chat-screen').classList.remove('hidden');
 }
+
+// Alterna entre as telas de login e chat
+function submitUserInfo() {
+    const name = document.getElementById('input-name').value;
+    const bairroOrProfissao = document.getElementById('input-bairro') 
+        ? document.getElementById('input-bairro').value 
+        : document.getElementById('input-profissao').value;
+
+    if (name.length < 4 || bairroOrProfissao.length < 4) {
+        alert('Por favor, preencha todos os campos corretamente.');
+        return null;
+    }
+
+    const formattedName = `${name} | ${bairroOrProfissao}`;
+    localStorage.setItem('user', formattedName);
+    author = formattedName;
+
+    // Alternar telas
+    document.getElementById('login-screen').classList.add('hidden');
+    document.getElementById('login-screen').classList.remove('active');
+    document.getElementById('chat-screen').classList.add('active');
+    document.getElementById('chat-screen').classList.remove('hidden');
+}
