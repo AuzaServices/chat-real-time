@@ -138,33 +138,33 @@ let author = '';
 
 // Função para alternar os campos da tela de login
 function updateLoginFields() {
-    const userType = document.querySelector('input[name=userType]:checked').value;
+    const userType = document.querySelector('input[name=userType]:checked');
     const detailField = document.getElementById('input-detail');
 
-    if (userType === 'Cliente') {
+    if (userType && userType.value === 'Cliente') {
         detailField.placeholder = 'Bairro';
-    } else if (userType === 'Profissional') {
+    } else if (userType && userType.value === 'Profissional') {
         detailField.placeholder = 'Profissão';
     }
 }
 
-// Lida com o processo de login
+// Função para lidar com o login
 function handleLogin() {
     const userType = document.querySelector('input[name=userType]:checked');
     const userName = document.getElementById('input-name').value;
     const userDetail = document.getElementById('input-detail').value;
 
-    if (!userType || userName.length < 4 || userDetail.length < 3) {
-        alert('Por favor, preencha todos os campos corretamente.');
+    if (!userType || userName.trim().length < 4 || userDetail.trim().length < 3) {
+        alert('Por favor, selecione sua categoria e preencha todos os campos corretamente.');
         return;
     }
 
-    // Formata o nome do usuário para exibição no chat
+    // Formata o autor com base no tipo selecionado
     author = userType.value === 'Cliente'
         ? `${userName} | ${userDetail}`
         : `${userName} | ${userDetail}`;
 
-    // Salva o usuário no localStorage
+    // Salva o autor no localStorage
     localStorage.setItem('user', author);
 
     // Alterna para a tela do chat
@@ -173,16 +173,18 @@ function handleLogin() {
 }
 
 // Adiciona o evento ao botão de login
-document.getElementById('login-button').addEventListener('click', handleLogin);
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('login-button').addEventListener('click', handleLogin);
+});
 
-// Demais funções do chat permanecem as mesmas
+// Função para enviar mensagem
 function Submit(event) {
     event.preventDefault();
 
     const message = document.querySelector('input[name=message]').value;
     document.getElementById('input-message').value = '';
 
-    if (message.length) {
+    if (message.trim().length) {
         const messageObject = {
             author,
             message,
@@ -193,6 +195,7 @@ function Submit(event) {
     }
 }
 
+// Função para renderizar mensagem
 function renderMessage(message) {
     const messagesContainer = document.querySelector('.messages');
     const messageElement = document.createElement('div');
