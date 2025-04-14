@@ -7,37 +7,28 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Tela de Login -->
-    <div id="login-screen">
-        <h1>Bem-vindo ao Chat de Negociação</h1>
-        <p>Selecione sua categoria:</p>
-        <label><input type="radio" name="userType" value="Cliente" onchange="updateLoginFields()"> Cliente</label>
-        <label><input type="radio" name="userType" value="Profissional" onchange="updateLoginFields()"> Profissional</label>
-        <div id="login-fields">
-            <input type="text" id="input-name" placeholder="Nome">
-            <input type="text" id="input-detail" placeholder="Detalhe">
-        </div>
-        <button id="login-button">Entrar</button>
-    </div>
-
-    <!-- Tela do Chat -->
-    <div id="chat-screen" style="display: none;">
+    <div class="container">
         <section id="chat-area">
-            <div id="messages" class="messages"></div>
+            <div>
+                <i id="toggleInfo" class="fal fa-info-circle" onclick="handleToggleLeftBar()"></i>
+                <div id="messages" class="messages">
+                    <div id="initialMessage"></div>
+                </div>
+            </div>
             <div id="send-messages">
-                <input type="text" id="input-message" name="message" autocomplete="off" placeholder="Digite sua mensagem...">
-                <button id="send-button">Enviar</button>
+                <input type="text" id="input-message" name="message" autocomplete="off" autofocus 
+                onkeypress="event.key === 'Enter' && Submit(event)">
+                <i class="fas fa-paper-plane" onclick="Submit(event)"></i>
             </div>
         </section>
         <section id="left-bar">
             <div>
                 <h2 style="color: darkred;">Chat de Negociação</h2>
-                <h3 id="online"><i style="color: green;" class="fas fa-circle"></i> 0 Online</h3>
-                <h3 id="messages-received"><i class="fad fa-inbox-in"></i> 0 Mensagens</h3>
+                <h3 id="online"><i style="color: green;" class="fas fa-circle"></i>0 Online</h3>
+                <h3 id="messages-received"><i class="fad fa-inbox-in"></i>0 Mensagens</h3>
             </div>
         </section>
     </div>
-
     <script src="./js/main.js"></script>
 </body>
 </html>

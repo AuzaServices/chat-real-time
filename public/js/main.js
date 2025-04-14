@@ -33,7 +33,7 @@ function getAuthor() {
     }
 }
 
-function generateMessageTemplate({ message, author }) {
+function generateMessageTemplate({ message, author, time }) {
     const messageElement = document.createElement('div');
     messageElement.classList.add('message');
 
@@ -48,6 +48,11 @@ function generateMessageTemplate({ message, author }) {
 
     const authorInfoElement = document.createElement('h2');
     authorInfoElement.textContent = author;
+
+    const messageTimeElement = document.createElement('span');
+    messageTimeElement.textContent = time;
+
+    authorInfoElement.appendChild(messageTimeElement);
 
     const messageTextElement = document.createElement('p');
     messageTextElement.setAttribute('aria-expanded', true);
@@ -112,9 +117,14 @@ function Submit(event) {
     $('#input-message').val('');
 
     if (message.length) {
+        let now = new Date();
+        let time = now.getHours() + ':' + now.getMinutes();
+        time += now.getHours() > 12 ? 'pm' : 'am';
+
         var messageObject = {
             author,
             message,
+            time,
         };
 
         renderMessage(messageObject);
