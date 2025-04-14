@@ -136,7 +136,7 @@ function handleToggleLeftBar() {
 }
 let author = '';
 
-// Atualiza os campos do login de acordo com o tipo selecionado
+// Atualiza os campos do login dinamicamente
 function updateLoginFields() {
     const userType = document.querySelector('input[name=userType]:checked');
     const detailField = document.getElementById('input-detail');
@@ -146,27 +146,28 @@ function updateLoginFields() {
     }
 }
 
-// Lógica para o botão de login
+// Lida com o login e alterna para a tela do chat
 function handleLogin() {
     const userType = document.querySelector('input[name=userType]:checked');
     const userName = document.getElementById('input-name').value.trim();
     const userDetail = document.getElementById('input-detail').value.trim();
 
+    // Validação de entrada
     if (!userType || userName.length < 4 || userDetail.length < 3) {
-        alert('Por favor, selecione a categoria e preencha todos os campos corretamente.');
+        alert('Por favor, selecione sua categoria e preencha todos os campos corretamente.');
         return;
     }
 
-    // Define o autor e alterna para o chat
+    // Define o autor e salva no localStorage
     author = `${userName} | ${userDetail}`;
     localStorage.setItem('user', author);
 
-    document.getElementById('login-screen').classList.remove('visible');
-    document.getElementById('login-screen').classList.add('hidden');
-    document.getElementById('chat-screen').classList.remove('hidden');
+    // Alterna para a tela do chat
+    document.getElementById('login-screen').style.display = 'none';
+    document.getElementById('chat-screen').style.display = 'block';
 }
 
-// Lógica para enviar mensagens
+// Função para enviar mensagens
 function Submit(event) {
     event.preventDefault();
 
@@ -177,14 +178,14 @@ function Submit(event) {
         const messageObject = { author, message };
         renderMessage(messageObject);
 
-        // Emita para o servidor se necessário
+        // Emita para o servidor, se necessário
         // socket.emit('sendMessage', messageObject);
 
         messageInput.value = '';
     }
 }
 
-// Renderiza mensagens no chat
+// Renderiza a mensagem no chat
 function renderMessage({ author, message }) {
     const messagesContainer = document.getElementById('messages');
     const messageElement = document.createElement('div');

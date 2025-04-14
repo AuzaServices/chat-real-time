@@ -8,7 +8,7 @@
 </head>
 <body>
     <!-- Tela de Login -->
-    <div id="login-screen" class="visible">
+    <div id="login-screen">
         <h1>Bem-vindo ao Chat de Negociação</h1>
         <p>Selecione sua categoria:</p>
         <label><input type="radio" name="userType" value="Cliente" onchange="updateLoginFields()"> Cliente</label>
@@ -21,7 +21,7 @@
     </div>
 
     <!-- Tela do Chat -->
-    <div id="chat-screen" class="hidden">
+    <div id="chat-screen" style="display: none;">
         <section id="chat-area">
             <div id="messages" class="messages"></div>
             <div id="send-messages">
