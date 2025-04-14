@@ -156,3 +156,48 @@ function handleToggleLeftBar(){
 
     icon.className = icon.className === 'fal fa-info-circle' ? 'fal fa-times' : 'fal fa-info-circle';
 }
+
+function toggleUserSelection() {
+    const selectionBox = document.getElementById('user-selection');
+    selectionBox.classList.toggle('active');
+}
+
+function handleUserTypeSelection(userType) {
+    const inputsBox = document.getElementById('inputs-box');
+    inputsBox.innerHTML = ''; // Limpa os campos anteriores
+
+    if (userType === 'Cliente') {
+        inputsBox.innerHTML = `
+            <input type="text" id="input-name" placeholder="Nome" required minlength="4">
+            <input type="text" id="input-bairro" placeholder="Bairro" required minlength="4">
+        `;
+    } else if (userType === 'Profissional') {
+        inputsBox.innerHTML = `
+            <input type="text" id="input-name" placeholder="Nome" required minlength="4">
+            <input type="text" id="input-profissao" placeholder="Profissão" required minlength="4">
+        `;
+    }
+    document.getElementById('user-selection').classList.toggle('active');
+    document.getElementById('enter-user').classList.add('active');
+}
+
+function submitUserInfo() {
+    const name = document.getElementById('input-name').value;
+    const bairroOrProfissao = document.getElementById('input-bairro') 
+        ? document.getElementById('input-bairro').value 
+        : document.getElementById('input-profissao').value;
+
+    if (name.length < 4 || bairroOrProfissao.length < 4) {
+        alert('Por favor, preencha todos os campos corretamente.');
+        return null;
+    }
+
+    const formattedName = document.getElementById('input-bairro') 
+        ? `${name} | ${bairroOrProfissao}` 
+        : `${name} | ${bairroOrProfissao}`;
+    
+    localStorage.setItem('user', formattedName);
+    author = formattedName;
+
+    toggleBoxForNewUser('tog'); // Fechar o box de novo usuário
+}

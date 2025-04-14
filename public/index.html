@@ -4,11 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#222429" />
-    <meta name="theme-color" content="#222429" />
     <title>Reat Time Chat</title>
 
-    <script rel="preconect preload" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script rel="preconect preload" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+    <script rel="preconnect preload" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script rel="preconnect preload" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
 
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
@@ -29,8 +28,8 @@
                 </div>
             </div>
 
-            <div id="send-messages" >
-                <input  type="text" id="input-message" name="message" autocomplete="off" autofocus onkeypress="
+            <div id="send-messages">
+                <input type="text" id="input-message" name="message" autocomplete="off" autofocus onkeypress="
                 event.target.value += '\n'
                 if(event.key == 'Enter'){
                     Submit(event)}
@@ -58,16 +57,26 @@
             </div>
         </section>
 
+        <!-- Seleção de tipo de usuário -->
+        <div id="user-selection" class="active">
+            <h1>Escolha seu tipo de usuário</h1>
+            <button onclick="handleUserTypeSelection('Cliente')">Cliente</button>
+            <button onclick="handleUserTypeSelection('Profissional')">Profissional</button>
+        </div>
+
+        <!-- Entrada de usuário (inputs dinâmicos aparecerão aqui) -->
+        <div id="inputs-box"></div>
+
+        <!-- Tela para novos usuários -->
         <div id="enter-user">
             <div class="content">
                 <h1>Ops! Parece que você é novo por aqui...</h1>
-                <p aria-expanded="truex">Por favor, digite abaixo o seu nome.</p>
-
-                <input type="text" id="input-user" autofocus required minlength="4">
-                <button onclick="toggleBoxForNewUser('get')">Entrar</button>
+                <p aria-expanded="true">Por favor, preencha os campos abaixo.</p>
+                <button onclick="submitUserInfo()">Entrar</button>
             </div>
         </div>
     </div>
+
     <script src="./js/main.js"></script>
 </body>
 </html>
