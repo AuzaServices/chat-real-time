@@ -201,3 +201,27 @@ function submitUserInfo() {
 
     toggleBoxForNewUser('tog'); // Fechar o box de novo usuário
 }
+
+function submitUserInfo() {
+    const name = document.getElementById('input-name').value;
+    const bairroOrProfissao = document.getElementById('input-bairro') 
+        ? document.getElementById('input-bairro').value 
+        : document.getElementById('input-profissao').value;
+
+    if (name.length < 4 || bairroOrProfissao.length < 4) {
+        alert('Por favor, preencha todos os campos corretamente.');
+        return null;
+    }
+
+    const formattedName = document.getElementById('input-bairro') 
+        ? `${name} | ${bairroOrProfissao}` 
+        : `${name} | ${bairroOrProfissao}`;
+    
+    localStorage.setItem('user', formattedName);
+    author = formattedName;
+
+    document.getElementById('login-screen').classList.add('hidden');
+    document.getElementById('login-screen').classList.remove('active');
+    document.getElementById('chat-screen').classList.add('active');
+    document.getElementById('chat-screen').classList.remove('hidden');
+}
