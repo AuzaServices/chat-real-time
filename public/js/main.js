@@ -148,7 +148,7 @@ function updateLoginFields() {
     }
 }
 
-// Função para lidar com o login
+// Lida com o processo de login
 function handleLogin() {
     const userType = document.querySelector('input[name=userType]:checked');
     const userName = document.getElementById('input-name').value;
@@ -159,12 +159,12 @@ function handleLogin() {
         return;
     }
 
-    // Formata o autor com base no tipo selecionado
+    // Formata o nome do usuário para exibição no chat
     author = userType.value === 'Cliente'
         ? `${userName} | ${userDetail}`
         : `${userName} | ${userDetail}`;
 
-    // Salva o autor no localStorage
+    // Salva o usuário no localStorage
     localStorage.setItem('user', author);
 
     // Alterna para a tela do chat
@@ -172,13 +172,8 @@ function handleLogin() {
     document.getElementById('chat-screen').classList.remove('hidden');
 }
 
-// Função para carregar o autor armazenado
-function getAuthor() {
-    const storedUser = localStorage.getItem('user');
-    if (storedUser) {
-        author = storedUser;
-    }
-}
+// Adiciona o evento ao botão de login
+document.getElementById('login-button').addEventListener('click', handleLogin);
 
 // Demais funções do chat permanecem as mesmas
 function Submit(event) {
