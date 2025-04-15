@@ -71,7 +71,7 @@ function renderMessage(message) {
 }
 
 // Template para as mensagens
-function generateMessageTemplate({ message, author, time }) {
+function generateMessageTemplate({ message, author }) {
     const messageElement = document.createElement('div');
     messageElement.classList.add('message');
 
@@ -88,11 +88,6 @@ function generateMessageTemplate({ message, author, time }) {
 
     const authorInfoElement = document.createElement('h2');
     authorInfoElement.textContent = author;
-
-    const messageTimeElement = document.createElement('span');
-    messageTimeElement.textContent = time;
-
-    authorInfoElement.appendChild(messageTimeElement);
 
     const messageTextElement = document.createElement('p');
     messageTextElement.setAttribute('aria-expanded', true);
@@ -124,13 +119,9 @@ function Submit(event) {
     messageInput.value = '';
 
     if (message.length) {
-        const now = new Date();
-        const time = `${now.getHours()}:${now.getMinutes()}${now.getHours() > 12 ? 'pm' : 'am'}`;
-
         const messageObject = {
             author,
             message,
-            time,
         };
 
         renderMessage(messageObject);
