@@ -1,9 +1,5 @@
-// Inicialização de variáveis e conexão com o servidor
-var socket = io('/');
-var info = {
-    numberMessages: 0,
-    connected: 0
-};
+// Conexão com o servidor hospedado
+var socket = io('https://chat-real-time-2.onrender.com/');
 var author = '';
 
 // Manipula a seleção do tipo de usuário (Cliente ou Profissional)
@@ -24,123 +20,72 @@ function handleUserTypeSelection(userType) {
     }
 }
 
-// Realiza a transição da tela de login para o chat após validação dos dados
+// Submete informações do usuário e entra no chat
 function submitUserInfo() {
     const name = document.getElementById('input-name').value;
     const bairroOrProfissao = document.getElementById('input-bairro') 
         ? document.getElementById('input-bairro').value 
         : document.getElementById('input-profissao').value;
 
-    // Validação de campos
-    if (!name || name.length < 4 || !bairroOrProfissao || bairroOrProfissao.length < 4) {
+    if (!name || !bairroOrProfissao || name.length < 4 || bairroOrProfissao.length < 4) {
         alert('Por favor, preencha todos os campos corretamente.');
         return;
     }
 
-    // Formata o nome do usuário com base no tipo selecionado
-    const formattedName = `${name} | ${bairroOrProfissao}`;
-    localStorage.setItem('user', formattedName);
-    author = formattedName;
+    author = `${name} | ${bairroOrProfissao}`;
+    localStorage.setItem('user', author);
 
-    // Alterna as telas de login para chat
+    // Alterna a tela para o chat
     document.getElementById('login-screen').classList.add('hidden');
-    document.getElementById('login-screen').classList.remove('active');
-    document.getElementById('chat-screen').classList.add('active');
     document.getElementById('chat-screen').classList.remove('hidden');
 }
 
-// Exibe informações do usuário no chat
-function getAuthor() {
-    let user = localStorage.getItem('user');
-
-    if (user) {
-        author = user;
-    }
-}
-
-// Renderiza mensagens no chat
+// Renderiza mensagens no DOM
 function renderMessage(message) {
     const messagesContainer = document.querySelector('.messages');
-    const messageTemplate = generateMessageTemplate(message);
-
-    messagesContainer.appendChild(messageTemplate);
-
-    info.numberMessages += 1;
-    moveScroll();
-    renderConnectionsInfo();
-}
-
-// Template para as mensagens
-function generateMessageTemplate({ message, author }) {
     const messageElement = document.createElement('div');
     messageElement.classList.add('message');
 
-    const messageContentElement = document.createElement('div');
+    const authorElement = document.createElement('h2');
+    authorElement.textContent = message.author;
 
-    const authorInfoElement = document.createElement('h2');
-    authorInfoElement.textContent = author;
+    const textElement = document.createElement('p');
+    textElement.textContent = message.message;
 
-    const messageTextElement = document.createElement('p');
-    messageTextElement.setAttribute('aria-expanded', true);
-    messageTextElement.textContent = message;
+    messageElement.appendChild(authorElement);
+    messageElement.appendChild(textElement);
+    messagesContainer.appendChild(messageElement);
 
-    messageContentElement.appendChild(authorInfoElement);
-    messageContentElement.appendChild(messageTextElement);
-
-    messageElement.appendChild(messageContentElement);
-
-    return messageElement;
-}
-
-// Mantém o scroll no fim da área de mensagens
-function moveScroll() {
-    const messagesContainer = document.getElementById('messages');
+    // Rola automaticamente para a última mensagem
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
 }
 
-// Envia uma nova mensagem ao chat
+// Envia uma mensagem ao servidor
 function Submit(event) {
     event.preventDefault();
+    const inputMessage = document.getElementById('input-message');
+    const message = inputMessage.value;
 
-    getAuthor();
-
-    const messageInput = document.querySelector('input[name=message]');
-    const message = messageInput.value;
-    messageInput.value = '';
-
-    if (message.length) {
+    if (message.trim()) {
         const messageObject = {
-            author,
-            message,
+            author: author || 'Anônimo',
+            message: message,
         };
 
-        renderMessage(messageObject); // Renderiza no próprio dispositivo
-        moveScroll();
-
-        // Envia a mensagem ao servidor para ser transmitida a outros dispositivos
-        socket.emit('sendMessage', messageObject);
+        renderMessage(messageObject); // Renderiza localmente
+        socket.emit('sendMessage', messageObject); // Envia ao servidor
+        inputMessage.value = ''; // Limpa o campo de entrada
     }
 }
 
-// Escutar mensagens recebidas de outros dispositivos
-socket.on('receivedMessage', function(message) {
-    renderMessage(message); // Renderiza mensagens recebidas no DOM
-});
-
-// Escutar mensagens anteriores ao entrar no chat
-socket.on('previousMessages', function(messages) {
-    for (message of messages) {
-        renderMessage(message);
+// Recebe mensagens anteriores ao entrar no chat
+socket.on('previousMessages', (messages) => {
+    for (const message of messages) {
+        renderMessage(message); // Renderiza mensagens anteriores no DOM
     }
-    renderConnectionsInfo();
 });
 
-// Renderiza informações de conexões
-function renderConnectionsInfo() {
-    $('#online').html(`<h3><i class="fas fa-circle"></i> ${info.connected} Online</h3>`);
-    $('#messages-received').html(`<h3 id="messages-received"><i class="fad fa-inbox-in"></i> ${info.numberMessages} ${info.numberMessages === 1 ? "Mensagem" : "Mensagens"}</h3>`);
-}
-
-// Inicializa o autor do chat
-getAuthor();
-
+// Recebe novas mensagens enviadas por outros usuários
+socket.on('receivedMessage', (message) => {
+    renderMessage(message); // Renderiza a mensagem recebida
+});
