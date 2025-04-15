@@ -1,5 +1,5 @@
 // Inicialização de variáveis e conexão com o servidor
-var socket = io('https://chat-real-time-2.onrender.com/');
+var socket = io('/');
 var info = {
     numberMessages: 0,
     connected: 0
