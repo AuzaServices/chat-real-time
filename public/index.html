@@ -41,12 +41,7 @@
                     </div>
                 </div>
                 <div id="send-messages">
-                    <input type="text" id="input-message" name="message" autocomplete="off" autofocus onkeypress="
-                    event.target.value += '\n'
-                    if(event.key == 'Enter'){
-                        Submit(event)}
-                        event.target.value += '\n'
-                    ">
+                    <input type="text" id="input-message" name="message" placeholder="Mensagem" autocomplete="off" autofocus>
                     <i class="fas fa-paper-plane" onclick="Submit(event)"></i>
                 </div>
             </section>
