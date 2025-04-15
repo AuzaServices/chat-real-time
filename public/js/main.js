@@ -70,19 +70,10 @@ function renderMessage(message) {
     renderConnectionsInfo();
 }
 
-// Template para as mensagens
+// Template para as mensagens (Removido o ícone de "foto")
 function generateMessageTemplate({ message, author }) {
     const messageElement = document.createElement('div');
     messageElement.classList.add('message');
-
-    const userImageElement = document.createElement('div');
-    userImageElement.classList.add('user-image');
-
-    const userIconElement = document.createElement('i');
-    userIconElement.classList.add('fal');
-    userIconElement.classList.add('fa-user-circle');
-
-    userImageElement.appendChild(userIconElement);
 
     const messageContentElement = document.createElement('div');
 
@@ -96,7 +87,6 @@ function generateMessageTemplate({ message, author }) {
     messageContentElement.appendChild(authorInfoElement);
     messageContentElement.appendChild(messageTextElement);
 
-    messageElement.appendChild(userImageElement);
     messageElement.appendChild(messageContentElement);
 
     return messageElement;

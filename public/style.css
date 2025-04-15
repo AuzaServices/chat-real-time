@@ -106,6 +106,24 @@ body {
     border-radius: 0.5rem;
 }
 
+#messages .message h2 {
+    font-size: 1.2rem;
+    color: #fff;
+    margin-bottom: 0.5rem;
+}
+
+#messages .message p {
+    font-size: 1rem;
+    color: #ccc;
+    word-break: break-word;
+}
+
+/* Removido os estilos do ícone de "foto" */
+#messages .message .user-image {
+    display: none;
+}
+
+/* Área de envio de mensagens */
 #send-messages {
     display: flex;
     padding: 1rem;
