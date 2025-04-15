@@ -1,4 +1,4 @@
-// Informações iniciais
+// Inicialização de variáveis e conexão com o servidor
 var socket = io('/');
 var info = {
     numberMessages: 0,
@@ -117,9 +117,23 @@ function Submit(event) {
         renderMessage(messageObject);
         moveScroll();
 
+        // Emitindo a mensagem para o servidor para que seja transmitida a todos
         socket.emit('sendMessage', messageObject);
     }
 }
+
+// Escutar mensagens recebidas de outros dispositivos
+socket.on('receivedMessage', function(message) {
+    renderMessage(message); // Renderiza mensagens recebidas no DOM
+});
+
+// Escutar mensagens anteriores ao entrar no chat
+socket.on('previousMessages', function(messages) {
+    for (message of messages) {
+        renderMessage(message);
+    }
+    renderConnectionsInfo();
+});
 
 // Renderiza informações de conexões
 function renderConnectionsInfo() {
@@ -131,30 +145,16 @@ function renderConnectionsInfo() {
 function handleToggleLeftBar() {
     const bar = document.querySelector('#left-bar');
     const chat = document.querySelector('#chat-area');
-    const icon = document.querySelector('#toggleInfo');
 
     bar.classList.toggle('active');
     chat.classList.toggle('active');
-
-    icon.className = icon.className === 'fal fa-info-circle' ? 'fal fa-times' : 'fal fa-info-circle';
 }
 
-// Eventos do Socket.IO
-socket.on('receivedMessage', function(message) {
-    renderMessage(message);
-});
-
-socket.on('previousMessages', function(messages) {
-    for (message of messages) {
-        renderMessage(message);
-    }
-    renderConnectionsInfo();
-});
-
+// Eventos do Socket.IO: Conexões
 socket.on('ConnectionsInfo', function(connectionsInfo) {
     info.connected = connectionsInfo.connections._connections;
     renderConnectionsInfo();
 });
 
-// Inicializa o autor
+// Inicializa o autor do chat
 getAuthor();
