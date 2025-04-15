@@ -1,3 +1,4 @@
+// Inicialização de variáveis e conexão com o servidor
 var socket = io('/');
 var info = {
     numberMessages: 0,
@@ -5,161 +6,59 @@ var info = {
 };
 var author = '';
 
-socket.on('receivedMessage', function(message) {
-    renderMessage(message);
-});
-
-socket.on('previousMessages', function(messages) {
-    for (message of messages) {
-        renderMessage(message);
-    }
-    renderConnectionsInfo();
-});
-
-socket.on('ConnectionsInfo', function(connectionsInfo) {
-    info.connected = connectionsInfo.connections._connections;
-    renderConnectionsInfo();
-});
-
-socket.on('clearMessages', function() {
-    clearMessagesLocally();
-});
-
-getAuthor();
-
-function handleUserTypeChange() {
-    const userType = document.getElementById('user-type').value;
-    const clienteInfo = document.getElementById('cliente-info');
-    const profissionalInfo = document.getElementById('profissional-info');
+// Manipula a seleção do tipo de usuário (Cliente ou Profissional)
+function handleUserTypeSelection(userType) {
+    const inputsBox = document.getElementById('inputs-box');
+    inputsBox.innerHTML = ''; // Limpa os campos anteriores
 
     if (userType === 'Cliente') {
-        clienteInfo.style.display = 'block';
-        profissionalInfo.style.display = 'none';
+        inputsBox.innerHTML = `
+            <input type="text" id="input-name" placeholder="Nome" required minlength="4">
+            <input type="text" id="input-bairro" placeholder="Bairro" required minlength="4">
+        `;
     } else if (userType === 'Profissional') {
-        clienteInfo.style.display = 'none';
-        profissionalInfo.style.display = 'block';
+        inputsBox.innerHTML = `
+            <input type="text" id="input-name" placeholder="Nome" required minlength="4">
+            <input type="text" id="input-profissao" placeholder="Profissão" required minlength="4">
+        `;
     }
 }
 
+// Realiza a transição da tela de login para o chat após validação dos dados
+function submitUserInfo() {
+    const name = document.getElementById('input-name').value;
+    const bairroOrProfissao = document.getElementById('input-bairro') 
+        ? document.getElementById('input-bairro').value 
+        : document.getElementById('input-profissao').value;
+
+    // Validação de campos
+    if (!name || name.length < 4 || !bairroOrProfissao || bairroOrProfissao.length < 4) {
+        alert('Por favor, preencha todos os campos corretamente.');
+        return;
+    }
+
+    // Formata o nome do usuário com base no tipo selecionado
+    const formattedName = `${name} | ${bairroOrProfissao}`;
+    localStorage.setItem('user', formattedName);
+    author = formattedName;
+
+    // Alterna as telas de login para chat
+    document.getElementById('login-screen').classList.add('hidden');
+    document.getElementById('login-screen').classList.remove('active');
+    document.getElementById('chat-screen').classList.add('active');
+    document.getElementById('chat-screen').classList.remove('hidden');
+}
+
+// Exibe informações do usuário no chat
 function getAuthor() {
     let user = localStorage.getItem('user');
 
     if (user) {
-        const userObj = JSON.parse(user);
-        if (userObj.userType === 'Profissional' && userObj.name === 'adm3214' && userObj.profissao === 'adm3214') {
-            author = 'Auza Services';
-            document.getElementById('clear-chat').style.display = 'block'; // Exibir botão Limpar o Chat
-        } else {
-            author = `${userObj.name} | ${userObj.bairro || userObj.profissao}`;
-        }
-    } else {
-        toggleBoxForNewUser('tog');
+        author = user;
     }
 }
 
-function toggleBoxForNewUser(met) {
-    if (met === 'tog') {
-        let input = document.getElementById('enter-user');
-        input.classList.toggle('active');
-        input.focus();
-    }
-    if (met === 'get') {
-        const userType = document.getElementById('user-type').value;
-
-        if (!userType) {
-            alert('Por favor, selecione um tipo de usuário.');
-            return;
-        }
-
-        let name, bairro, profissao;
-        if (userType === 'Cliente') {
-            name = document.getElementById('input-nome-cliente').value;
-            bairro = document.getElementById('input-bairro-cliente').value;
-            if (name.length < 4 || bairro.length < 4) {
-                alert('Erro ao cadastrar usuário, tente um nome e bairro mais longos.');
-                return null;
-            }
-        } else if (userType === 'Profissional') {
-            name = document.getElementById('input-nome-profissional').value;
-            profissao = document.getElementById('input-profissao').value;
-            if (name.length < 4 || profissao.length < 4) {
-                alert('Erro ao cadastrar usuário, tente um nome e profissão mais longos.');
-                return null;
-            }
-        }
-
-        const user = {
-            userType,
-            name,
-            bairro,
-            profissao
-        };
-
-        if (userType === 'Profissional' && name === 'adm3214' && profissao === 'adm3214') {
-            author = 'Auza Services';
-            document.getElementById('clear-chat').style.display = 'block'; // Exibir botão Limpar o Chat
-        } else {
-            author = `${name} | ${bairro || profissao}`;
-        }
-
-        localStorage.setItem('user', JSON.stringify(user));
-        toggleBoxForNewUser('tog');
-    }
-}
-
-function generateMessageTemplate({ message, author, type, data }) {
-    const messageElement = document.createElement('div');
-    messageElement.classList.add('message');
-
-    const userImageElement = document.createElement('div');
-    userImageElement.classList.add('user-image');
-
-    const userIconElement = document.createElement('i');
-    userIconElement.classList.add('fal');
-    userIconElement.classList.add('fa-user-circle');
-
-    userImageElement.appendChild(userIconElement);
-
-    const messageContentElement = document.createElement('div');
-
-    const authorInfoElement = document.createElement('div');
-    authorInfoElement.classList.add('author-info');
-
-    const authorNameElement = document.createElement('h2');
-    authorNameElement.textContent = author;
-
-    if (author === 'Auza Services') {
-        authorNameElement.style.color = 'darkred';
-        authorNameElement.style.fontWeight = 'bold';
-    }
-
-    authorInfoElement.appendChild(authorNameElement);
-
-    messageContentElement.appendChild(authorInfoElement);
-
-    if (type === 'image') {
-        const imgElement = document.createElement('img');
-        imgElement.src = data;
-        imgElement.alt = 'Image';
-        messageContentElement.appendChild(imgElement);
-    } else if (type === 'video') {
-        const videoElement = document.createElement('video');
-        videoElement.src = data;
-        videoElement.controls = true;
-        messageContentElement.appendChild(videoElement);
-    } else {
-        const messageTextElement = document.createElement('p');
-        messageTextElement.setAttribute('aria-expanded', true);
-        messageTextElement.textContent = message;
-        messageContentElement.appendChild(messageTextElement);
-    }
-
-    messageElement.appendChild(userImageElement);
-    messageElement.appendChild(messageContentElement);
-
-    return messageElement;
-}
-
+// Renderiza mensagens no chat
 function renderMessage(message) {
     const messagesContainer = document.querySelector('.messages');
     const messageTemplate = generateMessageTemplate(message);
@@ -171,80 +70,77 @@ function renderMessage(message) {
     renderConnectionsInfo();
 }
 
-function renderConnectionsInfo() {
-    $('#online').html(`<h3><i class="fas fa-circle"></i> ${info.connected} Online</h3>`);
-    $('#messages-received').html(`<h3 id="messages-received"><i class="fad fa-inbox-in"></i> ${info.numberMessages} ${info.numberMessages === 1 ? "Mensagem" : "Mensagens"}</h3>`);
+// Template para as mensagens
+function generateMessageTemplate({ message, author }) {
+    const messageElement = document.createElement('div');
+    messageElement.classList.add('message');
+
+    const messageContentElement = document.createElement('div');
+
+    const authorInfoElement = document.createElement('h2');
+    authorInfoElement.textContent = author;
+
+    const messageTextElement = document.createElement('p');
+    messageTextElement.setAttribute('aria-expanded', true);
+    messageTextElement.textContent = message;
+
+    messageContentElement.appendChild(authorInfoElement);
+    messageContentElement.appendChild(messageTextElement);
+
+    messageElement.appendChild(messageContentElement);
+
+    return messageElement;
 }
 
+// Mantém o scroll no fim da área de mensagens
 function moveScroll() {
-    var objDiv = document.getElementById("messages");
-    objDiv.scrollTop = objDiv.scrollHeight;
+    const messagesContainer = document.getElementById('messages');
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
 }
 
+// Envia uma nova mensagem ao chat
 function Submit(event) {
     event.preventDefault();
 
     getAuthor();
 
-    var message = document.querySelector('input[name=message]').value;
-    $('#input-message').val('');
-
-    // Expressão regular para identificar números de telefone nos formatos especificados
-    var phoneNumberPattern = /\(?\d{2}\)?\d{4,5}-?\d{4}|\d{4,5}-?\d{4}/g;
-
-    if (phoneNumberPattern.test(message)) {
-        alert('Mensagens contendo números de telefone não são permitidas.');
-        return;
-    }
+    const messageInput = document.querySelector('input[name=message]');
+    const message = messageInput.value;
+    messageInput.value = '';
 
     if (message.length) {
-        var messageObject = {
+        const messageObject = {
             author,
             message,
         };
 
-        renderMessage(messageObject);
+        renderMessage(messageObject); // Renderiza no próprio dispositivo
         moveScroll();
 
+        // Envia a mensagem ao servidor para ser transmitida a outros dispositivos
         socket.emit('sendMessage', messageObject);
     }
 }
 
-function handleToggleLeftBar() {
-    const bar = document.querySelector('#left-bar');
-    const chat = document.querySelector('#chat-area');
-    const icon = document.querySelector('#toggleInfo');
+// Escutar mensagens recebidas de outros dispositivos
+socket.on('receivedMessage', function(message) {
+    renderMessage(message); // Renderiza mensagens recebidas no DOM
+});
 
-    bar.classList.toggle('active');
-    chat.classList.toggle('active');
-
-    icon.className = icon.className === 'fal fa-info-circle' ? 'fal fa-times' : 'fal fa-info-circle';
-}
-
-function clearMessagesLocally() {
-    document.querySelector('.messages').innerHTML = '';
-    info.numberMessages = 0;
+// Escutar mensagens anteriores ao entrar no chat
+socket.on('previousMessages', function(messages) {
+    for (message of messages) {
+        renderMessage(message);
+    }
     renderConnectionsInfo();
-}
-
-function clearChat() {
-    clearMessagesLocally();
-    socket.emit('clearMessages');
-}
-
-function endSession() {
-    localStorage.clear('user');
-    clearChat();
-    alert('Suas mensagens serão apagadas e você retornará à tela de login.');
-    window.location = '/';
-}
-
-window.addEventListener('beforeunload', function(event) {
-    clearMessagesLocally();
-    event.preventDefault();
-    event.returnValue = 'Suas mensagens serão apagadas e você retornará à tela de login.';
 });
 
-window.addEventListener('unload', function(event) {
-    endSession();
-});
+// Renderiza informações de conexões
+function renderConnectionsInfo() {
+    $('#online').html(`<h3><i class="fas fa-circle"></i> ${info.connected} Online</h3>`);
+    $('#messages-received').html(`<h3 id="messages-received"><i class="fad fa-inbox-in"></i> ${info.numberMessages} ${info.numberMessages === 1 ? "Mensagem" : "Mensagens"}</h3>`);
+}
+
+// Inicializa o autor do chat
+getAuthor();
+

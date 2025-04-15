@@ -1,58 +1,35 @@
 const express = require('express');
+
+const http = require('http');
+const socketIO = require('socket.io');
+
 const app = express();
-const path = require('path');
-const compression = require('compression'); // Importando o middleware de compressão
-const morgan = require('morgan'); // Importando o morgan para logs
+const server = http.createServer(app);
+const io = socketIO(server);
 
-const { join } = path;
+const messages = []; // Array para armazenar mensagens enviadas
 
-const port = process.env.PORT || 4000;
-const server = require('http').createServer(app);
-const io = require('socket.io')(server, {
-  cors: {
-    origin: "*"
-  },
-  perMessageDeflate: {
-    threshold: 1024, // Comprime apenas mensagens acima de 1KB
-  }
+// Quando um cliente se conecta
+io.on('connection', (socket) => {
+    console.log(`Usuário conectado: ${socket.id}`);
+
+    // Enviar mensagens anteriores ao novo cliente
+    socket.emit('previousMessages', messages);
+
+    // Escutar mensagens enviadas de um cliente
+    socket.on('sendMessage', (data) => {
+        messages.push(data); // Salva a mensagem no array
+        io.emit('receivedMessage', data); // Envia a mensagem para todos os clientes conectados
+    });
+
+    // Monitorar desconexões
+    socket.on('disconnect', () => {
+        console.log(`Usuário desconectado: ${socket.id}`);
+    });
 });
 
-app.use(compression()); // Habilitando a compressão
-app.use(morgan('dev')); // Habilitando logs com morgan
-app.use(express.static(join(__dirname, 'public')));
-app.set('views', join(__dirname, 'public'));
-app.engine('html', require('ejs').renderFile);
-app.set('view engine', 'html');
-
-app.use('/', (req, res) => {
-  res.render('index.html');
+const PORT = 3000;
+server.listen(PORT, () => {
+    console.log(`Servidor rodando na porta ${PORT}`);
 });
 
-let messages = [];
-let connectionsInfo = {
-  connections: 0
-};
-
-io.on('connection', socket => {
-  server.getConnections((err, count) => {
-    if (err) throw err;
-    connectionsInfo.connections = count;
-    socket.emit('ConnectionsInfo', connectionsInfo);
-  });
-
-  socket.emit('previousMessages', messages);
-
-  socket.on('sendMessage', data => {
-    messages.push(data);
-    socket.broadcast.emit('receivedMessage', data);
-  });
-
-  socket.on('clearMessages', () => {
-    messages = [];
-    io.emit('clearMessages');
-  });
-});
-
-server.listen(port, () => {
-  console.log(`Server running on localhost:${port}`);
-});
