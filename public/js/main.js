@@ -6,7 +6,7 @@ var info = {
 };
 var author = '';
 
-// Manipula a seleção do tipo de usuário (Cliente ou Profissional) e exibe os campos dinâmicos
+// Manipula a seleção do tipo de usuário (Cliente ou Profissional)
 function handleUserTypeSelection(userType) {
     const inputsBox = document.getElementById('inputs-box');
     inputsBox.innerHTML = ''; // Limpa os campos anteriores
@@ -70,7 +70,7 @@ function renderMessage(message) {
     renderConnectionsInfo();
 }
 
-// Template para as mensagens (Removido o ícone de "foto")
+// Template para as mensagens
 function generateMessageTemplate({ message, author }) {
     const messageElement = document.createElement('div');
     messageElement.classList.add('message');
@@ -114,10 +114,10 @@ function Submit(event) {
             message,
         };
 
-        renderMessage(messageObject);
+        renderMessage(messageObject); // Renderiza no próprio dispositivo
         moveScroll();
 
-        // Emitindo a mensagem para o servidor para que seja transmitida a todos
+        // Envia a mensagem ao servidor para ser transmitida a outros dispositivos
         socket.emit('sendMessage', messageObject);
     }
 }
@@ -140,21 +140,6 @@ function renderConnectionsInfo() {
     $('#online').html(`<h3><i class="fas fa-circle"></i> ${info.connected} Online</h3>`);
     $('#messages-received').html(`<h3 id="messages-received"><i class="fad fa-inbox-in"></i> ${info.numberMessages} ${info.numberMessages === 1 ? "Mensagem" : "Mensagens"}</h3>`);
 }
-
-// Alterna a barra lateral
-function handleToggleLeftBar() {
-    const bar = document.querySelector('#left-bar');
-    const chat = document.querySelector('#chat-area');
-
-    bar.classList.toggle('active');
-    chat.classList.toggle('active');
-}
-
-// Eventos do Socket.IO: Conexões
-socket.on('ConnectionsInfo', function(connectionsInfo) {
-    info.connected = connectionsInfo.connections._connections;
-    renderConnectionsInfo();
-});
 
 // Inicializa o autor do chat
 getAuthor();

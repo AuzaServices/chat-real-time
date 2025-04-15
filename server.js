@@ -1,42 +1,33 @@
-const express = require( 'express' )
-const app = express()
-const path = require( 'path' )
+const express = require('express');
+const http = require('http');
+const socketIO = require('socket.io');
 
-const { join } = path
+const app = express();
+const server = http.createServer(app);
+const io = socketIO(server);
 
-const port = process.env.PORT || 4000
-const server = require( 'http' ).createServer( app )
-const io = require( 'socket.io' )( server )
+const messages = []; // Array para armazenar mensagens enviadas
 
-app.use( express.static( join( __dirname , 'public' ) ) )
-app.set( 'views' , join( __dirname , 'public' ) )
-app.engine( 'html' , require('ejs').renderFile )
-app.set( 'view engine' , 'html' )
+// Quando um cliente se conecta
+io.on('connection', (socket) => {
+    console.log(`Usuário conectado: ${socket.id}`);
 
-app.use( '/' , ( req , res ) => {
-  res.render( 'index.html' )
-} )
+    // Enviar mensagens anteriores ao novo cliente
+    socket.emit('previousMessages', messages);
 
-let messages = []
-let connectionsInfo = {
-  connections: 0
-}
+    // Escutar mensagens enviadas de um cliente
+    socket.on('sendMessage', (data) => {
+        messages.push(data); // Salva a mensagem no array
+        io.emit('receivedMessage', data); // Envia a mensagem para todos os clientes conectados
+    });
 
-io.on( 'connection' , socket => {
+    // Monitorar desconexões
+    socket.on('disconnect', () => {
+        console.log(`Usuário desconectado: ${socket.id}`);
+    });
+});
 
-  connectionsInfo.connections = server.getConnections( ( err , count ) => {
-    return count
-  } )
-  
-  socket.emit( 'ConnectionsInfo' , connectionsInfo )
-  socket.emit( 'previousMessages' , messages )
-
-  socket.on( 'sendMessage' , data => {
-    messages.push( data )
-    socket.broadcast.emit( 'receivedMessage' , data )
-  } )
-} )
-
-server.listen( port , () => {
-  console.log( `Server running on localhost:${port}` )
-} )
+const PORT = 3000;
+server.listen(PORT, () => {
+    console.log(`Servidor rodando na porta ${PORT}`);
+});
