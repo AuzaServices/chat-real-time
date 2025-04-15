@@ -1,32 +1,42 @@
-const express = require('express');
-const http = require('http');
-const socketIO = require('socket.io');
+const express = require( 'express' )
+const app = express()
+const path = require( 'path' )
 
-const app = express();
-const server = http.createServer(app);
-const io = socketIO(server);
+const { join } = path
 
-const messages = []; // Array para armazenar mensagens
+const port = process.env.PORT || 4000
+const server = require( 'http' ).createServer( app )
+const io = require( 'socket.io' )( server )
 
-io.on('connection', (socket) => {
-    console.log('Usuário conectado:', socket.id);
+app.use( express.static( join( __dirname , 'public' ) ) )
+app.set( 'views' , join( __dirname , 'public' ) )
+app.engine( 'html' , require('ejs').renderFile )
+app.set( 'view engine' , 'html' )
 
-    // Enviar mensagens anteriores ao novo usuário
-    socket.emit('previousMessages', messages);
+app.use( '/' , ( req , res ) => {
+  res.render( 'index.html' )
+} )
 
-    // Escutar mensagens enviadas por um cliente
-    socket.on('sendMessage', (data) => {
-        messages.push(data); // Armazena a mensagem
-        io.emit('receivedMessage', data); // Envia a mensagem para todos os clientes conectados
-    });
+let messages = []
+let connectionsInfo = {
+  connections: 0
+}
 
-    // Monitorar desconexões
-    socket.on('disconnect', () => {
-        console.log('Usuário desconectado:', socket.id);
-    });
-});
+io.on( 'connection' , socket => {
 
-const PORT = 3000;
-server.listen(PORT, () => {
-    console.log(`Servidor rodando na porta ${PORT}`);
-});
+  connectionsInfo.connections = server.getConnections( ( err , count ) => {
+    return count
+  } )
+  
+  socket.emit( 'ConnectionsInfo' , connectionsInfo )
+  socket.emit( 'previousMessages' , messages )
+
+  socket.on( 'sendMessage' , data => {
+    messages.push( data )
+    socket.broadcast.emit( 'receivedMessage' , data )
+  } )
+} )
+
+server.listen( port , () => {
+  console.log( `Server running on localhost:${port}` )
+} )
