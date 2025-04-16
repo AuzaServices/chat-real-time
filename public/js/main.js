@@ -1,4 +1,4 @@
-const socket = io('/'); // Inicializa conexão Socket.io
+const socket = io('/');
 const info = {
     numberMessages: 0,
     connected: 0
@@ -6,21 +6,23 @@ const info = {
 let author = '';
 
 // Eventos do Socket.io
-socket.on('receivedMessage', (message) => {
+socket.on('receivedMessage', function (message) {
     renderMessage(message);
 });
 
-socket.on('previousMessages', (messages) => {
-    messages.forEach((message) => renderMessage(message));
+socket.on('previousMessages', function (messages) {
+    for (const message of messages) {
+        renderMessage(message);
+    }
     renderConnectionsInfo();
 });
 
-socket.on('ConnectionsInfo', (connectionsInfo) => {
+socket.on('ConnectionsInfo', function (connectionsInfo) {
     info.connected = connectionsInfo.connections._connections;
     renderConnectionsInfo();
 });
 
-// Obtém informações do autor ao carregar
+// Inicializa o autor ao carregar
 getAuthor();
 
 function getAuthor() {
@@ -37,26 +39,22 @@ function generateMessageTemplate({ message, author, time }) {
     const messageElement = document.createElement('div');
     messageElement.classList.add('message');
 
-    // Elemento da imagem do usuário
+    // Imagem do usuário
     const userImageElement = document.createElement('div');
     userImageElement.classList.add('user-image');
-
     const userIconElement = document.createElement('i');
     userIconElement.classList.add('fal', 'fa-user-circle');
     userImageElement.appendChild(userIconElement);
 
     // Conteúdo da mensagem
     const messageContentElement = document.createElement('div');
-
-    // Informações do autor e horário
     const authorInfoElement = document.createElement('h2');
-    authorInfoElement.textContent = `${author}`;
+    authorInfoElement.textContent = author;
 
     const messageTimeElement = document.createElement('span');
-    messageTimeElement.textContent = ` ${time}`;
+    messageTimeElement.textContent = time;
     authorInfoElement.appendChild(messageTimeElement);
 
-    // Texto da mensagem
     const messageTextElement = document.createElement('p');
     messageTextElement.setAttribute('aria-expanded', true);
     messageTextElement.textContent = message;
@@ -75,6 +73,7 @@ function renderMessage(message) {
     const messageTemplate = generateMessageTemplate(message);
 
     messagesContainer.appendChild(messageTemplate);
+
     info.numberMessages += 1;
     moveScroll();
     renderConnectionsInfo();
@@ -129,9 +128,9 @@ function Submit(event) {
     if (message.length > 0) {
         const now = new Date();
         const hours = now.getHours();
-        const minutes = now.getMinutes();
+        const minutes = now.getMinutes().toString().padStart(2, '0');
         const period = hours >= 12 ? 'pm' : 'am';
-        const time = `${hours % 12 || 12}:${minutes.toString().padStart(2, '0')}${period}`;
+        const time = `${hours % 12 || 12}:${minutes}${period}`;
 
         const messageObject = {
             author,
