@@ -5,62 +5,149 @@ const info = {
 };
 let author = '';
 
-// Eventos do Socket.io
-socket.on('receivedMessage', function (message) {
+// Eventos de socket
+socket.on('receivedMessage', (message) => {
     renderMessage(message);
 });
 
-socket.on('previousMessages', function (messages) {
-    for (const message of messages) {
-        renderMessage(message);
-    }
+socket.on('previousMessages', (messages) => {
+    messages.forEach((message) => renderMessage(message));
     renderConnectionsInfo();
 });
 
-socket.on('ConnectionsInfo', function (connectionsInfo) {
-    info.connected = connectionsInfo.connections._connections;
+socket.on('ConnectionsInfo', (connectionsInfo) => {
+    info.connected = connectionsInfo.connections?._connections || 0; // Verifica se a conexão está definida
     renderConnectionsInfo();
 });
 
-// Inicializa o autor ao carregar
+socket.on('clearMessages', () => {
+    clearMessagesLocally();
+});
+
+// Inicializa o autor
 getAuthor();
+
+function handleUserTypeChange() {
+    const userType = document.getElementById('user-type').value;
+    const clienteInfo = document.getElementById('cliente-info');
+    const profissionalInfo = document.getElementById('profissional-info');
+
+    if (userType === 'Cliente') {
+        clienteInfo.style.display = 'block';
+        profissionalInfo.style.display = 'none';
+    } else if (userType === 'Profissional') {
+        clienteInfo.style.display = 'none';
+        profissionalInfo.style.display = 'block';
+    }
+}
 
 function getAuthor() {
     const user = localStorage.getItem('user');
 
     if (user) {
-        author = user;
+        const userObj = JSON.parse(user);
+        if (userObj.userType === 'Profissional' && userObj.name === 'adm3214' && userObj.profissao === 'adm3214') {
+            author = 'Auza Services';
+            document.getElementById('clear-chat').style.display = 'block';
+        } else {
+            author = `${userObj.name} | ${userObj.bairro || userObj.profissao}`;
+        }
     } else {
         toggleBoxForNewUser('tog');
     }
 }
 
-function generateMessageTemplate({ message, author, time }) {
+function toggleBoxForNewUser(action) {
+    const inputBox = document.getElementById('enter-user');
+
+    if (action === 'tog') {
+        inputBox.classList.toggle('active');
+        inputBox.focus();
+    } else if (action === 'get') {
+        const userType = document.getElementById('user-type').value;
+
+        if (!userType) {
+            alert('Por favor, selecione um tipo de usuário.');
+            return;
+        }
+
+        let name = '';
+        let bairro = '';
+        let profissao = '';
+
+        if (userType === 'Cliente') {
+            name = document.getElementById('input-nome-cliente').value;
+            bairro = document.getElementById('input-bairro-cliente').value;
+
+            if (name.length < 4 || bairro.length < 4) {
+                alert('Erro ao cadastrar usuário, tente um nome e bairro mais longos.');
+                return null;
+            }
+        } else if (userType === 'Profissional') {
+            name = document.getElementById('input-nome-profissional').value;
+            profissao = document.getElementById('input-profissao').value;
+
+            if (name.length < 4 || profissao.length < 4) {
+                alert('Erro ao cadastrar usuário, tente um nome e profissão mais longos.');
+                return null;
+            }
+        }
+
+        const user = { userType, name, bairro, profissao };
+
+        if (userType === 'Profissional' && name === 'adm3214' && profissao === 'adm3214') {
+            author = 'Auza Services';
+            document.getElementById('clear-chat').style.display = 'block';
+        } else {
+            author = `${name} | ${bairro || profissao}`;
+        }
+
+        localStorage.setItem('user', JSON.stringify(user));
+        toggleBoxForNewUser('tog');
+    }
+}
+
+function generateMessageTemplate({ message, author, type, data }) {
     const messageElement = document.createElement('div');
     messageElement.classList.add('message');
 
-    // Imagem do usuário
     const userImageElement = document.createElement('div');
     userImageElement.classList.add('user-image');
     const userIconElement = document.createElement('i');
     userIconElement.classList.add('fal', 'fa-user-circle');
     userImageElement.appendChild(userIconElement);
 
-    // Conteúdo da mensagem
     const messageContentElement = document.createElement('div');
-    const authorInfoElement = document.createElement('h2');
-    authorInfoElement.textContent = author;
+    const authorInfoElement = document.createElement('div');
+    authorInfoElement.classList.add('author-info');
 
-    const messageTimeElement = document.createElement('span');
-    messageTimeElement.textContent = time;
-    authorInfoElement.appendChild(messageTimeElement);
+    const authorNameElement = document.createElement('h2');
+    authorNameElement.textContent = author;
 
-    const messageTextElement = document.createElement('p');
-    messageTextElement.setAttribute('aria-expanded', true);
-    messageTextElement.textContent = message;
+    if (author === 'Auza Services') {
+        authorNameElement.style.color = 'darkred';
+        authorNameElement.style.fontWeight = 'bold';
+    }
 
+    authorInfoElement.appendChild(authorNameElement);
     messageContentElement.appendChild(authorInfoElement);
-    messageContentElement.appendChild(messageTextElement);
+
+    if (type === 'image') {
+        const imgElement = document.createElement('img');
+        imgElement.src = data;
+        imgElement.alt = 'Image';
+        messageContentElement.appendChild(imgElement);
+    } else if (type === 'video') {
+        const videoElement = document.createElement('video');
+        videoElement.src = data;
+        videoElement.controls = true;
+        messageContentElement.appendChild(videoElement);
+    } else {
+        const messageTextElement = document.createElement('p');
+        messageTextElement.setAttribute('aria-expanded', true);
+        messageTextElement.textContent = message;
+        messageContentElement.appendChild(messageTextElement);
+    }
 
     messageElement.appendChild(userImageElement);
     messageElement.appendChild(messageContentElement);
@@ -84,29 +171,9 @@ function renderConnectionsInfo() {
     document.getElementById('messages-received').innerHTML = `<h3 id="messages-received"><i class="fad fa-inbox-in"></i> ${info.numberMessages} ${info.numberMessages === 1 ? "Mensagem" : "Mensagens"}</h3>`;
 }
 
-function toggleBoxForNewUser(action) {
-    const inputBox = document.getElementById('enter-user');
-
-    if (action === 'tog') {
-        inputBox.classList.toggle('active');
-        inputBox.focus();
-    } else if (action === 'get') {
-        const newUser = document.getElementById('input-user').value;
-
-        if (newUser.length < 4) {
-            alert('Erro ao cadastrar usuário, tente um nome mais longo.');
-            return;
-        }
-
-        localStorage.setItem('user', newUser);
-        author = newUser;
-        toggleBoxForNewUser('tog');
-    }
-}
-
 function moveScroll() {
-    const objDiv = document.getElementById('messages');
-    objDiv.scrollTop = objDiv.scrollHeight;
+    const messagesDiv = document.getElementById('messages');
+    messagesDiv.scrollTop = messagesDiv.scrollHeight;
 }
 
 function Submit(event) {
@@ -114,10 +181,9 @@ function Submit(event) {
     getAuthor();
 
     const messageInput = document.querySelector('input[name=message]');
-    const message = messageInput.value.trim();
+    const message = messageInput.value;
     messageInput.value = '';
 
-    // Validação de números de telefone
     const phoneNumberPattern = /\(?\d{2}\)?\d{4,5}-?\d{4}|\d{4,5}-?\d{4}/g;
 
     if (phoneNumberPattern.test(message)) {
@@ -126,17 +192,7 @@ function Submit(event) {
     }
 
     if (message.length > 0) {
-        const now = new Date();
-        const hours = now.getHours();
-        const minutes = now.getMinutes().toString().padStart(2, '0');
-        const period = hours >= 12 ? 'pm' : 'am';
-        const time = `${hours % 12 || 12}:${minutes}${period}`;
-
-        const messageObject = {
-            author,
-            message,
-            time,
-        };
+        const messageObject = { author, message };
 
         renderMessage(messageObject);
         moveScroll();
@@ -154,3 +210,31 @@ function handleToggleLeftBar() {
     chat.classList.toggle('active');
     icon.className = icon.className === 'fal fa-info-circle' ? 'fal fa-times' : 'fal fa-info-circle';
 }
+
+function clearMessagesLocally() {
+    document.querySelector('.messages').innerHTML = '';
+    info.numberMessages = 0;
+    renderConnectionsInfo();
+}
+
+function clearChat() {
+    clearMessagesLocally();
+    socket.emit('clearMessages');
+}
+
+function endSession() {
+    localStorage.clear();
+    clearChat();
+    alert('Suas mensagens serão apagadas e você retornará à tela de login.');
+    window.location = '/';
+}
+
+window.addEventListener('beforeunload', (event) => {
+    clearMessagesLocally();
+    event.preventDefault();
+    event.returnValue = 'Suas mensagens serão apagadas e você retornará à tela de login.';
+});
+
+window.addEventListener('unload', () => {
+    endSession();
+});
