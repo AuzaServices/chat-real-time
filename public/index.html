@@ -1,64 +1,86 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang=""pt-br"">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#222429" />
-    <title>Real Time Chat</title>
+    <meta charset=""UTF-8"">
+    <meta name=""viewport"" content=""width=device-width, initial-scale=1.0"">
+    <meta name=""theme-color"" content=""#222429"" />
+    <title>Chat | Auza Services</title>
 
-    <script rel="preconnect preload" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script rel="preconnect preload" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+    <script rel=""preconect preload"" src=""https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js""></script>
+    <script rel=""preconect preload"" src=""https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js""></script>
 
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel=""stylesheet"" href=""style.css"">
+    <link href=""https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"" rel=""stylesheet"">
+    <link href=""https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap"" rel=""stylesheet"">
+    <link rel=""stylesheet"" href=""https://pro.fontawesome.com/releases/v5.10.0/css/all.css"" integrity=""sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"" crossorigin=""anonymous""/>
+    
+    <!-- Adicione a linha abaixo para o favicon -->
+    <link rel=""icon"" href=""favicon.png"" type=""image/png"" sizes=""16x16"">
 </head>
 <body>
 
-    <!-- Tela de login -->
-    <div id="login-screen" class="active">
-        <div id="user-selection">
-            <h1>Escolha seu tipo de usuário</h1>
-            <button onclick="handleUserTypeSelection('Cliente')">Cliente</button>
-            <button onclick="handleUserTypeSelection('Profissional')">Profissional</button>
+    <div class=""container"">
+        <section id=""chat-area"">
+
+            <div>
+                <i id=""toggleInfo"" class=""fal fa-info-circle"" onclick=""handleToggleLeftBar()""></i>
+                
+                <div id=""messages"" class=""messages"">
+                    <div id=""initialMessage""></div>
+                </div>
+            </div>
+
+            <div id=""send-messages"">
+                <input type=""text"" id=""input-message"" name=""message"" autocomplete=""off"" placeholder=""Escreva uma mensagem..."" autofocus onkeypress=""
+                if(event.key == 'Enter'){
+                    Submit(event);
+                    event.target.value = '';
+                }"">
+                <i class=""fas fa-paper-plane"" onclick=""Submit(event)""></i>
+            </div>
+        </section>
+
+        <section id=""left-bar"">
+            <div>
+                <h2>Informações do chat</h2>
+    
+                <h3 id=""online""><i style=""color: green;"" class=""fas fa-circle""></i> 0 Online</h3>
+                <h3 id=""messages-received""><i class=""fad fa-inbox-in""></i> 0 Mensagens </h3>
+                <button id=""clear-chat"" style=""display: none;"" onclick=""clearChat()"">Limpar o Chat</button>
+            </div>
+
+            <div id=""bars"">
+                <i class=""fad fa-arrow-left""></i>
+            </div>
+        </section>
+
+        <div id=""enter-user"">
+            <div class=""content"">
+                <h1>Bem Vindo ao Chat de Negociação</h1>
+                <p aria-expanded=""true"">Por favor, selecione o tipo de usuário e preencha as informações abaixo.</p>
+
+                <select id=""user-type"" onchange=""handleUserTypeChange()"">
+                    <option value="""" disabled selected>Selecione seu tipo</option>
+                    <option value=""Cliente"">Cliente</option>
+                    <option value=""Profissional"">Profissional</option>
+                </select>
+
+                <div id=""cliente-info"" style=""display: none;"">
+                    <input type=""text"" id=""input-nome-cliente"" placeholder=""Nome"" required minlength=""4"">
+                    <input type=""text"" id=""input-bairro-cliente"" placeholder=""Bairro"" required minlength=""4"">
+                </div>
+
+                <div id=""profissional-info"" style=""display: none;"">
+                    <input type=""text"" id=""input-nome-profissional"" placeholder=""Nome"" required minlength=""4"">
+                    <input type=""text"" id=""input-profissao"" placeholder=""Profissão"" required minlength=""4"">
+                </div>
+
+                <button onclick=""toggleBoxForNewUser('get')"">Entrar</button>
+            </div>
         </div>
-        <div id="inputs-box">
-            <!-- Campos dinâmicos serão adicionados aqui pelo JavaScript -->
-        </div>
-        <button onclick="submitUserInfo()">Entrar</button>
     </div>
 
-    <!-- Tela de chat -->
-    <div id="chat-screen" class="hidden">
-        <div class="container">
-            <section id="chat-area">
-                <div>
-                    <!-- Ícone de "i" de Informação REMOVIDO -->
-                    <div id="messages" class="messages">
-                        <div id="initialMessage"></div>
-                    </div>
-                </div>
-                <div id="send-messages">
-                    <input type="text" id="input-message" name="message" placeholder="Mensagem" autocomplete="off" autofocus>
-                    <i class="fas fa-paper-plane" onclick="Submit(event)"></i>
-                </div>
-            </section>
-            <section id="left-bar">
-                <div>
-                    <h2 style="color: darkred;">Chat de Negociação</h2>
-                    <h3 id="online"><i style="color: green;" class="fas fa-circle"></i>0 Online</h3>
-                    <h3 id="messages-received"><i class="fad fa-inbox-in"></i> 0 Mensagens</h3>
-                </div>
-                <div id="bars">
-                    <i class="fad fa-arrow-left"></i>
-                </div>
-            </section>
-        </div>
-    </div>
-
-    <script src="./js/main.js"></script>
+    <script src=""./js/main.js""></script>
+    <script src=""./js/endSession.js""></script>
 </body>
 </html>
-
