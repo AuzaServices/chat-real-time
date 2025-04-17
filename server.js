@@ -1,47 +1,62 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+const http = require('http');
+const socketIo = require('socket.io');
 
-const { join } = path;
-
+// Porta definida pelo ambiente (Render) ou padrão 4000
 const port = process.env.PORT || 4000;
-const server = require('http').createServer(app);
-const io = require('socket.io')(server);
 
-app.use(express.static(join(__dirname, 'public')));
-app.set('views', join(__dirname, 'public'));
+// Criação do servidor HTTP e integração com o Socket.IO
+const server = http.createServer(app);
+const io = socketIo(server);
+
+// Configuração de diretórios estáticos e mecanismo de renderização
+app.use(express.static(path.join(__dirname, 'public')));
+app.set('views', path.join(__dirname, 'public'));
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 
-app.use('/', (req, res) => {
+// Rota para servir a página principal
+app.get('/', (req, res) => {
   res.render('index.html');
 });
 
+// Variáveis para mensagens e informações de conexão
 let messages = [];
 let connectionsInfo = {
-  connections: 0
+  connections: 0,
 };
 
-io.on('connection', socket => {
-  server.getConnections((err, count) => {
-    if (err) throw err;
-    connectionsInfo.connections = count;
-    socket.emit('ConnectionsInfo', connectionsInfo);
-  });
+// Evento de conexão do Socket.IO
+io.on('connection', (socket) => {
+  // Atualiza e envia o número de conexões ativas
+  connectionsInfo.connections++;
+  io.emit('ConnectionsInfo', connectionsInfo);
 
+  // Envia mensagens anteriores ao cliente recém-conectado
   socket.emit('previousMessages', messages);
 
-  socket.on('sendMessage', data => {
+  // Evento para envio de mensagem
+  socket.on('sendMessage', (data) => {
     messages.push(data);
     socket.broadcast.emit('receivedMessage', data);
   });
 
+  // Evento para limpar mensagens
   socket.on('clearMessages', () => {
     messages = [];
     io.emit('clearMessages');
   });
+
+  // Atualiza o número de conexões ao desconectar
+  socket.on('disconnect', () => {
+    connectionsInfo.connections--;
+    io.emit('ConnectionsInfo', connectionsInfo);
+  });
 });
 
+// Inicialização do servidor
 server.listen(port, () => {
-  console.log(`Server running on localhost:${port}`);
+  console.log(`Servidor rodando na porta ${port}`);
 });
