@@ -1,64 +1,78 @@
-// Inicialização de variáveis e conexão com o servidor
 var socket = io('/');
 var info = {
     numberMessages: 0,
     connected: 0
-};
-var author = '';
+}
+var author = ''
 
-// Manipula a seleção do tipo de usuário (Cliente ou Profissional)
-function handleUserTypeSelection(userType) {
-    const inputsBox = document.getElementById('inputs-box');
-    inputsBox.innerHTML = ''; // Limpa os campos anteriores
 
-    if (userType === 'Cliente') {
-        inputsBox.innerHTML = `
-            <input type="text" id="input-name" placeholder="Nome" required minlength="4">
-            <input type="text" id="input-bairro" placeholder="Bairro" required minlength="4">
-        `;
-    } else if (userType === 'Profissional') {
-        inputsBox.innerHTML = `
-            <input type="text" id="input-name" placeholder="Nome" required minlength="4">
-            <input type="text" id="input-profissao" placeholder="Profissão" required minlength="4">
-        `;
+socket.on('receivedMessage', function(message){
+    renderMessage(message)
+});
+
+socket.on('previousMessages', function(messages){
+    for (message of messages){
+        renderMessage(message)
+    };
+
+    renderConnectionsInfo()
+
+});
+
+socket.on('ConnectionsInfo', function(connectionsInfo){
+    info.connected = connectionsInfo.connections._connections;
+    renderConnectionsInfo();
+})
+
+getAuthor()
+        
+function getAuthor(){
+    let user = localStorage.getItem('user')
+
+    if(user){
+        author = user
+    }
+    else if(!user){
+        toggleBoxForNewUser('tog')
     }
 }
 
-// Realiza a transição da tela de login para o chat após validação dos dados
-function submitUserInfo() {
-    const name = document.getElementById('input-name').value;
-    const bairroOrProfissao = document.getElementById('input-bairro') 
-        ? document.getElementById('input-bairro').value 
-        : document.getElementById('input-profissao').value;
+function generateMessageTemplate({ message, author, time }) {
+    const messageElement = document.createElement('div');
+    messageElement.classList.add('message');
 
-    // Validação de campos
-    if (!name || name.length < 4 || !bairroOrProfissao || bairroOrProfissao.length < 4) {
-        alert('Por favor, preencha todos os campos corretamente.');
-        return;
-    }
+    const userImageElement = document.createElement('div');
+    userImageElement.classList.add('user-image');
 
-    // Formata o nome do usuário com base no tipo selecionado
-    const formattedName = `${name} | ${bairroOrProfissao}`;
-    localStorage.setItem('user', formattedName);
-    author = formattedName;
+    const userIconElement = document.createElement('i');
+    userIconElement.classList.add('fal');
+    userIconElement.classList.add('fa-user-circle');
 
-    // Alterna as telas de login para chat
-    document.getElementById('login-screen').classList.add('hidden');
-    document.getElementById('login-screen').classList.remove('active');
-    document.getElementById('chat-screen').classList.add('active');
-    document.getElementById('chat-screen').classList.remove('hidden');
+    userImageElement.appendChild(userIconElement);
+
+    const messageContentElement = document.createElement('div');
+
+    const authorInfoElement = document.createElement('h2');
+    authorInfoElement.textContent = author;
+
+    const messageTimeElement = document.createElement('span');
+    messageTimeElement.textContent = time;
+
+    authorInfoElement.appendChild(messageTimeElement);
+
+    const messageTextElement = document.createElement('p');
+    messageTextElement.setAttribute('aria-expanded', true);
+    messageTextElement.textContent = message;
+
+    messageContentElement.appendChild(authorInfoElement);
+    messageContentElement.appendChild(messageTextElement);
+
+    messageElement.appendChild(userImageElement);
+    messageElement.appendChild(messageContentElement);
+
+    return messageElement;
 }
 
-// Exibe informações do usuário no chat
-function getAuthor() {
-    let user = localStorage.getItem('user');
-
-    if (user) {
-        author = user;
-    }
-}
-
-// Renderiza mensagens no chat
 function renderMessage(message) {
     const messagesContainer = document.querySelector('.messages');
     const messageTemplate = generateMessageTemplate(message);
@@ -70,77 +84,75 @@ function renderMessage(message) {
     renderConnectionsInfo();
 }
 
-// Template para as mensagens
-function generateMessageTemplate({ message, author }) {
-    const messageElement = document.createElement('div');
-    messageElement.classList.add('message');
+function renderConnectionsInfo(){
+    $('#online').html(`<h3><i class="fas fa-circle"></i> ${info.connected} Online</h3>`)
 
-    const messageContentElement = document.createElement('div');
-
-    const authorInfoElement = document.createElement('h2');
-    authorInfoElement.textContent = author;
-
-    const messageTextElement = document.createElement('p');
-    messageTextElement.setAttribute('aria-expanded', true);
-    messageTextElement.textContent = message;
-
-    messageContentElement.appendChild(authorInfoElement);
-    messageContentElement.appendChild(messageTextElement);
-
-    messageElement.appendChild(messageContentElement);
-
-    return messageElement;
+    $('#messages-received').html(`<h3 id="messages-received"><i class="fad fa-inbox-in"></i> ${info.numberMessages} ${info.numberMessages === 1 ? "Mensagem" : "Mensagens"}</h3>`)
 }
 
-// Mantém o scroll no fim da área de mensagens
-function moveScroll() {
-    const messagesContainer = document.getElementById('messages');
-    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+function toggleBoxForNewUser(met){
+    if(met === 'tog'){
+        let input = document.getElementById('enter-user');
+        input.classList.toggle('active');
+        input.focus()
+    }
+    if(met === 'get'){
+        let newUser = document.getElementById('input-user').value;
+
+        if (newUser.length < 4 ){
+            alert('Erro ao cadastrar usuário, tente um nome mais longo.')
+            return null
+        }
+        
+        localStorage.setItem('user', newUser)
+        author = newUser
+        toggleBoxForNewUser('tog')
+    }
 }
 
-// Envia uma nova mensagem ao chat
-function Submit(event) {
+function moveScroll(){
+    var objDiv = document.getElementById("messages");
+    objDiv.scrollTop = objDiv.scrollHeight;
+}
+
+function Submit(event){
     event.preventDefault();
 
-    getAuthor();
+    getAuthor()
 
-    const messageInput = document.querySelector('input[name=message]');
-    const message = messageInput.value;
-    messageInput.value = '';
+    var message = document.querySelector('input[name=message]').value;
+    $('#input-message').val('')
 
-    if (message.length) {
-        const messageObject = {
-            author,
-            message,
+    if(message.length){
+        let now = new Date
+        let time = now.getHours() + ':' + now.getMinutes()
+        if (now.getHours() > 12){
+            time += 'pm';
+        }
+        else{
+            time += 'am';
         };
 
-        renderMessage(messageObject); // Renderiza no próprio dispositivo
-        moveScroll();
+        var messageObject = {
+            author,
+            message,
+            time,
+        }
 
-        // Envia a mensagem ao servidor para ser transmitida a outros dispositivos
+        renderMessage(messageObject)
+        moveScroll()
+
         socket.emit('sendMessage', messageObject);
-    }
+    } 
+};
+
+function handleToggleLeftBar(){
+    const bar = document.querySelector('#left-bar');
+    const chat = document.querySelector('#chat-area');
+    const icon = document.querySelector('#toggleInfo');
+
+    bar.classList.toggle('active');
+    chat.classList.toggle('active');
+
+    icon.className = icon.className === 'fal fa-info-circle' ? 'fal fa-times' : 'fal fa-info-circle';
 }
-
-// Escutar mensagens recebidas de outros dispositivos
-socket.on('receivedMessage', function(message) {
-    renderMessage(message); // Renderiza mensagens recebidas no DOM
-});
-
-// Escutar mensagens anteriores ao entrar no chat
-socket.on('previousMessages', function(messages) {
-    for (message of messages) {
-        renderMessage(message);
-    }
-    renderConnectionsInfo();
-});
-
-// Renderiza informações de conexões
-function renderConnectionsInfo() {
-    $('#online').html(`<h3><i class="fas fa-circle"></i> ${info.connected} Online</h3>`);
-    $('#messages-received').html(`<h3 id="messages-received"><i class="fad fa-inbox-in"></i> ${info.numberMessages} ${info.numberMessages === 1 ? "Mensagem" : "Mensagens"}</h3>`);
-}
-
-// Inicializa o autor do chat
-getAuthor();
-
