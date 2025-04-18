@@ -107,14 +107,14 @@
     background: #141419;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 0 10px; /* Remove espaçamentos laterais */
+    justify-content: space-around; /* Distribui os itens de forma simétrica */
+    padding: 0; /* Remove espaçamentos laterais */
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5);
 }
 
 #send-messages input {
-    width: 97%;
-    height: 45px;
+    width: 99%; /* Expande o campo de digitação para ocupar mais espaço */
+    height: 45px; /* Altura ajustada */
     background: #333539;
     border: 1px solid #646464;
     border-radius: 5px;
@@ -128,7 +128,7 @@
     font-size: 1.8rem;
     color: #8E9094;
     cursor: pointer;
-    margin-left: 5px;
+    margin-left: 0px; /* Centralizado com o campo */
 }
 
 #send-messages i:hover {
