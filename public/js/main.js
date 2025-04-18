@@ -76,9 +76,9 @@ function Submit(event) {
     document.querySelector('input[name=message]').value = '';
 }
 
-// Exibe mensagens recebidas no chat
+// Exibe mensagens recebidas no chat (corrigido para evitar duplicação)
+socket.off('receivedMessage'); // Remove qualquer registro anterior
 socket.on('receivedMessage', function (message) {
-    console.log("Mensagem recebida:", message); // Log para depuração
     renderMessage(message);
 });
 
@@ -104,6 +104,7 @@ function renderMessage(message) {
 }
 
 // Exibe mensagens anteriores ao entrar no chat
+socket.off('previousMessages'); // Remove qualquer registro anterior
 socket.on('previousMessages', function (messages) {
     messages.forEach((message) => {
         renderMessage(message);
@@ -130,12 +131,14 @@ function updateCounters() {
 }
 
 // Simula conexão de novos usuários
+socket.off('ConnectionsInfo'); // Remove qualquer registro anterior
 socket.on('ConnectionsInfo', function (info) {
     onlineCount = info.connections; // Atualiza número de usuários online
     updateCounters();
 });
 
 // Exibe número de mensagens enviadas/recebidas
+socket.off('receivedMessage'); // Remove qualquer registro anterior
 socket.on('receivedMessage', function (message) {
     messageCount++; // Incrementa contador de mensagens
     renderMessage(message);
