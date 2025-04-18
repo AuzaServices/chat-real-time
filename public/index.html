@@ -29,14 +29,12 @@
             </div>
 
             <div id="send-messages">
-                <div style="display: flex; align-items: center; width: 100%;">
-                    <span style="color: white; margin-right: 10px;">Mensagem</span> <!-- Texto adicionado dentro do container -->
-                    <input type="text" id="input-message" name="message" autocomplete="off" autofocus onkeypress="
-                    if(event.key === 'Enter'){
-                        Submit(event)
-                    }">
-                    <i class="fas fa-paper-plane" onclick="Submit(event)"></i>
-                </div>
+                <span style="color: white; margin-right: 10px;">Mensagem:</span> <!-- Adicionado o texto "Mensagem" -->
+                <input type="text" id="input-message" name="message" autocomplete="off" autofocus onkeypress="
+                if(event.key === 'Enter'){
+                    Submit(event)
+                }">
+                <i class="fas fa-paper-plane" onclick="Submit(event)"></i>
             </div>
         </section>
 
