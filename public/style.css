@@ -6,69 +6,108 @@
     font-family: 'Roboto', sans-serif;
 }
 
+/* Tela inicial de login */
+#welcome-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh; /* Ajusta para ocupar toda a tela */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centraliza verticalmente */
+    align-items: center; /* Centraliza horizontalmente */
+    background: #222429;
+    color: #fff;
+    z-index: 1000; /* Mantém acima de outros elementos */
+}
+
+#welcome-screen h1 {
+    font-size: 1.5rem; /* Tamanho ajustado para mobile */
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#welcome-screen select,
+#welcome-screen input,
+#welcome-screen button {
+    width: 80%; /* Proporção ajustada para mobile */
+    height: 40px; /* Altura mais confortável */
+    margin-bottom: 15px; /* Espaçamento entre os elementos */
+    padding: 5px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #646464;
+}
+
+#welcome-screen select {
+    background: #333539;
+    color: #fff;
+}
+
+#welcome-screen button {
+    background: #0F0F13;
+    color: #fff;
+    cursor: pointer;
+}
+
+#welcome-screen button:hover {
+    background: #333539;
+}
+
 /* Contêiner principal */
 .container {
-    position: absolute;
     width: 100vw;
-    height: 100%;
-    display: grid; /* Define layout responsivo */
-    grid-template-columns: auto; /* Para mobile, ajusta toda a largura */
+    height: 100vh; /* Ajusta para ocupar toda a tela */
+    display: flex;
+    flex-direction: column; /* Coluna para mobile */
     overflow: hidden;
 }
 
 /* Área do chat */
 #chat-area {
+    flex: 1; /* Faz o chat ocupar o máximo possível do espaço */
     background: #222429;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 100%; /* Ocupa toda a largura */
-    height: 90%; /* Ajusta altura no mobile */
     padding: 10px; /* Espaçamento interno */
-    overflow-y: auto; /* Adiciona rolagem vertical */
+    overflow-y: auto; /* Permite rolagem vertical */
 }
 
 #messages {
-    max-height: 80%; /* Ajusta altura para a área de mensagens */
-    overflow-y: scroll;
-    padding-right: 10px; /* Ajusta para evitar sobreposição com o scroll */
+    height: 75%; /* Ajusta proporção no mobile */
+    overflow-y: scroll; /* Rolar mensagens */
 }
 
 #messages .message {
     padding: 10px;
-    border-bottom: 1px solid #333; /* Linha que divide mensagens */
+    border-bottom: 1px solid #333;
     display: flex;
-    flex-direction: column; /* Altera para coluna */
-    align-items: flex-start; /* Alinha o texto à esquerda */
+    flex-direction: column; /* Alinha nome e mensagem verticalmente */
+    align-items: flex-start;
     color: #f5f5f5;
 }
 
 #messages .message h2 {
-    color: #fff;
-    font-size: 1rem; /* Ajusta para mobile */
+    font-size: 1rem; /* Ajuste para mobile */
     margin: 0;
 }
 
 #messages .message p {
-    color: #8E9094;
     font-size: 0.9rem; /* Texto menor para mobile */
-    margin: 5px 0 0; /* Espaçamento entre nome e mensagem */
-    word-break: break-word; /* Quebra palavras automaticamente */
+    margin: 5px 0 0;
 }
 
 /* Área de envio */
 #send-messages {
-    height: 10%; /* Mantém proporção para envio de mensagens */
     background: #141419;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 5px; /* Espaçamento interno */
+    padding: 10px; /* Espaçamento interno */
 }
 
 #send-messages input {
-    width: 80%; /* Campo ocupa largura suficiente no mobile */
-    height: 30px; /* Altura reduzida para telas menores */
+    width: 80%;
+    height: 40px; /* Ajuste para mobile */
     background: #333539;
     border: 1px solid #646464;
     border-radius: 5px;
@@ -78,8 +117,8 @@
 }
 
 #send-messages i {
-    font-size: 1.5rem; /* Tamanho ajustado para ícone no mobile */
-    color: #8E9094; /* Ícone do avião de papel */
+    font-size: 1.5rem; /* Ícone proporcional para mobile */
+    color: #8E9094;
     cursor: pointer;
 }
 
@@ -89,51 +128,51 @@
 
 /* Barra lateral */
 #left-bar {
-    background: #0F0F13;
-    width: 100%;
-    height: 100%;
     position: fixed;
     top: 0;
-    right: -100%; /* Esconde a barra lateral fora da tela */
-    transition: all 0.5s ease-in-out;
+    right: -100%;
+    width: 100%;
+    height: 100%;
+    background: #0F0F13;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     padding: 10px;
+    transition: all 0.3s ease-in-out; /* Animação para exibição */
 }
 
 #left-bar.active {
-    right: 0; /* Exibe barra lateral ao ser ativada */
+    right: 0; /* Exibe a barra lateral */
 }
 
 #left-bar h2 {
-    font-size: 1.2rem; /* Ajusta tamanho do título para mobile */
+    font-size: 1rem;
     color: #fff;
     margin-bottom: 10px;
 }
 
 #left-bar #online,
 #left-bar #messages-received {
+    font-size: 0.9rem;
     color: #b6b6b6;
-    font-size: 0.9rem; /* Texto ajustado para mobile */
-    margin-bottom: 10px;
 }
 
-/* Responsividade específica para telas pequenas */
+/* Responsividade */
 @media (max-width: 768px) {
-    .container {
-        grid-template-rows: auto auto; /* Ajusta proporção no mobile */
+    #welcome-screen h1 {
+        font-size: 1.2rem; /* Ajuste para telas menores */
+    }
+
+    #welcome-screen select,
+    #welcome-screen input,
+    #welcome-screen button {
+        font-size: 0.9rem;
     }
 
     #messages {
-        max-height: 70vh; /* Ajusta altura para rolagem no mobile */
+        height: 70vh; /* Ajusta altura para área de mensagens no mobile */
     }
 
     #send-messages input {
-        width: 75%; /* Reduz o campo de entrada para dar espaço ao ícone */
-    }
-
-    #left-bar {
-        width: 85vw; /* Ajusta largura para mobile */
+        width: 70%; /* Reduz largura no mobile */
     }
 }
