@@ -143,6 +143,7 @@
     font-size: 0.945vw;
     margin-right: 0.787vw;
     text-shadow: 0 0 0.787vw #00ff00;
+    display: inline-block; /* Garante que seja exibida corretamente */
 }
 
 #left-bar #messages-received i {
@@ -178,8 +179,9 @@
     position: absolute;
     right: 3%;
     font-size: 1.969vw;
-    color: #8E9094;
-    cursor: pointer; /* Ícone do avião de papel */
+    color: #8E9094; /* Ícone do avião de papel restaurado */
+    cursor: pointer;
+    display: inline-block; /* Garante que seja exibido corretamente */
 }
 
 #send-messages i:hover {
