@@ -126,6 +126,7 @@
 }
 
 #send-messages input {
+    position:static
     width: 95%;
     height: 46px;
     background: #333539;
