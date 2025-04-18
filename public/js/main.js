@@ -137,4 +137,3 @@ function handleToggleLeftBar() {
 
     icon.className = icon.className === 'fal fa-info-circle' ? 'fal fa-times' : 'fal fa-info-circle';
 }
-
