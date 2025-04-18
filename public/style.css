@@ -1,4 +1,4 @@
-/* Estilos gerais para reset */
+/* Reseta estilos padrão */
 * {
     margin: 0;
     padding: 0;
@@ -12,7 +12,7 @@
     top: 0;
     left: 0;
     width: 100vw;
-    height: 100vh; /* Ajusta para ocupar toda a tela */
+    height: 100vh; /* Ocupa toda a tela */
     display: flex;
     flex-direction: column;
     justify-content: center; /* Centraliza verticalmente */
@@ -58,7 +58,7 @@
 /* Contêiner principal */
 .container {
     width: 100vw;
-    height: 100vh; /* Ajusta para ocupar toda a tela */
+    height: 100vh; /* Ocupa toda a tela */
     display: flex;
     flex-direction: column; /* Coluna para mobile */
     overflow: hidden;
@@ -75,6 +75,7 @@
 #messages {
     height: 75%; /* Ajusta proporção no mobile */
     overflow-y: scroll; /* Rolar mensagens */
+    padding-right: 10px; /* Ajusta para evitar sobreposição com o scroll */
 }
 
 #messages .message {
@@ -98,32 +99,39 @@
 
 /* Área de envio */
 #send-messages {
+    position: fixed; /* Fixa na parte inferior da tela */
+    bottom: 0; /* Mantém na base do viewport */
+    width: 100%; /* Ocupa toda a largura */
+    height: 50px; /* Altura ajustada para telas menores */
     background: #141419;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px; /* Espaçamento interno */
+    padding: 5px 10px; /* Espaçamento interno */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5); /* Adiciona uma sombra sutil */
 }
 
 #send-messages input {
-    width: 80%;
-    height: 40px; /* Ajuste para mobile */
+    width: 80%; /* Ajuste para ocupar espaço suficiente */
+    height: 35px; /* Altura proporcional ao container */
     background: #333539;
     border: 1px solid #646464;
     border-radius: 5px;
     font-size: 0.9rem;
-    padding-left: 10px;
+    padding-left: 10px; /* Espaçamento para texto interno */
     color: #f5f5f5;
+    outline: none; /* Remove borda de foco padrão */
 }
 
 #send-messages i {
-    font-size: 1.5rem; /* Ícone proporcional para mobile */
-    color: #8E9094;
+    font-size: 1.5rem; /* Tamanho adaptado para ícone no mobile */
+    color: #8E9094; /* Ícone do avião de papel */
     cursor: pointer;
+    margin-left: 10px; /* Espaçamento do ícone */
 }
 
 #send-messages i:hover {
-    color: #fff;
+    color: #fff; /* Destaque ao passar o cursor */
 }
 
 /* Barra lateral */
@@ -174,5 +182,9 @@
 
     #send-messages input {
         width: 70%; /* Reduz largura no mobile */
+    }
+
+    #left-bar {
+        width: 85vw; /* Ajusta largura para mobile */
     }
 }
