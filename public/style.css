@@ -101,13 +101,14 @@
 #send-messages {
     position: fixed;
     bottom: 0;
-    width: 100%;
-    height: 60px;
+    left: 0; /* Alinha na borda esquerda */
+    width: 100vw; /* Preenche completamente a largura */
+    height: 60px; /* Altura ajustada */
     background: #141419;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px;
+    padding: 0 10px; /* Remove espaçamentos laterais */
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5);
 }
 
@@ -181,7 +182,7 @@
     }
 
     #send-messages input {
-        width: 90%;
+        width: 90%; /* Ajusta largura para mobile */
     }
 
     #left-bar {
