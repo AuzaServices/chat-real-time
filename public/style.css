@@ -189,7 +189,7 @@
     #welcome-screen input,
     #welcome-screen button {
         font-size: 0.9rem;
-        margin-left: 5%; /* Ajusta os campos para telas menores */
+        margin-left: 1%; /* Ajusta os campos para telas menores */
         width: 90%;
     }
 
