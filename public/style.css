@@ -92,6 +92,7 @@
 
 #messages .message {
     padding: 1.575vw;
+    border-bottom: 1px solid #333; /* Linha que divide mensagens */
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -138,7 +139,7 @@
 }
 
 #left-bar #online i {
-    color: #00ff00;
+    color: #00ff00; /* Bolinha verde restaurada */
     font-size: 0.945vw;
     margin-right: 0.787vw;
     text-shadow: 0 0 0.787vw #00ff00;
@@ -178,7 +179,7 @@
     right: 3%;
     font-size: 1.969vw;
     color: #8E9094;
-    cursor: pointer;
+    cursor: pointer; /* Ícone do avião de papel */
 }
 
 #send-messages i:hover {
@@ -213,7 +214,7 @@
     }
 
     #send-messages input {
-        width: 80%;
+        width: 80%; /* Adaptado para dispositivos móveis */
     }
 
     #welcome-screen input,
