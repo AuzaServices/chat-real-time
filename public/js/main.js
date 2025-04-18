@@ -53,7 +53,7 @@ function showFields() {
     }
 }
 
-// Envia uma mensagem ao servidor (Correção para evitar duplicação)
+// Envia uma mensagem ao servidor
 function Submit(event) {
     event.preventDefault(); // Impede recarregamento da página
 
@@ -69,7 +69,7 @@ function Submit(event) {
         message // Texto da mensagem
     };
 
-    // Envia a mensagem ao servidor e espera uma resposta para evitar duplicação
+    // Envia a mensagem ao servidor
     socket.emit('sendMessage', messageObject);
 
     // Limpa o campo de entrada após o envio
@@ -78,20 +78,16 @@ function Submit(event) {
 
 // Exibe mensagens recebidas no chat
 socket.on('receivedMessage', function (message) {
+    console.log("Mensagem recebida:", message); // Log para depuração
     renderMessage(message);
 });
 
-// Renderiza uma mensagem no chat (Evita duplicação com IDs únicos)
+// Renderiza uma mensagem no chat
 function renderMessage(message) {
     const messagesContainer = document.getElementById('messages');
 
-    // Verifica se a mensagem já foi renderizada (evita duplicação)
-    const existingMessage = document.querySelector(`[data-id="${message.id}"]`);
-    if (existingMessage) return;
-
     const messageElement = document.createElement('div');
     messageElement.classList.add('message');
-    messageElement.setAttribute('data-id', message.id); // Adiciona um identificador único
 
     const authorElement = document.createElement('h2');
     authorElement.textContent = message.author;
