@@ -32,7 +32,7 @@ function getAuthor() {
     }
 }
 
-function generateMessageTemplate({ message, author, time }) {
+function generateMessageTemplate({ message, author }) {
     const messageElement = document.createElement('div');
     messageElement.classList.add('message');
 
@@ -48,16 +48,11 @@ function generateMessageTemplate({ message, author, time }) {
     const messageContentElement = document.createElement('div');
 
     const authorInfoElement = document.createElement('h2');
-    authorInfoElement.textContent = author;
-
-    const messageTimeElement = document.createElement('span');
-    messageTimeElement.textContent = time;
-
-    authorInfoElement.appendChild(messageTimeElement);
+    authorInfoElement.textContent = author; // Apenas o autor será exibido
 
     const messageTextElement = document.createElement('p');
     messageTextElement.setAttribute('aria-expanded', true);
-    messageTextElement.textContent = message;
+    messageTextElement.textContent = message; // Apenas o conteúdo da mensagem será exibido
 
     messageContentElement.appendChild(authorInfoElement);
     messageContentElement.appendChild(messageTextElement);
@@ -69,7 +64,7 @@ function generateMessageTemplate({ message, author, time }) {
 }
 
 function renderMessage(message) {
-    const messagesContainer = document.querySelector('.messages');
+    const messagesContainer = document.querySelector(".messages");
     const messageTemplate = generateMessageTemplate(message);
 
     messagesContainer.appendChild(messageTemplate);
@@ -81,7 +76,6 @@ function renderMessage(message) {
 
 function renderConnectionsInfo() {
     $('#online').html(`<h3><i class="fas fa-circle"></i> ${info.connected} Online</h3>`);
-
     $('#messages-received').html(`<h3 id="messages-received"><i class="fad fa-inbox-in"></i> ${info.numberMessages} ${info.numberMessages === 1 ? "Mensagem" : "Mensagens"}</h3>`);
 }
 
@@ -112,28 +106,19 @@ function moveScroll() {
 
 function Submit(event) {
     event.preventDefault();
-
     getAuthor();
 
     var message = document.querySelector('input[name=message]').value;
     $('#input-message').val(''); // Limpa o campo de entrada
 
     if (message.length) {
-        let now = new Date();
-        let time = now.getHours() + ':' + (now.getMinutes() < 10 ? '0' : '') + now.getMinutes(); // Formata corretamente o horário
-        time += now.getHours() >= 12 ? 'pm' : 'am';
-
         var messageObject = {
             author,
-            message,
-            time,
+            message
         };
 
         // Envia a mensagem para o servidor
         socket.emit('sendMessage', messageObject);
-
-        // **Renderização local removida**
-        // A renderização ocorrerá apenas pelo evento 'receivedMessage' emitido pelo servidor
     }
 }
 
