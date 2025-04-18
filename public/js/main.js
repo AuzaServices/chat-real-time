@@ -6,18 +6,18 @@ var info = {
 var author = '';
 
 socket.on('receivedMessage', function (message) {
-    renderMessage(message);
+    renderMessage(message); // Renderiza mensagem recebida do servidor
 });
 
 socket.on('previousMessages', function (messages) {
     for (message of messages) {
-        renderMessage(message);
+        renderMessage(message); // Renderiza mensagens anteriores
     }
     renderConnectionsInfo();
 });
 
 socket.on('ConnectionsInfo', function (connectionsInfo) {
-    info.connected = connectionsInfo.connections;
+    info.connected = connectionsInfo.connections; // Atualiza número de conexões
     renderConnectionsInfo();
 });
 
@@ -25,7 +25,6 @@ getAuthor();
 
 function getAuthor() {
     let user = localStorage.getItem('user');
-
     if (user) {
         author = user;
     } else {
@@ -117,11 +116,11 @@ function Submit(event) {
     getAuthor();
 
     var message = document.querySelector('input[name=message]').value;
-    $('#input-message').val('');
+    $('#input-message').val(''); // Limpa o campo de entrada
 
     if (message.length) {
         let now = new Date();
-        let time = now.getHours() + ':' + (now.getMinutes() < 10 ? '0' : '') + now.getMinutes(); // Correção de formatação do tempo
+        let time = now.getHours() + ':' + (now.getMinutes() < 10 ? '0' : '') + now.getMinutes(); // Formata corretamente o horário
         time += now.getHours() >= 12 ? 'pm' : 'am';
 
         var messageObject = {
@@ -130,13 +129,13 @@ function Submit(event) {
             time,
         };
 
-        // Envia mensagem para o servidor
+        // Envia a mensagem para o servidor
         socket.emit('sendMessage', messageObject);
 
-        // Renderiza a mensagem localmente
-        renderMessage(messageObject);
+        // **Renderização local removida**
+        // A renderização ocorrerá apenas pelo evento 'receivedMessage' emitido pelo servidor
     }
-};
+}
 
 function handleToggleLeftBar() {
     const bar = document.querySelector('#left-bar');
