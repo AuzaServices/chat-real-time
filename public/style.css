@@ -28,12 +28,12 @@
     margin-bottom: 20px;
 }
 
-#welcome-screen select,
-#welcome-screen input,
-#welcome-screen button {
+/* Ajuste dos containers de "Nome" e "Bairro/Profissão" */
+#welcome-screen input {
     width: 80%;
     height: 40px;
     margin-bottom: 15px;
+    margin-left: 10%; /* Move os campos um pouco para a direita */
     padding: 5px;
     font-size: 1rem;
     border-radius: 5px;
@@ -41,14 +41,27 @@
 }
 
 #welcome-screen select {
+    width: 80%;
+    height: 40px;
+    margin-bottom: 15px;
+    margin-left: 10%; /* Move o campo "Selecione" para a direita */
     background: #333539;
     color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #646464;
 }
 
 #welcome-screen button {
+    width: 80%;
+    height: 40px;
+    margin-left: 10%; /* Alinha o botão com os outros campos */
     background: #0F0F13;
     color: #fff;
+    border-radius: 5px;
+    font-size: 1rem;
     cursor: pointer;
+    border: 1px solid #646464;
 }
 
 #welcome-screen button:hover {
@@ -101,19 +114,19 @@
 #send-messages {
     position: fixed;
     bottom: 0;
-    left: 0; /* Alinha na borda esquerda */
-    width: 100vw; /* Preenche completamente a largura */
-    height: 60px; /* Altura ajustada */
+    left: 0;
+    width: 100vw;
+    height: 60px;
     background: #141419;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 10px; /* Remove espaçamentos laterais */
+    padding: 0;
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5);
 }
 
 #send-messages input {
-    width: 97%;
+    width: 98%;
     height: 45px;
     background: #333539;
     border: 1px solid #646464;
@@ -128,7 +141,6 @@
     font-size: 1.8rem;
     color: #8E9094;
     cursor: pointer;
-    margin-left: 5px;
 }
 
 #send-messages i:hover {
@@ -175,6 +187,8 @@
     #welcome-screen input,
     #welcome-screen button {
         font-size: 0.9rem;
+        margin-left: 5%; /* Ajusta os campos para telas menores */
+        width: 90%;
     }
 
     #messages {
@@ -182,7 +196,7 @@
     }
 
     #send-messages input {
-        width: 99%; /* Ajusta largura para mobile */
+        width: 90%;
     }
 
     #left-bar {
