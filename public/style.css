@@ -1,7 +1,7 @@
 /* Reseta estilos padrão */
 * {
     margin: 0;
-    padding: 15px;
+    padding: 15;
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
 }
@@ -17,7 +17,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: #222429;
+    background: #292929;
     color: #fff;
     z-index: 1000;
 }
