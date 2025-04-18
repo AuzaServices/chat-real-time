@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#222429" />
-    <title>Chat | Auza Services</title>
+    <title>Chat em Tempo Real</title>
 
     <script rel="preconnect preload" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script rel="preconnect preload" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
@@ -24,11 +24,12 @@
                 <i id="toggleInfo" class="fal fa-info-circle" onclick="handleToggleLeftBar()" ></i>
                 
                 <div id="messages" class="messages">
-                    <div id="initialMessage">Mensagem</div> <!-- Texto "Mensagem" adicionado -->
+                    <!-- Container de mensagens -->
                 </div>
             </div>
 
             <div id="send-messages">
+                <span style="color: white; margin-right: 10px;">Mensagem:</span> <!-- Adicionado o texto "Mensagem" -->
                 <input type="text" id="input-message" name="message" autocomplete="off" autofocus onkeypress="
                 if(event.key === 'Enter'){
                     Submit(event)
