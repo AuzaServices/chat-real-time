@@ -1,7 +1,7 @@
 /* Reseta estilos padrão */
 * {
     margin: 0;
-    padding: 0;
+    padding: 15px;
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
 }
