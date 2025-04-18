@@ -483,10 +483,3 @@
         cursor: pointer;
     }
 }
-    #initialMessage {
-        display: block; /* Garante que esteja visível */
-        color: white; /* Cor do texto */
-        font-size: 16px; /* Ajusta o tamanho da fonte */
-        text-align: center; /* Centraliza o texto */
-        margin-top: 10px; /* Adiciona espaço no topo, se necessário */
-}

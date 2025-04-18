@@ -24,13 +24,11 @@
                 <i id="toggleInfo" class="fal fa-info-circle" onclick="handleToggleLeftBar()" ></i>
                 
                 <div id="messages" class="messages">
-                    <p style="color: white;">Mensagens</p> <!-- Texto adicionado -->
-                    <!-- Container de mensagens -->
+                    <div id="initialMessage"></div>
                 </div>
             </div>
 
             <div id="send-messages">
-                <span style="color: white; margin-right: 10px;">Mensagem:</span> <!-- Adicionado o texto "Mensagem" -->
                 <input type="text" id="input-message" name="message" autocomplete="off" autofocus onkeypress="
                 if(event.key === 'Enter'){
                     Submit(event)
