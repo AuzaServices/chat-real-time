@@ -1,24 +1,12 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const compression = require('compression'); // Importando o middleware de compressão
-const morgan = require('morgan'); // Importando o morgan para logs
-
 const { join } = path;
 
 const port = process.env.PORT || 4000;
 const server = require('http').createServer(app);
-const io = require('socket.io')(server, {
-  cors: {
-    origin: "*"
-  },
-  perMessageDeflate: {
-    threshold: 1024, // Comprime apenas mensagens acima de 1KB
-  }
-});
+const io = require('socket.io')(server);
 
-app.use(compression()); // Habilitando a compressão
-app.use(morgan('dev')); // Habilitando logs com morgan
 app.use(express.static(join(__dirname, 'public')));
 app.set('views', join(__dirname, 'public'));
 app.engine('html', require('ejs').renderFile);
@@ -29,27 +17,26 @@ app.use('/', (req, res) => {
 });
 
 let messages = [];
-let connectionsInfo = {
-  connections: 0
-};
+let connectionsInfo = { connections: 0 };
 
-io.on('connection', socket => {
-  server.getConnections((err, count) => {
-    if (err) throw err;
-    connectionsInfo.connections = count;
-    socket.emit('ConnectionsInfo', connectionsInfo);
-  });
+io.on('connection', (socket) => {
+  // Incrementa o número de conexões e envia a informação para todos
+  connectionsInfo.connections++;
+  io.emit('ConnectionsInfo', connectionsInfo);
 
+  // Envia mensagens anteriores para o cliente recém-conectado
   socket.emit('previousMessages', messages);
 
-  socket.on('sendMessage', data => {
+  // Escuta novas mensagens e envia para todos os clientes
+  socket.on('sendMessage', (data) => {
     messages.push(data);
-    socket.broadcast.emit('receivedMessage', data);
+    io.emit('receivedMessage', data); // Envia para todos os clientes, incluindo o remetente
   });
 
-  socket.on('clearMessages', () => {
-    messages = [];
-    io.emit('clearMessages');
+  // Lida com desconexão
+  socket.on('disconnect', () => {
+    connectionsInfo.connections--;
+    io.emit('ConnectionsInfo', connectionsInfo);
   });
 });
 
