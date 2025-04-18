@@ -102,7 +102,7 @@
     position: fixed; /* Fixa na parte inferior da tela */
     bottom: 0; /* Mantém na base do viewport */
     width: 100%; /* Ocupa toda a largura */
-    height: 50px; /* Altura ajustada para telas menores */
+    height: 50px; /* Altura ajustada */
     background: #141419;
     display: flex;
     align-items: center;
@@ -112,7 +112,7 @@
 }
 
 #send-messages input {
-    width: 80%; /* Ajuste para ocupar espaço suficiente */
+    width: 95%; /* Ajusta para ocupar quase toda a largura disponível */
     height: 35px; /* Altura proporcional ao container */
     background: #333539;
     border: 1px solid #646464;
@@ -127,7 +127,7 @@
     font-size: 1.5rem; /* Tamanho adaptado para ícone no mobile */
     color: #8E9094; /* Ícone do avião de papel */
     cursor: pointer;
-    margin-left: 10px; /* Espaçamento do ícone */
+    margin-left: 5px; /* Espaçamento menor para que caiba na tela */
 }
 
 #send-messages i:hover {
@@ -181,7 +181,7 @@
     }
 
     #send-messages input {
-        width: 70%; /* Reduz largura no mobile */
+        width: 90%; /* Reduz largura para mobile */
     }
 
     #left-bar {
