@@ -134,7 +134,7 @@
     font-size: 1rem;
     padding-left: 15px; /* Espaço interno do texto à esquerda */
     padding-right: 10px; /* Adicionado para balancear espaço interno à direita */
-    margin-left: 6px; /* Move o campo um pouco mais para a direita */
+    margin-left: 5px; /* Move o campo um pouco mais para a direita */
     color: #f5f5f5;
     outline: none;
 }
