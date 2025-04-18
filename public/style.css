@@ -112,7 +112,7 @@
 
 /* Área de envio */
 #send-messages {
-    position: fixed;
+    position:fixed;
     bottom: 0;
     left: 0;
     width: 100vw;
@@ -126,14 +126,15 @@
 }
 
 #send-messages input {
-    position:static
-    width: 95%;
-    height: 46px;
+    width: 95%; /* Largura permanece a mesma */
+    height: 45px;
     background: #333539;
     border: 1px solid #646464;
     border-radius: 5px;
     font-size: 1rem;
-    padding-left: 15px;
+    padding-left: 15px; /* Espaço interno do texto à esquerda */
+    padding-right: 10px; /* Adicionado para balancear espaço interno à direita */
+    margin-left: 6px; /* Move o campo um pouco mais para a direita */
     color: #f5f5f5;
     outline: none;
 }
