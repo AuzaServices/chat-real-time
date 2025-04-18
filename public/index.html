@@ -25,7 +25,8 @@
         </select>
         <div id="fields">
             <input type="text" id="name" placeholder="Nome">
-            <input type="text" id="extra-info" placeholder="">
+            <!-- A caixa já contém uma mensagem inicial -->
+            <input type="text" id="extra-info" placeholder="Por favor, selecione para preencher." readonly>
         </div>
         <button onclick="enterChat()">Entrar</button>
     </div>
@@ -62,6 +63,46 @@
         </section>
     </div>
 
-    <script src="./js/main.js"></script>
+    <script>
+        // Atualiza o campo dinamicamente ao selecionar uma opção
+        function showFields() {
+            const userType = document.getElementById("user-type").value;
+            const extraInfo = document.getElementById("extra-info");
+
+            if (userType === "Cliente") {
+                extraInfo.placeholder = "Bairro";
+                extraInfo.readOnly = false; // Permite edição
+            } else if (userType === "Profissional") {
+                extraInfo.placeholder = "Profissão";
+                extraInfo.readOnly = false; // Permite edição
+            } else {
+                extraInfo.placeholder = "Por favor, selecione para preencher.";
+                extraInfo.readOnly = true; // Impede edição
+            }
+        }
+
+        // Função para entrar no chat
+        function enterChat() {
+            const userType = document.getElementById("user-type").value;
+            const name = document.getElementById("name").value.trim();
+            const extraInfo = document.getElementById("extra-info").value.trim();
+
+            if (!userType || name.length < 4) {
+                alert("Por favor, preencha o campo Nome e escolha um tipo de usuário.");
+                return;
+            }
+
+            if (!extraInfo) {
+                alert(`Por favor, preencha o campo ${userType === "Cliente" ? "Bairro" : "Profissão"}.`);
+                return;
+            }
+
+            const author = `${name} | ${extraInfo}`;
+            localStorage.setItem("user", author);
+
+            document.getElementById("welcome-screen").style.display = "none";
+            document.querySelector(".container").style.display = "grid";
+        }
+    </script>
 </body>
 </html>
