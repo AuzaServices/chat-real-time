@@ -29,15 +29,18 @@
 }
 
 /* Ajuste dos containers de "Nome" e "Bairro/Profissão" */
+/* Ajuste dos containers "Nome" e "Bairro e Profissão" */
 #welcome-screen input {
-    width: 80%;
-    height: 40px;
-    margin-bottom: 15px;
-    margin-left: 1%; /* Move os campos um pouco para a direita */
-    padding: 5px;
-    font-size: 1rem;
-    border-radius: 5px;
-    border: 1px solid #646464;
+    width: 80%; /* Largura dos campos */
+    height: 40px; /* Altura dos campos */
+    margin-bottom: 15px; /* Espaço abaixo dos campos */
+    margin-left: 50%;
+    padding: 5px; /* Espaço interno */
+    font-size: 1rem; /* Tamanho da fonte */
+    border-radius: 5px; /* Bordas arredondadas */
+    border: 1px solid #646464; /* Cor da borda */
+    text-align: left; /* Alinhamento do texto */
+
 }
 
 #welcome-screen select {
