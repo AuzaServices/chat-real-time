@@ -226,3 +226,25 @@
         font-size: 16px;
     }
 }
+
+#messages .message {
+    padding: 1.5vw;
+    border-bottom: 1px solid #333; /* Linha que divide mensagens */
+    display: flex;
+    flex-direction: column; /* Altera para coluna */
+    align-items: flex-start; /* Alinha o texto à esquerda */
+    color: #f5f5f5;
+}
+
+#messages .message h2 {
+    color: #fff;
+    font-size: 1.2rem; /* Tamanho do nome */
+    margin: 0; /* Remove margens extras */
+}
+
+#messages .message p {
+    color: #8E9094;
+    font-size: 1rem; /* Tamanho do texto da mensagem */
+    margin: 0.5rem 0 0; /* Espaçamento entre o nome e a mensagem */
+    word-break: break-word; /* Quebra linhas automaticamente */
+}

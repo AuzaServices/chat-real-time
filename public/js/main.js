@@ -117,3 +117,26 @@ socket.on('connect', () => {
 socket.on('disconnect', () => {
     alert('Você foi desconectado do servidor. Verifique sua conexão.');
 });
+
+// Inicializa contadores
+let onlineCount = 0;
+let messageCount = 0;
+
+// Atualiza contadores no mobile
+function updateCounters() {
+    document.getElementById('online').textContent = `${onlineCount} Online`;
+    document.getElementById('messages-received').textContent = `${messageCount} Mensagens`;
+}
+
+// Simula conexão de novos usuários
+socket.on('ConnectionsInfo', function (info) {
+    onlineCount = info.connections; // Atualiza número de usuários online
+    updateCounters();
+});
+
+// Exibe número de mensagens enviadas/recebidas
+socket.on('receivedMessage', function (message) {
+    messageCount++; // Incrementa contador de mensagens
+    renderMessage(message);
+    updateCounters();
+});
