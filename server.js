@@ -12,34 +12,43 @@ app.set('views', join(__dirname, 'public'));
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 
+// Rota principal para servir o arquivo HTML
 app.use('/', (req, res) => {
-  res.render('index.html');
+    res.render('index.html');
 });
 
+// Armazena as mensagens e informações de conexões
 let messages = [];
 let connectionsInfo = { connections: 0 };
 
+// Gerencia conexões Socket.IO
 io.on('connection', (socket) => {
-  // Incrementa o número de conexões e envia a informação para todos
-  connectionsInfo.connections++;
-  io.emit('ConnectionsInfo', connectionsInfo);
-
-  // Envia mensagens anteriores para o cliente recém-conectado
-  socket.emit('previousMessages', messages);
-
-  // Escuta novas mensagens e envia para todos os clientes
-  socket.on('sendMessage', (data) => {
-    messages.push(data);
-    io.emit('receivedMessage', data); // Envia para todos os clientes, incluindo o remetente
-  });
-
-  // Lida com desconexão
-  socket.on('disconnect', () => {
-    connectionsInfo.connections--;
+    // Incrementa o número de conexões e envia para todos
+    connectionsInfo.connections++;
     io.emit('ConnectionsInfo', connectionsInfo);
-  });
+
+    // Envia mensagens anteriores para o cliente recém-conectado
+    socket.emit('previousMessages', messages);
+
+    // Escuta novas mensagens do cliente
+    socket.on('sendMessage', (data) => {
+        const { author, message } = data;
+
+        // Adiciona mensagem ao histórico
+        messages.push({ author, message });
+
+        // Envia para todos os clientes conectados
+        io.emit('receivedMessage', { author, message });
+    });
+
+    // Lida com desconexões
+    socket.on('disconnect', () => {
+        connectionsInfo.connections--;
+        io.emit('ConnectionsInfo', connectionsInfo);
+    });
 });
 
+// Inicia o servidor na porta especificada
 server.listen(port, () => {
-  console.log(`Server running on localhost:${port}`);
+    console.log(`Servidor rodando em http://localhost:${port}`);
 });
