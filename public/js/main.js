@@ -21,7 +21,7 @@ socket.on('ConnectionsInfo', function (connectionsInfo) {
     renderConnectionsInfo();
 });
 
-// Mostra os campos de acordo com o tipo de usuário
+// Mostra os campos de acordo com o tipo de usuário na tela inicial
 function showFields() {
     const userType = document.getElementById("user-type").value;
     const extraInfo = document.getElementById("extra-info");
@@ -35,7 +35,7 @@ function showFields() {
     }
 }
 
-// Entra no chat com os dados preenchidos
+// Lógica para entrar no chat
 function enterChat() {
     const userType = document.getElementById("user-type").value;
     const name = document.getElementById("name").value;
@@ -50,9 +50,10 @@ function enterChat() {
     author = `${name} | ${extraInfo}`;
     localStorage.setItem("user", author);
 
-    // Esconde a tela inicial e exibe o chat
-    document.getElementById("welcome-screen").style.display = "none";
-    document.querySelector(".container").style.display = "grid";
+    // Esconde a tela inicial e exibe a tela do chat
+    document.getElementById("welcome-screen").style.display = "none"; // Esconde a tela inicial
+    const chatContainer = document.querySelector(".container");
+    chatContainer.style.display = "grid"; // Exibe a tela do chat
 }
 
 function renderMessage(message) {
@@ -69,6 +70,37 @@ function renderMessage(message) {
 function renderConnectionsInfo() {
     $('#online').html(`<h3><i class="fas fa-circle"></i> ${info.connected} Online</h3>`);
     $('#messages-received').html(`<h3 id="messages-received"><i class="fad fa-inbox-in"></i> ${info.numberMessages} ${info.numberMessages === 1 ? "Mensagem" : "Mensagens"}</h3>`);
+}
+
+function generateMessageTemplate({ message, author }) {
+    const messageElement = document.createElement('div');
+    messageElement.classList.add('message');
+
+    const userImageElement = document.createElement('div');
+    userImageElement.classList.add('user-image');
+
+    const userIconElement = document.createElement('i');
+    userIconElement.classList.add('fal');
+    userIconElement.classList.add('fa-user-circle');
+
+    userImageElement.appendChild(userIconElement);
+
+    const messageContentElement = document.createElement('div');
+
+    const authorInfoElement = document.createElement('h2');
+    authorInfoElement.textContent = author; // Exibe nome formatado (cliente ou profissional)
+
+    const messageTextElement = document.createElement('p');
+    messageTextElement.setAttribute('aria-expanded', true);
+    messageTextElement.textContent = message; // Apenas o conteúdo da mensagem
+
+    messageContentElement.appendChild(authorInfoElement);
+    messageContentElement.appendChild(messageTextElement);
+
+    messageElement.appendChild(userImageElement);
+    messageElement.appendChild(messageContentElement);
+
+    return messageElement;
 }
 
 function moveScroll() {
