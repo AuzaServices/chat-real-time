@@ -1,8 +1,8 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-
 const { join } = path;
+
 const port = process.env.PORT || 4000;
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
@@ -20,20 +20,20 @@ let messages = [];
 let connectionsInfo = { connections: 0 };
 
 io.on('connection', (socket) => {
-  // Increment connection count and emit to all clients
+  // Incrementa o número de conexões e envia a informação para todos
   connectionsInfo.connections++;
   io.emit('ConnectionsInfo', connectionsInfo);
 
-  // Emit previous messages to the connected client
+  // Envia mensagens anteriores para o cliente recém-conectado
   socket.emit('previousMessages', messages);
 
-  // Listen for new messages and emit to all clients
+  // Escuta novas mensagens e envia para todos os clientes
   socket.on('sendMessage', (data) => {
     messages.push(data);
-    io.emit('receivedMessage', data); // Sends message to all clients including the sender
+    io.emit('receivedMessage', data); // Envia para todos os clientes, incluindo o remetente
   });
 
-  // Handle disconnection
+  // Lida com desconexão
   socket.on('disconnect', () => {
     connectionsInfo.connections--;
     io.emit('ConnectionsInfo', connectionsInfo);
