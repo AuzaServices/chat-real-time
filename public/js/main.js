@@ -35,10 +35,11 @@ function enterChat() {
     author = userName;
 
     // Esconde a tela de login e exibe o chat
-    document.getElementById('login-screen').classList.remove('active');
-    document.querySelector('.container').style.display = 'grid';
+    document.getElementById('login-screen').classList.add('hidden'); // Alteração: Adiciona classe 'hidden'
+    document.querySelector('.container').style.display = 'grid';    // Garante que o chat seja exibido
 }
 
+// Função para renderizar mensagens
 function renderMessage(message) {
     const messagesContainer = document.querySelector(".messages");
     const messageTemplate = generateMessageTemplate(message);
@@ -49,16 +50,19 @@ function renderMessage(message) {
     renderConnectionsInfo();
 }
 
+// Atualiza as informações de conexões e mensagens
 function renderConnectionsInfo() {
     $('#online').html(`<h3><i class="fas fa-circle"></i> ${info.connected} Online</h3>`);
     $('#messages-received').html(`<h3 id="messages-received"><i class="fad fa-inbox-in"></i> ${info.numberMessages} ${info.numberMessages === 1 ? "Mensagem" : "Mensagens"}</h3>`);
 }
 
+// Scroll automático para mensagens recentes
 function moveScroll() {
     var objDiv = document.getElementById("messages");
     objDiv.scrollTop = objDiv.scrollHeight;
 }
 
+// Envio de mensagem para o servidor
 function Submit(event) {
     event.preventDefault();
     const message = document.querySelector('input[name=message]').value;
