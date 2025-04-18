@@ -11,28 +11,51 @@
 
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 </head>
 <body>
-    <div id="login-screen" class="active">
-        <h1>Entrar no Chat</h1>
-        <p>Selecione seu tipo de usuário:</p>
-        <select id="user-type" onchange="updateFields()">
-            <option value="">Selecione</option>
-            <option value="Cliente">Cliente</option>
-            <option value="Profissional">Profissional</option>
-        </select>
-        <input type="text" id="name" placeholder="Nome" required minlength="4">
-        <input type="text" id="extra-info" placeholder="Bairro/Profissão">
-        <button onclick="submitLogin()">Entrar</button>
-    </div>
 
     <div class="container">
         <section id="chat-area">
-            <!-- Área de mensagens -->
+
+            <div>
+                <i id="toggleInfo" class="fal fa-info-circle" onclick="handleToggleLeftBar()" ></i>
+                
+                <div id="messages" class="messages">
+                    <div id="initialMessage"></div>
+                </div>
+            </div>
+
+            <div id="send-messages">
+                <input type="text" id="input-message" name="message" autocomplete="off" autofocus onkeypress="
+                if(event.key === 'Enter'){
+                    Submit(event)
+                }">
+                <i class="fas fa-paper-plane" onclick="Submit(event)"></i>
+            </div>
         </section>
+
         <section id="left-bar">
-            <!-- Barra lateral -->
+            <div>
+                <h2 style="color: darkred;">Chat de Negociação</h2>
+    
+                <h3 id="online"><i style="color: green;" class="fas fa-circle"></i>0 Online</h3>
+                <h3 id="messages-received"><i class="fad fa-inbox-in"></i> 0 Mensagens </h3>
+            </div>
         </section>
+
+        <div id="enter-user">
+            <div class="content">
+                <h1>Ops! Parece que você é novo por aqui...</h1>
+                <p aria-expanded="truex">Por favor, digite abaixo o seu nome.</p>
+
+                <input type="text" id="input-user" autofocus required minlength="4">
+                <button onclick="toggleBoxForNewUser('get')">Entrar</button>
+            </div>
+        </div>
     </div>
+    <script src="./js/main.js"></script>
 </body>
 </html>

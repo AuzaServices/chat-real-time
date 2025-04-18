@@ -4,7 +4,6 @@ var info = {
     connected: 0
 };
 var author = '';
-var userType = '';
 
 socket.on('receivedMessage', function (message) {
     renderMessage(message); // Renderiza mensagem recebida do servidor
@@ -22,42 +21,18 @@ socket.on('ConnectionsInfo', function (connectionsInfo) {
     renderConnectionsInfo();
 });
 
+getAuthor();
+
 function getAuthor() {
     let user = localStorage.getItem('user');
-    let type = localStorage.getItem('userType');
-    if (user && type) {
+    if (user) {
         author = user;
-        userType = type;
     } else {
         toggleBoxForNewUser('tog');
     }
 }
 
-function updateFields() {
-    const userType = document.getElementById("user-type").value;
-    const extraInfo = document.getElementById("extra-info");
-    extraInfo.placeholder = userType === "Cliente" ? "Bairro" : "Profissão";
-}
-
-function submitLogin() {
-    const userTypeField = document.getElementById("user-type").value;
-    const name = document.getElementById("name").value;
-    const extraInfo = document.getElementById("extra-info").value;
-
-    if (!userTypeField || name.length < 4 || extraInfo.length < 2) {
-        alert("Preencha todos os campos corretamente.");
-        return;
-    }
-
-    localStorage.setItem("user", `${name} ${extraInfo}`);
-    localStorage.setItem("userType", userTypeField);
-    author = `${name} ${extraInfo}`;
-    userType = userTypeField;
-
-    document.getElementById("login-screen").classList.remove("active");
-}
-
-function generateMessageTemplate({ message, author }) {
+function generateMessageTemplate({ message, author }) { // Alterado: Removido 'time'
     const messageElement = document.createElement('div');
     messageElement.classList.add('message');
 
@@ -89,10 +64,9 @@ function generateMessageTemplate({ message, author }) {
 }
 
 function renderMessage(message) {
-    const format = userType === "Cliente" ? `${message.author} Bairro` : `${message.author} Profissão`;
-    const messageTemplate = generateMessageTemplate({ message: message.message, author: format });
+    const messagesContainer = document.querySelector('.messages');
+    const messageTemplate = generateMessageTemplate(message);
 
-    const messagesContainer = document.querySelector(".messages");
     messagesContainer.appendChild(messageTemplate);
 
     info.numberMessages += 1;
@@ -102,6 +76,7 @@ function renderMessage(message) {
 
 function renderConnectionsInfo() {
     $('#online').html(`<h3><i class="fas fa-circle"></i> ${info.connected} Online</h3>`);
+
     $('#messages-received').html(`<h3 id="messages-received"><i class="fad fa-inbox-in"></i> ${info.numberMessages} ${info.numberMessages === 1 ? "Mensagem" : "Mensagens"}</h3>`);
 }
 
@@ -132,6 +107,7 @@ function moveScroll() {
 
 function Submit(event) {
     event.preventDefault();
+
     getAuthor();
 
     var message = document.querySelector('input[name=message]').value;
@@ -145,6 +121,9 @@ function Submit(event) {
 
         // Envia a mensagem para o servidor
         socket.emit('sendMessage', messageObject);
+
+        // **Renderização local removida**
+        // A renderização ocorrerá apenas pelo evento 'receivedMessage' emitido pelo servidor
     }
 }
 
