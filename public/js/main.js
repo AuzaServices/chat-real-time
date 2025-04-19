@@ -67,11 +67,14 @@ function isPhoneNumber(message) {
         /\d{11}/,                // 85991340658
         /\d{8}/,                 // 991340658
         /\d{7}/,                 // 91340658
-        /\d{5}-\d{4}/            // 99134-0658 (novo formato adicionado)
+        /\d{5}-\d{4}/,           // 99134-0658
+        /\(\d{2}\)\d{4}-\d{4}/,  // (85)9134-0658
+        /\d{4}-\d{4}/            // 9134-0658 (novo formato adicionado)
     ];
 
-    // Retorna true se algum dos formatos for encontrado na mensagem
+    // Verifica se algum dos formatos corresponde à mensagem
     return phoneFormats.some(format => format.test(message));
+
 }
 
 // Envia uma mensagem ao servidor
