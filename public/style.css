@@ -17,7 +17,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: #000108;
+    background: #1f1f1f;
     color: #fff;
     z-index: 1000;
 }
@@ -83,7 +83,7 @@
 /* Área do chat */
 #chat-area {
     flex: 1;
-    background: #000108;
+    background: #1f1f1f;
     padding: 10px;
     overflow-y: auto;
 }
