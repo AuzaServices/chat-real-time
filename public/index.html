@@ -4,20 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="theme-color" content="#222429" />
-    <title>Chat de Negociação | Auza Support</title>
+    <title>Chat de Negociação | Auza Services</title>
 
     <!-- Fontes e bibliotecas -->
     <script rel="preconnect preload" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script rel="preconnect preload" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha384-dyBEE2OaGyoyLeYb3yByp7nP9v1+X9x+5uXmC/c7CktQGi1mZCY9LqMOiR+AkDd" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- Tela inicial -->
     <div id="welcome-screen">
         <h1>Bem Vindo(a) ao Chat de Negociação</h1>
-        <h2 style="color: darkred; font-weight: bold; margin-top: -20px;">Auza Support</h2>
+        <h2 style="color: darkred; font-weight: bold; margin-top: -20px;">Auza Services</h2>
         <p style="margin-top: 20px; margin-bottom: 10px;">Por favor, escolha seu tipo de usuário:</p>
         <select id="user-type" onchange="showFields()">
             <option value="">Selecione</option>
@@ -34,7 +34,7 @@
     <!-- Tela do chat -->
     <div class="container" style="display: none;">
         <!-- Área de mensagens -->
-        <section id="chat-area" style="position: relative;">
+        <section id="chat-area">
             <div>
                 <i id="toggleInfo" class="fal fa-info-circle" onclick="handleToggleLeftBar()"></i>
                 <div id="messages" class="messages">
@@ -46,7 +46,7 @@
                 <input type="text" id="input-message" name="message" autocomplete="off" 
                        autofocus placeholder="Mensagem" onkeypress="if(event.key === 'Enter'){Submit(event)}">
                 <!-- Botão de enviar mensagem -->
-                <i class="fas fa-paper-plane" onclick="Submit(event)"></i>
+                <i class="fas fa-paper-plane" onclick="Submit(event)"></i> <!-- Ícone do avião de papel -->
             </div>
         </section>
 
@@ -55,7 +55,7 @@
             <div>
                 <h2 style="color: darkred;">Chat de Negociação</h2>
                 <h3 id="online">
-                    <i class="fas fa-circle" style="color: green;"></i>
+                    <i class="fas fa-circle" style="color: green;"></i> <!-- Bolinha verde de "online" restaurada -->
                     0 Online
                 </h3>
                 <h3 id="messages-received">
@@ -63,12 +63,6 @@
                 </h3>
             </div>
         </section>
-
-        <!-- Botão Limpar Chat (aparece apenas para ADM) -->
-        <div id="admin-controls" style="display: none; position: fixed; bottom: 20px; right: 20px;">
-            <i id="admin-arrow" class="fas fa-chevron-up" style="font-size: 24px; cursor: pointer;" onclick="toggleClearChatButton()"></i>
-            <button id="clear-chat-button" style="display: none;" onclick="clearChat()">Limpar Chat</button>
-        </div>
     </div>
 
     <script src="./js/main.js"></script>
