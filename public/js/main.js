@@ -81,7 +81,7 @@ function Submit(event) {
 
     // Bloqueia envio de números telefônicos nos formatos específicos, exceto para o ADM
     if (isPhoneNumber(message)) {
-        if (author !== '<strong style="color: darkred;">Auza Services</strong>') {
+        if (author !== '<strong style="color: darkred;">Auza Support</strong>') {
             alert("Você não tem permissão para enviar números telefônicos.");
             return;
         }
