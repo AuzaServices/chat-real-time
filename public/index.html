@@ -2,9 +2,9 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="theme-color" content="#222429" />
-    <title>Chat de Negociação | Auza Services</title>
+    <title>Chat de Negociação | Auza Support</title>
 
     <!-- Fontes e bibliotecas -->
     <script rel="preconnect preload" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -17,7 +17,7 @@
     <!-- Tela inicial -->
     <div id="welcome-screen">
         <h1>Bem Vindo(a) ao Chat de Negociação</h1>
-        <h2 style="color: darkred; font-weight: bold; margin-top: -20px;">Auza Services</h2>
+        <h2 style="color: darkred; font-weight: bold; margin-top: -20px;">Auza Support</h2>
         <p style="margin-top: 20px; margin-bottom: 10px;">Por favor, escolha seu tipo de usuário:</p>
         <select id="user-type" onchange="showFields()">
             <option value="">Selecione</option>
@@ -42,9 +42,11 @@
                 </div>
             </div>
             <div id="send-messages">
+                <!-- Campo de entrada de mensagem -->
                 <input type="text" id="input-message" name="message" autocomplete="off" 
                        autofocus placeholder="Mensagem" onkeypress="if(event.key === 'Enter'){Submit(event)}">
-                <i class="fas fa-paper-plane" onclick="Submit(event)"></i>
+                <!-- Botão de enviar mensagem -->
+                <i class="fas fa-paper-plane" onclick="Submit(event)"></i> <!-- Ícone do avião de papel -->
             </div>
         </section>
 
@@ -53,7 +55,7 @@
             <div>
                 <h2 style="color: darkred;">Chat de Negociação</h2>
                 <h3 id="online">
-                    <i class="fas fa-circle" style="color: green;"></i>
+                    <i class="fas fa-circle" style="color: green;"></i> <!-- Bolinha verde de "online" restaurada -->
                     0 Online
                 </h3>
                 <h3 id="messages-received">
