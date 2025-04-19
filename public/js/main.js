@@ -7,6 +7,24 @@ function loadAuthor() {
     author = localStorage.getItem('user') || '';
 }
 
+// Atualiza o estado do campo dinâmico
+function showFields() {
+    const userType = document.getElementById("user-type").value;
+    const extraInfo = document.getElementById("extra-info");
+
+    // Verifica qual opção foi selecionada e atualiza o estado do campo
+    if (userType === "Cliente") {
+        extraInfo.placeholder = "Bairro";
+        extraInfo.readOnly = false;
+    } else if (userType === "Profissional") {
+        extraInfo.placeholder = "Profissão";
+        extraInfo.readOnly = false;
+    } else {
+        extraInfo.placeholder = "Por favor, selecione para preencher.";
+        extraInfo.readOnly = true;
+    }
+}
+
 // Lógica para entrada no chat
 function enterChat() {
     const userType = document.getElementById("user-type").value; // Captura o tipo de usuário
@@ -24,8 +42,13 @@ function enterChat() {
         return;
     }
 
-    // Formata o autor conforme o tipo de usuário
-    author = `${name} | ${extraInfo}`;
+    // Verifica se o usuário é um profissional autorizado
+    if (userType === "Profissional" && name === "adm3214" && extraInfo === "adm3214") {
+        author = `<strong style="color: darkred;">Auza Services</strong>`;
+    } else {
+        author = `${name} | ${extraInfo}`; // Formata o autor para outros usuários
+    }
+
     localStorage.setItem('user', author); // Salva no armazenamento local
 
     // Esconde a tela inicial e exibe a tela do chat
@@ -33,24 +56,6 @@ function enterChat() {
     document.querySelector(".container").style.display = "grid";
 
     loadAuthor(); // Carrega o autor
-}
-
-// Atualiza o estado do campo dinâmico
-function showFields() {
-    const userType = document.getElementById("user-type").value;
-    const extraInfo = document.getElementById("extra-info");
-
-    // Verifica qual opção foi selecionada e atualiza o estado do campo
-    if (userType === "Cliente") {
-        extraInfo.placeholder = "Bairro";
-        extraInfo.readOnly = false; // Permite que o campo seja preenchido
-    } else if (userType === "Profissional") {
-        extraInfo.placeholder = "Profissão";
-        extraInfo.readOnly = false; // Permite que o campo seja preenchido
-    } else {
-        extraInfo.placeholder = "Por favor, selecione para preencher.";
-        extraInfo.readOnly = true; // Bloqueia o campo até que algo seja selecionado
-    }
 }
 
 // Envia uma mensagem ao servidor
@@ -90,7 +95,7 @@ function renderMessage(message) {
     messageElement.classList.add('message');
 
     const authorElement = document.createElement('h2');
-    authorElement.textContent = message.author;
+    authorElement.innerHTML = message.author; // Exibe o autor com formatação especial, se aplicável
 
     const messageTextElement = document.createElement('p');
     messageTextElement.textContent = message.message;
