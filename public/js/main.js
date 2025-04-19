@@ -1,6 +1,8 @@
 // Inicializa a conexão com o socket
 var socket = io('/');
 var author = ''; // Nome e informação do usuário
+var inactivityTimer = null; // Timer para inatividade
+var inactivityTimeLimit = 10 * 60 * 1000; // 10 minutos em milissegundos
 
 // Carrega o autor do localStorage ao entrar no chat
 function loadAuthor() {
@@ -56,6 +58,7 @@ function enterChat() {
     document.querySelector(".container").style.display = "grid";
 
     loadAuthor(); // Carrega o autor
+    resetInactivityTimer(); // Inicia o monitoramento de inatividade
 }
 
 // Valida se a mensagem contém um número telefônico nos formatos especificados
@@ -101,12 +104,18 @@ function Submit(event) {
 
     // Limpa o campo de entrada após o envio
     document.querySelector('input[name=message]').value = '';
+
+    // Reinicia o monitoramento de inatividade
+    resetInactivityTimer();
 }
 
 // Exibe mensagens recebidas no chat (corrigido para evitar duplicação)
 socket.off('receivedMessage'); // Remove qualquer registro anterior
 socket.on('receivedMessage', function (message) {
     renderMessage(message);
+
+    // Reinicia o monitoramento de inatividade ao receber mensagens
+    resetInactivityTimer();
 });
 
 // Renderiza uma mensagem no chat
@@ -170,4 +179,29 @@ socket.on('receivedMessage', function (message) {
     messageCount++; // Incrementa contador de mensagens
     renderMessage(message);
     updateCounters();
+});
+
+// Monitoramento de inatividade
+function resetInactivityTimer() {
+    if (inactivityTimer) {
+        clearTimeout(inactivityTimer); // Limpa o timer atual
+    }
+
+    // Inicia um novo timer para limpar o chat após 10 minutos de inatividade
+    inactivityTimer = setTimeout(() => {
+        clearChat(); // Limpa o chat automaticamente
+    }, inactivityTimeLimit);
+}
+
+// Função para limpar o chat
+function clearChat() {
+    const messagesContainer = document.getElementById('messages');
+    messagesContainer.innerHTML = ''; // Limpa localmente
+    socket.emit('clearChat'); // Notifica todos os usuários para limpar o chat
+}
+
+// Evento do servidor para limpar o chat
+socket.on('clearChat', function () {
+    const messagesContainer = document.getElementById('messages');
+    messagesContainer.innerHTML = ''; // Limpa remotamente
 });
