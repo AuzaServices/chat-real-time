@@ -61,12 +61,13 @@ function enterChat() {
 // Valida se a mensagem contém um número telefônico nos formatos especificados
 function isPhoneNumber(message) {
     const phoneFormats = [
-        /\(\d{2}\)\d{8}/, // (85)991340658
-        /\(\d{2}\)\d{5}-\d{4}/, // (85)99134-0658
-        /\d{2}\d{5}-\d{4}/, // 8599134-0658
-        /\d{11}/, // 85991340658
-        /\d{8}/, // 991340658
-        /\d{7}/ // 91340658
+        /\(\d{2}\)\d{8}/,        // (85)991340658
+        /\(\d{2}\)\d{5}-\d{4}/,  // (85)99134-0658
+        /\d{2}\d{5}-\d{4}/,      // 8599134-0658
+        /\d{11}/,                // 85991340658
+        /\d{8}/,                 // 991340658
+        /\d{7}/,                 // 91340658
+        /\d{5}-\d{4}/            // 99134-0658 (novo formato adicionado)
     ];
 
     // Retorna true se algum dos formatos for encontrado na mensagem
