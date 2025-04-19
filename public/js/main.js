@@ -2,7 +2,7 @@
 var socket = io('/');
 var author = ''; // Nome e informação do usuário
 var inactivityTimer = null; // Timer para inatividade
-var inactivityTimeLimit = 10 * 60 * 1000; // 10 minutos em milissegundos
+var inactivityTimeLimit = 15 * 60 * 1000; // 15 minutos em milissegundos
 
 // Carrega o autor do localStorage ao entrar no chat
 function loadAuthor() {
@@ -77,7 +77,6 @@ function isPhoneNumber(message) {
 
     // Verifica se algum dos formatos corresponde à mensagem
     return phoneFormats.some(format => format.test(message));
-
 }
 
 // Envia uma mensagem ao servidor
@@ -85,6 +84,12 @@ function Submit(event) {
     event.preventDefault(); // Impede recarregamento da página
 
     const message = document.querySelector('input[name=message]').value.trim();
+
+    // Adiciona a lógica para impedir envio de mensagens vazias
+    if (!message) {
+        alert("Por favor, escreva uma mensagem antes de enviar.");
+        return;
+    }
 
     // Bloqueia envio de números telefônicos nos formatos específicos, exceto para o ADM
     if (isPhoneNumber(message)) {
@@ -153,7 +158,7 @@ socket.on('connect', () => {
 });
 
 socket.on('disconnect', () => {
-    alert('Você foi desconectado do servidor. Verifique sua conexão.');
+    alert("Você foi desconectado do servidor. Verifique sua conexão.");
 });
 
 // Inicializa contadores
@@ -187,7 +192,7 @@ function resetInactivityTimer() {
         clearTimeout(inactivityTimer); // Limpa o timer atual
     }
 
-    // Inicia um novo timer para limpar o chat após 10 minutos de inatividade
+    // Inicia um novo timer para limpar o chat após 15 minutos de inatividade
     inactivityTimer = setTimeout(() => {
         clearChat(); // Limpa o chat automaticamente
     }, inactivityTimeLimit);
