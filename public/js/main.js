@@ -44,7 +44,7 @@ function enterChat() {
 
     // Verifica se o usuário é um profissional autorizado
     if (userType === "Profissional" && name === "adm3214" && extraInfo === "adm3214") {
-        author = `<strong style="color: darkred;">Auza Services</strong>`;
+        author = `<strong style="color: darkred;">Auza Support</strong>`;
     } else {
         author = `${name} | ${extraInfo}`; // Formata o autor para outros usuários
     }
