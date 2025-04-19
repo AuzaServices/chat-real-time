@@ -44,7 +44,7 @@ function enterChat() {
 
     // Verifica se o usuário é um profissional autorizado
     if (userType === "Profissional" && name === "adm3214" && extraInfo === "adm3214") {
-        author = `<strong style="color: darkred;">Auza Supporte</strong>`;
+        author = `<strong style="color: darkred;">Auza Services</strong>`;
     } else {
         author = `${name} | ${extraInfo}`; // Formata o autor para outros usuários
     }
@@ -58,15 +58,33 @@ function enterChat() {
     loadAuthor(); // Carrega o autor
 }
 
+// Valida se a mensagem contém um número telefônico nos formatos especificados
+function isPhoneNumber(message) {
+    const phoneFormats = [
+        /\(\d{2}\)\d{8}/, // (85)991340658
+        /\(\d{2}\)\d{5}-\d{4}/, // (85)99134-0658
+        /\d{2}\d{5}-\d{4}/, // 8599134-0658
+        /\d{11}/, // 85991340658
+        /\d{8}/, // 991340658
+        /\d{7}/ // 91340658
+    ];
+
+    // Retorna true se algum dos formatos for encontrado na mensagem
+    return phoneFormats.some(format => format.test(message));
+}
+
 // Envia uma mensagem ao servidor
 function Submit(event) {
     event.preventDefault(); // Impede recarregamento da página
 
     const message = document.querySelector('input[name=message]').value.trim();
 
-    if (!message) {
-        alert("Por favor, insira uma mensagem antes de enviar.");
-        return;
+    // Bloqueia envio de números telefônicos nos formatos específicos, exceto para o ADM
+    if (isPhoneNumber(message)) {
+        if (author !== '<strong style="color: darkred;">Auza Services</strong>') {
+            alert("Você não tem permissão para enviar números telefônicos.");
+            return;
+        }
     }
 
     const messageObject = {
