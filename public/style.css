@@ -218,3 +218,32 @@
         width: 85vw;
     }
 }
+
+#welcome-screen button:active {
+    background: #720f0f; /* Mantém o vermelho ao clicar */
+    color: #d6d5d5; /* Mantém a cor do texto */
+    border: 1px solid #2a2a2a; /* Define borda para consistência */
+}
+
+#welcome-screen button:focus {
+    background: #720f0f; /* Mantém o vermelho ao ganhar foco */
+    color: #d6d5d5;
+    outline: none; /* Remove o contorno padrão */
+}
+
+/* Estilo para o botão quando clicado */
+#welcome-screen button:active {
+    animation: clickEffect 0.2s ease-in-out; /* Aplica a animação */
+}
+
+/* Definição da animação */
+@keyframes clickEffect {
+    0% {
+        background-color: #333539; /* Cor momentânea (cinza escuro) */
+        transform: scale(0.95); /* Botão ligeiramente menor */
+    }
+    100% {
+        background-color: #720f0f; /* Retorna ao vermelho original */
+        transform: scale(1); /* Volta ao tamanho original */
+    }
+}
