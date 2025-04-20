@@ -158,7 +158,7 @@ socket.on('connect', () => {
 });
 
 socket.on('disconnect', () => {
-    alert("Você foi desconectado do servidor. Verifique sua conexão.");
+    // Removido o alerta de desconexão
 });
 
 // Inicializa contadores
