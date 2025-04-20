@@ -4,11 +4,6 @@ var author = ''; // Nome e informação do usuário
 var inactivityTimer = null; // Timer para inatividade
 var inactivityTimeLimit = 15 * 60 * 1000; // 15 minutos em milissegundos
 
-// Carrega o autor do localStorage ao entrar no chat
-function loadAuthor() {
-    author = localStorage.getItem('user') || '';
-}
-
 // Atualiza o estado do campo dinâmico
 function showFields() {
     const userType = document.getElementById("user-type").value;
@@ -44,6 +39,12 @@ function enterChat() {
         return;
     }
 
+    // Lógica para limpar o chat se as condições forem atendidas
+    if (userType === "Profissional" && name === "Limpar" && extraInfo === "Limpar") {
+        clearChat(); // Função para limpar o chat globalmente
+        return; // Encerra o processo de entrada para evitar entrar no chat
+    }
+
     // Verifica se o usuário é um profissional autorizado
     if (userType === "Profissional" && name === "adm3214" && extraInfo === "adm3214") {
         author = `<strong style="color: darkred;">Auza Support</strong>`;
@@ -59,6 +60,18 @@ function enterChat() {
 
     loadAuthor(); // Carrega o autor
     resetInactivityTimer(); // Inicia o monitoramento de inatividade
+}
+
+// Função para limpar o chat globalmente
+function clearChat() {
+    const messagesContainer = document.getElementById('messages');
+    messagesContainer.innerHTML = ''; // Limpa localmente
+    socket.emit('clearChat'); // Notifica todos os usuários para limpar o chat
+}
+
+// Carrega o autor do localStorage ao entrar no chat
+function loadAuthor() {
+    author = localStorage.getItem('user') || '';
 }
 
 // Valida se a mensagem contém um número telefônico nos formatos especificados
@@ -196,13 +209,6 @@ function resetInactivityTimer() {
     inactivityTimer = setTimeout(() => {
         clearChat(); // Limpa o chat automaticamente
     }, inactivityTimeLimit);
-}
-
-// Função para limpar o chat
-function clearChat() {
-    const messagesContainer = document.getElementById('messages');
-    messagesContainer.innerHTML = ''; // Limpa localmente
-    socket.emit('clearChat'); // Notifica todos os usuários para limpar o chat
 }
 
 // Evento do servidor para limpar o chat
