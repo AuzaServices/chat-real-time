@@ -247,3 +247,16 @@
         transform: scale(1); /* Volta ao tamanho original */
     }
 }
+
+/* Impede a seleção nos containers e em todos os elementos filhos */
+#welcome-screen, 
+#welcome-screen * {
+    user-select: none; /* Bloqueia a seleção de todo o conteúdo do welcome-screen */
+}
+
+button, 
+input, 
+select {
+    user-select: none; /* Adiciona também aos campos e botões */
+    pointer-events: auto; /* Garante que eles ainda possam ser clicados normalmente */
+}
