@@ -277,29 +277,3 @@
 #send-icon svg:active {
     fill: #720f0f; /* Altera cor ao clicar */
 }
-
-#waiting-message {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(139, 0, 0, 0.8); /* Darkred levemente transparente */
-    color: #fff;
-    padding: 20px;
-    border-radius: 10px; /* Bordas arredondadas */
-    text-align: center;
-    font-size: 1.2rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    max-width: 80%;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    z-index: 1000; /* Certifica-se de estar por cima */
-    opacity: 1; /* Totalmente visível por padrão */
-    transition: opacity 0.5s ease-in-out; /* Transição suave */
-}
-
-.hidden {
-    opacity: 0; /* Torna o elemento invisível gradualmente */
-    pointer-events: none; /* Impede interações enquanto invisível */
-}
