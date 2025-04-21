@@ -280,17 +280,20 @@
 
 #entry-alert {
     position: fixed;
-    bottom: 70px; /* Ajusta para ficar próximo ao campo de envio */
+    bottom: 70px; /* Mantém próximo ao campo de envio */
     left: 50%;
     transform: translateX(-50%);
-    width: 80%;
-    padding: 10px;
-    background: darkred; /* Alterado para darkred */
+    width: 100%;
+    padding: 8px;
+    background: darkred;
     color: white;
-    font-size: 0.9rem; /* Reduzido o tamanho da fonte */
-    text-align: center;
+    font-size: 0.85rem;
     font-weight: bold;
+    text-align: center;
     border: none;
-    opacity: 0; /* Começa invisível */
+    opacity: 0;
     transition: opacity 1s ease-in-out;
+    white-space: nowrap; /* Garante que o texto fique em uma única linha */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Caso o texto fique maior que o espaço disponível */
 }
