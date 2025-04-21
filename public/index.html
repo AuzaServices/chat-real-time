@@ -45,8 +45,8 @@
                 <!-- Campo de entrada de mensagem -->
                 <input type="text" id="input-message" name="message" autocomplete="off" 
                        autofocus placeholder="Mensagem" onkeypress="if(event.key === 'Enter'){Submit(event)}">
-                <!-- Ícone do aviãozinho para envio -->
-                <i class="fas fa-paper-plane" id="send-icon" onclick="Submit(event)"></i>
+                <!-- Botão de enviar mensagem -->
+                <i class="fas fa-paper-plane" onclick="Submit(event)"></i> <!-- Ícone do avião de papel -->
             </div>
         </section>
 
@@ -55,7 +55,7 @@
             <div>
                 <h2 style="color: darkred;">Chat de Negociação</h2>
                 <h3 id="online">
-                    <i class="fas fa-circle" style="color: green;"></i> <!-- Indicador de online -->
+                    <i class="fas fa-circle" style="color: green;"></i> <!-- Bolinha verde de "online" restaurada -->
                     0 Online
                 </h3>
                 <h3 id="messages-received">
