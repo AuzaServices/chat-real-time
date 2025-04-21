@@ -22,8 +22,19 @@ function showFields() {
     }
 }
 
-// Exibe mensagem no centro da tela com base no tipo de usuário
+// Função para verificar se há mensagens no chat
+function hasMessages() {
+    const messagesContainer = document.getElementById('messages');
+    return messagesContainer && messagesContainer.children.length > 0;
+}
+
+// Exibe mensagem no centro da tela com base no tipo de usuário, se não houver mensagens
 function showWaitingMessage(userType) {
+    if (hasMessages()) {
+        // Não exibe o container vermelho se já houver mensagens
+        return;
+    }
+
     const messageBox = document.createElement("div");
     messageBox.id = "waiting-message";
     messageBox.style.position = "fixed";
@@ -73,7 +84,7 @@ function enterChat() {
         return;
     }
 
-    // Exibe a mensagem de espera
+    // Exibe a mensagem de espera, se necessário
     showWaitingMessage(userType);
 
     // Lógica para limpar o chat se as condições forem atendidas
