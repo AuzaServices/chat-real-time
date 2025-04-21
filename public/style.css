@@ -277,3 +277,20 @@
 #send-icon svg:active {
     fill: #720f0f; /* Altera cor ao clicar */
 }
+
+#entry-alert {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    padding: 15px;
+    background: rgba(255, 0, 0, 0.7); /* Vermelho transparente */
+    color: white;
+    font-size: 1.2rem;
+    text-align: center;
+    font-weight: bold;
+    border: none;
+    opacity: 0; /* Começa invisível */
+    transition: opacity 1s ease-in-out;
+}
