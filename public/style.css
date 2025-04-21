@@ -125,7 +125,7 @@
 
 /* Área de envio */
 #send-messages {
-    position:fixed;
+    position: fixed;
     bottom: 0;
     left: 0;
     width: 100vw;
@@ -133,25 +133,38 @@
     background: #141419;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 0;
+    justify-content: space-between; /* Garante que os itens se alinhem corretamente */
+    padding: 0 10px; /* Adiciona espaçamento interno */
     box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.5);
 }
 
-#send-messages input {
-    width: 95%; /* Largura permanece a mesma */
+#input-message {
+    width: 90%; /* Ajusta a largura do campo para dar espaço ao ícone */
     height: 45px;
     background: #333539;
     border: 1px solid #646464;
     border-radius: 5px;
     font-size: 1rem;
-    padding-left: 15px; /* Espaço interno do texto à esquerda */
-    padding-right: 10px; /* Adicionado para balancear espaço interno à direita */
-    margin-left: 5px; /* Move o campo um pouco mais para a direita */
+    padding-left: 15px; /* Espaço interno à esquerda */
     color: #f5f5f5;
     outline: none;
 }
 
+#send-icon {
+    font-size: 1.8rem; /* Tamanho do ícone */
+    color: #8E9094;
+    cursor: pointer; /* Torna o ícone clicável */
+    margin-left: 10px; /* Espaço entre o campo e o ícone */
+    transition: color 0.3s ease;
+}
+
+#send-icon:hover {
+    color: #fff; /* Cor ao passar o mouse */
+}
+
+#send-icon:active {
+    color: #720f0f; /* Cor ao clicar */
+}
 #send-messages i {
     font-size: 1.8rem;
     color: #8E9094;
