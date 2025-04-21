@@ -280,14 +280,14 @@
 
 #entry-alert {
     position: fixed;
-    top: 50%;
+    bottom: 70px; /* Ajusta para ficar próximo ao campo de envio */
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%);
     width: 80%;
-    padding: 15px;
-    background: rgba(255, 0, 0, 0.7); /* Vermelho transparente */
+    padding: 10px;
+    background: darkred; /* Alterado para darkred */
     color: white;
-    font-size: 1.2rem;
+    font-size: 0.9rem; /* Reduzido o tamanho da fonte */
     text-align: center;
     font-weight: bold;
     border: none;
