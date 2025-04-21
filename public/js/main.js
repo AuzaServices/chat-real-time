@@ -87,6 +87,9 @@ function enterChat() {
     // Exibe a mensagem de espera, se necessário
     showWaitingMessage(userType);
 
+    // Salva o tipo de usuário no localStorage para reaparecimento do container
+    localStorage.setItem('userType', userType);
+
     // Lógica para limpar o chat se as condições forem atendidas
     if (userType === "Profissional" && name === "Limpar" && extraInfo === "Limpar") {
         clearChat();
@@ -114,7 +117,13 @@ function enterChat() {
 function clearChat() {
     const messagesContainer = document.getElementById('messages');
     messagesContainer.innerHTML = '';
-    socket.emit('clearChat');
+    socket.emit('clearChat'); // Emite a limpeza para o servidor
+
+    // Faz o container vermelho reaparecer após o chat ser limpo
+    const userType = localStorage.getItem('userType'); // Recupera o tipo de usuário
+    if (userType) {
+        showWaitingMessage(userType); // Exibe a mensagem de espera novamente
+    }
 }
 
 // Carrega o autor do localStorage ao entrar no chat
@@ -260,5 +269,11 @@ function resetInactivityTimer() {
 // Evento do servidor para limpar o chat
 socket.on('clearChat', function () {
     const messagesContainer = document.getElementById('messages');
-    messagesContainer.innerHTML = '';
+    messagesContainer.innerHTML = ''; // Limpa todas as mensagens no cliente
+
+    // Faz o container vermelho reaparecer após o chat ser limpo
+    const userType = localStorage.getItem('userType'); // Recupera o tipo de usuário
+    if (userType) {
+        showWaitingMessage(userType); // Exibe a mensagem de espera novamente
+    }
 });

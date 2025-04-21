@@ -31,9 +31,6 @@ io.on('connection', (socket) => {
     socket.on('sendMessage', (data) => {
         messages.push(data);
         io.emit('receivedMessage', data); // Envia para todos os clientes, incluindo o remetente
-
-        // Emite evento para remover o container vermelho para todos os usuários
-        io.emit('removeWaitingMessage'); 
     });
 
     // Escuta o evento para limpar o chat
@@ -44,7 +41,7 @@ io.on('connection', (socket) => {
         messages = [];
 
         // Emite o evento 'clearChat' para todos os clientes conectados
-        io.emit('clearChat');
+        io.emit('clearChat'); // Notifica todos os usuários para limpar o chat
     });
 
     // Lida com desconexão
@@ -55,5 +52,5 @@ io.on('connection', (socket) => {
 });
 
 server.listen(port, () => {
-    console.log(`Server running on localhost:${port}`);
+    console.log(`Server running on http://localhost:${port}`);
 });
