@@ -2,7 +2,7 @@
 var socket = io('/');
 var author = ''; // Nome e informação do usuário
 var inactivityTimer = null; // Timer para inatividade
-var inactivityTimeLimit = 15 * 60 * 1000; // 15 minutos em milissegundos
+var inactivityTimeLimit = 20 * 60 * 1000; // 15 minutos em milissegundos
 
 // Atualiza o estado do campo dinâmico
 function showFields() {
