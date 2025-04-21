@@ -216,3 +216,68 @@ socket.on('clearChat', function () {
     const messagesContainer = document.getElementById('messages');
     messagesContainer.innerHTML = ''; // Limpa remotamente
 });
+
+function enterChat() {
+    const userType = document.getElementById("user-type").value; // Captura o tipo de usuário
+    const name = document.getElementById("name").value.trim(); // Captura o nome
+    const extraInfo = document.getElementById("extra-info").value.trim(); // Captura o campo Bairro/Profissão
+
+    // Valida os campos obrigatórios
+    if (!userType || name.length < 4) {
+        alert("Por favor, preencha o campo Nome e escolha um tipo de usuário.");
+        return;
+    }
+
+    if (!extraInfo) {
+        alert(`Por favor, preencha o campo ${userType === "Cliente" ? "Bairro" : "Profissão"}.`);
+        return;
+    }
+
+    // Verifica o tipo de usuário e exibe a mensagem correspondente
+    const waitingMessage = document.getElementById("waiting-message");
+    if (userType === "Cliente") {
+        waitingMessage.textContent = "Aguarde enquanto o Profissional entra no Chat!";
+    } else if (userType === "Profissional") {
+        waitingMessage.textContent = "Aguarde enquanto o Cliente entra no Chat!";
+    }
+    waitingMessage.classList.remove("hidden"); // Mostra a mensagem
+
+    // Esconde a tela inicial e exibe a tela do chat
+    document.getElementById("welcome-screen").style.display = "none";
+    document.querySelector(".container").style.display = "grid";
+
+    loadAuthor(); // Carrega o autor
+    resetInactivityTimer(); // Inicia o monitoramento de inatividade
+}
+
+function Submit(event) {
+    event.preventDefault(); // Impede o recarregamento da página
+
+    const message = document.querySelector('input[name=message]').value.trim();
+
+    // Valida se a mensagem não está vazia
+    if (!message) {
+        alert("Por favor, escreva uma mensagem antes de enviar.");
+        return;
+    }
+
+    const messageObject = {
+        author, // Nome do usuário
+        message // Texto da mensagem
+    };
+
+    // Envia a mensagem para o servidor
+    socket.emit('sendMessage', messageObject);
+
+    // Limpa o campo de entrada
+    document.querySelector('input[name=message]').value = '';
+
+    // Verifica se a mensagem de espera está visível e a remove
+    const waitingMessage = document.getElementById("waiting-message");
+    if (waitingMessage && !waitingMessage.classList.contains("hidden")) {
+        waitingMessage.classList.add("hidden"); // Esconde o quadrado suavemente
+    }
+
+    // Reinicia o monitoramento de inatividade
+    resetInactivityTimer();
+}

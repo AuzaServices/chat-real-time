@@ -41,14 +41,12 @@
                     <div id="initialMessage"></div>
                 </div>
             </div>
+            <!-- Mensagem de aviso no meio do chat -->
+            <div id="waiting-message" class="hidden"></div>
             <div id="send-messages">
-                <input type="text" id="input-message" name="message" placeholder="Mensagem">
-                <button id="send-icon" onclick="Submit(event)">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="#8E9094" viewBox="0 0 24 24" width="24px" height="24px">
-                        <path d="M2,21l21-9L2,3v7l15,2l-15,2V21z"/>
-                    </svg>
-                </button>
-            </div>
+                <input type="text" id="input-message" name="message" autocomplete="off" 
+                       autofocus placeholder="Mensagem" onkeypress="if(event.key === 'Enter'){Submit(event)}">
+                <i class="fas fa-paper-plane" id="send-icon" onclick="Submit(event)"></i>
             </div>
         </section>
 
@@ -57,7 +55,7 @@
             <div>
                 <h2 style="color: darkred;">Chat de Negociação</h2>
                 <h3 id="online">
-                    <i class="fas fa-circle" style="color: green;"></i> <!-- Bolinha verde de "online" restaurada -->
+                    <i class="fas fa-circle" style="color: green;"></i> <!-- Indicador de online -->
                     0 Online
                 </h3>
                 <h3 id="messages-received">
