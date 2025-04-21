@@ -42,11 +42,13 @@
                 </div>
             </div>
             <div id="send-messages">
-                <!-- Campo de entrada de mensagem -->
-                <input type="text" id="input-message" name="message" autocomplete="off" 
-                       autofocus placeholder="Mensagem" onkeypress="if(event.key === 'Enter'){Submit(event)}">
-                <!-- Botão de enviar mensagem -->
-                <i class="fas fa-paper-plane" onclick="Submit(event)"></i> <!-- Ícone do avião de papel -->
+                <input type="text" id="input-message" name="message" placeholder="Mensagem">
+                <button id="send-icon" onclick="Submit(event)">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="#8E9094" viewBox="0 0 24 24" width="24px" height="24px">
+                        <path d="M2,21l21-9L2,3v7l15,2l-15,2V21z"/>
+                    </svg>
+                </button>
+            </div>
             </div>
         </section>
 

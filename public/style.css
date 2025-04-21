@@ -247,3 +247,20 @@
         transform: scale(1); /* Volta ao tamanho original */
     }
 }
+
+#send-icon {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#send-icon svg:hover {
+    fill: #fff; /* Altera cor ao passar o mouse */
+}
+
+#send-icon svg:active {
+    fill: #720f0f; /* Altera cor ao clicar */
+}
