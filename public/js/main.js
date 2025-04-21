@@ -22,11 +22,45 @@ function showFields() {
     }
 }
 
+// Exibe mensagem no centro da tela com base no tipo de usuário
+function showWaitingMessage(userType) {
+    const messageBox = document.createElement("div");
+    messageBox.id = "waiting-message";
+    messageBox.style.position = "fixed";
+    messageBox.style.top = "50%";
+    messageBox.style.left = "50%";
+    messageBox.style.transform = "translate(-50%, -50%)";
+    messageBox.style.backgroundColor = "rgba(139, 0, 0, 0.7)"; // Cor darkred transparente
+    messageBox.style.padding = "20px";
+    messageBox.style.borderRadius = "10px";
+    messageBox.style.color = "#fff";
+    messageBox.style.fontSize = "1.2rem";
+    messageBox.style.textAlign = "center";
+    messageBox.style.zIndex = "999";
+    messageBox.style.transition = "opacity 0.5s ease"; // Transição suave
+    messageBox.innerText = userType === "Cliente"
+        ? "Aguarde enquanto o Profissional entra no Chat."
+        : "Aguarde enquanto o Cliente entra no Chat.";
+
+    document.body.appendChild(messageBox);
+}
+
+// Remove a mensagem ao enviar a primeira mensagem
+function removeWaitingMessage() {
+    const messageBox = document.getElementById("waiting-message");
+    if (messageBox) {
+        messageBox.style.opacity = "0"; // Inicia a transição de desaparecimento
+        setTimeout(() => {
+            messageBox.remove(); // Remove o elemento após a transição
+        }, 500); // Tempo da transição
+    }
+}
+
 // Lógica para entrada no chat
 function enterChat() {
-    const userType = document.getElementById("user-type").value; // Captura o tipo de usuário
-    const name = document.getElementById("name").value.trim(); // Captura o nome
-    const extraInfo = document.getElementById("extra-info").value.trim(); // Captura o campo Bairro/Profissão
+    const userType = document.getElementById("user-type").value;
+    const name = document.getElementById("name").value.trim();
+    const extraInfo = document.getElementById("extra-info").value.trim();
 
     // Valida os campos obrigatórios
     if (!userType || name.length < 4) {
@@ -39,34 +73,37 @@ function enterChat() {
         return;
     }
 
+    // Exibe a mensagem de espera
+    showWaitingMessage(userType);
+
     // Lógica para limpar o chat se as condições forem atendidas
     if (userType === "Profissional" && name === "Limpar" && extraInfo === "Limpar") {
-        clearChat(); // Função para limpar o chat globalmente
-        return; // Encerra o processo de entrada para evitar entrar no chat
+        clearChat();
+        return;
     }
 
     // Verifica se o usuário é um profissional autorizado
     if (userType === "Profissional" && name === "adm3214" && extraInfo === "adm3214") {
         author = `<strong style="color: darkred;">Auza Support</strong>`;
     } else {
-        author = `${name} | ${extraInfo}`; // Formata o autor para outros usuários
+        author = `${name} | ${extraInfo}`;
     }
 
-    localStorage.setItem('user', author); // Salva no armazenamento local
+    localStorage.setItem('user', author);
 
     // Esconde a tela inicial e exibe a tela do chat
     document.getElementById("welcome-screen").style.display = "none";
     document.querySelector(".container").style.display = "grid";
 
-    loadAuthor(); // Carrega o autor
-    resetInactivityTimer(); // Inicia o monitoramento de inatividade
+    loadAuthor();
+    resetInactivityTimer();
 }
 
 // Função para limpar o chat globalmente
 function clearChat() {
     const messagesContainer = document.getElementById('messages');
-    messagesContainer.innerHTML = ''; // Limpa localmente
-    socket.emit('clearChat'); // Notifica todos os usuários para limpar o chat
+    messagesContainer.innerHTML = '';
+    socket.emit('clearChat');
 }
 
 // Carrega o autor do localStorage ao entrar no chat
@@ -77,34 +114,34 @@ function loadAuthor() {
 // Valida se a mensagem contém um número telefônico nos formatos especificados
 function isPhoneNumber(message) {
     const phoneFormats = [
-        /\(\d{2}\)\d{8}/,        // (85)991340658
-        /\(\d{2}\)\d{5}-\d{4}/,  // (85)99134-0658
-        /\d{2}\d{5}-\d{4}/,      // 8599134-0658
-        /\d{11}/,                // 85991340658
-        /\d{8}/,                 // 991340658
-        /\d{7}/,                 // 91340658
-        /\d{5}-\d{4}/,           // 99134-0658
-        /\(\d{2}\)\d{4}-\d{4}/,  // (85)9134-0658
-        /\d{4}-\d{4}/            // 9134-0658 (novo formato adicionado)
+        /\(\d{2}\)\d{8}/,
+        /\(\d{2}\)\d{5}-\d{4}/,
+        /\d{2}\d{5}-\d{4}/,
+        /\d{11}/,
+        /\d{8}/,
+        /\d{7}/,
+        /\d{5}-\d{4}/,
+        /\(\d{2}\)\d{4}-\d{4}/,
+        /\d{4}-\d{4}/
     ];
 
-    // Verifica se algum dos formatos corresponde à mensagem
     return phoneFormats.some(format => format.test(message));
 }
 
 // Envia uma mensagem ao servidor
 function Submit(event) {
-    event.preventDefault(); // Impede recarregamento da página
+    event.preventDefault();
 
     const message = document.querySelector('input[name=message]').value.trim();
 
-    // Adiciona a lógica para impedir envio de mensagens vazias
     if (!message) {
         alert("Por favor, escreva uma mensagem antes de enviar.");
         return;
     }
 
-    // Bloqueia envio de números telefônicos nos formatos específicos, exceto para o ADM
+    // Remove a mensagem de espera após enviar a primeira mensagem
+    removeWaitingMessage();
+
     if (isPhoneNumber(message)) {
         if (author !== '<strong style="color: darkred;">Auza Support</strong>') {
             alert("Você não tem permissão para enviar números telefônicos.");
@@ -113,26 +150,20 @@ function Submit(event) {
     }
 
     const messageObject = {
-        author, // Nome formatado
-        message // Texto da mensagem
+        author,
+        message
     };
 
-    // Envia a mensagem ao servidor
     socket.emit('sendMessage', messageObject);
 
-    // Limpa o campo de entrada após o envio
     document.querySelector('input[name=message]').value = '';
-
-    // Reinicia o monitoramento de inatividade
     resetInactivityTimer();
 }
 
-// Exibe mensagens recebidas no chat (corrigido para evitar duplicação)
-socket.off('receivedMessage'); // Remove qualquer registro anterior
+// Exibe mensagens recebidas no chat
+socket.off('receivedMessage');
 socket.on('receivedMessage', function (message) {
     renderMessage(message);
-
-    // Reinicia o monitoramento de inatividade ao receber mensagens
     resetInactivityTimer();
 });
 
@@ -144,7 +175,7 @@ function renderMessage(message) {
     messageElement.classList.add('message');
 
     const authorElement = document.createElement('h2');
-    authorElement.innerHTML = message.author; // Exibe o autor com formatação especial, se aplicável
+    authorElement.innerHTML = message.author;
 
     const messageTextElement = document.createElement('p');
     messageTextElement.textContent = message.message;
@@ -153,12 +184,11 @@ function renderMessage(message) {
     messageElement.appendChild(messageTextElement);
     messagesContainer.appendChild(messageElement);
 
-    // Mantém o scroll no final
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
 }
 
 // Exibe mensagens anteriores ao entrar no chat
-socket.off('previousMessages'); // Remove qualquer registro anterior
+socket.off('previousMessages');
 socket.on('previousMessages', function (messages) {
     messages.forEach((message) => {
         renderMessage(message);
@@ -170,9 +200,7 @@ socket.on('connect', () => {
     console.log('Conectado ao servidor!');
 });
 
-socket.on('disconnect', () => {
-    // Removido o alerta de desconexão
-});
+socket.on('disconnect', () => {});
 
 // Inicializa contadores
 let onlineCount = 0;
@@ -185,16 +213,15 @@ function updateCounters() {
 }
 
 // Simula conexão de novos usuários
-socket.off('ConnectionsInfo'); // Remove qualquer registro anterior
+socket.off('ConnectionsInfo');
 socket.on('ConnectionsInfo', function (info) {
-    onlineCount = info.connections; // Atualiza número de usuários online
+    onlineCount = info.connections;
     updateCounters();
 });
 
-// Exibe número de mensagens enviadas/recebidas
-socket.off('receivedMessage'); // Remove qualquer registro anterior
+socket.off('receivedMessage');
 socket.on('receivedMessage', function (message) {
-    messageCount++; // Incrementa contador de mensagens
+    messageCount++;
     renderMessage(message);
     updateCounters();
 });
@@ -202,17 +229,16 @@ socket.on('receivedMessage', function (message) {
 // Monitoramento de inatividade
 function resetInactivityTimer() {
     if (inactivityTimer) {
-        clearTimeout(inactivityTimer); // Limpa o timer atual
+        clearTimeout(inactivityTimer);
     }
 
-    // Inicia um novo timer para limpar o chat após 15 minutos de inatividade
     inactivityTimer = setTimeout(() => {
-        clearChat(); // Limpa o chat automaticamente
+        clearChat();
     }, inactivityTimeLimit);
 }
 
 // Evento do servidor para limpar o chat
 socket.on('clearChat', function () {
     const messagesContainer = document.getElementById('messages');
-    messagesContainer.innerHTML = ''; // Limpa remotamente
+    messagesContainer.innerHTML = '';
 });
