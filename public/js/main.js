@@ -233,7 +233,7 @@ function enterChat() {
         return;
     }
 
-    // Verifica o tipo de usuário e exibe a mensagem correspondente
+    // Exibe a mensagem correspondente
     const waitingMessage = document.getElementById("waiting-message");
     if (userType === "Cliente") {
         waitingMessage.textContent = "Aguarde enquanto o Profissional entra no Chat!";
@@ -242,12 +242,9 @@ function enterChat() {
     }
     waitingMessage.classList.remove("hidden"); // Mostra a mensagem
 
-    // Esconde a tela inicial e exibe a tela do chat
+    // Esconde a tela inicial e exibe o chat
     document.getElementById("welcome-screen").style.display = "none";
     document.querySelector(".container").style.display = "grid";
-
-    loadAuthor(); // Carrega o autor
-    resetInactivityTimer(); // Inicia o monitoramento de inatividade
 }
 
 function Submit(event) {
@@ -266,7 +263,7 @@ function Submit(event) {
         message // Texto da mensagem
     };
 
-    // Envia a mensagem para o servidor
+    // Envia a mensagem ao servidor
     socket.emit('sendMessage', messageObject);
 
     // Limpa o campo de entrada
@@ -277,7 +274,4 @@ function Submit(event) {
     if (waitingMessage && !waitingMessage.classList.contains("hidden")) {
         waitingMessage.classList.add("hidden"); // Esconde o quadrado suavemente
     }
-
-    // Reinicia o monitoramento de inatividade
-    resetInactivityTimer();
 }
