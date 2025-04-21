@@ -150,8 +150,11 @@ function Submit(event) {
         return;
     }
 
-    // Remove a mensagem de espera após enviar a primeira mensagem
+    // Remove a mensagem de espera localmente
     removeWaitingMessage();
+
+    // Notifica todos os usuários para remover o container vermelho
+    socket.emit('removeWaitingMessage');
 
     if (isPhoneNumber(message)) {
         if (author !== '<strong style="color: darkred;">Auza Support</strong>') {
@@ -174,9 +177,14 @@ function Submit(event) {
 // Exibe mensagens recebidas no chat e remove o container vermelho
 socket.off('receivedMessage');
 socket.on('receivedMessage', function (message) {
-    removeWaitingMessage(); // Remove o container vermelho quando qualquer mensagem for recebida
+    removeWaitingMessage(); // Remove o container vermelho localmente
     renderMessage(message);
     resetInactivityTimer();
+});
+
+// Escuta evento para remover o container vermelho remotamente
+socket.on('removeWaitingMessage', function () {
+    removeWaitingMessage(); // Remove o container vermelho para todos os usuários conectados
 });
 
 // Renderiza uma mensagem no chat

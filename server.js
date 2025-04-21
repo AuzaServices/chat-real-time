@@ -31,6 +31,9 @@ io.on('connection', (socket) => {
     socket.on('sendMessage', (data) => {
         messages.push(data);
         io.emit('receivedMessage', data); // Envia para todos os clientes, incluindo o remetente
+
+        // Emite evento para remover o container vermelho para todos os usuários
+        io.emit('removeWaitingMessage'); 
     });
 
     // Escuta o evento para limpar o chat
