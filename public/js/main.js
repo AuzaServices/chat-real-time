@@ -56,7 +56,7 @@ function showWaitingMessage(userType) {
     document.body.appendChild(messageBox);
 }
 
-// Remove a mensagem ao enviar a primeira mensagem
+// Remove a mensagem vermelha
 function removeWaitingMessage() {
     const messageBox = document.getElementById("waiting-message");
     if (messageBox) {
@@ -171,9 +171,10 @@ function Submit(event) {
     resetInactivityTimer();
 }
 
-// Exibe mensagens recebidas no chat
+// Exibe mensagens recebidas no chat e remove o container vermelho
 socket.off('receivedMessage');
 socket.on('receivedMessage', function (message) {
+    removeWaitingMessage(); // Remove o container vermelho quando qualquer mensagem for recebida
     renderMessage(message);
     resetInactivityTimer();
 });
