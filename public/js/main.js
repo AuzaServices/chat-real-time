@@ -4,19 +4,14 @@ var author = ''; // Nome e informação do usuário
 var inactivityTimer = null; // Timer para inatividade
 var inactivityTimeLimit = 20 * 60 * 1000; // 15 minutos em milissegundos
 
-// Exibe o alerta de entrada ao usuário, somente se o chat estiver vazio
+// Exibe o alerta de entrada ao usuário
 function showEntryAlert() {
-    const messagesContainer = document.getElementById('messages');
+    const alertBox = document.getElementById('entry-alert');
+    alertBox.style.opacity = "1"; // Exibe o alerta suavemente
 
-    // Verifica se há mensagens antes de exibir o alerta
-    if (messagesContainer.children.length === 0) {
-        const alertBox = document.getElementById('entry-alert');
-        alertBox.style.opacity = "1"; // Exibe o alerta suavemente
-
-        setTimeout(() => {
-            alertBox.style.opacity = "0"; // Esconde suavemente após 6 segundos
-        }, 6000);
-    }
+    setTimeout(() => {
+        alertBox.style.opacity = "0"; // Esconde suavemente após 5 segundos
+    }, 5000);
 }
 
 // Atualiza o estado do campo dinâmico
@@ -67,7 +62,7 @@ function enterChat() {
     document.getElementById("welcome-screen").style.display = "none";
     document.querySelector(".container").style.display = "grid";
 
-    showEntryAlert(); // Exibe o alerta de entrada, se necessário
+    showEntryAlert(); // Exibe o alerta de entrada
     loadAuthor();
     resetInactivityTimer();
 }
