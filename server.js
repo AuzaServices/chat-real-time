@@ -41,7 +41,7 @@ io.on('connection', (socket) => {
         messages = [];
 
         // Emite o evento 'clearChat' para todos os clientes conectados
-        io.emit('clearChat'); // Notifica todos os usuários para limpar o chat
+        io.emit('clearChat');
     });
 
     // Lida com desconexão
@@ -52,5 +52,5 @@ io.on('connection', (socket) => {
 });
 
 server.listen(port, () => {
-    console.log(`Server running on http://localhost:${port}`);
+    console.log(`Server running on localhost:${port}`);
 });

@@ -56,7 +56,7 @@ function showWaitingMessage(userType) {
     document.body.appendChild(messageBox);
 }
 
-// Remove a mensagem vermelha
+// Remove a mensagem ao enviar a primeira mensagem
 function removeWaitingMessage() {
     const messageBox = document.getElementById("waiting-message");
     if (messageBox) {
@@ -87,9 +87,6 @@ function enterChat() {
     // Exibe a mensagem de espera, se necessário
     showWaitingMessage(userType);
 
-    // Salva o tipo de usuário no localStorage para reaparecimento do container
-    localStorage.setItem('userType', userType);
-
     // Lógica para limpar o chat se as condições forem atendidas
     if (userType === "Profissional" && name === "Limpar" && extraInfo === "Limpar") {
         clearChat();
@@ -117,13 +114,7 @@ function enterChat() {
 function clearChat() {
     const messagesContainer = document.getElementById('messages');
     messagesContainer.innerHTML = '';
-    socket.emit('clearChat'); // Emite a limpeza para o servidor
-
-    // Faz o container vermelho reaparecer após o chat ser limpo
-    const userType = localStorage.getItem('userType'); // Recupera o tipo de usuário
-    if (userType) {
-        showWaitingMessage(userType); // Exibe a mensagem de espera novamente
-    }
+    socket.emit('clearChat');
 }
 
 // Carrega o autor do localStorage ao entrar no chat
@@ -159,11 +150,8 @@ function Submit(event) {
         return;
     }
 
-    // Remove a mensagem de espera localmente
+    // Remove a mensagem de espera após enviar a primeira mensagem
     removeWaitingMessage();
-
-    // Notifica todos os usuários para remover o container vermelho
-    socket.emit('removeWaitingMessage');
 
     if (isPhoneNumber(message)) {
         if (author !== '<strong style="color: darkred;">Auza Support</strong>') {
@@ -183,17 +171,11 @@ function Submit(event) {
     resetInactivityTimer();
 }
 
-// Exibe mensagens recebidas no chat e remove o container vermelho
+// Exibe mensagens recebidas no chat
 socket.off('receivedMessage');
 socket.on('receivedMessage', function (message) {
-    removeWaitingMessage(); // Remove o container vermelho localmente
     renderMessage(message);
     resetInactivityTimer();
-});
-
-// Escuta evento para remover o container vermelho remotamente
-socket.on('removeWaitingMessage', function () {
-    removeWaitingMessage(); // Remove o container vermelho para todos os usuários conectados
 });
 
 // Renderiza uma mensagem no chat
@@ -269,11 +251,5 @@ function resetInactivityTimer() {
 // Evento do servidor para limpar o chat
 socket.on('clearChat', function () {
     const messagesContainer = document.getElementById('messages');
-    messagesContainer.innerHTML = ''; // Limpa todas as mensagens no cliente
-
-    // Faz o container vermelho reaparecer após o chat ser limpo
-    const userType = localStorage.getItem('userType'); // Recupera o tipo de usuário
-    if (userType) {
-        showWaitingMessage(userType); // Exibe a mensagem de espera novamente
-    }
+    messagesContainer.innerHTML = '';
 });
