@@ -30,26 +30,27 @@
 </head>
 <body>
     <!-- Tela inicial -->
-    <div id="welcome-screen" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; background: #1f1f1f; color: #fff;">
+    <div id="welcome-screen" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; background: #1f1f1f; color: #fff;">
         <h2>Auza Services</h2>
         <h3>Tudo em Serviços de A a Z</h3>
         <h1>Bem Vindo(a) ao Chat de Negociação</h1>
         <p>Por favor, escolha seu tipo de usuário:</p>
-        <select id="user-type" onchange="showFields()" style="width: 80%; height: 40px; margin-bottom: 15px; background: #333539; color: #fff; padding: 5px; border-radius: 5px; border: 1px solid #646464;">
+        <select id="user-type" onchange="showFields()">
             <option value="">Selecione</option>
             <option value="Cliente">Cliente</option>
             <option value="Profissional">Profissional</option>
         </select>
-        <div id="fields" style="width: 80%;">
-            <input type="text" id="name" placeholder="Nome" style="width: 100%; height: 40px; margin-bottom: 15px; padding: 5px; border-radius: 5px; border: 1px solid #646464;">
-            <input type="text" id="extra-info" placeholder="Por favor, selecione para preencher." readonly style="width: 100%; height: 40px; margin-bottom: 15px; padding: 5px; border-radius: 5px; border: 1px solid #646464;">
+        <div id="fields">
+            <input type="text" id="name" placeholder="Nome">
+            <input type="text" id="extra-info" placeholder="Por favor, selecione para preencher." readonly>
         </div>
-        <button onclick="enterChat()" style="width: 80%; height: 40px; background: #720f0f; color: #d6d5d5; border-radius: 5px; border: 1px solid #2a2a2a;">Entrar</button>
+        <button onclick="enterChat()">Entrar</button>
 
-        <!-- Rodapé para a tela inicial -->
-        <div style="width: 100%; height: 40px; background-color: #333539; color: #d6d5d5; font-size: 0.85rem; display: flex; align-items: center; justify-content: center; position: absolute; bottom: 0; left: 0;">
+        <!-- Rodapé apenas na tela inicial -->
+        <div id="rodape">
             © 2025 Auza Services. Todos os direitos reservados.
         </div>
+    </div>
 
     <!-- Tela do chat -->
     <div class="container" style="display: none;">
