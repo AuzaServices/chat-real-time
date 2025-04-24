@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, maximum-scale=1.0, user-scalable=no">
     <meta name="theme-color" content="#222429" />
     <title>Chat de Negociação | Auza Services</title>
 
@@ -13,29 +13,23 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha384-dyBEE2OaGyoyLeYb3yByp7nP9v1+X9x+5uXmC/c7CktQGi1mZCY9LqMOiR+AkDd" crossorigin="anonymous">
 </head>
-<body style="margin: 0; padding: 0; font-family: 'Roboto', sans-serif;">
-
+<body>
     <!-- Tela inicial -->
-    <div id="welcome-screen" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; background: #1f1f1f; color: #fff;">
+    <div id="welcome-screen">
         <h2 style="color: darkred; font-weight: bold; margin-top: -20px;">Auza Services</h2>
         <h3 style="font-weight: normal; margin-bottom: 20px;">Tudo em Serviços de A a Z</h3>
         <h1 style="margin-top: 40px;">Bem Vindo(a) ao Chat de Negociação</h1>
-        <p style="margin-top: 20px; margin-bottom: 10px;">Por favor, escolha seu tipo de usuário:</p>
-        <select id="user-type" onchange="showFields()" style="width: 80%; height: 40px; margin-bottom: 15px; background: #333539; color: #fff; padding: 5px; border-radius: 5px; border: 1px solid #646464;">
+        <p style="margin-top: -15px; margin-bottom: 10px;">Por favor, escolha seu tipo de usuário:</p>
+        <select id="user-type" onchange="showFields()">
             <option value="">Selecione</option>
             <option value="Cliente">Cliente</option>
             <option value="Profissional">Profissional</option>
         </select>
-        <div id="fields" style="margin-left: 30px; width: 80%;">
-            <input type="text" id="name" placeholder="Nome" style="width: 100%; height: 40px; margin-bottom: 15px; padding: 5px; font-size: 1rem; border-radius: 5px; border: 1px solid #646464;">
-            <input type="text" id="extra-info" placeholder="Por favor, selecione para preencher." readonly style="width: 100%; height: 40px; margin-bottom: 15px; padding: 5px; font-size: 1rem; border-radius: 5px; border: 1px solid #646464;">
+        <div id="fields" style="margin-left: 30px;">
+            <input type="text" id="name" placeholder="Nome">
+            <input type="text" id="extra-info" placeholder="Por favor, selecione para preencher." readonly>
         </div>
-        <button onclick="enterChat()" style="width: 80%; height: 40px; background: #720f0f; color: #d6d5d5; border-radius: 5px; font-size: 1rem; cursor: pointer; border: 1px solid #2a2a2a;">Entrar</button>
-        
-        <!-- Container simplificado para direitos autorais -->
-        <section style="width: 100%; height: 40px; background-color: #333539; display: flex; align-items: center; justify-content: center; position: absolute; bottom: 0; left: 0;">
-            <p style="color: #d6d5d5; font-size: 0.85rem; margin: 0;">© 2025 Auza Services. Todos os direitos reservados.</p>
-        </section>
+        <button onclick="enterChat()">Entrar</button>
     </div>
 
     <!-- Tela do chat -->
