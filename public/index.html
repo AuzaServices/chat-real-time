@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, maximum-scale=1.0, user-scalable=no">
     <meta name="theme-color" content="#222429" />
     <title>Chat de Negociação | Auza Services</title>
 
@@ -16,9 +16,10 @@
 <body>
     <!-- Tela inicial -->
     <div id="welcome-screen">
-        <h1>Bem Vindo(a) ao Chat de Negociação</h1>
         <h2 style="color: darkred; font-weight: bold; margin-top: -20px;">Auza Services</h2>
-        <p style="margin-top: 20px; margin-bottom: 10px;">Por favor, escolha seu tipo de usuário:</p>
+        <h3 style="font-weight: normal; margin-bottom: 20px;">Tudo em Serviços de A a Z</h3>
+        <h1 style="margin-top: 40px;">Bem Vindo(a) ao Chat de Negociação</h1>
+        <p style="margin-top: -15px; margin-bottom: 10px;">Por favor, escolha seu tipo de usuário:</p>
         <select id="user-type" onchange="showFields()">
             <option value="">Selecione</option>
             <option value="Cliente">Cliente</option>
@@ -57,7 +58,7 @@
         <!-- Barra lateral -->
         <section id="left-bar">
             <div>
-                <h2 style="color: darkred;">Chat de Negociação</h2>
+                <h2 style="color: #8b0000;">Chat de Negociação</h2>
                 <h3 id="online">
                     <i class="fas fa-circle" style="color: green;"></i> <!-- Bolinha verde de "online" restaurada -->
                     0 Online
