@@ -12,53 +12,36 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha384-dyBEE2OaGyoyLeYb3yByp7nP9v1+X9x+5uXmC/c7CktQGi1mZCY9LqMOiR+AkDd" crossorigin="anonymous">
-    <style>
-        #rodape {
-            width: 100%;
-            height: 40px;
-            background-color: #333539;
-            color: #d6d5d5;
-            font-size: 0.85rem;
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-    </style>
 </head>
 <body>
     <!-- Tela inicial -->
-    <div id="welcome-screen" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; background: #1f1f1f; color: #fff;">
-        <h2>Auza Services</h2>
-        <h3>Tudo em Serviços de A a Z</h3>
-        <h1>Bem Vindo(a) ao Chat de Negociação</h1>
-        <p>Por favor, escolha seu tipo de usuário:</p>
+    <div id="welcome-screen">
+        <h2 style="color: darkred; font-weight: bold; margin-top: -20px;">Auza Services</h2>
+        <h3 style="font-weight: normal; margin-bottom: 20px;">Tudo em Serviços de A a Z</h3>
+        <h1 style="margin-top: 40px;">Bem Vindo(a) ao Chat de Negociação</h1>
+        <p style="margin-top: -15px; margin-bottom: 10px;">Por favor, escolha seu tipo de usuário:</p>
         <select id="user-type" onchange="showFields()">
             <option value="">Selecione</option>
             <option value="Cliente">Cliente</option>
             <option value="Profissional">Profissional</option>
         </select>
-        <div id="fields">
+        <div id="fields" style="margin-left: 30px;">
             <input type="text" id="name" placeholder="Nome">
             <input type="text" id="extra-info" placeholder="Por favor, selecione para preencher." readonly>
         </div>
         <button onclick="enterChat()">Entrar</button>
-
-        <!-- Rodapé apenas na tela inicial -->
-        <div id="rodape">
-            © 2025 Auza Services. Todos os direitos reservados.
-        </div>
     </div>
 
     <!-- Tela do chat -->
     <div class="container" style="display: none;">
+        <!-- Alerta de entrada no chat -->
         <div id="entry-alert">Aguarde a entrada do(a) Profissional/Cliente no Chat...</div>
+
+        <!-- Área de mensagens -->
         <section id="chat-area">
             <div>
                 <i id="toggleInfo" class="fal fa-info-circle" onclick="handleToggleLeftBar()"></i>
-                <div id="messages">
+                <div id="messages" class="messages">
                     <div id="initialMessage"></div>
                 </div>
             </div>
@@ -71,11 +54,14 @@
                 </button>
             </div>
         </section>
+
+        <!-- Barra lateral -->
         <section id="left-bar">
             <div>
-                <h2>Chat de Negociação</h2>
+                <h2 style="color: #8b0000;">Chat de Negociação</h2>
                 <h3 id="online">
-                    <i class="fas fa-circle" style="color: green;"></i> 0 Online
+                    <i class="fas fa-circle" style="color: green;"></i> <!-- Bolinha verde de "online" restaurada -->
+                    0 Online
                 </h3>
                 <h3 id="messages-received">
                     <i class="fad fa-inbox-in"></i> 0 Mensagens
