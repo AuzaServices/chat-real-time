@@ -19,19 +19,18 @@
             background-color: #333539;
             color: #d6d5d5;
             font-size: 0.85rem;
-            position: fixed;
+            position: absolute;
             bottom: 0;
             left: 0;
             display: flex;
             align-items: center;
             justify-content: center;
-            z-index: 1000;
         }
     </style>
 </head>
 <body>
     <!-- Tela inicial -->
-    <div id="welcome-screen">
+    <div id="welcome-screen" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; background: #1f1f1f; color: #fff;">
         <h2>Auza Services</h2>
         <h3>Tudo em Serviços de A a Z</h3>
         <h1>Bem Vindo(a) ao Chat de Negociação</h1>
@@ -46,6 +45,11 @@
             <input type="text" id="extra-info" placeholder="Por favor, selecione para preencher." readonly>
         </div>
         <button onclick="enterChat()">Entrar</button>
+
+        <!-- Rodapé apenas na tela inicial -->
+        <div id="rodape">
+            © 2025 Auza Services. Todos os direitos reservados.
+        </div>
     </div>
 
     <!-- Tela do chat -->
@@ -78,11 +82,6 @@
                 </h3>
             </div>
         </section>
-    </div>
-
-    <!-- Rodapé fixo -->
-    <div id="rodape">
-        © 2025 Auza Services. Todos os direitos reservados.
     </div>
 
     <script src="./js/main.js"></script>
