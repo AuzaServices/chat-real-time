@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="theme-color" content="#222429" />
     <title>Chat de Negociação | Auza Services</title>
 
@@ -30,10 +30,6 @@
             <input type="text" id="extra-info" placeholder="Por favor, selecione para preencher." readonly>
         </div>
         <button onclick="enterChat()">Entrar</button>
-        <!-- Retângulo estreito com texto de direitos autorais -->
-        <div id="footer-rectangle" style="position: absolute; bottom: 10px; left: 0; width: 100%; height: 30px; background-color: #333539; display: flex; align-items: center; justify-content: center;">
-            <p style="color: #d6d5d5; font-size: 0.85rem; margin: 0;">© 2025 Auza Services. Todos os direitos reservados.</p>
-        </div>
     </div>
 
     <!-- Tela do chat -->
@@ -72,6 +68,11 @@
                 </h3>
             </div>
         </section>
+    </div>
+
+    <!-- Container para direitos autorais -->
+    <div style="width: 100%; height: 40px; background-color: #333539; display: flex; align-items: center; justify-content: center; position: absolute; bottom: 0; left: 0;">
+        <p style="color: #d6d5d5; font-size: 0.85rem; margin: 0;">© 2025 Auza Services. Todos os direitos reservados.</p>
     </div>
 
     <script src="./js/main.js"></script>
