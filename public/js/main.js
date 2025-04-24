@@ -7,10 +7,10 @@ var inactivityTimeLimit = 20 * 60 * 1000; // 20 minutos em milissegundos
 // Exibe o alerta de entrada ao usuário
 function showEntryAlert() {
     const alertBox = document.getElementById('entry-alert');
-    alertBox.style.opacity = "1"; // Exibe o alerta suavemente
+    alertBox.style.opacity = "1";
 
     setTimeout(() => {
-        alertBox.style.opacity = "0"; // Esconde suavemente após 6 segundos
+        alertBox.style.opacity = "0";
     }, 6000);
 }
 
@@ -60,9 +60,10 @@ function enterChat() {
 
     localStorage.setItem('user', author);
     document.getElementById("welcome-screen").style.display = "none";
+    document.getElementById("footer-info").style.display = "none"; // <--- Linha adicionada
     document.querySelector(".container").style.display = "grid";
 
-    showEntryAlert(); // Exibe o alerta de entrada
+    showEntryAlert();
     loadAuthor();
     resetInactivityTimer();
 }
@@ -126,7 +127,9 @@ function Submit(event) {
 // Exibe mensagens recebidas no chat
 socket.off('receivedMessage');
 socket.on('receivedMessage', function (message) {
+    messageCount++;
     renderMessage(message);
+    updateCounters();
     resetInactivityTimer();
 });
 
@@ -179,14 +182,6 @@ function updateCounters() {
 socket.off('ConnectionsInfo');
 socket.on('ConnectionsInfo', function (info) {
     onlineCount = info.connections;
-    updateCounters();
-});
-
-// Exibe número de mensagens enviadas/recebidas
-socket.off('receivedMessage');
-socket.on('receivedMessage', function (message) {
-    messageCount++;
-    renderMessage(message);
     updateCounters();
 });
 
