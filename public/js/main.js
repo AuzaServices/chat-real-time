@@ -7,10 +7,10 @@ var inactivityTimeLimit = 20 * 60 * 1000; // 20 minutos em milissegundos
 // Exibe o alerta de entrada ao usuário
 function showEntryAlert() {
     const alertBox = document.getElementById('entry-alert');
-    alertBox.style.opacity = "1";
+    alertBox.style.opacity = "1"; // Exibe o alerta suavemente
 
     setTimeout(() => {
-        alertBox.style.opacity = "0";
+        alertBox.style.opacity = "0"; // Esconde suavemente após 6 segundos
     }, 6000);
 }
 
@@ -60,19 +60,22 @@ function enterChat() {
 
     localStorage.setItem('user', author);
     document.getElementById("welcome-screen").style.display = "none";
-    document.getElementById("footer-info").style.display = "none"; // <--- Linha adicionada
     document.querySelector(".container").style.display = "grid";
 
-    showEntryAlert();
+    // Esconde o rodapé ao entrar no chat
+    document.body.classList.add('chat-active'); 
+
+    showEntryAlert(); // Exibe o alerta de entrada
     loadAuthor();
     resetInactivityTimer();
 }
 
 // Função para limpar o chat globalmente
 function clearChat() {
-    const messagesContainer = document.getElementById('messages');
-    messagesContainer.innerHTML = '';
-    socket.emit('clearChat');
+    localStorage.clear();
+    document.getElementById("welcome-screen").style.display = "grid";
+    document.querySelector(".container").style.display = "none";
+    document.body.classList.remove('chat-active'); // Restaura o rodapé
 }
 
 // Carrega o autor do localStorage ao entrar no chat
@@ -127,9 +130,7 @@ function Submit(event) {
 // Exibe mensagens recebidas no chat
 socket.off('receivedMessage');
 socket.on('receivedMessage', function (message) {
-    messageCount++;
     renderMessage(message);
-    updateCounters();
     resetInactivityTimer();
 });
 
@@ -182,6 +183,14 @@ function updateCounters() {
 socket.off('ConnectionsInfo');
 socket.on('ConnectionsInfo', function (info) {
     onlineCount = info.connections;
+    updateCounters();
+});
+
+// Exibe número de mensagens enviadas/recebidas
+socket.off('receivedMessage');
+socket.on('receivedMessage', function (message) {
+    messageCount++;
+    renderMessage(message);
     updateCounters();
 });
 
