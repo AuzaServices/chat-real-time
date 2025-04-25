@@ -205,3 +205,71 @@ function resetInactivityTimer() {
 socket.on('clearChat', function () {
     document.getElementById('messages').innerHTML = '';
 });
+function showFields() {
+    const userType = document.getElementById("user-type").value;
+    const extraInfo = document.getElementById("extra-info");
+
+    if (userType === "Cliente") {
+        extraInfo.placeholder = "Bairro";
+        extraInfo.readOnly = false;
+    } else if (userType === "Profissional") {
+        extraInfo.placeholder = "Profissão";
+        extraInfo.readOnly = false;
+    } else {
+        extraInfo.placeholder = "Por favor, selecione para preencher.";
+        extraInfo.readOnly = true;
+    }
+}
+
+// Cria o rodapé
+function createLoginFooter() {
+    const footer = document.createElement('div');
+    footer.id = "footer-container";
+    footer.style.position = "fixed";
+    footer.style.bottom = "0";
+    footer.style.left = "0";
+    footer.style.width = "100%";
+    footer.style.backgroundColor = "#555"; // cinza chumbo
+    footer.style.color = "#fff";
+    footer.style.textAlign = "center";
+    footer.style.padding = "10px 0";
+    footer.style.fontSize = "14px";
+    footer.style.zIndex = "9999";
+    footer.textContent = "© 2025 Auza Services. Todos os direitos reservados.";
+    document.body.appendChild(footer);
+}
+
+// Remove o rodapé
+function removeLoginFooter() {
+    const footer = document.getElementById('footer-container');
+    if (footer) {
+        footer.remove();
+    }
+}
+
+// Executa ao carregar
+window.onload = function () {
+    createLoginFooter();
+};
+
+// Lógica de entrada no chat
+function enterChat() {
+    const userType = document.getElementById("user-type").value;
+    const name = document.getElementById("name").value.trim();
+    const extraInfo = document.getElementById("extra-info").value.trim();
+
+    if (!userType || name.length < 4) {
+        alert("Por favor, preencha o campo Nome e escolha um tipo de usuário.");
+        return;
+    }
+
+    if (!extraInfo) {
+        alert(`Por favor, preencha o campo ${userType === "Cliente" ? "Bairro" : "Profissão"}.`);
+        return;
+    }
+
+    document.getElementById("welcome-screen").style.display = "none";
+    document.querySelector(".container").style.display = "grid";
+
+    removeLoginFooter(); // remove o rodapé
+}
