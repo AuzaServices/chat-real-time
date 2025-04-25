@@ -62,9 +62,6 @@ function enterChat() {
     document.getElementById("welcome-screen").style.display = "none";
     document.querySelector(".container").style.display = "grid";
 
-    // Esconde o rodapé ao entrar no chat
-    document.body.classList.add('chat-active'); 
-
     showEntryAlert(); // Exibe o alerta de entrada
     loadAuthor();
     resetInactivityTimer();
@@ -72,10 +69,9 @@ function enterChat() {
 
 // Função para limpar o chat globalmente
 function clearChat() {
-    localStorage.clear();
-    document.getElementById("welcome-screen").style.display = "grid";
-    document.querySelector(".container").style.display = "none";
-    document.body.classList.remove('chat-active'); // Restaura o rodapé
+    const messagesContainer = document.getElementById('messages');
+    messagesContainer.innerHTML = '';
+    socket.emit('clearChat');
 }
 
 // Carrega o autor do localStorage ao entrar no chat

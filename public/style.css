@@ -297,33 +297,3 @@
     overflow: hidden;
     text-overflow: ellipsis; /* Caso o texto fique maior que o espaço disponível */
 }
-
-#footer-login {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: #e0e0e0; /* Cor igual ao botão "Selecione" */
-    color: #333;
-    text-align: center;
-    padding: 10px 0;
-    font-size: 14px;
-    font-family: 'Roboto', sans-serif;
-}
-
-#welcome-screen {
-    padding-bottom: 60px; /* Adicionando um padding para garantir que o conteúdo não seja sobreposto pelo rodapé */
-}
-
-/* Ocultar o rodapé quando a tela do chat estiver visível */
-.container {
-    display: none;
-}
-
-body.chat-active #welcome-screen {
-    display: none;
-}
-
-body.chat-active #footer-login {
-    display: none;
-}
