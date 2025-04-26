@@ -270,3 +270,61 @@ function renderMessage(message) {
     messagesContainer.appendChild(messageElement);
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
 }
+
+function triggerMediaUpload() {
+    document.getElementById('media-input').click();
+}
+
+document.getElementById('media-input').addEventListener('change', function (event) {
+    const file = event.target.files[0];
+
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function () {
+            const mediaObject = {
+                author,
+                media: reader.result, // Base64 da mídia
+                type: file.type.includes('image') ? 'image' : 'video'
+            };
+            socket.emit('sendMessage', mediaObject);
+        };
+        reader.readAsDataURL(file);
+    }
+});
+
+// Renderiza mensagens com imagens ou vídeos no chat
+function renderMessage(message) {
+    const messagesContainer = document.getElementById('messages');
+    const messageElement = document.createElement('div');
+    messageElement.classList.add('message');
+
+    const authorElement = document.createElement('h2');
+    authorElement.innerHTML = message.author;
+
+    if (message.media) {
+        if (message.type === 'image') {
+            const mediaElement = document.createElement('img');
+            mediaElement.src = message.media;
+            mediaElement.style.maxWidth = '100%';
+            mediaElement.style.borderRadius = '5px';
+            messageElement.appendChild(authorElement);
+            messageElement.appendChild(mediaElement);
+        } else if (message.type === 'video') {
+            const mediaElement = document.createElement('video');
+            mediaElement.src = message.media;
+            mediaElement.controls = true;
+            mediaElement.style.maxWidth = '100%';
+            mediaElement.style.borderRadius = '5px';
+            messageElement.appendChild(authorElement);
+            messageElement.appendChild(mediaElement);
+        }
+    } else {
+        const messageTextElement = document.createElement('p');
+        messageTextElement.textContent = message.message;
+        messageElement.appendChild(authorElement);
+        messageElement.appendChild(messageTextElement);
+    }
+
+    messagesContainer.appendChild(messageElement);
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+}
