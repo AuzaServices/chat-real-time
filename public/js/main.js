@@ -35,6 +35,7 @@ function showEntryAlert() {
     if (alertBox) {
         // Exibe o primeiro alerta
         alertBox.textContent = "Aguarde a entrada do Profissional/Cliente no Chat...";
+        alertBox.style.backgroundColor = "darkred";
         alertBox.style.opacity = "1"; // Aparece gradualmente
         setTimeout(() => {
             alertBox.style.opacity = "0"; // Desaparece suavemente
@@ -48,7 +49,8 @@ function showEntryAlert() {
 
 function showSecondAlert(alertBox) {
     // Atualiza o texto para o segundo alerta
-    alertBox.textContent = "Envie uma Imagem do serviço a ser realizado, se necessário.";
+    alertBox.textContent = "Envie Imagens para facilitar o orçamento, se necessário.";
+    alertBox.style.backgroundColor = "darkred";
     alertBox.style.opacity = "1"; // Aparece suavemente
     setTimeout(() => {
         alertBox.style.opacity = "0"; // Desaparece suavemente
@@ -62,6 +64,7 @@ function showSecondAlert(alertBox) {
 function showThirdAlert(alertBox) {
     // Atualiza o texto para o terceiro alerta
     alertBox.textContent = "Estamos organizando sua experiência. Aguarde...";
+    alertBox.style.backgroundColor = "darkred";
     alertBox.style.opacity = "1"; // Aparece suavemente
     setTimeout(() => {
         alertBox.style.opacity = "0"; // Desaparece suavemente
