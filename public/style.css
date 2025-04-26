@@ -275,7 +275,7 @@
 }
 
 #send-icon svg:active {
-    fill: #720f0f; /* Altera cor ao clicar */
+    fill:none; /* Altera cor ao clicar */
 }
 
 #entry-alert {
@@ -319,7 +319,7 @@
 }
 
 #image-icon:hover {
-    background: #720f0f;
+    background: none;
 }
 
 #image-icon:active {
