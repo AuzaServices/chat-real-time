@@ -301,9 +301,22 @@ function renderMessage(message) {
 }
 
 // Configurações do socket
-socket.off('receivedMessage');
-socket.on('receivedMessage', function (message) {
-    renderMessage(message);
+socket.on("receivedMessage", function (message) {
+    renderMessage(message); // Renderiza a mensagem no chat
+
+    console.log("Mensagem recebida:", message);
+
+    if (!isChatFocused && Notification.permission === "granted") {
+        // Envia notificação
+        new Notification("Nova mensagem de " + message.author, {
+            body: message.message, // Texto da mensagem
+            icon: "icone-url.png" // URL do ícone (opcional)
+        });
+
+        console.log("Notificação enviada!");
+    } else {
+        console.log("Usuário está ativo ou permissões não concedidas.");
+    }
 });
 
 socket.off('previousMessages');
