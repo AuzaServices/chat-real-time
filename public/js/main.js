@@ -151,7 +151,7 @@ function Submit(event) {
     resetInactivityTimer();
 }
 
-// Evento para envio de imagem ao servidor
+// Evento para envio de imagem ao servidor com redimensionamento
 function triggerImageUpload() {
     document.getElementById('image-input').click();
 }
@@ -163,23 +163,59 @@ document.getElementById('image-input').addEventListener('change', function (even
         const reader = new FileReader();
 
         reader.onload = function () {
-            const imageObject = {
-                author: author || 'Anônimo',
-                image: reader.result, // Base64 da imagem
-                fileName: file.name // Nome do arquivo, se necessário
+            const img = new Image();
+            img.src = reader.result;
+
+            img.onload = function () {
+                // Configura o canvas para redimensionar a imagem
+                const canvas = document.createElement('canvas');
+                const maxWidth = 1024; // Define uma largura máxima
+                const maxHeight = 1024; // Define uma altura máxima
+                let width = img.width;
+                let height = img.height;
+
+                // Mantém a proporção ao redimensionar
+                if (width > maxWidth || height > maxHeight) {
+                    if (width > height) {
+                        height = Math.round((height *= maxWidth / width));
+                        width = maxWidth;
+                    } else {
+                        width = Math.round((width *= maxHeight / height));
+                        height = maxHeight;
+                    }
+                }
+
+                canvas.width = width;
+                canvas.height = height;
+
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(img, 0, 0, width, height);
+
+                // Converte a imagem para JPEG base64
+                const resizedImage = canvas.toDataURL('image/jpeg', 0.8); // Qualidade 80%
+
+                // Envia a imagem convertida ao servidor
+                const imageObject = {
+                    author: author || 'Anônimo',
+                    image: resizedImage
+                };
+
+                socket.emit('sendMessage', imageObject);
             };
 
-            socket.emit('sendMessage', imageObject);
+            img.onerror = function () {
+                alert('Erro ao processar a imagem. Tente novamente com outra imagem ou formato.');
+            };
         };
 
         reader.onerror = function () {
-            console.error("Erro ao processar o arquivo. Formato ou tamanho pode ser incompatível.");
-            alert("Não foi possível enviar a imagem. Tente reduzir o tamanho do arquivo ou converter para JPEG/PNG.");
+            console.error('Erro ao processar o arquivo.');
+            alert('Não foi possível enviar a imagem. Verifique o formato ou tamanho.');
         };
 
         reader.readAsDataURL(file); // Lê o arquivo como Base64
     } else {
-        alert("Nenhuma imagem foi selecionada.");
+        alert('Nenhuma imagem foi selecionada.');
     }
 });
 
