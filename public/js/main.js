@@ -38,6 +38,30 @@ function showEntryAlert() {
         setTimeout(() => {
             alertBox.style.opacity = "0";
         }, 6000);
+        
+        // Exibe a mensagem subsequente
+        showSubsequentMessages();
+    }
+}
+
+// Exibe mensagens subsequentes
+function showSubsequentMessages() {
+    const subsequentMessage = document.createElement('div');
+    subsequentMessage.id = "subsequent-alert";
+    subsequentMessage.style.opacity = "1";
+    subsequentMessage.style.transition = "opacity 1s ease-in-out";
+    subsequentMessage.textContent = "Envie uma Imagem do serviço a ser realizado, se necessário.";
+
+    const alertBox = document.getElementById('entry-alert');
+    if (alertBox) {
+        alertBox.insertAdjacentElement('afterend', subsequentMessage); // Insere logo após a mensagem principal
+
+        setTimeout(() => {
+            subsequentMessage.style.opacity = "0";
+            setTimeout(() => {
+                subsequentMessage.remove(); // Remove a mensagem após exibir
+            }, 1000); // Tempo para desaparecer (1 segundo adicional)
+        }, 6000); // Mantém a mensagem visível por 6 segundos
     }
 }
 
