@@ -292,6 +292,54 @@ function Submit(event) {
     }
 }
 
+// Função para ativar o input de upload de imagem
+function triggerImageUpload() {
+    document.getElementById('image-input').click();
+}
+
+// Evento para capturar a imagem e enviá-la ao servidor
+document.getElementById('image-input').addEventListener('change', function (event) {
+    const file = event.target.files[0];
+
+    if (file) {
+        const reader = new FileReader();
+
+        reader.onload = function () {
+            const imageObject = {
+                author: localStorage.getItem('user') || 'Anônimo',
+                image: reader.result // Base64 da imagem
+            };
+            socket.emit('sendMessage', imageObject); // Envia a imagem ao servidor
+        };
+
+        reader.readAsDataURL(file); // Lê o arquivo como Base64
+    }
+});
+
+// Garantir que ouvintes de eventos não sejam duplicados
+socket.off('receivedMessage'); // Remove ouvintes duplicados
+socket.on('receivedMessage', function (message) {
+    renderMessage(message); // Renderiza a mensagem recebida
+});
+
+// Função para enviar mensagens de texto
+function Submit(event) {
+    event.preventDefault(); // Evita refresh da página
+
+    const messageInput = document.getElementById('input-message');
+    const message = messageInput.value.trim();
+
+    if (message !== '') {
+        const messageObject = {
+            author: localStorage.getItem('user') || 'Anônimo',
+            message: message
+        };
+
+        socket.emit('sendMessage', messageObject); // Envia a mensagem ao servidor
+        messageInput.value = ''; // Limpa o campo de texto
+    }
+}
+
 // Função para renderizar mensagens e imagens no chat
 function renderMessage(message) {
     const messagesContainer = document.getElementById('messages');
@@ -322,14 +370,15 @@ function renderMessage(message) {
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
 }
 
-// Configuração para receber mensagens anteriores (histórico)
+// Recebe mensagens anteriores (histórico)
+socket.off('previousMessages'); // Remove ouvintes duplicados
 socket.on('previousMessages', function (messages) {
     messages.forEach(function (message) {
         renderMessage(message); // Renderiza cada mensagem armazenada
     });
 });
 
-// Configuração para detectar desconexões ou falhas de transmissão
+// Detecta conexão e desconexão do servidor
 socket.on('disconnect', function () {
     console.warn('Desconectado do servidor.');
 });
