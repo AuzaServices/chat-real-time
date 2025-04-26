@@ -30,39 +30,42 @@ function removeLoginFooter() {
     }
 }
 
-// Exibe o alerta de entrada ao usuário
 function showEntryAlert() {
     const alertBox = document.getElementById('entry-alert');
     if (alertBox) {
-        alertBox.style.opacity = "1";
+        // Exibe o primeiro alerta
+        alertBox.textContent = "Aguarde a entrada do Profissional/Cliente no Chat...";
+        alertBox.style.opacity = "1"; // Aparece gradualmente
         setTimeout(() => {
-            alertBox.style.opacity = "0";
-        }, 6000);
-        
-        // Exibe a mensagem subsequente
-        showSubsequentMessages();
+            alertBox.style.opacity = "0"; // Desaparece suavemente
+            setTimeout(() => {
+                // Exibe o segundo alerta no mesmo container após o primeiro desaparecer
+                showSecondAlert(alertBox);
+            }, 1000); // Tempo de espera antes de exibir o segundo alerta
+        }, 6000); // Tempo que o primeiro alerta permanece visível
     }
 }
 
-// Exibe mensagens subsequentes
-function showSubsequentMessages() {
-    const subsequentMessage = document.createElement('div');
-    subsequentMessage.id = "subsequent-alert";
-    subsequentMessage.style.opacity = "1";
-    subsequentMessage.style.transition = "opacity 1s ease-in-out";
-    subsequentMessage.textContent = "Envie uma Imagem do serviço a ser realizado, se necessário.";
-
-    const alertBox = document.getElementById('entry-alert');
-    if (alertBox) {
-        alertBox.insertAdjacentElement('afterend', subsequentMessage); // Insere logo após a mensagem principal
-
+function showSecondAlert(alertBox) {
+    // Atualiza o texto para o segundo alerta
+    alertBox.textContent = "Envie uma Imagem do serviço a ser realizado, se necessário.";
+    alertBox.style.opacity = "1"; // Aparece suavemente
+    setTimeout(() => {
+        alertBox.style.opacity = "0"; // Desaparece suavemente
         setTimeout(() => {
-            subsequentMessage.style.opacity = "0";
-            setTimeout(() => {
-                subsequentMessage.remove(); // Remove a mensagem após exibir
-            }, 1000); // Tempo para desaparecer (1 segundo adicional)
-        }, 6000); // Mantém a mensagem visível por 6 segundos
-    }
+            // Exibe o terceiro alerta no mesmo container após o segundo desaparecer
+            showThirdAlert(alertBox);
+        }, 1000); // Tempo de espera antes de exibir o terceiro alerta
+    }, 6000); // Tempo que o segundo alerta permanece visível
+}
+
+function showThirdAlert(alertBox) {
+    // Atualiza o texto para o terceiro alerta
+    alertBox.textContent = "Estamos organizando sua experiência. Aguarde...";
+    alertBox.style.opacity = "1"; // Aparece suavemente
+    setTimeout(() => {
+        alertBox.style.opacity = "0"; // Desaparece suavemente
+    }, 30000); // Tempo que o terceiro alerta permanece visível
 }
 
 // Atualiza o estado do campo dinâmico
