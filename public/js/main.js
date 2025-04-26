@@ -4,6 +4,29 @@ var author = ''; // Nome e informação do usuário
 var inactivityTimer = null; // Timer para inatividade
 var inactivityTimeLimit = 20 * 60 * 1000; // 20 minutos em milissegundos
 
+// Solicita permissão para notificações
+function requestNotificationPermission() {
+    if ("Notification" in window) {
+        Notification.requestPermission().then(permission => {
+            if (permission === "granted") {
+                console.log("Permissão para notificações concedida.");
+            } else {
+                console.log("Permissão para notificações negada.");
+            }
+        });
+    } else {
+        console.log("Este navegador não suporta notificações.");
+    }
+}
+
+// Detecta se o usuário está ativo na aba
+let isChatFocused = true;
+
+document.addEventListener("visibilitychange", () => {
+    isChatFocused = !document.hidden; // True se a aba está visível, false se não
+});
+
+
 // Cria o rodapé
 function createLoginFooter() {
     const footer = document.createElement('div');
