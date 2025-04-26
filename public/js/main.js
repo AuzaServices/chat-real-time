@@ -280,3 +280,60 @@ function renderMessage(message) {
     messagesContainer.appendChild(messageElement);
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
 }
+
+function triggerMediaUpload() {
+    document.getElementById('media-input').click();
+}
+
+document.getElementById('media-input').addEventListener('change', function (event) {
+    const file = event.target.files[0];
+
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function () {
+            const mediaObject = {
+                author: localStorage.getItem('user') || 'Anônimo',
+                media: reader.result,
+                type: file.type.includes('image') ? 'image' : 'video'
+            };
+            socket.emit('sendMessage', mediaObject);
+        };
+        reader.readAsDataURL(file);
+    }
+});
+
+function renderMessage(message) {
+    const messagesContainer = document.getElementById('messages');
+    const messageElement = document.createElement('div');
+    messageElement.classList.add('message');
+
+    const authorElement = document.createElement('h2');
+    authorElement.innerHTML = message.author;
+
+    if (message.media) {
+        if (message.type === 'image') {
+            const imageElement = document.createElement('img');
+            imageElement.src = message.media;
+            imageElement.style.maxWidth = '100%';
+            imageElement.style.borderRadius = '5px';
+            messageElement.appendChild(authorElement);
+            messageElement.appendChild(imageElement);
+        } else if (message.type === 'video') {
+            const videoElement = document.createElement('video');
+            videoElement.src = message.media;
+            videoElement.controls = true;
+            videoElement.style.maxWidth = '100%';
+            videoElement.style.borderRadius = '5px';
+            messageElement.appendChild(authorElement);
+            messageElement.appendChild(videoElement);
+        }
+    } else {
+        const messageTextElement = document.createElement('p');
+        messageTextElement.textContent = message.message;
+        messageElement.appendChild(authorElement);
+        messageElement.appendChild(messageTextElement);
+    }
+
+    messagesContainer.appendChild(messageElement);
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+}

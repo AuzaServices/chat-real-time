@@ -54,3 +54,15 @@ io.on('connection', (socket) => {
 server.listen(port, () => {
     console.log(`Server running on localhost:${port}`);
 });
+
+socket.on('sendMessage', (data) => {
+    if (data.media) {
+        console.log(`Recebendo mídia do tipo ${data.type}`);
+        // Processa mídia (imagem/vídeo) conforme necessário
+    } else {
+        console.log("Mensagem comum recebida.");
+    }
+
+    messages.push(data);
+    io.emit('receivedMessage', data); // Envia a todos os clientes
+});
