@@ -271,7 +271,7 @@
 }
 
 #send-icon svg:hover {
-    fill: #fff; /* Altera cor ao passar o mouse */
+    fill: #828282; /* Altera cor ao passar o mouse */
 }
 
 #send-icon svg:active {
