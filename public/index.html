@@ -11,7 +11,7 @@
     <script rel="preconnect preload" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha384-dyBEE2OaGyoyLeYb3yByp7nP9v1+X9x+5uXmC/c7CktQGi1mZCY9LqMOiR+AkDd" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha384-dyBEE2OaGyoyLeYb3yByp7nP9v1+X+5uXmC/c7CktQGi1mZCY9LqMOiR+AkDd" crossorigin="anonymous">
 </head>
 <body>
     <!-- Tela inicial -->
@@ -46,6 +46,12 @@
                 </div>
             </div>
             <div id="send-messages">
+                <input type="file" id="image-input" accept="image/*" style="display: none;">
+                <button id="image-icon" onclick="triggerImageUpload()">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="#8E9094" viewBox="0 0 24 24" width="24px" height="24px">
+                        <path d="M5 3a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H5zm3 11l2.29-3.29a1 1 0 0 1 1.42 0l1.29 1.29 3.29-4.38a1 1 0 0 1 1.6.16L19 14H5l3-4zm1-6a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0z"/>
+                    </svg>
+                </button>
                 <input type="text" id="input-message" name="message" placeholder="Mensagem">
                 <button id="send-icon" onclick="Submit(event)">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="#8E9094" viewBox="0 0 24 24" width="24px" height="24px">
@@ -60,7 +66,7 @@
             <div>
                 <h2 style="color: #8b0000;">Chat de Negociação</h2>
                 <h3 id="online">
-                    <i class="fas fa-circle" style="color: green;"></i> <!-- Bolinha verde de "online" restaurada -->
+                    <i class="fas fa-circle" style="color: green;"></i>
                     0 Online
                 </h3>
                 <h3 id="messages-received">

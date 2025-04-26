@@ -223,3 +223,50 @@ function resetInactivityTimer() {
 window.onload = function () {
     createLoginFooter();
 };
+
+function triggerImageUpload() {
+    document.getElementById('image-input').click();
+}
+
+document.getElementById('image-input').addEventListener('change', function (event) {
+    const file = event.target.files[0];
+
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function () {
+            const imageObject = {
+                author,
+                image: reader.result // Base64 da imagem
+            };
+            socket.emit('sendMessage', imageObject);
+        };
+        reader.readAsDataURL(file);
+    }
+});
+
+// Renderiza mensagens e imagens no chat
+function renderMessage(message) {
+    const messagesContainer = document.getElementById('messages');
+    const messageElement = document.createElement('div');
+    messageElement.classList.add('message');
+
+    const authorElement = document.createElement('h2');
+    authorElement.innerHTML = message.author;
+
+    if (message.image) {
+        const imageElement = document.createElement('img');
+        imageElement.src = message.image;
+        imageElement.style.maxWidth = '100%';
+        imageElement.style.borderRadius = '5px';
+        messageElement.appendChild(authorElement);
+        messageElement.appendChild(imageElement);
+    } else {
+        const messageTextElement = document.createElement('p');
+        messageTextElement.textContent = message.message;
+        messageElement.appendChild(authorElement);
+        messageElement.appendChild(messageTextElement);
+    }
+
+    messagesContainer.appendChild(messageElement);
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+}
