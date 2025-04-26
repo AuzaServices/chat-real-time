@@ -165,13 +165,21 @@ document.getElementById('image-input').addEventListener('change', function (even
         reader.onload = function () {
             const imageObject = {
                 author: author || 'Anônimo',
-                image: reader.result // Base64 da imagem
+                image: reader.result, // Base64 da imagem
+                fileName: file.name // Nome do arquivo, se necessário
             };
 
             socket.emit('sendMessage', imageObject);
         };
 
+        reader.onerror = function () {
+            console.error("Erro ao processar o arquivo. Formato ou tamanho pode ser incompatível.");
+            alert("Não foi possível enviar a imagem. Tente reduzir o tamanho do arquivo ou converter para JPEG/PNG.");
+        };
+
         reader.readAsDataURL(file); // Lê o arquivo como Base64
+    } else {
+        alert("Nenhuma imagem foi selecionada.");
     }
 });
 
