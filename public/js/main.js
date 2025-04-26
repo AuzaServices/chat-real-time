@@ -142,6 +142,7 @@ function enterChat() {
     document.getElementById("welcome-screen").style.display = "none";
     document.querySelector(".container").style.display = "grid";
 
+    requestNotificationPermission(); // Solicita permissão de notificações aqui
     showEntryAlert();
     removeLoginFooter();
     loadAuthor();
