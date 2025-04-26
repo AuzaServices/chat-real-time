@@ -298,38 +298,31 @@
     text-overflow: ellipsis; /* Caso o texto fique maior que o espaço disponível */
 }
 
-#send-messages {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: #141419;
-    padding: 10px;
-    box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.5);
-}
-
-#image-icon, #send-icon {
+#image-icon {
     width: 45px;
     height: 45px;
-    background: #333539;
-    border: 1px solid #646464;
+    background: none;
+    border: none;
     border-radius: 5px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    margin-right: 10px; /* Adiciona uma distância entre o botão e o campo de mensagem */
     transition: background-color 0.3s ease;
 }
 
-#image-icon i {
-    color: #8E9094;
-    font-size: 1.5rem;
+#image-icon svg {
+    width: 24px;
+    height: 24px;
+    fill: #8E9094;
 }
 
-#image-icon:hover, #send-icon:hover {
+#image-icon:hover {
     background: #720f0f;
 }
 
-#image-icon:active, #send-icon:active {
+#image-icon:active {
     background: #8E9094;
-    color: white;
+    fill: white;
 }
