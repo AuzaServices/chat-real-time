@@ -94,8 +94,10 @@
 #chat-area {
     flex: 1;
     background: #1f1f1f;
-    padding: 10px;
-    overflow-y: auto;
+    height: calc(110% - 70px); /* Calcula altura excluindo a barra cinza */
+    overflow-y: auto; /* Habilita rolagem somente vertical */
+    padding-bottom: 10px; /* Espaço para evitar interferência no rodapé ou barra cinza */
+    box-sizing: border-box; /* Garante que o padding não afeta o tamanho total */
 }
 
 #messages {
@@ -325,19 +327,4 @@
 #image-icon:active {
     background: #8E9094;
     fill: white;
-}
-
-#footer-container {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: #555; /* Cor cinza */
-    color: #fff;
-    text-align: center;
-    padding: 10px 0;
-    font-size: 14px;
-    z-index: 9999;
-    /* Adicionar espaçamento para evitar sobreposição */
-    margin-bottom: 70px; /* Ajuste conforme necessário */
 }
