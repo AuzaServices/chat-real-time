@@ -92,12 +92,11 @@
 
 /* Área do chat */
 #chat-area {
-    height: calc(150% - 70px); /* Calcula altura excluindo o rodapé ou barra cinza */
+    flex: 1;
     background: #1f1f1f;
-    overflow-y: auto; /* Habilita rolagem vertical */
-    position: relative; /* Define posição para evitar interferência */
+    padding: 10px;
+    overflow-y: auto;
 }
-
 
 #messages {
     height: 75%;
@@ -221,7 +220,7 @@
     }
 
     #messages {
-        height: 70vh;
+        height: 87vh;
     }
 
     #send-messages input {
