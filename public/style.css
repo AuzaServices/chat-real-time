@@ -1,4 +1,4 @@
-/* Reseta estilos padrão */
+/* Reseta estilos */
 * {
     margin: 0;
     padding: 0;
@@ -6,323 +6,59 @@
     font-family: 'Roboto', sans-serif;
 }
 
-/* Tela inicial de login */
-#welcome-screen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+/* Estilos globais */
+body {
     background: #1f1f1f;
     color: #fff;
-    z-index: 1000;
-}
-
-#welcome-screen h1 {
-    font-size: 1.5rem;
     text-align: center;
+    padding: 20px;
+}
+
+/* Cabeçalho */
+header {
     margin-bottom: 20px;
-
 }
 
-#welcome-screen h2 {
-    font-size: 1.5rem; /* Tamanho do texto */
-    color: darkred; /* Cor em vermelho escuro */
-    font-weight: bold; /* Negrito */
-    margin-top: 0; /* Remove espaço extra acima */
-    text-align: center; /* Centraliza o texto */
-
+/* Container Principal */
+#service-selector {
+    padding: 20px;
+    border-radius: 10px;
+    display: inline-block;
 }
 
-/* Ajuste dos containers de "Nome" e "Bairro/Profissão" */
-/* Ajuste dos containers "Nome" e "Bairro e Profissão" */
-#welcome-screen input {
-    width: 80%; /* Largura dos campos */
-    height: 40px; /* Altura dos campos */
-    margin-bottom: 15px; /* Espaço abaixo dos campos */
-    margin-left: 50%;
-    padding: 5px; /* Espaço interno */
-    font-size: 1rem; /* Tamanho da fonte */
-    border-radius: 5px; /* Bordas arredondadas */
-    border: 1px solid #646464; /* Cor da borda */
-    text-align: left; /* Alinhamento do texto */
-
-}
-
-#welcome-screen select {
+form select {
     width: 80%;
     height: 40px;
-    margin-bottom: 15px;
-    margin-left: 10%; /* Move o campo "Selecione" para a direita */
-    background: #333539;
-    color: #fff;
-    padding: 5px;
     border-radius: 5px;
     border: 1px solid #646464;
+    padding: 5px;
+    background: #444;
+    color: #fff;
 }
 
-#welcome-screen button {
-    width: 80%;
-    height: 40px;
-    margin-left: 10%; /* Alinha o botão com os outros campos */
-    background: #720f0f;
-    color: #d6d5d5;
+form button {
+    background: darkred;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
     border-radius: 5px;
-    font-size: 1rem;
     cursor: pointer;
-    border: 1px solid #2a2a2a;
 }
 
-#welcome-screen button:hover {
-    background: #333539;
+form button:hover {
+    background: #720f0f;
 }
 
-/* Contêiner principal */
-.container {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-}
-
-/* Área do chat */
-#chat-area {
-    flex: 1;
-    background: #1f1f1f;
-    padding: 10px;
-    overflow-y: auto;
-}
-
-#messages {
-    height: 75%;
-    overflow-y: scroll;
-    padding-right: 10px;
-}
-
-#messages .message {
-    padding: 10px;
-    border-bottom: 1px solid #333;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    color: #f5f5f5;
-}
-
-#messages .message h2 {
-    font-size: 1rem;
-    margin: 0;
-}
-
-#messages .message p {
-    font-size: 0.9rem;
-    margin: 5px 0 0;
-}
-
-/* Área de envio */
-#send-messages {
+/* Rodapé */
+footer {
     position: fixed;
     bottom: 0;
     left: 0;
-    width: 100vw;
-    height: 60px;
-    background: #141419;
-    display: flex;
-    align-items: center;
-    justify-content: space-between; /* Garante que os itens se alinhem corretamente */
-    padding: 0 10px; /* Adiciona espaçamento interno */
-    box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.5);
-}
-
-#input-message {
-    width: 90%; /* Ajusta a largura do campo para dar espaço ao ícone */
-    height: 45px;
-    background: #333539;
-    border: 1px solid #646464;
-    border-radius: 5px;
-    font-size: 1rem;
-    padding-left: 15px; /* Espaço interno à esquerda */
-    color: #f5f5f5;
-    outline: none;
-}
-
-#send-icon {
-    font-size: 1.8rem; /* Tamanho do ícone */
-    color: #8E9094;
-    cursor: pointer; /* Torna o ícone clicável */
-    margin-left: 10px; /* Espaço entre o campo e o ícone */
-    transition: color 0.3s ease;
-}
-
-#send-icon:hover {
-    color: #fff; /* Cor ao passar o mouse */
-}
-
-#send-icon:active {
-    color: #720f0f; /* Cor ao clicar */
-}
-#send-messages i {
-    font-size: 1.8rem;
-    color: #8E9094;
-    cursor: pointer;
-}
-
-#send-messages i:hover {
-    color: #fff;
-}
-
-/* Barra lateral */
-#left-bar {
-    position: fixed;
-    top: 0;
-    right: -100%;
     width: 100%;
-    height: 100%;
-    background: #0F0F13;
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
-    transition: all 0.3s ease-in-out;
-}
-
-#left-bar.active {
-    right: 0;
-}
-
-#left-bar h2 {
-    font-size: 1rem;
-    color: #fff;
-    margin-bottom: 10px;
-}
-
-#left-bar #online,
-#left-bar #messages-received {
-    font-size: 0.9rem;
-    color: #b6b6b6;
-}
-
-/* Responsividade */
-@media (max-width: 768px) {
-    #welcome-screen h1 {
-        font-size: 1.2rem;
-    }
-
-    #welcome-screen select,
-    #welcome-screen input,
-    #welcome-screen button {
-        font-size: 0.9rem;
-        margin-left: 1%; /* Ajusta os campos para telas menores */
-        width: 90%;
-    }
-
-    #messages {
-        height: 91vh;
-    }
-
-    #send-messages input {
-        width: 98%;
-    }
-
-    #left-bar {
-        width: 85vw;
-    }
-}
-
-#welcome-screen button:active {
-    background: #720f0f; /* Mantém o vermelho ao clicar */
-    color: #d6d5d5; /* Mantém a cor do texto */
-    border: 1px solid #2a2a2a; /* Define borda para consistência */
-}
-
-#welcome-screen button:focus {
-    background: #720f0f; /* Mantém o vermelho ao ganhar foco */
-    color: #d6d5d5;
-    outline: none; /* Remove o contorno padrão */
-}
-
-/* Estilo para o botão quando clicado */
-#welcome-screen button:active {
-    animation: clickEffect 0.2s ease-in-out; /* Aplica a animação */
-}
-
-/* Definição da animação */
-@keyframes clickEffect {
-    0% {
-        background-color: #333539; /* Cor momentânea (cinza escuro) */
-        transform: scale(0.95); /* Botão ligeiramente menor */
-    }
-    100% {
-        background-color: #720f0f; /* Retorna ao vermelho original */
-        transform: scale(1); /* Volta ao tamanho original */
-    }
-}
-
-#send-icon {
-    background: none;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-#send-icon svg:hover {
-    fill: #828282; /* Altera cor ao passar o mouse */
-}
-
-#send-icon svg:active {
-    fill:none; /* Altera cor ao clicar */
-}
-
-#entry-alert {
-    position: fixed;
-    bottom: 70px; /* Mantém próximo ao campo de envio */
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100%;
-    padding: 8px;
-    background: darkred;
-    color: white;
-    font-size: 0.85rem;
-    font-weight: bold;
     text-align: center;
-    border: none;
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-    white-space: nowrap; /* Garante que o texto fique em uma única linha */
-    overflow: hidden;
-    text-overflow: ellipsis; /* Caso o texto fique maior que o espaço disponível */
-}
-
-#image-icon {
-    width: 45px;
-    height: 45px;
-    background: none;
-    border: none;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    margin-right: 10px; /* Adiciona uma distância entre o botão e o campo de mensagem */
-    transition: background-color 0.3s ease;
-}
-
-#image-icon svg {
-    width: 24px;
-    height: 24px;
-    fill: #8E9094;
-}
-
-#image-icon:hover {
-    background: none;
-}
-
-#image-icon:active {
-    background: #8E9094;
-    fill: white;
+    background: #929292;
+    padding: 10px 0;
+    font-size: 0.9rem;
+    color: #888;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5);
 }
