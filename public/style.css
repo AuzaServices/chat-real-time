@@ -92,7 +92,7 @@
 
 /* Área do chat */
 #chat-area {
-    height: calc(100% - 70px); /* Calcula altura excluindo o rodapé ou barra cinza */
+    height: calc(150% - 70px); /* Calcula altura excluindo o rodapé ou barra cinza */
     background: #1f1f1f;
     overflow-y: auto; /* Habilita rolagem vertical */
     position: relative; /* Define posição para evitar interferência */
