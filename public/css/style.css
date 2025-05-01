@@ -24,7 +24,7 @@ body {
     font-weight: bold;
     color: darkred;
     margin-top: 20px;
-    margin-left: 80px;
+    margin-left: 88px;
     text-align: left; /* Alinha à esquerda */
 }
 
@@ -107,7 +107,7 @@ footer {
     background: gray;
     padding: 10px;
     text-align: center;
-    margin-left: -80px;
+    margin-left: 0px;
 }
 
 /* Grid para organização de serviços */
