@@ -14,3 +14,25 @@ window.addEventListener("load", function() {
         localStorage.removeItem("visited"); // Remove a marcação após entrar
     }
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    const footer = document.querySelector("footer");
+    const cardsSection = document.querySelector(".grid-container");
+
+    function checkVisibility() {
+        const rect = cardsSection.getBoundingClientRect();
+        const screenHeight = window.innerHeight;
+
+        // Se os cartões estiverem visíveis, oculta o footer
+        if (rect.top < screenHeight * 0.5) {
+            footer.style.display = "none";
+        } else {
+            footer.style.display = "block";
+        }
+    }
+
+    window.addEventListener("scroll", checkVisibility);
+    window.addEventListener("resize", checkVisibility);
+
+    checkVisibility(); // Executa a verificação inicial
+});
