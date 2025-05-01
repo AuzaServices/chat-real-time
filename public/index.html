@@ -8,37 +8,36 @@
     <script defer src="js/script.js"></script>
 </head>
 <body>
+
     <header>
         <h1 class="title">Auza Services</h1>
         <p class="slogan">Tudo em serviços de A a Z</p>
     </header>
     
     <main>
-        <h2 class="question">Qual serviço você precisa?</h2>
-        <form id="service-form">
-            <select name="services" id="services">
-                <option value="">Selecione</option>
-                <option value="pedreiro">Pedreiro</option>
-                <option value="servente">Servente</option>
-                <option value="bombeiro-hidraulico">Bombeiro Hidráulico</option>
-                <option value="pintor">Pintor</option>
-                <option value="capinador">Capinador</option>
-                <option value="eletricista">Eletricista</option>
-                <option value="montador-de-moveis">Montador de Móveis</option>
-                <option value="caminhao-de-frete">Caminhão de Frete</option>
-                <option value="diarista">Diarista</option>
-                <option value="outro">Outro</option>
-            </select>
-            <div id="extra-service" class="hidden">
-                <label for="custom-service">Digite o serviço:</label>
-                <input type="text" id="custom-service">
-            </div>
-            <button type="submit">Continuar</button>
-        </form>
+        <div class="form-container">
+            <h2 class="question">Qual serviço você precisa?</h2>
+            <form id="service-form">
+                <select name="services" id="services">
+                    <option value="">Selecione</option>
+                    <option value="pedreiro">Pedreiro</option>
+                    <option value="servente">Servente</option>
+                    <option value="bombeiro-hidraulico">Bombeiro Hidráulico</option>
+                    <option value="pintor">Pintor</option>
+                    <option value="capinador">Capinador</option>
+                    <option value="eletricista">Eletricista</option>
+                    <option value="montador-de-moveis">Montador de Móveis</option>
+                    <option value="caminhao-de-frete">Caminhão de Frete</option>
+                    <option value="diarista">Diarista</option>
+                </select>
+                <button type="submit">Continuar</button>
+            </form>
+        </div>
     </main>
 
     <footer>
         <p>Auza Services © 2025</p>
     </footer>
+
 </body>
 </html>
