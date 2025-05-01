@@ -46,11 +46,11 @@ body {
     max-width: 550px; /* Ajuste para um tamanho mais compacto */
     padding: 18px;
     background-color: #333333;
-    color: rgb(170, 168, 168);
+    color: rgb(233, 233, 233);
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     margin-top: 10px; /* Move para baixo */
-    min-height: 250px;
+    min-height: 200px;
     margin-left: -29px; /* Move um pouco para a esquerda */
 }
 
@@ -80,8 +80,8 @@ select {
 
 /* Botão "Continuar" */
 button {
-    margin-top: 30px; /* Ajuste de espaçamento */
-    margin-left: 78px;
+    margin-top: 40px; /* Ajuste de espaçamento */
+    margin-left: 85px;
     padding: 10px;
     background-color: darkred;
     color: white;
@@ -104,6 +104,7 @@ footer {
     background: gray;
     padding: 10px;
     text-align: center;
+    margin-left:-80px;
 }
 
 /* Grid para organização de serviços */
@@ -123,13 +124,4 @@ footer {
     border-radius: 5px;
     text-align: left;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-#extra-service {
-    margin-top: 15px;
-    visibility: hidden; /* Oculta sem remover o espaço */
-}
-
-#extra-service.show {
-    visibility: visible; /* Exibe sem modificar a estrutura */
 }
