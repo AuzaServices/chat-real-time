@@ -1,11 +1,11 @@
 const express = require("express");
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
-app.use(express.static("public")); // Pasta onde os arquivos do site estarão
+app.use(express.static("public")); // Serve os arquivos da pasta 'public'
 
 app.get("/", (req, res) => {
-    res.sendFile(__dirname + "/public/index.html"); // Carrega a página inicial
+    res.sendFile(__dirname + "/public/index.html");
 });
 
 app.listen(port, () => {
