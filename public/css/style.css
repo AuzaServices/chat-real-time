@@ -127,4 +127,5 @@ footer {
     border-radius: 5px;
     text-align: left;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    min-height: 200px; /* Aumenta a altura dos cartões */
 }
