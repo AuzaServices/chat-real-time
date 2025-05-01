@@ -20,31 +20,23 @@ body {
 
 /* Nome da empresa */
 .title {
-    font-size: 2rem;
+    font-size: 2rem; /* Tamanho ajustado */
     font-weight: bold;
     color: darkred;
     margin-top: 20px;
     margin-left: 80px;
-    text-align: left;
-    display: block; /* Garante que o título apareça */
+    text-align: left; /* Alinha à esquerda */
 }
 
+/* Slogan */
 .slogan {
-    font-size: 1.2rem;
+    font-size: 1.2rem; /* Tamanho ajustado */
     font-style: italic;
     color: white;
-    margin-bottom: 30px; /* Aumenta o espaçamento abaixo do slogan */
+    margin-bottom: 80px;
     margin-left: 80px;
-    margin-top: -20px;
-    text-align: left;
-}
-
-.question {
-    font-weight: bold;
-    font-size: 1.3rem;
-    white-space: nowrap;
-    text-align: left;
-    margin-top: 40px; /* Adiciona mais espaço acima da pergunta */
+    margin-top: -200;
+    text-align: left; /* Alinha à esquerda */
 }
 
 /* Container do formulário */
