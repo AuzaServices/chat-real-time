@@ -168,3 +168,8 @@ button.voltar:hover {
     margin-top: 30px;
 
 }
+
+/* Esconder rodapé na página de profissionais */
+body.services-page footer {
+    display: none;
+}
