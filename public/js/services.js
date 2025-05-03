@@ -7,6 +7,15 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
     }
 
+    document.addEventListener("DOMContentLoaded", function () {
+        const footer = document.querySelector("footer"); // Seleciona o rodapé
+    
+        // **Remove o rodapé apenas na tela dos profissionais**
+        if (footer) {
+            footer.parentNode.removeChild(footer);
+        }
+    });
+    
     // **Lista fictícia com 10 profissionais por serviço**
     const professionals = [
         // 🏗️ Pedreiros
