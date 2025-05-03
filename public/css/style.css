@@ -33,9 +33,9 @@ body {
     font-size: 1.2rem; /* Tamanho ajustado */
     font-style: italic;
     color: white;
-    margin-bottom: 80px;
+    margin-bottom: 130px;
     margin-left: 80px;
-    margin-top: -200;
+    margin-top: -100;
     text-align: left; /* Alinha à esquerda */
 }
 
@@ -64,6 +64,7 @@ body {
     text-align: left; /* Alinha à esquerda */
     white-space: nowrap; /* Garante que a frase fique em uma linha só */
     text-align: left; /* Alinha à esquerda */
+    margin-top: 5px;
 
 }
 
