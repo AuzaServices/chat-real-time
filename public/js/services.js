@@ -3,10 +3,10 @@ const serviceSelect = document.getElementById("services"); // Seleciona o dropdo
 
 // Lista de profissionais com serviço especificado
 const professionals = [
-    { service: "pedreiro", name: "Carlos Silva", age: 45, stars: "⭐⭐⭐⭐", comment: "Experiente em reformas e construção." },
+    { service: "pedreiro", name: "Carlos Silva", age: 45, stars: "⭐⭐", comment: "Experiente em reformas e construção." },
     { service: "pedreiro", name: "João Ferreira", age: 38, stars: "⭐⭐⭐⭐⭐", comment: "Ótima qualidade e compromisso." },
 
-    { service: "servente", name: "Ana Costa", age: 32, stars: "⭐⭐⭐⭐", comment: "Auxiliar de obra dedicada e competente." },
+    { service: "servente", name: "Ana Costa", age: 22, stars: "⭐⭐⭐⭐", comment: "Auxiliar de obra dedicada e competente." },
     { service: "servente", name: "Rafaela Dias", age: 29, stars: "⭐⭐⭐⭐⭐", comment: "Trabalho ágil e eficiente." },
 
     { service: "bombeiro-hidraulico", name: "Fernando Souza", age: 41, stars: "⭐⭐⭐⭐", comment: "Especialista em sistemas hidráulicos." },
