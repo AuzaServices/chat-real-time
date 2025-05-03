@@ -140,3 +140,20 @@ footer {
     margin-left: 30px;;
     color: #9b9b9b;
 }
+
+/* Botão "Voltar" */
+button.voltar {
+    position: relative;
+    left: -70px; /* Ajuste para mover mais para a esquerda */
+    padding: 10px 15px;
+    background-color: darkred;
+    color: white;
+    border: none;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button.voltar:hover {
+    background-color: #a10000;
+}
