@@ -5,16 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profissionais</title>
     <link rel="stylesheet" href="css/style.css">
+    <script defer src="js/services.js"></script> <!-- Script para exibir profissionais -->
 </head>
 <body>
+
     <header>
-        <h1 class="title"><h2 class="section-title">Seu Profissional Ideal Está Aqui</h2></h1>
+        <h1 class="title">Profissionais Disponíveis</h1>
+        <button onclick="window.location.href='index.html'">Voltar</button>
     </header>
-    
-    <main class="grid-container">
-        <!-- Geraremos os 40 quadrados com JS -->
+
+    <main>
+        <section class="grid-container">
+            <p>Carregando profissionais...</p> <!-- Mensagem inicial -->
+        </section>
     </main>
-    
-    <script defer src="js/services.js"></script>
+
+    <footer>
+        <p>© 2025 Auza Services. Todos os direitos reservados.</p>
+    </footer>
+
 </body>
 </html>
