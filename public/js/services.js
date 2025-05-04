@@ -215,16 +215,16 @@ document.addEventListener("DOMContentLoaded", function () {
         { service: "cabeleireiro-a-domicílio", name: "Tatiane Silva", age: 44, stars: "⭐⭐", comment: "Ótima experiência com cortes infantis e masculinos.", whatsapp: "5585991340818" },
     
         //Manicure a Domicilio 💅✨
-        { service: "manicure-a-domicílio", name: "Ana Souza", age: 40, stars: "⭐⭐⭐⭐⭐", comment: "Especialista em unhas decoradas e esmaltação profissional.", whatsapp: "5585991340820" },
-        { service: "manicure-a-domicílio", name: "Bruna Costa", age: 38, stars: "⭐⭐⭐⭐", comment: "Hidratação profunda e cuidado especial para as unhas.", whatsapp: "5585991340821" },
-        { service: "manicure-a-domicílio", name: "Camila Mendes", age: 45, stars: "⭐⭐⭐⭐", comment: "Experiência em unhas de gel, acrílico e fibra de vidro.", whatsapp: "5585991340822" },
-        { service: "manicure-a-domicílio", name: "Daniela Martins", age: 37, stars: "⭐⭐⭐⭐⭐", comment: "Alongamento de unhas e técnicas de nail art personalizadas.", whatsapp: "5585991340823" },
-        { service: "manicure-a-domicílio", name: "Fernanda Almeida", age: 42, stars: "⭐⭐⭐", comment: "Esmaltação clássica e cuidados com cutículas.", whatsapp: "5585991340824" },
-        { service: "manicure-a-domicílio", name: "Gabriela Pereira", age: 39, stars: "⭐⭐⭐⭐", comment: "Especialista em francesinha e técnicas de spa para mãos.", whatsapp: "5585991340825" },
-        { service: "manicure-a-domicílio", name: "Helena Rocha", age: 36, stars: "⭐⭐⭐⭐⭐", comment: "Tratamentos naturais para fortalecimento das unhas.", whatsapp: "5585991340826" },
-        { service: "manicure-a-domicílio", name: "Isabela Lima", age: 41, stars: "⭐⭐⭐⭐", comment: "Unhas minimalistas, com detalhes delicados e sofisticados.", whatsapp: "5585991340827" },
-        { service: "manicure-a-domicílio", name: "Larissa Nunes", age: 35, stars: "⭐⭐⭐⭐", comment: "Aplicação de esmaltes hipoalergênicos e técnicas modernas.", whatsapp: "5585991340828" },
-        { service: "manicure-a-domicílio", name: "Tatiane Silva", age: 44, stars: "⭐⭐⭐", comment: "Aplicação de esmaltes hipoalergênicos e técnicas modernas.", whatsapp: "5585991340828" },
+        { service: "manicure-a-domicilio", name: "Ana Souza", age: 40, stars: "⭐⭐⭐⭐⭐", comment: "Especialista em unhas decoradas e esmaltação profissional.", whatsapp: "5585991340820" },
+        { service: "manicure-a-domicilio", name: "Bruna Costa", age: 38, stars: "⭐⭐⭐⭐", comment: "Hidratação profunda e cuidado especial para as unhas.", whatsapp: "5585991340821" },
+        { service: "manicure-a-domicilio", name: "Camila Mendes", age: 45, stars: "⭐⭐⭐⭐", comment: "Experiência em unhas de gel, acrílico e fibra de vidro.", whatsapp: "5585991340822" },
+        { service: "manicure-a-domicilio", name: "Daniela Martins", age: 37, stars: "⭐⭐⭐⭐⭐", comment: "Alongamento de unhas e técnicas de nail art personalizadas.", whatsapp: "5585991340823" },
+        { service: "manicure-a-domicilio", name: "Fernanda Almeida", age: 42, stars: "⭐⭐⭐", comment: "Esmaltação clássica e cuidados com cutículas.", whatsapp: "5585991340824" },
+        { service: "manicure-a-domicilio", name: "Gabriela Pereira", age: 39, stars: "⭐⭐⭐⭐", comment: "Especialista em francesinha e técnicas de spa para mãos.", whatsapp: "5585991340825" },
+        { service: "manicure-a-domicilio", name: "Helena Rocha", age: 36, stars: "⭐⭐⭐⭐⭐", comment: "Tratamentos naturais para fortalecimento das unhas.", whatsapp: "5585991340826" },
+        { service: "manicure-a-domicilio", name: "Isabela Lima", age: 41, stars: "⭐⭐⭐⭐", comment: "Unhas minimalistas, com detalhes delicados e sofisticados.", whatsapp: "5585991340827" },
+        { service: "manicure-a-domicilio", name: "Larissa Nunes", age: 35, stars: "⭐⭐⭐⭐", comment: "Aplicação de esmaltes hipoalergênicos e técnicas modernas.", whatsapp: "5585991340828" },
+        { service: "manicure-a-domicilio", name: "Tatiane Silva", age: 44, stars: "⭐⭐⭐", comment: "Aplicação de esmaltes hipoalergênicos e técnicas modernas.", whatsapp: "5585991340828" },
     ];
 
     // **Filtra os profissionais de acordo com o serviço escolhido**
