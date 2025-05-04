@@ -1,35 +1,43 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"> <!-- Impede zoom -->
-    <title>Marketplace de Profissionais</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"> <!-- Bloqueia zoom -->
+    <title>Auza Services</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script defer src="js/script.js"></script> <!-- Script atualizado -->
 </head>
 <body>
 
-    <!-- Área de Seleção de Serviço -->
     <header>
-        <h1>Selecione um Serviço</h1>
-        <select id="service-select">
-            <option value="" selected disabled>Escolha um serviço</option>
-            <option value="pedreiro">Pedreiro 🧱🔨</option>
-            <option value="servente">Servente 🏗️</option>
-            <option value="bombeiro-hidraulico">Bombeiro Hidráulico 🔧💧</option>
-            <option value="pintor">Pintor 🎨🖌️</option>
-            <option value="capinador">Capinador 🌿</option>
-            <option value="eletricista">Eletricista ⚡🔌</option>
-            <option value="montador-de-moveis">Montador de Móveis 🛠️</option>
-            <option value="caminhao-de-frete">Caminhão de Frete 🚚</option>
-            <option value="diarista">Diarista 🧹</option>
-        </select>
-        <button id="confirm-service">Continuar</button>
+        <h1 class="title">Auza Services</h1>
+        <p class="slogan">Tudo em serviços de A a Z</p>
     </header>
+    
+    <main>
+        <div class="form-container">
+            <h2 class="question">Qual serviço você precisa?</h2>
+            <form id="service-form">
+                <select name="services" id="services">
+                    <option value="">Selecione</option>
+                    <option value="pedreiro">Pedreiro</option>
+                    <option value="servente">Servente</option>
+                    <option value="bombeiro-hidraulico">Bombeiro Hidráulico</option>
+                    <option value="pintor">Pintor</option>
+                    <option value="capinador">Capinador</option>
+                    <option value="eletricista">Eletricista</option>
+                    <option value="montador-de-moveis">Montador de Móveis</option>
+                    <option value="caminhao-de-frete">Caminhão de Frete</option>
+                    <option value="diarista">Diarista</option>
+                </select>
+                <button type="submit">Continuar</button>
+            </form>
+        </div>
+    </main>
 
-    <!-- Área de Cards dos Profissionais -->
-    <main class="grid-container"></main>
-
-    <script src="services.js"></script>
+    <footer>
+        <p>© 2025 Auza Services. Todos os direitos reservados.</p>
+    </footer>
 
 </body>
 </html>
