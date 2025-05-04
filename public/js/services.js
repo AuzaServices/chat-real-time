@@ -167,16 +167,16 @@ document.addEventListener("DOMContentLoaded", function () {
         { service: "piscineiro", name: "Gabriel Santos", age: 40, stars: "⭐⭐⭐", comment: "Limpeza rápida e eficiente para eventos e clubes.", whatsapp: "5585991340779" },
         
         //Técnico em Refrigeração ❄️💨
-        { service: "técnico-em-refrigeração", name: "Carlos Mendes", age: 45, stars: "⭐⭐⭐⭐⭐", comment: "Especialista em instalação e manutenção de ar-condicionado.", whatsapp: "5585991340780" },
-        { service: "técnico-em-refrigeração", name: "Lucas Oliveira", age: 38, stars: "⭐⭐⭐⭐", comment: "Experiência com sistemas industriais de climatização.", whatsapp: "5585991340781" },
-        { service: "técnico-em-refrigeração", name: "Fernando Silva", age: 42, stars: "⭐⭐⭐⭐⭐", comment: "Reparo e limpeza de sistemas de refrigeração comercial.", whatsapp: "5585991340782" },
-        { service: "técnico-em-refrigeração", name: "André Souza", age: 37, stars: "⭐⭐⭐⭐", comment: "Manutenção preventiva de equipamentos de refrigeração.", whatsapp: "5585991340783" },
-        { service: "técnico-em-refrigeração", name: "Diego Rocha", age: 39, stars: "⭐⭐⭐⭐⭐", comment: "Especialista em gás refrigerante e carga térmica.", whatsapp: "5585991340784" },
-        { service: "técnico-em-refrigeração", name: "Rafael Lima", age: 41, stars: "⭐⭐⭐", comment: "Instalação de sistemas split e central de ar.", whatsapp: "5585991340785" },
-        { service: "técnico-em-refrigeração", name: "Marcelo Costa", age: 36, stars: "⭐⭐⭐⭐", comment: "Manutenção corretiva para equipamentos industriais.", whatsapp: "5585991340786" },
-        { service: "técnico-em-refrigeração", name: "João Nunes", age: 43, stars: "⭐⭐⭐⭐⭐", comment: "Diagnóstico de falhas e eficiência energética.", whatsapp: "5585991340787" },
-        { service: "técnico-em-refrigeração", name: "Pedro Almeida", age: 35, stars: "⭐⭐⭐⭐", comment: "Especialista em refrigeração automotiva.", whatsapp: "5585991340788" },
-        { service: "técnico-em-refrigeração", name: "Gabriel Santos", age: 40, stars: "⭐", comment: "Especialista em refrigeração automotiva.", whatsapp: "5585991340788" },
+        { service: "tecnico-em-refrigeração", name: "Carlos Mendes", age: 45, stars: "⭐⭐⭐⭐⭐", comment: "Especialista em instalação e manutenção de ar-condicionado.", whatsapp: "5585991340780" },
+        { service: "tecnico-em-refrigeração", name: "Lucas Oliveira", age: 38, stars: "⭐⭐⭐⭐", comment: "Experiência com sistemas industriais de climatização.", whatsapp: "5585991340781" },
+        { service: "tecnico-em-refrigeração", name: "Fernando Silva", age: 42, stars: "⭐⭐⭐⭐⭐", comment: "Reparo e limpeza de sistemas de refrigeração comercial.", whatsapp: "5585991340782" },
+        { service: "tecnico-em-refrigeração", name: "André Souza", age: 37, stars: "⭐⭐⭐⭐", comment: "Manutenção preventiva de equipamentos de refrigeração.", whatsapp: "5585991340783" },
+        { service: "tecnico-em-refrigeração", name: "Diego Rocha", age: 39, stars: "⭐⭐⭐⭐⭐", comment: "Especialista em gás refrigerante e carga térmica.", whatsapp: "5585991340784" },
+        { service: "tecnico-em-refrigeração", name: "Rafael Lima", age: 41, stars: "⭐⭐⭐", comment: "Instalação de sistemas split e central de ar.", whatsapp: "5585991340785" },
+        { service: "tecnico-em-refrigeração", name: "Marcelo Costa", age: 36, stars: "⭐⭐⭐⭐", comment: "Manutenção corretiva para equipamentos industriais.", whatsapp: "5585991340786" },
+        { service: "tecnico-em-refrigeração", name: "João Nunes", age: 43, stars: "⭐⭐⭐⭐⭐", comment: "Diagnóstico de falhas e eficiência energética.", whatsapp: "5585991340787" },
+        { service: "tecnico-em-refrigeração", name: "Pedro Almeida", age: 35, stars: "⭐⭐⭐⭐", comment: "Especialista em refrigeração automotiva.", whatsapp: "5585991340788" },
+        { service: "tecnico-em-refrigeração", name: "Gabriel Santos", age: 40, stars: "⭐", comment: "Especialista em refrigeração automotiva.", whatsapp: "5585991340788" },
     
         //Metalurgico 🔩⚙️
         { service: "metalúrgico", name: "Carlos Mendes", age: 45, stars: "⭐⭐⭐⭐⭐", comment: "Especialista em soldagem e corte industrial.", whatsapp: "5585991340790" },
