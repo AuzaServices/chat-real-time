@@ -1,19 +1,19 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const serviceForm = document.getElementById("service-form");
-    const serviceSelect = document.getElementById("services");
+    // ✅ Sempre que a página carregar, limpar o serviço selecionado
+    localStorage.removeItem("selectedService");
 
-    serviceForm.addEventListener("submit", function (event) {
-        event.preventDefault();
+    const form = document.getElementById("service-form");
 
-        const selectedService = serviceSelect.value;
+    form.addEventListener("submit", function (event) {
+        event.preventDefault(); // Impede o envio padrão do formulário
 
-        if (!selectedService) {
+        const selectedService = document.getElementById("services").value;
+
+        if (selectedService) {
+            localStorage.setItem("selectedService", selectedService); // Salva no localStorage
+            window.location.href = "services.html"; // Redireciona para a tela de profissionais
+        } else {
             alert("Por favor, selecione um serviço antes de continuar!");
-            return;
         }
-
-        // **Armazena o serviço escolhido e redireciona**
-        localStorage.setItem("selectedService", selectedService);
-        window.location.href = "services.html"; // Redireciona para a tela de profissionais
     });
 });
