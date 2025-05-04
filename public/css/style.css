@@ -220,7 +220,8 @@ body.services-page footer {
     .title, .slogan {
         font-size: 20px;
         text-align: center;
-        margin-left: 0;
+        margin-left: 80;
+        margin-right: 10;
     }
 
     .form-container {
