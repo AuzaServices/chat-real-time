@@ -64,7 +64,7 @@ body {
     white-space: nowrap; /* Garante que a frase fique em uma linha só */
     text-align: left; /* Alinha à esquerda */
     margin-top: 5px;
-    margin-left: 25px;
+    margin-left: 27px;
 
 }
 
@@ -104,6 +104,7 @@ button:hover {
 footer {
     position: fixed;
     bottom: 0;
+    font-size: 0.8;
     width: 100%;
     background: gray;
     padding: 10px;
