@@ -130,6 +130,101 @@ document.addEventListener("DOMContentLoaded", function () {
         { service: "diarista", name: "Larissa Nunes", age: 35, stars: "⭐⭐⭐⭐", comment: "Ótima experiência em limpeza comercial.", whatsapp: "5585991340749" },
         { service: "diarista", name: "Tatiane Silva", age: 44, stars: "⭐⭐", comment: "Ótima experiência em limpeza comercial.", whatsapp: "5585991340749" },
 
+        //Vidraceiro 🔨🪟
+        { service: "vidraceiro", name: "Carlos Mendes", age: 45, stars: "⭐⭐⭐⭐⭐", comment: "Especialista em instalação de vidros temperados.", whatsapp: "5585991340750" },
+        { service: "vidraceiro", name: "Lucas Oliveira", age: 38, stars: "⭐⭐⭐⭐", comment: "Excelência em corte e encaixe de vidro sob medida.", whatsapp: "5585991340751" },
+        { service: "vidraceiro", name: "Fernando Silva", age: 42, stars: "⭐⭐⭐⭐⭐", comment: "Trabalha com vidros laminados e segurança máxima.", whatsapp: "5585991340752" },
+        { service: "vidraceiro", name: "André Souza", age: 37, stars: "⭐⭐⭐⭐", comment: "Especialista em manutenção e troca de esquadrias de vidro.", whatsapp: "5585991340753" },
+        { service: "vidraceiro", name: "Diego Rocha", age: 39, stars: "⭐⭐⭐⭐⭐", comment: "Montagem de portas e janelas de vidro com precisão.", whatsapp: "5585991340754" },
+        { service: "vidraceiro", name: "Rafael Lima", age: 41, stars: "⭐⭐⭐", comment: "Limpeza e polimento de vidros com acabamento impecável.", whatsapp: "5585991340755" },
+        { service: "vidraceiro", name: "Marcelo Costa", age: 36, stars: "⭐⭐⭐⭐", comment: "Vidraçaria personalizada para ambientes residenciais e comerciais.", whatsapp: "5585991340756" },
+        { service: "vidraceiro", name: "João Nunes", age: 43, stars: "⭐⭐⭐⭐⭐", comment: "Instalação de box para banheiro e divisórias de vidro.", whatsapp: "5585991340757" },
+        { service: "vidraceiro", name: "Pedro Almeida", age: 35, stars: "⭐⭐⭐⭐", comment: "Corte preciso e entrega rápida de vidros sob medida.", whatsapp: "5585991340758" },
+        { service: "vidraceiro", name: "Gabriel Santos", age: 40, stars: "⭐⭐⭐", comment: "Instalação de box para banheiro e divisórias de vidro.", whatsapp: "5585991340757" },
+        
+        //Churrasqueiro🔥🍖
+        { service: "churrasqueiro", name: "João Batista", age: 45, stars: "⭐⭐⭐⭐⭐", comment: "Especialista em cortes nobres e churrasco argentino.", whatsapp: "5585991340760" },
+        { service: "churrasqueiro", name: "Carlos Ribeiro", age: 38, stars: "⭐⭐⭐⭐", comment: "Domina churrasco gaúcho e assados perfeitos.", whatsapp: "5585991340761" },
+        { service: "churrasqueiro", name: "Fernando Oliveira", age: 42, stars: "⭐⭐⭐⭐⭐", comment: "Técnicas especiais de defumação para carnes saborosas.", whatsapp: "5585991340762" },
+        { service: "churrasqueiro", name: "André Souza", age: 37, stars: "⭐⭐⭐⭐", comment: "Especialista em costela fogo de chão e acompanhamentos.", whatsapp: "5585991340763" },
+        { service: "churrasqueiro", name: "Diego Rocha", age: 39, stars: "⭐⭐⭐⭐⭐", comment: "Experiência com eventos grandes e rodízio completo.", whatsapp: "5585991340764" },
+        { service: "churrasqueiro", name: "Rafael Lima", age: 41, stars: "⭐⭐⭐", comment: "Preparação de carnes artesanais e cortes especiais.", whatsapp: "5585991340765" },
+        { service: "churrasqueiro", name: "Marcelo Costa", age: 36, stars: "⭐⭐⭐⭐", comment: "Churrasco tradicional com temperos diferenciados.", whatsapp: "5585991340766" },
+        { service: "churrasqueiro", name: "João Nunes", age: 43, stars: "⭐⭐⭐⭐⭐", comment: "Domina picanha na brasa e linguiças especiais.", whatsapp: "5585991340767" },
+        { service: "churrasqueiro", name: "Pedro Almeida", age: 35, stars: "⭐⭐⭐⭐", comment: "Experiência com espetinhos variados e carnes nobres.", whatsapp: "5585991340768" },
+        { service: "churrasqueiro", name: "Gabriel Santos", age: 40, stars: "⭐⭐⭐", comment: "Churrasco tradicional com temperos diferenciados.", whatsapp: "5585991340766" },
+    
+        //Piscineiro 💦🏊‍♂️
+        { service: "piscineiro", name: "Carlos Mendes", age: 45, stars: "⭐⭐⭐⭐⭐", comment: "Especialista em tratamento químico e limpeza profunda.", whatsapp: "5585991340770" },
+        { service: "piscineiro", name: "Lucas Oliveira", age: 38, stars: "⭐⭐⭐⭐", comment: "Experiência em manutenção de piscinas residenciais e comerciais.", whatsapp: "5585991340771" },
+        { service: "piscineiro", name: "Fernando Silva", age: 42, stars: "⭐⭐⭐⭐⭐", comment: "Controle de pH e produtos químicos para água cristalina.", whatsapp: "5585991340772" },
+        { service: "piscineiro", name: "André Souza", age: 37, stars: "⭐⭐⭐⭐", comment: "Limpeza de filtros e inspeção de bombas hidráulicas.", whatsapp: "5585991340773" },
+        { service: "piscineiro", name: "Diego Rocha", age: 39, stars: "⭐⭐⭐⭐⭐", comment: "Especialista em remoção de algas e resíduos orgânicos.", whatsapp: "5585991340774" },
+        { service: "piscineiro", name: "Rafael Lima", age: 41, stars: "⭐⭐⭐", comment: "Manutenção preventiva para evitar problemas futuros.", whatsapp: "5585991340775" },
+        { service: "piscineiro", name: "Marcelo Costa", age: 36, stars: "⭐⭐⭐⭐", comment: "Limpeza detalhada e troca de areia do filtro.", whatsapp: "5585991340776" },
+        { service: "piscineiro", name: "João Nunes", age: 43, stars: "⭐⭐⭐⭐⭐", comment: "Tratamento especial para piscinas de uso frequente.", whatsapp: "5585991340777" },
+        { service: "piscineiro", name: "Pedro Almeida", age: 35, stars: "⭐⭐⭐⭐", comment: "Experiência com piscinas aquecidas e climatizadas.", whatsapp: "5585991340778" },
+        { service: "piscineiro", name: "Gabriel Santos", age: 40, stars: "⭐⭐⭐", comment: "Limpeza rápida e eficiente para eventos e clubes.", whatsapp: "5585991340779" },
+        
+        //Técnico em Refrigeração ❄️💨
+        { service: "técnico-em-refrigeração", name: "Carlos Mendes", age: 45, stars: "⭐⭐⭐⭐⭐", comment: "Especialista em instalação e manutenção de ar-condicionado.", whatsapp: "5585991340780" },
+        { service: "técnico-em-refrigeração", name: "Lucas Oliveira", age: 38, stars: "⭐⭐⭐⭐", comment: "Experiência com sistemas industriais de climatização.", whatsapp: "5585991340781" },
+        { service: "técnico-em-refrigeração", name: "Fernando Silva", age: 42, stars: "⭐⭐⭐⭐⭐", comment: "Reparo e limpeza de sistemas de refrigeração comercial.", whatsapp: "5585991340782" },
+        { service: "técnico-em-refrigeração", name: "André Souza", age: 37, stars: "⭐⭐⭐⭐", comment: "Manutenção preventiva de equipamentos de refrigeração.", whatsapp: "5585991340783" },
+        { service: "técnico-em-refrigeração", name: "Diego Rocha", age: 39, stars: "⭐⭐⭐⭐⭐", comment: "Especialista em gás refrigerante e carga térmica.", whatsapp: "5585991340784" },
+        { service: "técnico-em-refrigeração", name: "Rafael Lima", age: 41, stars: "⭐⭐⭐", comment: "Instalação de sistemas split e central de ar.", whatsapp: "5585991340785" },
+        { service: "técnico-em-refrigeração", name: "Marcelo Costa", age: 36, stars: "⭐⭐⭐⭐", comment: "Manutenção corretiva para equipamentos industriais.", whatsapp: "5585991340786" },
+        { service: "técnico-em-refrigeração", name: "João Nunes", age: 43, stars: "⭐⭐⭐⭐⭐", comment: "Diagnóstico de falhas e eficiência energética.", whatsapp: "5585991340787" },
+        { service: "técnico-em-refrigeração", name: "Pedro Almeida", age: 35, stars: "⭐⭐⭐⭐", comment: "Especialista em refrigeração automotiva.", whatsapp: "5585991340788" },
+        { service: "técnico-em-refrigeração", name: "Gabriel Santos", age: 40, stars: "⭐", comment: "Especialista em refrigeração automotiva.", whatsapp: "5585991340788" },
+    
+        //Metalurgico 🔩⚙️
+        { service: "metalúrgico", name: "Carlos Mendes", age: 45, stars: "⭐⭐⭐⭐⭐", comment: "Especialista em soldagem e corte industrial.", whatsapp: "5585991340790" },
+        { service: "metalúrgico", name: "Lucas Oliveira", age: 38, stars: "⭐⭐⭐⭐", comment: "Experiência em fabricação de peças metálicas sob medida.", whatsapp: "5585991340791" },
+        { service: "metalúrgico", name: "Fernando Silva", age: 42, stars: "⭐⭐⭐⭐⭐", comment: "Trabalha com fundição e tratamento térmico de metais.", whatsapp: "5585991340792" },
+        { service: "metalúrgico", name: "André Souza", age: 37, stars: "⭐⭐⭐⭐", comment: "Especialista em corte a plasma e moldagem de aço.", whatsapp: "5585991340793" },
+        { service: "metalúrgico", name: "Diego Rocha", age: 39, stars: "⭐⭐⭐⭐⭐", comment: "Montagem e manutenção de estruturas metálicas.", whatsapp: "5585991340794" },
+        { service: "metalúrgico", name: "Rafael Lima", age: 41, stars: "⭐⭐⭐", comment: "Tratamento superficial e acabamento de metais.", whatsapp: "5585991340795" },
+        { service: "metalúrgico", name: "Marcelo Costa", age: 36, stars: "⭐⭐⭐⭐", comment: "Soldagem MIG, TIG e elétrica para projetos industriais.", whatsapp: "5585991340796" },
+        { service: "metalúrgico", name: "João Nunes", age: 43, stars: "⭐⭐⭐⭐⭐", comment: "Fundição de metais não ferrosos e técnicas avançadas.", whatsapp: "5585991340797" },
+        { service: "metalúrgico", name: "Pedro Almeida", age: 35, stars: "⭐⭐⭐⭐", comment: "Especialista em corte laser e estampagem.", whatsapp: "5585991340798" },
+        { service: "metalúrgico", name: "Gabriel Santos", age: 40, stars: "⭐⭐⭐", comment: "Reparo e manutenção de componentes metálicos.", whatsapp: "5585991340799" },
+        
+        //Cuidador de Animais 🐶🐱
+        { service: "cuidador-de-animais", name: "Ana Souza", age: 40, stars: "⭐⭐⭐⭐⭐", comment: "Especialista em cuidados e alimentação de pets.", whatsapp: "5585991340800" },
+        { service: "cuidador-de-animais", name: "Bruna Costa", age: 38, stars: "⭐⭐⭐⭐", comment: "Passeios e entretenimento para cães e gatos.", whatsapp: "5585991340801" },
+        { service: "cuidador-de-animais", name: "Camila Mendes", age: 45, stars: "⭐⭐⭐⭐", comment: "Excelência no trato com animais de todas as idades.", whatsapp: "5585991340802" },
+        { service: "cuidador-de-animais", name: "Daniela Martins", age: 37, stars: "⭐⭐⭐⭐⭐", comment: "Experiência com cuidados especiais e administração de medicamentos.", whatsapp: "5585991340803" },
+        { service: "cuidador-de-animais", name: "Fernanda Almeida", age: 42, stars: "⭐⭐⭐", comment: "Treinamento básico e socialização de filhotes.", whatsapp: "5585991340804" },
+        { service: "cuidador-de-animais", name: "Gabriela Pereira", age: 39, stars: "⭐⭐⭐⭐", comment: "Higiene e banho de pets com técnicas especializadas.", whatsapp: "5585991340805" },
+        { service: "cuidador-de-animais", name: "Helena Rocha", age: 36, stars: "⭐⭐⭐⭐⭐", comment: "Supervisão constante e ambiente seguro para pets.", whatsapp: "5585991340806" },
+        { service: "cuidador-de-animais", name: "Isabela Lima", age: 41, stars: "⭐⭐⭐⭐", comment: "Cuidados personalizados para cada tipo de animal.", whatsapp: "5585991340807" },
+        { service: "cuidador-de-animais", name: "Larissa Nunes", age: 35, stars: "⭐⭐⭐⭐", comment: "Ótima experiência com animais idosos e necessidades especiais.", whatsapp: "5585991340808" },
+        { service: "cuidador-de-animais", name: "Tatiane Silva", age: 44, stars: "⭐⭐", comment: "Ótima experiência com animais idosos e necessidades especiais.", whatsapp: "5585991340808" },
+    
+        //Cabeleireiro a Domicilio ✂️💖
+        { service: "cabeleireiro-a-domicílio", name: "Ana Souza", age: 40, stars: "⭐⭐⭐⭐⭐", comment: "Especialista em cortes modernos e coloração.", whatsapp: "5585991340810" },
+        { service: "cabeleireiro-a-domicílio", name: "Bruna Costa", age: 38, stars: "⭐⭐⭐⭐", comment: "Hidratação profunda e reconstrução capilar.", whatsapp: "5585991340811" },
+        { service: "cabeleireiro-a-domicílio", name: "Camila Mendes", age: 45, stars: "⭐⭐⭐⭐", comment: "Especialista em penteados para eventos e casamentos.", whatsapp: "5585991340812" },
+        { service: "cabeleireiro-a-domicílio", name: "Daniela Martins", age: 37, stars: "⭐⭐⭐⭐⭐", comment: "Cortes personalizados e estilo exclusivo.", whatsapp: "5585991340813" },
+        { service: "cabeleireiro-a-domicílio", name: "Fernanda Almeida", age: 42, stars: "⭐⭐⭐", comment: "Tratamentos naturais para cabelos danificados.", whatsapp: "5585991340814" },
+        { service: "cabeleireiro-a-domicílio", name: "Gabriela Pereira", age: 39, stars: "⭐⭐⭐⭐", comment: "Luzes, mechas e técnicas avançadas de cor.", whatsapp: "5585991340815" },
+        { service: "cabeleireiro-a-domicílio", name: "Helena Rocha", age: 36, stars: "⭐⭐⭐⭐⭐", comment: "Progressiva, botox capilar e alisamentos naturais.", whatsapp: "5585991340816" },
+        { service: "cabeleireiro-a-domicílio", name: "Isabela Lima", age: 41, stars: "⭐⭐⭐⭐", comment: "Cuidados capilares para cabelos cacheados e crespos.", whatsapp: "5585991340817" },
+        { service: "cabeleireiro-a-domicílio", name: "Larissa Nunes", age: 35, stars: "⭐⭐⭐⭐", comment: "Ótima experiência com cortes infantis e masculinos.", whatsapp: "5585991340818" },
+        { service: "cabeleireiro-a-domicílio", name: "Tatiane Silva", age: 44, stars: "⭐⭐", comment: "Ótima experiência com cortes infantis e masculinos.", whatsapp: "5585991340818" },
+    
+        //Manicure a Domicilio 💅✨
+        { service: "manicure-a-domicílio", name: "Ana Souza", age: 40, stars: "⭐⭐⭐⭐⭐", comment: "Especialista em unhas decoradas e esmaltação profissional.", whatsapp: "5585991340820" },
+        { service: "manicure-a-domicílio", name: "Bruna Costa", age: 38, stars: "⭐⭐⭐⭐", comment: "Hidratação profunda e cuidado especial para as unhas.", whatsapp: "5585991340821" },
+        { service: "manicure-a-domicílio", name: "Camila Mendes", age: 45, stars: "⭐⭐⭐⭐", comment: "Experiência em unhas de gel, acrílico e fibra de vidro.", whatsapp: "5585991340822" },
+        { service: "manicure-a-domicílio", name: "Daniela Martins", age: 37, stars: "⭐⭐⭐⭐⭐", comment: "Alongamento de unhas e técnicas de nail art personalizadas.", whatsapp: "5585991340823" },
+        { service: "manicure-a-domicílio", name: "Fernanda Almeida", age: 42, stars: "⭐⭐⭐", comment: "Esmaltação clássica e cuidados com cutículas.", whatsapp: "5585991340824" },
+        { service: "manicure-a-domicílio", name: "Gabriela Pereira", age: 39, stars: "⭐⭐⭐⭐", comment: "Especialista em francesinha e técnicas de spa para mãos.", whatsapp: "5585991340825" },
+        { service: "manicure-a-domicílio", name: "Helena Rocha", age: 36, stars: "⭐⭐⭐⭐⭐", comment: "Tratamentos naturais para fortalecimento das unhas.", whatsapp: "5585991340826" },
+        { service: "manicure-a-domicílio", name: "Isabela Lima", age: 41, stars: "⭐⭐⭐⭐", comment: "Unhas minimalistas, com detalhes delicados e sofisticados.", whatsapp: "5585991340827" },
+        { service: "manicure-a-domicílio", name: "Larissa Nunes", age: 35, stars: "⭐⭐⭐⭐", comment: "Aplicação de esmaltes hipoalergênicos e técnicas modernas.", whatsapp: "5585991340828" },
+        { service: "manicure-a-domicílio", name: "Tatiane Silva", age: 44, stars: "⭐⭐⭐", comment: "Aplicação de esmaltes hipoalergênicos e técnicas modernas.", whatsapp: "5585991340828" },
     ];
 
     // **Filtra os profissionais de acordo com o serviço escolhido**
