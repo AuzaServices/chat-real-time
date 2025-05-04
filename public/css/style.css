@@ -54,7 +54,7 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     margin-top: -80px; /* Move para baixo */
     min-height: 180px;
-    margin-left: 28px; /* Move um pouco para a esquerda */
+    margin-left: 20px; /* Move um pouco para a esquerda */
 }
 
 /* Pergunta */
