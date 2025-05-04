@@ -20,7 +20,7 @@ body {
 
 /* Nome da empresa */
 .title {
-    font-size: 2rem; /* Tamanho ajustado */
+    font-size: 7rem; /* Tamanho ajustado */
     font-weight: bold;
     color: darkred;
     margin-top: 20px;
@@ -31,7 +31,6 @@ body {
 /* Slogan */
 .slogan {
     font-size: 1.2rem; /* Tamanho ajustado */
-    font-style: italic;
     color: white;
     margin-bottom: 130px;
     margin-left: 80px;
@@ -54,7 +53,7 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     margin-top: -80px; /* Move para baixo */
     min-height: 180px;
-    margin-left: 20px; /* Move um pouco para a esquerda */
+    margin-left: 23px; /* Move um pouco para a esquerda */
 }
 
 /* Pergunta */
@@ -65,6 +64,7 @@ body {
     white-space: nowrap; /* Garante que a frase fique em uma linha só */
     text-align: left; /* Alinha à esquerda */
     margin-top: 5px;
+    margin-left: 20px;
 
 }
 
@@ -85,7 +85,7 @@ select {
 /* Botão "Continuar" */
 button {
     margin-top: 40px; /* Ajuste de espaçamento */
-    margin-left: 100px;
+    margin-left: 107px;
     padding: 10px;
     background-color: darkred;
     color: white;
@@ -144,7 +144,7 @@ footer {
 /* Botão "Voltar" */
 button.voltar {
     position: relative;
-    left: -85px; /* Ajuste para mover mais para a esquerda */
+    left: -90px; /* Ajuste para mover mais para a esquerda */
     padding: 10px 15px;
     background-color: darkred;
     color: white;
