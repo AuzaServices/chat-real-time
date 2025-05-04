@@ -203,16 +203,16 @@ document.addEventListener("DOMContentLoaded", function () {
         { service: "cuidador-de-animais", name: "Tatiane Silva", age: 44, stars: "⭐⭐", comment: "Ótima experiência com animais idosos e necessidades especiais.", whatsapp: "5585991340808" },
     
         //Cabeleireiro a Domicilio ✂️💖
-        { service: "cabeleireiro-a-domicílio", name: "Ana Souza", age: 40, stars: "⭐⭐⭐⭐⭐", comment: "Especialista em cortes modernos e coloração.", whatsapp: "5585991340810" },
-        { service: "cabeleireiro-a-domicílio", name: "Bruna Costa", age: 38, stars: "⭐⭐⭐⭐", comment: "Hidratação profunda e reconstrução capilar.", whatsapp: "5585991340811" },
-        { service: "cabeleireiro-a-domicílio", name: "Camila Mendes", age: 45, stars: "⭐⭐⭐⭐", comment: "Especialista em penteados para eventos e casamentos.", whatsapp: "5585991340812" },
-        { service: "cabeleireiro-a-domicílio", name: "Daniela Martins", age: 37, stars: "⭐⭐⭐⭐⭐", comment: "Cortes personalizados e estilo exclusivo.", whatsapp: "5585991340813" },
-        { service: "cabeleireiro-a-domicílio", name: "Fernanda Almeida", age: 42, stars: "⭐⭐⭐", comment: "Tratamentos naturais para cabelos danificados.", whatsapp: "5585991340814" },
-        { service: "cabeleireiro-a-domicílio", name: "Gabriela Pereira", age: 39, stars: "⭐⭐⭐⭐", comment: "Luzes, mechas e técnicas avançadas de cor.", whatsapp: "5585991340815" },
-        { service: "cabeleireiro-a-domicílio", name: "Helena Rocha", age: 36, stars: "⭐⭐⭐⭐⭐", comment: "Progressiva, botox capilar e alisamentos naturais.", whatsapp: "5585991340816" },
-        { service: "cabeleireiro-a-domicílio", name: "Isabela Lima", age: 41, stars: "⭐⭐⭐⭐", comment: "Cuidados capilares para cabelos cacheados e crespos.", whatsapp: "5585991340817" },
-        { service: "cabeleireiro-a-domicílio", name: "Larissa Nunes", age: 35, stars: "⭐⭐⭐⭐", comment: "Ótima experiência com cortes infantis e masculinos.", whatsapp: "5585991340818" },
-        { service: "cabeleireiro-a-domicílio", name: "Tatiane Silva", age: 44, stars: "⭐⭐", comment: "Ótima experiência com cortes infantis e masculinos.", whatsapp: "5585991340818" },
+        { service: "cabeleireiro-a-domicilio", name: "Ana Souza", age: 40, stars: "⭐⭐⭐⭐⭐", comment: "Especialista em cortes modernos e coloração.", whatsapp: "5585991340810" },
+        { service: "cabeleireiro-a-domicilio", name: "Bruna Costa", age: 38, stars: "⭐⭐⭐⭐", comment: "Hidratação profunda e reconstrução capilar.", whatsapp: "5585991340811" },
+        { service: "cabeleireiro-a-domicilio", name: "Camila Mendes", age: 45, stars: "⭐⭐⭐⭐", comment: "Especialista em penteados para eventos e casamentos.", whatsapp: "5585991340812" },
+        { service: "cabeleireiro-a-domicilio", name: "Daniela Martins", age: 37, stars: "⭐⭐⭐⭐⭐", comment: "Cortes personalizados e estilo exclusivo.", whatsapp: "5585991340813" },
+        { service: "cabeleireiro-a-domicilio", name: "Fernanda Almeida", age: 42, stars: "⭐⭐⭐", comment: "Tratamentos naturais para cabelos danificados.", whatsapp: "5585991340814" },
+        { service: "cabeleireiro-a-domicilio", name: "Gabriela Pereira", age: 39, stars: "⭐⭐⭐⭐", comment: "Luzes, mechas e técnicas avançadas de cor.", whatsapp: "5585991340815" },
+        { service: "cabeleireiro-a-domicilio", name: "Helena Rocha", age: 36, stars: "⭐⭐⭐⭐⭐", comment: "Progressiva, botox capilar e alisamentos naturais.", whatsapp: "5585991340816" },
+        { service: "cabeleireiro-a-domicilio", name: "Isabela Lima", age: 41, stars: "⭐⭐⭐⭐", comment: "Cuidados capilares para cabelos cacheados e crespos.", whatsapp: "5585991340817" },
+        { service: "cabeleireiro-a-domicilio", name: "Larissa Nunes", age: 35, stars: "⭐⭐⭐⭐", comment: "Ótima experiência com cortes infantis e masculinos.", whatsapp: "5585991340818" },
+        { service: "cabeleireiro-a-domicilio", name: "Tatiane Silva", age: 44, stars: "⭐⭐", comment: "Ótima experiência com cortes infantis e masculinos.", whatsapp: "5585991340818" },
     
         //Manicure a Domicilio 💅✨
         { service: "manicure-a-domicilio", name: "Ana Souza", age: 40, stars: "⭐⭐⭐⭐⭐", comment: "Especialista em unhas decoradas e esmaltação profissional.", whatsapp: "5585991340820" },
