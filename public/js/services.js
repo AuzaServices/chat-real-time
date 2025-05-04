@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
         { service: "bombeiro-hidraulico", name: "Thiago Silva", age: 44, stars: "⭐", comment: "Instalação eficiente de torneiras e bombas hidráulicas.", whatsapp: "5585991340689" },
 
         //Pintores 🎨
-        { service: "pintor", name: "Adriano Souza", age: 40, stars: "⭐⭐⭐⭐⭐", comment: "Especialista em pintura residencial e comercial.", whatsapp: "5585991340691" },
+        { service: "pintor", name: "Luis Carlos", age: 34, stars: "⭐⭐⭐⭐⭐", comment: "Pintura Simples, em Gesso, Reparo, Pinturas em Geral.", whatsapp: "5585991757150" },
         { service: "pintor", name: "Bruno Costa", age: 38, stars: "⭐⭐⭐⭐", comment: "Trabalho limpo e acabamento impecável.", whatsapp: "5585991340692" },
         { service: "pintor", name: "Carlos Mendes", age: 45, stars: "⭐⭐⭐⭐", comment: "Pintura interna e externa com qualidade.", whatsapp: "5585991340693" },
         { service: "pintor", name: "Diego Martins", age: 37, stars: "⭐⭐⭐⭐⭐", comment: "Experiência com tintas especiais e texturas.", whatsapp: "5585991340694" },
