@@ -162,7 +162,7 @@ button.voltar:hover {
 .profissional-ideal {
     color: gray; /* Define a cor cinza */
     white-space: nowrap; /* Mantém o texto em uma única linha */
-    font-size: 0.5rem; /* Ajuste opcional para visibilidade */
+    font-size: 1.5rem; /* Ajuste opcional para visibilidade */
     text-align: left; /* Mantém alinhado */
     margin-left: 25px;
     margin-top: 30px;
@@ -222,6 +222,16 @@ body.services-page footer {
         text-align: center;
         margin-left: 50;
         margin-right: 10;
+    }
+
+    .profissional-ideal {
+        color: gray; /* Define a cor cinza */
+        white-space: nowrap; /* Mantém o texto em uma única linha */
+        font-size: 1.4rem; /* Ajuste opcional para visibilidade */
+        text-align: left; /* Mantém alinhado */
+        margin-left: 26px;
+        margin-top: 30px;
+
     }
 
     .form-container {
