@@ -24,7 +24,7 @@ body {
     font-weight: bold;
     color: darkred;
     margin-top: 20px;
-    margin-left: 88px;
+    margin-left: 45px;
     text-align: left; /* Alinha à esquerda */
 }
 
@@ -33,7 +33,7 @@ body {
     font-size: 1.2rem; /* Tamanho ajustado */
     color: white;
     margin-bottom: 130px;
-    margin-left: 80px;
+    margin-left: 45px;
     margin-top: -100;
     text-align: left; /* Alinha à esquerda */
 }
@@ -162,9 +162,9 @@ button.voltar:hover {
 .profissional-ideal {
     color: gray; /* Define a cor cinza */
     white-space: nowrap; /* Mantém o texto em uma única linha */
-    font-size: 1.4rem; /* Ajuste opcional para visibilidade */
+    font-size: 0.5rem; /* Ajuste opcional para visibilidade */
     text-align: left; /* Mantém alinhado */
-    margin-left: 39px;
+    margin-left: 25px;
     margin-top: 30px;
 
 }
@@ -218,9 +218,9 @@ body.services-page footer {
 
 @media screen and (max-width: 600px) {
     .title, .slogan {
-        font-size: 20px;
+        font-size: 25px;
         text-align: center;
-        margin-left: 80;
+        margin-left: 50;
         margin-right: 10;
     }
 
