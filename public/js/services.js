@@ -1,4 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
+    // 🔄 Verifica se o usuário selecionou um serviço antes de carregar a página
+    if (!localStorage.getItem("selectedService")) {
+        window.location.href = "index.html"; // 🔄 Redireciona para a tela de seleção
+        return;
+    }
+
     const mainContainer = document.querySelector(".grid-container");
     const selectedService = localStorage.getItem("selectedService");
 
@@ -15,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // **Lista fictícia com profissionais, cada um com seu WhatsApp**
     const professionals = [
-
+        
         //Pedreiro 🧱🔨
         { service: "pedreiro", name: "Carlos Silva", age: 45, stars: "⭐⭐⭐", comment: "Experiente em reformas e construção.", whatsapp: "5585991340651" },
         { service: "pedreiro", name: "João Ferreira", age: 38, stars: "⭐⭐⭐⭐⭐", comment: "Ótima qualidade e compromisso.", whatsapp: "5585991340652" },
@@ -27,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
         { service: "pedreiro", name: "José Lima", age: 47, stars: "⭐⭐⭐⭐", comment: "Trabalho limpo e bem planejado.", whatsapp: "5585991340658" },
         { service: "pedreiro", name: "Marcelo Nunes", age: 41, stars: "⭐⭐⭐⭐", comment: "Experiente em grandes projetos.", whatsapp: "5585991340659" },
         { service: "pedreiro", name: "Rafael Costa", age: 37, stars: "⭐⭐⭐⭐⭐", comment: "Ótima comunicação e execução de obra.", whatsapp: "5585991340660" },
-
+    
         //Servente 🏗️ 
         { service: "servente", name: "Antonio Souza", age: 33, stars: "⭐⭐⭐", comment: "Rápido e organizado na obra.", whatsapp: "5585991340661" },
         { service: "servente", name: "Bruno Oliveira", age: 29, stars: "⭐⭐⭐⭐⭐", comment: "Ótima disposição e trabalho eficiente.", whatsapp: "5585991340662" },
