@@ -231,30 +231,34 @@ document.addEventListener("DOMContentLoaded", function () {
     
     ];
 
-    // **Filtra os profissionais de acordo com o serviço escolhido**
-    const filteredProfessionals = professionals.filter(professional => professional.service === selectedService);
+// **Filtra os profissionais de acordo com o serviço escolhido**
+const filteredProfessionals = professionals.filter(professional => professional.service === selectedService);
 
-    if (filteredProfessionals.length === 0) {
-        mainContainer.innerHTML = "<p>Nenhum profissional encontrado para este serviço.</p>";
-        return;
-    }
+if (filteredProfessionals.length === 0) {
+    mainContainer.innerHTML = "<p>Nenhum profissional encontrado para este serviço.</p>";
+    return;
+}
 
-    mainContainer.innerHTML = ""; // Limpa a mensagem inicial
+mainContainer.innerHTML = ""; // Limpa a mensagem inicial
 
-    filteredProfessionals.forEach(professional => {
-        const card = document.createElement("div");
-        card.classList.add("card");
+filteredProfessionals.forEach(professional => {
+    const card = document.createElement("div");
+    card.classList.add("card");
 
-        card.innerHTML = `
-            <h3>${professional.name}</h3>
-            <p>Idade: ${professional.age} anos</p>
-            <p>Avaliação: ${professional.stars}</p>
-            <p>${professional.comment}</p>
-            <a class="whatsapp-button" href="https://wa.me/${professional.whatsapp}" target="_blank">
-                Contato via WhatsApp
-            </a>
-        `;
+    // Adiciona mensagem automática ao botão do WhatsApp
+    const message = "Olá, vim por meio da Auza Services, gostaria de realizar um orçamento de serviço.";
+    const whatsappLink = `https://api.whatsapp.com/send?phone=${professional.whatsapp}&text=${encodeURIComponent(message)}`;
 
-        mainContainer.appendChild(card);
-    });
+    card.innerHTML = `
+        <h3>${professional.name}</h3>
+        <p>Idade: ${professional.age} anos</p>
+        <p>Avaliação: ${professional.stars}</p>
+        <p>${professional.comment}</p>
+        <a class="whatsapp-button" href="${whatsappLink}" target="_blank">
+            Contato via WhatsApp
+        </a>
+    `;
+
+    mainContainer.appendChild(card);
+});
 });
