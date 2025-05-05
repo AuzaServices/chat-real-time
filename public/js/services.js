@@ -167,7 +167,7 @@ document.addEventListener("DOMContentLoaded", function () {
         { service: "piscineiro", name: "Gabriel Santos", age: 40, stars: "⭐⭐⭐", comment: "Limpeza rápida e eficiente para eventos e clubes.", whatsapp: "5585991340779" },
         
         //Técnico em Refrigeração ❄️💨
-        { service: "tecnico-em-refrigeração", name: "Carlos Mendes", age: 45, stars: "⭐⭐⭐⭐⭐", comment: "Especialista em instalação e manutenção de ar-condicionado.", whatsapp: "5585991340780" },
+        { service: "tecnico-em-refrigeração", name: "Maycon", age: 22, stars: "⭐⭐⭐", comment: "Experiência de 2 anos, trabalho com máquinas Split, piso teto e Cassete.", whatsapp: "5585994088415" },
         { service: "tecnico-em-refrigeração", name: "Lucas Oliveira", age: 38, stars: "⭐⭐⭐⭐", comment: "Experiência com sistemas industriais de climatização.", whatsapp: "5585991340781" },
         { service: "tecnico-em-refrigeração", name: "Fernando Silva", age: 42, stars: "⭐⭐⭐⭐⭐", comment: "Reparo e limpeza de sistemas de refrigeração comercial.", whatsapp: "5585991340782" },
         { service: "tecnico-em-refrigeração", name: "André Souza", age: 37, stars: "⭐⭐⭐⭐", comment: "Manutenção preventiva de equipamentos de refrigeração.", whatsapp: "5585991340783" },
