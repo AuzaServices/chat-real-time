@@ -192,7 +192,7 @@ body.services-page footer {
 /* Limita a altura do comentário para evitar variações no card */
 .card p {
     flex-grow: 1; /* Expande, mas sem empurrar o botão */
-    max-height: 60px; /* Define um limite para os comentários */
+    max-height: 100px; /* Define um limite para os comentários */
     overflow: hidden; /* Evita que textos muito longos alterem a altura */
     text-overflow: ellipsis; /* Adiciona "..." se o texto for muito grande */
 }
