@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", function () {
         { service: "capinador", name: "Thiago Silva", age: 43, stars: "⭐⭐⭐⭐⭐", comment: "Remoção de plantas invasoras e ervas daninhas.", whatsapp: "5585991340709" },
 
         //Eletricistas ⚡
-        { service: "eletricista", name: "Alexandre Souza", age: 42, stars: "⭐⭐⭐⭐⭐", comment: "Especialista em instalações elétricas residenciais.", whatsapp: "5585992288704" },
+        { service: "eletricista", name: "Roberto Evangelista", age: 39, stars: "⭐⭐⭐⭐⭐", comment: "Experiência na área de Eletricidade", whatsapp: "5585981737165" },
         { service: "eletricista", name: "Bruno Almeida", age: 39, stars: "⭐⭐⭐⭐", comment: "Manutenção e reparos elétricos eficientes.", whatsapp: "5585991340712" },
         { service: "eletricista", name: "Carlos Mendes", age: 45, stars: "⭐⭐⭐⭐", comment: "Experiência em circuitos e sistemas elétricos.", whatsapp: "5585991340713" },
         { service: "eletricista", name: "Diego Martins", age: 37, stars: "⭐⭐⭐⭐⭐", comment: "Instalações industriais e comerciais.", whatsapp: "5585991340714" },
