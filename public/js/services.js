@@ -225,6 +225,10 @@ document.addEventListener("DOMContentLoaded", function () {
         { service: "manicure-a-domicilio", name: "Isabela Lima", age: 41, stars: "⭐⭐⭐⭐", comment: "Unhas minimalistas, com detalhes delicados e sofisticados.", whatsapp: "5585991340827" },
         { service: "manicure-a-domicilio", name: "Larissa Nunes", age: 35, stars: "⭐⭐⭐⭐", comment: "Aplicação de esmaltes hipoalergênicos e técnicas modernas.", whatsapp: "5585991340828" },
         { service: "manicure-a-domicilio", name: "Tatiane Silva", age: 44, stars: "⭐⭐⭐", comment: "Aplicação de esmaltes hipoalergênicos e técnicas modernas.", whatsapp: "5585991340828" },
+    
+        //Designer 💅✨
+        { service: "designer", name: "Mondesson Linardis", age: 29, stars: "⭐⭐⭐⭐", comment: "3 anos de experiência em design e redes sociais, tenho uma gráfica há 5 meses.", whatsapp: "5585991774021" },
+    
     ];
 
     // **Filtra os profissionais de acordo com o serviço escolhido**
