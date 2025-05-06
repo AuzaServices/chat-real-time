@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", function () {
         { service: "eletricista", name: "Thiago Silva", age: 44, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "Instalação de painéis elétricos e quadros de distribuição.", whatsapp: "5585991340719" },
         
         //Montadores de Móveis 🛠️
-        { service: "montador-de-moveis", name: "Alexandre Oliveira", age: 40, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "Especialista em montagem de móveis planejados.", whatsapp: "5585991340721" },
+        { service: "montador-de-moveis", name: "Naldo", age: 51, city: "Pacajus - CE", stars: "⭐⭐⭐⭐", comment: "29 anos de experiência na área. Experiência com móveis de loja.", whatsapp: "5585992038039" },
         { service: "montador-de-moveis", name: "Bruno Ferreira", age: 38, city: "Itaitinga - CE", stars: "⭐⭐⭐⭐⭐", comment: "Montagem rápida e precisa.", whatsapp: "5585991340722" },
         { service: "montador-de-moveis", name: "Carlos Mendes", age: 45, city: "Pacajus - CE", stars: "⭐⭐⭐", comment: "Experiência em móveis residenciais e comerciais.", whatsapp: "5585991340723" },
         { service: "montador-de-moveis", name: "Diego Souza", age: 37, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "Ótimo acabamento e dedicação.", whatsapp: "5585991340724" },
