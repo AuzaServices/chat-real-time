@@ -10,12 +10,15 @@
 body {
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* Alinha os elementos à esquerda */
+    align-items: center; /* Centraliza a página corretamente */
     justify-content: center;
     min-height: 80vh;
-    background-color: #1f1f1f; /* Fundo cinza escuro */
+    background-color: #1f1f1f; /* Mantém o fundo cinza escuro */
     color: white; /* Texto branco */
-    padding-left: 0px; /* Ajuste para mover os elementos um pouco à esquerda */
+    padding-left: 0; /* Mantém ajuste */
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto; /* Evita deslocamento lateral */
 }
 
 /* Nome da empresa */
@@ -120,7 +123,7 @@ footer {
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
     padding: 15px;
-    justify-content: left; /* Alinha à esquerda */
+    justify-content: left; /* Mantém alinhamento original */
 }
 
 /* Cartão de serviço */
