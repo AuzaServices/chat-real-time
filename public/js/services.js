@@ -131,7 +131,7 @@ document.addEventListener("DOMContentLoaded", function () {
         { service: "diarista", name: "Juliana Nunes", age: 43, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "Ótima opção para limpeza profunda.", whatsapp: "5585991340749" },
         
         //Vidraceiro 🔨🪟
-        { service: "vidraceiro", name: "André Souza", age: 40, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "Instalação de vidros temperados e laminados.", whatsapp: "5585991340751" },
+        { service: "vidraceiro", name: "André Sousa", age: 40, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "Instalação de vidros temperados e laminados.", whatsapp: "5585991340751" },
         { service: "vidraceiro", name: "Bruno Ferreira", age: 38, city: "Itaitinga - CE", stars: "⭐⭐⭐⭐⭐", comment: "Trabalho impecável em box e janelas.", whatsapp: "5585991340752" },
         { service: "vidraceiro", name: "Carlos Mendes", age: 45, city: "Pacajus - CE", stars: "⭐⭐⭐", comment: "Experiência em vidros decorativos e estruturais.", whatsapp: "5585991340753" },
         { service: "vidraceiro", name: "Diego Souza", age: 37, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "Montagem precisa e acabamento fino.", whatsapp: "5585991340754" },
@@ -155,7 +155,7 @@ document.addEventListener("DOMContentLoaded", function () {
         { service: "churrasqueiro", name: "Thiago Martins", age: 44, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "Ótimo atendimento e carnes selecionadas.", whatsapp: "5585991340769" },
             
         //Piscineiro 💦🏊‍♂️
-        { service: "piscineiro", name: "Carlos Mendes", age: 45, city: "Horizonte - CE", stars: "⭐⭐⭐⭐⭐", comment: "Especialista em manutenção e tratamento de piscinas.", whatsapp: "5585991340830" },
+        { service: "piscineiro", name: "Marcos Vinicius", age: 45, city: "Horizonte - CE", stars: "⭐⭐⭐⭐⭐", comment: "Especialista em manutenção e tratamento de piscinas.", whatsapp: "5585991340830" },
         { service: "piscineiro", name: "Lucas Oliveira", age: 38, city: "Itaitinga - CE", stars: "⭐⭐⭐⭐", comment: "Limpeza completa e cuidados com produtos químicos.", whatsapp: "5585991340831" },
         { service: "piscineiro", name: "Fernando Silva", age: 42, city: "Pacajus - CE", stars: "⭐⭐⭐⭐⭐", comment: "Experiência em piscinas residenciais e comerciais.", whatsapp: "5585991340832" },
         { service: "piscineiro", name: "André Souza", age: 37, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "Verificação de filtros e sistemas de bombeamento.", whatsapp: "5585991340833" },
@@ -192,14 +192,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 
         // Cuidador de Animais 🐶🐱
         { service: "cuidador-de-animais", name: "Ana Souza", age: 40, city: "Horizonte - CE", stars: "⭐⭐⭐⭐⭐", comment: "Especialista em cuidados e alimentação de pets.", whatsapp: "5585991340800" },
-        { service: "cuidador-de-animais", name: "Bruna Costa", age: 38, city: "Pacajus - CE", stars: "⭐⭐⭐⭐", comment: "Passeios e entretenimento para cães e gatos.", whatsapp: "5585991340801" },
+        { service: "cuidador-de-animais", name: "Antônia Almeida", age: 38, city: "Pacajus - CE", stars: "⭐⭐⭐⭐", comment: "Passeios e entretenimento para cães e gatos.", whatsapp: "5585991340801" },
         { service: "cuidador-de-animais", name: "Camila Mendes", age: 45, city: "Itaitinga - CE", stars: "⭐⭐⭐⭐", comment: "Excelência no trato com animais de todas as idades.", whatsapp: "5585991340802" },
         { service: "cuidador-de-animais", name: "Daniela Martins", age: 37, city: "Horizonte - CE", stars: "⭐⭐⭐⭐⭐", comment: "Experiência com cuidados especiais e administração de medicamentos.", whatsapp: "5585991340803" },
         { service: "cuidador-de-animais", name: "Fernanda Almeida", age: 42, city: "Pacajus - CE", stars: "⭐⭐⭐", comment: "Treinamento básico e socialização de filhotes.", whatsapp: "5585991340804" },
         { service: "cuidador-de-animais", name: "Gabriela Pereira", age: 39, city: "Itaitinga - CE", stars: "⭐⭐⭐⭐", comment: "Higiene e banho de pets com técnicas especializadas.", whatsapp: "5585991340805" },
                 
         //Cabeleireiro a Domicilio ✂️💖
-        { service: "cabeleireiro-a-domicilio", name: "Ana Souza", age: 40, city: "Horizonte - CE", stars: "⭐⭐⭐⭐⭐", comment: "Especialista em cortes modernos e coloração.", whatsapp: "5585991340810" },
+        { service: "cabeleireiro-a-domicilio", name: "Anna Santos", age: 40, city: "Horizonte - CE", stars: "⭐⭐⭐⭐⭐", comment: "Especialista em cortes modernos e coloração.", whatsapp: "5585991340810" },
         { service: "cabeleireiro-a-domicilio", name: "Bruna Costa", age: 38, city: "Pacajus - CE", stars: "⭐⭐⭐⭐", comment: "Hidratação profunda e reconstrução capilar.", whatsapp: "5585991340811" },
         { service: "cabeleireiro-a-domicilio", name: "Camila Mendes", age: 45, city: "Itaitinga - CE", stars: "⭐⭐⭐⭐", comment: "Especialista em penteados para eventos e casamentos.", whatsapp: "5585991340812" },
         { service: "cabeleireiro-a-domicilio", name: "Daniela Martins", age: 37, city: "Horizonte - CE", stars: "⭐⭐⭐⭐⭐", comment: "Cortes personalizados e estilo exclusivo.", whatsapp: "5585991340813" },
@@ -216,7 +216,7 @@ document.addEventListener("DOMContentLoaded", function () {
 ];
 
     // **Defina os profissionais destacados**
-    const highlightedProfessionals = ["João Ferreira",]; // Adicione os nomes dos profissionais que devem ser destacados
+    const highlightedProfessionals = ["João Ferreira", "Anna Santos", "Bruna Costa", "Antônia Almeida", "Carlos Mendes", "Lucas Oliveira", "Marcos Vinicius", "Anderson Santos", "André Sousa", "Roberto Evangelista", "Gabriel Costa"]; // Adicione os nomes dos profissionais que devem ser destacados
 
     const filteredProfessionals = professionals.filter(professional => professional.service === selectedService);
 
