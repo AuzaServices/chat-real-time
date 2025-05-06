@@ -50,7 +50,7 @@ body {
     background-color: #333333;
     color: rgb(233, 233, 233);
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Sombra leve */
     margin-top: -80px; /* Move para baixo */
     min-height: 180px;
     margin-left: 23px; /* Move um pouco para a esquerda */
@@ -92,6 +92,7 @@ button {
     border: none;
     font-size: 1rem;
     border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Sombra leve */
     cursor: pointer;
     align-self: flex-start; /* Mantém o botão alinhado à esquerda */
 }
