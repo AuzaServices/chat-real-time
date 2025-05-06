@@ -283,5 +283,6 @@ body.services-page footer {
     color: #A020F0; /* Lilás */
     font-size: 1.2rem;
     font-weight: bold;
+    margin-top: 14px;
     text-align: center;
 }
