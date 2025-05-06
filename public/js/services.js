@@ -107,7 +107,7 @@ document.addEventListener("DOMContentLoaded", function () {
         
 
         //Caminhão de Frete 🚛📦
-        { service: "caminhao-de-frete", name: "Roberto Evangelista", age: 45, city: "Horizonte - CE", stars: "⭐⭐⭐⭐⭐", comment: "Fretes rápidos e seguros para qualquer destino.", whatsapp: "5585991340731" },
+        { service: "caminhao-de-frete", name: "Francisco Oliveira", age: 45, city: "Horizonte - CE", stars: "⭐⭐⭐⭐⭐", comment: "Fretes rápidos e seguros para qualquer destino.", whatsapp: "5585991340731" },
         { service: "caminhao-de-frete", name: "Bruno Almeida", age: 39, city: "Itaitinga - CE", stars: "⭐⭐⭐⭐", comment: "Transporte de cargas com total cuidado e eficiência.", whatsapp: "5585991340732" },
         { service: "caminhao-de-frete", name: "Carlos Mendes", age: 48, city: "Pacajus - CE", stars: "⭐⭐⭐⭐⭐", comment: "Especialista em mudanças e transporte de grandes volumes.", whatsapp: "5585991340733" },
         { service: "caminhao-de-frete", name: "Diego Martins", age: 42, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "Frete comercial e residencial com atendimento ágil.", whatsapp: "5585991340734" },
