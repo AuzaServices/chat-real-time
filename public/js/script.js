@@ -17,3 +17,11 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+
+document.getElementById("joinButton").addEventListener("click", function() {
+    const phoneNumber = "5585991340658";
+    const message = "Quero fazer parte do time!";
+    const encodedMessage = encodeURIComponent(message);
+    
+    window.location.href = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodedMessage}`;
+});
