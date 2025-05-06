@@ -254,3 +254,34 @@ body.services-page footer {
         max-width: none;
     }
 }
+
+/* Estilo padrão dos cards */
+.card {
+    background-color: #fff;
+    color: black;
+    padding: 15px;
+    border-radius: 5px;
+    text-align: left;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilização para profissionais destacados */
+.highlighted {
+    background: linear-gradient(45deg, gold, orange);
+    box-shadow: 0 0 10px gold;
+    border: 2px solid gold;
+}
+
+/* Nome do profissional destacado */
+.highlighted-name {
+    color: #A020F0; /* Lilás */
+    font-weight: bold;
+}
+
+/* Destaque no card */
+.destaque {
+    color: #A020F0; /* Lilás */
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+}
