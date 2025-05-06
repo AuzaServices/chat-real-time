@@ -268,7 +268,7 @@ body.services-page footer {
 /* Estilização para profissionais destacados */
 .highlighted {
     background: linear-gradient(45deg, gold, orange);
-    box-shadow: 0 0 10px gold;
+    box-shadow: 0 0 20px gold;
     border: 2px solid gold;
 }
 
