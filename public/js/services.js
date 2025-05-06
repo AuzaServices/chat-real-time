@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
         { service: "pintor", name: "Matheus Silva", age: 37, city: "Itaitinga - CE", stars: "⭐⭐⭐⭐", comment: "Qualidade garantida em pintura interna e externa.", whatsapp: "5585991340698" },
         { service: "pintor", name: "Vinícius Costa", age: 34, city: "Pacajus - CE", stars: "⭐⭐⭐⭐", comment: "Detalhista e comprometido com prazos.", whatsapp: "5585991340699" },
         { service: "pintor", name: "Rodrigo Nunes", age: 43, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "Detalhista e comprometido com prazos.", whatsapp: "5585991340699" },
-        
+        { service: "pintor", name: "José Antunes", age: 43, city: "Horizonte - CE", stars: "⭐", comment: "Detalhista", whatsapp: "55859913409" },
         //Capinadores 🌿
         { service: "capinador", name: "Anderson Santos", age: 39, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "Especialista em limpeza de terrenos e áreas verdes.", whatsapp: "5585991340701" },
         { service: "capinador", name: "Bruno Oliveira", age: 42, city: "Itaitinga - CE", stars: "⭐⭐⭐⭐⭐", comment: "Trabalho eficiente na remoção de vegetação.", whatsapp: "5585991340702" },
@@ -216,7 +216,7 @@ document.addEventListener("DOMContentLoaded", function () {
 ];
 
     // **Defina os profissionais destacados**
-    const highlightedProfessionals = ["João Ferreira", "Anna Santos", "Bruna Costa", "Antônia Almeida", "Carlos Mendes", "Lucas Oliveira", "Marcos Vinicius", "Anderson Santos", "André Sousa", "Roberto Evangelista", "Gabriel Costa"]; // Adicione os nomes dos profissionais que devem ser destacados
+    const highlightedProfessionals = ["João Ferreira", "Anna Santos", "Bruna Costa", "Antônia Almeida", "Carlos Mendes", "Lucas Oliveira", "Marcos Vinicius", "Anderson Santos", "André Sousa", "Roberto Evangelista", "Gabriel Costa", "Antonio Nunes"]; // Adicione os nomes dos profissionais que devem ser destacados
 
     const filteredProfessionals = professionals.filter(professional => professional.service === selectedService);
 
