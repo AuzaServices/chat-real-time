@@ -196,33 +196,21 @@ document.addEventListener("DOMContentLoaded", function () {
         { service: "cuidador-de-animais", name: "Gabriela Pereira", age: 39, city: "Itaitinga - CE", stars: "⭐⭐⭐⭐", comment: "Higiene e banho de pets com técnicas especializadas.", whatsapp: "5585991340805" },
                 
         //Cabeleireiro a Domicilio ✂️💖
-        { service: "cabeleireiro-a-domicilio", name: "Ana Souza", age: 40, stars: "⭐⭐⭐⭐⭐", comment: "Especialista em cortes modernos e coloração.", whatsapp: "5585991340810" },
-        { service: "cabeleireiro-a-domicilio", name: "Bruna Costa", age: 38, stars: "⭐⭐⭐⭐", comment: "Hidratação profunda e reconstrução capilar.", whatsapp: "5585991340811" },
-        { service: "cabeleireiro-a-domicilio", name: "Camila Mendes", age: 45, stars: "⭐⭐⭐⭐", comment: "Especialista em penteados para eventos e casamentos.", whatsapp: "5585991340812" },
-        { service: "cabeleireiro-a-domicilio", name: "Daniela Martins", age: 37, stars: "⭐⭐⭐⭐⭐", comment: "Cortes personalizados e estilo exclusivo.", whatsapp: "5585991340813" },
-        { service: "cabeleireiro-a-domicilio", name: "Fernanda Almeida", age: 42, stars: "⭐⭐⭐", comment: "Tratamentos naturais para cabelos danificados.", whatsapp: "5585991340814" },
-        { service: "cabeleireiro-a-domicilio", name: "Gabriela Pereira", age: 39, stars: "⭐⭐⭐⭐", comment: "Luzes, mechas e técnicas avançadas de cor.", whatsapp: "5585991340815" },
-        { service: "cabeleireiro-a-domicilio", name: "Helena Rocha", age: 36, stars: "⭐⭐⭐⭐⭐", comment: "Progressiva, botox capilar e alisamentos naturais.", whatsapp: "5585991340816" },
-        { service: "cabeleireiro-a-domicilio", name: "Isabela Lima", age: 41, stars: "⭐⭐⭐⭐", comment: "Cuidados capilares para cabelos cacheados e crespos.", whatsapp: "5585991340817" },
-        { service: "cabeleireiro-a-domicilio", name: "Larissa Nunes", age: 35, stars: "⭐⭐⭐⭐", comment: "Ótima experiência com cortes infantis e masculinos.", whatsapp: "5585991340818" },
-        { service: "cabeleireiro-a-domicilio", name: "Tatiane Silva", age: 44, stars: "⭐⭐", comment: "Ótima experiência com cortes infantis e masculinos.", whatsapp: "5585991340818" },
-    
-        //Manicure a Domicilio 💅✨
-        { service: "manicure-a-domicilio", name: "Ana Souza", age: 40, stars: "⭐⭐⭐⭐⭐", comment: "Especialista em unhas decoradas e esmaltação profissional.", whatsapp: "5585991340820" },
-        { service: "manicure-a-domicilio", name: "Bruna Costa", age: 38, stars: "⭐⭐⭐⭐", comment: "Hidratação profunda e cuidado especial para as unhas.", whatsapp: "5585991340821" },
-        { service: "manicure-a-domicilio", name: "Camila Mendes", age: 45, stars: "⭐⭐⭐⭐", comment: "Experiência em unhas de gel, acrílico e fibra de vidro.", whatsapp: "5585991340822" },
-        { service: "manicure-a-domicilio", name: "Daniela Martins", age: 37, stars: "⭐⭐⭐⭐⭐", comment: "Alongamento de unhas e técnicas de nail art personalizadas.", whatsapp: "5585991340823" },
-        { service: "manicure-a-domicilio", name: "Fernanda Almeida", age: 42, stars: "⭐⭐⭐", comment: "Esmaltação clássica e cuidados com cutículas.", whatsapp: "5585991340824" },
-        { service: "manicure-a-domicilio", name: "Gabriela Pereira", age: 39, stars: "⭐⭐⭐⭐", comment: "Especialista em francesinha e técnicas de spa para mãos.", whatsapp: "5585991340825" },
-        { service: "manicure-a-domicilio", name: "Helena Rocha", age: 36, stars: "⭐⭐⭐⭐⭐", comment: "Tratamentos naturais para fortalecimento das unhas.", whatsapp: "5585991340826" },
-        { service: "manicure-a-domicilio", name: "Isabela Lima", age: 41, stars: "⭐⭐⭐⭐", comment: "Unhas minimalistas, com detalhes delicados e sofisticados.", whatsapp: "5585991340827" },
-        { service: "manicure-a-domicilio", name: "Larissa Nunes", age: 35, stars: "⭐⭐⭐⭐", comment: "Aplicação de esmaltes hipoalergênicos e técnicas modernas.", whatsapp: "5585991340828" },
-        { service: "manicure-a-domicilio", name: "Tatiane Silva", age: 44, stars: "⭐⭐⭐", comment: "Aplicação de esmaltes hipoalergênicos e técnicas modernas.", whatsapp: "5585991340828" },
-    
-        //Designer 💅✨
-        { service: "designer", name: "Mondesson Linardis", age: 29, stars: "⭐⭐⭐⭐", comment: "3 anos de experiência em design e redes sociais, tenho uma gráfica há 5 meses.", whatsapp: "5585991774021" },
-    
-    ];
+        { service: "cabeleireiro-a-domicilio", name: "Ana Souza", age: 40, city: "Horizonte - CE", stars: "⭐⭐⭐⭐⭐", comment: "Especialista em cortes modernos e coloração.", whatsapp: "5585991340810" },
+        { service: "cabeleireiro-a-domicilio", name: "Bruna Costa", age: 38, city: "Pacajus - CE", stars: "⭐⭐⭐⭐", comment: "Hidratação profunda e reconstrução capilar.", whatsapp: "5585991340811" },
+        { service: "cabeleireiro-a-domicilio", name: "Camila Mendes", age: 45, city: "Itaitinga - CE", stars: "⭐⭐⭐⭐", comment: "Especialista em penteados para eventos e casamentos.", whatsapp: "5585991340812" },
+        { service: "cabeleireiro-a-domicilio", name: "Daniela Martins", age: 37, city: "Horizonte - CE", stars: "⭐⭐⭐⭐⭐", comment: "Cortes personalizados e estilo exclusivo.", whatsapp: "5585991340813" },
+        { service: "cabeleireiro-a-domicilio", name: "Fernanda Almeida", age: 42, city: "Pacajus - CE", stars: "⭐⭐⭐", comment: "Tratamentos naturais para cabelos danificados.", whatsapp: "5585991340814" },
+
+        // Manicure a Domicílio 💅✨
+        { service: "manicure-a-domicilio", name: "Ana Souza", age: 40, city: "Horizonte - CE", stars: "⭐⭐⭐⭐⭐", comment: "Especialista em unhas decoradas e esmaltação profissional.", whatsapp: "5585991340820" },
+        { service: "manicure-a-domicilio", name: "Bruna Costa", age: 38, city: "Pacajus - CE", stars: "⭐⭐⭐⭐", comment: "Hidratação profunda e cuidado especial para as unhas.", whatsapp: "5585991340821" },
+        { service: "manicure-a-domicilio", name: "Camila Mendes", age: 45, city: "Itaitinga - CE", stars: "⭐⭐⭐⭐", comment: "Experiência em unhas de gel, acrílico e fibra de vidro.", whatsapp: "5585991340822" },
+        { service: "manicure-a-domicilio", name: "Daniela Martins", age: 37, city: "Horizonte - CE", stars: "⭐⭐⭐⭐⭐", comment: "Alongamento de unhas e técnicas de nail art personalizadas.", whatsapp: "5585991340823" },
+
+        // Designer 🎨✨
+        { service: "designer", name: "Mondesson Linardis", age: 29, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "3 anos de experiência em design e redes sociais, tenho uma gráfica há 5 meses.", whatsapp: "5585991774021" },
+];
 
     // **Filtra os profissionais de acordo com o serviço escolhido**
     const filteredProfessionals = professionals.filter(professional => professional.service === selectedService);
