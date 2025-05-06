@@ -236,9 +236,9 @@ document.addEventListener("DOMContentLoaded", function () {
         <p>Idade: ${professional.age} anos</p>
         <p>Avaliação: ${professional.stars}</p>
         <p>${professional.comment}</p>
-        <a class="whatsapp-button" href="https://wa.me/${professional.whatsapp}" target="_blank">
-            Contato via WhatsApp
-        </a>
+        <a class="whatsapp-button" href="${whatsappLink}" target="_blank">
+    Contato via WhatsApp
+</a>
     `;
     
         mainContainer.appendChild(card);
