@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
         { service: "servente", name: "Thiago Ferreira", age: 33, city: "Horizonte - CE", stars: "⭐⭐⭐⭐⭐", comment: "Muito ágil na preparação dos materiais.", whatsapp: "5585991340677" },
         { service: "servente", name: "Lucas Nunes", age: 31, city: "Itaitinga - CE", stars: "⭐⭐⭐⭐", comment: "Sempre comprometido com o trabalho.", whatsapp: "5585991340678" },
         { service: "servente", name: "Pedro Silva", age: 26, city: "Pacajus - CE", stars: "⭐⭐⭐⭐", comment: "Ótimo suporte aos pedreiros.", whatsapp: "5585991340679" },
-        { service: "servente", name: "Vinícius Ramos", age: 34, city: "Horizonte -CE", stars: "⭐⭐⭐⭐", comment: "Ótimo suporte aos pedreiros.", whatsapp: "5585991340679" },
+        { service: "servente", name: "Vinícius Ramos", age: 34, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "Ótimo suporte aos pedreiros.", whatsapp: "5585991340679" },
         
         //Bombeiro Hidráulico 💧
         { service: "bombeiro-hidraulico", name: "Alberto Santos", age: 40, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "Especialista em encanamentos e reparos hidráulicos.", whatsapp: "5585991340681" },
