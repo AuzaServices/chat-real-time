@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
         { service: "bombeiro-hidraulico", name: "Rodrigo Nunes", age: 43, city: "Horizonte - CE", stars: "⭐⭐⭐⭐⭐", comment: "Garantia de serviço bem executado.", whatsapp: "5585991340687" },
         
         //Pintores 🎨
-        { service: "pintor", name: "José Rodrigues", age: 40, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "Especialista em pintura residencial e comercial.", whatsapp: "5585991340691" },
+        { service: "pintor", name: "Luis Carlos", age: 34, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "Pintura simples, em gesso, Reparo em pintura, pinturas em geral", whatsapp: "5585991757150" },
         { service: "pintor", name: "Antonio Nunes", age: 45, city: "Itaitinga - CE", stars: "⭐⭐⭐⭐⭐", comment: "Trabalho impecável e acabamento fino.", whatsapp: "5585991340692" },
         { service: "pintor", name: "Marcos Oliveira", age: 38, city: "Pacajus - CE", stars: "⭐⭐⭐", comment: "Bom custo-benefício e rapidez.", whatsapp: "5585991340693" },
         { service: "pintor", name: "Ricardo Lima", age: 42, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "Experiente em técnicas avançadas de pintura.", whatsapp: "5585991340694" },
