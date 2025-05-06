@@ -12,14 +12,15 @@ body {
     flex-direction: column;
     align-items: center; /* Centraliza sem afetar outras áreas */
     justify-content: center;
-    min-height: 80vh;
+    min-height: 100vh; /* Garante que ocupe toda a altura da tela */
     background-color: #1f1f1f; /* Mantém o fundo cinza escuro */
-    color: white; /* Texto branco */
-    padding: 0 10px; /* Evita que o conteúdo grude nas bordas */
-    width: 100vw; /* Garante que ocupe toda a largura da tela */
+    color: white;
+    padding-left: 0;
+    width: 100vw; /* Garante largura total */
     max-width: 100%;
-    margin: 0 auto; /* Mantém alinhamento central */
-    overflow-x: hidden; /* Evita rolagem lateral indesejada */
+    margin: 0 auto; /* Evita deslocamento lateral */
+    overflow-x: hidden; /* Remove rolagem lateral indesejada */
+    text-align: center; /* Centraliza conteúdo de forma consistente */
 }
 
 /* Nome da empresa */
