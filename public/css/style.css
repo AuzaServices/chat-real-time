@@ -292,7 +292,7 @@ body.services-page footer {
         font-size: 1.3rem; /* Reduz um pouco o tamanho para melhor leitura */
         text-align: center; /* Centraliza o texto */
         margin-top: 10px; /* Ajuste de espaçamento */
-        margin-left: 12px; /* Remove deslocamento lateral */
+        margin-left: 15px; /* Remove deslocamento lateral */
         white-space: normal; /* Permite que quebre corretamente em telas menores */
     }
 
