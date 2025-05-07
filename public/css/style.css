@@ -275,6 +275,7 @@ body.services-page footer {
         padding: 15px;
         margin-left: 35px;
         margin: 50 auto; /* Centraliza o formulário na tela */
+    
     }
 
     .grid-container {
@@ -285,6 +286,14 @@ body.services-page footer {
     .card {
         width: 100%;
         max-width: none;
+    }
+
+    .question {
+        font-size: 1.2rem; /* Reduz um pouco o tamanho para melhor leitura */
+        text-align: center; /* Centraliza o texto */
+        margin-top: 10px; /* Ajuste de espaçamento */
+        margin-left: 19px; /* Remove deslocamento lateral */
+        white-space: normal; /* Permite que quebre corretamente em telas menores */
     }
 
 }
