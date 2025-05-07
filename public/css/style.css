@@ -259,8 +259,6 @@ body.services-page footer {
         margin-left: 105px;
     }
 
-}
-
     .profissional-ideal {
         color: gray; /* Define a cor cinza */
         white-space: nowrap; /* Mantém o texto em uma única linha */
@@ -288,6 +286,8 @@ body.services-page footer {
         width: 100%;
         max-width: none;
     }
+
+}
 
 /* Estilo padrão dos cards */
 .card {
