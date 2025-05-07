@@ -273,7 +273,7 @@ body.services-page footer {
         width: 90%; /* Evita que fique muito largo */
         max-width: 320px; /* Ajusta melhor para telas pequenas */
         padding: 15px;
-        margin-left: 35px;
+        margin-left: 30px;
         margin: 50 auto; /* Centraliza o formulário na tela */
     }
 
