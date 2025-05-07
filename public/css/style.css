@@ -249,6 +249,16 @@ body.services-page footer {
         text-align: center;
         margin-left: 105px;
     }
+
+    .voltar {
+        width: 20%; /* Expande para ocupar toda a largura disponível */
+        font-size: 0.9rem; /* Ajuste do tamanho da fonte para telas menores */
+        padding: 10px; /* Mantém espaçamento adequado */
+        margin-top: 15px; /* Ajusta a posição do botão */
+        text-align: left; /* Centraliza o texto */
+        margin-left: 105px;
+    }
+
 }
 
     .profissional-ideal {
