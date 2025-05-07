@@ -226,7 +226,30 @@ body.services-page footer {
         text-align: center;
         margin-left: 50;
         margin-right: 10;
+
     }
+
+    button {
+        width: 40%;
+        font-size: 0.9rem;
+        padding: 8px 12px;
+        margin-top: 40px;
+        align-self: center;
+        margin-left: 80px;
+    }
+    #joinButton {
+        background-color: white;
+        color: black;
+        border: 1px solid #ccc;
+        width: 35%;
+        font-size: 1rem;
+        padding: 10px;
+        margin-top: 40px;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        margin-left: 105px;
+    }
+}
 
     .profissional-ideal {
         color: gray; /* Define a cor cinza */
@@ -255,7 +278,6 @@ body.services-page footer {
         width: 100%;
         max-width: none;
     }
-}
 
 /* Estilo padrão dos cards */
 .card {
