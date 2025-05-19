@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         //Pedreiro 🧱🔨
         { service: "pedreiro", name: "Leonardo", age: 28, city: "Fortaleza - CE", stars: "⭐⭐⭐", comment: "Pedreiro, Mestre de obra profissional. Entendo de projetos.", whatsapp: "5585988559085" },
-        { service: "pedreiro", name: "Edilcimar Frazão", age: 53, city: "Fortaleza - CE", stars: "⭐⭐", comment: "Área de acabamento da constr. civil, PVC, Gesso, Porcel/Cerâmica.", whatsapp: "558599134652" },
+        { service: "pedreiro", name: "Edilcimar Frazão", age: 53, city: "Fortaleza - CE", stars: "⭐⭐", comment: "Área de acabamento da constr. civil, PVC, Gesso, Porcel/Cerâmica.", whatsapp: "5585992363266" },
         { service: "pedreiro", name: "Roberto Alves", age: 50, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "Construção pesada e reformas estruturais.", whatsapp: "55859340653" },
         { service: "pedreiro", name: "Fernando Martins", age: 42, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "Trabalho de alvenaria impecável.", whatsapp: "558599134054" },
         { service: "pedreiro", name: "Paulo Souza", age: 39, city: "Itaitinga - CE", stars: "⭐⭐⭐", comment: "Bom acabamento e rapidez.", whatsapp: "558599134065" },
