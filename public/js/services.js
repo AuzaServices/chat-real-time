@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const professionals = [
 
         //Pedreiro 🧱🔨
-        { service: "pedreiro", name: "Carlos Silva", age: 45, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "Experiente em reformas e construção.", whatsapp: "558599134651" },
+        { service: "pedreiro", name: "Leonardo", age: 28, city: "Fortaleza - CE", stars: "⭐⭐⭐", comment: "Pedreiro, Mestre de obra profissional. Entendo de projetos.", whatsapp: "5585988559085" },
         { service: "pedreiro", name: "João Ferreira", age: 38, city: "Horizonte - CE", stars: "⭐⭐⭐⭐⭐", comment: "Ótima qualidade e compromisso.", whatsapp: "558599134652" },
         { service: "pedreiro", name: "Roberto Alves", age: 50, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "Construção pesada e reformas estruturais.", whatsapp: "55859340653" },
         { service: "pedreiro", name: "Fernando Martins", age: 42, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "Trabalho de alvenaria impecável.", whatsapp: "558599134054" },
