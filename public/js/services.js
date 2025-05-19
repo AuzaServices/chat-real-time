@@ -21,16 +21,16 @@ document.addEventListener("DOMContentLoaded", function () {
     const professionals = [
 
         //Pedreiro 🧱🔨
-        { service: "pedreiro", name: "Carlos Silva", age: 45, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "Experiente em reformas e construção.", whatsapp: "5585991340651" },
-        { service: "pedreiro", name: "João Ferreira", age: 38, city: "Horizonte - CE", stars: "⭐⭐⭐⭐⭐", comment: "Ótima qualidade e compromisso.", whatsapp: "5585991340652" },
-        { service: "pedreiro", name: "Roberto Alves", age: 50, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "Construção pesada e reformas estruturais.", whatsapp: "5585991340653" },
-        { service: "pedreiro", name: "Fernando Martins", age: 42, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "Trabalho de alvenaria impecável.", whatsapp: "5585991340654" },
-        { service: "pedreiro", name: "Paulo Souza", age: 39, city: "Itaitinga - CE", stars: "⭐⭐⭐", comment: "Bom acabamento e rapidez.", whatsapp: "5585991340655" },
-        { service: "pedreiro", name: "Ricardo Mendes", age: 44, city: "Pacajus - CE", stars: "⭐⭐⭐⭐", comment: "Especialista em reformas rápidas.", whatsapp: "5585991340656" },
-        { service: "pedreiro", name: "Lucas Oliveira", age: 35, city: "Itaitinga - CE", stars: "⭐⭐⭐⭐⭐", comment: "Muito detalhista e eficiente.", whatsapp: "5585991340657" },
-        { service: "pedreiro", name: "José Lima", age: 47, city: "Pacajus - CE", stars: "⭐⭐⭐⭐", comment: "Trabalho limpo e bem planejado.", whatsapp: "5585991340658" },
-        { service: "pedreiro", name: "Marcelo Nunes", age: 41, city: "Pacajus - CE", stars: "⭐⭐⭐⭐", comment: "Experiente em grandes projetos.", whatsapp: "5585991340659" },
-        { service: "pedreiro", name: "Rafael Costa", age: 37, city: "Itaitinga - CE", stars: "⭐⭐⭐⭐⭐", comment: "Ótima comunicação e execução de obra.", whatsapp: "5585991340660" },
+        { service: "pedreiro", name: "Carlos Silva", age: 45, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "Experiente em reformas e construção.", whatsapp: "558599134651" },
+        { service: "pedreiro", name: "João Ferreira", age: 38, city: "Horizonte - CE", stars: "⭐⭐⭐⭐⭐", comment: "Ótima qualidade e compromisso.", whatsapp: "558599134652" },
+        { service: "pedreiro", name: "Roberto Alves", age: 50, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "Construção pesada e reformas estruturais.", whatsapp: "55859340653" },
+        { service: "pedreiro", name: "Fernando Martins", age: 42, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "Trabalho de alvenaria impecável.", whatsapp: "558599134054" },
+        { service: "pedreiro", name: "Paulo Souza", age: 39, city: "Itaitinga - CE", stars: "⭐⭐⭐", comment: "Bom acabamento e rapidez.", whatsapp: "558599134065" },
+        { service: "pedreiro", name: "Ricardo Mendes", age: 44, city: "Pacajus - CE", stars: "⭐⭐⭐⭐", comment: "Especialista em reformas rápidas.", whatsapp: "558599340656" },
+        { service: "pedreiro", name: "Lucas Oliveira", age: 35, city: "Itaitinga - CE", stars: "⭐⭐⭐⭐⭐", comment: "Muito detalhista e eficiente.", whatsapp: "558599340657" },
+        { service: "pedreiro", name: "José Lima", age: 47, city: "Pacajus - CE", stars: "⭐⭐⭐⭐", comment: "Trabalho limpo e bem planejado.", whatsapp: "558599134068" },
+        { service: "pedreiro", name: "Marcelo Nunes", age: 41, city: "Pacajus - CE", stars: "⭐⭐⭐⭐", comment: "Experiente em grandes projetos.", whatsapp: "558599140659" },
+        { service: "pedreiro", name: "Rafael Costa", age: 37, city: "Itaitinga - CE", stars: "⭐⭐⭐⭐⭐", comment: "Ótima comunicação e execução de obra.", whatsapp: "558599140660" },
     
     
         //Servente 🏗️ 
