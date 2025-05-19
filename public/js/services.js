@@ -110,17 +110,17 @@ document.addEventListener("DOMContentLoaded", function () {
         { service: "montador-de-moveis", name: "Thiago Martins", age: 44, city: "Horizonte - CE", stars: "⭐⭐⭐⭐⭐", comment: "Experiência com todos os tipos de móveis.", whatsapp: "5585991340727" },
         
 
-        //Caminhão de Frete 🚛📦
-        { service: "caminhao-de-frete", name: "Francisco Oliveira", age: 45, city: "Horizonte - CE", stars: "⭐⭐⭐⭐⭐", comment: "Fretes rápidos e seguros para qualquer destino.", whatsapp: "5585991340731" },
-        { service: "caminhao-de-frete", name: "Bruno Almeida", age: 39, city: "Itaitinga - CE", stars: "⭐⭐⭐⭐", comment: "Transporte de cargas com total cuidado e eficiência.", whatsapp: "5585991340732" },
-        { service: "caminhao-de-frete", name: "Carlos Mendes", age: 48, city: "Pacajus - CE", stars: "⭐⭐⭐⭐⭐", comment: "Especialista em mudanças e transporte de grandes volumes.", whatsapp: "5585991340733" },
-        { service: "caminhao-de-frete", name: "Diego Martins", age: 42, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "Frete comercial e residencial com atendimento ágil.", whatsapp: "5585991340734" },
-        { service: "caminhao-de-frete", name: "Fernando Costa", age: 38, city: "Itaitinga - CE", stars: "⭐⭐⭐⭐⭐", comment: "Serviço confiável para transporte de cargas pesadas.", whatsapp: "5585991340735" },
-        { service: "caminhao-de-frete", name: "Gustavo Pereira", age: 43, city: "Pacajus - CE", stars: "⭐⭐⭐⭐", comment: "Carregamento seguro e entrega rápida.", whatsapp: "5585991340736" },
-        { service: "caminhao-de-frete", name: "Henrique Rocha", age: 41, city: "Horizonte - CE", stars: "⭐⭐⭐⭐⭐", comment: "Motorista experiente em rotas urbanas e rurais.", whatsapp: "5585991340737" },
-        { service: "caminhao-de-frete", name: "José Lima", age: 44, city: "Itaitinga - CE", stars: "⭐⭐⭐⭐", comment: "Atendimento pontual e profissional.", whatsapp: "5585991340738" },
-        { service: "caminhao-de-frete", name: "Ricardo Nunes", age: 40, city: "Pacajus - CE", stars: "⭐⭐⭐⭐", comment: "Especialista em transporte de mercadorias frágeis.", whatsapp: "5585991340739" },
-        { service: "caminhao-de-frete", name: "Thiago Silva", age: 46, city: "Horizonte - CE", stars: "⭐⭐", comment: "Especialista em transporte de mercadorias frágeis.", whatsapp: "5585991340739" },
+        //Mudanças e Carretos 🚛📦
+        { service: "mudanças-e-carretos", name: "Francisco Oliveira", age: 45, city: "Horizonte - CE", stars: "⭐⭐⭐⭐⭐", comment: "Fretes rápidos e seguros para qualquer destino.", whatsapp: "5585991340731" },
+        { service: "mudanças-e-carretos", name: "Bruno Almeida", age: 39, city: "Itaitinga - CE", stars: "⭐⭐⭐⭐", comment: "Transporte de cargas com total cuidado e eficiência.", whatsapp: "5585991340732" },
+        { service: "mudanças-e-carretor", name: "Carlos Mendes", age: 48, city: "Pacajus - CE", stars: "⭐⭐⭐⭐⭐", comment: "Especialista em mudanças e transporte de grandes volumes.", whatsapp: "5585991340733" },
+        { service: "mudanças-e-carretos", name: "Diego Martins", age: 42, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "Frete comercial e residencial com atendimento ágil.", whatsapp: "5585991340734" },
+        { service: "mudanças-e-carretos", name: "Fernando Costa", age: 38, city: "Itaitinga - CE", stars: "⭐⭐⭐⭐⭐", comment: "Serviço confiável para transporte de cargas pesadas.", whatsapp: "5585991340735" },
+        { service: "mudanças-e-carretos", name: "Gustavo Pereira", age: 43, city: "Pacajus - CE", stars: "⭐⭐⭐⭐", comment: "Carregamento seguro e entrega rápida.", whatsapp: "5585991340736" },
+        { service: "mudanças-e-carretos", name: "Henrique Rocha", age: 41, city: "Horizonte - CE", stars: "⭐⭐⭐⭐⭐", comment: "Motorista experiente em rotas urbanas e rurais.", whatsapp: "5585991340737" },
+        { service: "mudanças-e-carretos", name: "José Lima", age: 44, city: "Itaitinga - CE", stars: "⭐⭐⭐⭐", comment: "Atendimento pontual e profissional.", whatsapp: "5585991340738" },
+        { service: "mudanças-e-carretos", name: "Ricardo Nunes", age: 40, city: "Pacajus - CE", stars: "⭐⭐⭐⭐", comment: "Especialista em transporte de mercadorias frágeis.", whatsapp: "5585991340739" },
+        { service: "mudanças-e-carretos", name: "Thiago Silva", age: 46, city: "Horizonte - CE", stars: "⭐⭐", comment: "Especialista em transporte de mercadorias frágeis.", whatsapp: "5585991340739" },
             
         //Diaristas 🧹
         { service: "diarista", name: "Ana Souza", age: 35, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "Limpeza profunda e organização impecável.", whatsapp: "5585991340741" },
