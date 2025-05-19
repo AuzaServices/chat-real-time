@@ -13,9 +13,16 @@ body {
     align-items: flex-start; /* Alinha os elementos à esquerda */
     justify-content: center;
     min-height: 80vh;
-    background-color: #1f1f1f; /* Fundo cinza escuro */
+    background-color: #1a1a1a; /* Fundo cinza escuro */
     color: white; /* Texto branco */
     padding-left: 0px; /* Ajuste para mover os elementos um pouco à esquerda */
+    background-image: url('../css/background.png');
+    background-position: left top;   /* Esquerda e topo */
+    background-position: right bottom; /* Direita e fundo */
+    background-position: center right; /* Centralizado */
+    background-repeat: no-repeat;
+    background-position: 50% 120%; /* Movendo mais para baixo */
+    background-size: 40%; /* Reduz para metade do tamanho original */
 }
 
 /* Nome da empresa */
