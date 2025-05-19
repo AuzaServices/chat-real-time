@@ -21,7 +21,7 @@ body {
     background-position: right bottom; /* Direita e fundo */
     background-position: center right; /* Centralizado */
     background-repeat: no-repeat;
-    background-position: 50% 120%; /* Movendo mais para baixo */
+    background-position: 50% 105%; /* Movendo mais para baixo */
     background-size: 40%; /* Reduz para metade do tamanho original */
 }
 
