@@ -218,6 +218,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Designer 🎨✨
         { service: "designer", name: "Mondesson Linardis", age: 29, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "3 anos de experiência em design e redes sociais, tenho uma gráfica há 5 meses.", whatsapp: "5585991774021" },
+
+
+        // Adestamento
+        { service: "adestramento", name: "César Freire", age: 41, city: "Fortaleza - CE", stars: "⭐⭐⭐⭐", comment: "Adestrador de cães há 10 anos. Hospedagem, Taxi Dog, DayCare/Creche", whatsapp: "5585991661174" },
 ];
 
     // **Defina os profissionais destacados**
