@@ -221,7 +221,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
         // Adestamento
-        { service: "adestramento", name: "César Freire", age: 41, city: "Fortaleza - CE", stars: "⭐⭐⭐⭐", comment: "Adestrador de cães há 10 anos. Hospedagem, Taxi Dog, DayCare/Creche", whatsapp: "5585991661174" },
+        { service: "adestramento", name: "César Freire", age: 41, city: "Aquiraz - CE", stars: "⭐⭐⭐⭐", comment: "Adestrador de cães há 10 anos. Hospedagem, Taxi Dog, DayCare/Creche", whatsapp: "5585991661174" },
 ];
 
     // **Defina os profissionais destacados**
