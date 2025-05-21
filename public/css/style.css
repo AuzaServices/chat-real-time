@@ -13,7 +13,7 @@ body {
     align-items: flex-start; /* Alinha os elementos à esquerda */
     justify-content: center;
     min-height: 80vh;
-    background-color: #1a1a1a; /* Fundo cinza escuro */
+    background-color: #ffffff; /* Fundo cinza escuro */
     color: white; /* Texto branco */
     padding-left: 0px; /* Ajuste para mover os elementos um pouco à esquerda */
     background-image: url('../css/background.png');
