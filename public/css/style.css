@@ -21,7 +21,7 @@ body {
     background-position: right bottom; /* Direita e fundo */
     background-position: center right; /* Centralizado */
     background-repeat: no-repeat;
-    background-position: 50% 105%; /* Movendo mais para baixo */
+    background-position: 50% 5%; /* Movendo mais para baixo */
     background-size: 40%; /* Reduz para metade do tamanho original */
 }
 
@@ -37,8 +37,8 @@ body {
 
 /* Slogan */
 .slogan {
-    font-size: 1.2rem; /* Tamanho ajustado */
-    color: white;
+    font-size: 1.8rem; /* Tamanho ajustado */
+    color: rgb(40, 40, 40);
     margin-bottom: 130px;
     margin-left: 45px;
     margin-top: -100;
@@ -229,10 +229,12 @@ body.services-page footer {
 
 @media screen and (max-width: 600px) {
     .title, .slogan {
-        font-size: 25px;
+        font-size: 18px;
         text-align: center;
-        margin-left: 50;
-        margin-right: 10;
+        font-weight: 700;
+        margin-left: 80px;
+        margin-right: 50;
+        margin-top: 30%;
 
     }
 
