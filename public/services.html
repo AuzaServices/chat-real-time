@@ -2,12 +2,32 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"> <!-- Bloqueia zoom -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"> <!-- Removido bloqueio de zoom -->
     <title>Profissionais Disponíveis</title>
     <link rel="stylesheet" href="css/style.css">
     <script defer src="js/services.js"></script> <!-- Script para exibir profissionais -->
+    <style>
+        /* Classe para remover fundo */
+        .no-background {
+            background-image: none !important;
+            background-color: white !important;
+        }
+
+        /* Estilo para carregamento dinâmico */
+        .loading {
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            animation: fadeIn 1s infinite alternate;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0.5; }
+            to { opacity: 1; }
+        }
+    </style>
 </head>
-<body>
+<body class="no-background"> <!-- Aplica a remoção do fundo -->
 
     <header>
         <h1 class="title profissional-ideal">Seu Profissional Ideal está Aqui!</h1>
@@ -16,7 +36,7 @@
 
     <main>
         <section class="grid-container">
-            <p>Carregando profissionais...</p> <!-- Mensagem inicial -->
+            <p class="loading">Carregando profissionais...</p> <!-- Mensagem com efeito dinâmico -->
         </section>
     </main>
 
