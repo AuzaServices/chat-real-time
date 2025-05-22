@@ -264,7 +264,7 @@ body.services-page footer {
         width: 20%; /* Expande para ocupar toda a largura disponível */
         font-size: 0.5rem; /* Ajuste do tamanho da fonte para telas menores */
         padding: 10px; /* Mantém espaçamento adequado */
-        margin-top: 0px; /* Ajusta a posição do botão */
+        margin-top: 5px; /* Ajusta a posição do botão */
         text-align: left; /* Centraliza o texto */
         margin-left: -108px;
     }
@@ -420,5 +420,5 @@ body.services-page footer {
 
 .profissional-ideal {
     font-size: 1.2rem; /* Reduz um pouco o tamanho do título */
-    margin-top: 8px; /* Ajuste menor no espaçamento */
+    margin-top: 6px; /* Ajuste menor no espaçamento */
 }
