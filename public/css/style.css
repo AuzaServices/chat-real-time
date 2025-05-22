@@ -269,7 +269,7 @@ body.services-page footer {
     }
 
     .profissional-ideal {
-        color: gray; /* Define a cor cinza */
+        color: rgb(77, 77, 77); /* Define a cor cinza */
         white-space: nowrap; /* Mantém o texto em uma única linha */
         font-size: 1.4rem; /* Ajuste opcional para visibilidade */
         text-align: left; /* Mantém alinhado */

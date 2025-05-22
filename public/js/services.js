@@ -229,9 +229,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const filteredProfessionals = professionals.filter(professional => professional.service === selectedService);
 
-    if (filteredProfessionals.length === 0) {
-        mainContainer.innerHTML = "<p>Nenhum profissional encontrado para este serviço.</p>";
-        return;
+if (filteredProfessionals.length === 0) {
+    mainContainer.innerHTML = '<p style="color: black;">Nenhum profissional encontrado para este serviço.</p>';
+    return;
+
     }
 
     mainContainer.innerHTML = "";
