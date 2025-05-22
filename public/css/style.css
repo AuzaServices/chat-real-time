@@ -263,7 +263,7 @@ body.services-page footer {
         width: 20%; /* Expande para ocupar toda a largura disponível */
         font-size: 0.5rem; /* Ajuste do tamanho da fonte para telas menores */
         padding: 10px; /* Mantém espaçamento adequado */
-        margin-top: 5px; /* Ajusta a posição do botão */
+        margin-top: 0px; /* Ajusta a posição do botão */
         text-align: left; /* Centraliza o texto */
         margin-left: -108px;
     }
