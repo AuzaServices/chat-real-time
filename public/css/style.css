@@ -263,9 +263,9 @@ body.services-page footer {
         width: 20%; /* Expande para ocupar toda a largura disponível */
         font-size: 0.9rem; /* Ajuste do tamanho da fonte para telas menores */
         padding: 10px; /* Mantém espaçamento adequado */
-        margin-top: 15px; /* Ajusta a posição do botão */
+        margin-top: 12px; /* Ajusta a posição do botão */
         text-align: left; /* Centraliza o texto */
-        margin-left: 105px;
+        margin-left: -108px;
     }
 
     .profissional-ideal {
@@ -404,4 +404,20 @@ body.services-page footer {
     background: none !important;
     background-image: none !important;
     background-color: white !important;
+}
+.fixed-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    padding: 1px 15px; /* Reduz a altura do cabeçalho */
+    text-align: center;
+    z-index: 1000;
+    border-bottom: 1px solid #ddd;
+}
+
+.profissional-ideal {
+    font-size: 1.2rem; /* Reduz um pouco o tamanho do título */
+    margin-top: 10px; /* Ajuste menor no espaçamento */
 }
