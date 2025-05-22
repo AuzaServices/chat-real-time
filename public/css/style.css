@@ -194,7 +194,7 @@ body.services-page footer {
     border: 1px solid #ddd;
     padding: 15px;
     border-radius: 8px;
-    margin-top: 50px;
+    margin-top: 45px;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
     height: 100%; /* Mantém os cards alinhados */
 }
@@ -420,5 +420,5 @@ body.services-page footer {
 
 .profissional-ideal {
     font-size: 1.2rem; /* Reduz um pouco o tamanho do título */
-    margin-top: 10px; /* Ajuste menor no espaçamento */
+    margin-top: 11px; /* Ajuste menor no espaçamento */
 }
