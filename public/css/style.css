@@ -235,7 +235,7 @@ body.services-page footer {
         font-weight: 700;
         margin-left: 80px;
         margin-right: 50;
-        margin-top: 35%;
+        margin-top: 29%;
 
     }
 
@@ -279,54 +279,15 @@ body.services-page footer {
 
     }
 
-.form-container {
-    width: 90%;
-    max-width: 320px;
-    padding: 15px;
-    margin-top: -10px;
-    margin-left: 35px;
-    margin: 50 auto;
-
-    /* Efeito metálico escuro */
-    background: linear-gradient(135deg, #2b2e35, #4a4f58, #6c7983);
-    border: 1px solid #555b66;
-    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.4);
-    border-radius: 8px;
-    position: relative;
-    overflow: hidden;
-}
-
-.form-container::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 200%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    animation: shine 3s infinite linear;
-}
-
-@keyframes shine {
-    from { left: -100%; }
-    to { left: 100%; }
-}
-
-.form-container::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 200%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-    animation: shine 3s infinite linear;
-}
-
-@keyframes shine {
-    from { left: -100%; }
-    to { left: 100%; }
-}
+    .form-container {
+        width: 90%; /* Evita que fique muito largo */
+        max-width: 320px; /* Ajusta melhor para telas pequenas */
+        padding: 15px;
+        margin-top: -10px;
+        margin-left: 35px;
+        margin: 50 auto; /* Centraliza o formulário na tela */
+    
+    }
 
     .grid-container {
         flex-direction: column;
