@@ -247,7 +247,7 @@ body.services-page footer {
         margin-left: 80px;
     }
     #joinButton {
-        background-color: white;
+        background-color: rgb(89, 89, 89);
         color: black;
         border: 1px solid #ccc;
         width: 35%;
