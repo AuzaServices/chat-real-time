@@ -263,3 +263,14 @@ if (filteredProfessionals.length === 0) {
         mainContainer.appendChild(card);
     });
 });
+
+document.getElementById("continueButton").addEventListener("click", function() {
+    let body = document.getElementById("mainBody");
+
+    // Aplica a classe para remover completamente o fundo
+    body.classList.add("no-background");
+
+    // Como segurança extra, remove qualquer fundo diretamente
+    body.style.backgroundImage = "none !important";
+    body.style.backgroundColor = "white !important";
+});
