@@ -526,3 +526,8 @@ body.services-page footer {
 .no-wrap-text {
     white-space: nowrap;
 }
+
+footer p {
+    font-size: 12px; /* Escolha um tamanho menor conforme necessário */
+    margin: 0; /* Remove margens extras para melhor alinhamento */
+}
