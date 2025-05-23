@@ -520,3 +520,7 @@ body.services-page footer {
 .titulo-principal {
     margin-top: 50px; /* Ajuste conforme necessário */
 }
+
+.no-wrap-text {
+    white-space: nowrap;
+}
