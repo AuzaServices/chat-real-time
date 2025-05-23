@@ -230,10 +230,14 @@ document.addEventListener("DOMContentLoaded", function () {
     const filteredProfessionals = professionals.filter(professional => professional.service === selectedService);
 
 if (filteredProfessionals.length === 0) {
-    mainContainer.innerHTML = '<p style="color: black;">Nenhum profissional encontrado para este serviço.</p>';
+    mainContainer.innerHTML = `
+        <div style="margin-left: 140px; text-align: center; max-width: 300px;">
+            <img src="css/lupa.png" alt="Busca" style="width: 48px; height: 48px;">
+            <p style="color: darkred;">Ainda estamos em busca de profissionais nessa área</p>
+        </div>
+    `;
     return;
-
-    }
+}
 
     mainContainer.innerHTML = "";
 
