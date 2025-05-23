@@ -121,13 +121,13 @@ footer {
     white-space: nowrap;
 }
 
-/* Grid para organização de serviços */
 .grid-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
     padding: 15px;
     justify-content: left; /* Alinha à esquerda */
+    align-items: start; /* Mantém os cards no topo */
 }
 
 /* Cartão de serviço */

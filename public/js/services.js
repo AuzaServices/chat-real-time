@@ -278,3 +278,10 @@ document.getElementById("continueButton").addEventListener("click", function() {
     body.style.backgroundImage = "none !important";
     body.style.backgroundColor = "white !important";
 });
+
+const gridContainer = document.querySelector('.grid-container');
+const cards = document.querySelectorAll('.card');
+
+if (cards.length === 1) {
+    gridContainer.style.gridTemplateColumns = '1fr';
+}
