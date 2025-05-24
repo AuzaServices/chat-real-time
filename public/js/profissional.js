@@ -108,7 +108,8 @@ document.addEventListener("DOMContentLoaded", function () {
         { name: "Thiago Silva", age: 46, city: "Horizonte - CE", stars: "⭐⭐", comment: "Especialista em transporte de mercadorias frágeis.", whatsapp: "5585991340739" },
     
         //Diarista
-        { name: "Ana Souza", age: 35, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "Limpeza profunda e organização impecável.", whatsapp: "5585991340741" },
+        { name: "Andreza Lima", age: 28, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "Experiênte em limpezas detalhadas, pontual e organizada.", whatsapp: "5585992333281" },
+        //
         { name: "Beatriz Lima", age: 38, city: "Itaitinga - CE", stars: "⭐⭐⭐⭐⭐", comment: "Especialista em casas e escritórios.", whatsapp: "5585991340742" },
         { name: "Carlos Mendes", age: 42, city: "Pacajus - CE", stars: "⭐⭐⭐", comment: "Pontualidade e eficiência garantidas.", whatsapp: "5585991340743" },
         { name: "Daniela Costa", age: 36, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "Experiente em limpezas detalhadas.", whatsapp: "5585991340744" },
@@ -208,7 +209,7 @@ document.addEventListener("DOMContentLoaded", function () {
     ];
 
     // Lista de profissionais destacados
-    const highlightedProfessionals = new Set([ "César Freire","Matheus Alves", "Adonias", "Roberto Evangelista","Gabriel", "Fernando", "Cristiano", "Marcio","Primo Fretes", "Vinicius", "Maycon"
+    const highlightedProfessionals = new Set([ "Andreza Lima","César Freire","Matheus Alves", "Adonias", "Roberto Evangelista","Gabriel", "Fernando", "Cristiano", "Marcio","Primo Fretes", "Vinicius", "Maycon"
     ]);
 
     // Encontrar o profissional selecionado
