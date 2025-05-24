@@ -45,6 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 const professionalUrl = window.location.href;
 
+document.querySelector('meta[property="og:url"]').setAttribute("content", professionalUrl);
 document.querySelector('meta[property="og:title"]').setAttribute("content", `${professional.name} - Profissional`);
 document.querySelector('meta[property="og:description"]').setAttribute("content", professional.comment);
 document.querySelector('meta[property="og:url"]').setAttribute("content", professionalUrl);
