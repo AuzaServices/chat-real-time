@@ -208,70 +208,55 @@ document.addEventListener("DOMContentLoaded", function () {
         { name: "César Freire", age: 41, city: "Aquiraz - CE", stars: "⭐⭐⭐⭐", comment: "Adestrador de cães há 10 anos. Hospedagem, Taxi Dog, DayCare/Creche", whatsapp: "5585991661174" },
     ];
 
-    // Lista de profissionais destacados
-    const highlightedProfessionals = new Set([ "Andreza Lima","César Freire","Matheus Alves", "Adonias", "Roberto Evangelista","Gabriel", "Fernando", "Cristiano", "Marcio","Primo Fretes", "Vinicius", "Maycon"
-    ]);
+    function generateImagePath(name) {
+        return `https://seudominio.com.br/img/profissionais/${name.toLowerCase().replace(/\s/g, "_")}.jpg`;
+    }
 
-    // Encontrar o profissional selecionado
     const professional = professionals.find(p => p.name.trim() === selectedName.trim());
 
     if (professional) {
-        const whatsappLink = `https://api.whatsapp.com/send?phone=${professional.whatsapp}&text=Olá, vim por meio da Auza Services, gostaria de realizar um orçamento de serviço.`;
+        const imagePath = generateImagePath(professional.name);
+        const professionalUrl = `https://seudominio.com.br/profissional.html?name=${encodeURIComponent(professional.name)}`;
 
-        // Verifica se o profissional está na lista de destaques
-        const isHighlighted = highlightedProfessionals.has(professional.name.trim());
-        const highlightedClass = isHighlighted ? "highlighted" : "";
-        const nameClass = isHighlighted ? "highlighted-name" : ""; // Agora o nome tem estilo especial
+        // **Atualiza as Meta Tags antes de compartilhar**
+        document.querySelector('meta[property="og:image"]').setAttribute("content", imagePath);
+        document.querySelector('meta[property="og:url"]').setAttribute("content", professionalUrl);
+        document.querySelector('meta[property="og:title"]').setAttribute("content", `Conheça ${professional.name} na Auza Services!`);
+        document.querySelector('meta[property="og:description"]').setAttribute("content", professional.comment);
 
         document.getElementById("professional-card").innerHTML = `
-            <div class="card ${highlightedClass}">
-                <h3 class="${nameClass}">${professional.name}</h3>
+            <div class="card">
+                <img src="${imagePath}" alt="Imagem do profissional" class="profile-image">
+                <h3>${professional.name}</h3>
                 <p>${professional.city}</p>
                 <p>Idade: ${professional.age} anos</p>
                 <p>Avaliação: ${professional.stars}</p>
                 <p>${professional.comment}</p>
-                <a class="whatsapp-button" href="${whatsappLink}" target="_blank"> Contato via WhatsApp</a>
+                <a class="whatsapp-button" href="https://api.whatsapp.com/send?phone=${professional.whatsapp}" target="_blank">Contato via WhatsApp</a>
+                <button id="shareButton">Compartilhar</button>
+                <button id="backButton">Voltar</button>
             </div>
         `;
 
-// Adiciona funcionalidade ao botão de compartilhar
+        // **Botão de compartilhar**
         document.getElementById("shareButton").addEventListener("click", function () {
-            const pageUrl = window.location.href;
-            navigator.clipboard.writeText(pageUrl).then(() => {
-                alert("Link copiado para a área de transferência!");
+            navigator.clipboard.writeText(professionalUrl).then(() => {
+                alert("Link copiado para a área de transferência! Agora, cole no WhatsApp para compartilhar.");
             }).catch(err => {
                 console.error("Erro ao copiar o link:", err);
             });
         });
-document.getElementById("backButton").addEventListener("click", function () {
-    if (window.history.length > 1) {
-        window.history.back(); // Volta para a página anterior
-    } else {
-        window.location.href = "index.html"; // Caso não haja histórico, volta para a página inicial
-    }
-});
+
+        // **Botão de voltar**
+        document.getElementById("backButton").addEventListener("click", function () {
+            if (window.history.length > 1) {
+                window.history.back();
+            } else {
+                window.location.href = "index.html";
+            }
+        });
+
     } else {
         document.getElementById("professional-card").innerHTML = "<p>Profissional não encontrado.</p>";
     }
-});
-
-document.getElementById("shareButton").addEventListener("click", function () {
-    const cardElement = document.getElementById("professional-card");
-
-    if (!cardElement) {
-        console.error("Erro: O elemento #professional-card não foi encontrado.");
-        return;
-    }
-
-    html2canvas(cardElement).then(canvas => {
-        const imageDataURL = canvas.toDataURL("image/png"); // Transforma o card em imagem
-
-        // Abrir a imagem gerada em uma nova aba para que o usuário possa salvar
-        const newWindow = window.open();
-        newWindow.document.write('<img src="' + imageDataURL + '"/>');
-
-        alert("Imagem do card gerada! Agora, salve a imagem ou compartilhe manualmente.");
-    }).catch(err => {
-        console.error("Erro ao capturar o card:", err);
-    });
 });
