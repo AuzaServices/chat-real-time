@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
         { service: "pedreiro", name: "Edilcimar Frazão", age: 53, city: "Fortaleza - CE", stars: "⭐⭐", comment: "Área de acabamento da constr. civil, PVC, Gesso, Porcel/Cerâmica.", whatsapp: "5585992363266" },
         { service: "pedreiro", name: "Alberto", age: 33, city: "Fortaleza - CE", stars: "⭐⭐", comment: "Área de Construção. Dedicação, Qualidade e Compromisso", whatsapp: "5585994312887" },
         { service: "pedreiro", name: "Adonias", age: 42, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "Trabalho de alvenaria impecável. Serviços em Geral", whatsapp: "5585992726761" },
-        
+        //
         { service: "pedreiro", name: "Paulo Souza", age: 39, city: "Itaitinga - CE", stars: "⭐⭐⭐", comment: "Bom acabamento e rapidez.", whatsapp: "558599134065" },
         { service: "pedreiro", name: "Ricardo Mendes", age: 44, city: "Pacajus - CE", stars: "⭐⭐⭐⭐", comment: "Especialista em reformas rápidas.", whatsapp: "558599340656" },
         { service: "pedreiro", name: "Lucas Oliveira", age: 35, city: "Itaitinga - CE", stars: "⭐⭐⭐⭐⭐", comment: "Muito detalhista e eficiente.", whatsapp: "558599340657" },
@@ -174,8 +174,8 @@ document.addEventListener("DOMContentLoaded", function () {
             
         // Técnico em Refrigeração ❄️💨
         { service: "tecnico-em-refrigeracao", name: "Maycon", age: 22, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "Experiência de 2 anos, trabalho com máquinas Split, piso teto e Cassete.", whatsapp: "5585994088415" },
-        //
         { service: "tecnico-em-refrigeracao", name: "Matheus Alves", age: 21, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "4 anos de Exp. na área de Ar Condicionado. Split e Máquinas de lavar.", whatsapp: "5585992081178" },
+        //
         { service: "tecnico-em-refrigeracao", name: "Fernando Silva", age: 42, city: "Pacajus - CE", stars: "⭐⭐⭐⭐⭐", comment: "Reparo e limpeza de sistemas de refrigeração comercial.", whatsapp: "5585991340782" },
         { service: "tecnico-em-refrigeracao", name: "André Souza", age: 37, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "Manutenção preventiva de equipamentos de refrigeração.", whatsapp: "5585991340783" },
         { service: "tecnico-em-refrigeracao", name: "Diego Rocha", age: 39, city: "Itaitinga - CE", stars: "⭐⭐⭐⭐⭐", comment: "Especialista em gás refrigerante e carga térmica.", whatsapp: "5585991340784" },
@@ -280,4 +280,66 @@ document.getElementById("continueButton").addEventListener("click", function() {
     // Como segurança extra, remove qualquer fundo diretamente
     body.style.backgroundImage = "none !important";
     body.style.backgroundColor = "white !important";
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    if (!localStorage.getItem("selectedService")) {
+        window.location.href = "index.html";
+        return;
+    }
+
+    const mainContainer = document.querySelector(".grid-container");
+    const selectedService = localStorage.getItem("selectedService");
+
+    if (!selectedService) {
+        mainContainer.innerHTML = "<p>Nenhum serviço selecionado. <a href='index.html'>Voltar</a></p>";
+        return;
+    }
+
+    const professionals = [
+        { service: "pedreiro", name: "Leonardo", age: 28, city: "Fortaleza - CE", stars: "⭐⭐⭐", comment: "Pedreiro, Mestre de obra profissional.", whatsapp: "5585988559085" },
+        { service: "pedreiro", name: "Adonias", age: 42, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "Trabalho de alvenaria impecável.", whatsapp: "5585992726761" },
+    ];
+
+    const highlightedProfessionals = ["Leonardo", "Adonias"];
+
+    const filteredProfessionals = professionals.filter(professional => professional.service === selectedService);
+
+    if (filteredProfessionals.length === 0) {
+        mainContainer.innerHTML = `
+            <div style="margin-left: 61px; text-align: center; max-width: 350px;">
+                <img src="css/lupa.png" alt="Busca" style="width: 80px; height: 80px;">
+                <p class="no-wrap-text" style="color: darkred;">Nenhum profissional cadastrado.</p>
+            </div>
+        `;
+        return;
+    }
+
+    mainContainer.innerHTML = "";
+
+    filteredProfessionals.forEach(professional => {
+        const card = document.createElement("div");
+
+        if (highlightedProfessionals.includes(professional.name)) {
+            card.classList.add("card", "highlighted");
+        } else {
+            card.classList.add("card");
+        }
+
+        card.innerHTML = `
+            <h3>${professional.name}</h3>
+            <p>${professional.city}</p>
+            <p>Idade: ${professional.age} anos</p>
+            <p>Avaliação: ${professional.stars}</p>
+            <p>${professional.comment}</p>
+        `;
+
+        // Adiciona evento de clique ao card
+        card.addEventListener("click", function () {
+            localStorage.setItem("selectedProfessional", JSON.stringify(professional));
+            window.open("profissional.html", "_blank");
+        });
+
+        mainContainer.appendChild(card);
+    });
 });
