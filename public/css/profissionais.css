@@ -180,10 +180,10 @@ p.destaque {
 #shareButton {
     background-color: #a3321b;
     color: white;
-    padding: 8px 12px; /* Reduzi o padding */
+    padding: 9px 12px; /* Reduzi o padding */
     border: none;
     border-radius: 5px;
-    margin-left: 130px;
+    margin-left: 134px;
     cursor: pointer;
     font-size: 14px; /* Reduzi o tamanho da fonte */
 }
@@ -196,7 +196,7 @@ p.destaque {
 #backButton {
     background-color: #930606;
     color: white;
-    padding: 8px 12px; /* Reduzi o padding */
+    padding: 9px 12px; /* Reduzi o padding */
     border: none;
     border-radius: 5px;
     margin-left: 155px;
