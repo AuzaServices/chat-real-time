@@ -236,13 +236,24 @@ document.addEventListener("DOMContentLoaded", function () {
         `;
 
 // Adiciona funcionalidade ao botão de compartilhar
-        document.getElementById("shareButton").addEventListener("click", function () {
-            const pageUrl = window.location.href;
-            navigator.clipboard.writeText(pageUrl).then(() => {
-            }).catch(err => {
-                console.error("Erro ao copiar o link:", err);
-            });
-        });
+document.getElementById("shareButton").addEventListener("click", async () => {
+    const shareData = {
+        title: "Seu profissional ideal está aqui!",
+        text: "Confira esse profissional incrível!",
+        url: window.location.href
+    };
+
+    if (navigator.share) {
+        try {
+            await navigator.share(shareData);
+            console.log("Compartilhado com sucesso!");
+        } catch (error) {
+            console.error("Erro ao compartilhar:", error);
+        }
+    } else {
+        alert("Seu navegador não suporta compartilhamento nativo.");
+    }
+});
 document.getElementById("backButton").addEventListener("click", function () {
     if (window.history.length > 1) {
         window.history.back(); // Volta para a página anterior
