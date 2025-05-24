@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const professionalData = localStorage.getItem("selectedProfessional");
+const professionalData = sessionStorage.getItem("selectedProfessional");
 
     if (!professionalData) {
         document.getElementById("professional-card").innerHTML = "<p>Profissional não encontrado.</p>";

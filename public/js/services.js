@@ -77,10 +77,10 @@ if (filteredProfessionals.length === 0) {
 
     // 🚀 Adiciona a funcionalidade de clique aqui!
     card.style.cursor = "pointer";
-    card.addEventListener("click", function () {
-        localStorage.setItem("selectedProfessional", JSON.stringify(professional));
-        window.open("profissional.html", "_blank");
-    });
+card.addEventListener("click", function () {
+    sessionStorage.setItem("selectedProfessional", JSON.stringify(professional));
+    window.open("profissional.html", "_blank");
+});
 
     mainContainer.appendChild(card);
 });
