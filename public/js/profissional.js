@@ -225,42 +225,46 @@ document.addEventListener("DOMContentLoaded", function () {
         const nameClass = isHighlighted ? "highlighted-name" : ""; // Agora o nome tem estilo especial
         
 
+        // **Atualiza as Meta Tags antes de compartilhar**
+        document.querySelector('meta[property="og:title"]').setAttribute("content", `${professional.name} - ${professional.profession}`);
+        document.querySelector('meta[property="og:description"]').setAttribute("content", professional.comment);
+        document.querySelector('meta[property="og:image"]').setAttribute("content", imagePath);
+        document.querySelector('meta[property="og:url"]').setAttribute("content", professionalUrl);
+
         document.getElementById("professional-card").innerHTML = `
-            <div class="card ${highlightedClass}">
-                <h3 class="${nameClass}">${professional.name}</h3>
+            <div class="card">
+                <img src="${imagePath}" alt="Imagem do profissional" class="profile-image">
+                <h3>${professional.name}</h3>
+                <p>Profissão: ${professional.profession}</p>
                 <p>${professional.city}</p>
                 <p>Idade: ${professional.age} anos</p>
                 <p>Avaliação: ${professional.stars}</p>
                 <p>${professional.comment}</p>
-                <a class="whatsapp-button" href="${whatsappLink}" target="_blank"> Contato via WhatsApp</a>
+                <a class="whatsapp-button" href="https://api.whatsapp.com/send?phone=${professional.whatsapp}" target="_blank">Contato via WhatsApp</a>
+                <button id="shareButton">Compartilhar</button>
+                <button id="backButton">Voltar</button>
             </div>
         `;
 
-// Adiciona funcionalidade ao botão de compartilhar
+        // **Botão de compartilhar**
         document.getElementById("shareButton").addEventListener("click", function () {
-            const pageUrl = window.location.href;
-            navigator.clipboard.writeText(pageUrl).then(() => {
+            navigator.clipboard.writeText(professionalUrl).then(() => {
+                alert("Link copiado para a área de transferência! Agora, cole no WhatsApp para compartilhar.");
             }).catch(err => {
                 console.error("Erro ao copiar o link:", err);
             });
         });
-document.getElementById("backButton").addEventListener("click", function () {
-    if (window.history.length > 1) {
-        window.history.back(); // Volta para a página anterior
-    } else {
-        window.location.href = "index.html"; // Caso não haja histórico, volta para a página inicial
-    }
-});
+
+        // **Botão de voltar**
+        document.getElementById("backButton").addEventListener("click", function () {
+            if (window.history.length > 1) {
+                window.history.back();
+            } else {
+                window.location.href = "index.html";
+            }
+        });
+
     } else {
         document.getElementById("professional-card").innerHTML = "<p>Profissional não encontrado.</p>";
-    }
-});
-
-document.getElementById("shareButton").addEventListener("click", function () {
-    const cardElement = document.getElementById("professional-card");
-
-    if (!cardElement) {
-        console.error("Erro: O elemento #professional-card não foi encontrado.");
-        return;
     }
 });
