@@ -9,11 +9,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Lista de profissionais
     const professionals = [
-        { name: "Leonardo", city: "Fortaleza - CE", age: 28, stars: "⭐⭐⭐", comment: "Pedreiro, Mestre de obra profissional. Entendo de projetos.", whatsapp: "5585988559085" },
-        { name: "Edilcimar Frazão", city: "Fortaleza - CE", age: 53, stars: "⭐⭐", comment: "Área de acabamento da constr. civil, PVC, Gesso, Porcel/Cerâmica.", whatsapp: "5585992363266" },
-        { name: "Alberto", city: "Fortaleza - CE", age: 33, stars: "⭐⭐", comment: "Área de Construção. Dedicação, Qualidade e Compromisso.", whatsapp: "5585994312887" },
-        { name: "Adonias", city: "Horizonte - CE", age: 42, stars: "⭐⭐⭐⭐", comment: "Trabalho de alvenaria impecável. Serviços em Geral.", whatsapp: "5585992726761" }
-    ];
+    { name: "Leonardo", city: "Fortaleza - CE", age: 28, stars: "⭐⭐⭐", comment: "Pedreiro, Mestre de obra profissional. Entendo de projetos.", whatsapp: "5585988559085", link: "https://clientes2.onrender.com/profissional.html?name=Leonardo" },
+    { name: "Edilcimar Frazão", city: "Fortaleza - CE", age: 53, stars: "⭐⭐", comment: "Área de acabamento da constr. civil, PVC, Gesso, Porcel/Cerâmica.", whatsapp: "5585992363266", link: "https://seudominio.com.br/profissional.html?name=Edilcimar%20Frazão" },
+    { name: "Alberto", city: "Fortaleza - CE", age: 33, stars: "⭐⭐", comment: "Área de Construção. Dedicação, Qualidade e Compromisso.", whatsapp: "5585994312887", link: "https://seudominio.com.br/profissional.html?name=Alberto" },
+    { name: "Adonias", city: "Horizonte - CE", age: 42, stars: "⭐⭐⭐⭐", comment: "Trabalho de alvenaria impecável. Serviços em Geral.", whatsapp: "5585992726761", link: "https://seudominio.com.br/profissional.html?name=Adonias" }
+];
 
     // Lista de profissionais destacados
     const highlightedProfessionals = new Set([
