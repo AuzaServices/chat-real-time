@@ -119,6 +119,5 @@ document.getElementById("continueButton").addEventListener("click", function() {
     body.style.backgroundImage = "none !important";
     body.style.backgroundColor = "white !important";
 
-    
 });
 
