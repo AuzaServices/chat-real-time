@@ -111,12 +111,13 @@ document.addEventListener("DOMContentLoaded", function () {
         
 
         //Mudanças e Carretos 🚛📦
-        { service: "mudanças-e-carretos", name: "Francisco Oliveira", age: 45, city: "Horizonte - CE", stars: "⭐⭐⭐⭐⭐", comment: "Fretes rápidos e seguros para qualquer destino.", whatsapp: "5585991340731" },
-        { service: "mudanças-e-carretos", name: "Bruno Almeida", age: 39, city: "Itaitinga - CE", stars: "⭐⭐⭐⭐", comment: "Transporte de cargas com total cuidado e eficiência.", whatsapp: "5585991340732" },
-        { service: "mudanças-e-carretor", name: "Carlos Mendes", age: 48, city: "Pacajus - CE", stars: "⭐⭐⭐⭐⭐", comment: "Especialista em mudanças e transporte de grandes volumes.", whatsapp: "5585991340733" },
-        { service: "mudanças-e-carretos", name: "Diego Martins", age: 42, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "Frete comercial e residencial com atendimento ágil.", whatsapp: "5585991340734" },
-        { service: "mudanças-e-carretos", name: "Fernando Costa", age: 38, city: "Itaitinga - CE", stars: "⭐⭐⭐⭐⭐", comment: "Serviço confiável para transporte de cargas pesadas.", whatsapp: "5585991340735" },
-        { service: "mudanças-e-carretos", name: "Gustavo Pereira", age: 43, city: "Pacajus - CE", stars: "⭐⭐⭐⭐", comment: "Carregamento seguro e entrega rápida.", whatsapp: "5585991340736" },
+        { service: "mudanças-e-carretos", name: "Marcio", age: 45, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "Fretes rápidos e seguros para qualquer destino.", whatsapp: "5585991979580" },
+        { service: "mudanças-e-carretos", name: "Fernando", age: 52, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "Transporte de cargas com total cuidado e eficiência.", whatsapp: "5585991450130" },
+        { service: "mudanças-e-carretor", name: "Duilio", age: 48, city: "Horizonte - CE", stars: "⭐⭐⭐⭐⭐", comment: "Especialista em mudanças e transporte de grandes volumes.", whatsapp: "5585992767286" },
+        { service: "mudanças-e-carretos", name: "Vinicius", age: 26, city: "Pacajus - CE", stars: "⭐⭐⭐⭐", comment: "Frete comercial e residencial com atendimento ágil.", whatsapp: "5585992324911" },
+        { service: "mudanças-e-carretos", name: "Primo Fretes", age: 54, city: "Pacajus - CE", stars: "⭐⭐⭐⭐", comment: "Serviço confiável para transporte de cargas pesadas.", whatsapp: "5585991557742" },
+        { service: "mudanças-e-carretos", name: "Cristiano", age: 47, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "Carregamento seguro e entrega rápida.", whatsapp: "5585992962940" },
+        //
         { service: "mudanças-e-carretos", name: "Henrique Rocha", age: 41, city: "Horizonte - CE", stars: "⭐⭐⭐⭐⭐", comment: "Motorista experiente em rotas urbanas e rurais.", whatsapp: "5585991340737" },
         { service: "mudanças-e-carretos", name: "José Lima", age: 44, city: "Itaitinga - CE", stars: "⭐⭐⭐⭐", comment: "Atendimento pontual e profissional.", whatsapp: "5585991340738" },
         { service: "mudanças-e-carretos", name: "Ricardo Nunes", age: 40, city: "Pacajus - CE", stars: "⭐⭐⭐⭐", comment: "Especialista em transporte de mercadorias frágeis.", whatsapp: "5585991340739" },
