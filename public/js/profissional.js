@@ -234,6 +234,21 @@ document.addEventListener("DOMContentLoaded", function () {
             </div>
         `;
 
+        // Atualizar meta tags do Open Graph para refletir o profissional correto
+        document.querySelector('meta[property="og:url"]').setAttribute("content", professionalUrl);
+        document.querySelector('meta[property="og:title"]').setAttribute("content", `Conheça ${professional.name} na Auza Services!`);
+        document.querySelector('meta[property="og:description"]').setAttribute("content", professional.comment);
+
+        // Compartilhar o link com apenas o card
+        document.getElementById("shareButton").addEventListener("click", function () {
+            const shareText = `Confira o perfil de ${professional.name} na Auza Services!\n${professionalUrl}`;
+            navigator.clipboard.writeText(shareText).then(() => {
+                alert("Link copiado para a área de transferência!");
+            }).catch(err => {
+                console.error("Erro ao copiar o link:", err);
+            });
+        });
+
 // Adiciona funcionalidade ao botão de compartilhar
         document.getElementById("shareButton").addEventListener("click", function () {
             const pageUrl = window.location.href;
