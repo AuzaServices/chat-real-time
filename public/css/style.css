@@ -406,18 +406,14 @@ body.services-page footer {
 .card {
     background-color: #ededed;
     color: black;
-    padding: 15px;
+    padding: 20px;
     border-radius: 8px;
     text-align: left;
     margin-top: 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    max-width: 350px;
+    max-width: 600px; /* Aumenta a largura dos cartões na página individual */
     margin-left: auto;
     margin-right: auto;
-    min-height: 300px; /* Agora cada cartão tem no mínimo 300px de altura */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
 }
 
 /* Estilização para profissionais destacados */

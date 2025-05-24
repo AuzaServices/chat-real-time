@@ -1,0 +1,64 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Corpo da página */
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alinha os elementos à esquerda */
+    justify-content: center;
+    min-height: 80vh;
+    background-color: #ffffff; /* Fundo cinza escuro */
+    color: white; /* Texto branco */
+    padding-left: 0px; /* Ajuste para mover os elementos um pouco à esquerda */
+    background-image: url('../css/background.png');
+    background-position: left top;   /* Esquerda e topo */
+    background-position: right bottom; /* Direita e fundo */
+    background-position: center right; /* Centralizado */
+    background-repeat: no-repeat;
+    background-position: 50% 5%; /* Movendo mais para baixo */
+    background-size: 40%; /* Reduz para metade do tamanho original */
+}
+
+/* Cartão de serviço */
+.card {
+    background-color: #ededed;
+    color: black;
+    padding: 15px;
+    border-radius: 5px;
+    text-align: left;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    min-height: 200px;
+    width: 350px; /* Reduzi a largura para 350px */
+    max-width: 350px; /* Mantém uma largura uniforme */
+    margin-left: 22px;
+    margin-right: auto;
+    margin-top: 100px;
+    display: block;
+}
+/* Estilização do botão de WhatsApp */
+
+.whatsapp-button {
+    display: block;
+    width: 100%;
+    background-color: #25D366;
+    color: white;
+    text-align: center;
+    padding: 12px;
+    font-size: 1rem;
+    font-weight: bold;
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+    border-radius: 0 0 8px 8px;
+    transition: background-color 0.3s;
+    margin-top: 20px; /* Mantém o botão sempre na base do card */
+}
+
+.whatsapp-button:hover {
+    background-color: #1DA851;
+}
