@@ -33,7 +33,8 @@ document.addEventListener("DOMContentLoaded", function () {
         { service: "pedreiro", name: "Marcelo Nunes", age: 41, city: "Pacajus - CE", stars: "⭐⭐⭐⭐", comment: "Experiente em grandes projetos.", whatsapp: "558599140659" },
         { service: "pedreiro", name: "Rafael Costa", age: 37, city: "Itaitinga - CE", stars: "⭐⭐⭐⭐⭐", comment: "Ótima comunicação e execução de obra.", whatsapp: "558599140660" },
 
-                //Servente 🏗️ 
+
+        //Servente 🏗️ 
         { service: "servente", name: "André Santos", age: 30, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "Ágil e eficiente na obra.", whatsapp: "5585991340671" },
         { service: "servente", name: "Eduardo Lima", age: 28, city: "Itaitinga - CE", stars: "⭐⭐⭐⭐⭐", comment: "Sempre disponível para ajudar.", whatsapp: "5585991340672" },
         { service: "servente", name: "Gabriel Costa", age: 35, city: "Pacajus - CE", stars: "⭐⭐⭐", comment: "Responsável e organizado.", whatsapp: "5585991340673" },
@@ -223,7 +224,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Adestamento
         { service: "adestramento", name: "César Freire", age: 41, city: "Aquiraz - CE", stars: "⭐⭐⭐⭐", comment: "Adestrador de cães há 10 anos. Hospedagem, Taxi Dog, DayCare/Creche", whatsapp: "5585991661174" },
-
+        
     ];
 
     // **Defina os profissionais destacados**
@@ -278,12 +279,6 @@ card.addEventListener("click", function () {
 });
         const card = document.createElement("div");
 
-        // Verifica se o profissional está na lista de destaques
-        if (highlightedProfessionals.includes(professional.name)) {
-            card.classList.add("card", "highlighted");
-        } else {
-            card.classList.add("card");
-        }
 
         const message = "Olá, vim por meio da Auza Services, gostaria de realizar um orçamento de serviço.";
         const whatsappLink = `https://api.whatsapp.com/send?phone=${professional.whatsapp}&text=${encodeURIComponent(message)}`;
@@ -312,4 +307,3 @@ document.getElementById("continueButton").addEventListener("click", function() {
     body.style.backgroundColor = "white !important";
 
 });
-
