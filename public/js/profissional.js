@@ -234,7 +234,22 @@ document.addEventListener("DOMContentLoaded", function () {
             </div>
         `;
 
-        console.log(`Profissional: ${professional.name}, Destaque: ${isHighlighted}`);
+// Adiciona funcionalidade ao botão de compartilhar
+        document.getElementById("shareButton").addEventListener("click", function () {
+            const pageUrl = window.location.href;
+            navigator.clipboard.writeText(pageUrl).then(() => {
+                alert("Link copiado para a área de transferência!");
+            }).catch(err => {
+                console.error("Erro ao copiar o link:", err);
+            });
+        });
+document.getElementById("backButton").addEventListener("click", function () {
+    if (window.history.length > 1) {
+        window.history.back(); // Volta para a página anterior
+    } else {
+        window.location.href = "index.html"; // Caso não haja histórico, volta para a página inicial
+    }
+});
     } else {
         document.getElementById("professional-card").innerHTML = "<p>Profissional não encontrado.</p>";
     }

@@ -155,3 +155,52 @@ p.destaque {
     background: linear-gradient(90deg, rgba(255,255,255,0) 20%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 80%);
     animation: brilho-dinamico-suave 3s infinite ease-in-out;
 }
+
+.button-container {
+    text-align: center;
+    display: flex; /* Organiza os botões lado a lado */
+    justify-content: center; /* Centraliza horizontalmente */
+    gap: 10px; /* Adiciona um espaço entre os botões */
+    margin-top: 15px;
+}
+
+/* Estilo do botão Compartilhar */
+#shareButton {
+    background-color: #a3321b;
+    color: white;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 5px;
+    margin-left: 130px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#shareButton:hover {
+    background-color: #930606;
+}
+
+/* Estilo do botão Voltar */
+#backButton {
+    background-color: #930606;
+    color: white;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 5px;
+    margin-left: 155px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#backButton:hover {
+    background-color: #930606;
+}
+
+/* Mantém os botões lado a lado */
+.button-container {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+}
