@@ -207,39 +207,47 @@ document.addEventListener("DOMContentLoaded", function () {
         //Adestramento
         { name: "César Freire", age: 41, city: "Aquiraz - CE", stars: "⭐⭐⭐⭐", comment: "Adestrador de cães há 10 anos. Hospedagem, Taxi Dog, DayCare/Creche", whatsapp: "5585991661174" },
     ];
-
-    // Lista de profissionais destacados
-    const highlightedProfessionals = new Set([ "Andreza Lima","César Freire","Matheus Alves", "Adonias", "Roberto Evangelista","Gabriel", "Fernando", "Cristiano", "Marcio","Primo Fretes", "Vinicius", "Maycon"
+// Lista de profissionais destacados
+    const highlightedProfessionals = new Set([
+        "Andreza Lima", "César Freire", "Matheus Alves", "Adonias", 
+        "Roberto Evangelista", "Gabriel", "Fernando", "Cristiano", 
+        "Marcio", "Primo Fretes", "Vinicius", "Maycon"
     ]);
+
+    // Geração automática do nome do arquivo da imagem baseado no nome do profissional
+    function generateImagePath(name) {
+        return `img/profissionais/${name.toLowerCase().replace(/\s/g, "_")}.jpg`;
+    }
 
     // Encontrar o profissional selecionado
     const professional = professionals.find(p => p.name.trim() === selectedName.trim());
 
     if (professional) {
+        const imagePath = generateImagePath(professional.name);
+        const professionalUrl = `https://seudominio.com.br/profissional.html?name=${encodeURIComponent(professional.name)}`;
         const whatsappLink = `https://api.whatsapp.com/send?phone=${professional.whatsapp}&text=Olá, vim por meio da Auza Services, gostaria de realizar um orçamento de serviço.`;
 
-        // Verifica se o profissional está na lista de destaques
-        const isHighlighted = highlightedProfessionals.has(professional.name.trim());
-        const highlightedClass = isHighlighted ? "highlighted" : "";
-        const nameClass = isHighlighted ? "highlighted-name" : ""; // Agora o nome tem estilo especial
+        // Atualizar as meta tags para refletir corretamente o card do profissional ao compartilhar no WhatsApp
+        document.querySelector('meta[property="og:image"]').setAttribute("content", imagePath);
+        document.querySelector('meta[property="og:url"]').setAttribute("content", professionalUrl);
+        document.querySelector('meta[property="og:title"]').setAttribute("content", `Conheça ${professional.name} na Auza Services!`);
+        document.querySelector('meta[property="og:description"]').setAttribute("content", professional.comment);
 
         document.getElementById("professional-card").innerHTML = `
             <div class="card ${highlightedClass}">
+                <img src="${imagePath}" alt="Imagem de ${professional.name}" class="profile-image">
                 <h3 class="${nameClass}">${professional.name}</h3>
                 <p>${professional.city}</p>
                 <p>Idade: ${professional.age} anos</p>
                 <p>Avaliação: ${professional.stars}</p>
                 <p>${professional.comment}</p>
-                <a class="whatsapp-button" href="${whatsappLink}" target="_blank"> Contato via WhatsApp</a>
+                <a class="whatsapp-button" href="${whatsappLink}" target="_blank">Contato via WhatsApp</a>
+                <button id="shareButton">Compartilhar</button>
+                <button id="backButton">Voltar</button>
             </div>
         `;
 
-        // Atualizar meta tags do Open Graph para refletir o profissional correto
-        document.querySelector('meta[property="og:url"]').setAttribute("content", professionalUrl);
-        document.querySelector('meta[property="og:title"]').setAttribute("content", `Conheça ${professional.name} na Auza Services!`);
-        document.querySelector('meta[property="og:description"]').setAttribute("content", professional.comment);
-
-        // Compartilhar o link com apenas o card
+        // Adiciona funcionalidade ao botão de compartilhar
         document.getElementById("shareButton").addEventListener("click", function () {
             const shareText = `Confira o perfil de ${professional.name} na Auza Services!\n${professionalUrl}`;
             navigator.clipboard.writeText(shareText).then(() => {
@@ -249,22 +257,15 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         });
 
-// Adiciona funcionalidade ao botão de compartilhar
-        document.getElementById("shareButton").addEventListener("click", function () {
-            const pageUrl = window.location.href;
-            navigator.clipboard.writeText(pageUrl).then(() => {
-                alert("Link copiado para a área de transferência!");
-            }).catch(err => {
-                console.error("Erro ao copiar o link:", err);
-            });
+        // Adiciona funcionalidade ao botão de voltar
+        document.getElementById("backButton").addEventListener("click", function () {
+            if (window.history.length > 1) {
+                window.history.back(); // Volta para a página anterior
+            } else {
+                window.location.href = "index.html"; // Caso não haja histórico, volta para a página inicial
+            }
         });
-document.getElementById("backButton").addEventListener("click", function () {
-    if (window.history.length > 1) {
-        window.history.back(); // Volta para a página anterior
-    } else {
-        window.location.href = "index.html"; // Caso não haja histórico, volta para a página inicial
-    }
-});
+
     } else {
         document.getElementById("professional-card").innerHTML = "<p>Profissional não encontrado.</p>";
     }
