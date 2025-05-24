@@ -166,7 +166,7 @@ p.destaque {
 
 /* Estilo do botão Compartilhar */
 #shareButton {
-    background-color: #a3321b;
+    background-color: #474747;
     color: white;
     padding: 12px 18px;
     border: none;
@@ -189,7 +189,7 @@ p.destaque {
 }
 
 #shareButton:hover {
-    background-color: #930606;
+    background-color: #474747;
 }
 
 /* Estilo do botão Voltar */

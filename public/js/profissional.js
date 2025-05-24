@@ -240,7 +240,6 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("shareButton").addEventListener("click", function () {
             const pageUrl = window.location.href;
             navigator.clipboard.writeText(pageUrl).then(() => {
-                alert("Link copiado para a área de transferência!");
             }).catch(err => {
                 console.error("Erro ao copiar o link:", err);
             });
