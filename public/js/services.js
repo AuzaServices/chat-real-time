@@ -53,7 +53,6 @@ if (filteredProfessionals.length === 0) {
     mainContainer.innerHTML = "";
 
     filteredProfessionals.forEach(professional => {
-    filteredProfessionals.forEach(professional => {
     const card = document.createElement("div");
 
     // Verifica se o profissional está na lista de destaques
@@ -109,7 +108,6 @@ if (filteredProfessionals.length === 0) {
 
         mainContainer.appendChild(card);
     });
-});
 
 document.getElementById("continueButton").addEventListener("click", function() {
     let body = document.getElementById("mainBody");
