@@ -36,7 +36,7 @@ body {
     min-height: 200px;
     width: 350px; /* Reduzi a largura para 350px */
     max-width: 350px; /* Mantém uma largura uniforme */
-    margin-left: 20px;
+    margin-left: 16px;
     margin-right: auto;
     margin-top: 100px;
     display: block;
