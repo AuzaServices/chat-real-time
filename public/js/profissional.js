@@ -216,11 +216,6 @@ document.addEventListener("DOMContentLoaded", function () {
     // Encontrar o profissional selecionado
     const professional = professionals.find(p => p.name.trim() === selectedName.trim());
 
-    document.querySelector('meta[property="og:title"]').setAttribute("content", `${professional.name} - ${professional.service}`);
-    document.querySelector('meta[property="og:description"]').setAttribute("content", `⭐ ${professional.stars} | ${professional.comment}`);
-    document.querySelector('meta[property="og:image"]').setAttribute("content", professional.image);
-    document.querySelector('meta[property="og:url"]').setAttribute("content", window.location.href);
-    
     if (professional) {
         const whatsappLink = `https://api.whatsapp.com/send?phone=${professional.whatsapp}&text=Olá, vim por meio da Auza Services, gostaria de realizar um orçamento de serviço.`;
 
