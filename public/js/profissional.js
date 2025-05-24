@@ -236,13 +236,6 @@ document.addEventListener("DOMContentLoaded", function () {
             </div>
         `;
 
-        // **Atualiza as Meta Tags antes de compartilhar**
-        document.querySelector('meta[property="og:title"]').setAttribute("content", `${professional.name} - ${professional.profession}`);
-        document.querySelector('meta[property="og:description"]').setAttribute("content", professional.comment);
-        document.querySelector('meta[property="og:image"]').setAttribute("content", imagePath);
-        document.querySelector('meta[property="og:url"]').setAttribute("content", professionalUrl);
-
-
 // Adiciona funcionalidade ao botão de compartilhar
         document.getElementById("shareButton").addEventListener("click", function () {
             const pageUrl = window.location.href;
@@ -263,6 +256,13 @@ document.getElementById("backButton").addEventListener("click", function () {
         document.getElementById("professional-card").innerHTML = "<p>Profissional não encontrado.</p>";
     }
 });
+
+// **Atualiza as Meta Tags antes de compartilhar**
+        document.querySelector('meta[property="og:title"]').setAttribute("content", `${professional.name} - ${professional.profession}`);
+        document.querySelector('meta[property="og:description"]').setAttribute("content", professional.comment);
+        document.querySelector('meta[property="og:image"]').setAttribute("content", imagePath);
+        document.querySelector('meta[property="og:url"]').setAttribute("content", professionalUrl);
+
 
 document.getElementById("shareButton").addEventListener("click", function () {
     const cardElement = document.getElementById("professional-card");
