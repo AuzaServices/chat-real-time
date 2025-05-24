@@ -175,7 +175,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Técnico em Refrigeração ❄️💨
         { service: "tecnico-em-refrigeracao", name: "Maycon", age: 22, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "Experiência de 2 anos, trabalho com máquinas Split, piso teto e Cassete.", whatsapp: "5585994088415" },
         //
-        { service: "tecnico-em-refrigeracao", name: "João Marcos", age: 33, city: "Fortaleza - CE", stars: "⭐⭐⭐", comment: "Técnico em Ar Condicionado Residêncial", whatsapp: "5585986549877" },
+        { service: "tecnico-em-refrigeracao", name: "Matheus Candido", age: 21, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "4 anos de Exp. na área de Ar Condicionado. Split e Máquinas de lavar", whatsapp: "5585992081178" },
         { service: "tecnico-em-refrigeracao", name: "Fernando Silva", age: 42, city: "Pacajus - CE", stars: "⭐⭐⭐⭐⭐", comment: "Reparo e limpeza de sistemas de refrigeração comercial.", whatsapp: "5585991340782" },
         { service: "tecnico-em-refrigeracao", name: "André Souza", age: 37, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "Manutenção preventiva de equipamentos de refrigeração.", whatsapp: "5585991340783" },
         { service: "tecnico-em-refrigeracao", name: "Diego Rocha", age: 39, city: "Itaitinga - CE", stars: "⭐⭐⭐⭐⭐", comment: "Especialista em gás refrigerante e carga térmica.", whatsapp: "5585991340784" },
@@ -228,7 +228,7 @@ document.addEventListener("DOMContentLoaded", function () {
 ];
 
     // **Defina os profissionais destacados**
-    const highlightedProfessionals = ["Adonias","Roberto Evangelista","Gabriel","Fernando","Cristiano","Marcio","Primo Fretes","Vinicius","Maycon"]; // Adicione os nomes dos profissionais que devem ser destacados
+    const highlightedProfessionals = ["Matheus Candido","Adonias","Roberto Evangelista","Gabriel","Fernando","Cristiano","Marcio","Primo Fretes","Vinicius","Maycon"]; // Adicione os nomes dos profissionais que devem ser destacados
 
     const filteredProfessionals = professionals.filter(professional => professional.service === selectedService);
 
