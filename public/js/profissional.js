@@ -237,25 +237,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Adiciona funcionalidade ao botão de compartilhar
 document.getElementById("shareButton").addEventListener("click", async () => {
-    const whatsappLink = `https://api.whatsapp.com/send?text=Confira este profissional incrível!%20Link:%20${window.location.href}`;
+    const shareData = {
+        title: "Seu profissional ideal está aqui!",
+        text: "Confira esse profissional incrível!",
+        url: window.location.href
+    };
 
     if (navigator.share) {
-        if (confirm("Deseja compartilhar no WhatsApp primeiro?")) {
-            window.open(whatsappLink, "_blank");
-        } else {
-            const shareData = {
-                title: "Seu profissional ideal está aqui!",
-                text: "Confira esse profissional incrível!",
-                url: window.location.href
-            };
-            try {
-                await navigator.share(shareData);
-            } catch (error) {
-                console.error("Erro ao compartilhar:", error);
-            }
+        try {
+            await navigator.share(shareData);
+            console.log("Compartilhado com sucesso!");
+        } catch (error) {
+            console.error("Erro ao compartilhar:", error);
         }
     } else {
-        window.open(whatsappLink, "_blank");
+        alert("Seu navegador não suporta compartilhamento nativo.");
     }
 });
 document.getElementById("backButton").addEventListener("click", function () {
