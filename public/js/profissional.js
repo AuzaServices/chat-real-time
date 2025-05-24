@@ -9,10 +9,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Lista de profissionais completa, seguindo seu modelo
     const professionals = [
+
+        //Pedreiro 🧱🔨
         { name: "Leonardo", city: "Fortaleza - CE", age: 28, stars: "⭐⭐⭐", comment: "Pedreiro, Mestre de obra profissional. Entendo de projetos.", whatsapp: "5585988559085" },
         { name: "Edilcimar Frazão", city: "Fortaleza - CE", age: 53, stars: "⭐⭐", comment: "Área de acabamento da constr. civil, PVC, Gesso, Porcel/Cerâmica.", whatsapp: "5585992363266" },
         { name: "Alberto", city: "Fortaleza - CE", age: 33, stars: "⭐⭐", comment: "Área de Construção. Dedicação, Qualidade e Compromisso.", whatsapp: "5585994312887" },
         { name: "Adonias", city: "Horizonte - CE", age: 42, stars: "⭐⭐⭐⭐", comment: "Trabalho de alvenaria impecável. Serviços em Geral.", whatsapp: "5585992726761" },
+        //
         { name: "Paulo Souza", city: "Itaitinga - CE", age: 39, stars: "⭐⭐⭐", comment: "Bom acabamento e rapidez.", whatsapp: "558599134065" },
         { name: "Ricardo Mendes", city: "Pacajus - CE", age: 44, stars: "⭐⭐⭐⭐", comment: "Especialista em reformas rápidas.", whatsapp: "558599340656" },
         { name: "Lucas Oliveira", city: "Itaitinga - CE", age: 35, stars: "⭐⭐⭐⭐⭐", comment: "Muito detalhista e eficiente.", whatsapp: "558599340657" },
@@ -24,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const professional = professionals.find(p => p.name === selectedName);
 
     if (professional) {
-        const whatsappLink = `https://api.whatsapp.com/send?phone=${professional.whatsapp}&text=Olá, gostaria de informações sobre seus serviços.`;
+        const whatsappLink = `https://api.whatsapp.com/send?phone=${professional.whatsapp}&text=Olá, vim por meio da Auza Services, gostaria de realizar um orçamento de serviço.`;
 
         document.getElementById("professional-card").innerHTML = `
             <div class="card">

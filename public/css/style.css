@@ -389,7 +389,7 @@ body.services-page footer {
 
     .card {
         width: 100%;
-        max-width: none;
+        max-width: 350px;
     }
 
     .question {
@@ -411,6 +411,13 @@ body.services-page footer {
     text-align: left;
     margin-top: 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    max-width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+    min-height: 300px; /* Agora cada cartão tem no mínimo 300px de altura */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 /* Estilização para profissionais destacados */
