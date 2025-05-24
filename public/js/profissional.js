@@ -208,10 +208,7 @@ document.addEventListener("DOMContentLoaded", function () {
     ];
 
     // Lista de profissionais destacados
-    const highlightedProfessionals = new Set([
-        "Matheus Alves", "Adonias", "Roberto Evangelista", 
-        "Gabriel", "Fernando", "Cristiano", "Marcio", 
-        "Primo Fretes", "Vinicius", "Maycon"
+    const highlightedProfessionals = new Set([ "César Freire","Matheus Alves", "Adonias", "Roberto Evangelista","Gabriel", "Fernando", "Cristiano", "Marcio","Primo Fretes", "Vinicius", "Maycon"
     ]);
 
     // Encontrar o profissional selecionado
