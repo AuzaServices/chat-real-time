@@ -19,7 +19,7 @@ body {
 
 #splash-logo {
     width: 750px; /* Ajuste para o tamanho desejado */
-    margin-top: 5px;
+    margin-top: -250px;
     height: auto; /* Mantém a proporção original da imagem */
 }
 
@@ -36,4 +36,16 @@ html, body {
     display: block; /* Garante que o slogan ocupe uma linha inteira */
     text-align: center;
     margin-top: -130px; /* Ajusta a distância entre a logo e o slogan */
+}
+
+.cursor {
+    font-size: 24px;
+    font-weight: bold; /* Agora o cursor ficará em negrito */
+    color: #e6e6e6;
+    animation: blink 0.6s infinite alternate;
+}
+
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
 }

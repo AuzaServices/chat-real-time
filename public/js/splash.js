@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const sloganElement = document.getElementById("slogan-text");
     const sloganText = "Tudo em serviço de A a Z";
-    const typingSpeed = 109; // Ajuste manual da velocidade
+    const typingSpeed = 68; // Ajuste manual da velocidade
 
     let index = 0;
 
