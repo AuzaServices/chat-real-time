@@ -19,6 +19,7 @@ body {
 
 #splash-logo {
     width: 750px; /* Ajuste para o tamanho desejado */
+    margin-top: 5px;
     height: auto; /* Mantém a proporção original da imagem */
 }
 
