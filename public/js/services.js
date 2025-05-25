@@ -275,6 +275,13 @@ card.addEventListener("click", function () {
     window.open(`profissional.html?name=${professionalName}`, "_blank");
 });
 
+// 🚀 Corrige o problema do botão do WhatsApp sendo ignorado
+    const whatsappButton = card.querySelector(".whatsapp-button");
+    whatsappButton.addEventListener("click", function (event) {
+        event.stopPropagation(); // 🚀 Isso impede que o clique no botão ative o evento do card!
+ });
+
+
     mainContainer.appendChild(card);
 });
         const card = document.createElement("div");
