@@ -314,3 +314,36 @@ document.getElementById("continueButton").addEventListener("click", function() {
     body.style.backgroundColor = "white !important";
 
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    const selectedService = localStorage.getItem("selectedService"); // Obtém o serviço armazenado
+
+    if (!selectedService) return; // Se não houver serviço, sai do script
+
+    // Mapeia títulos, descrições e imagens para cada serviço
+    const serviceMeta = {
+        "pedreiro": {
+            title: "Pedreiros - Encontre especialistas em obras!",
+            description: "Conecte-se com pedreiros experientes e garanta um serviço de qualidade!",
+            image: "https://i.imgur.com/pedreiro.png"
+        },
+        "eletricista": {
+            title: "Eletricistas - Profissionais confiáveis!",
+            description: "Encontre eletricistas qualificados para instalações e reparos!",
+            image: "https://i.imgur.com/eletricista.png"
+        },
+        "encanador": {
+            title: "Encanadores - Soluções hidráulicas!",
+            description: "Precisando de encanadores especialistas? Veja as melhores opções!",
+            image: "https://i.imgur.com/encanador.png"
+        }
+    };
+
+    // Verifica se o serviço está no mapeamento
+    if (serviceMeta[selectedService]) {
+        document.querySelector('meta[property="og:title"]').setAttribute("content", serviceMeta[selectedService].title);
+        document.querySelector('meta[property="og:description"]').setAttribute("content", serviceMeta[selectedService].description);
+        document.querySelector('meta[property="og:image"]').setAttribute("content", serviceMeta[selectedService].image);
+        document.title = serviceMeta[selectedService].title; // Altera o título da página também!
+    }
+});
