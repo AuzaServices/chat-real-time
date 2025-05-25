@@ -3,7 +3,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #fff;
+    background-color: #1a1a1a;
     margin: 0;
 }
 
@@ -15,4 +15,9 @@ body {
 .fade-out {
     opacity: 0;
     transition: opacity 2s ease-in-out;
+}
+
+#splash-logo {
+    width: 750px; /* Ajuste para o tamanho desejado */
+    height: auto; /* Mantém a proporção original da imagem */
 }
