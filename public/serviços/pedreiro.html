@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"> <!-- Bloqueia o zoom -->
+    <title>Profissionais Disponíveis</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script defer src="js/services.js"></script> <!-- Script para exibir profissionais -->
+    <style>
+        /* Classe para remover fundo */
+        .no-background {
+            background-image: none !important;
+            background-color: white !important;
+        }
+
+        /* Cabeçalho fixo apenas nesta página */
+        .fixed-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            padding: 15px;
+            text-align: center;
+            z-index: 1000;
+            border-bottom: 1px solid #ddd; /* Pequeno detalhe para separação */
+        }
+
+        /* Garante espaço abaixo do header fixo */
+        main {
+            margin-top: 80px; 
+        }
+
+        /* Estilo para carregamento dinâmico */
+        .loading {
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            animation: fadeIn 1s infinite alternate;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0.5; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body class="no-background"> <!-- Aplica a remoção do fundo -->
+
+    <header class="fixed-header"> <!-- Agora fixo apenas na página de profissionais -->
+        <h1 class="title profissional-ideal">Seu Profissional Ideal está Aqui!</h1>
+        <button class="voltar" onclick="window.location.href='index.html'">Voltar</button>
+    </header>
+
+    <main>
+        <section class="grid-container">
+            <p class="loading">Carregando profissionais...</p> <!-- Mensagem com efeito dinâmico -->
+        </section>
+    </main>
+
+    <footer>
+        <p style="font-size: 12px;">Navegue, Escolha e Contrate. Sem complicações!</p> <!-- Redução do tamanho da fonte -->
+    </footer>
+
+</body>
+</html>
