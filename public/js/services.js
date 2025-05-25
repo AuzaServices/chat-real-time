@@ -314,3 +314,13 @@ document.getElementById("continueButton").addEventListener("click", function() {
     body.style.backgroundColor = "white !important";
 
 });
+
+document.querySelectorAll(".card").forEach(card => {
+    card.addEventListener("click", function () {
+        const professionalService = localStorage.getItem("selectedService"); // Obtém o serviço selecionado
+
+        if (professionalService) {
+            window.location.href = `${professionalService}.html`; // 🚀 Agora direciona para a página correta do serviço
+        }
+    });
+});
