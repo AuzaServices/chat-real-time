@@ -28,3 +28,12 @@ html, body {
     width: 100vw;
     height: 100vh;
 }
+
+.slogan-container {
+    font-size: 24px;
+    font-weight: bold;
+    color: #e6e6e6;
+    display: block; /* Garante que o slogan ocupe uma linha inteira */
+    text-align: center;
+    margin-top: -130px; /* Ajusta a distância entre a logo e o slogan */
+}
