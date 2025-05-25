@@ -30,7 +30,7 @@ html, body {
 }
 
 .slogan-container {
-    font-size: 24px;
+    font-size: 20px;
     font-weight: bold;
     color: #e6e6e6;
     display: block; /* Garante que o slogan ocupe uma linha inteira */
