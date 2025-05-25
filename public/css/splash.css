@@ -21,3 +21,9 @@ body {
     width: 750px; /* Ajuste para o tamanho desejado */
     height: auto; /* Mantém a proporção original da imagem */
 }
+
+html, body {
+    overflow: hidden; /* Impede qualquer movimento na página */
+    width: 100vw;
+    height: 100vh;
+}
