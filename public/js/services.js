@@ -315,12 +315,25 @@ document.getElementById("continueButton").addEventListener("click", function() {
 
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+    const params = new URLSearchParams(window.location.search);
+    const servico = params.get("servico"); // Obtém o serviço na URL
+
+    if (servico) {
+        // Modifica as meta tags conforme o serviço selecionado
+        document.querySelector('meta[property="og:title"]').setAttribute("content", `${servico.charAt(0).toUpperCase() + servico.slice(1)} - Auza Services`);
+        document.querySelector('meta[property="og:description"]').setAttribute("content", `Confira os melhores profissionais de ${servico}!`);
+        document.querySelector('meta[property="og:image"]').setAttribute("content", `https://i.imgur.com/${servico}.png`); // Personalize a imagem de cada serviço
+        document.querySelector('meta[property="og:url"]').setAttribute("content", `https://clientes2.onrender.com/serviços/${servico}.html`);
+    }
+});
+
 document.querySelectorAll(".card").forEach(card => {
     card.addEventListener("click", function () {
-        const professionalService = localStorage.getItem("selectedService"); // Obtém o serviço selecionado
+        const professionalService = this.getAttribute("data-service"); // Obtém o serviço do atributo
 
         if (professionalService) {
-            window.location.href = `serviços/${professionalService}.html`; // 🚀 Agora acessa a pasta correta
+            window.location.href = `services.html?servico=${professionalService}`; // 🚀 Agora passa o serviço na URL!
         }
     });
 });
