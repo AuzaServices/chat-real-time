@@ -25,3 +25,9 @@ document.getElementById("joinButton").addEventListener("click", function() {
     
     window.location.href = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodedMessage}`;
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    const logo = document.getElementById("logo");
+    logo.style.opacity = "1";
+    logo.style.transform = "scale(1)";
+});
