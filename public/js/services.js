@@ -320,7 +320,7 @@ document.querySelectorAll(".card").forEach(card => {
         const professionalService = localStorage.getItem("selectedService"); // Obtém o serviço selecionado
 
         if (professionalService) {
-            window.location.href = `${professionalService}.html`; // 🚀 Agora direciona para a página correta do serviço
+            window.location.href = `serviços/${professionalService}.html`; // 🚀 Agora acessa a pasta correta
         }
     });
 });
