@@ -1,0 +1,18 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #fff;
+    margin: 0;
+}
+
+.splash-container {
+    opacity: 1;
+    transition: opacity 2s ease-in-out;
+}
+
+.fade-out {
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+}
