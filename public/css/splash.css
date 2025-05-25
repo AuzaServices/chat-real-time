@@ -16,8 +16,3 @@ body {
     opacity: 0;
     transition: opacity 2s ease-in-out;
 }
-
-.splash-container img {
-    width: 200px; /* Define a largura da logo */
-    height: auto; /* Mantém a proporção original */
-}
