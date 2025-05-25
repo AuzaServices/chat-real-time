@@ -33,9 +33,11 @@ html, body {
     font-size: 20px;
     font-weight: bold;
     color: #e6e6e6;
+    font-family: 'Inter', sans-serif; /* Aplica a fonte Inter */
     display: block; /* Garante que o slogan ocupe uma linha inteira */
     text-align: center;
     margin-top: -130px; /* Ajusta a distância entre a logo e o slogan */
+
 }
 
 .cursor {
@@ -48,4 +50,14 @@ html, body {
 @keyframes blink {
     0% { opacity: 1; }
     50% { opacity: 0; }
+}
+
+.slogan-container {
+    font-size: 20px;
+    font-weight: bold;
+    color: #e6e6e6;
+    font-family: 'Inter', sans-serif; /* Aplica a fonte Inter */
+    display: block; /* Garante que o slogan ocupe uma linha inteira */
+    text-align: center;
+    margin-top: -130px; /* Ajusta a distância entre a logo e o slogan */
 }
