@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const phoneNumber = "5585991340658"; // 🚀 Seu número de WhatsApp
 
         if (nome && idade && experiencia && estado && cidade && profissao) {
-            const message = `Novo Cadastro de Profissional:\n\n👤 Nome: ${nome}\n🔢 Idade: ${idade} anos\n💼 Profissão: ${profissao}\n📍 Estado: ${estado}\n🏙️ Cidade: ${cidade}\\n🛠️ Experiência: ${experiencia}`;
+            const message = `Novo Cadastro de Profissional:\n\n👤 Nome: ${nome}\n🔢 Idade: ${idade} anos\n💼 Profissão: ${profissao}\n📍 Estado: ${estado}\n🏙️ Cidade: ${cidade}\n🛠️ Experiência: ${experiencia}`;
             const encodedMessage = encodeURIComponent(message);
             const whatsappLink = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodedMessage}`;
 
