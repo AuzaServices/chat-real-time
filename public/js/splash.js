@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
     sessionStorage.setItem("splashShown", "true"); // Registra que o splash foi visto
 
     const sloganElement = document.getElementById("slogan-text");
-    const sloganText = "Tudo em serviço de A a Z";
+    const sloganText = "Tudo em serviços de A a Z";
     const typingSpeed = 68; // Ajuste manual da velocidade
 
     let index = 0;
