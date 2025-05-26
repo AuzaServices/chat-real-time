@@ -3,25 +3,22 @@ document.addEventListener("DOMContentLoaded", function () {
         const estadoSelecionado = this.value;
         const cidadeSelect = document.getElementById("cidade");
 
-        // Confirma se o estado tem um valor válido
         if (!estadoSelecionado) {
             console.error("Nenhum estado selecionado!");
             return;
         }
 
-        console.log(`Buscando cidades para o estado: ${estadoSelecionado}`); // 🔹 Verificação extra
+        console.log(`Buscando cidades para o estado: ${estadoSelecionado}`);
 
-        // Limpa opções anteriores
         cidadeSelect.innerHTML = '<option value="" disabled selected>Carregando cidades...</option>';
 
-        // Faz a requisição à API do IBGE
         fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${estadoSelecionado}/municipios`)
             .then(response => {
                 if (!response.ok) throw new Error("Erro ao acessar a API do IBGE");
                 return response.json();
             })
             .then(data => {
-                console.log("Dados recebidos da API:", data); // 🔹 Verifica se os dados chegaram
+                console.log("Dados recebidos da API:", data);
 
                 cidadeSelect.innerHTML = '<option value="" disabled selected>Selecione a cidade</option>';
                 data.forEach(municipio => {
@@ -37,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
             });
     });
 
-    // ✅ Implementação: Enviar Estado e Cidade para WhatsApp
+    // ✅ Enviar Estado, Cidade e Profissão para o WhatsApp
     document.getElementById("cadastro-form").addEventListener("submit", function(event) {
         event.preventDefault(); // Impede o envio padrão
 
@@ -46,10 +43,11 @@ document.addEventListener("DOMContentLoaded", function () {
         const experiencia = document.getElementById("experiencia").value;
         const estado = document.getElementById("estado").options[document.getElementById("estado").selectedIndex].text;
         const cidade = document.getElementById("cidade").options[document.getElementById("cidade").selectedIndex].text;
+        const profissao = document.getElementById("profissao").options[document.getElementById("profissao").selectedIndex].text;
         const phoneNumber = "5585991340658"; // 🚀 Seu número de WhatsApp
 
-        if (nome && idade && experiencia && estado && cidade) {
-            const message = `Novo Cadastro de Profissional:\n\n👤 Nome: ${nome}\n🔢 Idade: ${idade} anos\n📍 Estado: ${estado}\n🏙️ Cidade: ${cidade}\n🛠️ Experiência: ${experiencia}`;
+        if (nome && idade && experiencia && estado && cidade && profissao) {
+            const message = `Novo Cadastro de Profissional:\n\n👤 Nome: ${nome}\n🔢 Idade: ${idade} anos\n💼 Profissão: ${profissao}\n📍 Estado: ${estado}\n🏙️ Cidade: ${cidade}\\n🛠️ Experiência: ${experiencia}`;
             const encodedMessage = encodeURIComponent(message);
             const whatsappLink = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodedMessage}`;
 
