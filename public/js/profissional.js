@@ -201,7 +201,7 @@ document.addEventListener("DOMContentLoaded", function () {
         { name: "Fernanda Almeida", age: 42, city: "Pacajus - CE", stars: "⭐⭐⭐", comment: "Cortes personalizados e estilo exclusivo.", whatsapp: "5585991340813" },
    
         //Manicure á Domicilio
-        { name: "Ana Souza", age: 40, city: "Horizonte - CE", stars: "⭐⭐⭐⭐⭐", comment: "Especialista em unhas decoradas e esmaltação profissional.", whatsapp: "5585991340820" },
+        { name: "Renata Rodrigues", age: 31, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "4 anos de esperiência da área", whatsapp: "5585992272181" },
         { name: "Bruna Costa", age: 38, city: "Pacajus - CE", stars: "⭐⭐⭐⭐", comment: "Hidratação profunda e cuidado especial para as unhas.", whatsapp: "5585991340821" },
         { name: "Camila Mendes", age: 45, city: "Itaitinga - CE", stars: "⭐⭐⭐⭐", comment: "Experiência em unhas de gel, acrílico e fibra de vidro.", whatsapp: "5585991340822" },
         { name: "Daniela Martins", age: 37, city: "Horizonte - CE", stars: "⭐⭐⭐⭐⭐", comment: "Alongamento de unhas e técnicas de nail art personalizadas.", whatsapp: "5585991340823" },
@@ -214,7 +214,7 @@ document.addEventListener("DOMContentLoaded", function () {
     ];
 
     // Lista de profissionais destacados
-    const highlightedProfessionals = new Set([ "Felipe Araújo","Andreza Lima","César Freire","Matheus Alves", "Adonias", "Roberto Evangelista","Gabriel", "Fernando", "Cristiano", "Marcio","Primo Fretes", "Vinicius", "Maycon"
+    const highlightedProfessionals = new Set([ "Renata Rodrigues","Felipe Araújo","Andreza Lima","César Freire","Matheus Alves", "Adonias", "Roberto Evangelista","Gabriel", "Fernando", "Cristiano", "Marcio","Primo Fretes", "Vinicius", "Maycon"
     ]);
 
     
