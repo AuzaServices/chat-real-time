@@ -97,3 +97,24 @@ button:hover {
     background-color: #1b3544;
 }
 
+/* Ajuste para selects de Estado e Cidade */
+select {
+    width: 86%;
+    padding: 9px;
+    margin-top: 5px;
+    margin-left: 9px;
+    border: 1px solid #b8b8b8;
+    border-radius: 5px;
+    outline: none;
+}
+
+/* Efeito ao passar o mouse */
+select:hover {
+    border-color: #1b3544;
+}
+
+/* Ajuste para alinhar corretamente */
+label {
+    font-weight: bold;
+    margin-top: 15px;
+}
