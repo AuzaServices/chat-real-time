@@ -16,7 +16,7 @@ body {
     background-color: #ffffff; /* Fundo cinza escuro */
     color: white; /* Texto branco */
     padding-left: 0px; /* Ajuste para mover os elementos um pouco à esquerda */
-    background-image: url('../css/background.png');
+    background-image: url('../css/imagens/background.png');
     background-position: left top;   /* Esquerda e topo */
     background-position: right bottom; /* Direita e fundo */
     background-position: center right; /* Centralizado */

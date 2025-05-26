@@ -236,7 +236,7 @@ if (filteredProfessionals.length === 0) {
     
     mainContainer.innerHTML = `
         <div style="margin-left: 61px; text-align: center; max-width: 350px;">
-            <img src="css/lupa.png" alt="Busca" style="width: 80px; height: 80px;">
+            <img src="css/imagens/lupa.png" alt="Busca" style="width: 80px; height: 80px;">
             <p class="no-wrap-text" style="color: darkred;">Nenhum profissional cadastrado.</p>
         </div>
     `;
