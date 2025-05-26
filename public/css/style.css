@@ -231,6 +231,7 @@ body.services-page footer {
 @media screen and (max-width: 600px) {
     .title, .slogan {
         font-size: 18px;
+        display: flex;
         text-align: center;
         font-weight: 700;
         margin-left: 80px;
