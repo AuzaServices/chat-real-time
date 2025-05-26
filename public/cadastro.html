@@ -67,24 +67,30 @@
 </div>
 
 <script>
-    document.getElementById("cadastro-form").addEventListener("submit", function(event) {
-        event.preventDefault(); // Impede o envio padrão
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("cadastro-form");
 
-        const nome = document.getElementById("nome").value;
-        const idade = document.getElementById("idade").value;
-        const experiencia = document.getElementById("experiencia").value;
-        const phoneNumber = "5585991340658"; // Seu número de WhatsApp
+    if (form) {
+        form.addEventListener("submit", function(event) {
+            event.preventDefault();
 
-        if (nome && idade && experiencia) {
-            const message = `Novo Cadastro de Profissional:\n\n👤 Nome: ${nome}\n🔢 Idade: ${idade} anos\n🛠️ Experiência: ${experiencia}`;
-            const encodedMessage = encodeURIComponent(message);
-            const whatsappLink = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodedMessage}`;
+            const nome = document.getElementById("nome").value;
+            const idade = document.getElementById("idade").value;
+            const experiencia = document.getElementById("experiencia").value;
+            const phoneNumber = "5585991340658"; 
 
-            window.location.href = whatsappLink; // 🚀 Redireciona automaticamente para seu WhatsApp com a mensagem pronta!
-        } else {
-            alert("Por favor, preencha todos os campos.");
-        }
-    });
+            if (nome && idade && experiencia) {
+                const message = `Novo Cadastro:\n\n👤 Nome: ${nome}\n🔢 Idade: ${idade} anos\n🛠️ Experiência: ${experiencia}`;
+                const encodedMessage = encodeURIComponent(message);
+                const whatsappLink = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodedMessage}`;
+
+                window.location.href = whatsappLink;
+            } else {
+                alert("Por favor, preencha todos os campos.");
+            }
+        });
+    }
+});
 </script>
 
 </body>
