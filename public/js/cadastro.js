@@ -36,4 +36,26 @@ document.addEventListener("DOMContentLoaded", function () {
                 cidadeSelect.innerHTML = '<option value="" disabled selected>Erro ao carregar cidades</option>';
             });
     });
+
+    // ✅ Implementação: Enviar Estado e Cidade para WhatsApp
+    document.getElementById("cadastro-form").addEventListener("submit", function(event) {
+        event.preventDefault(); // Impede o envio padrão
+
+        const nome = document.getElementById("nome").value;
+        const idade = document.getElementById("idade").value;
+        const experiencia = document.getElementById("experiencia").value;
+        const estado = document.getElementById("estado").options[document.getElementById("estado").selectedIndex].text;
+        const cidade = document.getElementById("cidade").options[document.getElementById("cidade").selectedIndex].text;
+        const phoneNumber = "5585991340658"; // 🚀 Seu número de WhatsApp
+
+        if (nome && idade && experiencia && estado && cidade) {
+            const message = `Novo Cadastro de Profissional:\n\n👤 Nome: ${nome}\n🔢 Idade: ${idade} anos\n📍 Estado: ${estado}\n🏙️ Cidade: ${cidade}\n🛠️ Experiência: ${experiencia}`;
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappLink = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodedMessage}`;
+
+            window.location.href = whatsappLink; // 🚀 Redireciona automaticamente para seu WhatsApp com a mensagem pronta!
+        } else {
+            alert("Por favor, preencha todos os campos.");
+        }
+    });
 });
