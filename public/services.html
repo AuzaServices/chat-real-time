@@ -6,6 +6,20 @@
     <title>Profissionais Disponíveis</title>
     <link rel="stylesheet" href="css/style.css">
     <script defer src="js/services.js"></script> <!-- Script para exibir profissionais -->
+
+    <!-- Open Graph Meta Tags padrão -->
+    <meta property="og:title" content="Serviços - Auza Services">
+    <meta property="og:description" content="Encontre os melhores profissionais para sua necessidade!">
+    <meta property="og:image" content="https://i.imgur.com/default.png">
+    <meta property="og:url" content="https://seudominio.com.br/services.html">
+    <meta property="og:type" content="website">
+
+    <!-- Meta tags para SEO -->
+    <meta name="description" content="Conecte-se com especialistas e encontre profissionais qualificados para serviços diversos.">
+    <meta name="keywords" content="serviços, profissionais, pedreiro, eletricista, encanador, reformas, Auza Services">
+    <meta name="author" content="Auza Services">
+    <meta name="robots" content="index, follow">
+
     <style>
         /* Classe para remover fundo */
         .no-background {
@@ -56,11 +70,46 @@
         <section class="grid-container">
             <p class="loading">Carregando profissionais...</p> <!-- Mensagem com efeito dinâmico -->
         </section>
+
+        <!-- Botões de compartilhamento -->
+        <div style="text-align: center; margin-top: 20px;">
+            <button onclick="generateShareLink('pedreiro')">Compartilhar Pedreiro</button>
+            <button onclick="generateShareLink('eletricista')">Compartilhar Eletricista</button>
+            <button onclick="generateShareLink('encanador')">Compartilhar Encanador</button>
+        </div>
     </main>
 
     <footer>
         <p style="font-size: 12px;">Navegue, Escolha e Contrate. Sem complicações!</p> <!-- Redução do tamanho da fonte -->
     </footer>
+
+    <!-- Script de compartilhamento -->
+    <script>
+        function generateShareLink(serviceName) {
+            const baseUrl = "https://seudominio.com.br/services.html";
+            const serviceMeta = {
+                "pedreiro": {
+                    title: "Pedreiros - Encontre especialistas em obras!",
+                    description: "Conecte-se com pedreiros experientes e garanta um serviço de qualidade!"
+                },
+                "eletricista": {
+                    title: "Eletricistas - Serviços confiáveis!",
+                    description: "Precisa de um eletricista experiente? Encontre os melhores profissionais!"
+                },
+                "encanador": {
+                    title: "Encanadores - Soluções hidráulicas!",
+                    description: "Os melhores encanadores para instalações e reparos."
+                }
+            };
+
+            if (serviceMeta[serviceName]) {
+                const text = `${serviceMeta[serviceName].title} - ${serviceMeta[serviceName].description}`;
+                const url = encodeURIComponent(baseUrl);
+                const whatsappLink = `https://api.whatsapp.com/send?text=${encodeURIComponent(text)}%20${url}`;
+                window.open(whatsappLink, "_blank");
+            }
+        }
+    </script>
 
 </body>
 </html>
