@@ -314,28 +314,3 @@ document.getElementById("continueButton").addEventListener("click", function() {
     body.style.backgroundColor = "white !important";
 
 });
-
-function generateShareLink(serviceName) {
-    const baseUrl = "https://clientes2.onrender.com/services.html";
-    const serviceMeta = {
-        "pedreiro": {
-            title: "Pedreiros - Encontre especialistas em obras!",
-            description: "Conecte-se com pedreiros experientes e garanta um serviço de qualidade!"
-        },
-        "eletricista": {
-            title: "Eletricistas - Serviços confiáveis!",
-            description: "Precisa de um eletricista experiente? Encontre os melhores profissionais!"
-        },
-        "encanador": {
-            title: "Encanadores - Soluções hidráulicas!",
-            description: "Os melhores encanadores para instalações e reparos."
-        }
-    };
-
-    if (serviceMeta[serviceName]) {
-        const text = `${serviceMeta[serviceName].title} - ${serviceMeta[serviceName].description}`;
-        const url = encodeURIComponent(baseUrl);
-        const whatsappLink = `https://api.whatsapp.com/send?text=${encodeURIComponent(text)}%20${url}`;
-        window.open(whatsappLink, "_blank");
-    }
-}
