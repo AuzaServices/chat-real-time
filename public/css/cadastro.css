@@ -128,11 +128,14 @@ label {
 input#experiencia {
     width: 80%;
     padding: 8px;
-    padding-right: 13px; /* Espaço extra para evitar sobreposição */
+    padding-right: 46px; /* Mantém o padrão */
     border: 1px solid #b8b8b8;
     border-radius: 5px;
     outline: none;
     position: relative;
+    overflow: hidden;
+    white-space: nowrap; /* 🔥 Impede quebra de linha */
+    max-width: 154%; /* 🔥 Define um limite para onde o texto pode chegar */
 }
 
 #contador {
@@ -141,8 +144,10 @@ input#experiencia {
     bottom: 50%;
     transform: translateY(18%);
     font-size: 13px;
+    margin-right:-3px;
     margin-top: -10%;
     color: #f4f4f4;
+    text-indent: -20px;
     background-color: #ffffff; /* 🔥 Adiciona um fundo igual ao do input */
     padding: 5px 5px; /* 🔹 Ajusta espaçamento interno */
 }
