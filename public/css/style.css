@@ -22,6 +22,11 @@ body {
     background-position: center; /* Mantém a imagem no centro */
 }
 
+html, body {
+    overflow: hidden; /* Remove rolagem vertical e horizontal */
+    height: 100vh; /* Mantém o conteúdo dentro da tela */
+}
+
 /* Nome da empresa */
 .title {
     font-size: 7rem; /* Tamanho ajustado */
