@@ -240,7 +240,6 @@ document.addEventListener("DOMContentLoaded", function () {
             </div>
         `;
 
-// Adiciona funcionalidade ao botão de compartilhar
 document.getElementById("shareButton").addEventListener("click", async () => {
     const params = new URLSearchParams(window.location.search);
     const selectedName = params.get("name");
@@ -250,20 +249,20 @@ document.getElementById("shareButton").addEventListener("click", async () => {
         return;
     }
 
-    // Buscar o profissional correto
+    // Buscar profissional na lista
     const professional = professionals.find(p => p.name.trim() === selectedName.trim());
 
     if (!professional) {
-        console.error("Erro: Profissional não encontrado na lista.");
+        console.error("Erro: Profissional não encontrado.");
         return;
     }
 
-    // 🔥 Atualiza as meta tags com os dados corretos
+    // 🔥 Atualiza as meta tags com todas as informações
     updateMetaTags(professional);
 
     const shareData = {
         title: `${professional.name} - ${professional.stars}`,
-        text: `${professional.comment}`,
+        text: `Profissional: ${professional.name}\nAvaliação: ${professional.stars}\nComentário: ${professional.comment}`,
         url: window.location.href
     };
 
@@ -300,6 +299,8 @@ document.getElementById("shareButton").addEventListener("click", function () {
 });
 
 function updateMetaTags(professional) {
+    if (!professional) return;
+
     document.title = `${professional.name} - ${professional.stars}`;
 
     let metaDescription = document.querySelector("meta[name='description']");
@@ -308,8 +309,8 @@ function updateMetaTags(professional) {
         metaDescription.name = "description";
         document.head.appendChild(metaDescription);
     }
-    metaDescription.content = `${professional.name} - ${professional.stars}. ${professional.comment}`;
-
+    metaDescription.content = `Profissional: ${professional.name} | Avaliação: ${professional.stars} | Comentário: ${professional.comment}`;
+    
     let metaKeywords = document.querySelector("meta[name='keywords']");
     if (!metaKeywords) {
         metaKeywords = document.createElement("meta");
