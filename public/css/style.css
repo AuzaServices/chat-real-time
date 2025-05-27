@@ -17,7 +17,6 @@ body {
     background-color: #ffffff; /* Mantém o fundo */
     color: white; /* Texto branco */
     padding: 0; /* Remove margens extras */
-    background-image: url('../css/imagens/background.png');
     background-repeat: no-repeat;
     background-size: contain; /* Ajusta para telas diferentes */
     background-position: center; /* Mantém a imagem no centro */
@@ -29,7 +28,7 @@ body {
     font-weight: bold;
     color: darkred;
     margin-top: 20px;
-    margin-left: 45px;
+    margin-left: 5px;
     text-align: left; /* Alinha à esquerda */
 }
 
@@ -40,7 +39,7 @@ body {
     margin-bottom: 130px;
     margin-left: 45px;
     margin-top: -100;
-    text-align: left; /* Alinha à esquerda */
+    text-align: flex; /* Alinha à esquerda */
 }
 
 /* Container do formulário */
@@ -231,9 +230,9 @@ body.services-page footer {
         font-size: 18px;
         text-align: center;
         font-weight: 700;
-        margin-left: 80px;
+        margin-left: 10px;
         margin-right: 50;
-        margin-top: 49%;
+        margin-top: -8%;
 
     }
 
@@ -374,8 +373,8 @@ body.services-page footer {
         width: 90%; /* Evita que fique muito largo */
         max-width: 320px; /* Ajusta melhor para telas pequenas */
         padding: 15px;
-        margin-top: -10px;
-        margin-left: 35px;
+        margin-top: -85px;
+        margin-left: 30px;
         margin: 50 auto; /* Centraliza o formulário na tela */
     
     }
