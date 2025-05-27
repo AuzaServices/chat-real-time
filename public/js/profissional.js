@@ -271,11 +271,51 @@ document.getElementById("backButton").addEventListener("click", function () {
     }
 });
 
-document.getElementById("shareButton").addEventListener("click", function () {
-    const cardElement = document.getElementById("professional-card");
-
-    if (!cardElement) {
-        console.error("Erro: O elemento #professional-card não foi encontrado.");
+document.getElementById("shareButton").addEventListener("click", async () => {
+    if (!professional) {
+        console.error("Erro: Profissional não encontrado.");
         return;
     }
+
+    // Atualiza as meta tags
+    updateMetaTags(professional);
+
+    const shareData = {
+        title: `${professional.name} - ${professional.stars}`,
+        text: `${professional.comment}`,
+        url: window.location.href
+    };
+
+    if (navigator.share) {
+        try {
+            await navigator.share(shareData);
+            console.log("Compartilhado com sucesso!");
+        } catch (error) {
+            console.error("Erro ao compartilhar:", error);
+        }
+    } else {
+        alert("Seu navegador não suporta compartilhamento nativo.");
+    }
 });
+
+function updateMetaTags(professional) {
+    // Criando ou atualizando a meta tag "title"
+    document.title = `${professional.name} - ${professional.stars}`;
+
+    // Criando ou atualizando meta tags
+    let metaDescription = document.querySelector("meta[name='description']");
+    if (!metaDescription) {
+        metaDescription = document.createElement("meta");
+        metaDescription.name = "description";
+        document.head.appendChild(metaDescription);
+    }
+    metaDescription.content = `${professional.name} - ${professional.stars}. ${professional.comment}`;
+
+    let metaKeywords = document.querySelector("meta[name='keywords']");
+    if (!metaKeywords) {
+        metaKeywords = document.createElement("meta");
+        metaKeywords.name = "keywords";
+        document.head.appendChild(metaKeywords);
+    }
+    metaKeywords.content = `Serviço, Profissional, ${professional.name}, Avaliação ${professional.stars}`;
+}
