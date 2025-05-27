@@ -369,16 +369,15 @@ body.services-page footer {
 
     }
 
-    .form-container {
-        width: 90%; /* Evita que fique muito largo */
-        max-width: 320px; /* Ajusta melhor para telas pequenas */
-        padding: 15px;
-        position: relative;
-        margin-top: -85px;
-        margin-left: 30px;
-        margin: 40 40; /* Centraliza o formulário na tela */
-    
-    }
+.form-container {
+    width: 90%; /* Evita que fique muito largo */
+    max-width: 320px; /* Ajusta melhor para telas pequenas */
+    padding: 15px;
+    position: relative;
+    margin-top: -85px;
+    margin-left: 30px; /* Move o container mais para a esquerda */
+    margin-right: right; /* Mantém o lado direito flexível */
+}
 
     .grid-container {
         flex-direction: column;
