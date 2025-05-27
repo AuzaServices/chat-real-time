@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function() {
     sessionStorage.setItem("splashShown", "true");
 
     const sloganElement = document.getElementById("slogan-text");
-    const sloganText = "Tudo em serviços de A a Z";
+    const sloganText = "Tudo em Serviços de A a Z";
     const typingSpeed = 68;
     let index = 0;
 
