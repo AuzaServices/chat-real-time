@@ -46,18 +46,21 @@ body {
 .form-container {
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* Mantém alinhado à esquerda */
+    align-items: flex-start;
     justify-content: center;
     width: 90%;
-    max-width: 310px; /* Ajuste para um tamanho mais compacto */
+    max-width: 310px;
     padding: 18px;
     background-color: #333333;
     color: rgb(233, 233, 233);
     border-radius: 10px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Sombra leve */
-    margin-top: -80px; /* Move para baixo */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    margin-top: -80px;
     min-height: 180px;
-    margin-left: 23px; /* Move um pouco para a esquerda */
+    margin-left: 10px; /* Reduzindo a margem */
+    margin-right: auto; /* Garante que não fique travado no lado direito */
+    position: relative;
+    left: -20px; /* Move para a esquerda */
 }
 
 /* Pergunta */
