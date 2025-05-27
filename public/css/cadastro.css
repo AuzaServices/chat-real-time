@@ -11,7 +11,7 @@ body {
     background-image: url('imagens/cadastro.jpg');
     background-size: contain;
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: center 35%;
     z-index: -1;
 }
 
