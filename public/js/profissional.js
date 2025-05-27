@@ -242,12 +242,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Adiciona funcionalidade ao botão de compartilhar
 document.getElementById("shareButton").addEventListener("click", async () => {
-    if (!professional) {
-        console.error("Erro: Profissional não encontrado.");
+    const params = new URLSearchParams(window.location.search);
+    const selectedName = params.get("name");
+
+    if (!selectedName) {
+        console.error("Erro: Nome do profissional não encontrado na URL.");
         return;
     }
 
-    // Atualiza as meta tags
+    // Buscar o profissional correto
+    const professional = professionals.find(p => p.name.trim() === selectedName.trim());
+
+    if (!professional) {
+        console.error("Erro: Profissional não encontrado na lista.");
+        return;
+    }
+
+    // 🔥 Atualiza as meta tags com os dados corretos
     updateMetaTags(professional);
 
     const shareData = {
@@ -289,10 +300,8 @@ document.getElementById("shareButton").addEventListener("click", function () {
 });
 
 function updateMetaTags(professional) {
-    // Criando ou atualizando a meta tag "title"
     document.title = `${professional.name} - ${professional.stars}`;
 
-    // Criando ou atualizando meta tags
     let metaDescription = document.querySelector("meta[name='description']");
     if (!metaDescription) {
         metaDescription = document.createElement("meta");
