@@ -8,12 +8,20 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
+
 }
 
 /* Container do formulário */
 .container {
     background: #f4f4f4;
+    background-image: url('imagens/cadastro.jpg'); /* Caminho da logo */
+    background-size: 250%; /* Ajuste do tamanho da logo */
+    background-position: 70%; /* Centraliza a imagem */
+    background-repeat: no-repeat; /* Evita repetição */
+    background-attachment: fixed; /* Mantém a logo fixa */
+
     padding: 25px;
+    opacity: 0.9;
     border-radius: 8px;
     width: 350px;
     text-align: center;
