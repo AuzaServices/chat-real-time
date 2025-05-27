@@ -59,8 +59,12 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function removeFocusAndGoBack() {
-    document.activeElement.blur(); // Remove qualquer foco do input ativo
+    // Remove o foco de todos os elementos ativos
+    document.getElementById("nome").blur(); 
+    document.activeElement.blur();
+    
+    // Pequeno delay para garantir que o foco seja removido antes de mudar de página
     setTimeout(() => {
-        window.location.href = "index.html"; // Faz o redirecionamento depois de remover o foco
-    }, 100); // Pequeno delay para garantir que o foco seja removido antes da mudança
+        window.location.href = "index.html";
+    }, 200);
 }
