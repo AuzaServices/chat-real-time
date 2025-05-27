@@ -414,7 +414,7 @@ body.services-page footer {
     padding: 20px;
     border-radius: 8px;
     text-align: left;
-    margin-top: 20px;
+    margin-top: -12px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     max-width: 600px; /* Aumenta a largura dos cartões na página individual */
     margin-left: auto;
@@ -522,7 +522,7 @@ body.services-page footer {
 
 .profissional-ideal {
     font-size: 1.2rem; /* Reduz um pouco o tamanho do título */
-    margin-top: -6px; /* Ajuste menor no espaçamento */
+    margin-top: 5px; /* Ajuste menor no espaçamento */
     margin-right: 20px;
     margin-left: 30px;
 }
