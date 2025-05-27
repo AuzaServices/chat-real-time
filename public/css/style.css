@@ -6,6 +6,11 @@
     font-family: Arial, sans-serif;
 }
 
+body#index {
+    overflow: hidden; /* Remove rolagem vertical e horizontal */
+    height: 100vh; /* Mantém o conteúdo visível sem scroll */
+}
+
 /* Corpo da página */
 body {
     display: flex;
@@ -20,11 +25,6 @@ body {
     background-repeat: no-repeat;
     background-size: contain; /* Ajusta para telas diferentes */
     background-position: center; /* Mantém a imagem no centro */
-}
-
-html, body {
-    overflow: hidden; /* Remove rolagem vertical e horizontal */
-    height: 100vh; /* Mantém o conteúdo dentro da tela */
 }
 
 /* Nome da empresa */
