@@ -8,12 +8,11 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Lista de profissionais
-    const professionals = [
-        //Pedreiro
-        { name: "Leonardo", city: "Fortaleza - CE", age: 28, stars: "⭐⭐⭐", comment: "Pedreiro, Mestre de obra profissional. Entendo de projetos.", whatsapp: "5585988559085" },
-        { name: "Edilcimar Frazão", city: "Fortaleza - CE", age: 53, stars: "⭐⭐", comment: "Área de acabamento da constr. civil, PVC, Gesso, Porcel/Cerâmica.", whatsapp: "5585992363266" },
-        { name: "Alberto", city: "Fortaleza - CE", age: 33, stars: "⭐⭐", comment: "Área de Construção. Dedicação, Qualidade e Compromisso.", whatsapp: "5585994312887" },
-        { name: "Adonias", city: "Horizonte - CE", age: 42, stars: "⭐⭐⭐⭐", comment: "Trabalho de alvenaria impecável. Serviços em Geral.", whatsapp: "5585992726761" },
+   const professionals = [
+        { name: "Leonardo", service: "Pedreiro", city: "Fortaleza - CE", age: 28, stars: "⭐⭐⭐", comment: "Pedreiro, Mestre de obra profissional. Entendo de projetos.", whatsapp: "5585988559085" },
+        { name: "Edilcimar Frazão", service: "Pedreiro", city: "Fortaleza - CE", age: 53, stars: "⭐⭐", comment: "Área de acabamento da constr. civil, PVC, Gesso, Porcel/Cerâmica.", whatsapp: "5585992363266" },
+        { name: "Alberto", service: "Pedreiro", city: "Fortaleza - CE", age: 33, stars: "⭐⭐", comment: "Área de Construção. Dedicação, Qualidade e Compromisso.", whatsapp: "5585994312887" },
+        { name: "Adonias", service: "Pedreiro", city: "Horizonte - CE", age: 42, stars: "⭐⭐⭐⭐", comment: "Trabalho de alvenaria impecável. Serviços em Geral.", whatsapp: "5585992726761" },
         //
         { name: "Paulo Souza", city: "Itaitinga - CE", age: 39, stars: "⭐⭐⭐", comment: "Bom acabamento e rapidez.", whatsapp: "558599134065" },
         { name: "Ricardo Mendes", city: "Pacajus - CE", age: 44, stars: "⭐⭐⭐⭐", comment: "Especialista em reformas rápidas.", whatsapp: "558599340656" },
@@ -301,7 +300,7 @@ document.getElementById("shareButton").addEventListener("click", function () {
 function updateMetaTags(professional) {
     if (!professional) return;
 
-    document.title = `${professional.name} - ${professional.stars}`;
+    document.title = `${professional.service} - ${professional.name}`;
 
     let metaDescription = document.querySelector("meta[name='description']");
     if (!metaDescription) {
@@ -309,8 +308,8 @@ function updateMetaTags(professional) {
         metaDescription.name = "description";
         document.head.appendChild(metaDescription);
     }
-    metaDescription.content = `Profissional: ${professional.name} | Avaliação: ${professional.stars} | Comentário: ${professional.comment}`;
-    
+    metaDescription.content = `${professional.service}: ${professional.name} | Avaliação: ${professional.stars} | Comentário: ${professional.comment}`;
+     
     let metaKeywords = document.querySelector("meta[name='keywords']");
     if (!metaKeywords) {
         metaKeywords = document.createElement("meta");
