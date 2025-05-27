@@ -124,3 +124,25 @@ label {
     font-weight: bold;
     margin-top: 15px;
 }
+
+input#experiencia {
+    width: 80%;
+    padding: 8px;
+    padding-right: 13px; /* Espaço extra para evitar sobreposição */
+    border: 1px solid #b8b8b8;
+    border-radius: 5px;
+    outline: none;
+    position: relative;
+}
+
+#contador {
+    position: absolute;
+    right: 5px; /* 🔹 Mantém alinhado ao canto */
+    bottom: 50%;
+    transform: translateY(18%);
+    font-size: 13px;
+    margin-top: -10%;
+    color: #f4f4f4;
+    background-color: #ffffff; /* 🔥 Adiciona um fundo igual ao do input */
+    padding: 5px 5px; /* 🔹 Ajusta espaçamento interno */
+}

@@ -106,9 +106,11 @@
             <option value="" disabled selected>Selecione a cidade</option>
         </select>
 
-        <label for="experiencia">Experiência (máx. 60 caracteres):</label>
-        <input type="text" id="experiencia" name="experiencia" maxlength="60" placeholder="Ex: 29 anos de experiência na área...">
-
+<label for="experiencia">Experiência:</label>
+<div style="position: relative;">
+    <input type="text" id="experiencia" name="experiencia" maxlength="60">
+    <span id="contador" style="position: absolute; right: 28px; bottom: 10px; font-size: 12px; color: #888;">0/60</span>
+</div>
         <button id="submit-button" type="submit">Enviar Cadastro</button>
         <button id="back-button" type="button" onclick="removeFocusAndGoBack()">Voltar</button>
     </form>

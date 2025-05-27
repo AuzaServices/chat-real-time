@@ -66,3 +66,9 @@ function removeFocusAndGoBack() {
         window.location.href = "index.html";
     }, 100); // Redireciona sem dar tempo do teclado aparecer
 }
+
+document.getElementById("experiencia").addEventListener("input", function () {
+    const limite = 60;
+    const atual = this.value.length;
+    document.getElementById("contador").textContent = `${atual}/${limite}`;
+});
