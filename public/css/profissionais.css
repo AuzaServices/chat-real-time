@@ -16,7 +16,6 @@ body {
     background-color: #ffffff; /* Fundo cinza escuro */
     color: white; /* Texto branco */
     padding-left: 0px; /* Ajuste para mover os elementos um pouco à esquerda */
-    background-image: url('../css/imagen/background.png');
     background-position: left top;   /* Esquerda e topo */
     background-position: right bottom; /* Direita e fundo */
     background-position: center right; /* Centralizado */
@@ -208,4 +207,14 @@ p.destaque {
 
 #backButton:hover {
     background-color: #930606;
+}
+
+img {
+    display: block;
+    margin: 20px auto; /* Centraliza horizontalmente */
+    width: 150px; /* Ajusta o tamanho */
+    height: auto;
+    margin-top: 120;
+    border-radius: 10px;
+
 }
