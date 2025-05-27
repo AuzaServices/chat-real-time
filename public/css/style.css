@@ -60,7 +60,7 @@ body {
     margin-left: 10px; /* Reduzindo a margem */
     margin-right: auto; /* Garante que não fique travado no lado direito */
     position: relative;
-    left: -20px; /* Move para a esquerda */
+    left: -10px; /* Move para a esquerda */
 }
 
 /* Pergunta */
