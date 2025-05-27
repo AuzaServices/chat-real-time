@@ -225,7 +225,7 @@ body.services-page footer {
     background-color: #1DA851;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1000px) {
     .title, .slogan {
         font-size: 18px;
         text-align: center;
