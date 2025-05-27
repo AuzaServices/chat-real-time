@@ -12,6 +12,7 @@ body {
     flex-direction: column;
     align-items: flex-start; /* Alinha os elementos à esquerda */
     justify-content: center;
+    overflow: hidden;
     min-height: 80vh;
     background-color: #ffffff; /* Fundo cinza escuro */
     color: white; /* Texto branco */
