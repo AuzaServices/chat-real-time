@@ -10,19 +10,17 @@
 body {
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* Alinha os elementos à esquerda */
+    align-items: center; /* Mantém os elementos alinhados centralmente */
     justify-content: center;
-    min-height: 80vh;
-    background-color: #ffffff; /* Fundo cinza escuro */
+    min-height: 100vh; /* Garante que ocupe toda a tela em qualquer dispositivo */
+    width: 100%; /* Ajusta ao tamanho da tela */
+    background-color: #ffffff; /* Mantém o fundo */
     color: white; /* Texto branco */
-    padding-left: 0px; /* Ajuste para mover os elementos um pouco à esquerda */
+    padding: 0; /* Remove margens extras */
     background-image: url('../css/imagens/background.png');
-    background-position: left top;   /* Esquerda e topo */
-    background-position: right bottom; /* Direita e fundo */
-    background-position: center right; /* Centralizado */
     background-repeat: no-repeat;
-    background-position: 50% 5%; /* Movendo mais para baixo */
-    background-size: 40%; /* Reduz para metade do tamanho original */
+    background-size: contain; /* Ajusta para telas diferentes */
+    background-position: center; /* Mantém a imagem no centro */
 }
 
 /* Nome da empresa */
@@ -376,7 +374,6 @@ body.services-page footer {
         width: 90%; /* Evita que fique muito largo */
         max-width: 320px; /* Ajusta melhor para telas pequenas */
         padding: 15px;
-        display: flex;
         margin-top: -10px;
         margin-left: 35px;
         margin: 50 auto; /* Centraliza o formulário na tela */
