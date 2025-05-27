@@ -57,3 +57,10 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+
+function removeFocusAndGoBack() {
+    document.activeElement.blur(); // Remove qualquer foco do input ativo
+    setTimeout(() => {
+        window.location.href = "index.html"; // Faz o redirecionamento depois de remover o foco
+    }, 100); // Pequeno delay para garantir que o foco seja removido antes da mudança
+}
