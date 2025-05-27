@@ -238,7 +238,7 @@ document.addEventListener("DOMContentLoaded", function () {
 if (filteredProfessionals.length === 0) {
     
     mainContainer.innerHTML = `
-<div style="margin-left: 61px; text-align: center; max-width: 350px; position: relative; top: -30px;">
+<div style="margin-left: 61px; text-align: center; max-width: 350px; position: relative; top: -55px;">
     <img src="css/imagens/lupa.png" alt="Busca" style="width: 80px; height: 80px; position: relative; top: -10px;">
     <p class="no-wrap-text" style="color: darkred; position: relative; top: -15px;">Nenhum profissional cadastrado.</p>
 </div>
