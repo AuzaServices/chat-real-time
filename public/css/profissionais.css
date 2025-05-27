@@ -209,12 +209,8 @@ p.destaque {
     background-color: #930606;
 }
 
-img {
-    display: block;
-    margin: 20px auto; /* Centraliza horizontalmente */
-    width: 150px; /* Ajusta o tamanho */
+header img {
+    max-width: 150px;
     height: auto;
-    margin-top: 120;
-    border-radius: 10px;
-
+    margin-left: 111px; /* Ajusta a posição para a direita */
 }
