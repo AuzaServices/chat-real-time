@@ -25,3 +25,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     typeEffect();
 });
+
+setTimeout(() => {
+    window.location.href = "index.html";
+}, 3700); // Pequena pausa antes da transição
