@@ -242,9 +242,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Adiciona funcionalidade ao botão de compartilhar
 document.getElementById("shareButton").addEventListener("click", async () => {
+    if (!professional) {
+        console.error("Erro: Profissional não encontrado.");
+        return;
+    }
+
+    // Atualiza as meta tags
+    updateMetaTags(professional);
+
     const shareData = {
-        title: "Seu profissional ideal está aqui!",
-        text: "Confira esse profissional incrível!",
+        title: `${professional.name} - ${professional.stars}`,
+        text: `${professional.comment}`,
         url: window.location.href
     };
 
@@ -271,30 +279,12 @@ document.getElementById("backButton").addEventListener("click", function () {
     }
 });
 
-document.getElementById("shareButton").addEventListener("click", async () => {
-    if (!professional) {
-        console.error("Erro: Profissional não encontrado.");
+document.getElementById("shareButton").addEventListener("click", function () {
+    const cardElement = document.getElementById("professional-card");
+
+    if (!cardElement) {
+        console.error("Erro: O elemento #professional-card não foi encontrado.");
         return;
-    }
-
-    // Atualiza as meta tags
-    updateMetaTags(professional);
-
-    const shareData = {
-        title: `${professional.name} - ${professional.stars}`,
-        text: `${professional.comment}`,
-        url: window.location.href
-    };
-
-    if (navigator.share) {
-        try {
-            await navigator.share(shareData);
-            console.log("Compartilhado com sucesso!");
-        } catch (error) {
-            console.error("Erro ao compartilhar:", error);
-        }
-    } else {
-        alert("Seu navegador não suporta compartilhamento nativo.");
     }
 });
 
