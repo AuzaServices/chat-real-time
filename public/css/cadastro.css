@@ -88,7 +88,7 @@ button:hover {
 
 /* Botão "Enviar Cadastro" */
 #submit-button {
-    background-color: #244556;
+    background: linear-gradient(135deg, #4E6E81, #1C2A36); /* Gradiente metálico */
     color: white;
     padding: 10px 20px;
     border: none;
@@ -97,10 +97,17 @@ button:hover {
     font-size: 16px;
     cursor: pointer;
     transition: 0.3s ease;
+    box-shadow: inset 0px -3px 8px rgba(255, 255, 255, 0.3), /* Brilho interno */
+                inset 0px 3px 8px rgba(0, 0, 0, 0.3), /* Sombra interna */
+                0px 4px 6px rgba(0, 0, 0, 0.2); /* Sombra externa */
+    border-top: 1px solid rgba(255, 255, 255, 0.6); /* Efeito reflexo */
 }
 
 #submit-button:hover {
-    background-color: #1b3544;
+    background: linear-gradient(135deg, #6B8797, #2C3E50);
+    box-shadow: inset 0px -3px 10px rgba(255, 255, 255, 0.4), /* Mais brilho ao passar o mouse */
+                inset 0px 3px 10px rgba(0, 0, 0, 0.4),
+                0px 6px 8px rgba(0, 0, 0, 0.3);
 }
 
 /* Ajuste para selects de Estado e Cidade */
