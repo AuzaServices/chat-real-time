@@ -310,7 +310,7 @@ function updateMetaTags(professional) {
         metaDescription.name = "description";
         document.head.appendChild(metaDescription);
     }
-    metaDescription.content = `${professional.name} | ${professional.service} | Avaliação: ${professional.stars} | Comentário: ${professional.comment}`;
+    metaDescription.content = `${professional.name} | ${professional.service} | Avaliação: ${professional.stars} | Comentário: ${professional.comment}`;taDescription.content = `${professional.name} | ${professional.service} | Avaliação: ${professional.stars} | Comentário: ${professional.comment}`;
 
     let metaKeywords = document.querySelector("meta[name='keywords']");
     if (!metaKeywords) {
