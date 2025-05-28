@@ -87,6 +87,8 @@ button:hover {
 }
 
 /* Botão "Enviar Cadastro" */
+@media screen and (max-width: 1000px) {
+    
 #submit-button {
     background: linear-gradient(135deg, #444, #777, #aaa); /* Gradiente metálico escuro */
     color: black;
@@ -121,6 +123,7 @@ button:hover {
                 0px 6px 8px rgba(0, 0, 0, 0.4);
 }
 
+}
 /* Ajuste para selects de Estado e Cidade */
 select {
     width: 86%;
