@@ -117,8 +117,8 @@ document.addEventListener("DOMContentLoaded", function () {
     
         //Diarista
         { name: "Andreza Lima", service: "Faxineira", age: 28, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "Experiênte em limpezas detalhadas, pontual e organizada.", whatsapp: "5585992333281" },
+        { service: "diarista", name: "Alexandra Reis", age: 31, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "Tenho experiência como Diarista á anos com competência", whatsapp: "5585992460837" },
         //
-        { name: "Beatriz Lima", service: "Faxineira", age: 38, city: "Itaitinga - CE", stars: "⭐⭐⭐⭐⭐", comment: "Especialista em casas e escritórios.", whatsapp: "5585991340742" },
         { name: "Carlos Mendes", service: "Faxineira", age: 42, city: "Pacajus - CE", stars: "⭐⭐⭐", comment: "Pontualidade e eficiência garantidas.", whatsapp: "5585991340743" },
         { name: "Daniela Costa", service: "Faxineira", age: 36, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "Experiente em limpezas detalhadas.", whatsapp: "5585991340744" },
         { name: "Eduarda Nunes", service: "Faxineira", age: 39, city: "Itaitinga - CE", stars: "⭐⭐⭐⭐⭐", comment: "Cuidadosa com materiais e objetos.", whatsapp: "5585991340745" },
@@ -219,7 +219,7 @@ document.addEventListener("DOMContentLoaded", function () {
     ];
 
     // Lista de profissionais destacados
-    const highlightedProfessionals = new Set([ "Fagner Lucena","Robson","Francisco Romario","Renata Rodrigues","Felipe Araújo","Andreza Lima","César Freire","Matheus Alves", "Adonias", "Roberto Evangelista","Gabriel", "Fernando", "Cristiano", "Marcio","Primo Fretes", "Vinicius", "Maycon"
+    const highlightedProfessionals = new Set([ "Alexandra Reais","Fagner Lucena","Robson","Francisco Romario","Renata Rodrigues","Felipe Araújo","Andreza Lima","César Freire","Matheus Alves", "Adonias", "Roberto Evangelista","Gabriel", "Fernando", "Cristiano", "Marcio","Primo Fretes", "Vinicius", "Maycon"
     ]);
 
     

@@ -128,8 +128,8 @@ document.addEventListener("DOMContentLoaded", function () {
             
         //Diaristas 🧹
         { service: "diarista", name: "Andreza Lima", age: 28, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "Experiênte em limpezas detalhadas, pontual e organizada.", whatsapp: "5585992333281" },
+        { service: "diarista", name: "Alexandra Reis", age: 31, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "Tenho experiência como Diarista á anos com competência", whatsapp: "5585992460837" },
         //
-        { service: "diarista", name: "Beatriz Lima", age: 38, city: "Itaitinga - CE", stars: "⭐⭐⭐⭐⭐", comment: "Especialista em casas e escritórios.", whatsapp: "5585991340742" },
         { service: "diarista", name: "Carlos Mendes", age: 42, city: "Pacajus - CE", stars: "⭐⭐⭐", comment: "Pontualidade e eficiência garantidas.", whatsapp: "5585991340743" },
         { service: "diarista", name: "Daniela Costa", age: 36, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "Experiente em limpezas detalhadas.", whatsapp: "5585991340744" },
         { service: "diarista", name: "Eduarda Nunes", age: 39, city: "Itaitinga - CE", stars: "⭐⭐⭐⭐⭐", comment: "Cuidadosa com materiais e objetos.", whatsapp: "5585991340745" },
@@ -233,7 +233,7 @@ document.addEventListener("DOMContentLoaded", function () {
     ];
 
     // **Defina os profissionais destacados**
-    const highlightedProfessionals = ["Fagner Lucena","Robson","Francisco Romario","Renata Rodrigues","Felipe Araújo","Andreza Lima","César Freire","Matheus Alves","Adonias","Roberto Evangelista","Gabriel","Fernando","Cristiano","Marcio","Primo Fretes","Vinicius","Maycon"]; // Adicione os nomes dos profissionais que devem ser destacados
+    const highlightedProfessionals = ["Alexandra Reis","Fagner Lucena","Robson","Francisco Romario","Renata Rodrigues","Felipe Araújo","Andreza Lima","César Freire","Matheus Alves","Adonias","Roberto Evangelista","Gabriel","Fernando","Cristiano","Marcio","Primo Fretes","Vinicius","Maycon"]; // Adicione os nomes dos profissionais que devem ser destacados
 
     const filteredProfessionals = professionals.filter(professional => professional.service === selectedService);
 
