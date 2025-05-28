@@ -269,7 +269,7 @@ document.getElementById("shareButton").addEventListener("click", async () => {
 
 const shareData = {
     title: `${professional.name} - ${professional.service}`,
-    text: `*${professional.service}*\nNome: ${professional.name}\nAvaliação: ${professional.stars}\nComentário: ${professional.comment}\n${window.location.href}`,
+    text: `*${professional.service}*\n\nNome: ${professional.name}\nAvaliação: ${professional.stars}\nComentário: ${professional.comment}\n\n${window.location.href}`,
 };
 
     if (navigator.share) {
