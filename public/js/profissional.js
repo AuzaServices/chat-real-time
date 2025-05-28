@@ -265,7 +265,7 @@ document.getElementById("shareButton").addEventListener("click", async () => {
 
     const shareData = {
         title: `${professional.name} - ${professional.service}`,
-        text: `${professional.service}\nNome: ${professional.name}\nAvaliação: ${professional.stars}\nComentário: ${professional.comment}`,
+        text: `*${professional.service}*\nNome: ${professional.name}\nAvaliação: ${professional.stars}\nComentário: ${professional.comment}`,
         url: window.location.href
     };
 
