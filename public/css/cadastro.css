@@ -72,7 +72,7 @@ button:hover {
 
 /* Botão "Voltar" */
 #back-button {
-    background-color: #d9534f;
+    background-color: #a10000;
     color: white;
     padding: 10px 8px; /* 🔹 Reduzindo apenas os lados */
     border: none;
