@@ -302,9 +302,7 @@ document.getElementById("shareButton").addEventListener("click", function () {
 function updateMetaTags(professional) {
     if (!professional) return;
 
-    console.log("Dados capturados:", professional.name, professional.service, professional.stars, professional.comment); // 🔥 Verifica os dados no console
-
-    document.title = `${professional.name} - ${professional.service}`; // 🔥 Profissão adicionada ao título
+    document.title = `${professional.name} - ${professional.service}`; // 🔥 Nome + Profissão no título
 
     let metaDescription = document.querySelector("meta[name='description']");
     if (!metaDescription) {
@@ -312,7 +310,7 @@ function updateMetaTags(professional) {
         metaDescription.name = "description";
         document.head.appendChild(metaDescription);
     }
-    metaDescription.content = `Profissão: ${professional.service} | Nome: ${professional.name} | Avaliação: ${professional.stars} | Comentário: ${professional.comment}`;
+    metaDescription.content = `${professional.name} | ${professional.service} | Avaliação: ${professional.stars} | Comentário: ${professional.comment}`;
 
     let metaKeywords = document.querySelector("meta[name='keywords']");
     if (!metaKeywords) {
