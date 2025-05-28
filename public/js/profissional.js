@@ -258,12 +258,14 @@ document.getElementById("shareButton").addEventListener("click", async () => {
         return;
     }
 
-    // 🔥 Atualiza meta tags antes de compartilhar
+    console.log("Profissional encontrado:", professional.name, professional.service); // 🔥 Teste para garantir que a profissão está carregando
+
+    // Atualiza as meta tags corretamente
     updateMetaTags(professional);
 
     const shareData = {
         title: `${professional.name} - ${professional.service}`,
-        text: `${professional.service} | Nome: ${professional.name} | Avaliação: ${professional.stars} | Comentário: ${professional.comment}`,
+        text: `${professional.service}\nNome: ${professional.name}\nAvaliação: ${professional.stars}\nComentário: ${professional.comment}`,
         url: window.location.href
     };
 
@@ -319,24 +321,4 @@ function updateMetaTags(professional) {
         document.head.appendChild(metaKeywords);
     }
     metaKeywords.content = `Serviço, Profissional, ${professional.name}, Avaliação ${professional.stars}`;
-}
-
-function updateMetaTags(professional) {
-    if (!professional) return;
-
-    // 🔥 Lista de imagens para diferentes serviços
-    const serviceImages = {
-        "Pedreiro": "https://i.imgur.com/sEYNq8a.png",
-        "Servente": "https://example.com/images/servente.jpg",
-        "Eletricista": "https://example.com/images/eletricista.jpg",
-        "Encanador": "https://example.com/images/encanador.jpg"
-    };
-
-    const imageUrl = serviceImages[professional.service] || "https://example.com/images/default.jpg"; // 🔥 Imagem padrão se a profissão não estiver na lista
-
-    document.querySelector("meta[property='og:title']").setAttribute("content", `${professional.name} - ${professional.service}`);
-    document.querySelector("meta[property='og:description']").setAttribute("content", `${professional.service} | Avaliação: ${professional.stars} | Comentário: ${professional.comment}`);
-    document.querySelector("meta[property='og:image']").setAttribute("content", imageUrl);
-
-    console.log("Meta tags atualizadas:", professional.service, imageUrl); // 🔥 Confirmação no console
 }
