@@ -219,7 +219,7 @@ document.addEventListener("DOMContentLoaded", function () {
     ];
 
     // Lista de profissionais destacados
-    const highlightedProfessionals = new Set([ "agner Lucena","Robson","Francisco Romario","Renata Rodrigues","Felipe Araújo","Andreza Lima","César Freire","Matheus Alves", "Adonias", "Roberto Evangelista","Gabriel", "Fernando", "Cristiano", "Marcio","Primo Fretes", "Vinicius", "Maycon"
+    const highlightedProfessionals = new Set([ "Fagner Lucena","Robson","Francisco Romario","Renata Rodrigues","Felipe Araújo","Andreza Lima","César Freire","Matheus Alves", "Adonias", "Roberto Evangelista","Gabriel", "Fernando", "Cristiano", "Marcio","Primo Fretes", "Vinicius", "Maycon"
     ]);
 
     
