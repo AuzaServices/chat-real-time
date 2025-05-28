@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const professionals = [
 
         //AuzaPoli
-        { name: "Fagner Lucena", service: "auzapoli", name: "Fagner Lucena", age: 47, city: "Fortaleza - CE", stars: "⭐⭐⭐", comment: "Eletricista, Bombeiro Hidráulico, Manutenção Predial", whatsapp: "558598581919" },
+        { name: "Fagner Lucena", service: "AuzaPoli (Polivalente)", name: "Fagner Lucena", age: 47, city: "Fortaleza - CE", stars: "⭐⭐⭐", comment: "Eletricista, Bombeiro Hidráulico, Manutenção Predial", whatsapp: "558598581919" },
 
         //Pedreiro
         { name: "Leonardo", service: "Pedreiro", city: "Fortaleza - CE", age: 28, stars: "⭐⭐⭐", comment: "Mestre de obra profissional. Entendo de projetos.", whatsapp: "5585988559085" },
