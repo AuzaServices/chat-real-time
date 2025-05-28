@@ -267,11 +267,11 @@ document.getElementById("shareButton").addEventListener("click", async () => {
     // Atualiza as meta tags corretamente
     updateMetaTags(professional);
 
-    const shareData = {
-        title: `${professional.name} - ${professional.service}`,
-        text: `*${professional.service}*\nNome: ${professional.name}\nAvaliação: ${professional.stars}\nComentário: ${professional.comment}`,
-        url: window.location.href
-    };
+const shareData = {
+    title: `${professional.name} - ${professional.service}`,
+    text: `*${professional.service}*\nNome: ${professional.name}\nAvaliação: ${professional.stars}\nComentário: ${professional.comment}\n\n${window.location.href}`,
+    url: window.location.href
+};
 
     if (navigator.share) {
         try {
