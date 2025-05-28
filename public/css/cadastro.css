@@ -110,7 +110,7 @@ button:hover {
     font-size: 16px;
     cursor: pointer;
     transition: 0.3s ease;
-    box-shadow: inset 0px -3px 8px rgba(255, 255, 255, 0.2), /* Brilho interno mais suave */
+    box-shadow: inset 0px -3px 8px rgba(92, 36, 36, 0.2), /* Brilho interno mais suave */
                 inset 0px 3px 8px rgba(0, 0, 0, 0.5), /* Sombra interna mais intensa */
                 0px 4px 6px rgba(0, 0, 0, 0.3); /* Sombra externa */
     border-top: 1px solid rgba(255, 255, 255, 0.3); /* Reflexo sutil */
