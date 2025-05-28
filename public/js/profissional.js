@@ -241,10 +241,6 @@ document.addEventListener("DOMContentLoaded", function () {
             </div>
         `;
 
-function shortenURL(fullURL) {
-    return fullURL.replace("https://clientes2.onrender.com/profissional.html?name=", "https://clientes2.onrender.com/p/");
-}
-
 document.getElementById("shareButton").addEventListener("click", async () => {
     const params = new URLSearchParams(window.location.search);
     const selectedName = params.get("name");
