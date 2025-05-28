@@ -9,6 +9,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Lista de profissionais
     const professionals = [
+
+        //AuzaPoli
+        { name: "Fagner Lucena", service: "auzapoli", name: "Fagner Lucena", age: 47, city: "Fortaleza - CE", stars: "⭐⭐⭐", comment: "Eletricista, Bombeiro Hidráulico, Manutenção Predial", whatsapp: "558598581919" },
+
         //Pedreiro
         { name: "Leonardo", service: "Pedreiro", city: "Fortaleza - CE", age: 28, stars: "⭐⭐⭐", comment: "Mestre de obra profissional. Entendo de projetos.", whatsapp: "5585988559085" },
         { name: "Edilcimar Frazão",  service: "Pedreiro", city: "Fortaleza - CE", age: 53, stars: "⭐⭐", comment: "Área de acabamento da constr. civil, PVC, Gesso, Porcel/Cerâmica.", whatsapp: "5585992363266" },
@@ -215,7 +219,7 @@ document.addEventListener("DOMContentLoaded", function () {
     ];
 
     // Lista de profissionais destacados
-    const highlightedProfessionals = new Set([ "Robson","Francisco Romario","Renata Rodrigues","Felipe Araújo","Andreza Lima","César Freire","Matheus Alves", "Adonias", "Roberto Evangelista","Gabriel", "Fernando", "Cristiano", "Marcio","Primo Fretes", "Vinicius", "Maycon"
+    const highlightedProfessionals = new Set([ "agner Lucena","Robson","Francisco Romario","Renata Rodrigues","Felipe Araújo","Andreza Lima","César Freire","Matheus Alves", "Adonias", "Roberto Evangelista","Gabriel", "Fernando", "Cristiano", "Marcio","Primo Fretes", "Vinicius", "Maycon"
     ]);
 
     

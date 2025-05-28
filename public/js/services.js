@@ -20,6 +20,9 @@ document.addEventListener("DOMContentLoaded", function () {
     // **Lista de profissionais**
     const professionals = [
 
+        //AuzaPoli
+        { service: "auzapoli", name: "Fagner Lucena", age: 47, city: "Fortaleza - CE", stars: "⭐⭐⭐", comment: "Eletricista, Bombeiro Hidráulico, Manutenção Predial", whatsapp: "558598581919" },
+
         //Pedreiro 🧱🔨
         { service: "pedreiro", name: "Leonardo", age: 28, city: "Fortaleza - CE", stars: "⭐⭐⭐", comment: "Pedreiro, Mestre de obra profissional. Entendo de projetos.", whatsapp: "5585988559085" },
         { service: "pedreiro", name: "Edilcimar Frazão", age: 53, city: "Fortaleza - CE", stars: "⭐⭐", comment: "Área de acabamento da constr. civil, PVC, Gesso, Porcel/Cerâmica.", whatsapp: "5585992363266" },
@@ -230,7 +233,7 @@ document.addEventListener("DOMContentLoaded", function () {
     ];
 
     // **Defina os profissionais destacados**
-    const highlightedProfessionals = ["Robson","Francisco Romario","Renata Rodrigues","Felipe Araújo","Andreza Lima","César Freire","Matheus Alves","Adonias","Roberto Evangelista","Gabriel","Fernando","Cristiano","Marcio","Primo Fretes","Vinicius","Maycon"]; // Adicione os nomes dos profissionais que devem ser destacados
+    const highlightedProfessionals = ["Fagner Lucena","Robson","Francisco Romario","Renata Rodrigues","Felipe Araújo","Andreza Lima","César Freire","Matheus Alves","Adonias","Roberto Evangelista","Gabriel","Fernando","Cristiano","Marcio","Primo Fretes","Vinicius","Maycon"]; // Adicione os nomes dos profissionais que devem ser destacados
 
     const filteredProfessionals = professionals.filter(professional => professional.service === selectedService);
 
