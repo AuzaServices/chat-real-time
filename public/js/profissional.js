@@ -258,8 +258,8 @@ document.getElementById("shareButton").addEventListener("click", async () => {
         return;
     }
 
-    // 🔥 Atualiza a imagem dinâmica baseada na profissão
-    updateMetaImage(professional);
+    // 🔥 Atualiza meta tags antes de compartilhar
+    updateMetaTags(professional);
 
     const shareData = {
         title: `${professional.name} - ${professional.service}`,
@@ -321,10 +321,10 @@ function updateMetaTags(professional) {
     metaKeywords.content = `Serviço, Profissional, ${professional.name}, Avaliação ${professional.stars}`;
 }
 
-function updateMetaImage(professional) {
+function updateMetaTags(professional) {
     if (!professional) return;
 
-    // 🔥 Mapeando imagens específicas para cada profissão
+    // 🔥 Lista de imagens para diferentes serviços
     const serviceImages = {
         "Pedreiro": "https://i.imgur.com/sEYNq8a.png",
         "Servente": "https://example.com/images/servente.jpg",
@@ -332,13 +332,11 @@ function updateMetaImage(professional) {
         "Encanador": "https://example.com/images/encanador.jpg"
     };
 
-    const imageUrl = serviceImages[professional.service] || "https://example.com/images/default.jpg"; // 🔥 Imagem padrão caso a profissão não esteja mapeada
+    const imageUrl = serviceImages[professional.service] || "https://example.com/images/default.jpg"; // 🔥 Imagem padrão se a profissão não estiver na lista
 
-    let metaImage = document.querySelector("meta[property='og:image']");
-    if (!metaImage) {
-        metaImage = document.createElement("meta");
-        metaImage.setAttribute("property", "og:image");
-        document.head.appendChild(metaImage);
-    }
-    metaImage.setAttribute("content", imageUrl);
+    document.querySelector("meta[property='og:title']").setAttribute("content", `${professional.name} - ${professional.service}`);
+    document.querySelector("meta[property='og:description']").setAttribute("content", `${professional.service} | Avaliação: ${professional.stars} | Comentário: ${professional.comment}`);
+    document.querySelector("meta[property='og:image']").setAttribute("content", imageUrl);
+
+    console.log("Meta tags atualizadas:", professional.service, imageUrl); // 🔥 Confirmação no console
 }
