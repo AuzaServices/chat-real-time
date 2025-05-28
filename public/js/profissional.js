@@ -22,7 +22,6 @@ document.addEventListener("DOMContentLoaded", function () {
         { name: "Marcelo Nunes", city: "Pacajus - CE", age: 41, stars: "⭐⭐⭐⭐", comment: "Experiente em grandes projetos.", whatsapp: "558599140659" },
         { name: "Rafael Costa", city: "Itaitinga - CE", age: 37, stars: "⭐⭐⭐⭐⭐", comment: "Ótima comunicação e execução de obra.", whatsapp: "558599140660" },
     
-    
         //Servente
         { name: "André Santos", age: 30, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "Ágil e eficiente na obra.", whatsapp: "5585991340671" },
         { name: "Eduardo Lima", age: 28, city: "Itaitinga - CE", stars: "⭐⭐⭐⭐⭐", comment: "Sempre disponível para ajudar.", whatsapp: "5585991340672" },
@@ -249,7 +248,7 @@ document.getElementById("shareButton").addEventListener("click", async () => {
         return;
     }
 
-    // Buscar profissional na lista
+    // Buscar o profissional correto
     const professional = professionals.find(p => p.name.trim() === selectedName.trim());
 
     if (!professional) {
@@ -257,12 +256,14 @@ document.getElementById("shareButton").addEventListener("click", async () => {
         return;
     }
 
-    // 🔥 Atualiza as meta tags com todas as informações
+    console.log("Profissional encontrado:", professional.name, professional.service); // 🔥 Teste para garantir que a profissão está carregando
+
+    // Atualiza as meta tags corretamente
     updateMetaTags(professional);
 
     const shareData = {
-        title: `${professional.name} - ${professional.stars}`,
-        text: `Profissional: ${professional.name}\nAvaliação: ${professional.stars}\nComentário: ${professional.comment}`,
+        title: `${professional.name} - ${professional.service}`,
+        text: `Profissão: ${professional.service}\nNome: ${professional.name}\nAvaliação: ${professional.stars}\nComentário: ${professional.comment}`,
         url: window.location.href
     };
 
@@ -301,7 +302,9 @@ document.getElementById("shareButton").addEventListener("click", function () {
 function updateMetaTags(professional) {
     if (!professional) return;
 
-    document.title = `${professional.name} - ${professional.service}`; // 🔥 Adiciona a profissão ao título
+    console.log("Dados capturados:", professional.name, professional.service, professional.stars, professional.comment); // 🔥 Verifica os dados no console
+
+    document.title = `${professional.name} - ${professional.service}`; // 🔥 Profissão adicionada ao título
 
     let metaDescription = document.querySelector("meta[name='description']");
     if (!metaDescription) {
