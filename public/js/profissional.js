@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
         { name: "Renato Costa", service: "Encanador", age: 42, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "Ágil e eficiente em instalações prediais.", whatsapp: "5585991340684" },
         { name: "Fernando Oliveira", service: "Encanador", age: 36, city: "Itaitinga - CE", stars: "⭐⭐⭐⭐⭐", comment: "Execução precisa em tubulações de água.", whatsapp: "5585991340685" },
         { name: "Luciano Mendes", service: "Encanador", age: 41, city: "Pacajus - CE", stars: "⭐⭐⭐⭐", comment: "Profissional dedicado e detalhista.", whatsapp: "5585991340686" },
-        { name: "Gustavo Duarte", service: "Encanador", age: 39, city: "Horizonte - CE", stars: "⭐⭐⭐⭐⭐", comment: "Garantia de serviço bem executado.", whatsapp: "5585991340687" },
+        { name: "Gustavo Duar", service: "Encanador", age: 39, city: "Horizonte - CE", stars: "⭐⭐⭐⭐⭐", comment: "Garantia de serviço bem executado.", whatsapp: "5585991340687" },
         { name: "Marcos Lima", service: "Encanador", age: 37, city: "Itaitinga - CE", stars: "⭐⭐⭐⭐", comment: "Perito em redes hidráulicas e pressurização.", whatsapp: "5585991340688" },
         { name: "Vinícius Silva", service: "Encanador", age: 34, city: "Pacajus - CE", stars: "⭐⭐⭐⭐", comment: "Atendimento rápido e eficiente.", whatsapp: "5585991340689" },
         { name: "Rodrigo Nunes", service: "Encanador", age: 43, city: "Horizonte - CE", stars: "⭐⭐⭐⭐⭐", comment: "Atendimento rápido e eficiente.", whatsapp: "5585991340689" },
