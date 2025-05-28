@@ -258,14 +258,12 @@ document.getElementById("shareButton").addEventListener("click", async () => {
         return;
     }
 
-    console.log("Profissional encontrado:", professional.name, professional.service); // 🔥 Teste para garantir que a profissão está carregando
-
-    // Atualiza as meta tags corretamente
-    updateMetaTags(professional);
+    // 🔥 Atualiza a imagem dinâmica baseada na profissão
+    updateMetaImage(professional);
 
     const shareData = {
         title: `${professional.name} - ${professional.service}`,
-        text: `${professional.service}\nNome: ${professional.name}\nAvaliação: ${professional.stars}\nComentário: ${professional.comment}`,
+        text: `${professional.service} | Nome: ${professional.name} | Avaliação: ${professional.stars} | Comentário: ${professional.comment}`,
         url: window.location.href
     };
 
@@ -321,4 +319,26 @@ function updateMetaTags(professional) {
         document.head.appendChild(metaKeywords);
     }
     metaKeywords.content = `Serviço, Profissional, ${professional.name}, Avaliação ${professional.stars}`;
+}
+
+function updateMetaImage(professional) {
+    if (!professional) return;
+
+    // 🔥 Mapeando imagens específicas para cada profissão
+    const serviceImages = {
+        "Pedreiro": "https://i.imgur.com/sEYNq8a.png",
+        "Servente": "https://example.com/images/servente.jpg",
+        "Eletricista": "https://example.com/images/eletricista.jpg",
+        "Encanador": "https://example.com/images/encanador.jpg"
+    };
+
+    const imageUrl = serviceImages[professional.service] || "https://example.com/images/default.jpg"; // 🔥 Imagem padrão caso a profissão não esteja mapeada
+
+    let metaImage = document.querySelector("meta[property='og:image']");
+    if (!metaImage) {
+        metaImage = document.createElement("meta");
+        metaImage.setAttribute("property", "og:image");
+        document.head.appendChild(metaImage);
+    }
+    metaImage.setAttribute("content", imageUrl);
 }
