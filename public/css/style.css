@@ -545,3 +545,15 @@ header img {
     height: auto;
     margin-left: 40px; /* Ajusta a posição para a direita */
 }
+
+select {
+    font-weight: bold; /* Deixa o texto negrito */
+}
+
+option {
+    color: black; /* Define uma cor padrão para todas */
+}
+
+option[value="auzapoli"] {
+    color: darkred; /* Aplica a cor apenas à opção AuzaPoli */
+}
