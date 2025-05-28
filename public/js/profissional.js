@@ -245,6 +245,10 @@ function shortenURL(fullURL) {
     return fullURL.replace("https://clientes2.onrender.com/profissional.html?name=", "https://clientes2.onrender.com/p/");
 }
 
+function shortenURL(fullURL) {
+    return fullURL.replace("https://clientes2.onrender.com/profissional.html?name=", "https://clientes2.onrender.com/p/");
+}
+
 document.getElementById("shareButton").addEventListener("click", async () => {
     const params = new URLSearchParams(window.location.search);
     const selectedName = params.get("name");
@@ -264,13 +268,17 @@ document.getElementById("shareButton").addEventListener("click", async () => {
 
     console.log("Profissional encontrado:", professional.name, professional.service); // 🔥 Teste para garantir que a profissão está carregando
 
-    // Atualiza as meta tags corretamente
+    // 🔥 Atualiza as meta tags corretamente
     updateMetaTags(professional);
+
+    // 🔥 Encurta a URL antes de compartilhar
+    const fullURL = window.location.href;
+    const shortURL = shortenURL(fullURL);
 
     const shareData = {
         title: `${professional.name} - ${professional.service}`,
         text: `${professional.service}\nNome: ${professional.name}\nAvaliação: ${professional.stars}\nComentário: ${professional.comment}`,
-        url: window.location.href
+        url: shortURL // 🔥 Agora usa a URL encurtada
     };
 
     if (navigator.share) {
