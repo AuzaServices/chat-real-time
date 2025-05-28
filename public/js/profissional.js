@@ -263,7 +263,7 @@ document.getElementById("shareButton").addEventListener("click", async () => {
 
     const shareData = {
         title: `${professional.name} - ${professional.service}`,
-        text: `${professional.service}\n${professional.name}\nAvaliação: ${professional.stars}\nComentário: ${professional.comment}`,
+        text: `${professional.service}\nNome: ${professional.name}\nAvaliação: ${professional.stars}\nComentário: ${professional.comment}`,
         url: window.location.href
     };
 
@@ -310,7 +310,7 @@ function updateMetaTags(professional) {
         metaDescription.name = "description";
         document.head.appendChild(metaDescription);
     }
-    metaDescription.content = `${professional.name} | ${professional.service} | Avaliação: ${professional.stars} | Comentário: ${professional.comment}`;
+    metaDescription.content = `Nome${professional.name} | ${professional.service} | Avaliação: ${professional.stars} | Comentário: ${professional.comment}`;
 
     let metaKeywords = document.querySelector("meta[name='keywords']");
     if (!metaKeywords) {
