@@ -10,18 +10,12 @@
 body {
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* Alinha os elementos à esquerda */
+    align-items: center; /* 🔥 Agora todos os elementos ficam centralizados */
     justify-content: center;
-    min-height: 80vh;
-    background-color: #ffffff; /* Fundo cinza escuro */
-    color: white; /* Texto branco */
-    padding-left: 0px; /* Ajuste para mover os elementos um pouco à esquerda */
-    background-position: left top;   /* Esquerda e topo */
-    background-position: right bottom; /* Direita e fundo */
-    background-position: center right; /* Centralizado */
-    background-repeat: no-repeat;
-    background-position: 50% 5%; /* Movendo mais para baixo */
-    background-size: 40%; /* Reduz para metade do tamanho original */
+    min-height: 100vh;
+    background-color: #ffffff;
+    padding: 0;
+
 }
 
 /* Cartão de serviço */
