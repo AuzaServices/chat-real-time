@@ -211,11 +211,13 @@ header img {
     background: none; /* Remove fundo */
     border: none; /* Remove borda */
     cursor: pointer;
+    margin-top: -10px ;
+    margin-left: 350px;
 }
 
 #shareButton img {
     width: 24px; /* 🔥 Ícone pequeno e minimalista */
     height: auto;
     margin-top: -80px;
-    margin-left: 335px;
+    margin-left: -50px;
 }
