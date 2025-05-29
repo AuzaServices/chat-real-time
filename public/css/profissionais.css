@@ -22,7 +22,7 @@ body {
 .card {
     background-color: #ededed;
     color: black;
-    transform: translateX(-10px); /* 🔥 Move para a esquerda sem afetar layout */
+    transform: translateX(-9px); /* 🔥 Move para a esquerda sem afetar layout */
     padding: 15px;
     border-radius: 5px;
     text-align: left;
