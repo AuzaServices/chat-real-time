@@ -33,12 +33,11 @@ body {
     text-align: left;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     min-height: 200px;
-    width: 350px; /* Reduzi a largura para 350px */
-    max-width: 350px; /* Mantém uma largura uniforme */
-    margin-left: 16px;
-    margin-right: auto;
-    margin-top: 100px;
-    display: block;
+    width: 350px;
+    max-width: 100%; /* 🔥 Garante que não fique para a esquerda em telas grandes */
+    margin: 50px auto; /* 🔥 Isso centraliza em qualquer resolução */
+    display: flex;
+    flex-direction: column;
 }
 /* Estilização do botão de WhatsApp */
 
