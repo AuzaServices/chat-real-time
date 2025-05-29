@@ -339,9 +339,53 @@ document.getElementById("reportButton").addEventListener("click", function () {
     const whatsappNumber = "+55(85)991340658"; // 🔥 Insira seu número de WhatsApp
 
     if (selectedName) {
-        const whatsappLink = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=Quero citar um ocorrido com o ${selectedName}`;
+        const whatsappLink = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=Gostaria de relatar um ocorrido envolvendo o(a) profissional *${selectedName}*!`;
         window.open(whatsappLink, "_blank"); // 🔥 Abre diretamente o WhatsApp com a mensagem formatada
     } else {
         alert("Erro: Nome do profissional não encontrado.");
+    
+    }
+});
+
+const stars = document.querySelectorAll(".star");
+const submitButton = document.getElementById("submitRating");
+let selectedRating = 0;
+
+// Atualiza visualmente as estrelas e armazena a avaliação
+stars.forEach(star => {
+    star.addEventListener("click", function () {
+        selectedRating = parseInt(this.getAttribute("data-value"));
+        stars.forEach(s => s.classList.remove("selected"));
+        stars.forEach(s => {
+            if (parseInt(s.getAttribute("data-value")) <= selectedRating) {
+                s.classList.add("selected");
+            }
+        });
+        submitButton.disabled = false;
+        console.log("Estrelas selecionadas antes do envio:", selectedRating); // 🔥 Teste no console
+    });
+});
+
+// Evento de clique do botão "Enviar Avaliação"
+document.getElementById("submitRating").addEventListener("click", function () {
+    // Busca o nome do profissional
+    const professionalNameElement = document.querySelector("#professional-card h3"); // 🔥 Ajustado para buscar dentro do card
+    const whatsappNumber = "+55(85)991340658";
+
+    if (professionalNameElement) {
+        const professionalName = professionalNameElement.innerText.trim();
+        const selectedRating = document.querySelectorAll(".star.selected").length;
+
+        if (selectedRating > 0) {
+            const message = `Olá! Gostaria de avaliar o trabalho do profissional *${professionalName}*. Ele recebeu uma avaliação de ${selectedRating} ⭐ estrelas!`;
+
+            console.log("Mensagem gerada:", message); // 🔥 Teste antes do envio
+            const whatsappLink = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent(message)}`;
+            window.location.href = whatsappLink;
+        } else {
+            alert("Erro: Certifique-se de selecionar as estrelas antes de enviar!");
+        }
+    } else {
+        alert("Erro: Nome do profissional não foi encontrado na página. Verifique se ele está carregando corretamente no HTML.");
     }
 });
