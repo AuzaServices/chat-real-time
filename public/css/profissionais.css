@@ -158,31 +158,6 @@ p.destaque {
     margin-top: 15px;
 }
 
-/* Estilo do botão Compartilhar */
-#shareButton {
-    background-color: #474747;
-    color: white;
-    padding: 12px 18px;
-    border: none;
-    border-radius: 5px;
-    margin-left: 130px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-/* Estilo do botão Compartilhar */
-#shareButton {
-    background-color: #474747;
-    color: white;
-    padding: 9px 12px; /* Reduzi o padding */
-    border: none;
-    border-radius: 5px;
-    margin-left: -5px;
-    cursor: pointer;
-    font-size: 14px; /* Reduzi o tamanho da fonte */
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-}
-
 #shareButton:hover {
     background-color: #474747;
 }
@@ -227,4 +202,19 @@ header img {
     max-width: 50px;
     max-height: 50px;
     object-fit: contain; /* Evita distorção */
+}
+
+#shareButton {
+    position: absolute;
+    bottom: 10px; /* 🔥 Fica no canto inferior */
+    right: 10px; /* 🔥 Alinhado à direita */
+    background: none; /* Remove fundo */
+    border: none; /* Remove borda */
+    cursor: pointer;
+}
+
+#shareButton img {
+    width: 24px; /* 🔥 Ícone pequeno e minimalista */
+    height: auto;
+    filter: brightness(0); /* 🔥 Deixa o ícone preto */
 }
