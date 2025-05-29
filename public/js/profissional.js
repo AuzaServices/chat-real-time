@@ -235,16 +235,17 @@ document.addEventListener("DOMContentLoaded", function () {
         const highlightedClass = isHighlighted ? "highlighted" : "";
         const nameClass = isHighlighted ? "highlighted-name" : ""; // Agora o nome tem estilo especial
 
-        document.getElementById("professional-card").innerHTML = `
-            <div class="card ${highlightedClass}">
-                <h3 class="${nameClass}">${professional.name}</h3>
-                <p>${professional.city}</p>
-                <p>Idade: ${professional.age} anos</p>
-                <p>Avaliação: ${professional.stars}</p>
-                <p>${professional.comment}</p>
-                <a class="whatsapp-button" href="${whatsappLink}" target="_blank"> Contato via WhatsApp</a>
-            </div>
-        `;
+document.getElementById("professional-card").innerHTML = `
+    <div class="card ${highlightedClass}">
+        <img class="card-logo" src="css/imagens/background.png" alt="Logo">
+        <h3 class="${nameClass}">${professional.name}</h3>
+        <p>${professional.city}</p>
+        <p>Idade: ${professional.age} anos</p>
+        <p>Avaliação: ${professional.stars}</p>
+        <p>${professional.comment}</p>
+        <a class="whatsapp-button" href="${whatsappLink}" target="_blank">Contato via WhatsApp</a>
+    </div>
+`;
 
 document.getElementById("shareButton").addEventListener("click", async () => {
     const params = new URLSearchParams(window.location.search);

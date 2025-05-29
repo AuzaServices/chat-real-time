@@ -214,3 +214,22 @@ header img {
     height: auto;
     margin-left: 111px; /* Ajusta a posição para a direita */
 }
+
+.card {
+    position: relative;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    background: white;
+}
+
+.card-logo {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 50px !important; /* 🔥 Tamanho adequado */
+    height: auto;
+    max-width: 50px;
+    max-height: 50px;
+    object-fit: contain; /* Evita distorção */
+}

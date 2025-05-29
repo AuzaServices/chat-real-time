@@ -8,7 +8,7 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-image: url('imagens/cadastro.jpg');
+    background-image: url('imagens/cadasro.jpg');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center 35%;
@@ -171,4 +171,25 @@ input#experiencia {
     text-indent: -20px;
     background-color: #ffffff; /* 🔥 Adiciona um fundo igual ao do input */
     padding: 5px 5px; /* 🔹 Ajusta espaçamento interno */
+}
+
+.card {
+    position: relative;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    background: white;
+}
+
+.card-logo {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 5px; /* Ajuste o tamanho conforme necessário */
+    height: auto;
+}
+
+img {
+    width: 0%;
+    height: auto;
 }
