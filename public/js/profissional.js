@@ -327,3 +327,21 @@ function updateMetaTags(professional) {
     }
     metaKeywords.content = `Serviço, Profissional, ${professional.name}, Avaliação ${professional.stars}`;
 }
+
+document.getElementById("optionsButton").addEventListener("click", function () {
+    const menu = document.getElementById("optionsMenu");
+    menu.classList.toggle("hidden"); // 🔥 Alterna visibilidade do menu
+});
+
+document.getElementById("reportButton").addEventListener("click", function () {
+    const params = new URLSearchParams(window.location.search);
+    const selectedName = params.get("name"); // 🔥 Obtém o nome do profissional
+    const whatsappNumber = "+55(85)991340658"; // 🔥 Insira seu número de WhatsApp
+
+    if (selectedName) {
+        const whatsappLink = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=Quero citar um ocorrido com o ${selectedName}`;
+        window.open(whatsappLink, "_blank"); // 🔥 Abre diretamente o WhatsApp com a mensagem formatada
+    } else {
+        alert("Erro: Nome do profissional não encontrado.");
+    }
+});

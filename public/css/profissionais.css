@@ -169,8 +169,9 @@ p.destaque {
     padding: 9px 12px; /* Reduzi o padding */
     border: none;
     border-radius: 5px;
-    margin-left: -2px;
+    margin-left: -292px;
     cursor: pointer;
+    margin-top: -45px;
     font-size: 14px; /* Reduzi o tamanho da fonte */
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
@@ -219,5 +220,63 @@ header img {
     width: 24px; /* 🔥 Ícone pequeno e minimalista */
     height: auto;
     margin-top: -80px;
-    margin-left: -50px;
+    margin-left: -110px;
+}
+
+.action-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+}
+
+/* Botão de três pontinhos */
+#optionsButton {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: black;
+}
+
+/* Estilo do menu de opções */
+#optionsMenu {
+    position: absolute;
+    bottom: -60px;
+    right: 0;
+    background: white;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+    border-radius: 5px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+#optionsMenu.hidden {
+    display: none;
+}
+
+/* Botão de denúncia */
+#reportButton {
+    display: block;
+    background-color: red;
+    color: white;
+    text-align: center;
+    padding: 8px 12px;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#reportButton:hover {
+    background-color: darkred;
+}
+
+#optionsButton {
+    margin-top: -44px; /* 🔥 Subir */
+    margin-left: -40px; /* 🔥 Mover para a direita */
+     font-size: 34px; /* 🔥 Aumenta o tamanho */
+    font-weight: bold; /* 🔥 Deixa em negrito */
+
 }
