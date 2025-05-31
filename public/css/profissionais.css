@@ -60,10 +60,11 @@ body {
 /* Estilo geral do card do profissional */
 /* Estilo geral do card */
 .card {
-    border: 1px solid #ddd;
+    border: 1px solid #bababa;
     padding: 15px;
     margin-left: 13px;
     border-radius: 8px;
+    margin-top: 90px;
     background: #f9f9f9;
     box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
 }
@@ -190,8 +191,30 @@ header img {
     position: relative;
     padding: 15px;
     border-radius: 8px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    background: white;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(135deg, #d7d7d7, #ededed, #bfbfbf); /* 🔥 Gradiente metálico/plástico */
+    overflow: hidden;
+    z-index: 1; /* 🔥 Mantém o cartão abaixo do botão */
+}
+
+/* Reflexo sem interferir no botão */
+.card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -50%;
+    width: 150%;
+    height: 100%; /* 🔥 Agora cobre toda a altura para evitar linhas estranhas */
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.2), transparent);
+    opacity: 0.7; /* 🔥 Reduzi um pouco a intensidade */
+    animation: shine 3s infinite linear;
+    z-index: 0;
+}
+
+/* Garantindo que o botão do WhatsApp fique acima */
+.whatsapp-button {
+    position: relative;
+    z-index: 1px; /* 🔥 Mantém o botão acima do brilho */
 }
 
 .card-logo {
@@ -212,15 +235,15 @@ header img {
     background: none; /* Remove fundo */
     border: none; /* Remove borda */
     cursor: pointer;
-    margin-top: -10px ;
+    margin-top: -12px ;
     margin-left: 350px;
 }
 
 #shareButton img {
-    width: 24px; /* 🔥 Ícone pequeno e minimalista */
+    width: 22px; /* 🔥 Ícone pequeno e minimalista */
     height: auto;
-    margin-top: -80px;
-    margin-left: -110px;
+    margin-top: -90px;
+    margin-left: -105px;
 }
 
 .action-buttons {
@@ -236,7 +259,7 @@ header img {
     border: none;
     font-size: 24px;
     cursor: pointer;
-    color: black;
+    color: rgb(0, 0, 0);
 }
 
 /* Estilo do menu de opções */
@@ -247,7 +270,8 @@ header img {
     background: white;
     box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
     border-radius: 5px;
-    padding: 10px;
+    padding: 3px;
+    margin-top: 40px;
     display: flex;
     flex-direction: column;
     gap: 5px;
@@ -285,7 +309,8 @@ header img {
     display: flex;
     flex-direction: column; /* 🔥 Mantém a frase acima das estrelas */
     align-items: center;
-    position: absolute;
+    position: relative;
+    margin-top: 100px;
     bottom: 20px; /* 🔥 Move para o final da página */
     width: 100%;
 }
@@ -328,4 +353,61 @@ header img {
 #submitRating:disabled {
     background-color: gray;
     cursor: not-allowed;
+}
+
+.testimonial-container {
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+    padding: 50px;
+    border: 1px solid #e7e7e7; /* 🔥 Borda sutil */
+    border-radius: 0px;
+    text-align: center;
+    background: #f1f1f1; /* 🔥 Fundo branco clean */
+    box-shadow: 0 2px 5px rgba(0, 0, 5, 0.5);
+}
+
+.testimonial-text {
+    font-size: 18px;
+    font-style: italic;
+    color: #444;
+    line-height: 1.5;
+}
+
+.testimonial-name {
+    font-size: 16px;
+    font-weight: bold;
+    color: #666;
+    margin-top: 8px;
+}
+
+.testimonial.active {
+    opacity: 1;
+    filter: blur(0);
+}
+
+.testimonial.exiting {
+    opacity: 0;
+    filter: blur(5px);
+}
+
+.testimonial {
+    position: absolute;
+    opacity: 0;
+    margin-top: -39px;
+    right: 6px;
+    filter: blur(5px);
+    transition: opacity 1.5s ease-in-out, filter 1.5s ease-in-out;
+}
+
+.testimonial-text::before,
+.testimonial-text::after {
+    content: "“"; /* 🔥 Aspas de abertura */
+    font-size: 20px; /* 🔥 Aspas maiores */
+    font-weight: bold; /* 🔥 Negrito */
+    color: darkred; /* 🔥 Darkred para destaque */
+}
+
+.testimonial-text::after {
+    content: "”"; /* 🔥 Aspas de fechamento */
 }

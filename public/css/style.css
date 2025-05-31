@@ -196,7 +196,7 @@ body.services-page footer {
     flex-direction: column;
     justify-content: space-between; /* Distribui os elementos uniformemente */
     background-color: #f8f8f8;
-    border: 1px solid #ddd;
+    border: 1px solid #bababa;
     padding: 15px;
     border-radius: 8px;
     margin-top: 45px;
@@ -343,16 +343,43 @@ body.services-page footer {
 
 /* Estilo padrão dos cards */
 .card {
-    background-color: #ededed;
+    background: linear-gradient(135deg, #d7d7d7, #ededed, #bfbfbf); /* 🔥 Gradiente metálico/plástico */
     color: black;
     padding: 20px;
     border-radius: 8px;
     text-align: left;
     margin-top: 30px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    max-width: 600px; /* Aumenta a largura dos cartões na página individual */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* 🔥 Sombra mais profunda */
+    max-width: 600px;
     margin-left: auto;
     margin-right: auto;
+    position: relative; /* 🔥 Mantém o texto acima do brilho */
+    overflow: hidden;
+    z-index: 2; /* 🔥 Garante que o texto esteja acima do brilho */
+}
+
+/* Reflexo plástico dinâmico */
+.card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -50%;
+    width: 150%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.979), rgba(255, 255, 255, 0.1), transparent);
+    opacity: 0.5; /* 🔥 Redução na intensidade do brilho */
+    animation: shine 4s infinite linear;
+    z-index: 1; /* 🔥 Mantém o brilho abaixo do texto */
+}
+
+.whatsapp-button {
+    position: relative;
+    z-index: 3; /* 🔥 Mantém o botão acima do brilho */
+}
+
+.card p {
+    position: relative;
+    z-index: 3; /* 🔥 Mantém o texto acima do brilho */
 }
 
 /* Estilização para profissionais destacados */
@@ -478,4 +505,14 @@ header img {
     max-width: 150px;
     height: auto;
     margin-left: 40px; /* Ajusta a posição para a direita */
+}
+
+.junina-theme {
+    width: 550px; /* Ajuste o tamanho conforme necessário */
+    position: absolute;
+    margin-left: 90px;
+    left: -90px;
+    top: -30px;
+    right: 20px;
+    
 }

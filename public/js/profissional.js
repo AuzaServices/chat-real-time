@@ -389,3 +389,62 @@ document.getElementById("submitRating").addEventListener("click", function () {
         alert("Erro: Nome do profissional não foi encontrado na página. Verifique se ele está carregando corretamente no HTML.");
     }
 });
+
+const testimonials = [
+    { name: "Gabriel Nunes", text: "Fiquei surpreso com a velocidade! Em 5 minutos já tinha um profissional agendado." },
+    { name: "Amanda Reis", text: "O site é super intuitivo! Não precisei nem perguntar nada pra entender como funciona." },
+    { name: "Felipe Castro", text: "Nunca vi um sistema tão simples e direto. Escolhi, agendei e pronto!" },
+    { name: "Juliana Moreira", text: "Muito melhor do que ficar ligando para um monte de gente. Aqui tudo funciona certinho!" },
+    { name: "Carlos Batista", text: "Praticidade total. Sem burocracia, sem espera, só eficiência!" },
+    { name: "Vanessa Oliveira", text: "Achei tão simples de usar que minha avó conseguiu marcar um técnico sozinha!" },
+    { name: "Rodrigo Ferreira", text: "O site é rápido e direto ao ponto! Sem enrolação, é isso que eu gosto." },
+    { name: "Daniel Martins", text: "Melhor experiência! Em poucos cliques resolvi meu problema." },
+    { name: "Luiza Santos", text: "Não preciso mais pedir indicações para ninguém, só entro no site e pronto!" },
+    { name: "Fernando Lima", text: "Facilidade nível máximo! Esse site realmente salva!" },
+    { name: "Ana Beatriz", text: "O layout do site é tão bem pensado que qualquer um consegue usar sem dificuldade." },
+    { name: "Thiago Almeida", text: "Achei muito fácil contratar um serviço sem perder tempo. Tudo bem otimizado!" },
+    { name: "Letícia Costa", text: "Nunca mais preciso ficar rodando na internet procurando técnicos. Aqui tudo é rápido!" },
+    { name: "Marcelo Duarte", text: "Simples, funcional e rápido. A experiência foi impecável!" },
+    { name: "Camila Ribeiro", text: "Resolvi meu problema sem precisar baixar aplicativo ou criar conta. Prático demais!" },
+    { name: "Pedro Souza", text: "Gostei muito da organização do site! Tão simples que até parece mágica." },
+    { name: "Beatriz Monteiro", text: "Precisei de um serviço urgente e esse site foi minha salvação!" },
+    { name: "Ricardo Fernandes", text: "Já usei várias vezes e sempre consigo agendar tudo sem dor de cabeça!" },
+    { name: "Tatiane Vasconcelos", text: "Sensação de que finalmente alguém resolveu o problema de buscar profissionais!" },
+    { name: "Diego Oliveira", text: "Amei a praticidade! Nada de ligações intermináveis, apenas um clique e pronto." }
+];
+
+let index = 0;
+const container = document.querySelector(".testimonial-container");
+
+function showNextTestimonial() {
+    const activeTestimonial = document.querySelector(".testimonial.active");
+
+    if (activeTestimonial) {
+        activeTestimonial.classList.remove("active");
+        activeTestimonial.classList.add("exiting");
+
+        setTimeout(() => {
+            activeTestimonial.remove();
+        }, 1500); // 🔥 Tempo ajustado para sincronizar com a animação do CSS
+    }
+
+    // Criar novo depoimento com efeito de entrada suave
+    const newTestimonial = document.createElement("div");
+    newTestimonial.classList.add("testimonial");
+    newTestimonial.innerHTML = `
+        <p class="testimonial-text">${testimonials[index].text}</p>
+        <span class="testimonial-name">— ${testimonials[index].name}</span>
+    `;
+
+    container.appendChild(newTestimonial);
+
+    setTimeout(() => {
+        newTestimonial.classList.add("active"); // 🔥 Faz o depoimento aparecer sem desfoque
+    }, 100);
+
+    index = (index + 1) % testimonials.length;
+
+    setTimeout(showNextTestimonial, 9000); // 🔄 Troca a cada 20s
+}
+
+document.addEventListener("DOMContentLoaded", showNextTestimonial);
