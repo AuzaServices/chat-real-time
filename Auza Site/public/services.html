@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"> <!-- Bloqueia o zoom -->
+    <title>Profissionais Disponíveis</title>
+    <link rel="icon" href="https://i.imgur.com/uLiAK9a.png" type="image/png">
+    <link rel="stylesheet" href="css/style.css">
+    <script defer src="js/services.js"></script> <!-- Script para exibir profissionais -->
+
+    <style>
+        /* Classe para remover fundo */
+        .no-background {
+            background-image: none !important;
+            background-color: white !important;
+        }
+
+        /* Cabeçalho fixo apenas nesta página */
+        .fixed-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            padding: 15px;
+            text-align: center;
+            z-index: 1000;
+            border-bottom: 1px solid #ddd; /* Pequeno detalhe para separação */
+        }
+
+        /* Garante espaço abaixo do header fixo */
+        main {
+            margin-top: 80px; 
+        }
+
+        /* Estilo para carregamento dinâmico */
+        .loading {
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            animation: fadeIn 1s infinite alternate;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0.5; }
+            to { opacity: 1; }
+        }
+
+#voltarButton {
+    position: fixed;
+    top: 27px; /* 🔥 Define a posição superior */
+    left: -55px; /* 🔥 Alinha na borda esquerda */
+    background-color: #a10000;
+    color: white;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    z-index: 1000;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* 🔥 Ajuste para telas menores */
+@media screen and (max-width: 600px) {
+    #voltarButton {
+        top: 27px; /* 🔥 Mantém a posição no topo */
+        left: -55px; /* 🔥 Evita deslocamento desnecessário */
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+}
+    </style>
+</head>
+<body class="no-background"> <!-- Aplica a remoção do fundo -->
+
+    <header class="fixed-header"> <!-- Agora fixo apenas na página de profissionais -->
+        <h1 class="title profissional-ideal">Seu Profissional Ideal está Aqui!</h1>
+    </header>
+
+    <main>
+        <!-- 🔥 Botão "Voltar", agora responsivo e estilizado corretamente -->
+        <button id="voltarButton" onclick="window.location.href='index.html'">Voltar</button>
+
+        <section class="grid-container">
+            <p class="loading"></p>
+        </section>
+    </main>
+
+    <script>
+        // 🔄 Faz com que o botão "Voltar" apareça apenas quando a página estiver completamente carregada
+        window.addEventListener("load", function () {
+            const voltarButton = document.getElementById("voltarButton");
+            voltarButton.style.visibility = "visible";
+            voltarButton.style.opacity = "1"; // 🔥 Agora aparece corretamente estilizado
+            voltarButton.style.pointerEvents = "auto"; // 🔥 Permite interação depois do carregamento
+        });
+    </script>
+
+</body>
+</html>

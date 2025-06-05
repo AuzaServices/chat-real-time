@@ -1,0 +1,249 @@
+/* 🌟 Reset básico para melhor compatibilidade */
+body, h1, h2, p {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f4f4f4;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    background: #f4f4f4;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 16px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.user-info {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.user-info p {
+    background: #eee;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+h2 {
+    font-size: 20px;
+    color: #244556;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type="radio"] {
+    margin-right: 5px;
+}
+
+button {
+    background-color: #860d04;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #183442;
+}
+
+.card {
+    position: relative;
+    padding: 30px;
+    max-height: 290px; 
+    border-radius: 8px;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(135deg, #d7d7d7, #ededed, #bfbfbf);
+    overflow: hidden;
+    z-index: 1;
+    margin-bottom: 30px;
+    text-align: left; /* 🔥 Alinhamento de texto */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start; /* 🔥 Mantém tudo alinhado */
+}
+
+.highlighted {
+    background: linear-gradient(45deg, #FFD700, #EAC117, #B8860B);
+    box-shadow: 0 0 10px #FFD700, 0 0 60px #EAC117 inset;
+    border: 1px solid #c9af20;
+    color: #444444;
+    max-height: 290px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    padding: 30px;
+    border-radius: 10px;
+    letter-spacing: 1px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    animation: goldGlow 2s infinite alternate;
+}
+
+/* 🔥 Ajuste fino para garantir que todas as frases fiquem compactas */
+.card span {
+    display: block;
+    margin: 0;
+    display: block;
+    text-align: left; /* 🔥 Alinha todo o texto à esquerda */
+    margin-left: -9px; /* 🔥 Ajuste fino para mover o texto mais para a esquerda */
+    font-size: 18px; /* 🔥 Aumentei só o tamanho da fonte dos textos internos */
+    line-height: 1; /* 🔥 Mantém tudo compacto sem espaçamentos extras */
+    font-weight: normal;
+}
+
+.bold {
+    font-weight: bold;
+    font-size: 22px; /* 🔥 Nome ainda mais destacado */
+}
+
+.avaliacao {
+    font-size: 18px;
+    font-weight: bold;
+    color: #555;
+}
+
+.whatsapp-button {
+    display: block;
+    width: 90%;
+    background-color: #25D366;
+    color: white;
+    text-align: center;
+    padding: 12px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-decoration: none;
+     pointer-events: none; /* 🔥 Impede qualquer interação */
+    border-radius: 0 0 8px 8px;
+    transition: background 0.3s, box-shadow 0.3s;
+    margin-top: 20px;
+}
+
+.whatsapp-button:hover {
+    background-color: #1DA851;
+}
+
+/* Apenas os cartões dourados terão o botão de WhatsApp com verde vivo e metálico */
+.highlighted .whatsapp-button {
+    background: linear-gradient(135deg, #32CD32, #228B22); /* Verde vivo e metálico */
+    border: px solid #1E7A1E;
+    box-shadow: inset 0 -3px 5px rgba(255, 255, 255, 0.2), /* Brilho interno suave */
+                0 3px 6px rgba(0, 0, 0, 0.3); /* Sombra externa leve */
+}
+
+/* Efeito ao passar o mouse */
+.highlighted .whatsapp-button:hover {
+    background: linear-gradient(135deg, #3CB371, #2E8B57); /* Verde ainda mais vibrante */
+    box-shadow: inset 0 -4px 6px rgba(255, 255, 255, 0.3), /* Acentua o brilho interno */
+                0 4px 8px rgba(0, 0, 0, 0.4); /* Sombra externa um pouco mais intensa */
+}
+
+.card-logo {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 40px; /* 🔥 Ajuste conforme necessário */
+    height: auto;
+}
+
+#vantagens-container {
+    display: block; /* 🔥 Oculta o container inicialmente */
+    opacity: 0; /* 🔥 Começa invisível */
+    transition: opacity 0.3s ease-in-out; /* 🔥 Adiciona uma transição suave */
+    margin-top: 20px;
+    padding: 15px;
+    background: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    text-align: left;
+
+}
+
+.card {
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; /* 🔥 Transição suave ao trocar de cartão */
+}
+
+.card.selected {
+    transform: scale(1.05); /* 🔥 Destaca o cartão selecionado levemente */
+    opacity: 1;
+}
+
+.card:not(.selected) {
+    opacity: 0.7; /* 🔥 Cartões não selecionados ficam levemente apagados */
+}
+
+input#pixCode {
+    width: 90%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #f9f9f9;
+    text-align: center;
+}
+
+.selected {
+    transform: translateY(-30px); /* 🔥 Move levemente para cima */
+    transition: transform 0.3s ease-in-out; /* 🔥 Animação suave */
+}
+
+#vantagem-misteriosa {
+    position: fixed;
+    margin-top: 150%;
+    left: 20%;
+    transform: translate(-10%, -50%);
+    background: #fff;
+    padding: 15px;
+    border: 2px solid #FFA500;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    text-align: center;
+    display: none;
+}
+
+#vantagem-misteriosa p {
+    margin: 0;
+    font-weight: bold;
+    color: #333;
+}

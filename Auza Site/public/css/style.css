@@ -1,0 +1,513 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body#index {
+    overflow: hidden; /* Remove rolagem vertical e horizontal */
+    height: 100vh; /* Mantém o conteúdo visível sem scroll */
+}
+
+/* Corpo da página */
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Mantém os elementos alinhados centralmente */
+    justify-content: center;
+    min-height: 100vh; /* Garante que ocupe toda a tela em qualquer dispositivo */
+    width: 100%; /* Ajusta ao tamanho da tela */
+    background-color: #ffffff; /* Mantém o fundo */
+    color: white; /* Texto branco */
+    padding: 0; /* Remove margens extras */
+    background-repeat: no-repeat;
+    background-size: contain; /* Ajusta para telas diferentes */
+    background-position: center; /* Mantém a imagem no centro */
+}
+
+/* Nome da empresa */
+.title {
+    font-size: 7rem; /* Tamanho ajustado */
+    font-weight: bold;
+    color: darkred;
+    margin-top: 20px;
+    margin-left: 5px;
+    text-align: left; /* Alinha à esquerda */
+}
+
+/* Slogan */
+.slogan {
+    font-size: 1.8rem; /* Tamanho ajustado */
+    color: rgb(40, 40, 40);
+    margin-bottom: 130px;
+    margin-left: 45px;
+    margin-top: -100;
+    text-align: flex; /* Alinha à esquerda */
+}
+
+/* Container do formulário */
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    width: 90%;
+    max-width: 310px;
+    padding: 18px;
+    background-color: #333333;
+    color: rgb(233, 233, 233);
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    margin-top: -80px;
+    min-height: 180px;
+    margin-left: 10px; /* Reduzindo a margem */
+    margin-right: auto; /* Garante que não fique travado no lado direito */
+    position: relative;
+    left: -10px; /* Move para a esquerda */
+}
+
+/* Pergunta */
+.question {
+    font-weight: bold;
+    font-size: 1.3rem; /* Ajuste de tamanho */
+    text-align: left; /* Alinha à esquerda */
+    white-space: nowrap; /* Garante que a frase fique em uma linha só */
+    text-align: left; /* Alinha à esquerda */
+    margin-top: 5px;
+    margin-left: 27px;
+
+}
+
+/* Select */
+select {
+    padding: 8px;
+    margin-top: 10px;
+    width: 100%;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+/* Campo extra para serviços */
+#extra-service {
+    margin-top: 15px;
+}
+
+/* Botão "Continuar" */
+button {
+    margin-top: 40px; /* Ajuste de espaçamento */
+    margin-left: 107px;
+    padding: 10px;
+    background-color: darkred;
+    color: rgb(226, 226, 226);
+    border: none;
+    font-size: 1rem;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Sombra leve */
+    cursor: pointer;
+    align-self: flex-start; /* Mantém o botão alinhado à esquerda */
+}
+
+button:hover {
+    background-color: #a10000;
+}
+
+/* Rodapé fixo */
+footer {
+    position: fixed;
+    bottom: 0;
+    font-size: 0.1;
+    width: 100%;
+    background: gray;
+    padding: 10px;
+    text-align: center;
+    margin-left: 0px;
+    white-space: nowrap;
+}
+
+/* Grid para organização de serviços */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    padding: 15px;
+    justify-content: left; /* Alinha à esquerda */
+}
+
+/* Cartão de serviço */
+.card {
+    background-color: #fff;
+    color: black;
+    padding: 15px;
+    border-radius: 5px;
+    text-align: left;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    min-height: 200px; /* Aumenta a altura dos cartões */
+}
+
+.section-title {
+    font-size: 1.4rem; /* Reduz a letra para ficar mais discreta */
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 5px;
+    margin-left: 30px;;
+    color: #9b9b9b;
+}
+
+/* Estilização do título */
+.profissional-ideal {
+    color: gray; /* Define a cor cinza */
+    white-space: nowrap; /* Mantém o texto em uma única linha */
+    font-size: 1.5rem; /* Ajuste opcional para visibilidade */
+    text-align: left; /* Mantém alinhado */
+    margin-left: 25px;
+    margin-top: 30px;
+
+}
+
+/* Esconder rodapé na página de profissionais */
+body.services-page footer {
+    display: none;
+}
+
+/* Estilização do botão de WhatsApp */
+/* Estilização do card */
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Distribui os elementos uniformemente */
+    background-color: #f8f8f8;
+    border: 1px solid #bababa;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 45px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    height: 100%; /* Mantém os cards alinhados */
+}
+
+/* Limita a altura do comentário para evitar variações no card */
+.card p {
+    flex-grow: 1; /* Expande, mas sem empurrar o botão */
+    max-height: 100px; /* Define um limite para os comentários */
+    overflow: hidden; /* Evita que textos muito longos alterem a altura */
+    text-overflow: ellipsis; /* Adiciona "..." se o texto for muito grande */
+}
+
+/* Estilização do botão de WhatsApp */
+.whatsapp-button {
+    display: block;
+    width: 100%;
+    background-color: #25D366;
+    color: white;
+    text-align: center;
+    padding: 12px;
+    font-size: 1rem;
+    font-weight: bold;
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+    border-radius: 0 0 8px 8px;
+    transition: background-color 0.3s;
+    margin-top: 20px; /* Mantém o botão sempre na base do card */
+}
+
+.whatsapp-button:hover {
+    background-color: #1DA851;
+}
+
+@media screen and (max-width: 1000px) {
+    .title, .slogan {
+        font-size: 18px;
+        text-align: center;
+        font-weight: 700;
+        margin-left: 10px;
+        margin-right: 50;
+        margin-top: -8%;
+
+    }
+
+    button {
+        width: 40%;
+        font-size: 0.9rem;
+        padding: 8px 12px;
+        margin-top: 40px;
+        align-self: center;
+        margin-left: 80px;
+    }
+#joinButton {
+    background: linear-gradient(135deg, #444, #777, #aaa); /* Gradiente metálico escuro */
+    color: black;
+    border: 1px solid #ccc;
+    width: 35%;
+    font-size: 1rem;
+    padding: 10px;
+    margin-top: 40px;
+    text-align: center;
+    margin-left: 105px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3); /* Sombra mais intensa para profundidade */
+    position: relative;
+    overflow: hidden;
+}
+
+/* Reflexo metálico dinâmico */
+#joinButton {
+    background: linear-gradient(135deg, #2A3B47, #101920); /* Gradiente metálico mais escuro */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    margin-top: 40px;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-left: 78px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    box-shadow: inset 0px -3px 8px rgba(255, 255, 255, 0.2), /* Brilho interno mais suave */
+                inset 0px 3px 8px rgba(0, 0, 0, 0.5), /* Sombra interna mais intensa */
+                0px 4px 6px rgba(0, 0, 0, 0.3); /* Sombra externa */
+    border-top: 1px solid rgba(255, 255, 255, 0.3); /* Reflexo sutil */
+}
+
+#joinButton {
+    background: linear-gradient(135deg, #3B4F5C, #19252F);
+    box-shadow: inset 0px -3px 10px rgba(255, 255, 255, 0.3), /* Brilho mais intenso no hover */
+                inset 0px 3px 10px rgba(0, 0, 0, 0.6),
+                0px 6px 8px rgba(0, 0, 0, 0.4);
+}
+
+.profissional-ideal {
+    color: rgb(77, 77, 77); /* Define a cor cinza */
+    font-size: 1.6rem; /* Ajuste inicial */
+    text-align: left; /* Mantém alinhado */
+    margin-left: 10%; /* 🔥 Ajusta margem para telas maiores */
+    margin-top: 20px;
+    white-space: normal; /* 🔥 Permite que o texto quebre se necessário */
+    word-wrap: break-word; /* 🔥 Evita cortes estranhos em palavras longas */
+}
+
+/* 🔥 Ajuste para telas menores */
+@media screen and (max-width: 600px) {
+    .profissional-ideal {
+        font-size: 1.2rem; /* 🔥 Reduz tamanho da fonte para melhor leitura */
+        margin-left: 10%; /* 🔥 Ajusta margem para telas menores */
+        text-align: center; /* 🔥 Centraliza em telas pequenas */
+    }
+
+
+    }
+
+.form-container {
+    width: 90%; /* Evita que fique muito largo */
+    max-width: 320px; /* Ajusta melhor para telas pequenas */
+    padding: 15px;
+    position: relative;
+    margin-top: -85px;
+    margin-left: 30px; /* Move o container mais para a esquerda */
+    margin-right: right; /* Mantém o lado direito flexível */
+}
+
+    .grid-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        width: 100%;
+        max-width: 350px;
+    }
+
+    .question {
+        font-size: 1.3rem; /* Reduz um pouco o tamanho para melhor leitura */
+        text-align: center; /* Centraliza o texto */
+        margin-top: 10px; /* Ajuste de espaçamento */
+        margin-left: 13px; /* Remove deslocamento lateral */
+        white-space: normal; /* Permite que quebre corretamente em telas menores */
+    }
+
+}
+
+/* Estilo padrão dos cards */
+.card {
+    background: linear-gradient(135deg, #d7d7d7, #ededed, #bfbfbf); /* 🔥 Gradiente metálico/plástico */
+    color: black;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: left;
+    margin-top: 30px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* 🔥 Sombra mais profunda */
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative; /* 🔥 Mantém o texto acima do brilho */
+    overflow: hidden;
+    z-index: 2; /* 🔥 Garante que o texto esteja acima do brilho */
+}
+
+/* Reflexo plástico dinâmico */
+.card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -50%;
+    width: 150%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.979), rgba(255, 255, 255, 0.1), transparent);
+    opacity: 0.5; /* 🔥 Redução na intensidade do brilho */
+    animation: shine 4s infinite linear;
+    z-index: 1; /* 🔥 Mantém o brilho abaixo do texto */
+}
+
+.whatsapp-button {
+    position: relative;
+    z-index: 3; /* 🔥 Mantém o botão acima do brilho */
+}
+
+.card p {
+    position: relative;
+    z-index: 3; /* 🔥 Mantém o texto acima do brilho */
+}
+
+/* Estilização para profissionais destacados */
+.highlighted {
+    background: linear-gradient(45deg, #FFD700, #EAC117, #B8860B); /* 🔥 Ouro mais intenso */
+    box-shadow: 0 0 10x #42423f, 0 0 60px #EAC117 inset; /* ✨ Brilho mais vibrante */
+    border: 1px solid #c9af20; /* 🔥 Borda dourada sólida */
+    color: #444; /* 🔥 Texto mais escuro para contraste */
+    font-weight: bold;
+    padding: 20px;
+    text-align: left; /* 🔥 Alinha texto para a esquerda */
+    border-radius: 10px;
+    letter-spacing: 1px;
+
+    /* 🔥 Efeito de brilho dinâmico */
+    animation: goldGlow 2s infinite alternate;
+}
+
+
+/* Nome do profissional destacado */
+.highlighted-name {
+    color: #A020F0; /* Lilás */
+    font-weight: bold;
+}
+
+/* Destaque no card */
+.destaque {
+    color: #A020F0; /* Lilás */
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 14px;
+    text-align: center;
+}
+
+/* Estilo padrão do botão de WhatsApp */
+.whatsapp-button {
+    display: block;
+    width: 100%;
+    background-color: #25D366;
+    color: white;
+    text-align: center;
+    padding: 12px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 0 0 8px 8px;
+    transition: background 0.3s, box-shadow 0.3s;
+    margin-top: 20px;
+}
+
+/* Apenas os cartões dourados terão o botão de WhatsApp com verde vivo e metálico */
+.highlighted .whatsapp-button {
+    background: linear-gradient(135deg, #32CD32, #228B22); /* Verde vivo e metálico */
+    border: 2px solid #1E7A1E;
+    box-shadow: inset 0 -3px 5px rgba(255, 255, 255, 0.2), /* Brilho interno suave */
+                0 3px 6px rgba(0, 0, 0, 0.3); /* Sombra externa leve */
+}
+
+/* Efeito ao passar o mouse */
+.highlighted .whatsapp-button:hover {
+    background: linear-gradient(135deg, #3CB371, #2E8B57); /* Verde ainda mais vibrante */
+    box-shadow: inset 0 -4px 6px rgba(255, 255, 255, 0.3), /* Acentua o brilho interno */
+                0 4px 8px rgba(0, 0, 0, 0.4); /* Sombra externa um pouco mais intensa */
+}
+
+/* Efeito de brilho em movimento no botão de WhatsApp */
+@keyframes brilho-dinamico-suave {
+    0% { left: -100%; opacity: 0; }
+    10% { opacity: 0.2; }
+    50% { left: 100%; opacity: 0.6; }
+    90% { opacity: 0.2; }
+    100% { left: -100%; opacity: 0; }
+}
+
+/* Aplicado apenas aos cartões dourados */
+.highlighted .whatsapp-button {
+    background: linear-gradient(135deg, #32CD32, #228B22) !important; /* Verde metálico fixo */
+    position: relative;
+    border: 1px solid #73b95f;
+    overflow: hidden; /* Evita que o brilho fique dividido */
+}
+
+/* Camada de brilho em movimento com suavização */
+.highlighted .whatsapp-button::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(255,255,255,0) 20%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 80%);
+    animation: brilho-dinamico-suave 3s infinite ease-in-out;
+}
+
+.no-background {
+    background: none !important;
+    background-image: none !important;
+    background-color: white !important;
+}
+.fixed-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    padding: 1px 15px; /* Reduz a altura do cabeçalho */
+    text-align: center;
+    z-index: 1000;
+    border-bottom: 1px solid #ddd;
+}
+
+.profissional-ideal {
+    font-size: 1.2rem; /* Reduz um pouco o tamanho do título */
+    margin-top: 5px; /* Ajuste menor no espaçamento */
+    margin-right: 20px;
+    margin-left: 30px;
+}
+
+.titulo-principal {
+    margin-top: 50px; /* Ajuste conforme necessário */
+}
+
+.no-wrap-text {
+    white-space: nowrap;
+}
+
+footer p {
+    font-size: 12px; /* Escolha um tamanho menor conforme necessário */
+    margin: 0; /* Remove margens extras para melhor alinhamento */
+}
+
+header img {
+    max-width: 150px;
+    height: auto;
+    margin-left: 40px; /* Ajusta a posição para a direita */
+}
+
+.junina-theme {
+    width: 550px; /* Ajuste o tamanho conforme necessário */
+    position: absolute;
+    margin-left: -5px;
+    left: -90px;
+    top: -10px;
+    right: 20px;
+    
+}

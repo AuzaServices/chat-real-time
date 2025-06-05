@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <script>
+    if (!sessionStorage.getItem("sessionStarted")) {
+        sessionStorage.setItem("sessionStarted", "true"); // Marca a sessão iniciada
+        window.location.replace("splash.html"); // 🔥 Agora garante que o splash aparece antes do index
+    }
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Auza Services</title>
+    <link rel="icon" type="image/png" href="css/imagens/favicon.png">
+    <img src="css/imagens/festa.png" alt="Festas Juninas" class="junina-theme">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="https://i.imgur.com/uLiAK9a.png" type="image/png">
+    <link rel="manifest" href="/public/manifest.json">
+    <script defer src="js/script.js"></script>
+
+    <!-- Open Graph Meta Tags para compartilhamento no WhatsApp e redes sociais -->
+    <meta property="og:title" content="Encontre profissionais perto de você! Tudo na palma da mão.">
+    <meta property="og:description" content="Conecte-se com especialistas e serviços confiáveis em Horizonte e região.">
+    <meta property="og:url" content="https://seudominio.com.br/index.html">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://i.imgur.com/wCrxnuu.png">
+
+</head>
+<body id="index" class="background-active">
+
+    <header>
+        <img src="css/imagens/background.png" alt="Logo Auza Services" width="150px">
+        <h1 class="title"></h1>
+        <link rel="icon" href="https://i.imgur.com/uLiAK9a.png" type="image/png">
+        <p class="slogan">Tudo em Serviços de A a Z</p>
+    </header>
+    
+    <main>
+        <div class="form-container">
+            <h2 class="question">Qual serviço você precisa?</h2>
+            <form id="service-form">
+                <select name="services" id="services">
+                    <option value="">Selecione</option>
+                    <option value="auzapoli">🏆 AuzaPoli (Polivaletes)</option> 
+                    <option value="arquiteto">📐 Arquiteto(a)</option>
+                    <option value="pedreiro">🧱 Pedreiro</option>
+                    <option value="servente">🏗️ Servente</option>
+                    <option value="bombeiro-hidraulico">💧 Bombeiro Hidráulico</option>
+                    <option value="metalurgico">⚙️ Metalúrgico</option>
+                    <option value="pintor">🎨 Pintor</option>
+                    <option value="capinador">🌿 Capinador</option>
+                    <option value="jardineiro">🪴 Jardineiro</option>
+                    <option value="eletricista">⚡Eletricista</option>
+                    <option value="vidraceiro">🪟 Vidraceiro</option>
+                    <option value="chaveiro">🔑  Chaveiro</option>
+                    <option value="piscineiro">🏊‍♂️ Piscineiro (Limpador de Piscinas)</option>
+                    <option value="tecnico-em-refrigeracao">❄️ Tec. em Refrigeração</option>
+                    <option value="tec-de-cercas-eletricas">🔧 Tec. de Cerca Elétrica</option>
+                    <option value="tec-em-eletrodomesticos">📺 Tec. em Eletrodomésticos</option>
+                    <option value="montador-de-moveis">🛠️ Montador de Móveis</option>
+                    <option value="marceneiro">🪚 Marceneiro</option>
+                    <option value="reboque">🚛 Caminhão Reboque</option>
+                    <option value="caminhão-limpa-fossa">♻️ Caminhão Limpa-Fossa</option>
+                    <option value="mudanças-e-carretos">🚚 Fretes e Mudanças</option>
+                    <option value="ajudante-de-frete">📦 Ajudante de Frete</option> 
+                    <option value="faxineira">🧹 Faxineira</option>
+                    <option value="costureira">🧵 Costureira</option>
+                    <option value="baba">🍼 Babás</option>
+                    <option value="cuidador-de-idosos">❤️ Cuidador(a) de Idosos</option>
+                    <option value="churrasqueiro">🔥 Churrasqueiro</option>
+                    <option value="bartender">🍸 Bartender</option>
+                    <option value="confeiteira">🧁 Confeiteiro(a)</option>
+                    <option value="pegue-e-monte">🎉 Pegue e Monte</option>
+                    <option value="cabeleireiro-a-domicilio">💇‍♂️ Cabeleireiro a Domicilio</option>
+                    <option value="manicure-a-domicilio">💅 Manicure a Domicilio</option>
+                    <option value="designer">🖥️ Designer</option>
+                    <option value="fotógrafo">📸 Fotógrafo(a)</option>
+                    <option value="dj">🎶 DJ</option>
+                    <option value="adestramento">🦴 Adestramento</option>
+                    <option value="cuidador-de-animais">🐶 Cuidador(a) de Animais</option>
+                    <option value="advogado">⚖️ Advogado(a)</option>
+                    <option value="psicologo">🧠 Psicólogo(a)</option> 
+                    <option value="professor">🎓 Professor(a) Particular</option> 
+                    <option value="nutricionista">🥑 Nutricionista</option>
+                    <option value="personal-trainer">💪 Personal Trainer</option>
+                </select>
+                <button type="submit">Continuar</button>
+            </form>
+        </div>
+    
+<div style="text-align: center; margin-top: -25px; margin-left: -85px; margin-right: 0;">
+    <button id="joinButton" style="background-color: #244556; color: rgb(255, 255, 255); padding: 10px 20px; border: none; border-radius: 5px; font-size: 16px; cursor: pointer; box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);">
+        Junte-se a Nós
+    </button>
+</div>
+
+        <div style="text-align: center; margin-top: 10px; margin-left: -22px;">
+            <p style="font-size: 12px; line-height: 1.4; color: black; margin-left: 24px;">
+                Ao prosseguir, você aceita os <a href="termos-de-uso.html" target="_blank">Termos de Uso</a> <br>
+                e as <a href="politicas-de-privacidade.html" target="_blank">Políticas de Privacidade</a>.
+            </p>
+        </div>
+    </main>
+    
+    <div style="text-align: right; margin-bottom: 20px; padding-right: 20px; margin-left: 18px; margin-top: 38px;">
+        <a href="https://wa.me/5585991340658" target="_blank" style="margin-right: 10px; text-decoration: none;">
+            <img src="css/imagens/whats.png" alt="WhatsApp" style="width: 32px; height: 32px;">
+        </a>
+        <a href="https://www.instagram.com/auzaservices?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" style="text-decoration: none;">
+            <img src="css/imagens/insta.png" alt="Instagram" style="width: 32px; height: 32px;">
+        </a>
+    </div>
+
+    <footer>
+        <p>© 2025 Auza Services. Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>

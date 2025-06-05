@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Cadastro de Profissional</title>
+    <link rel="icon" href="https://i.imgur.com/uLiAK9a.png" type="image/png">
+    <link rel="stylesheet" href="css/cadastro.css">
+    <script src="js/cadastro.js"></script> <!-- Certifique-se de que está aqui! -->
+
+    <meta property="og:title" content="Entre para o time Auza Services e começe a ter mais clientes.">
+    <meta property="og:description" content="Cadastre-se como profissional!  🧱 Pedreiro, 💧 Encanador, 🚚 Frete e Mudanças, 🧹 Faxineira, ⚡ Eletricista, 🪚 Marceneiro, 📦 Ajudante de Frete, 💇‍♂️ Cabeleireiro, 🍼 Babá, 🛠️ Montador de Móveis e outros...">
+    <meta property="og:url" content="https://seudominio.com.br/index.html">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://i.imgur.com/X2xHSm4.png">
+
+</head>
+<body>
+
+<div class="container">
+    <div class="background-logo"></div>
+    <div class="header-container">
+        <h1>Cadastro de Profissional</h1>
+    </div>
+
+    <form id="cadastro-form">
+        <label for="nome">Nome e Sobrenome:</label>
+        <input type="text" id="nome" name="nome" required>
+
+        <label for="idade">Idade:</label>
+        <input type="number" id="idade" name="idade" required>
+
+        <label for="profissao">Profissão:</label>
+        <select id="profissao" name="profissao" required>
+            <option value="">Selecione</option>
+                               <option value="auzapoli">🏆 AuzaPoli (Polivaletes)</option> 
+                    <option value="arquiteto">Arquiteto(a)</option>
+                    <option value="pedreiro">Pedreiro</option>
+                    <option value="servente">Servente</option>
+                    <option value="bombeiro-hidraulico">Bombeiro Hidráulico</option>
+                    <option value="metalurgico">Metalúrgico</option>
+                    <option value="pintor">Pintor</option>
+                    <option value="capinador">Capinador</option>
+                    <option value="jardineiro">Jardineiro</option>
+                    <option value="eletricista">Eletricista</option>
+                    <option value="vidraceiro">Vidraceiro</option>
+                    <option value="chaveiro">Chaveiro</option>
+                    <option value="piscineiro">Piscineiro (Limpador de Piscinas)</option>
+                    <option value="tecnico-em-refrigeracao">Tec. em Refrigeração</option>
+                    <option value="tec-de-cercas-eletricas">Tec. de Cerca Elétrica</option>
+                    <option value="tec-em-eletrodomesticos">Tec. em Eletrodomésticos</option>
+                    <option value="montador-de-moveis">Montador de Móveis</option>
+                    <option value="marceneiro">Marceneiro</option>
+                    <option value="reboque">Caminhão Reboque</option>
+                    <option value="caminhão-limpa-fossa">Caminhão Limpa-Fossa</option>
+                    <option value="mudanças-e-carretos">Fretes e Mudanças</option>
+                    <option value="ajudante-de-frete">Ajudante de Frete</option> 
+                    <option value="faxineira">Faxineira</option>
+                    <option value="costureira">Costureira</option>
+                    <option value="baba">Babás</option>
+                    <option value="cuidador-de-idosos">Cuidador(a) de Idosos</option>
+                    <option value="churrasqueiro">Churrasqueiro</option>
+                    <option value="bartender">Bartender</option>
+                    <option value="confeiteira">Confeiteiro(a)</option>
+                    <option value="pegue-e-monte">Pegue e Monte</option>
+                    <option value="cabeleireiro-a-domicilio">Cabeleireiro a Domicilio</option>
+                    <option value="manicure-a-domicilio">Manicure a Domicilio</option>
+                    <option value="designer">Designer</option>
+                    <option value="fotógrafo">Fotógrafo(a)</option>
+                    <option value="dj">DJ</option>
+                    <option value="adestramento">Adestramento</option>
+                    <option value="cuidador-de-animais">Cuidador(a) de Animais</option>
+                    <option value="advogado">Advogado(a)</option>
+                    <option value="psicologo">Psicólogo(a)</option> 
+                    <option value="professor">Professor(a) Particular</option> 
+                    <option value="nutricionista">Nutricionista</option>
+                    <option value="personal-trainer">Personal Trainer</option>
+        </select>
+
+        <label for="estado">Estado:</label>
+        <select id="estado" name="estado" required>
+            <option value="" disabled selected>Selecione o estado</option>
+            <option value="12">Acre</option>
+            <option value="27">Alagoas</option>
+            <option value="16">Amapá</option>
+            <option value="13">Amazonas</option>
+            <option value="29">Bahia</option>
+            <option value="23">Ceará</option>
+            <option value="53">Distrito Federal</option>
+            <option value="32">Espírito Santo</option>
+            <option value="52">Goiás</option>
+            <option value="21">Maranhão</option>
+            <option value="51">Mato Grosso</option>
+            <option value="50">Mato Grosso do Sul</option>
+            <option value="31">Minas Gerais</option>
+            <option value="15">Pará</option>
+            <option value="25">Paraíba</option>
+            <option value="41">Paraná</option>
+            <option value="26">Pernambuco</option>
+            <option value="22">Piauí</option>
+            <option value="33">Rio de Janeiro</option>
+            <option value="24">Rio Grande do Norte</option>
+            <option value="43">Rio Grande do Sul</option>
+            <option value="11">Rondônia</option>
+            <option value="14">Roraima</option>
+            <option value="42">Santa Catarina</option>
+            <option value="35">São Paulo</option>
+            <option value="28">Sergipe</option>
+            <option value="17">Tocantins</option>
+        </select>
+
+        <label for="cidade">Cidade:</label>
+        <select id="cidade" name="cidade" required>
+            <option value="" disabled selected>Selecione a cidade</option>
+        </select>
+
+<label for="experiencia">Experiência:</label>
+<div style="position: relative;">
+    <input type="text" id="experiencia" name="experiencia" maxlength="60" style="width: 70%;">
+    <span id="contador" style="position: absolute; right: 28px; bottom: 10px; font-size: 12px; color: #888;">0/60</span>
+</div>
+        <button id="submit-button" type="submit">Continuar</button>
+        <button id="back-button" type="button" onclick="removeFocusAndGoBack()">Voltar</button>
+    </form>
+</div>
+
+<script src="js/cadastro.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,411 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Corpo da página */
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 🔥 Agora todos os elementos ficam centralizados */
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #ffffff;
+    padding: 0;
+    overflow: hidden;
+
+}
+
+/* Cartão de serviço */
+.card {
+    background-color: #ededed;
+    color: black;
+    transform: translateX(-8px); /* 🔥 Move para a esquerda sem afetar layout */
+    padding: 15px;
+    border-radius: 5px;
+    text-align: left;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    min-height: 200px;
+    width: 350px;
+    max-width: 100%; /* 🔥 Garante que não fique para a esquerda em telas grandes */
+    margin: 50px auto; /* 🔥 Isso centraliza em qualquer resolução */
+    display: flex;
+    flex-direction: column;
+}
+/* Estilização do botão de WhatsApp */
+
+.whatsapp-button {
+    display: block;
+    width: 100%;
+    background-color: #25D366;
+    color: white;
+    text-align: center;
+    padding: 12px;
+    font-size: 1rem;
+    font-weight: bold;
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+    border-radius: 0 0 8px 8px;
+    transition: background-color 0.3s;
+    margin-top: 20px; /* Mantém o botão sempre na base do card */
+}
+
+.whatsapp-button:hover {
+    background-color: #1DA851;
+}
+
+/* Estilo geral do card do profissional */
+/* Estilo geral do card */
+.card {
+    border: 1px solid #bababa;
+    padding: 15px;
+    margin-left: 13px;
+    border-radius: 8px;
+    margin-top: 44px;
+    background: #f9f9f9;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Profissionais destacados */
+
+/* Nome do profissional destacado */
+.highlighted-name {
+    color: #A020F0; /* Lilás */
+    font-weight: bold;
+}
+
+/* Adicionar selo "Destaque" */
+p.destaque {
+    font-size: 14px;
+    color: white;
+    background: darkred;
+    padding: 5px;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.whatsapp-button {
+    display: block;
+    width: 100%;
+    background-color: #25D366;
+    color: white;
+    text-align: center;
+    padding: 12px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 0 0 8px 8px;
+    transition: background 0.3s, box-shadow 0.3s;
+    margin-top: 20px;
+}
+
+/* Apenas os cartões dourados terão o botão de WhatsApp com verde vivo e metálico */
+.highlighted .whatsapp-button {
+    background: linear-gradient(135deg, #32CD32, #228B22); /* Verde vivo e metálico */
+    border: 2px solid #1E7A1E;
+    box-shadow: inset 0 -3px 5px rgba(255, 255, 255, 0.2), /* Brilho interno suave */
+                0 3px 6px rgba(0, 0, 0, 0.3); /* Sombra externa leve */
+}
+
+/* Efeito ao passar o mouse */
+.highlighted .whatsapp-button:hover {
+    background: linear-gradient(135deg, #3CB371, #2E8B57); /* Verde ainda mais vibrante */
+    box-shadow: inset 0 -4px 6px rgba(255, 255, 255, 0.3), /* Acentua o brilho interno */
+                0 4px 8px rgba(0, 0, 0, 0.4); /* Sombra externa um pouco mais intensa */
+}
+
+/* Efeito de brilho em movimento no botão de WhatsApp */
+@keyframes brilho-dinamico-suave {
+    0% { left: -100%; opacity: 0; }
+    10% { opacity: 0.2; }
+    50% { left: 100%; opacity: 0.6; }
+    90% { opacity: 0.2; }
+    100% { left: -100%; opacity: 0; }
+}
+
+/* Aplicado apenas aos cartões dourados */
+.highlighted .whatsapp-button {
+    background: linear-gradient(135deg, #32CD32, #228B22) !important; /* Verde metálico fixo */
+    position: relative;
+    border: 1px solid #73b95f;
+    overflow: hidden; /* Evita que o brilho fique dividido */
+}
+
+/* Camada de brilho em movimento com suavização */
+.highlighted .whatsapp-button::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(255,255,255,0) 20%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 80%);
+    animation: brilho-dinamico-suave 3s infinite ease-in-out;
+}
+
+.button-container {
+    text-align: center;
+    display: flex; /* Organiza os botões lado a lado */
+    justify-content: center; /* Centraliza horizontalmente */
+    gap: 10px; /* Adiciona um espaço entre os botões */
+    margin-top: 15px;
+}
+
+#shareButton:hover {
+    background-color: #474747;
+}
+
+/* Estilo do botão Voltar */
+#backButton {
+    background-color: #930606;
+    color: white;
+    padding: 6px 12px; /* Reduzi o padding */
+    border: none;
+    border-radius: 5px;
+    margin-left: -293px;
+    cursor: pointer;
+    margin-top: -40px;
+    font-size: 14px; /* Reduzi o tamanho da fonte */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+#backButton:hover {
+    background-color: #930606;
+}
+
+header img {
+    max-width: 150px;
+    height: auto;
+    margin-left: 111px; /* Ajusta a posição para a direita */
+}
+
+.card {
+    position: relative;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(135deg, #d7d7d7, #ededed, #bfbfbf); /* 🔥 Gradiente metálico/plástico */
+    overflow: hidden;
+    z-index: 1; /* 🔥 Mantém o cartão abaixo do botão */
+}
+
+/* Reflexo sem interferir no botão */
+.highlighted {
+    background: linear-gradient(45deg, #FFD700, #EAC117, #B8860B); /* 🔥 Ouro mais intenso */
+    box-shadow: 0 0 10x #42423f, 0 0 60px #EAC117 inset; /* ✨ Brilho mais vibrante */
+    border: 1px solid #c9af20; /* 🔥 Borda dourada sólida */
+    color: #444; /* 🔥 Texto mais escuro para contraste */
+    font-weight: bold;
+    padding: 20px;
+    text-align: left; /* 🔥 Alinha texto para a esquerda */
+    border-radius: 10px;
+    letter-spacing: 1px;
+
+    /* 🔥 Efeito de brilho dinâmico */
+    animation: goldGlow 2s infinite alternate;
+}
+
+/* Garantindo que o botão do WhatsApp fique acima */
+.whatsapp-button {
+    position: relative;
+    z-index: 1px; /* 🔥 Mantém o botão acima do brilho */
+}
+
+.card-logo {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 50px !important; /* 🔥 Tamanho adequado */
+    height: auto;
+    max-width: 50px;
+    max-height: 50px;
+    object-fit: contain; /* Evita distorção */
+}
+
+#shareButton {
+    position: relative;
+    bottom: 10px; /* 🔥 Fica no canto inferior */
+    right: 10px; /* 🔥 Alinhado à direita */
+    background: none; /* Remove fundo */
+    border: none; /* Remove borda */
+    cursor: pointer;
+    margin-top: -12px ;
+    margin-left: 350px;
+}
+
+#shareButton img {
+    width: 22px; /* 🔥 Ícone pequeno e minimalista */
+    height: auto;
+    margin-top: -90px;
+    margin-left: -105px;
+}
+
+.action-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+}
+
+/* Botão de três pontinhos */
+#optionsButton {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: rgb(0, 0, 0);
+}
+
+/* Estilo do menu de opções */
+#optionsMenu {
+    position: absolute;
+    bottom: -60px;
+    right: 0;
+    background: white;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+    border-radius: 2px;
+    padding: 1px;
+    margin-top: 42px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+#optionsMenu.hidden {
+    display: none;
+}
+
+/* Botão de denúncia */
+#reportButton {
+    display: block;
+    background-color: red;
+    color: white;
+    text-align: center;
+    padding: 8px 12px;
+    border-radius: 2px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#reportButton:hover {
+    background-color: darkred;
+}
+
+#optionsButton {
+    margin-top: -44px; /* 🔥 Subir */
+    margin-left: -40px; /* 🔥 Mover para a direita */
+     font-size: 34px; /* 🔥 Aumenta o tamanho */
+    font-weight: bold; /* 🔥 Deixa em negrito */
+
+}
+
+.rating-container {
+    display: flex;
+    flex-direction: column; /* 🔥 Mantém a frase acima das estrelas */
+    align-items: center;
+    position: relative;
+    margin-top: 100px;
+    bottom: 20px; /* 🔥 Move para o final da página */
+    width: 100%;
+}
+
+.stars-container {
+    display: flex; /* 🔥 Somente as estrelas ficarão em linha */
+    gap: 10px;
+}
+
+#ratingQuestion {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.star {
+    font-size: 40px;
+    cursor: pointer;
+    color: gray;
+    transition: color 0.3s;
+}
+
+.star.selected,
+.star:hover {
+    color: gold; /* 🔥 Estrelas marcadas ficam douradas */
+}
+
+#submitRating {
+    margin-top: 10px;
+    padding: 8px 15px;
+    font-size: 16px;
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#submitRating:disabled {
+    background-color: gray;
+    cursor: not-allowed;
+}
+
+.testimonial-container {
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+    padding: 50px;
+    border: 1px solid #e7e7e7;
+    border-radius: 0px;
+    text-align: center;
+    background: #f1f1f1;
+    box-shadow: 0 2px 5px rgba(0, 0, 5, 0.5);
+
+}
+
+.testimonial-text {
+    font-size: 18px;
+    font-style: italic;
+    color: #444;
+    line-height: 1.5;
+}
+
+.testimonial-name {
+    font-size: 16px;
+    font-weight: bold;
+    color: #666;
+    margin-top: 8px;
+}
+
+.testimonial.active {
+    opacity: 1;
+    filter: blur(0);
+}
+
+.testimonial.exiting {
+    opacity: 0;
+    filter: blur(5px);
+}
+
+.testimonial {
+    position: absolute;
+    opacity: 0;
+    margin-top: -39px;
+    right: 6px;
+    filter: blur(5px);
+    transition: opacity 1.5s ease-in-out, filter 1.5s ease-in-out;
+}
+
+.testimonial-text::before,
+.testimonial-text::after {
+    content: "“"; /* 🔥 Aspas de abertura */
+    font-size: 20px; /* 🔥 Aspas maiores */
+    font-weight: bold; /* 🔥 Negrito */
+    color: darkred; /* 🔥 Darkred para destaque */
+}
+
+.testimonial-text::after {
+    content: "”"; /* 🔥 Aspas de fechamento */
+}
