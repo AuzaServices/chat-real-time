@@ -96,7 +96,7 @@ document.addEventListener("DOMContentLoaded", function () {
         { service: "pintor", name: "José Antunes", age: 43, city: "Horizonte - CE", stars: "⭐", comment: "Detalhista", whatsapp: "55859913409" },
         
         //Capinadores 🌿
-        { service: "capinador", name: "Afonso Santos", age: 51, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "Especialista em limpeza de terrenos e áreas verdes.", whatsapp: "5585992288704" },
+        { service: "capinador", name: "Adriano Costa", age: 31, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "Tenho experiência na área.", whatsapp: "5585992318130" },
         { service: "capinador", name: "Bruno Oliveira", age: 42, city: "Itaitinga - CE", stars: "⭐⭐⭐⭐⭐", comment: "Trabalho eficiente na remoção de vegetação.", whatsapp: "5585991340702" },
         { service: "capinador", name: "Carlos Mendes", age: 36, city: "Pacajus - CE", stars: "⭐⭐⭐", comment: "Ótimo para manutenção de espaços agrícolas.", whatsapp: "5585991340703" },
         { service: "capinador", name: "Daniel Costa", age: 44, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "Experiente em limpeza de terrenos urbanos.", whatsapp: "5585991340704" },
