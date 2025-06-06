@@ -122,8 +122,8 @@ document.addEventListener("DOMContentLoaded", function () {
         { service: "Faxineira", name: "Alexandra Reis", age: 31, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "Tenho experiência como Diarista á anos com competência", whatsapp: "5585992460837" },
         { service: "Faxineira", name: "Andrea Carneiro", age: 42, city: "Fortaleza - CE", stars: "⭐⭐⭐", comment: "6 anos de experiência", whatsapp: "5585989282316" },
         { service: "Faxineira", name: "Daniele Ribeiro", age: 37, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "Bastante experiência na área", whatsapp: "5585991738251" },
+        { service: "Faxineira", name: "Emília Costa", age: 39, city: "Fortaleza - CE", stars: "⭐⭐⭐", comment: "Tenho experiência na área.", whatsapp: "5585989506095" },
         //
-        { name: "Carlos Mendes", service: "Faxineira", age: 42, city: "Pacajus - CE", stars: "⭐⭐⭐", comment: "Pontualidade e eficiência garantidas.", whatsapp: "55859913407" },
         { name: "Daniela Costa", service: "Faxineira", age: 36, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "Experiente em limpezas detalhadas.", whatsapp: "55859913744" },
         { name: "Eduarda Nunes", service: "Faxineira", age: 39, city: "Itaitinga - CE", stars: "⭐⭐⭐⭐⭐", comment: "Cuidadosa com materiais e objetos.", whatsapp: "5581340745" },
         { name: "Fernanda Ramos", service: "Faxineira", age: 37, city: "Pacajus - CE", stars: "⭐⭐⭐⭐", comment: "Limpeza rápida e eficiente.", whatsapp: "55859913407" },
