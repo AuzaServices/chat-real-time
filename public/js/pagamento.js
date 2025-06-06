@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         <li>✅ 100% Gratuito</li>
                         <li>✅ Presença na plataforma</li>
                         <li>✅ Cadastro simples</li>
-                        <li id="vantagemMisteriosaBtn" style="cursor: pointer;">➡️ Vantagem Misteriosa</li>
+                        <li id="vantagemMisteriosaBtn" style="cursor: pointer;">➡️ Auza Rewards (Clique Aqui)</li>
                     </ul>`,
             dourado: `<h3>Vantagens de ser AuzaGold:</h3>
                       <ul>
@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!vantagemBox) {
             vantagemBox = document.createElement("div");
             vantagemBox.id = "vantagem-misteriosa";
-            vantagemBox.innerHTML = "<p>💎 Indique 20 amigos e ganhe 30 dias de AuzaGold!</p>";
+            vantagemBox.innerHTML = "<p>💎 Indique 5 profisisonais para a plataforma e ganhe 30 dias de AuzaGold!</p>";
             document.body.appendChild(vantagemBox);
         }
 
