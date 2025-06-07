@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Promoção · Indique e Ganhe AuzaGold!</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom, #fffef4, #fff);
+      padding: 2rem;
+      color: #333;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    h1 {
+      color: #d49c00;
+      text-align: center;
+    }
+
+    .banner {
+      background-color: #fffbe9;
+      border: 2px dashed #d49c00;
+      padding: 1rem;
+      border-radius: 10px;
+      margin-top: 1rem;
+    }
+
+    .etapas {
+      margin-top: 2rem;
+      background: #fff;
+      border: 1px solid #ddd;
+      padding: 1rem;
+      border-radius: 8px;
+    }
+
+    .etapas li {
+      margin-bottom: 1rem;
+    }
+
+    .link-area {
+      margin-top: 2rem;
+      text-align: center;
+      background-color: #fef6d8;
+      border: 1px solid #e7cf7a;
+      padding: 1.2rem;
+      border-radius: 8px;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      font-size: 1rem;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      background-color: #d49c00;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #b88400;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>🎁 Promoção de Boas-Vindas</h1>
+
+  <div class="banner">
+    <p><strong>Indique 5 profissionais</strong> para a plataforma Auza e ganhe <strong>30 dias de AuzaGold</strong> totalmente grátis!</p>
+    <p>Essa é sua chance de fortalecer sua rede e ainda ganhar destaque gratuito por um mês! 🌟</p>
+  </div>
+
+  <div class="etapas">
+    <h2>Como funciona:</h2>
+    <ol>
+      <li>Copie o link de convite abaixo.</li>
+      <li>Envie para seus amigos profissionais e incentive o cadastro.</li>
+      <li>Assim que 5 cadastros forem confirmados, você recebe 30 dias de AuzaGold!</li>
+    </ol>
+  </div>
+
+  <div class="link-area">
+  <p><strong>🔗 Seu link para indicação:</strong></p>
+  <div style="display: flex; flex-direction: column; align-items: center;">
+    <input id="linkIndicar" type="text" value="https://clientes2.onrender.com/cadastro.html"
+           readonly style="width: 90%; max-width: 600px; padding: 10px; font-size: 1rem; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px;" />
+    <button onclick="copiarLink()">📋 Copiar link</button>
+  </div>
+</div>
+
+  <script>
+    function copiarLink() {
+      const input = document.getElementById("linkIndicar");
+      input.select();
+      input.setSelectionRange(0, 99999); // Mobile support
+      document.execCommand("copy");
+      alert("Link copiado com sucesso! Agora é só enviar para seus colegas 🎉");
+    }
+  </script>
+</body>
+</html>

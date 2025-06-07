@@ -3,9 +3,9 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     display: flex;
-    overflow: hidden;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
     height: 100vh;
     margin: 0;
     background-image: url('imagens/cadastro.jpg');
@@ -28,7 +28,7 @@ body {
 h1 {
     color: #244556;
     font-size: 22px;
-    margin-top: -15px;
+    margin-top: 1-5px;
     margin-bottom: 15px;
     position: relative;
 }
@@ -74,8 +74,11 @@ button:hover {
 #back-button {
     background-color: #a10000;
     color: white;
-    padding: 10px 8px; /* 🔹 Reduzindo apenas os lados */
+    padding: 5px 45px; /* 🔹 Reduzindo altura e largura */
+    width: auto; /* 🔹 Ajusta conforme o texto */
+    height: 32px; /* 🔹 Defina uma altura mais fina */
     border: none;
+    margin-left: 28px;
     border-radius: 5px;
     font-size: 14px;
     cursor: pointer;
@@ -103,10 +106,13 @@ button:hover {
 #submit-button {
     background: linear-gradient(135deg, #2a3b47, #021524); /* Gradiente metálico mais escuro */
     color: white;
-    padding: 10px 20px;
+    padding: 5px 30px; /* 🔹 Reduzi a largura do padding */
+    width: fit-content; /* 🔹 Ajusta ao tamanho do texto */
     border: none;
-    margin-top: 40px;
-    border-radius: 5px;
+    margin-top: 15px;
+    position: relative;
+    left: -14px;
+    border-radius: 5px;;
     font-size: 16px;
     cursor: pointer;
     transition: 0.3s ease;
@@ -192,4 +198,8 @@ input#experiencia {
 img {
     width: 0%;
     height: auto;
+}
+
+.label-nome, .label-sobrenome {
+    margin-left: 12px; /* 🔹 Move apenas Nome e Sobrenome para a esquerda */
 }
