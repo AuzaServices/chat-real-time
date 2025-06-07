@@ -107,23 +107,23 @@ document.addEventListener("DOMContentLoaded", function () {
         }, 100);
     }
 
-    document.getElementById("continuar-btn").addEventListener("click", function () {
-        if (tipoCartaoSelecionado === "prata") {
-            const mensagem = `\u200E*Quero Fazer parte do Time Auza!*\n
+document.getElementById("continuar-btn").addEventListener("click", function () {
+    if (tipoCartaoSelecionado === "dourado") {
+        window.location.href = "loading.html";
+    } else if (tipoCartaoSelecionado === "prata") {
+        const mensagem = `\u200E*Quero Fazer parte do Time Auza!*\n
 \u200E👤 *Nome:* ${nome}
 \u200E🔢 *Idade:* ${idade}
 \u200E💼 *Profissão:* ${profissao}
 \u200E📍 *Cidade/Estado:* ${cidade} - ${estado}
 \u200E⭐ *Experiência:* ${experiencia}`;
 
-            const linkWhatsApp = `https://wa.me/${whatsappNumero}?text=${encodeURIComponent(mensagem)}`;
-            window.location.href = linkWhatsApp;
-        } else if (tipoCartaoSelecionado === "dourado") {
-            window.location.href = `pagamento-pix.html?nome=${encodeURIComponent(nome)}&idade=${encodeURIComponent(idade)}&experiencia=${encodeURIComponent(experiencia)}&estado=${encodeURIComponent(estado)}&cidade=${encodeURIComponent(cidade)}&profissao=${encodeURIComponent(profissao)}`;
-        } else {
-            alert("Por favor, selecione um cartão antes de continuar.");
-        }
-    });
+        const linkWhatsApp = `https://wa.me/${whatsappNumero}?text=${encodeURIComponent(mensagem)}`;
+        window.location.href = linkWhatsApp;
+    } else {
+        alert("❌ Por favor, selecione um cartão antes de continuar.");
+    }
+});
 });
 
 document.addEventListener("DOMContentLoaded", function () {

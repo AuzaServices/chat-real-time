@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carregando...</title>
+    <link rel="stylesheet" href="css/loading.css">
+</head>
+<body>
+
+    <div class="loading-container">
+        <div class="loading-circle" id="loadingCircle"></div>
+        <img id="checkIcon" class="check-icon" src="css/imagens/check.png" alt="Check Verde">
+        <p id="loadingText">Você está sendo transferido para uma área de pagamento 100% segura...</p>
+    </div>
+
+    <script>
+        setTimeout(() => {
+            document.getElementById("loadingCircle").style.borderColor = "green";
+            document.getElementById("checkIcon").classList.add("visible");
+            document.getElementById("loadingText").textContent = "Tudo pronto! Redirecionando...";
+        }, 3000);
+
+        setTimeout(() => {
+            window.location.href = "pagamento-pix.html";
+        }, 5000);
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+    color: #000000;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+/* 🔥 Círculo continua girando */
+.loading-circle {
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgb(2, 99, 42);
+    border-top: 5px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    transition: border-color 1s ease-in-out;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* ✔️ Ícone fixo fora do círculo */
+.check-icon {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 28%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+/* ✔️ Aparece suavemente sem girar */
+.check-icon.visible {
+    opacity: 1;
+}
