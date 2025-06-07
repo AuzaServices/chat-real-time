@@ -1,3 +1,17 @@
+/* 🌟 Estilo para o corpo da página */
+body {
+    background-color: #f4f4f4; /* 🔥 Fundo cinza claro para melhor legibilidade */
+    color: #333; /* 🔥 Texto escuro para contraste */
+    font-family: Arial, sans-serif; /* 🔥 Fonte padrão para boa leitura */
+    display: flex;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
 .pix-qrcode {
     width: 200px;
     display: block;
