@@ -247,3 +247,18 @@ input#pixCode {
     font-weight: bold;
     color: #333;
 }
+
+.footer-container {
+    text-align: center;
+    padding: 10px;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.footer-logo {
+    width: 80px !important; /* 🔥 Ajuste para tamanho médio */
+    height: auto;
+    opacity: 0.8; /* 🔥 Pequena transparência para um efeito elegante */
+}

@@ -33,3 +33,14 @@
     margin-top: 10px;
 }
 
+.footer-container {
+    position: relative;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.footer-logo {
+    width: 10px; /* 🔥 Tamanho médio da logo */
+    opacity: 0.8; /* 🔥 Pequena transparência para um efeito elegante */
+}
