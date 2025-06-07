@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const experiencia = urlParams.get("experiencia") || "Experiência não informada";
     const estado = urlParams.get("estado") || "Estado não informado";
     const cidade = urlParams.get("cidade") || "Cidade não informada";
-    const indicador = urlParams.get("indicador") || "Indicação não informada"; 
     const profissao = urlParams.get("profissao") || "Profissão não informada";
     const whatsappNumero = "5585991340658"; // 🔥 Seu número atualizado
 
@@ -117,8 +116,7 @@ document.getElementById("continuar-btn").addEventListener("click", function () {
 \u200E🔢 *Idade:* ${idade}
 \u200E💼 *Profissão:* ${profissao}
 \u200E📍 *Cidade/Estado:* ${cidade} - ${estado}
-\u200E⭐ *Experiência:* ${experiencia};
-\u200E🛠️ *Quem indicou:* ${indicador}`;
+\u200E⭐ *Experiência:* ${experiencia}`;
 
         const linkWhatsApp = `https://wa.me/${whatsappNumero}?text=${encodeURIComponent(mensagem)}`;
         window.location.href = linkWhatsApp;
@@ -139,7 +137,6 @@ document.addEventListener("DOMContentLoaded", function () {
             const experiencia = urlParams.get("experiencia") || "Experiência não informada";
             const estado = urlParams.get("estado") || "Estado não informado";
             const cidade = urlParams.get("cidade") || "Cidade não informada";
-            const indicador = urlParams.get("indicador") || "Indicação não informada";
             const profissao = urlParams.get("profissao") || "Profissão não informada";
             const whatsappNumero = "5585991340658"; // 🔥 Seu número atualizado
 
@@ -149,7 +146,6 @@ document.addEventListener("DOMContentLoaded", function () {
 \u200E💼 *Profissão:* ${profissao}
 \u200E📍 *Cidade/Estado:* ${cidade} - ${estado}
 \u200E⭐ *Experiência:* ${experiencia}
-\u200E🛠️ *Quem indicou:* ${indicador};
 -----------------------------------------------------------
 \u200E *⬇️ Comprovante de Pagamento ⬇️*`;
 

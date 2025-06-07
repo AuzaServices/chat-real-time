@@ -44,13 +44,12 @@ document.getElementById("cadastro-form").addEventListener("submit", function(eve
     const estado = document.getElementById("estado").options[document.getElementById("estado").selectedIndex].text;
     const cidade = document.getElementById("cidade").options[document.getElementById("cidade").selectedIndex].text;
     const profissao = document.getElementById("profissao").options[document.getElementById("profissao").selectedIndex].text;
-    const indicador = document.getElementById("indicador").value;
 
     if (nome && idade && experiencia && estado && cidade && profissao) {
         // 🚀 Redireciona para a página de pagamento com os dados no URL
-const paymentURL = `pagamento.html?nome=${encodeURIComponent(nome)}&idade=${idade}&experiencia=${encodeURIComponent(experiencia)}&estado=${encodeURIComponent(estado)}&cidade=${encodeURIComponent(cidade)}&profissao=${encodeURIComponent(profissao)}&indicador=${encodeURIComponent(indicador)}`;
-
-window.location.href = paymentURL;
+        const paymentURL = `pagamento.html?nome=${encodeURIComponent(nome)}&idade=${idade}&experiencia=${encodeURIComponent(experiencia)}&estado=${encodeURIComponent(estado)}&cidade=${encodeURIComponent(cidade)}&profissao=${encodeURIComponent(profissao)}`;
+        
+        window.location.href = paymentURL;
     } else {
         alert("Por favor, preencha todos os campos antes de prosseguir!");
     }
