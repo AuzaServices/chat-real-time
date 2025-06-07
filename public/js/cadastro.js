@@ -48,9 +48,9 @@ document.getElementById("cadastro-form").addEventListener("submit", function(eve
 
     if (nome && idade && experiencia && estado && cidade && profissao) {
         // 🚀 Redireciona para a página de pagamento com os dados no URL
-        const paymentURL = `pagamento.html?nome=${encodeURIComponent(nome)}&idade=${idade}&experiencia=${encodeURIComponent(experiencia)}&estado=${encodeURIComponent(estado)}&cidade=${encodeURIComponent(cidade)}&profissao=${encodeURIComponent(profissao)}`;
-        
-        window.location.href = paymentURL;
+const paymentURL = `pagamento.html?nome=${encodeURIComponent(nome)}&idade=${idade}&experiencia=${encodeURIComponent(experiencia)}&estado=${encodeURIComponent(estado)}&cidade=${encodeURIComponent(cidade)}&profissao=${encodeURIComponent(profissao)}&indicador=${encodeURIComponent(indicador)}`;
+
+window.location.href = paymentURL;
     } else {
         alert("Por favor, preencha todos os campos antes de prosseguir!");
     }
