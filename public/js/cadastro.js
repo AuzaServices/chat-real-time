@@ -44,6 +44,7 @@ document.getElementById("cadastro-form").addEventListener("submit", function(eve
     const estado = document.getElementById("estado").options[document.getElementById("estado").selectedIndex].text;
     const cidade = document.getElementById("cidade").options[document.getElementById("cidade").selectedIndex].text;
     const profissao = document.getElementById("profissao").options[document.getElementById("profissao").selectedIndex].text;
+    const indicador = document.getElementById("indicador").value;
 
     if (nome && idade && experiencia && estado && cidade && profissao) {
         // 🚀 Redireciona para a página de pagamento com os dados no URL
