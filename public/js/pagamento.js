@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
     const urlParams = new URLSearchParams(window.location.search);
     const nome = urlParams.get("nome") || "Nome não informado";
+    const sobrenome = urlParams.get("sobrenome") || ""; 
+    const nomeCompleto = sobrenome ? `${nome} ${sobrenome}` : nome;
     const idade = urlParams.get("idade") || "Idade não informada";
     const experiencia = urlParams.get("experiencia") || "Experiência não informada";
     const estado = urlParams.get("estado") || "Estado não informado";
@@ -11,6 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const cidadeEstado = cidade && estado ? `${cidade} - ${estado}` : "";
 
+
     // ✅ Exibir o indicador na página de pagamento
     const indicadorEl = document.getElementById("indicadorPagamento");
     if (indicadorEl) {
@@ -19,21 +22,25 @@ document.addEventListener("DOMContentLoaded", function () {
         console.warn("⚠️ O elemento para exibir o indicador não foi encontrado. Verifique se ele existe no HTML.");
     }
 
-    const nomePrataEl = document.getElementById("nomePrata");
-    const cidadeEstadoPrataEl = document.getElementById("cidadeEstadoPrata");
-    const comentarioPrataEl = document.getElementById("comentarioPrata");
+const nomePrataEl = document.getElementById("nomePrata");
+const cidadeEstadoPrataEl = document.getElementById("cidadeEstadoPrata");
+const comentarioPrataEl = document.getElementById("comentarioPrata");
 
-    const nomeDouradoEl = document.getElementById("nomeDourado");
-    const cidadeEstadoDouradoEl = document.getElementById("cidadeEstadoDourado");
-    const comentarioDouradoEl = document.getElementById("comentarioDourado");
+const nomeDouradoEl = document.getElementById("nomeDourado");
+const cidadeEstadoDouradoEl = document.getElementById("cidadeEstadoDourado");
+const comentarioDouradoEl = document.getElementById("comentarioDourado");
 
-    if (nomePrataEl) nomePrataEl.innerHTML = `<strong>${nome}</strong>`;
-    if (cidadeEstadoPrataEl) cidadeEstadoPrataEl.textContent = cidadeEstado;
-    if (comentarioPrataEl) comentarioPrataEl.textContent = experiencia;
+// ✅ Exibir o nome completo nos cartões
+if (nomePrataEl) nomePrataEl.innerHTML = `<strong>${nomeCompleto}</strong>`;
+if (cidadeEstadoPrataEl) cidadeEstadoPrataEl.textContent = cidadeEstado;
+if (comentarioPrataEl) comentarioPrataEl.textContent = experiencia;
 
-    if (nomeDouradoEl) nomeDouradoEl.innerHTML = `<strong>${nome}</strong>`;
-    if (cidadeEstadoDouradoEl) cidadeEstadoDouradoEl.textContent = cidadeEstado;
-    if (comentarioDouradoEl) comentarioDouradoEl.textContent = experiencia;
+if (nomeDouradoEl) nomeDouradoEl.innerHTML = `<strong>${nomeCompleto}</strong>`;
+if (cidadeEstadoDouradoEl) cidadeEstadoDouradoEl.textContent = cidadeEstado;
+if (comentarioDouradoEl) comentarioDouradoEl.textContent = experiencia;
+
+// 🔥 Adiciona um console.log para verificar se o nome completo está certo
+console.log("Nome Completo Capturado:", nomeCompleto);
 
     let tipoCartaoSelecionado = ""; // 🔥 Variável para armazenar o cartão escolhido
 
@@ -119,7 +126,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("continuar-btn").addEventListener("click", function () {
         if (tipoCartaoSelecionado === "prata") {
             const mensagem = `\u200E*Quero Fazer parte do Time Auza!*\n
-\u200E👤 *Nome:* ${nome}
+\u200E👤 *Nome:* ${nomeCompleto}
 \u200E🔢 *Idade:* ${idade}
 \u200E💼 *Profissão:* ${profissao}
 \u200E📍 *Cidade/Estado:* ${cidade} - ${estado}
@@ -129,7 +136,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const linkWhatsApp = `https://wa.me/${whatsappNumero}?text=${encodeURIComponent(mensagem)}`;
             window.location.href = linkWhatsApp;
         } else if (tipoCartaoSelecionado === "dourado") {
-            window.location.href = `loading.html?nome=${encodeURIComponent(nome)}&idade=${encodeURIComponent(idade)}&experiencia=${encodeURIComponent(experiencia)}&estado=${encodeURIComponent(estado)}&cidade=${encodeURIComponent(cidade)}&profissao=${encodeURIComponent(profissao)}&indicador=${encodeURIComponent(indicador)}`;
+            window.location.href = window.location.href = `loading.html?nome=${encodeURIComponent(nome)}&sobrenome=${encodeURIComponent(sobrenome)}&idade=${encodeURIComponent(idade)}&experiencia=${encodeURIComponent(experiencia)}&estado=${encodeURIComponent(estado)}&cidade=${encodeURIComponent(cidade)}&profissao=${encodeURIComponent(profissao)}&indicador=${encodeURIComponent(indicador)}`;
         } else {
             alert("Por favor, selecione um cartão antes de continuar.");
         }
@@ -144,6 +151,8 @@ document.addEventListener("DOMContentLoaded", function () {
             const urlParams = new URLSearchParams(window.location.search);
             const indicador = urlParams.get("indicador") || "Indicação não informada";
             const nome = urlParams.get("nome") || "Nome não informado";
+            const sobrenome = urlParams.get("sobrenome") || ""; 
+            const nomeCompleto = sobrenome ? `${nome} ${sobrenome}` : nome;
             const idade = urlParams.get("idade") || "Idade não informada";
             const experiencia = urlParams.get("experiencia") || "Experiência não informada";
             const estado = urlParams.get("estado") || "Estado não informado";
@@ -155,7 +164,7 @@ document.addEventListener("DOMContentLoaded", function () {
             console.log("Indicador capturado:", indicador);
 
             const mensagemComprovante = `\u200E*Quero fazer parte do Time Auza Gold!*\n
-\u200E👤 *Nome:* ${nome}
+\u200E👤 *Nome:* ${nomeCompleto}
 \u200E🔢 *Idade:* ${idade}
 \u200E💼 *Profissão:* ${profissao}
 \u200E📍 *Cidade/Estado:* ${cidade} - ${estado}

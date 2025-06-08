@@ -37,27 +37,28 @@ document.addEventListener("DOMContentLoaded", function () {
     // ✅ Enviar Estado, Cidade e Profissão para o WhatsApp
 document.getElementById("cadastro-form").addEventListener("submit", function(event) {
     event.preventDefault(); // Impede o envio padrão
+    
+    const nome = document.getElementById("nome").value; // Capturando nome corretamente
+    const sobrenome = document.getElementById("sobrenome").value; // 🔥 Capturando sobrenome
+    const nomeCompleto = sobrenome ? `${nome} ${sobrenome}` : nome; // 🔥 Concatenando nome e sobrenome
+    
+    const idade = document.getElementById("idade").value;
+    const experiencia = document.getElementById("experiencia").value;
+    const estado = document.getElementById("estado").options[document.getElementById("estado").selectedIndex].text;
+    const cidade = document.getElementById("cidade").options[document.getElementById("cidade").selectedIndex].text;
+    const profissao = document.getElementById("profissao").options[document.getElementById("profissao").selectedIndex].text;
+    const indicador = document.getElementById("indicador").value || "Indicação não informada";
 
-        const nome = document.getElementById("nome").value;
-        const idade = document.getElementById("idade").value;
-        const experiencia = document.getElementById("experiencia").value;
-        const estado = document.getElementById("estado").options[document.getElementById("estado").selectedIndex].text;
-        const cidade = document.getElementById("cidade").options[document.getElementById("cidade").selectedIndex].text;
-        const profissao = document.getElementById("profissao").options[document.getElementById("profissao").selectedIndex].text;
-        const indicador = document.getElementById("indicador").value || "Indicação não informada"; // 🔥 Capturando o indicador
+    if (nome && sobrenome && idade && experiencia && estado && cidade && profissao) {
+        // 🚀 Redirecionando com o sobrenome incluído
+        const paymentURL = `pagamento.html?nome=${encodeURIComponent(nome)}&sobrenome=${encodeURIComponent(sobrenome)}&idade=${encodeURIComponent(idade)}&experiencia=${encodeURIComponent(experiencia)}&estado=${encodeURIComponent(estado)}&cidade=${encodeURIComponent(cidade)}&profissao=${encodeURIComponent(profissao)}&indicador=${encodeURIComponent(indicador)}`;
 
-        if (nome && idade && experiencia && estado && cidade && profissao) {
-            // 🚀 Redireciona para a página de pagamento com os dados no URL
-            const paymentURL = `pagamento.html?nome=${encodeURIComponent(nome)}&idade=${encodeURIComponent(idade)}&experiencia=${encodeURIComponent(experiencia)}&estado=${encodeURIComponent(estado)}&cidade=${encodeURIComponent(cidade)}&profissao=${encodeURIComponent(profissao)}&indicador=${encodeURIComponent(indicador)}`;
-
-            console.log("URL gerada:", paymentURL); // 🔥 Teste antes do redirecionamento!
-            window.location.href = paymentURL;
- // 🔥 Teste antes do redirecionamento!
-window.location.href = paymentURL;
+        console.log("URL gerada:", paymentURL); // 🔥 Teste antes do redirecionamento!
+        window.location.href = paymentURL;
     } else {
         alert("Por favor, preencha todos os campos antes de prosseguir!");
     }
-   });
+});
 });
 
 function removeFocusAndGoBack() {
