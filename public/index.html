@@ -114,6 +114,25 @@
     <footer>
         <p>© 2025 Auza Services. Todos os direitos reservados.</p>
     </footer>
+<script>
+        function getCookie(name) {
+            let cookies = document.cookie.split("; ");
+            let cookie = cookies.find(row => row.startsWith(name + "="));
+            return cookie ? cookie.split("=")[1] : 0;
+        }
+
+        function setCookie(name, value, days) {
+            let expires = new Date();
+            expires.setTime(expires.getTime() + (days * 24 * 60 * 60 * 1000));
+            document.cookie = `${name}=${value};expires=${expires.toUTCString()};path=/`;
+        }
+
+        let acessos = parseInt(getCookie("contador")) || 0;
+        acessos++;
+        setCookie("contador", acessos, 30);
+
+        document.body.innerHTML += `<p style="text-align: center;">Você acessou esta página ${acessos} vezes!</p>`;
+    </script>
 
 </body>
 </html>
