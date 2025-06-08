@@ -100,15 +100,15 @@
         </select>
 
         <!-- Campo "Quem te indicou?" -->
-        <label for="indicador">Quem te indicou?</label>
-        <input type="text" id="indicador" name="indicador" placeholder="Ex: Rafael Souza" required />
+        <label for="indicador">Quem indicou você?</label>
+<input type="text" id="indicador" name="indicador" placeholder="Se não foi indicado(a), deixa em branco" />
 
-        <!-- Campo Experiência -->
-        <label for="experiencia">Experiência:</label>
-        <div style="position: relative;">
-            <input type="text" id="experiencia" name="experiencia" maxlength="60" style="width: 70%;">
-            <span id="contador" style="position: absolute; right: 28px; bottom: 10px; font-size: 12px; color: #888;">0/60</span>
-        </div>
+<!-- Campo Experiência -->
+<label for="experiencia">Experiência:</label>
+<div style="position: relative;">
+    <input type="text" id="experiencia" name="experiencia" maxlength="60" style="width: 70%;" placeholder="Ex: Experiência em Gesso, forro e etc..">
+    <span id="contador" style="position: absolute; right: 28px; bottom: 10px; font-size: 12px; color: #888;">0/60</span>
+</div>
 
        <div style="display: flex; justify-content: space-between; gap: 10px;">
     <button id="back-button" type="button" onclick="removeFocusAndGoBack()">Voltar</button>

@@ -6,33 +6,43 @@
   <title>Promoção · Indique e Ganhe AuzaGold!</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: linear-gradient(to bottom, #fffef4, #fff);
+      font-family: 'Arial', sans-serif;
+      background: #FFFFFF;
+      color: #000000;
       padding: 2rem;
-      color: #333;
       max-width: 800px;
       margin: auto;
     }
 
     h1 {
-      color: #d49c00;
+      color: darkred;
       text-align: center;
+      font-weight: bold;
     }
 
     .banner {
-      background-color: #fffbe9;
-      border: 2px dashed #d49c00;
-      padding: 1rem;
-      border-radius: 10px;
+      background: #FFF5F5;
+      border: 2px dashed darkred;
+      padding: 1.5rem;
+      border-radius: 15px;
       margin-top: 1rem;
+      text-align: center;
+      font-weight: bold;
+      box-shadow: 0 4px 8px rgba(139, 0, 0, 0.2);
     }
 
     .etapas {
       margin-top: 2rem;
-      background: #fff;
-      border: 1px solid #ddd;
-      padding: 1rem;
+      background: #FFFFFF;
+      border-left: 4px solid #282828;
+      padding: 1.5rem;
       border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      transition: 0.3s ease-in-out;
+    }
+
+    .etapas:hover {
+      background-color: #FAFAFA;
     }
 
     .etapas li {
@@ -42,34 +52,51 @@
     .link-area {
       margin-top: 2rem;
       text-align: center;
-      background-color: #fef6d8;
-      border: 1px solid #e7cf7a;
+      background-color: #FFF5F5;
+      border-left: 4px solid darkred;
       padding: 1.2rem;
       border-radius: 8px;
+      transition: 0.3s ease-in-out;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .link-area:hover {
+      background-color: #FDE3E3;
     }
 
     input[type="text"] {
       width: 100%;
-      padding: 10px;
+      padding: 12px;
       font-size: 1rem;
       margin-top: 10px;
       margin-bottom: 10px;
-      border: 1px solid #ccc;
+      border: 1px solid #DDDDDD;
       border-radius: 5px;
+      background-color: #FFFFFF;
+      color: #000000;
+      transition: 0.3s ease-in-out;
+    }
+
+    input[type="text"]:focus {
+      border-color: darkred;
+      box-shadow: 0 0 5px rgba(139, 0, 0, 0.3);
     }
 
     button {
-      background-color: #d49c00;
-      color: white;
-      padding: 10px 20px;
+      background-color: darkred;
+      color: #FFFFFF;
+      padding: 12px 24px;
       border: none;
       border-radius: 5px;
       font-size: 1rem;
       cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s ease-in-out;
     }
 
     button:hover {
-      background-color: #b88400;
+      background-color: #B22222;
+      transform: scale(1.06);
     }
 
     @media (max-width: 600px) {
@@ -84,34 +111,34 @@
 
   <div class="banner">
     <p><strong>Indique 5 profissionais</strong> para a plataforma Auza e ganhe <strong>30 dias de AuzaGold</strong> totalmente grátis!</p>
-    <p>Essa é sua chance de fortalecer sua rede e ainda ganhar destaque gratuito por um mês! 🌟</p>
+    <p>Fortaleça sua rede e ganhe mais destaque! 🌟</p>
   </div>
 
   <div class="etapas">
     <h2>Como funciona:</h2>
     <ol>
       <li>Copie o link de convite abaixo.</li>
-      <li>Envie para seus amigos profissionais e incentive o cadastro.</li>
-      <li>Assim que 5 cadastros forem confirmados, você recebe 30 dias de AuzaGold!</li>
+      <li>Envie para seus amigos profissionais.</li>
+      <li>Após 5 cadastros confirmados, você recebe 30 dias de AuzaGold!</li>
     </ol>
   </div>
 
   <div class="link-area">
-  <p><strong>🔗 Seu link para indicação:</strong></p>
-  <div style="display: flex; flex-direction: column; align-items: center;">
-    <input id="linkIndicar" type="text" value="https://clientes2.onrender.com/cadastro.html"
-           readonly style="width: 90%; max-width: 600px; padding: 10px; font-size: 1rem; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px;" />
-    <button onclick="copiarLink()">📋 Copiar link</button>
+    <p><strong>🔗 Seu link para indicação:</strong></p>
+    <div style="display: flex; flex-direction: column; align-items: center;">
+      <input id="linkIndicar" type="text" value="https://clientes2.onrender.com/cadastro.html"
+             readonly />
+      <button onclick="copiarLink()">📋 Copiar link</button>
+    </div>
   </div>
-</div>
 
   <script>
     function copiarLink() {
       const input = document.getElementById("linkIndicar");
       input.select();
-      input.setSelectionRange(0, 99999); // Mobile support
+      input.setSelectionRange(0, 99999);
       document.execCommand("copy");
-      alert("Link copiado com sucesso! Agora é só enviar para seus colegas 🎉");
+      alert("Link copiado com sucesso! Envie para seus colegas! 🎉");
     }
   </script>
 </body>
