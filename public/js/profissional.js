@@ -171,7 +171,7 @@ document.addEventListener("DOMContentLoaded", function () {
         //Tecnico em Arcondicionado
         { name: "Maycon", service: "Tec. em Ar Condicionado", age: 22, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "Experiência de 2 anos, trabalho com máquinas Split, piso teto e Cassete.", whatsapp: "5585994088415" },
         { name: "Matheus Alves", service: "Tec. em Ar Condicionado", age: 21, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "4 anos de Exp. na área de Ar Condicionado. Split e Máquinas de lavar.", whatsapp: "5585992081178" },
-        { service: "Tec. em Refrigeração", name: "Adriano", age: 35, city: "Pacajus - CE", stars: "⭐⭐⭐", comment: "Mecânico de ar condicionado instalação e manutenção e conserto.", whatsapp: "5585991368616" },
+        { service: "Tec. em Refrigeração", name: "Adriano", age: 35, city: "Pacajus - CE", stars: "⭐⭐⭐", comment: "Mecânico de ar condicionado instalação, manutenção e conserto.", whatsapp: "5585991368616" },
         //
         { name: "André Souza", service: "Tec. em Ar Condicionado", age: 37, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "Manutenção preventiva de equipamentos de refrigeração.", whatsapp: "55859940783" },
         { name: "Diego Rocha", service: "Tec. em Ar Condicionado", age: 39, city: "Itaitinga - CE", stars: "⭐⭐⭐⭐⭐", comment: "Especialista em gás refrigerante e carga térmica.", whatsapp: "55859910784" },
