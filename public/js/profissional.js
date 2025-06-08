@@ -134,7 +134,7 @@ document.addEventListener("DOMContentLoaded", function () {
     
         //Vidraceiro
         { name: "André Sousa", service: "Vidraceiro", age: 40, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "Instalação de vidros temperados e laminados.", whatsapp: "55859913451" },
-        { name: "Bruno Ferreira", service: "Vidraceiro", age: 38, city: "Itaitinga - CE", stars: "⭐⭐⭐⭐⭐", comment: "Trabalho impecável em box e janelas.", whatsapp: "55859913402" },
+        { name: "Lucas Ferreira", service: "Vidraceiro", age: 38, city: "Itaitinga - CE", stars: "⭐⭐⭐⭐⭐", comment: "Trabalho impecável em box e janelas.", whatsapp: "55859913402" },
         { name: "Carlos Mendes", service: "Vidraceiro", age: 45, city: "Pacajus - CE", stars: "⭐⭐⭐", comment: "Experiência em vidros decorativos e estruturais.", whatsapp: "55891340753" },
         { name: "Diego Souza", service: "Vidraceiro", age: 37, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "Montagem precisa e acabamento fino.", whatsapp: "55859913407" },
         { name: "Fernando Lima", service: "Vidraceiro", age: 39, city: "Itaitinga - CE", stars: "⭐⭐⭐⭐⭐", comment: "Trabalho detalhado e resistência garantida.", whatsapp: "55859910755" },
@@ -205,7 +205,7 @@ document.addEventListener("DOMContentLoaded", function () {
         //Cabelereiro á Domicilio
         { name: "Francisco Romario", service: "Cabeleireiro a Domicilio", age: 31, city: "Fortaleza - CE", stars: "⭐⭐⭐", comment: "3 anos de Experiência", whatsapp: "5585987494767" },
         //
-        { name: "Bruna Costa", service: "Cabeleireiro a Domicilio", age: 38, city: "Pacajus - CE", stars: "⭐⭐⭐⭐", comment: "Hidratação profunda e reconstrução capilar.", whatsapp: "55859913408" },
+        { name: "Carlos Costa", service: "Cabeleireiro a Domicilio", age: 38, city: "Pacajus - CE", stars: "⭐⭐⭐⭐", comment: "Hidratação profunda e reconstrução capilar.", whatsapp: "55859913408" },
         { name: "Camila Mendes", service: "Cabeleireiro a Domicilio", age: 45, city: "Itaitinga - CE", stars: "⭐⭐⭐⭐", comment: "Especialista em penteados para eventos e casamentos.", whatsapp: "55859910812" },
         { name: "Daniela Martins", service: "Cabeleireiro a Domicilio", age: 37, city: "Horizonte - CE", stars: "⭐⭐⭐⭐⭐", comment: "Cortes personalizados e estilo exclusivo.", whatsapp: "55859913408" },
         { name: "Fernanda Almeida", service: "Cabeleireiro a Domicilio", age: 42, city: "Pacajus - CE", stars: "⭐⭐⭐", comment: "Cortes personalizados e estilo exclusivo.", whatsapp: "55859913403" },
@@ -236,7 +236,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     // Lista de profissionais destacados
-    const highlightedProfessionals = new Set([ "Daniel Souza","Marcilano Costa","Halison Santos","Bergson Nunes","Mateus Santos","Charles Gomes","Andrea Carneiro","Alexandra Reis","Fagner Lucena","Robson","Francisco Romario","Renata Rodrigues","Felipe Araújo","Andreza Lima","César Freire","Matheus Alves", "Adonias", "Roberto Evangelista","Gabriel", "Fernando", "Cristiano", "Marcio","Primo Fretes", "Vinicius", "Maycon"
+    const highlightedProfessionals = new Set([ "Mateus Santos","Bruna Costa","Carlos Costa","Ana Souza","Lucas Oliveira","André Souza","Diego Rocha","Marcos Vinicius","Bruno Ferreira","Carlos Mendes","Eduarda Nunes","Fernanda Ramos","Gustavo Ramos","Diego Martins","Carlos Nogueira","José Lima"
     ]);
 
     
