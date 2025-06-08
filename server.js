@@ -8,8 +8,10 @@ const port = process.env.PORT || 3000;
 // Servindo arquivos estáticos da pasta "public"
 app.use(express.static("public"));
 
-// Criando o arquivo contador.json (se não existir)
+// Definindo o caminho do arquivo contador.json (fora da pasta public)
 const arquivo = path.join(__dirname, "contador.json");
+
+// Se o arquivo não existir, cria um novo com 0 acessos
 if (!fs.existsSync(arquivo)) {
     fs.writeFileSync(arquivo, JSON.stringify({ acessos: 0 }));
 }
