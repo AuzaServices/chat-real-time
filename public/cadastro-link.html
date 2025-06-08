@@ -7,73 +7,133 @@
   <style>
     body {
       font-family: 'Arial', sans-serif;
-      background: #FFFFFF;
-      color: #000000;
+      background: linear-gradient(to bottom, #FFFFFF, #FDE3E3);
+      color: #333;
       padding: 2rem;
       max-width: 800px;
       margin: auto;
       text-align: center;
     }
 
-    .banner {
+    .banner, .beneficios, .servicos {
       background: #FFF5F5;
-      border: 2px dashed darkred;
-      padding: 1.5rem;
+      border: 2px solid darkred;
+      padding: 2rem;
       border-radius: 15px;
       margin-top: 1rem;
       text-align: center;
       font-weight: bold;
-      box-shadow: 0 4px 8px rgba(139, 0, 0, 0.2);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+      transition: 0.3s ease-in-out;
     }
 
-    .mensagem {
-      font-size: 22px;
-      font-weight: bold;
+    .banner:hover, .beneficios:hover, .servicos:hover {
+      background: #FFECEC;
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6);
+    }
+
+    h1, h2 {
       color: darkred;
-      margin-bottom: 20px;
+      margin-top: 10px;
+      margin-bottom: 15px;
     }
 
-    .beneficios {
+    .beneficios p {
       font-size: 18px;
-      margin-top: 15px;
-      background: #FFFFFF;
-      padding: 1.5rem;
-      border-radius: 10px;
-      border: 2px solid darkred;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      margin: 0;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      font-size: 18px;
+    }
+
+    ul li {
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    ul li:last-child {
+      border-bottom: none;
     }
 
     button {
-      background-color: darkred;
+      background: darkred;
       color: #FFFFFF;
-      padding: 14px 30px;
+      padding: 16px 35px;
       border: none;
-      border-radius: 8px;
-      font-size: 18px;
+      border-radius: 10px;
+      font-size: 20px;
       cursor: pointer;
       font-weight: bold;
       transition: 0.3s ease-in-out;
-      margin-top: 20px;
+      margin-top: 25px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
     }
 
     button:hover {
-      background-color: #B22222;
-      transform: scale(1.07);
+      background: #B22222;
+      transform: scale(1.08);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6);
     }
   </style>
 </head>
 <body>
-  <div class="banner">
-    <h1>🎉 Você foi indicado para a Auza!</h1>
+<div class="banner">
+    <h1>🎉</h1>
+    <h1>Você foi indicado para a Auza Services!</h1>
     <p class="mensagem">Uma oportunidade exclusiva para profissionais como você.</p>
-  </div>
+</div>
 
-  <div class="beneficios">
-    <h2>Por que se cadastrar?</h2>
+<div class="beneficios">
+    <h2>Vantagens do Cadastro</h2>
     <ul>
-      <li>🏆 Conecte-se com clientes rapidamente.</li>
-      <li>📢 Ganhe mais visibilidade na sua área.</li>
-      <li>🎁 Benefícios exclusivos para indicados!</li>
+        <li>🏆 Conecte-se com clientes e receba novas oportunidades.</li>
+        <li>📢 Tenha mais visibilidade e destaque na sua área.</li>
+        <li>💰 Receba solicitações diretas e feche mais contratos.</li>
+        <li>✅ Construa sua reputação com avaliações de clientes.</li>
+        <li>🎁 Indique colegas e desbloqueie benefícios exclusivos.</li>
+    </ul>
+</div>
+
+  <div class="servicos">
+    <h2>Serviços Disponíveis na Auza</h2>
+    <ul>
+      <li>🏠 Arquiteto(a)</li>
+      <li>🛠 Pedreiro, Servente</li>
+      <li>🚿 Bombeiro Hidráulico</li>
+      <li>🔩 Metalúrgico</li>
+      <li>🎨 Pintor</li>
+      <li>🌱 Capinador, Jardineiro</li>
+      <li>⚡ Eletricista</li>
+      <li>🔑 Vidraceiro, Chaveiro</li>
+      <li>🏊 Piscineiro (Limpador de Piscinas)</li>
+      <li>❄ Tec. em Refrigeração</li>
+      <li>🚨 Tec. de Cerca Elétrica</li>
+      <li>📺 Tec. em Eletrodomésticos</li>
+      <li>🛏 Montador de Móveis</li>
+      <li>🔨 Marceneiro</li>
+      <li>🚛 Caminhão Reboque, Limpa-Fossa</li>
+      <li>🚚 Fretes e Mudanças, Ajudante de Frete</li>
+      <li>🧹 Faxineira</li>
+      <li>🧵 Costureira</li>
+      <li>👶 Babás, Cuidador(a) de Idosos</li>
+      <li>🍖 Churrasqueiro</li>
+      <li>🍹 Bartender</li>
+      <li>🎂 Confeiteiro(a)</li>
+      <li>✂ Cabeleireiro a Domicílio</li>
+      <li>💅 Manicure a Domicílio</li>
+      <li>🎨 Designer</li>
+      <li>📷 Fotógrafo(a)</li>
+      <li>🎧 DJ</li>
+      <li>🐶 Adestrador(a)</li>
+      <li>🐕 Cuidador(a) de Animais</li>
+      <li>⚖ Advogado(a)</li>
+      <li>🧠 Psicólogo(a)</li>
+      <li>📚 Professor(a) Particular</li>
+      <li>🥗 Nutricionista</li>
+      <li>🏋️ Personal Trainer</li>
     </ul>
   </div>
 
