@@ -13,6 +13,26 @@
     <meta property="og:url" content="https://seudominio.com.br/index.html">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://i.imgur.com/X2xHSm4.png">
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const metaTitle = document.querySelector('meta[property="og:title"]');
+        const metaDescription = document.querySelector('meta[property="og:description"]');
+        const metaImage = document.querySelector('meta[property="og:image"]');
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const modoPromocao = urlParams.get("promo"); // 🔥 Detecta se é promoção
+
+        if (modoPromocao) {
+            // 🚀 Alterando meta tags para modo promoção
+            if (metaTitle) metaTitle.setAttribute("content", "🔥 Promoção Especial · Indique e Ganhe!");
+            if (metaDescription) metaDescription.setAttribute("content", "💰 Cadastre-se e indique amigos para ganhar benefícios exclusivos!");
+            if (metaImage) metaImage.setAttribute("content", "https://i.imgur.com/Z6p8k2J.png");
+        }
+
+        console.log("Meta tags alteradas para:", modoPromocao ? "Promoção" : "Cadastro padrão"); // 🔥 Teste para confirmar!
+    });
+</script>
 </head>
 <body>
 
