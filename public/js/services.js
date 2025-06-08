@@ -57,7 +57,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
         //Servente 🏗️ 
-        { service: "servente", name: "André Santos", age: 30, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "Ágil e eficiente na obra.", whatsapp: "55859913471" },
+        { name: "Micael Souza", service: "Servente", age: 18, city: "Pacajus - CE", stars: "⭐⭐⭐", comment: "Ajudante de Pedreiro.", whatsapp: "5585921741466" },
+        //
         { service: "servente", name: "Eduardo Lima", age: 28, city: "Itaitinga - CE", stars: "⭐⭐⭐⭐⭐", comment: "Sempre disponível para ajudar.", whatsapp: "55851340672" },
         { service: "servente", name: "Gabriel Costa", age: 35, city: "Pacajus - CE", stars: "⭐⭐⭐", comment: "Responsável e organizado.", whatsapp: "55859913406" },
         { service: "servente", name: "Ricardo Souza", age: 29, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "Execução rápida e precisa.", whatsapp: "55859913404" },
@@ -254,7 +255,7 @@ document.addEventListener("DOMContentLoaded", function () {
         
 
          // Costureira 
-        { service: "costureira", name: "Mariza", age: 60, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "Costureira Experiênte", whatsapp: "5585991245108" },
+
         
         //Marceneiro
         { service: "marceneiro", name: "Halison Santos", age: 36, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "A mais de 12 anos ná área de Móveis Planejados", whatsapp: "5585991893493" },

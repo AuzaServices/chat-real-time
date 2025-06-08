@@ -27,7 +27,8 @@ document.addEventListener("DOMContentLoaded", function () {
         { name: "Rafael Costa", service: "Pedreiro", city: "Itaitinga - CE",  age: 37, stars: "⭐⭐⭐⭐⭐", comment: "Ótima comunicação e execução de obra.", whatsapp: "55859140660" },
     
         //Servente
-        { name: "André Santos", service: "Servente", age: 30, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "Ágil e eficiente na obra.", whatsapp: "558599134067" },
+        { name: "Micael Souza", service: "Servente", age: 18, city: "Pacajus - CE", stars: "⭐⭐⭐", comment: "Ajudante de Pedreiro.", whatsapp: "5585921741466" },
+        //
         { name: "Eduardo Lima", service: "Servente", age: 28, city: "Itaitinga - CE", stars: "⭐⭐⭐⭐⭐", comment: "Sempre disponível para ajudar.", whatsapp: "558599140672" },
         { name: "Gabriel Costa", service: "Servente", age: 35, city: "Pacajus - CE", stars: "⭐⭐⭐", comment: "Responsável e organizado.", whatsapp: "558599134063" },
         { name: "Ricardo Souza", service: "Servente", age: 29, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "Execução rápida e precisa.", whatsapp: "558599130674" },
@@ -225,7 +226,6 @@ document.addEventListener("DOMContentLoaded", function () {
         { name: "César Freire", service: "Adestrador", age: 41, city: "Aquiraz - CE", stars: "⭐⭐⭐⭐", comment: "Adestrador de cães há 10 anos. Hospedagem, Taxi Dog, DayCare/Creche", whatsapp: "5585991661174" },
 
         //Costureira
-        { service: "Costureira", name: "Mariza", age: 60, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "Costureira Experiênte", whatsapp: "5585991245108" },
  
        
         //Marceneiro
