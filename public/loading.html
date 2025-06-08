@@ -21,9 +21,10 @@
             document.getElementById("loadingText").textContent = "Tudo pronto! Redirecionando...";
         }, 3000);
 
-        setTimeout(() => {
-            window.location.href = "pagamento-pix.html";
-        }, 5000);
+setTimeout(() => {
+    const urlParams = window.location.search; // 🔥 Captura os parâmetros recebidos
+    window.location.href = `pagamento-pix.html${urlParams}`; // 🚀 Redireciona sem perder os dados!
+}, 5000);
     </script>
 
 </body>

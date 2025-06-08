@@ -6,9 +6,18 @@ document.addEventListener("DOMContentLoaded", function () {
     const estado = urlParams.get("estado") || "Estado não informado";
     const cidade = urlParams.get("cidade") || "Cidade não informada";
     const profissao = urlParams.get("profissao") || "Profissão não informada";
+    const indicador = urlParams.get("indicador") || "Indicação não informada"; // 🔥 Agora o indicador está garantido!
     const whatsappNumero = "5585991340658"; // 🔥 Seu número atualizado
 
     const cidadeEstado = cidade && estado ? `${cidade} - ${estado}` : "";
+
+    // ✅ Exibir o indicador na página de pagamento
+    const indicadorEl = document.getElementById("indicadorPagamento");
+    if (indicadorEl) {
+        indicadorEl.textContent = `Indicado por: ${indicador}`;
+    } else {
+        console.warn("⚠️ O elemento para exibir o indicador não foi encontrado. Verifique se ele existe no HTML.");
+    }
 
     const nomePrataEl = document.getElementById("nomePrata");
     const cidadeEstadoPrataEl = document.getElementById("cidadeEstadoPrata");
@@ -107,23 +116,24 @@ document.addEventListener("DOMContentLoaded", function () {
         }, 100);
     }
 
-document.getElementById("continuar-btn").addEventListener("click", function () {
-    if (tipoCartaoSelecionado === "dourado") {
-        window.location.href = "loading.html";
-    } else if (tipoCartaoSelecionado === "prata") {
-        const mensagem = `\u200E*Quero Fazer parte do Time Auza!*\n
+    document.getElementById("continuar-btn").addEventListener("click", function () {
+        if (tipoCartaoSelecionado === "prata") {
+            const mensagem = `\u200E*Quero Fazer parte do Time Auza!*\n
 \u200E👤 *Nome:* ${nome}
 \u200E🔢 *Idade:* ${idade}
 \u200E💼 *Profissão:* ${profissao}
 \u200E📍 *Cidade/Estado:* ${cidade} - ${estado}
-\u200E⭐ *Experiência:* ${experiencia}`;
+\u200E⭐ *Experiência:* ${experiencia}
+\u200E👤 *Indicado por:* ${indicador}`; // 🔥 Agora o indicador aparece na mensagem!
 
-        const linkWhatsApp = `https://wa.me/${whatsappNumero}?text=${encodeURIComponent(mensagem)}`;
-        window.location.href = linkWhatsApp;
-    } else {
-        alert("❌ Por favor, selecione um cartão antes de continuar.");
-    }
-});
+            const linkWhatsApp = `https://wa.me/${whatsappNumero}?text=${encodeURIComponent(mensagem)}`;
+            window.location.href = linkWhatsApp;
+        } else if (tipoCartaoSelecionado === "dourado") {
+            window.location.href = `loading.html?nome=${encodeURIComponent(nome)}&idade=${encodeURIComponent(idade)}&experiencia=${encodeURIComponent(experiencia)}&estado=${encodeURIComponent(estado)}&cidade=${encodeURIComponent(cidade)}&profissao=${encodeURIComponent(profissao)}&indicador=${encodeURIComponent(indicador)}`;
+        } else {
+            alert("Por favor, selecione um cartão antes de continuar.");
+        }
+    });
 });
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -132,6 +142,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (confirmarPagamentoBtn) {
         confirmarPagamentoBtn.addEventListener("click", function () {
             const urlParams = new URLSearchParams(window.location.search);
+            const indicador = urlParams.get("indicador") || "Indicação não informada";
             const nome = urlParams.get("nome") || "Nome não informado";
             const idade = urlParams.get("idade") || "Idade não informada";
             const experiencia = urlParams.get("experiencia") || "Experiência não informada";
@@ -140,23 +151,27 @@ document.addEventListener("DOMContentLoaded", function () {
             const profissao = urlParams.get("profissao") || "Profissão não informada";
             const whatsappNumero = "5585991340658"; // 🔥 Seu número atualizado
 
+            // 🔎 Teste para verificar se o indicador está correto antes de enviar
+            console.log("Indicador capturado:", indicador);
+
             const mensagemComprovante = `\u200E*Quero fazer parte do Time Auza Gold!*\n
 \u200E👤 *Nome:* ${nome}
 \u200E🔢 *Idade:* ${idade}
 \u200E💼 *Profissão:* ${profissao}
 \u200E📍 *Cidade/Estado:* ${cidade} - ${estado}
 \u200E⭐ *Experiência:* ${experiencia}
+\u200E👤 *Indicado por:* ${indicador}
 -----------------------------------------------------------
 \u200E *⬇️ Comprovante de Pagamento ⬇️*`;
 
             const linkWhatsApp = `https://wa.me/${whatsappNumero}?text=${encodeURIComponent(mensagemComprovante)}`;
+            console.log("Link gerado para WhatsApp:", linkWhatsApp); // 🔥 Teste antes de redirecionar!
             window.location.href = linkWhatsApp;
         });
     } else {
         console.error("❌ O botão 'Confirmar Pagamento' não foi encontrado. Verifique o ID no HTML.");
     }
 });
-
 document.addEventListener("DOMContentLoaded", function () {
     const copiarPixBtn = document.getElementById("copiarPix");
 
