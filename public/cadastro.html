@@ -13,25 +13,7 @@
     <meta property="og:url" content="https://seudominio.com.br/index.html">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://i.imgur.com/X2xHSm4.png">
-
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const metaTitle = document.querySelector('meta[property="og:title"]');
-        const metaDescription = document.querySelector('meta[property="og:description"]');
-
-        const urlParams = new URLSearchParams(window.location.search);
-        const modoPromocao = urlParams.get("promo"); // 🔥 Detecta se é promoção
-
-        if (modoPromocao) {
-            if (metaTitle) metaTitle.setAttribute("content", "🔥 Promoção Especial · Indique e Ganhe!");
-            if (metaDescription) metaDescription.setAttribute("content", "💰 Cadastre-se e indique amigos para ganhar benefícios exclusivos!");
-
-            console.log("🔹 Meta tags atualizadas para promoção!");
-        } else {
-            console.log("🔹 Página carregando meta tags padrão!");
-        }
-    });
-</script>
+    
 </head>
 <body>
 
