@@ -302,7 +302,7 @@ body.services-page footer {
     padding: 15px;
     position: relative;
     margin-top: -115px;
-    margin-left: 100px; /* Move o container mais para a esquerda */
+    margin-left: 70px; /* Move o container mais para a esquerda */
     margin-right: right; /* Mantém o lado direito flexível */
 }
 
