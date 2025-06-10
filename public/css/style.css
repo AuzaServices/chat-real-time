@@ -515,16 +515,21 @@ header img {
 /* Estilos para o container de anúncios */
 #adContainer {
     width: 100%;
-    max-width: 500px;
-    height: 100px !important;
+    max-width: 500px !important;
+    height: 95px !important;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #f9f9f9;
-    border: none;
-    overflow: hidden;
-    position: relative;
+    background-color: #ffffff;
+    border: 0px dashed #ffffff !important;
+    overflow: hidden; /* Impede que a imagem ultrapasse o espaço */
+    position: relative; /* Mantém a estrutura fixa */
+    padding: 10px; /* Adiciona um espaço interno */
+    margin: 20px auto;
 }
+
+
+
 
 
 #adContainer p {
