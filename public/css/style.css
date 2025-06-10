@@ -523,7 +523,9 @@ header img {
     background-color: #f9f9f9;
     border: 2px dashed #ccc;
     overflow: hidden; /* Impede que a imagem ultrapasse o espaço */
+    position: relative; /* Mantém a estrutura fixa */
 }
+
 
 
 
@@ -537,4 +539,6 @@ header img {
     width: 100%;  /* Imagem ocupará todo o espaço horizontal */
     height: 100%; /* Imagem ocupará toda a altura do container */
     object-fit: cover; /* Garante que a imagem preencha sem distorcer */
+    position: absolute; /* Mantém a imagem fixa dentro do container */
 }
+
