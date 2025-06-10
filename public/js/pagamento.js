@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const estado = urlParams.get("estado") || "Estado não informado";
     const cidade = urlParams.get("cidade") || "Cidade não informada";
     const profissao = urlParams.get("profissao") || "Profissão não informada";
-    const indicador = urlParams.get("indicador") || "Indicação não informada"; // 🔥 Agora o indicador está garantido!
+    const indicador = urlParams.get("indicador") || "Não fui indicado(a)"; // 🔥 Agora o indicador está garantido!
     const whatsappNumero = "5585991340658"; // 🔥 Seu número atualizado
 
     const cidadeEstado = cidade && estado ? `${cidade} - ${estado}` : "";
@@ -149,7 +149,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (confirmarPagamentoBtn) {
         confirmarPagamentoBtn.addEventListener("click", function () {
             const urlParams = new URLSearchParams(window.location.search);
-            const indicador = urlParams.get("indicador") || "Indicação não informada";
+            const indicador = urlParams.get("indicador") || "Não fui indicado(a)";
             const nome = urlParams.get("nome") || "Nome não informado";
             const sobrenome = urlParams.get("sobrenome") || ""; 
             const nomeCompleto = sobrenome ? `${nome} ${sobrenome}` : nome;
