@@ -534,6 +534,12 @@ header img {
 
 #adContainer img {
     width: 100%;
+    max-width: 500px;
     height: 135px;
-    object-fit: contain;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f9f9f9;
+    border: 2px dashed #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
