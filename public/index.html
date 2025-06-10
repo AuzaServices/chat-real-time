@@ -112,8 +112,39 @@
     </footer>
 
 <script>
-        // Código para inserir imagem e link do anunciante dinamicamente
-        document.getElementById("adContainer").innerHTML = '<a href="https://link-do-anunciante.com" target="_blank"><img src="https://i.imgur.com/uMdgfvY.png" alt="Anúncio" style="max-width: 100%; height: auto;"></a>';
+    // Lista de anúncios com links e imagens
+    const adsData = [
+        { link: "https://site-da-empresa1.com", image: "https://i.imgur.com/uMdgfvY.png" },
+        { link: "https://wa.me/5585999999999", image: "https://link-da-imagem2.com" },
+        { link: "https://site-da-empresa3.com", image: "https://i.imgur.com/uMdgfvY.png" },
+        { link: "https://wa.me/5585998888888", image: "https://link-da-imagem4.com" },
+        { link: "https://site-da-empresa5.com", image: "https://link-da-imagem5.com" },
+        { link: "https://wa.me/5585997777777", image: "https://link-da-imagem6.com" },
+        { link: "https://site-da-empresa7.com", image: "https://link-da-imagem7.com" },
+        { link: "https://wa.me/5585996666666", image: "https://link-da-imagem8.com" },
+        { link: "https://site-da-empresa9.com", image: "https://link-da-imagem9.com" },
+        { link: "https://wa.me/5585995555555", image: "https://link-da-imagem10.com" }
+    ];
+
+    let index = 0;
+
+    function showAds() {
+        const adContainer = document.getElementById("adContainer");
+        const currentAd = adsData[index];
+
+        // Atualiza o conteúdo do container com a nova imagem e link
+        adContainer.innerHTML = `<a href="${currentAd.link}" target="_blank">
+            <img src="${currentAd.image}" alt="Anuncie Aqui">
+        </a>`;
+
+        index = (index + 1) % adsData.length;
+    }
+
+    // Troca o anúncio a cada 3 segundos
+    setInterval(showAds, 3000);
+
+    // Exibe o primeiro anúncio ao carregar a página
+    window.onload = showAds;
 </script>
 
 
