@@ -120,24 +120,45 @@
         { link: "https://wa.me/5585991340658", image: "https://i.imgur.com/rnxNGLh.png" },
     ];
 
-    let index = 0;
+        let index = 0;
+    let adContainer = document.getElementById("adContainer");
 
     function showAds() {
-        const adContainer = document.getElementById("adContainer");
         const currentAd = adsData[index];
+        
+        // Cria um novo elemento de imagem
+        let img = document.createElement("img");
+        img.src = currentAd.image;
+        img.alt = "Anúncio";
+        img.style.transform = "translateX(100%)"; // Começa fora da tela à direita
+        
+        let link = document.createElement("a");
+        link.href = currentAd.link;
+        link.target = "_blank";
+        link.appendChild(img);
 
-        // Atualiza o conteúdo do container com a nova imagem e link
-        adContainer.innerHTML = `<a href="${currentAd.link}" target="_blank">
-            <img src="${currentAd.image}" alt="Anuncie Aqui">
-        </a>`;
+        // Adiciona ao container
+        adContainer.appendChild(link);
+
+        // Aguarda um pequeno tempo e aplica a transição para mover a imagem para dentro
+        setTimeout(() => {
+            img.style.transform = "translateX(0)";
+        }, 100);
+
+        // Remove a imagem anterior após a transição
+        setTimeout(() => {
+            if (adContainer.children.length > 1) {
+                adContainer.removeChild(adContainer.children[0]); // Remove o anterior
+            }
+        }, 3000);
 
         index = (index + 1) % adsData.length;
     }
 
-    // Troca o anúncio a cada 4 segundos
-    setInterval(showAds, 4000);
+    // Troca a imagem a cada 3 segundos
+    setInterval(showAds, 3000);
 
-    // Exibe o primeiro anúncio ao carregar a página
+    // Exibe a primeira imagem imediatamente
     window.onload = showAds;
 </script>
 
