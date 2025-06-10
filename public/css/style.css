@@ -516,7 +516,7 @@ header img {
 #adContainer {
     width: 100%;
     max-width: 500px;
-    height: 100px;
+    height: 100px !important;
     display: flex;
     justify-content: center;
     align-items: center;
