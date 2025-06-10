@@ -529,6 +529,7 @@ header img {
 
 
 
+
 #adContainer p {
     color: #666;
     font-size: 14px;
@@ -536,9 +537,15 @@ header img {
 }
 
 #adContainer img {
-    width: 100%;  /* Imagem ocupará todo o espaço horizontal */
-    height: 100%; /* Imagem ocupará toda a altura do container */
-    object-fit: cover; /* Garante que a imagem preencha sem distorcer */
-    position: absolute; /* Mantém a imagem fixa dentro do container */
+    max-width: 100%;  /* Garante que a imagem não ultrapasse o container */
+    height: 100%; /* Mantém a altura fixa */
+    object-fit: contain; /* Ajusta a imagem sem distorcer */
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+
 }
 
