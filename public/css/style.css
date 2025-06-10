@@ -301,7 +301,7 @@ body.services-page footer {
     max-width: 320px; /* Ajusta melhor para telas pequenas */
     padding: 15px;
     position: relative;
-    margin-top: -85px;
+    margin-top: -115px;
     margin-left: 30px; /* Move o container mais para a esquerda */
     margin-right: right; /* Mantém o lado direito flexível */
 }
