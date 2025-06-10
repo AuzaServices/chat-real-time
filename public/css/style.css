@@ -515,7 +515,7 @@ header img {
 /* Estilos para o container de anúncios */
 #adContainer { 
     width: 100% !important;;
-    height: 130px !important;;
+    height: 100px !important;;
     border: 2px dashed #ccc;
     display: flex;
     justify-content: center;
