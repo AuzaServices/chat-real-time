@@ -515,21 +515,16 @@ header img {
 /* Estilos para o container de anúncios */
 #adContainer {
     width: 100%;
-    max-width: 500px !important;
-    height: 95px !important;
+    max-width: 500px;
+    height: 100px !important;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #ffffff;
-    border: 0px dashed #ffffff !important;
-    overflow: hidden; /* Impede que a imagem ultrapasse o espaço */
-    position: relative; /* Mantém a estrutura fixa */
-    padding: 10px; /* Adiciona um espaço interno */
-    margin: 20px auto;
+    background-color: #f9f9f9;
+    border: none;
+    overflow: hidden;
+    position: relative;
 }
-
-
-
 
 
 #adContainer p {
@@ -539,15 +534,11 @@ header img {
 }
 
 #adContainer img {
-    max-width: 100%;  /* Garante que a imagem não ultrapasse o container */
-    height: 100%; /* Mantém a altura fixa */
-    object-fit: contain; /* Ajusta a imagem sem distorcer */
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: auto;
-
+    transition: transform 1s ease-in-out;
 }
+
 
