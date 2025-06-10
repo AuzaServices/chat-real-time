@@ -517,12 +517,9 @@ header img {
     width: 100%;
     max-width: 500px;
     height: 135px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #f9f9f9;
-    border: 2px dashed #ccc;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin-bottom: 20px; /* Adiciona espaçamento fixo */
+
 }
 
 
@@ -533,13 +530,7 @@ header img {
 }
 
 #adContainer img {
-    width: 100%;
     max-width: 500px;
-    height: 135px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #f9f9f9;
-    border: 2px dashed #ccc;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: auto;
+
 }
