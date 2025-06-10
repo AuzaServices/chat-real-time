@@ -520,6 +520,7 @@ header img {
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
     background-color: #f9f9f9 !important;
     margin: 20px auto !important;;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -532,8 +533,8 @@ header img {
 }
 
 #adContainer img {
-    width: 250px; /* Ajuste o tamanho conforme necessário */
+    width: 250px;
     height: 120px;
-    max-height: 100%;
-    object-fit: contain;
+    display: block;
+    margin: auto;
 }
