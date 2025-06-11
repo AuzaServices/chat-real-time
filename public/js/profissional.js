@@ -287,7 +287,7 @@ document.getElementById("shareButton").addEventListener("click", async () => {
 
 const shareData = {  
     title: `${professional.name} - ${professional.service}`,  
-    text: `*${professional.service}*\n\nNome: ${professional.name} \nCidade: ${professional.city} \nAvaliação: ${professional.stars}\n*${professional.comment}*\n\n${window.location.href}\n\nClique no link abaixo para realizar um orçamento com o(a) Profissional.`,  
+    text: `*${professional.service}*\n\nNome: ${professional.name} \nCidade: ${professional.city} \nAvaliação: ${professional.stars}\n*${professional.comment}*\n\n${window.location.href}\n\nClique no link para solicitar um orçamento.`,  
 };
 
     if (navigator.share) {
