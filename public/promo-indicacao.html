@@ -3,13 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta charset="UTF-8">
-  <link rel="icon" type="image/png" href="css/imagens/favicon.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Indique profissionais para a Auza Services e ganhe benefícios exclusivos!">
   <meta name="keywords" content="profissionais, serviços, indicação, Auza Services, benefícios, trabalho">
   <meta name="author" content="Auza Services">
-  
+
   <!-- Open Graph para redes sociais -->
   <meta property="og:title" content="Promoção de Boas-Vindas">
   <meta property="og:description" content="Indique colegas profissionais e desbloqueie vantagens exclusivas na Auza Services!">
@@ -113,19 +110,44 @@
       transform: scale(1.06);
     }
 
+    .cards-section {
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    .card-box {
+      padding: 1rem;
+      border-radius: 10px;
+      text-align: center;
+      width: 45%;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .container {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 1.5rem;
+    }
+
     @media (max-width: 600px) {
       body {
         padding: 1rem;
       }
+      .container {
+        flex-direction: column;
+        align-items: center;
+      }
+      .card-box {
+        width: 90%;
+        margin-bottom: 1rem;
+      }
     }
-
-    
   </style>
 </head>
 <body>
-<h1 style="text-align: center; color: darkred; font-size: 32px;">Promoção de</h1>
-<h1 style="text-align: center; color: darkred; font-size: 32px; margin-top: -15px;">Boas-Vindas</h1>
-<h2 style="text-align: center; font-size: 35px;">🎁</h2>
+  <h1>Promoção de</h1>
+  <h1 style="margin-top: -15px;">Boas-Vindas</h1>
+<h2 style="font-size: 35px; text-align: center;">🎁</h2>
 
   <div class="banner">
     <p><strong>Indique 5 profissionais</strong> para a plataforma Auza e ganhe <strong>30 dias de AuzaGold</strong> totalmente grátis!</p>
@@ -141,20 +163,35 @@
     </ol>
   </div>
 
+  <div class="cards-section">
+    <h2>Seu cartão na plataforma</h2>
+    <div class="container">
+      <!-- Cartão Prata -->
+      <div class="card-box" style="background-color: #ffffff;">
+        <h3 style="color: #555;">Cartão Prata</h3>
+        <p>Assim está seu cartão na plataforma atualmente.</p>
+        <img src="css/imagens/cartao-prata.png" alt="Cartão Prata" style="width: 100%; border-radius: 5px;">
+      </div>
+
+      <!-- Cartão Dourado -->
+      <div class="card-box" style="background-color: #ffffff;">
+        <h3 style="color: #B8860B;">Cartão Dourado</h3>
+        <p>Após 5 indicações, seu cartão ficará assim!</p>
+        <img src="css/imagens/cartao-dourado.png" alt="Cartão Dourado" style="width: 100%; border-radius: 5px;">
+      </div>
+    </div>
+  </div>
+
   <div class="link-area">
     <p><strong>🔗 Seu link para indicação:</strong></p>
-    <div style="display: flex; flex-direction: column; align-items: center;">
-      <input id="linkIndicar" type="text" value="https://clientes2.onrender.com/cadastro-link.html"
-             readonly />
-      <button onclick="copiarLink()">📋 Copiar link</button>
-    </div>
+    <input id="linkIndicar" type="text" value="https://clientes2.onrender.com/cadastro-link.html" readonly />
+    <button onclick="copiarLink()">📋 Copiar link</button>
   </div>
 
   <script>
     function copiarLink() {
       const input = document.getElementById("linkIndicar");
       input.select();
-      input.setSelectionRange(0, 99999);
       document.execCommand("copy");
       alert("Link copiado com sucesso! Envie para seus colegas! 🎉");
     }
