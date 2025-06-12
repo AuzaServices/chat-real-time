@@ -32,14 +32,14 @@ app.get("/", (req, res) => {
 });
 
 // ✅ **Rota para registrar o clique do botão WhatsApp**
+
 app.post("/api/click", (req, res) => {
     const { profissionalId, nomeProfissional } = req.body;
 
     console.log("📌 Debug → Profissional ID:", profissionalId, "| Nome:", nomeProfissional);
 
     if (!profissionalId || !nomeProfissional) {
-        console.error("🚨 Dados inválidos! profissionalId:", profissionalId, "nomeProfissional:", nomeProfissional);
-        return res.status(400).send("Erro: Dados incompletos.");
+        return res.status(400).json({ error: "🚨 Dados incompletos!" });
     }
 
     const sql = `
@@ -50,28 +50,18 @@ app.post("/api/click", (req, res) => {
         nome_profissional = VALUES(nome_profissional);
     `;
 
-    console.log("🚀 Query executada:", sql, "| Valores:", profissionalId, nomeProfissional);
-
     db.query(sql, [profissionalId, nomeProfissional], (err, results) => {
         if (err) {
             console.error("🚨 Erro ao registrar clique:", err);
-            return res.status(500).send("Erro ao registrar clique.");
+            return res.status(500).json({ error: "Erro ao registrar clique" });
         }
         console.log("✅ Nome salvo no banco automaticamente!", results);
         res.json({ message: "✅ Clique registrado com sucesso!" });
     });
-
-    // ✅ Confirma a transação após a query
-    db.query("COMMIT", (err) => {
-        if (err) {
-            console.error("🚨 Erro ao confirmar transação:", err);
-        } else {
-            console.log("✅ Transação confirmada!");
-        }
-    });
 });
 
-// Inicializa o servidor
-app.listen(port, () => {
-    console.log(`Servidor rodando em http://localhost:${port}`);
+// ✅ **Iniciar servidor**
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`🚀 Servidor rodando na porta ${PORT}`);
 });
