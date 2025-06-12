@@ -11,10 +11,10 @@ app.use(express.json());
 
 // Conexão com o banco de dados MySQL
 const db = mysql.createConnection({
-    host: "sql305.infinityfree.com",
-    user: "if0_39218581",         
-    password: "74141260314Lds", 
-    database: "if0_39218581_cliques_db",
+    host: "sql10.freesqldatabase.com",
+    user: "sql10784497",         
+    password: "vXvEteTscU", 
+    database: "sql10784497",
     port: 3306
 });
 
