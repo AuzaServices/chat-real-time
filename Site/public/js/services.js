@@ -43,9 +43,9 @@ document.addEventListener("DOMContentLoaded", function () {
         { service: "auzapoli", name: "Fagner Lucena", age: 47, city: "Fortaleza - CE", stars: "⭐⭐⭐", comment: "Eletricista, Bombeiro Hidráulico, Manutenção Predial", whatsapp: "558598581919" },
 
         //Pedreiro 🧱🔨
-        { service: "pedreiro", name: "Leonardo", age: 28, city: "Fortaleza - CE", stars: "⭐⭐", comment: "Pedreiro, Mestre de obra profissional. Entendo de projetos.", whatsapp: "5585988559085" },
-        { service: "pedreiro", name: "Edilcimar Frazão", age: 53, city: "Fortaleza - CE", stars: "⭐⭐", comment: "Área de acabamento da constr. civil, PVC, Gesso, Porcel/Cerâmica.", whatsapp: "5585992363266" },
-        { service: "pedreiro", name: "Alberto", age: 33, city: "Fortaleza - CE", stars: "⭐⭐", comment: "Área de Construção. Dedicação, Qualidade e Compromisso", whatsapp: "5585994312887" },
+        { id: 1, service: "pedreiro", name: "Leonardo", age: 28, city: "Fortaleza - CE", stars: "⭐⭐", comment: "Pedreiro, Mestre de obra profissional. Entendo de projetos.", whatsapp: "5585988559085" },
+        { id: 2, service: "pedreiro", name: "Edilcimar Frazão", age: 53, city: "Fortaleza - CE", stars: "⭐⭐", comment: "Área de acabamento da constr. civil, PVC, Gesso, Porcel/Cerâmica.", whatsapp: "5585992363266" },
+        { id: 3, service: "pedreiro", name: "Alberto", age: 33, city: "Fortaleza - CE", stars: "⭐⭐", comment: "Área de Construção. Dedicação, Qualidade e Compromisso", whatsapp: "5585994312887" },
         { service: "pedreiro", name: "Adonias", age: 42, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "Trabalho de alvenaria impecável. Serviços em Geral", whatsapp: "5585992726761" },
         { service: "pedreiro", name: "Charles Gomes", age: 47, city: "Fortaleza - CE", stars: "⭐⭐⭐", comment: "5 anos de experiência na área", whatsapp: "5585997225537" },
         //
@@ -280,12 +280,11 @@ if (filteredProfessionals.length === 0) {
     return;
 }
 
-    mainContainer.innerHTML = "";
+mainContainer.innerHTML = "";
 
-    filteredProfessionals.forEach(professional => {
+filteredProfessionals.forEach(professional => {
     const card = document.createElement("div");
 
-    // Verifica se o profissional está na lista de destaques
     if (highlightedProfessionals.includes(professional.name)) {
         card.classList.add("card", "highlighted");
     } else {
@@ -302,22 +301,37 @@ if (filteredProfessionals.length === 0) {
         <p>Avaliação: ${professional.stars}</p>
         <p>${professional.comment}</p>
         ${highlightedProfessionals.includes(professional.name) ? '<p class="destaque">Destaque</p>' : ''}
-        <a class="whatsapp-button" href="${whatsappLink}" target="_blank">Contato via WhatsApp</a>
+<a class="whatsapp-button"
+   href="${whatsappLink}"
+   target="_blank"
+   data-id="${professional.id}"
+   data-nome="${professional.name}"> <!-- ✅ Certifique-se de que esse atributo existe -->
+   Contato via WhatsApp
+</a>
     `;
 
-    // 🚀 Adiciona a funcionalidade de clique aqui!
     card.style.cursor = "pointer";
-card.addEventListener("click", function () {
-    const professionalName = encodeURIComponent(professional.name);
-    window.open(`profissional.html?name=${professionalName}`, "_blank");
-});
+    card.addEventListener("click", function () {
+        const professionalName = encodeURIComponent(professional.name);
+        window.open(`profissional.html?name=${professionalName}`, "_blank");
+    });
 
-// 🚀 Corrige o problema do botão do WhatsApp sendo ignorado
+    // ✅ Captura o ID e o nome corretamente agora!
     const whatsappButton = card.querySelector(".whatsapp-button");
     whatsappButton.addEventListener("click", function (event) {
-        event.stopPropagation(); // 🚀 Isso impede que o clique no botão ative o evento do card!
- });
+        event.stopPropagation();
 
+        const profissionalId = whatsappButton.getAttribute("data-id");
+        const nomeProfissional = whatsappButton.getAttribute("data-nome"); // ✅ Agora pega o nome corretamente!
+
+        fetch("/api/click", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ profissionalId, nomeProfissional })
+        }).catch(err => {
+            console.error("Erro ao registrar clique:", err);
+        });
+    });
 
     mainContainer.appendChild(card);
 });

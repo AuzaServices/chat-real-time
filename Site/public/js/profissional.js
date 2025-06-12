@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
         { name: "Fagner Lucena", service: "AuzaPoli (Polivalente)", name: "Fagner Lucena", age: 47, city: "Fortaleza - CE", stars: "⭐⭐⭐", comment: "Eletricista, Bombeiro Hidráulico, Manutenção Predial", whatsapp: "558598581919" },
 
         //Pedreiro
-        { name: "Leonardo", service: "Pedreiro", city: "Fortaleza - CE", age: 28, stars: "⭐⭐⭐", comment: "Mestre de obra profissional. Entendo de projetos.", whatsapp: "5585988559085" },
+        { id: 1, name: "Leonardo", service: "Pedreiro", city: "Fortaleza - CE", age: 28, stars: "⭐⭐⭐", comment: "Mestre de obra profissional. Entendo de projetos.", whatsapp: "5585988559085" },
         { name: "Edilcimar Frazão",  service: "Pedreiro", city: "Fortaleza - CE", age: 53, stars: "⭐⭐", comment: "Área de acabamento da constr. civil, PVC, Gesso, Porcel/Cerâmica.", whatsapp: "5585992363266" },
         { name: "Alberto",  service: "Pedreiro", city: "Fortaleza - CE", age: 33, stars: "⭐⭐", comment: "Área de Construção. Dedicação, Qualidade e Compromisso.", whatsapp: "5585994312887" },
         { name: "Adonias",  service: "Pedreiro", city: "Horizonte - CE", age: 42, stars: "⭐⭐⭐⭐", comment: "Trabalho de alvenaria impecável. Serviços em Geral.", whatsapp: "5585992726761" },
@@ -236,13 +236,13 @@ document.addEventListener("DOMContentLoaded", function () {
         { service: "Chaveiro", name: "André Batista", age: 50, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "10 anos de chaveiro / Técnico Mecânico", whatsapp: "5585992438122" },
     ];
 
-
-
     // Lista de profissionais destacados
-    const highlightedProfessionals = new Set([ "Mateus Santos","Bruna Costa","Carlos Costa","Ana Souza","Lucas Oliveira","André Souza","Diego Rocha","Marcos Vinicius","Bruno Ferreira","Carlos Mendes","Eduarda Nunes","Fernanda Ramos","Gustavo Ramos","Diego Martins","Carlos Nogueira","José Lima"
+    const highlightedProfessionals = new Set([
+        "Mateus Santos", "Bruna Costa", "Carlos Costa", "Ana Souza", "Lucas Oliveira", "André Souza",
+        "Diego Rocha", "Marcos Vinicius", "Bruno Ferreira", "Carlos Mendes", "Eduarda Nunes",
+        "Fernanda Ramos", "Gustavo Ramos", "Diego Martins", "Carlos Nogueira", "José Lima"
     ]);
 
-    
     // Encontrar o profissional selecionado
     const professional = professionals.find(p => p.name.trim() === selectedName.trim());
 
@@ -252,19 +252,58 @@ document.addEventListener("DOMContentLoaded", function () {
         // Verifica se o profissional está na lista de destaques
         const isHighlighted = highlightedProfessionals.has(professional.name.trim());
         const highlightedClass = isHighlighted ? "highlighted" : "";
-        const nameClass = isHighlighted ? "highlighted-name" : ""; // Agora o nome tem estilo especial
+        const nameClass = isHighlighted ? "highlighted-name" : "";
 
-document.getElementById("professional-card").innerHTML = `
-    <div class="card ${highlightedClass}">
-        <img class="card-logo" src="css/imagens/background.png" alt="Logo">
-        <h3 class="${nameClass}">${professional.name}</h3>
-        <p>${professional.city}</p>
-        <p>Idade: ${professional.age} anos</p>
-        <p>Avaliação: ${professional.stars}</p>
-        <p>${professional.comment}</p>
-        <a class="whatsapp-button" href="${whatsappLink}" target="_blank">Contato via WhatsApp</a>
-    </div>
-`;
+        document.getElementById("professional-card").innerHTML = `
+            <div class="card ${highlightedClass}">
+                <img class="card-logo" src="css/imagens/background.png" alt="Logo">
+                <h3 class="${nameClass}">${professional.name}</h3>
+                <p>${professional.city}</p>
+                <p>Idade: ${professional.age} anos</p>
+                <p>Avaliação: ${professional.stars}</p>
+                <p>${professional.comment}</p>
+                <a class="whatsapp-button" href="${whatsappLink}" target="_blank"
+                    data-id="${professional.id}" data-nome="${professional.name}">
+                    Contato via WhatsApp
+                </a>
+            </div>
+        `;
+
+        // 🚀 **Corrigindo evento de clique no botão do WhatsApp**
+        const whatsappButton = document.querySelector(".whatsapp-button");
+
+        if (whatsappButton) {
+            whatsappButton.removeEventListener("click", handleClick); // 🔥 Remove evento duplicado antes de adicionar
+            whatsappButton.addEventListener("click", handleClick);
+        } else {
+            console.error("🚨 Erro: Botão de WhatsApp não encontrado!");
+        }
+    } else {
+        document.getElementById("professional-card").innerHTML = "<p>Profissional não encontrado.</p>";
+    }
+});
+
+// ✅ **Função para capturar clique e enviar dados ao banco**
+function handleClick(event) {
+    console.log("📌 Clique detectado! Enviando dados ao backend…");
+
+    fetch("/api/click", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            profissionalId: event.target.getAttribute("data-id"),
+            nomeProfissional: event.target.getAttribute("data-nome")
+        })
+    })
+    .then(response => {
+        if (response.ok) {
+            console.log("✅ Clique registrado com sucesso no banco!");
+        } else {
+            console.error("🚨 Erro ao registrar clique:", response.statusText);
+        }
+    })
+    .catch(error => console.error("🚨 Erro na requisição:", error));
+}
 
 document.getElementById("shareButton").addEventListener("click", async () => {
     const params = new URLSearchParams(window.location.search);
@@ -310,10 +349,7 @@ document.getElementById("backButton").addEventListener("click", function () {
     } else {
         window.location.href = "index.html"; // Caso não haja histórico, volta para a página inicial
     }
-});
-    } else {
-        document.getElementById("professional-card").innerHTML = "<p>Profissional não encontrado.</p>";
-    }
+
 });
 
 document.getElementById("shareButton").addEventListener("click", function () {
