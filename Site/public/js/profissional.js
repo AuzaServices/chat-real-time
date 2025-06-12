@@ -287,7 +287,7 @@ document.addEventListener("DOMContentLoaded", function () {
 function handleClick(event) {
     console.log("📌 Clique detectado! Enviando dados ao backend…");
 
-    fetch("https://clientes2.onrender.com/api/click", {
+    fetch("https://clientes2.onrender.com/services.html", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
