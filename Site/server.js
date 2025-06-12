@@ -58,7 +58,7 @@ app.post("/api/click", (req, res) => {
             return res.status(500).send("Erro ao registrar clique.");
         }
         console.log("✅ Nome salvo no banco automaticamente!", results);
-        res.sendStatus(200);
+        res.json({ message: "✅ Clique registrado com sucesso!" });
     });
 
     // ✅ Confirma a transação após a query
