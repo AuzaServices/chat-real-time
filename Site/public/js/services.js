@@ -325,17 +325,18 @@ filteredProfessionals.forEach(professional => {
         const nomeProfissional = whatsappButton.getAttribute("data-nome"); // ✅ Agora pega o nome corretamente!
         
 
-fetch("https://clientes2.onrender.com/api/click", { 
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ 
-        profissionalId: 2, 
-        nomeProfissional: "Maria Souza" 
+    fetch("https://clientes-fhfe.onrender.com/api/click", { 
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ 
+            profissionalId: profissionalId, 
+            nomeProfissional: nomeProfissional 
+        })
     })
-})
-.then(response => response.text()) // Troque response.json() por response.text()
-.then(data => console.log("✅ Resposta do servidor:", data))
-.catch(err => console.error("🚨 Erro ao registrar clique:", err));
+    .then(response => response.json())
+    .then(data => console.log("✅ Resposta do servidor:", data))
+    .catch(err => console.error("🚨 Erro ao registrar clique:", err));
+
     });
 
     mainContainer.appendChild(card);
