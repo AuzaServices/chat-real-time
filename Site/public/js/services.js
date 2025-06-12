@@ -324,7 +324,7 @@ filteredProfessionals.forEach(professional => {
         const profissionalId = whatsappButton.getAttribute("data-id");
         const nomeProfissional = whatsappButton.getAttribute("data-nome"); // ✅ Agora pega o nome corretamente!
 
-        fetch("/api/click", {
+        fetch("https://clientes2.onrender.com/api/click", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ profissionalId, nomeProfissional })
