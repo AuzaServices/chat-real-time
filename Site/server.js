@@ -1,5 +1,5 @@
 const express = require("express");
-const mysql = require("mysql2"); // ✅ Removida a duplicação
+const mysql = require("mysql2"); 
 const app = express();
 const port = process.env.PORT || 3000;
 
@@ -11,10 +11,10 @@ app.use(express.json());
 
 // Conexão com o banco de dados MySQL
 const db = mysql.createConnection({
-    host: "localhost",
-    user: "admin",         // ✅ Confirme se "admin" está correto
-    password: "74141260314", // ✅ Use a senha correta do banco
-    database: "cliques",
+    host: "sql305.infinityfree.com",
+    user: "if0_39218581",         
+    password: "74141260314Lds", 
+    database: "if0_39218581_cliques_db",
     port: 3306
 });
 
@@ -47,18 +47,27 @@ app.post("/api/click", (req, res) => {
         VALUES (?, ?, 1)
         ON DUPLICATE KEY UPDATE 
         total = total + 1, 
-        nome_profissional = COALESCE(VALUES(nome_profissional), nome_profissional);
+        nome_profissional = VALUES(nome_profissional);
     `;
 
     console.log("🚀 Query executada:", sql, "| Valores:", profissionalId, nomeProfissional);
 
-    db.query(sql, [profissionalId, nomeProfissional], (err) => {
+    db.query(sql, [profissionalId, nomeProfissional], (err, results) => {
         if (err) {
             console.error("🚨 Erro ao registrar clique:", err);
             return res.status(500).send("Erro ao registrar clique.");
         }
-        console.log("✅ Nome salvo no banco automaticamente!");
+        console.log("✅ Nome salvo no banco automaticamente!", results);
         res.sendStatus(200);
+    });
+
+    // ✅ Confirma a transação após a query
+    db.query("COMMIT", (err) => {
+        if (err) {
+            console.error("🚨 Erro ao confirmar transação:", err);
+        } else {
+            console.log("✅ Transação confirmada!");
+        }
     });
 });
 
