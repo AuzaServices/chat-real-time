@@ -46,13 +46,15 @@ app.post("/api/trafego", (req, res) => {
     const { pagina } = req.body;
     const ipUsuario = req.headers["x-forwarded-for"] || req.socket.remoteAddress;
 
-    const ipsIgnorados = ["192.168.10.155", "192.168.10.76"]; // 🔹 Substitua pelos seus IPs fixos
+    console.log(`🔎 IP Capturado: ${ipUsuario}`); // 📌 Isso mostrará seu IP exato no console
+
+    const ipsIgnorados = ["123.456.78.9", "987.654.32.1"]; // 🔹 Substitua pelos seus IPs fixos
 
     if (!pagina) {
         return res.status(400).json({ error: "🚨 Página não informada!" });
     }
 
-    if (ipsIgnorados.includes(ipUsuario)) {
+    if (ipsIgnorados.includes(ipUsuario.trim())) { // 🔥 Agora garantimos que está comparando corretamente
         console.log(`🚫 Acesso ignorado (IP: ${ipUsuario})`);
         return res.json({ message: "✅ Acesso ignorado!" });
     }
