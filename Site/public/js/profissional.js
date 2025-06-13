@@ -229,12 +229,14 @@ document.addEventListener("DOMContentLoaded", function () {
         //Chaveiro
         { id: 161, service: "Chaveiro", name: "André Batista", age: 50, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "10 anos de chaveiro / Técnico Mecânico", whatsapp: "5585992438122" },
    
+        //Caminhão Reboque
+        { id: 162, service: "Caminhão Reboque", name: "Edimilson Camara", age: 18, city: "Aquiraz - CE", stars: "⭐⭐⭐⭐⭐", comment: "5 anos de experiência na área", whatsapp: "5585992885324" },
         //Costureira  
     ];
 
     // Lista de profissionais destacados
     const highlightedProfessionals = new Set([
-        "Mateus Santos", "Bruna Costa", "Carlos Costa", "Ana Souza", "Lucas Oliveira", "André Souza",
+        "Edmilson Camara","Mateus Santos", "Bruna Costa", "Carlos Costa", "Ana Souza", "Lucas Oliveira", "André Souza",
         "Diego Rocha", "Marcos Vinicius", "Bruno Ferreira", "Carlos Mendes", "Eduarda Nunes",
         "Fernanda Ramos", "Gustavo Ramos", "Diego Martins", "Carlos Nogueira", "José Lima"
     ]);
