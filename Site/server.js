@@ -10,21 +10,24 @@ app.use(express.static("public"));
 app.use(express.json());
 
 // Conexão com o banco de dados MySQL
-const db = mysql.createConnection({
+const db = mysql.createPool({
     host: "sql10.freesqldatabase.com",
     user: "sql10784497",         
     password: "vXvEteTscU", 
     database: "sql10784497",
     port: 3306
+
 });
 
-db.connect((err) => {
+db.getConnection((err, connection) => {
     if (err) {
         console.error("🚨 Erro ao conectar ao MySQL:", err);
-        return;
+    } else {
+        console.log("✅ Conectado ao banco de dados MySQL!");
+        connection.release(); // Libera a conexão para uso futuro
     }
-    console.log("✅ Conectado ao banco de dados MySQL!");
 });
+
 
 // Rota principal
 app.get("/", (req, res) => {
