@@ -24,6 +24,20 @@
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://i.imgur.com/vEJWsQ7.png">
 
+    <script>
+    fetch("https://clientes-fhfe.onrender.com/api/trafego", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            pagina: "Página Inicial" // Identifica que o usuário acessou a página inicial
+        })
+    })
+    .then(response => response.json())
+    .then(data => console.log("✅ Acesso registrado:", data))
+    .catch(error => console.error("❌ Erro ao registrar acesso:", error));
+</script>
+
+
 </head>
 <body id="index" class="background-active">
 
