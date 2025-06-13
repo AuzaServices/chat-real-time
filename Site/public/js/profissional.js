@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Lista de profissionais
-    const professionals = [
+    window.professionals = [
 
         //AuzaPoli
         { id: 1, service: "AuzaPoli (Polivalente)", name: "Fagner Lucena", age: 47, city: "Fortaleza - CE", stars: "⭐⭐⭐", comment: "Eletricista, Bombeiro Hidráulico, Manutenção Predial", whatsapp: "558598581919" },
@@ -301,6 +301,7 @@ function handleClick(event) {
     .catch(error => console.error("🚨 Erro na requisição:", error));
 }
 
+
 document.getElementById("shareButton").addEventListener("click", async () => {
     const params = new URLSearchParams(window.location.search);
     const selectedName = params.get("name");
@@ -309,6 +310,12 @@ document.getElementById("shareButton").addEventListener("click", async () => {
         console.error("Erro: Nome do profissional não encontrado na URL.");
         return;
     }
+
+    if (!Array.isArray(professionals) || professionals.length === 0) {
+    console.error("🚨 Erro: Lista de profissionais não carregada antes de compartilhar.");
+    alert("Erro: Lista de profissionais não carregada.");
+    return;
+}
 
     // Buscar o profissional correto
     const professional = professionals.find(p => p.name.trim() === selectedName.trim());
