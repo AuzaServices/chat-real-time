@@ -325,14 +325,16 @@ filteredProfessionals.forEach(professional => {
         const nomeProfissional = whatsappButton.getAttribute("data-nome"); // ✅ Agora pega o nome corretamente!
         
 
-    fetch("https://clientes-fhfe.onrender.com/api/click", { 
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ 
-            profissionalId: profissionalId, 
-            nomeProfissional: nomeProfissional 
-        })
+fetch("https://clientes-fhfe.onrender.com/api/click", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+        profissionalId: profissionalId,
+        nomeProfissional: nomeProfissional,
+        profissao: professional.service // 👈 Pega a profissão direto do objeto professional
     })
+})
+
     .then(response => response.json())
     .then(data => console.log("✅ Resposta do servidor:", data))
     .catch(err => console.error("🚨 Erro ao registrar clique:", err));

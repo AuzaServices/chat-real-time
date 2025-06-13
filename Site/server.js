@@ -38,28 +38,28 @@ app.get("/", (req, res) => {
 // ✅ **Rota para registrar o clique do botão WhatsApp**
 
 app.post("/api/click", (req, res) => {
-    const { profissionalId, nomeProfissional } = req.body;
+    const { profissionalId, nomeProfissional, profissao } = req.body;
 
-    console.log("📌 Debug → Profissional ID:", profissionalId, "| Nome:", nomeProfissional);
+    console.log("📌 Debug → ID:", profissionalId, "| Nome:", nomeProfissional, "| Profissão:", profissao);
 
-    if (!profissionalId || !nomeProfissional) {
+    if (!profissionalId || !nomeProfissional || !profissao) {
         return res.status(400).json({ error: "🚨 Dados incompletos!" });
     }
 
     const sql = `
-        INSERT INTO cliques (profissional_id, nome_profissional, total)
-        VALUES (?, ?, 1)
+        INSERT INTO cliques (profissional_id, nome_profissional, profissao, total)
+        VALUES (?, ?, ?, 1)
         ON DUPLICATE KEY UPDATE 
         total = total + 1;
     `;
 
-    db.query(sql, [profissionalId, nomeProfissional], (err, results) => {
+    db.query(sql, [profissionalId, nomeProfissional, profissao], (err, results) => {
         if (err) {
             console.error("🚨 Erro ao registrar clique:", err);
             return res.status(500).json({ error: "Erro ao registrar clique" });
         }
-        console.log("✅ Clique acumulado no banco!", results);
-        res.json({ message: "✅ Clique registrado e acumulado!" });
+        console.log("✅ Clique com profissão registrado no banco!", results);
+        res.json({ message: "✅ Clique registrado com sucesso!" });
     });
 });
 
