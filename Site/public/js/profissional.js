@@ -144,7 +144,8 @@ document.addEventListener("DOMContentLoaded", function () {
         { id: 101, service: "Vidraceiro", name: "Thiago Martins", age: 44, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "Ótima opção para projetos personalizados.", whatsapp: "55859910759" },
     
         //Churrasqueiro
-        { id: 102, service: "Churrasqueiro", name: "Anderson Santos", age: 40, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "Especialista em churrasco tradicional e cortes nobres.", whatsapp: "55859913461" },
+        { id: 102, service: "Churrasqueiro", name: "Francisco Antônio", age: 33, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "Churrasqueiro particular", whatsapp: "5585999858484" },
+        //
         { id: 103, service: "Churrasqueiro", name: "Bruno Ferreira", age: 38, city: "Itaitinga - CE", stars: "⭐⭐⭐⭐⭐", comment: "Churrasco com sabor único e tempero especial.", whatsapp: "55859910762" },
         { id: 104, service: "Churrasqueiro", name: "Carlos Yuri", age: 45, city: "Pacajus - CE", stars: "⭐⭐⭐", comment: "Experiência em eventos e festas.", whatsapp: "55859913407" },
         { id: 105, service: "Churrasqueiro", name: "Diego Souza", age: 37, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "Técnicas avançadas de grelhados.", whatsapp: "55859913404" },
