@@ -11,6 +11,7 @@ app.use(express.json());
 
 // Conexão com o banco de dados MySQL
 const db = mysql.createPool({
+
     host: "sql10.freesqldatabase.com",
     user: "sql10784497",         
     password: "vXvEteTscU", 
@@ -58,8 +59,8 @@ app.post("/api/click", (req, res) => {
             console.error("🚨 Erro ao registrar clique:", err);
             return res.status(500).json({ error: "Erro ao registrar clique" });
         }
-        console.log("✅ Nome salvo no banco automaticamente!", results);
-        res.json({ message: "✅ Clique registrado com sucesso!" });
+        console.log("✅ Clique acumulado no banco!", results);
+        res.json({ message: "✅ Clique registrado e acumulado!" });
     });
 });
 
