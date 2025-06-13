@@ -47,21 +47,24 @@ app.post("/api/trafego", (req, res) => {
     const ipUsuario = req.headers["x-forwarded-for"] || req.socket.remoteAddress;
 
     console.log("🔎 Todas as possibilidades de IP:");
-    console.log("req.socket.remoteAddress:", req.socket.remoteAddress);
-    console.log("req.headers['x-forwarded-for']:", req.headers["x-forwarded-for"]);
+    console.log("➡ req.socket.remoteAddress:", req.socket.remoteAddress);
+    console.log("➡ req.headers['x-forwarded-for']:", req.headers["x-forwarded-for"]);
 
-    // 🚫 Lista de IPs que devem ser ignorados (substitua pelos seus IPs fixos)
-    const ipsIgnorados = ["123.456.78.9", "987.654.32.1"];
+    const ipsIgnorados = ["123.456.78.9", "987.654.32.1"]; // Substitua pelos seus IPs fixos
 
     if (!pagina) {
+        console.error("🚨 Página não informada!");
         return res.status(400).json({ error: "🚨 Página não informada!" });
     }
 
-    // 🔥 Ajuste na comparação para pegar corretamente o primeiro IP e evitar espaços extras
-    if (ipsIgnorados.includes(ipUsuario?.trim().split(",")[0])) {
-        console.log(`🚫 Acesso ignorado (IP: ${ipUsuario})`);
+    const ipLimpo = ipUsuario?.trim().split(",")[0]; // Garante que não haja espaços ou múltiplos IPs
+
+    if (ipsIgnorados.includes(ipLimpo)) {
+        console.log(`🚫 Acesso ignorado (IP: ${ipLimpo})`);
         return res.json({ message: "✅ Acesso ignorado!" });
     }
+
+    console.log(`✅ Acesso registrado (IP: ${ipLimpo}) na página "${pagina}"`);
 
     const sql = `
         INSERT INTO trafego (pagina, acessos) 
@@ -70,7 +73,10 @@ app.post("/api/trafego", (req, res) => {
     `;
 
     db.query(sql, [pagina], (err) => {
-        if (err) return res.status(500).json({ error: "Erro ao registrar acesso" });
+        if (err) {
+            console.error("❌ Erro ao registrar acesso:", err);
+            return res.status(500).json({ error: "Erro ao registrar acesso" });
+        }
         res.json({ message: "✅ Acesso registrado!" });
     });
 });
