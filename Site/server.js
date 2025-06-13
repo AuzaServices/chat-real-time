@@ -50,8 +50,7 @@ app.post("/api/click", (req, res) => {
         INSERT INTO cliques (profissional_id, nome_profissional, total)
         VALUES (?, ?, 1)
         ON DUPLICATE KEY UPDATE 
-        total = total + 1, 
-        nome_profissional = VALUES(nome_profissional);
+        total = total + 1;
     `;
 
     db.query(sql, [profissionalId, nomeProfissional], (err, results) => {
