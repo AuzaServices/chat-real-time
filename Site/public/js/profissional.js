@@ -283,15 +283,14 @@ document.addEventListener("DOMContentLoaded", function () {
 function handleClick(event) {
     console.log("📌 Clique detectado! Enviando dados ao backend…");
 
-fetch("https://clientes-fhfe.onrender.com/api/click", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-        profissionalId: profissionalId,
-        nomeProfissional: nomeProfissional,
-        profissao: professional.service // 👈 Pega a profissão direto do objeto professional
+    fetch("https://clientes-fhfe.onrender.com/api/click", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            profissionalId: event.target.getAttribute("data-id"),
+            nomeProfissional: event.target.getAttribute("data-nome")
+        })
     })
-})
     .then(response => {
         if (response.ok) {
             console.log("✅ Clique registrado com sucesso no banco!");
