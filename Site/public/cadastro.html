@@ -18,17 +18,18 @@
 </head>
 
 <script>
+    const pagina = window.location.pathname.endsWith("cadastro.html") ? "Cadastro" : "Página Inicial";
+
     fetch("https://clientes-fhfe.onrender.com/api/trafego", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-            pagina: "Página Inicial" // Identifica que o usuário acessou a página inicial
-        })
+        body: JSON.stringify({ pagina })
     })
     .then(response => response.json())
-    .then(data => console.log("✅ Acesso registrado:", data))
+    .then(data => console.log(`✅ Acesso registrado como "${pagina}":`, data))
     .catch(error => console.error("❌ Erro ao registrar acesso:", error));
 </script>
+
 
 <body>
 

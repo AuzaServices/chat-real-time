@@ -41,7 +41,7 @@ db.query(createTableQuery, (err) => {
     else console.log("✅ Tabela `trafego` pronta!");
 });
 
-// 📌 Rota para contabilizar acessos à página inicial e ao cadastro
+// 📌 Rota para registrar acessos às páginas
 app.post("/api/trafego", (req, res) => {
     const { pagina } = req.body;
 
