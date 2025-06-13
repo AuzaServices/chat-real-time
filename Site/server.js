@@ -41,20 +41,24 @@ db.query(createTableQuery, (err) => {
     else console.log("✅ Tabela `trafego` pronta!");
 });
 
-// 📌 Rota para registrar acessos às páginas
+// 📌 Rota para registrar acessos às páginas, ignorando IPs fixos
 app.post("/api/trafego", (req, res) => {
     const { pagina } = req.body;
     const ipUsuario = req.headers["x-forwarded-for"] || req.socket.remoteAddress;
 
-    console.log(`🔎 IP Capturado: ${ipUsuario}`); // 📌 Isso mostrará seu IP exato no console
+    console.log("🔎 Todas as possibilidades de IP:");
+    console.log("req.socket.remoteAddress:", req.socket.remoteAddress);
+    console.log("req.headers['x-forwarded-for']:", req.headers["x-forwarded-for"]);
 
-    const ipsIgnorados = ["123.456.78.9", "987.654.32.1"]; // 🔹 Substitua pelos seus IPs fixos
+    // 🚫 Lista de IPs que devem ser ignorados (substitua pelos seus IPs fixos)
+    const ipsIgnorados = ["123.456.78.9", "987.654.32.1"];
 
     if (!pagina) {
         return res.status(400).json({ error: "🚨 Página não informada!" });
     }
 
-    if (ipsIgnorados.includes(ipUsuario.trim())) { // 🔥 Agora garantimos que está comparando corretamente
+    // 🔥 Ajuste na comparação para pegar corretamente o primeiro IP e evitar espaços extras
+    if (ipsIgnorados.includes(ipUsuario?.trim().split(",")[0])) {
         console.log(`🚫 Acesso ignorado (IP: ${ipUsuario})`);
         return res.json({ message: "✅ Acesso ignorado!" });
     }
