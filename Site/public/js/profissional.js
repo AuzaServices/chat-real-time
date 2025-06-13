@@ -258,10 +258,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 <p>Idade: ${professional.age} anos</p>
                 <p>Avaliação: ${professional.stars}</p>
                 <p>${professional.comment}</p>
-                <a class="whatsapp-button" href="${whatsappLink}" target="_blank"
-                    data-id="${professional.id}" data-nome="${professional.name}">
-                    Contato via WhatsApp
-                </a>
+<a class="whatsapp-button" href="${whatsappLink}" target="_blank"
+    data-id="${professional.id}" data-nome="${professional.name}" 
+    data-profissao="${professional.service}">
+    Contato via WhatsApp
+</a>
             </div>
         `;
 
@@ -283,22 +284,41 @@ document.addEventListener("DOMContentLoaded", function () {
 function handleClick(event) {
     console.log("📌 Clique detectado! Enviando dados ao backend…");
 
+    const target = event.target.closest(".whatsapp-button"); // Garante que pegamos o botão correto
+
+    if (!target) {
+        console.error("🚨 Erro: botão não encontrado!");
+        return;
+    }
+
+    console.log("✅ Profissional selecionado →", {
+        id: target.getAttribute("data-id"),
+        nome: target.getAttribute("data-nome"),
+        profissao: target.getAttribute("data-profissao")
+    });
+
     fetch("https://clientes-fhfe.onrender.com/api/click", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-            profissionalId: event.target.getAttribute("data-id"),
-            nomeProfissional: event.target.getAttribute("data-nome")
+            profissionalId: target.getAttribute("data-id"),
+            nomeProfissional: target.getAttribute("data-nome"),
+            profissao: target.getAttribute("data-profissao")
         })
     })
-    .then(response => {
-        if (response.ok) {
-            console.log("✅ Clique registrado com sucesso no banco!");
-        } else {
-            console.error("🚨 Erro ao registrar clique:", response.statusText);
-        }
+    .then(response => response.json())
+    .then(data => {
+        console.log("✅ Clique registrado com sucesso!");
+
+        // 🚀 Agora abre o WhatsApp em outra aba para evitar bloqueios
+        const whatsappLink = target.getAttribute("href");
+        window.open(whatsappLink, "_blank");
     })
-    .catch(error => console.error("🚨 Erro na requisição:", error));
+    .catch(error => {
+        console.error("❌ Erro ao registrar clique:", error);
+        const whatsappLink = target.getAttribute("href");
+        window.open(whatsappLink, "_blank");
+    });
 }
 
 
