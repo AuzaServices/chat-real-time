@@ -46,12 +46,13 @@ app.post("/api/click", (req, res) => {
         return res.status(400).json({ error: "🚨 Dados incompletos!" });
     }
 
-    const sql = `
-        INSERT INTO cliques (profissional_id, nome_profissional, profissao, total)
-        VALUES (?, ?, ?, 1)
-        ON DUPLICATE KEY UPDATE 
-        total = total + 1;
-    `;
+const sql = `
+  INSERT INTO cliques (profissional_id, Profissional, \`Profissão\`, Chamadas)
+  VALUES (?, ?, ?, 1)
+  ON DUPLICATE KEY UPDATE 
+    Chamadas = Chamadas + 1,
+    \`Profissão\` = VALUES(\`Profissão\`);
+`;
 
     db.query(sql, [profissionalId, nomeProfissional, profissao], (err, results) => {
         if (err) {
