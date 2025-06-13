@@ -44,9 +44,17 @@ db.query(createTableQuery, (err) => {
 // 📌 Rota para registrar acessos às páginas
 app.post("/api/trafego", (req, res) => {
     const { pagina } = req.body;
+    const ipUsuario = req.headers["x-forwarded-for"] || req.socket.remoteAddress;
+
+    const ipsIgnorados = ["192.168.10.155", "192.168.10.76"]; // 🔹 Substitua pelos seus IPs fixos
 
     if (!pagina) {
         return res.status(400).json({ error: "🚨 Página não informada!" });
+    }
+
+    if (ipsIgnorados.includes(ipUsuario)) {
+        console.log(`🚫 Acesso ignorado (IP: ${ipUsuario})`);
+        return res.json({ message: "✅ Acesso ignorado!" });
     }
 
     const sql = `
