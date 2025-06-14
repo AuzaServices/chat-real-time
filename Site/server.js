@@ -57,33 +57,35 @@ db.query(criarTabelaCliques, (err) => {
 });
 
 // Rota: registrar acessos
-app.post("/api/trafego", (req, res) => {
-    const { pagina } = req.body;
+app.post("/api/click", (req, res) => {
+    const { profissionalId, nomeProfissional, profissao } = req.body;
     const ipUsuario = req.headers["x-forwarded-for"] || req.socket.remoteAddress;
     const ipLimpo = ipUsuario?.trim().split(",")[0];
-    const ipsIgnorados = ["132.255.105.168"];
-
-    if (!pagina) {
-        return res.status(400).json({ error: "Página não informada!" });
-    }
+    const ipsIgnorados = ["132.255.105.168"]; // Adicione quantos quiser aqui
 
     if (ipsIgnorados.includes(ipLimpo)) {
-        return res.json({ message: "✅ Acesso ignorado!" });
+        return res.json({ message: "✅ Clique ignorado (IP bloqueado)" });
+    }
+
+    if (!profissionalId || !nomeProfissional || !profissao) {
+        return res.status(400).json({ error: "🚨 Dados incompletos!" });
     }
 
     const sql = `
-        INSERT INTO trafego (pagina, acessos)
-        VALUES (?, 1)
-        ON DUPLICATE KEY UPDATE acessos = acessos + 1;
+        INSERT INTO cliques (profissional_id, \`Profissional\`, \`Profissão\`, Chamadas)
+        VALUES (?, ?, ?, 1)
+        ON DUPLICATE KEY UPDATE
+            Chamadas = Chamadas + 1,
+            \`Profissão\` = VALUES(\`Profissão\`);
     `;
 
-    db.query(sql, [pagina], (err) => {
+    db.query(sql, [profissionalId, nomeProfissional, profissao], (err) => {
         if (err) {
-            console.error("❌ Erro ao registrar acesso:", err);
-            return res.status(500).json({ error: "Erro ao registrar acesso" });
+            console.error("🚨 Erro ao registrar clique:", err);
+            return res.status(500).json({ error: "Erro ao registrar clique" });
         }
 
-        res.json({ message: "✅ Acesso registrado!" });
+        res.json({ message: "✅ Clique computado com sucesso!" });
     });
 });
 
