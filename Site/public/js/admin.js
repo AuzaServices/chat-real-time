@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", async () => {
+async function carregarDados() {
     try {
         const response = await fetch("/api/dados");
         const dados = await response.json();
@@ -23,9 +23,15 @@ document.addEventListener("DOMContentLoaded", async () => {
                 </tr>
             `).join("");
 
-            console.log("✅ Dados carregados e exibidos na tabela!");
+            console.log("✅ Dados atualizados automaticamente!");
         }
     } catch (error) {
         console.error("❌ Erro ao carregar dados:", error);
     }
-});
+}
+
+// 🔄 Atualizar automaticamente a cada 5 segundos
+setInterval(carregarDados, 2000);
+
+// 🔥 Chamar a função ao carregar a página
+document.addEventListener("DOMContentLoaded", carregarDados);
