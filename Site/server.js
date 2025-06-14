@@ -27,14 +27,16 @@ db.getConnection((err, connection) => {
 });
 
 // 🚀 Criar tabelas `trafego` e `cliques` se não existirem
-const createTablesQuery = `
+const criarTabelaTrafego = `
     CREATE TABLE IF NOT EXISTS trafego (
         id INT AUTO_INCREMENT PRIMARY KEY,
         pagina VARCHAR(50) NOT NULL UNIQUE,
         acessos INT DEFAULT 1,
         data TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
     );
+`;
 
+const criarTabelaCliques = `
     CREATE TABLE IF NOT EXISTS cliques (
         profissional_id INT PRIMARY KEY,
         Profissional VARCHAR(100),
@@ -42,6 +44,7 @@ const createTablesQuery = `
         Chamadas INT DEFAULT 1,
         data TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
     );
+
 `;
 
 db.query(createTablesQuery, (err) => {

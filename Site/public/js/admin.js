@@ -35,13 +35,3 @@ setInterval(carregarDados, 2000);
 
 // 🔥 Chamar a função ao carregar a página
 document.addEventListener("DOMContentLoaded", carregarDados);
-
-document.addEventListener("DOMContentLoaded", () => {
-    const body = document.body;
-    body.classList.add("inicial");
-    carregarDados();
-
-    setTimeout(() => {
-        body.classList.remove("inicial");
-    }, 1000); // Remover classe após 1 segundo
-});
