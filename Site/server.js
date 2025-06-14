@@ -27,6 +27,7 @@ db.getConnection((err, connection) => {
 });
 
 // 🚀 Criar tabelas `trafego` e `cliques` se não existirem
+// Criação da tabela trafego
 const criarTabelaTrafego = `
     CREATE TABLE IF NOT EXISTS trafego (
         id INT AUTO_INCREMENT PRIMARY KEY,
@@ -36,6 +37,15 @@ const criarTabelaTrafego = `
     );
 `;
 
+db.query(criarTabelaTrafego, (err) => {
+    if (err) {
+        console.error("🚨 Erro ao criar tabela 'trafego':", err);
+    } else {
+        console.log("✅ Tabela 'trafego' criada/verificada.");
+    }
+});
+
+// Criação da tabela cliques
 const criarTabelaCliques = `
     CREATE TABLE IF NOT EXISTS cliques (
         profissional_id INT PRIMARY KEY,
@@ -44,8 +54,15 @@ const criarTabelaCliques = `
         Chamadas INT DEFAULT 1,
         data TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
     );
-
 `;
+
+db.query(criarTabelaCliques, (err) => {
+    if (err) {
+        console.error("🚨 Erro ao criar tabela 'cliques':", err);
+    } else {
+        console.log("✅ Tabela 'cliques' criada/verificada.");
+    }
+});
 
 db.query(createTablesQuery, (err) => {
     if (err) console.error("🚨 Erro ao criar tabelas:", err);
