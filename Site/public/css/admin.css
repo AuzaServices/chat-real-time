@@ -1,58 +1,105 @@
-/* Estilização exclusiva para o painel administrativo */
+/* 🔥 Layout mais leve e moderno */
 body {
-    background-color: #222;
-    color: white;
-    font-family: Arial, sans-serif;
-    text-align: center;
+    background-color: #cdcdcd;
+    color: #f8f8f8;
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 20px;
+    text-align: center;
 }
 
-/* Títulos */
-h1 {
-    color: #ffcc00;
-    font-size: 24px;
+/* 🔥 Títulos elegantes */
+h1, h2 {
+    color: darkred;
+    font-size: 26px;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(139, 0, 0, 0.5);
 }
 
-h2 {
-    color: #ff9900;
-    font-size: 20px;
-}
-
-/* Tabelas */
+/* 🔥 Estilização da tabela */
 table {
-    width: 80%;
+    width: 90%;
+    max-width: 800px;
     margin: 20px auto;
     border-collapse: collapse;
-    background: #333;
+    background-color: #1e1e1e;
+    box-shadow: 0 0 12px rgba(139, 0, 0, 0.5);
+    border-radius: 10px;
+    overflow: hidden;
 }
 
-th, td {
-    padding: 12px;
-    border: 1px solid #555;
-}
-
+/* 🔥 Colunas em darkred */
 th {
-    background-color: #ffcc00;
-    color: black;
+    background-color: darkred;
+    color: #fff;
     font-size: 18px;
+    padding: 14px;
+    border-bottom: 3px solid #8b0000;
 }
 
-tr:nth-child(even) {
-    background-color: #444;
+td {
+    padding: 12px;
+    text-align: center;
+    font-size: 16px;
+    border-bottom: 1px solid #333;
 }
 
-tr:nth-child(odd) {
-    background-color: #555;
+/* 🔥 Estilo dos botões */
+button {
+    background-color: darkred;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: transform 0.2s ease, background-color 0.3s ease;
 }
 
-/* Responsividade */
-@media (max-width: 768px) {
+button:hover {
+    background-color: #8b0000;
+    transform: scale(1.05); /* Efeito sutil no hover */
+}
+
+/* 🔥 Efeito de animação para carregamento dos dados */
+tr {
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 🔥 Ajuste para telas menores */
+@media screen and (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    h1, h2 {
+        font-size: 22px;
+    }
+
     table {
-        width: 95%;
+        width: 100%;
     }
 
     th, td {
+        padding: 10px;
         font-size: 14px;
+    }
+
+    button {
+        width: 100%;
+        font-size: 15px;
     }
 }
