@@ -36,3 +36,16 @@ document.addEventListener("DOMContentLoaded", async () => {
     setInterval(atualizarDados, 10000); // 🔄 Atualiza a cada 10 segundos
     atualizarDados(); // 🔥 Executa ao carregar a página
 });
+
+document.getElementById("btn-limpar").addEventListener("click", async () => {
+    if (confirm("⚠️ Tem certeza que deseja apagar TODOS os dados? Isso não pode ser desfeito!")) {
+        try {
+            const response = await fetch("/api/limpar", { method: "DELETE" });
+            const resultado = await response.json();
+            alert(resultado.message);
+            location.reload(); // 🔄 Atualiza a página para exibir as tabelas vazias
+        } catch (error) {
+            console.error("❌ Erro ao limpar os dados:", error);
+        }
+    }
+});
