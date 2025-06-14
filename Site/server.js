@@ -56,45 +56,57 @@ db.query(criarTabelaCliques, (err) => {
     else console.log("✅ Tabela 'cliques' criada/verificada.");
 });
 
-// Rota: registrar acessos
-app.post("/api/click", (req, res) => {
-    const { profissionalId, nomeProfissional, profissao } = req.body;
-    const ipUsuario = req.headers["x-forwarded-for"] || req.socket.remoteAddress;
-    const ipLimpo = ipUsuario?.trim().split(",")[0];
-    const ipsIgnorados = ["132.255.105.168"]; // Adicione quantos quiser aqui
+// 🧱 Lista de IPs a serem ignorados
+const ipsIgnorados = ["132.255.105.168"]; // Pode adicionar mais IPs conforme necessário
 
-    if (ipsIgnorados.includes(ipLimpo)) {
-        return res.json({ message: "✅ Clique ignorado (IP bloqueado)" });
+// 🛡️ Função utilitária para capturar IP real do usuário
+function obterIp(req) {
+    const ip = req.headers["x-forwarded-for"] || req.socket.remoteAddress;
+    return ip?.trim().split(",")[0];
+}
+
+// Rota: registrar acessos
+app.post("/api/trafego", (req, res) => {
+    const { pagina } = req.body;
+    const ipLimpo = obterIp(req);
+
+    if (!pagina) {
+        return res.status(400).json({ error: "Página não informada!" });
     }
 
-    if (!profissionalId || !nomeProfissional || !profissao) {
-        return res.status(400).json({ error: "🚨 Dados incompletos!" });
+    if (ipsIgnorados.includes(ipLimpo)) {
+        console.log(`🔕 Tráfego ignorado do IP: ${ipLimpo}`);
+        return res.json({ message: "✅ Acesso ignorado!" });
     }
 
     const sql = `
-        INSERT INTO cliques (profissional_id, \`Profissional\`, \`Profissão\`, Chamadas)
-        VALUES (?, ?, ?, 1)
-        ON DUPLICATE KEY UPDATE
-            Chamadas = Chamadas + 1,
-            \`Profissão\` = VALUES(\`Profissão\`);
+        INSERT INTO trafego (pagina, acessos)
+        VALUES (?, 1)
+        ON DUPLICATE KEY UPDATE acessos = acessos + 1;
     `;
 
-    db.query(sql, [profissionalId, nomeProfissional, profissao], (err) => {
+    db.query(sql, [pagina], (err) => {
         if (err) {
-            console.error("🚨 Erro ao registrar clique:", err);
-            return res.status(500).json({ error: "Erro ao registrar clique" });
+            console.error("❌ Erro ao registrar acesso:", err);
+            return res.status(500).json({ error: "Erro ao registrar acesso" });
         }
 
-        res.json({ message: "✅ Clique computado com sucesso!" });
+        res.json({ message: "✅ Acesso registrado!" });
     });
 });
 
 // Rota: registrar clique
 app.post("/api/click", (req, res) => {
     const { profissionalId, nomeProfissional, profissao } = req.body;
+    const ipLimpo = obterIp(req);
+
+    if (ipsIgnorados.includes(ipLimpo)) {
+        console.log(`🔕 Clique ignorado do IP: ${ipLimpo}`);
+        return res.json({ message: "✅ Clique ignorado (IP bloqueado)" });
+    }
 
     if (!profissionalId || !nomeProfissional || !profissao) {
-        return res.status(400).json({ error: "Dados incompletos!" });
+        return res.status(400).json({ error: "🚨 Dados incompletos!" });
     }
 
     const sql = `
