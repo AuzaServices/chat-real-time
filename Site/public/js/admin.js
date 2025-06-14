@@ -1,5 +1,3 @@
-console.log("✅ admin.js carregado!");
-
 document.addEventListener("DOMContentLoaded", async () => {
     // Teste de botão (Apenas para registro de tráfego e cliques)
     const botaoRegistrarClique = document.getElementById("btn-click");
