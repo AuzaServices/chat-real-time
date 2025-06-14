@@ -26,17 +26,15 @@ db.getConnection((err, connection) => {
     }
 });
 
-// 🚀 Criar tabelas separadamente para evitar erro de sintaxe
-const createTableTrafego = `
+// 🚀 Criar tabelas `trafego` e `cliques` se não existirem
+const createTablesQuery = `
     CREATE TABLE IF NOT EXISTS trafego (
         id INT AUTO_INCREMENT PRIMARY KEY,
         pagina VARCHAR(50) NOT NULL UNIQUE,
         acessos INT DEFAULT 1,
         data TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
     );
-`;
 
-const createTableCliques = `
     CREATE TABLE IF NOT EXISTS cliques (
         profissional_id INT PRIMARY KEY,
         Profissional VARCHAR(100),
@@ -46,24 +44,36 @@ const createTableCliques = `
     );
 `;
 
-db.query(createTableTrafego, (err) => {
-    if (err) console.error("🚨 Erro ao criar tabela `trafego`:", err);
-    else console.log("✅ Tabela `trafego` pronta!");
+db.query(createTablesQuery, (err) => {
+    if (err) console.error("🚨 Erro ao criar tabelas:", err);
+    else console.log("✅ Tabelas `trafego` e `cliques` prontas!");
 });
 
-db.query(createTableCliques, (err) => {
-    if (err) console.error("🚨 Erro ao criar tabela `cliques`:", err);
-    else console.log("✅ Tabela `cliques` pronta!");
-});
-
-// 📌 Rota para registrar acessos às páginas
+// 📌 Rota para registrar acessos às páginas, ignorando dispositivos específicos
 app.post("/api/trafego", (req, res) => {
     const { pagina } = req.body;
+    const ipUsuario = req.headers["x-forwarded-for"] || req.socket.remoteAddress;
+
+    console.log("🔎 Todas as possibilidades de IP:");
+    console.log("➡ req.socket.remoteAddress:", req.socket.remoteAddress);
+    console.log("➡ req.headers['x-forwarded-for']:", req.headers["x-forwarded-for"]);
+
+    // 🚫 Substitua pelo IP público do seu notebook/celular
+    const ipsIgnorados = ["132.255.105.168"];
 
     if (!pagina) {
         console.error("🚨 Página não informada!");
         return res.status(400).json({ error: "🚨 Página não informada!" });
     }
+
+    const ipLimpo = ipUsuario?.trim().split(",")[0];
+
+    if (ipsIgnorados.includes(ipLimpo)) {
+        console.log(`🚫 Acesso ignorado (IP: ${ipLimpo})`);
+        return res.json({ message: "✅ Acesso ignorado!" });
+    }
+
+    console.log(`✅ Acesso registrado (IP: ${ipLimpo}) na página "${pagina}"`);
 
     const sql = `
         INSERT INTO trafego (pagina, acessos) 
@@ -83,28 +93,31 @@ app.post("/api/trafego", (req, res) => {
 });
 
 // 📲 Rota para registrar cliques no botão de WhatsApp
-app.post("/api/trafego", (req, res) => {
-    const { pagina } = req.body;
+app.post("/api/click", (req, res) => {
+    const { profissionalId, nomeProfissional, profissao } = req.body;
 
-    if (!pagina) {
-        console.error("🚨 Página não informada!");
-        return res.status(400).json({ error: "🚨 Página não informada!" });
+    console.log("📌 Clique recebido → ID:", profissionalId, "| Nome:", nomeProfissional, "| Profissão:", profissao);
+
+    if (!profissionalId || !nomeProfissional || !profissao) {
+        return res.status(400).json({ error: "🚨 Dados incompletos!" });
     }
 
     const sql = `
-        INSERT INTO trafego (pagina, acessos) 
-        VALUES (?, 1) 
-        ON DUPLICATE KEY UPDATE acessos = acessos + 1;
+        INSERT INTO cliques (profissional_id, \`Profissional\`, \`Profissão\`, \`Chamadas\`)
+        VALUES (?, ?, ?, 1)
+        ON DUPLICATE KEY UPDATE  
+            \`Chamadas\` = \`Chamadas\` + 1, 
+            \`Profissão\` = VALUES(\`Profissão\`);
     `;
 
-    db.query(sql, [pagina], (err, result) => {
+    db.query(sql, [profissionalId, nomeProfissional, profissao], (err) => {
         if (err) {
-            console.error("❌ Erro ao registrar acesso no banco:", err);
-            return res.status(500).json({ error: "Erro ao registrar acesso no banco" });
+            console.error("🚨 Erro ao registrar clique:", err);
+            return res.status(500).json({ error: "Erro ao registrar clique" });
         }
 
-        console.log(`✅ Banco atualizado: ${pagina}, acessos +1`);
-        res.json({ message: "✅ Acesso registrado!" });
+        console.log("✅ Clique registrado ou atualizado com sucesso!");
+        res.json({ message: "✅ Clique computado com sucesso!" });
     });
 });
 
@@ -133,19 +146,6 @@ app.get("/api/dados", (req, res) => {
 // Página principal
 app.get("/", (req, res) => {
     res.sendFile(__dirname + "/public/index.html");
-});
-
-// 📌 Rota para apagar os dados das tabelas
-app.delete("/api/limpar", async (req, res) => {
-    try {
-        await db.promise().query("DELETE FROM trafego");
-        await db.promise().query("DELETE FROM cliques");
-        console.log("✅ Todas as tabelas foram limpas!");
-        res.json({ message: "✅ Dados apagados com sucesso!" });
-    } catch (error) {
-        console.error("❌ Erro ao limpar tabelas:", error);
-        res.status(500).json({ error: "Erro ao limpar tabelas" });
-    }
 });
 
 // Iniciar o servidor
