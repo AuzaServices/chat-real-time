@@ -51,7 +51,7 @@ app.post("/api/trafego", (req, res) => {
     console.log("➡ req.headers['x-forwarded-for']:", req.headers["x-forwarded-for"]);
 
     // 🚫 Substitua pelos IPs públicos do seu notebook e celular!
-    const ipsIgnorados = ["74.125.215.233"];
+    const ipsIgnorados = ["132.255.105.168"];
 
     if (!pagina) {
         console.error("🚨 Página não informada!");
