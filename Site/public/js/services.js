@@ -264,6 +264,10 @@ document.addEventListener("DOMContentLoaded", function () {
         { id: 162, service: "reboque", name: "Edimilson Camara", age: 18, city: "Aquiraz - CE", stars: "⭐⭐⭐⭐⭐", comment: "5 anos de experiência na área", whatsapp: "5585992885324" },
         //Costureira  
 
+        //Motorista Particular
+
+        //Segurança de Eventos
+
     ];
 
 
