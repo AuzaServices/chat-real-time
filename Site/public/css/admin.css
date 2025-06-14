@@ -1,0 +1,58 @@
+/* Estilização exclusiva para o painel administrativo */
+body {
+    background-color: #222;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Títulos */
+h1 {
+    color: #ffcc00;
+    font-size: 24px;
+}
+
+h2 {
+    color: #ff9900;
+    font-size: 20px;
+}
+
+/* Tabelas */
+table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background: #333;
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid #555;
+}
+
+th {
+    background-color: #ffcc00;
+    color: black;
+    font-size: 18px;
+}
+
+tr:nth-child(even) {
+    background-color: #444;
+}
+
+tr:nth-child(odd) {
+    background-color: #555;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    table {
+        width: 95%;
+    }
+
+    th, td {
+        font-size: 14px;
+    }
+}
