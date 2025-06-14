@@ -1,36 +1,53 @@
 console.log("✅ admin.js carregado!");
 
 document.addEventListener("DOMContentLoaded", async () => {
-    // Teste de botão
-    const botaoLimpar = document.getElementById("btn-limpar");
-    if (!botaoLimpar) {
-        console.error("❌ Botão 'Limpar Dados' não encontrado! Confirme o ID no HTML.");
+    // Teste de botão (Apenas para registro de tráfego e cliques)
+    const botaoRegistrarClique = document.getElementById("btn-click");
+    if (!botaoRegistrarClique) {
+        console.error("❌ Botão 'Registrar Clique' não encontrado! Confirme o ID no HTML.");
         return;
     }
 
-    botaoLimpar.addEventListener("click", async () => {
-        console.log("🗑️ Botão 'Limpar Dados' foi clicado!");
+    botaoRegistrarClique.addEventListener("click", async () => {
+        console.log("🖱️ Botão 'Registrar Clique' foi clicado!");
 
-        if (confirm("⚠️ Tem certeza que deseja apagar TODOS os dados? Isso não pode ser desfeito!")) {
-            try {
-                const response = await fetch("/api/limpar", {
-                    method: "DELETE",
-                    headers: { "Content-Type": "application/json" }
-                });
-                const resultado = await response.json();
+        try {
+            const response = await fetch("/api/click", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    profissionalId: 1,
+                    nomeProfissional: "João Silva",
+                    profissao: "Designer"
+                })
+            });
 
-                if (response.ok) {
-                    alert(resultado.message);
-                    console.log("✅ Dados apagados com sucesso!");
-                    location.reload(); // 🔄 Atualiza a página para exibir as tabelas vazias
-                } else {
-                    alert("❌ Erro ao apagar dados: " + resultado.error);
-                    console.error("❌ Erro na resposta da API:", resultado.error);
-                }
-            } catch (error) {
-                console.error("❌ Erro ao conectar com a API:", error);
-                alert("❌ Erro ao tentar apagar os dados!");
+            const resultado = await response.json();
+
+            if (response.ok) {
+                alert(resultado.message);
+                console.log("✅ Clique registrado com sucesso!");
+            } else {
+                alert("❌ Erro ao registrar clique: " + resultado.error);
+                console.error("❌ Erro na resposta da API:", resultado.error);
             }
+        } catch (error) {
+            console.error("❌ Erro ao conectar com a API:", error);
+            alert("❌ Erro ao tentar registrar o clique!");
         }
     });
+
+    // Registro de tráfego automático ao carregar a página
+    try {
+        const response = await fetch("/api/trafego", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ pagina: "Página Inicial" })
+        });
+
+        const resultado = await response.json();
+        console.log("📊 Registro de tráfego:", resultado.message);
+    } catch (error) {
+        console.error("❌ Erro ao registrar tráfego:", error);
+    }
 });
