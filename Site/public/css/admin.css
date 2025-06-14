@@ -64,7 +64,7 @@ button:hover {
 }
 
 /* 🔥 Efeito de animação para carregamento dos dados */
-tr {
+.inicial tr {
     animation: fadeIn 0.6s ease-in-out;
 }
 
