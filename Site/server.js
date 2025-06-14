@@ -3,11 +3,11 @@ const mysql = require("mysql2");
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Middleware para arquivos estáticos e JSON
+// Middleware
 app.use(express.static("public"));
 app.use(express.json());
 
-// Conexão com o banco de dados MySQL
+// Conexão com MySQL
 const db = mysql.createPool({
     host: "sql10.freesqldatabase.com",
     user: "sql10784497",
@@ -16,7 +16,7 @@ const db = mysql.createPool({
     port: 3306
 });
 
-// Teste de conexão
+// Testar conexão
 db.getConnection((err, connection) => {
     if (err) {
         console.error("🚨 Erro ao conectar ao MySQL:", err);
@@ -26,8 +26,7 @@ db.getConnection((err, connection) => {
     }
 });
 
-// 🚀 Criar tabelas `trafego` e `cliques` se não existirem
-// Criação da tabela trafego
+// Criar tabelas (trafego e cliques)
 const criarTabelaTrafego = `
     CREATE TABLE IF NOT EXISTS trafego (
         id INT AUTO_INCREMENT PRIMARY KEY,
@@ -37,15 +36,6 @@ const criarTabelaTrafego = `
     );
 `;
 
-db.query(criarTabelaTrafego, (err) => {
-    if (err) {
-        console.error("🚨 Erro ao criar tabela 'trafego':", err);
-    } else {
-        console.log("✅ Tabela 'trafego' criada/verificada.");
-    }
-});
-
-// Criação da tabela cliques
 const criarTabelaCliques = `
     CREATE TABLE IF NOT EXISTS cliques (
         profissional_id INT PRIMARY KEY,
@@ -56,77 +46,60 @@ const criarTabelaCliques = `
     );
 `;
 
+db.query(criarTabelaTrafego, (err) => {
+    if (err) console.error("🚨 Erro ao criar tabela 'trafego':", err);
+    else console.log("✅ Tabela 'trafego' criada/verificada.");
+});
+
 db.query(criarTabelaCliques, (err) => {
-    if (err) {
-        console.error("🚨 Erro ao criar tabela 'cliques':", err);
-    } else {
-        console.log("✅ Tabela 'cliques' criada/verificada.");
-    }
+    if (err) console.error("🚨 Erro ao criar tabela 'cliques':", err);
+    else console.log("✅ Tabela 'cliques' criada/verificada.");
 });
 
-db.query(createTablesQuery, (err) => {
-    if (err) console.error("🚨 Erro ao criar tabelas:", err);
-    else console.log("✅ Tabelas `trafego` e `cliques` prontas!");
-});
-
-// 📌 Rota para registrar acessos às páginas, ignorando dispositivos específicos
+// Rota: registrar acessos
 app.post("/api/trafego", (req, res) => {
     const { pagina } = req.body;
     const ipUsuario = req.headers["x-forwarded-for"] || req.socket.remoteAddress;
-
-    console.log("🔎 Todas as possibilidades de IP:");
-    console.log("➡ req.socket.remoteAddress:", req.socket.remoteAddress);
-    console.log("➡ req.headers['x-forwarded-for']:", req.headers["x-forwarded-for"]);
-
-    // 🚫 Substitua pelo IP público do seu notebook/celular
+    const ipLimpo = ipUsuario?.trim().split(",")[0];
     const ipsIgnorados = ["132.255.105.168"];
 
     if (!pagina) {
-        console.error("🚨 Página não informada!");
-        return res.status(400).json({ error: "🚨 Página não informada!" });
+        return res.status(400).json({ error: "Página não informada!" });
     }
 
-    const ipLimpo = ipUsuario?.trim().split(",")[0];
-
     if (ipsIgnorados.includes(ipLimpo)) {
-        console.log(`🚫 Acesso ignorado (IP: ${ipLimpo})`);
         return res.json({ message: "✅ Acesso ignorado!" });
     }
 
-    console.log(`✅ Acesso registrado (IP: ${ipLimpo}) na página "${pagina}"`);
-
     const sql = `
-        INSERT INTO trafego (pagina, acessos) 
-        VALUES (?, 1) 
+        INSERT INTO trafego (pagina, acessos)
+        VALUES (?, 1)
         ON DUPLICATE KEY UPDATE acessos = acessos + 1;
     `;
 
-    db.query(sql, [pagina], (err, result) => {
+    db.query(sql, [pagina], (err) => {
         if (err) {
-            console.error("❌ Erro ao registrar acesso no banco:", err);
-            return res.status(500).json({ error: "Erro ao registrar acesso no banco" });
+            console.error("❌ Erro ao registrar acesso:", err);
+            return res.status(500).json({ error: "Erro ao registrar acesso" });
         }
 
-        console.log(`✅ Banco atualizado: ${pagina}, acessos +1`);
         res.json({ message: "✅ Acesso registrado!" });
     });
 });
 
-// 📲 Rota para registrar cliques no botão de WhatsApp
+// Rota: registrar clique
 app.post("/api/click", (req, res) => {
     const { profissionalId, nomeProfissional, profissao } = req.body;
 
-    console.log("📌 Clique recebido → ID:", profissionalId, "| Nome:", nomeProfissional, "| Profissão:", profissao);
-
     if (!profissionalId || !nomeProfissional || !profissao) {
-        return res.status(400).json({ error: "🚨 Dados incompletos!" });
+        return res.status(400).json({ error: "Dados incompletos!" });
     }
 
     const sql = `
-        INSERT INTO cliques (profissional_id, \`Profissional\`, \`Profissão\`, \`Chamadas\`)
+        INSERT INTO cliques (profissional_id, \`Profissional\`, \`Profissão\`, Chamadas)
         VALUES (?, ?, ?, 1)
-        ON DUPLICATE KEY UPDATE  
-            \`Chamadas\` = \`Chamadas\` + 1, 
+        ON DUPLICATE KEY UPDATE
+            Chamadas = Chamadas + 1,
             \`Profissão\` = VALUES(\`Profissão\`);
     `;
 
@@ -136,26 +109,25 @@ app.post("/api/click", (req, res) => {
             return res.status(500).json({ error: "Erro ao registrar clique" });
         }
 
-        console.log("✅ Clique registrado ou atualizado com sucesso!");
         res.json({ message: "✅ Clique computado com sucesso!" });
     });
 });
 
-// 📌 Rota para buscar dados das tabelas `trafego` e `cliques`
+// Rota: retornar dados
 app.get("/api/dados", (req, res) => {
     const sqlTrafego = "SELECT pagina, acessos, data FROM trafego ORDER BY data DESC";
     const sqlCliques = "SELECT Profissional, Profissão, Chamadas FROM cliques ORDER BY Chamadas DESC";
 
     db.query(sqlTrafego, (errTrafego, trafegoResults) => {
         if (errTrafego) {
-            console.error("❌ Erro ao buscar dados da tabela Trafego:", errTrafego);
-            return res.status(500).json({ error: "Erro ao buscar dados da tabela Trafego" });
+            console.error("❌ Erro dados trafego:", errTrafego);
+            return res.status(500).json({ error: "Erro ao buscar trafego" });
         }
 
         db.query(sqlCliques, (errCliques, cliquesResults) => {
             if (errCliques) {
-                console.error("❌ Erro ao buscar dados da tabela Cliques:", errCliques);
-                return res.status(500).json({ error: "Erro ao buscar dados da tabela Cliques" });
+                console.error("❌ Erro dados cliques:", errCliques);
+                return res.status(500).json({ error: "Erro ao buscar cliques" });
             }
 
             res.json({ trafego: trafegoResults, cliques: cliquesResults });
@@ -163,12 +135,12 @@ app.get("/api/dados", (req, res) => {
     });
 });
 
-// Página principal
+// Página inicial
 app.get("/", (req, res) => {
     res.sendFile(__dirname + "/public/index.html");
 });
 
-// Iniciar o servidor
+// Inicia servidor
 app.listen(port, () => {
     console.log(`🚀 Servidor rodando na porta ${port}`);
 });
