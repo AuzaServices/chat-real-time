@@ -100,3 +100,37 @@ button:hover {
         font-size: 15px;
     }
 }
+
+#goldContainer {
+    margin-top: 40px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.gold {
+    background: #fff3cd;
+    border-left: 10px solid goldenrod;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.gold input {
+    font-size: 16px;
+    padding: 5px;
+    width: 150px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.gold button {
+    background-color: crimson;
+    color: white;
+    padding: 8px 12px;
+    margin-top: -2px;
+    border-radius: 5px;
+    font-weight: bold;
+}

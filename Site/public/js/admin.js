@@ -31,10 +31,8 @@ async function carregarDados() {
     }
 }
 
-// 🔄 Atualizar automaticamente a cada 2 segundos
+// 🔄 Atualiza dados a cada 2 segundos
 setInterval(carregarDados, 2000);
-
-// 🔥 Chamar a função ao carregar a página
 document.addEventListener("DOMContentLoaded", carregarDados);
 
 // 🛡️ Verifica senha antes de exibir painel
@@ -51,37 +49,28 @@ function verificarSenha() {
     }
 }
 
-// ☰ Abre ou fecha o menu lateral
-function abrirMenu() {
-    const menu = document.getElementById("menu-lateral");
-    menu.style.display = menu.style.display === "flex" ? "none" : "flex";
-}
-
-// 🏅 Exibe o painel de controle Gold
-function exibirPainelGold() {
-    document.getElementById("goldContainer").style.display = "block";
-}
-
-// 🔄 Recupera clientes Gold do `localStorage`
+// 🔄 Recupera clientes Gold do localStorage
 let clientesGold = JSON.parse(localStorage.getItem("clientesGold")) || [];
 
-// 🔄 Atualiza a lista de clientes Gold na página
+// 🔧 Atualiza a lista de AuzaGold na tela
 function atualizarLista() {
-    const container = document.getElementById("goldContainerContent");
+    const container = document.getElementById("goldContainer");
     container.innerHTML = "";
     const hoje = new Date();
 
     clientesGold.forEach((cliente, index) => {
         const inicio = new Date(cliente.inicio);
-        const diff = 30 - Math.floor((hoje - inicio) / (1000 * 60 * 60 * 24));
-        const diasRestantes = diff > 0 ? diff : 0;
+        const diasCalculados = 30 - Math.floor((hoje - inicio) / (1000 * 60 * 60 * 24));
+        const diasRestantes = cliente.diasCustom !== undefined && cliente.diasCustom !== null
+            ? cliente.diasCustom
+            : Math.max(diasCalculados, 0);
 
         const div = document.createElement("div");
         div.className = "gold";
         div.innerHTML = `
             <input type="text" value="${cliente.nome}" onchange="editarNome(${index}, this.value)">
             <input type="date" value="${cliente.inicio}" onchange="editarData(${index}, this.value)">
-            <span>Restam: ${diasRestantes} dias</span>
+            <input type="number" value="${diasRestantes}" onchange="editarDias(${index}, this.value)" min="0" max="999" title="Dias restantes">
             <button onclick="removerCliente(${index})">❌</button>
         `;
         container.appendChild(div);
@@ -96,13 +85,24 @@ function editarNome(index, novoNome) {
     atualizarLista();
 }
 
-// 📅 Edita data de início do Gold
+// 📅 Edita data de início
 function editarData(index, novaData) {
     clientesGold[index].inicio = novaData;
     atualizarLista();
 }
 
-// ❌ Remove cliente da lista
+// 📆 Edita dias restantes manualmente
+function editarDias(index, novoValor) {
+    const valor = parseInt(novoValor);
+    if (isNaN(valor)) {
+        clientesGold[index].diasCustom = null;
+    } else {
+        clientesGold[index].diasCustom = valor;
+    }
+    atualizarLista();
+}
+
+// ❌ Remove cliente
 function removerCliente(index) {
     clientesGold.splice(index, 1);
     atualizarLista();
@@ -110,7 +110,11 @@ function removerCliente(index) {
 
 // ➕ Adiciona novo cliente Gold
 document.getElementById("adicionar").addEventListener("click", () => {
-    clientesGold.push({ nome: "Novo Cliente", inicio: new Date().toISOString().split("T")[0] });
+    clientesGold.push({
+        nome: "Novo Cliente",
+        inicio: new Date().toISOString().split("T")[0],
+        diasCustom: null
+    });
     atualizarLista();
 });
 
