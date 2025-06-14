@@ -153,24 +153,14 @@ app.listen(port, () => {
     console.log(`🚀 Servidor rodando na porta ${port}`);
 });
 
-app.delete("/api/limpar", (req, res) => {
-    const sqlLimparTrafego = "DELETE FROM trafego";
-    const sqlLimparCliques = "DELETE FROM cliques";
-
-    db.query(sqlLimparTrafego, (errTrafego) => {
-        if (errTrafego) {
-            console.error("❌ Erro ao limpar a tabela `trafego`:", errTrafego);
-            return res.status(500).json({ error: "Erro ao limpar a tabela `trafego`" });
-        }
-
-        db.query(sqlLimparCliques, (errCliques) => {
-            if (errCliques) {
-                console.error("❌ Erro ao limpar a tabela `cliques`:", errCliques);
-                return res.status(500).json({ error: "Erro ao limpar a tabela `cliques`" });
-            }
-
-            console.log("✅ Todas as tabelas foram limpas!");
-            res.json({ message: "✅ Dados apagados com sucesso!" });
-        });
-    });
+app.delete("/api/limpar", async (req, res) => {
+    try {
+        await db.promise().query("DELETE FROM trafego");
+        await db.promise().query("DELETE FROM cliques");
+        console.log("✅ Todas as tabelas foram limpas!");
+        res.json({ message: "✅ Dados apagados com sucesso!" });
+    } catch (error) {
+        console.error("❌ Erro ao limpar tabelas:", error);
+        res.status(500).json({ error: "Erro ao limpar tabelas" });
+    }
 });
