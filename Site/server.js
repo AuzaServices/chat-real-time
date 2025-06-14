@@ -50,15 +50,15 @@ app.post("/api/trafego", (req, res) => {
     console.log("➡ req.socket.remoteAddress:", req.socket.remoteAddress);
     console.log("➡ req.headers['x-forwarded-for']:", req.headers["x-forwarded-for"]);
 
-    // 🚫 Lista de IPs que devem ser ignorados (adicione os IPs que deseja bloquear)
-    const ipsIgnorados = ["132.255.105.168", "162.158.224.130", "10.226.145.193"];
+    // 🚫 Substitua pelos IPs corretos do seu notebook e celular!
+    const ipsIgnorados = ["132.255.105.168"]; // 🔹 Substitua pelo IP público que aparece nos logs!
 
     if (!pagina) {
         console.error("🚨 Página não informada!");
         return res.status(400).json({ error: "🚨 Página não informada!" });
     }
 
-    // 🔥 Ajuste na captura para pegar apenas o primeiro IP da lista
+    // 🔥 Captura apenas o primeiro IP real da lista
     const ipLimpo = ipUsuario?.trim().split(",")[0];
 
     if (ipsIgnorados.includes(ipLimpo)) {
