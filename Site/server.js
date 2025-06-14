@@ -83,27 +83,28 @@ app.post("/api/trafego", (req, res) => {
 });
 
 // 📲 Rota para registrar cliques no botão de WhatsApp
-app.post("/api/click", (req, res) => {
-    const { profissionalId, nomeProfissional, profissao } = req.body;
+app.post("/api/trafego", (req, res) => {
+    const { pagina } = req.body;
 
-    if (!profissionalId || !nomeProfissional || !profissao) {
-        return res.status(400).json({ error: "🚨 Dados incompletos!" });
+    if (!pagina) {
+        console.error("🚨 Página não informada!");
+        return res.status(400).json({ error: "🚨 Página não informada!" });
     }
 
     const sql = `
-        INSERT INTO cliques (profissional_id, Profissional, Profissão, Chamadas)
-        VALUES (?, ?, ?, 1)
-        ON DUPLICATE KEY UPDATE Chamadas = Chamadas + 1, Profissão = VALUES(Profissão);
+        INSERT INTO trafego (pagina, acessos) 
+        VALUES (?, 1) 
+        ON DUPLICATE KEY UPDATE acessos = acessos + 1;
     `;
 
-    db.query(sql, [profissionalId, nomeProfissional, profissao], (err) => {
+    db.query(sql, [pagina], (err, result) => {
         if (err) {
-            console.error("🚨 Erro ao registrar clique:", err);
-            return res.status(500).json({ error: "Erro ao registrar clique" });
+            console.error("❌ Erro ao registrar acesso no banco:", err);
+            return res.status(500).json({ error: "Erro ao registrar acesso no banco" });
         }
 
-        console.log("✅ Clique registrado ou atualizado com sucesso!");
-        res.json({ message: "✅ Clique computado com sucesso!" });
+        console.log(`✅ Banco atualizado: ${pagina}, acessos +1`);
+        res.json({ message: "✅ Acesso registrado!" });
     });
 });
 
