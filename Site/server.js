@@ -41,7 +41,7 @@ db.query(createTableQuery, (err) => {
     else console.log("✅ Tabela `trafego` pronta!");
 });
 
-// 📌 Rota para registrar acessos às páginas, ignorando IPs fixos
+// 📌 Rota para registrar acessos às páginas, ignorando dispositivos específicos
 app.post("/api/trafego", (req, res) => {
     const { pagina } = req.body;
     const ipUsuario = req.headers["x-forwarded-for"] || req.socket.remoteAddress;
@@ -50,8 +50,8 @@ app.post("/api/trafego", (req, res) => {
     console.log("➡ req.socket.remoteAddress:", req.socket.remoteAddress);
     console.log("➡ req.headers['x-forwarded-for']:", req.headers["x-forwarded-for"]);
 
-    // 🚫 Substitua pelos IPs corretos do seu notebook e celular!
-    const ipsIgnorados = ["132.255.105.168", "74.125.215.233"];
+    // 🚫 Substitua pelos IPs públicos do seu notebook e celular!
+    const ipsIgnorados = ["74.125.215.233"];
 
     if (!pagina) {
         console.error("🚨 Página não informada!");
@@ -74,11 +74,13 @@ app.post("/api/trafego", (req, res) => {
         ON DUPLICATE KEY UPDATE acessos = acessos + 1;
     `;
 
-    db.query(sql, [pagina], (err) => {
+    db.query(sql, [pagina], (err, result) => {
         if (err) {
-            console.error("❌ Erro ao registrar acesso:", err);
-            return res.status(500).json({ error: "Erro ao registrar acesso" });
+            console.error("❌ Erro ao registrar acesso no banco:", err);
+            return res.status(500).json({ error: "Erro ao registrar acesso no banco" });
         }
+        
+        console.log(`✅ Banco atualizado: ${pagina}, acessos +1`);
         res.json({ message: "✅ Acesso registrado!" });
     });
 });
