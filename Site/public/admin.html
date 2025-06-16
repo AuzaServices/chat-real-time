@@ -80,7 +80,7 @@
     <p id="msg" style="color: crimson; margin-top: 30px; font-size: 24px; font-weight: 500;"></p>
 </div>
 
-    <!-- 📊 Painel escondido até liberar acesso -->
+    <!-- 📊 Painel Administrativo -->
     <div id="painel" style="display: none;">
         <h1>📊 Painel Administrativo - Relatório de Acessos e Cliques</h1>
 
@@ -108,7 +108,20 @@
             <tbody id="tabela-cliques"></tbody>
         </table>
 
-        <!-- 🏅 Controle de AuzaGold -->
+        <!-- 📋 Tabela de Controle de Serviços e Valores -->
+        <h2>Serviços e Valores</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Descrição do Serviço</th>
+                    <th>Valor</th>
+                    <th>Profissional</th>
+                </tr>
+            </thead>
+            <tbody id="tabela-servicos"></tbody>
+        </table>
+
+        <!-- 🏅 Clientes AuzaGold -->
         <h1>🏅 Clientes AuzaGold</h1>
         <div id="goldContainer"></div>
         <button id="adicionar">➕ Adicionar Cliente</button>
