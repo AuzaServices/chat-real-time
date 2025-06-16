@@ -231,7 +231,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const profissionalNome = profissionais[profissionalId] || "Profissional não identificado"; 
 
     if (profissionalNome) {
-        document.getElementById("profissionalNome").innerText = `Painel de Serviços - ${profissionalNome}`;
+document.getElementById("profissionalNome").innerText = "Painel de Serviços";
     }
 
     // Função para carregar serviços do localStorage
@@ -331,7 +331,6 @@ document.getElementById("formServico").addEventListener("submit", function(event
     })
     .then(response => response.json())
     .then(data => {
-        alert("✅ Serviço adicionado com sucesso!");
         document.getElementById("descricao").value = "";
         document.getElementById("valor").value = "";
     })
