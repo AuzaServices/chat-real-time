@@ -174,17 +174,17 @@ db.query(criarTabelaServicos, (err) => {
 
 // Rota: Salvar serviço no banco de dados
 app.post("/api/salvar-servico", (req, res) => {
-    const { profissional_id, descricao, valor } = req.body;
+    const { profissional_id, profissional_nome, descricao, valor } = req.body;
 
-    if (!profissional_id || !descricao || !valor) {
+    if (!profissional_id || !descricao || !valor || !profissional_nome) {
         return res.status(400).json({ error: "🚨 Todos os campos são obrigatórios!" });
     }
 
-    const sql = "INSERT INTO ServicosValor (profissional_id, descricao, valor) VALUES (?, ?, ?)";
-    db.query(sql, [profissional_id, descricao, valor], (err) => {
+    const sql = "INSERT INTO ServicosValor (profissional_id, profissional_nome, descricao, valor) VALUES (?, ?, ?, ?)";
+    db.query(sql, [profissional_id, profissional_nome, descricao, valor], (err) => {
         if (err) {
             console.error("🚨 Erro ao salvar serviço:", err);
-            return res.status(500).json({ error: "Erro interno ao salvar serviço" });
+            return res.status(500).json({ error: "Erro ao salvar serviço no banco" });
         }
         res.json({ message: "✅ Serviço salvo com sucesso!" });
     });
@@ -192,19 +192,20 @@ app.post("/api/salvar-servico", (req, res) => {
 
 // Rota: Listar serviços cadastrados para exibição na admin.html
 app.get("/api/listar-servicos", (req, res) => {
-    const sql = `
-        SELECT s.profissional_id, COALESCE(p.nome, 'Profissional não encontrado') AS profissional_nome, 
-               s.descricao, s.valor, s.data_registro
-        FROM ServicosValor s
-        LEFT JOIN Profissionais p ON s.profissional_id = p.id
-        ORDER BY s.data_registro DESC
-    `;
+    const sql = "SELECT profissional_id, descricao, valor, data_registro FROM ServicosValor ORDER BY data_registro DESC";
 
     db.query(sql, (err, results) => {
         if (err) {
             console.error("❌ Erro ao buscar serviços:", err);
             return res.status(500).json({ error: "Erro ao listar serviços" });
         }
+
+        // Vincular corretamente o nome do profissional ao serviço
+        results.forEach(servico => {
+            const profissional = profissionais.find(p => Number(p.id) === Number(servico.profissional_id));
+            servico.profissional_nome = profissional ? profissional.nome : "Profissional não encontrado";
+        });
+
         res.json(results);
     });
 });
