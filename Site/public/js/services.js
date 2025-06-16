@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         //AuzaPoli
         { id: 1, service: "auzapoli", name: "Fagner Lucena", age: 47, city: "Fortaleza - CE", stars: "⭐⭐⭐", comment: "Eletricista, Bombeiro Hidráulico, Manutenção Predial", whatsapp: "558598581919" },
-
+        { id: 163, service: "auzapoli", name: "Rogério Alves", age: 47, city: "Fortaleza - CE", stars: "⭐⭐⭐", comment: "Motorista Particular e Segurança", whatsapp: "5585987997754" },
         //Pedreiro 🧱🔨
         { id: 2, service: "pedreiro", name: "Leonardo", age: 28, city: "Fortaleza - CE", stars: "⭐⭐", comment: "Pedreiro, Mestre de obra profissional. Entendo de projetos.", whatsapp: "5585988559085" },
         { id: 3, service: "pedreiro", name: "Edilcimar Frazão", age: 53, city: "Fortaleza - CE", stars: "⭐⭐", comment: "Área de acabamento da constr. civil, PVC, Gesso, Porcel/Cerâmica.", whatsapp: "5585992363266" },
@@ -213,8 +213,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 
         // Metalúrgico 🔩⚙️
         { id: 132, service: "metalurgico", name: "Gabriel", age: 35, city: "Horizonte - CE", stars: "⭐⭐⭐⭐⭐", comment: "Experiência em fabricação de peças metálicas sob medida.", whatsapp: "5585992768448" },
+        { id: 164, service: "metalurgico", name: "Daniel Brandão", age: 37, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "Trabalho com Soldas e etc...", whatsapp: "5585996747368" },
         //
-        { id: 133, service: "metalurgico", name: "Lucas Oliveira", age: 38, city: "Pacajus - CE", stars: "⭐⭐⭐⭐", comment: "Especialista em soldagem e corte industrial.", whatsapp: "55859913407" },
         { id: 134, service: "metalurgico", name: "Fernando Silva", age: 42, city: "Itaitinga - CE", stars: "⭐⭐⭐⭐⭐", comment: "Trabalha com fundição e tratamento térmico de metais.", whatsapp: "55859940792" },
         { id: 135, service: "metalurgico", name: "André Souza", age: 37, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "Especialista em corte a plasma e moldagem de aço.", whatsapp: "5991340793" },
         { id: 136, service: "metalurgico", name: "Diego Rocha", age: 39, city: "Pacajus - CE", stars: "⭐⭐⭐⭐⭐", comment: "Montagem e manutenção de estruturas metálicas.", whatsapp: "55859910794" },
