@@ -154,26 +154,27 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
+    const tabelaServicos = document.getElementById("tabela-servicos");
+
+    if (!tabelaServicos) {
+        console.error("🚨 Tabela de serviços não encontrada no HTML!");
+        return;
+    }
+
     async function carregarServicos() {
         try {
             const response = await fetch("/api/listar-servicos");
             if (!response.ok) throw new Error("Erro ao carregar serviços");
 
             const data = await response.json();
-            const tabelaServicos = document.getElementById("tabela-servicos");
-
-            if (!tabelaServicos) {
-                console.error("🚨 Tabela de serviços não encontrada no HTML!");
-                return;
-            }
-
             tabelaServicos.innerHTML = "";
+
             data.forEach(servico => {
                 const row = document.createElement("tr");
                 row.innerHTML = `
                     <td>${servico.descricao}</td>
                     <td>R$ ${parseFloat(servico.valor).toFixed(2)}</td>
-                    <td>${servico.professional_nome || "N/A"}</td>
+                    <td>${servico.profissional_nome || "Não cadastrado"}</td>
                 `;
                 tabelaServicos.appendChild(row);
             });
