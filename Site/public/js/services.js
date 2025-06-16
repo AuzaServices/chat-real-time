@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         //AuzaPoli
         { id: 1, service: "auzapoli", name: "Fagner Lucena", age: 47, city: "Fortaleza - CE", stars: "⭐⭐⭐", comment: "Eletricista, Bombeiro Hidráulico, Manutenção Predial", whatsapp: "558598581919" },
-        { id: 163, service: "auzapoli", name: "Rogério Alves", age: 47, city: "Fortaleza - CE", stars: "⭐⭐⭐", comment: "Motorista Particular e Segurança", whatsapp: "5585987997754" },
+        { id: 163, service: "auzapoli", name: "Rogério Alves", age: 38, city: "Fortaleza - CE", stars: "⭐⭐⭐", comment: "Motorista Particular e Segurança", whatsapp: "5585987997754" },
         //Pedreiro 🧱🔨
         { id: 2, service: "pedreiro", name: "Leonardo", age: 28, city: "Fortaleza - CE", stars: "⭐⭐", comment: "Pedreiro, Mestre de obra profissional. Entendo de projetos.", whatsapp: "5585988559085" },
         { id: 3, service: "pedreiro", name: "Edilcimar Frazão", age: 53, city: "Fortaleza - CE", stars: "⭐⭐", comment: "Área de acabamento da constr. civil, PVC, Gesso, Porcel/Cerâmica.", whatsapp: "5585992363266" },
