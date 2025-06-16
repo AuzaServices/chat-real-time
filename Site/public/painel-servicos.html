@@ -5,10 +5,17 @@
     <title>Painel de Serviços</title>
     <link rel="stylesheet" href="css/painel-servicos.css">
     <script src="js/painel-servicos.js" defer></script>
+
+  <meta property="og:title" content="Meu Painel de Serviços">
+  <meta property="og:description" content="Registre todos os serviços realizados">
+  <meta property="og:image" content="https://i.imgur.com/woc11Vf.png">
+  <meta property="og:url" content="https://clientes2.onrender.com/cadastro-link.html">
+  <meta property="og:type" content="website">
+
 </head>
 <body>
     <h1 id="profissionalNome"></h1>
-    <h2>Serviços realizados este mês</h2>
+    <h2>Serviços realizados - Junho</h2>
 
     <!-- Formulário para adicionar serviços -->
 <form id="formServico">
@@ -32,5 +39,24 @@
     <!-- Total e taxa -->
     <h3>Total: R$ <span id="totalValor">0.00</span></h3>
     <h3>Taxa de 10%: R$ <span id="taxa">0.00</span></h3>
+
+        <!-- Botão de pagamento -->
+    <button id="pagarTaxa" style="width: 40%; height: 70px; font-size: 26px; border-radius: 8px; background-color: darkred; color: white; cursor: pointer; margin-top: 20px;">
+        Realizar Pagamento da Taxa
+    </button>
+
+    <!-- Mensagem de aviso -->
+    <p style="color: darkred; font-size: 18px; margin-top: 20px;">
+        ⚠ O não pagamento da taxa no período de 24 horas resulta na exclusão do profissional da plataforma.
+    </p>
+
+    <script>
+        document.getElementById("pagarTaxa").addEventListener("click", function () {
+            alert("Redirecionando para o pagamento...");
+            // Aqui você pode adicionar lógica para redirecionar para um sistema de pagamento
+        });
+    </script>
+</body>
+</html>
 </body>
 </html>
