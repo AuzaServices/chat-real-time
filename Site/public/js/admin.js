@@ -121,8 +121,73 @@ document.getElementById("adicionar").addEventListener("click", () => {
 // 🚀 Inicializa lista ao carregar página
 atualizarLista();
 
-fetch("https://clientes-fhfe.onrender.com/api/salvar-servico", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ profissional_id: profissionalId, descricao: descricao, valor: valor })
-})
+document.addEventListener("DOMContentLoaded", () => {
+    const descricaoInput = document.getElementById("descricao");
+    const valorInput = document.getElementById("valor");
+
+    // 🔄 Verificar se os elementos existem antes de tentar acessá-los
+    if (!descricaoInput || !valorInput) {
+        console.error("🚨 Campos do serviço não encontrados no HTML!");
+        return;
+    }
+
+    // ✏️ Adicionar evento para salvar serviço
+    document.getElementById("adicionar-servico").addEventListener("click", () => {
+        const descricao = descricaoInput.value;
+        const valor = valorInput.value;
+
+        if (!descricao || !valor) {
+            console.error("🚨 Todos os campos são obrigatórios!");
+            return;
+        }
+
+        fetch("https://clientes-fhfe.onrender.com/api/salvar-servico", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ descricao: descricao, valor: valor })
+        }).then(response => response.json())
+          .then(data => console.log("✅ Serviço salvo com sucesso!", data))
+          .catch(error => console.error("❌ Erro ao salvar serviço:", error));
+    });
+
+    console.log("✅ Script carregado e funcional!");
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    // 🔹 Captura os elementos da página
+    const tabelaServicos = document.getElementById("tabela-servicos");
+
+    if (!tabelaServicos) {
+        console.error("🚨 Tabela de serviços não encontrada no HTML!");
+        return;
+    }
+
+    // 🔄 Função para carregar serviços do banco de dados
+    async function carregarServicos() {
+        try {
+            const response = await fetch("/api/listar-servicos");
+            if (!response.ok) throw new Error("Erro ao carregar serviços");
+
+            const data = await response.json();
+            tabelaServicos.innerHTML = ""; // Limpa antes de adicionar novos dados
+
+            data.forEach(servico => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${servico.descricao}</td>
+                    <td>R$ ${parseFloat(servico.valor).toFixed(2)}</td>
+                    <td>${servico.profissional_nome || "N/A"}</td>
+                `;
+                tabelaServicos.appendChild(row);
+            });
+
+            console.log("✅ Serviços carregados com sucesso!");
+        } catch (error) {
+            console.error("❌ Erro ao carregar serviços:", error);
+        }
+    }
+
+    // 🔄 Atualiza a lista de serviços a cada 5 segundos
+    setInterval(carregarServicos, 2000);
+    carregarServicos();
+});
