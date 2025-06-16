@@ -91,15 +91,11 @@ document.getElementById("formServico").addEventListener("submit", function(event
     const descricao = document.getElementById("descricao").value;
     const valor = document.getElementById("valor").value;
 
-    fetch("https://clientes-fhfe.onrender.com/painel-servicos.html", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-            profissional_id: profissionalId,
-            descricao: descricao,
-            valor: valor
-        })
-    })
+fetch("https://clientes-fhfe.onrender.com/api/salvar-servico", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ profissional_id: profissionalId, descricao: descricao, valor: valor })
+})
     .then(response => response.json())
     .then(data => {
         alert("Serviço adicionado com sucesso!"); 
