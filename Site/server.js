@@ -156,11 +156,14 @@ app.get("/", (req, res) => {
     res.sendFile(__dirname + "/public/index.html");
 });
 
-// Criar tabela ServicosValor
+
+
+// 📋 Criar tabela ServicosValor
 const criarTabelaServicos = `
     CREATE TABLE IF NOT EXISTS ServicosValor (
         id INT AUTO_INCREMENT PRIMARY KEY,
         profissional_id INT NOT NULL,
+        profissional_nome VARCHAR(255) NOT NULL,
         descricao VARCHAR(255) NOT NULL,
         valor DECIMAL(10,2) NOT NULL,
         data_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
@@ -172,7 +175,7 @@ db.query(criarTabelaServicos, (err) => {
     else console.log("✅ Tabela 'ServicosValor' criada/verificada.");
 });
 
-// Rota: Salvar serviço no banco de dados
+// 📌 Rota: Salvar serviço no banco
 app.post("/api/salvar-servico", (req, res) => {
     const { profissional_id, profissional_nome, descricao, valor } = req.body;
 
@@ -190,14 +193,9 @@ app.post("/api/salvar-servico", (req, res) => {
     });
 });
 
-// Rota: Listar serviços cadastrados para exibição na admin.html
+// 📌 Rota: Listar serviços para exibição no painel
 app.get("/api/listar-servicos", (req, res) => {
-const sql = `
-    SELECT s.id, s.descricao, s.valor, s.data_registro, p.nome AS profissional_nome
-    FROM ServicosValor s
-    LEFT JOIN Profissionais p ON s.profissional_id = p.id
-    ORDER BY s.data_registro DESC
-`;
+    const sql = "SELECT id, descricao, valor, profissional_nome, data_registro FROM ServicosValor ORDER BY data_registro DESC";
 
     db.query(sql, (err, results) => {
         if (err) {
@@ -205,11 +203,11 @@ const sql = `
             return res.status(500).json({ error: "Erro ao listar serviços" });
         }
 
-        res.json(results); // Agora enviamos os dados sem tentar vincular a profissionais
+        res.json(results); // Agora retorna corretamente `profissional_nome`
     });
 });
 
-// Inicia servidor
+// 🚀 Iniciar servidor
 app.listen(port, () => {
     console.log(`🚀 Servidor rodando na porta ${port}`);
 });

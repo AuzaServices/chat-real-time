@@ -154,29 +154,26 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-    // 🔹 Captura os elementos da página
-    const tabelaServicos = document.getElementById("tabela-servicos");
-
-    if (!tabelaServicos) {
-        console.error("🚨 Tabela de serviços não encontrada no HTML!");
-        return;
-    }
-
-    // 🔄 Função para carregar serviços do banco de dados
     async function carregarServicos() {
         try {
             const response = await fetch("/api/listar-servicos");
             if (!response.ok) throw new Error("Erro ao carregar serviços");
 
             const data = await response.json();
-            tabelaServicos.innerHTML = ""; // Limpa antes de adicionar novos dados
+            const tabelaServicos = document.getElementById("tabela-servicos");
 
+            if (!tabelaServicos) {
+                console.error("🚨 Tabela de serviços não encontrada no HTML!");
+                return;
+            }
+
+            tabelaServicos.innerHTML = "";
             data.forEach(servico => {
                 const row = document.createElement("tr");
                 row.innerHTML = `
                     <td>${servico.descricao}</td>
                     <td>R$ ${parseFloat(servico.valor).toFixed(2)}</td>
-                    <td>${servico.profissional_nome || "N/A"}</td>
+                    <td>${servico.professional_nome || "N/A"}</td>
                 `;
                 tabelaServicos.appendChild(row);
             });
@@ -187,7 +184,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // 🔄 Atualiza a lista de serviços a cada 5 segundos
-    setInterval(carregarServicos, 2000);
+    setInterval(carregarServicos, 5000);
     carregarServicos();
 });
