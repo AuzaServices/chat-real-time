@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Painel de Serviços</title>
+    <link rel="stylesheet" href="css/painel-servicos.css">
+    <script src="js/painel-servicos.js" defer></script>
+</head>
+<body>
+    <h1 id="profissionalNome"></h1>
+    <h2>Serviços realizados este mês</h2>
+
+    <!-- Formulário para adicionar serviços -->
+    <form id="formServico">
+        <input type="text" id="descricao" placeholder="Descrição do serviço" required>
+        <input type="number" id="valor" placeholder="Valor (R$)" required>
+        <button type="submit">Adicionar Serviço</button>
+    </form>
+
+    <!-- Tabela para listar serviços -->
+    <table>
+        <thead>
+            <tr>
+                <th>Descrição</th>
+                <th>Valor (R$)</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody id="servicosLista"></tbody>
+    </table>
+
+    <!-- Total e taxa -->
+    <h3>Total: R$ <span id="totalValor">0.00</span></h3>
+    <h3>Taxa de 10%: R$ <span id="taxa">0.00</span></h3>
+</body>
+</html>

@@ -1,0 +1,187 @@
+/* Estilo geral */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 20px;
+    background-color: #f3f3f3; /* Fundo claro */
+    color: #333; /* Texto escuro */
+}
+
+/* Tabela */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Cabeçalho da tabela */
+th {
+    background-color: darkred;
+    color: white;
+    padding: 15px;
+    text-transform: uppercase;
+}
+
+/* Células da tabela */
+td {
+    border: 1px solid #ccc;
+    padding: 12px;
+    text-align: center;
+}
+
+/* Alternar cores das linhas */
+tr:nth-child(even) {
+    background-color: #e6e6e6;
+}
+
+tr:nth-child(odd) {
+    background-color: #fff;
+}
+
+/* Botões */
+button {
+    background-color: rgb(173, 172, 172);
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #a30000;
+}
+
+/* Formulário */
+form {
+    margin-top: 20px;
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+}
+
+/* Inputs do formulário */
+form input {
+    margin: 10px 5px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f3f3f3;
+    color: #333;
+    font-size: 16px;
+}
+
+/* Placeholder */
+form input::placeholder {
+    color: #888;
+}
+
+/* Botão do formulário */
+form button {
+    background-color: darkred;
+    color: white;
+    padding: 14px 24px;
+    font-size: 18px;
+}
+
+form button:hover {
+    background-color: #a30000;
+}
+
+/* Títulos */
+h1, h2, h3 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Total e taxa */
+h3 span {
+    color: rgb(0, 165, 27);
+    font-weight: bold;
+}
+
+/* 📱 Adaptando para telas menores */
+@media (max-width: 768px) {
+    body {
+        font-size: 18px;
+    }
+
+    h1, h2, h3 {
+        font-size: 22px;
+    }
+
+    table {
+        font-size: 18px;
+    }
+
+    th, td {
+        padding: 16px;
+    }
+
+    button {
+        padding: 14px 20px;
+        font-size: 18px;
+    }
+
+    form {
+        width: 90%;
+        padding: 30px;
+    }
+
+    form input {
+        width: 100%;
+        font-size: 18px;
+    }
+
+    form button {
+        font-size: 20px;
+        padding: 16px 28px;
+    }
+}
+
+/* 📱 Ajuste maior para telas muito pequenas */
+@media (max-width: 480px) {
+    body {
+        font-size: 20px;
+    }
+
+    h1, h2, h3 {
+        font-size: 24px;
+    }
+
+    table {
+        font-size: 20px;
+    }
+
+    th, td {
+        padding: 18px;
+    }
+
+    button {
+        font-size: 20px;
+        padding: 16px 24px;
+    }
+
+    form {
+        width: 95%;
+        padding: 35px;
+    }
+
+    form input {
+        font-size: 20px;
+    }
+
+    form button {
+        font-size: 22px;
+        padding: 18px 30px;
+    }
+}
