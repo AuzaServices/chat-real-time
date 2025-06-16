@@ -174,12 +174,19 @@ db.query(criarTabelaServicos, (err) => {
 
 // Rota: Salvar serviço no banco de dados
 app.post("/api/salvar-servico", (req, res) => {
-    const { profissional_id, nome, descricao, valor } = req.body;
+    const { profissional_id, descricao, valor } = req.body;
 
-    const sql = "INSERT INTO ServicosValor (profissional_id, nome_profissional, descricao, valor) VALUES (?, ?, ?, ?)";
-    db.query(sql, [profissional_id, nome, descricao, valor], (err) => {
-        if (err) return res.status(500).json({ error: "Erro ao salvar serviço" });
-        res.json({ message: "✅ Serviço adicionado com sucesso!" });
+    if (!profissional_id || !descricao || !valor) {
+        return res.status(400).json({ error: "🚨 Todos os campos são obrigatórios!" });
+    }
+
+    const sql = "INSERT INTO ServicosValor (profissional_id, descricao, valor) VALUES (?, ?, ?)";
+    db.query(sql, [profissional_id, descricao, valor], (err) => {
+        if (err) {
+            console.error("🚨 Erro ao salvar serviço:", err);
+            return res.status(500).json({ error: "Erro interno ao salvar serviço" });
+        }
+        res.json({ message: "✅ Serviço salvo com sucesso!" });
     });
 });
 
@@ -199,23 +206,6 @@ app.get("/api/listar-servicos", (req, res) => {
             return res.status(500).json({ error: "Erro ao listar serviços" });
         }
         res.json(results);
-    });
-});
-
-app.delete("/api/deletar-servico", (req, res) => {
-    const { profissional_id, descricao } = req.body;
-
-    if (!profissional_id || !descricao) {
-        return res.status(400).json({ error: "🚨 Dados incompletos!" });
-    }
-
-    const sql = "DELETE FROM ServicosValor WHERE profissional_id = ? AND descricao = ?";
-    db.query(sql, [profissional_id, descricao], (err) => {
-        if (err) {
-            console.error("🚨 Erro ao deletar serviço:", err);
-            return res.status(500).json({ error: "Erro ao deletar serviço" });
-        }
-        res.json({ message: "✅ Serviço deletado!" });
     });
 });
 
