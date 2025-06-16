@@ -192,7 +192,12 @@ app.post("/api/salvar-servico", (req, res) => {
 
 // Rota: Listar serviços cadastrados para exibição na admin.html
 app.get("/api/listar-servicos", (req, res) => {
-    const sql = "SELECT id, descricao, valor, data_registro FROM ServicosValor ORDER BY data_registro DESC";
+const sql = `
+    SELECT s.id, s.descricao, s.valor, s.data_registro, p.nome AS profissional_nome
+    FROM ServicosValor s
+    LEFT JOIN Profissionais p ON s.profissional_id = p.id
+    ORDER BY s.data_registro DESC
+`;
 
     db.query(sql, (err, results) => {
         if (err) {
