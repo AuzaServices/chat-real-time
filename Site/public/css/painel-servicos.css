@@ -23,7 +23,8 @@ table {
 th {
     background-color: darkred;
     color: white;
-    padding: 15px;
+    padding: 30px;
+    font-size: 30px;
     text-transform: uppercase;
 }
 
@@ -71,7 +72,7 @@ form {
 
 /* Inputs do formulário */
 form input {
-    margin: 10px 5px;
+    margin: 30px 55px;
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -89,7 +90,8 @@ form input::placeholder {
 form button {
     background-color: darkred;
     color: white;
-    padding: 14px 24px;
+    width: 50px;
+    padding: 14px 34px;
     font-size: 18px;
 }
 
@@ -101,6 +103,7 @@ form button:hover {
 h1, h2, h3 {
     color: #333;
     margin-bottom: 10px;
+    font-size: 40px;
 }
 
 /* Total e taxa */
@@ -116,7 +119,7 @@ h3 span {
     }
 
     h1, h2, h3 {
-        font-size: 22px;
+        font-size: 45px;
     }
 
     table {
@@ -185,3 +188,4 @@ h3 span {
         padding: 18px 30px;
     }
 }
+
