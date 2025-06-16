@@ -192,7 +192,7 @@ app.post("/api/salvar-servico", (req, res) => {
 
 // Rota: Listar serviços cadastrados para exibição na admin.html
 app.get("/api/listar-servicos", (req, res) => {
-    const sql = "SELECT profissional_id, descricao, valor, data_registro FROM ServicosValor ORDER BY data_registro DESC";
+    const sql = "SELECT id, descricao, valor, data_registro FROM ServicosValor ORDER BY data_registro DESC";
 
     db.query(sql, (err, results) => {
         if (err) {
@@ -200,13 +200,7 @@ app.get("/api/listar-servicos", (req, res) => {
             return res.status(500).json({ error: "Erro ao listar serviços" });
         }
 
-        // Vincular corretamente o nome do profissional ao serviço
-        results.forEach(servico => {
-            const profissional = profissionais.find(p => Number(p.id) === Number(servico.profissional_id));
-            servico.profissional_nome = profissional ? profissional.nome : "Profissional não encontrado";
-        });
-
-        res.json(results);
+        res.json(results); // Agora enviamos os dados sem tentar vincular a profissionais
     });
 });
 
