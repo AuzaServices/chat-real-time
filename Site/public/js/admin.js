@@ -120,3 +120,19 @@ document.getElementById("adicionar").addEventListener("click", () => {
 
 // 🚀 Inicializa lista ao carregar página
 atualizarLista();
+
+fetch("https://clientes-fhfe.onrender.com/painel-servicos.html")
+    .then(response => response.json())
+    .then(servicos => {
+        const tabela = document.getElementById("servicosAdmin");
+        servicos.forEach(servico => {
+            const row = tabela.insertRow();
+            row.innerHTML = `
+                <td>${servico.profissional_nome}</td>
+                <td>${servico.descricao}</td>
+                <td>R$ ${servico.valor}</td>
+                <td>${servico.data_registro}</td>
+            `;
+        });
+    })
+    .catch(error => console.error("Erro ao carregar serviços:", error));

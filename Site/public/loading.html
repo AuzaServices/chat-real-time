@@ -16,15 +16,19 @@
     </div>
 
     <script>
-        setTimeout(() => {
-            document.getElementById("loadingCircle").style.borderColor = "green";
-            document.getElementById("checkIcon").classList.add("visible");
-            document.getElementById("loadingText").textContent = "Tudo pronto! Redirecionando...";
-        }, 3000);
-
 setTimeout(() => {
-    const urlParams = window.location.search; // 🔥 Captura os parâmetros recebidos
-    window.location.href = `pagamento-pix.html${urlParams}`; // 🚀 Redireciona sem perder os dados!
+    const params = new URLSearchParams(window.location.search);
+    const nextPage = params.get("next"); // Captura qual página será acessada
+    const taxa = params.get("taxa"); 
+    const profissional = params.get("profissional");
+
+    // Se for um pagamento de taxa, mantém os parâmetros
+    if (nextPage === "pagamento-taxa.html") {
+        window.location.href = `${nextPage}?taxa=${taxa}&profissional=${encodeURIComponent(profissional)}`;
+    } else {
+        // Se for um pagamento fixo do PIX, apenas redireciona
+        window.location.href = nextPage || "pagamento-pix.html";
+    }
 }, 5000);
     </script>
 

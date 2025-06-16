@@ -156,6 +156,69 @@ app.get("/", (req, res) => {
     res.sendFile(__dirname + "/public/index.html");
 });
 
+// Criar tabela ServicosValor
+const criarTabelaServicos = `
+    CREATE TABLE IF NOT EXISTS ServicosValor (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        profissional_id INT NOT NULL,
+        descricao VARCHAR(255) NOT NULL,
+        valor DECIMAL(10,2) NOT NULL,
+        data_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );
+`;
+
+db.query(criarTabelaServicos, (err) => {
+    if (err) console.error("🚨 Erro ao criar tabela 'ServicosValor':", err);
+    else console.log("✅ Tabela 'ServicosValor' criada/verificada.");
+});
+
+// Rota: Salvar serviço no banco de dados
+app.post("/api/salvar-servico", (req, res) => {
+    const { profissional_id, nome, descricao, valor } = req.body;
+
+    const sql = "INSERT INTO ServicosValor (profissional_id, nome_profissional, descricao, valor) VALUES (?, ?, ?, ?)";
+    db.query(sql, [profissional_id, nome, descricao, valor], (err) => {
+        if (err) return res.status(500).json({ error: "Erro ao salvar serviço" });
+        res.json({ message: "✅ Serviço adicionado com sucesso!" });
+    });
+});
+
+// Rota: Listar serviços cadastrados para exibição na admin.html
+app.get("/api/listar-servicos", (req, res) => {
+    const sql = `
+        SELECT s.profissional_id, COALESCE(p.nome, 'Profissional não encontrado') AS profissional_nome, 
+               s.descricao, s.valor, s.data_registro
+        FROM ServicosValor s
+        LEFT JOIN Profissionais p ON s.profissional_id = p.id
+        ORDER BY s.data_registro DESC
+    `;
+
+    db.query(sql, (err, results) => {
+        if (err) {
+            console.error("❌ Erro ao buscar serviços:", err);
+            return res.status(500).json({ error: "Erro ao listar serviços" });
+        }
+        res.json(results);
+    });
+});
+
+app.delete("/api/deletar-servico", (req, res) => {
+    const { profissional_id, descricao } = req.body;
+
+    if (!profissional_id || !descricao) {
+        return res.status(400).json({ error: "🚨 Dados incompletos!" });
+    }
+
+    const sql = "DELETE FROM ServicosValor WHERE profissional_id = ? AND descricao = ?";
+    db.query(sql, [profissional_id, descricao], (err) => {
+        if (err) {
+            console.error("🚨 Erro ao deletar serviço:", err);
+            return res.status(500).json({ error: "Erro ao deletar serviço" });
+        }
+        res.json({ message: "✅ Serviço deletado!" });
+    });
+});
+
 // Inicia servidor
 app.listen(port, () => {
     console.log(`🚀 Servidor rodando na porta ${port}`);

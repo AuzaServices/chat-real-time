@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Pagamento da Taxa</title>
+    <link rel="stylesheet" href="css/pagamento-taxa.css">
+</head>
+<body>
+    <h1>Pagamento da Taxa Variável</h1>
+    
+    <h2>Profissional:</h2>
+    <p id="profissionalNome"></p>
+
+    <h2>Valor da Taxa:</h2>
+    <p id="valorTaxa"></p>
+    
+    <h2>Chave PIX:</h2>
+    <p id="pixFixo">SEU_PIX_FIXO_AQUI</p>
+
+    <button id="confirmarPagamento">Confirmar Pagamento</button>
+
+    <script>
+        // Captura os parâmetros da URL
+        const params = new URLSearchParams(window.location.search);
+        const taxa = params.get("taxa") || "0.00"; // Define taxa como variável
+        const profissional = params.get("profissional") || "Desconhecido"; // Define profissional como variável
+
+        // Insere os valores na página
+        document.getElementById("valorTaxa").textContent = `R$ ${taxa}`;
+        document.getElementById("profissionalNome").textContent = profissional;
+
+        // Confirmação de pagamento
+        document.getElementById("confirmarPagamento").addEventListener("click", function() {
+            alert(`Pagamento de R$ ${taxa} confirmado para ${profissional}!`);
+        });
+    </script>
+</body>
+</html>

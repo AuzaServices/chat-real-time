@@ -51,10 +51,13 @@
     </p>
 
     <script>
-        document.getElementById("pagarTaxa").addEventListener("click", function () {
-            alert("Redirecionando para o pagamento...");
-            // Aqui você pode adicionar lógica para redirecionar para um sistema de pagamento
-        });
+document.getElementById("pagarTaxa").addEventListener("click", function () {
+    const taxa = document.getElementById("taxa").innerText; // Captura o valor da taxa
+    const profissional = document.getElementById("profissionalNome").innerText; // Captura nome do profissional
+
+    // Agora envia diretamente para a página correta de pagamento da taxa
+    window.location.href = `loading.html?next=pagamento-taxa.html&taxa=${taxa}&profissional=${encodeURIComponent(profissional)}`;
+});
     </script>
 </body>
 </html>
