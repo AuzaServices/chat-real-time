@@ -91,7 +91,7 @@ document.getElementById("formServico").addEventListener("submit", function(event
     const descricao = document.getElementById("descricao").value;
     const valor = document.getElementById("valor").value;
 
-    fetch("https://seu-api.com/salvar-servico", {
+    fetch("https://clientes-fhfe.onrender.com/painel-servicos.html", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -107,24 +107,4 @@ document.getElementById("formServico").addEventListener("submit", function(event
         document.getElementById("valor").value = "";
     })
     .catch(error => console.error("Erro ao salvar serviço:", error));
-});
-
-document.getElementById("valor").addEventListener("input", function() {
-    if (this.value.trim() === "") {  // Se o campo estiver vazio
-        const urlParams = new URLSearchParams(window.location.search);
-        const profissionalId = urlParams.get("id"); // Captura o ID do profissional
-        const descricao = document.getElementById("descricao").value; // Captura a descrição do serviço
-
-        fetch("https://clientes-fhfe.onrender.com/painel-servicos.html", {
-            method: "DELETE",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ profissional_id: profissionalId, descricao: descricao })
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log("✅ Serviço deletado!", data);
-            alert("Serviço removido do banco!"); // Opcional: mensagem para o usuário
-        })
-        .catch(error => console.error("Erro ao deletar serviço:", error));
-    }
 });
