@@ -13,7 +13,7 @@ table {
     border-collapse: collapse;
     margin-top: 20px;
     background-color: #fff;
-    color: #333;
+    color: #000000;
     border: 1px solid #ccc;
     border-radius: 8px;
     overflow: hidden;
@@ -32,6 +32,7 @@ th {
 td {
     border: 1px solid #ccc;
     padding: 12px;
+    font-size: 35px;
     text-align: center;
 }
 
