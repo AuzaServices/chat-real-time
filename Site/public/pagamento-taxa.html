@@ -2,37 +2,62 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Pagamento da Taxa</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Pagamento via PIX</title>
     <link rel="stylesheet" href="css/pagamento-taxa.css">
 </head>
 <body>
-    <h1>Pagamento da Taxa Variável</h1>
-    
-    <h2>Profissional:</h2>
-    <p id="profissionalNome"></p>
 
-    <h2>Valor da Taxa:</h2>
-    <p id="valorTaxa"></p>
-    
-    <h2>Chave PIX:</h2>
-    <p id="pixFixo">SEU_PIX_FIXO_AQUI</p>
+    <div class="container">
+        <h1>Pagamento da Taxa</h1>
 
-    <button id="confirmarPagamento">Confirmar Pagamento</button>
+        <p>Valor da Taxa:</p>
+        <p id="valorTaxa"></p>
+
+        <p>Chave PIX:</p>
+        <input type="text" id="pixFixo" value="auzaservices@gmail.com" readonly>
+
+        <!-- 🔹 Botão de Copiar agora logo abaixo do campo PIX -->
+        <button id="copiarPix" class="copy-button">Copiar</button>
+
+        <!-- 🔹 Botão menor de Confirmação -->
+        <button id="confirmarPagamento" class="small-confirm-button">Enviar Comprovante</button>
+
+        <p class="envio-comprovante">
+            Após realizar o pagamento, clique no botão acima para enviar o <strong>comprovante</strong>.
+        </p>
+
+        <p id="indicadorPagamento" class="indicador-info"></p>
+    </div>
 
     <script>
         // Captura os parâmetros da URL
         const params = new URLSearchParams(window.location.search);
-        const taxa = params.get("taxa") || "0.00"; // Define taxa como variável
-        const profissional = params.get("profissional") || "Desconhecido"; // Define profissional como variável
+        const taxa = params.get("taxa") || "0.00";
+        const profissional = params.get("profissional") || "Desconhecido";
 
         // Insere os valores na página
         document.getElementById("valorTaxa").textContent = `R$ ${taxa}`;
-        document.getElementById("profissionalNome").textContent = profissional;
+
+        // Copiar PIX
+        document.getElementById("copiarPix").addEventListener("click", function () {
+            const pixInput = document.getElementById("pixFixo");
+            pixInput.select();
+            document.execCommand("copy");
+        });
 
         // Confirmação de pagamento
-        document.getElementById("confirmarPagamento").addEventListener("click", function() {
-            alert(`Pagamento de R$ ${taxa} confirmado para ${profissional}!`);
+        document.getElementById("confirmarPagamento").addEventListener("click", function () {
         });
+        
+        document.getElementById("confirmarPagamento").addEventListener("click", function () {
+    const whatsappNumero = "5585991340658";
+    const mensagem = encodeURIComponent("Confirmação do pagamento da taxa de serviço. Segue o comprovante.");
+
+    // 🔥 Redireciona para WhatsApp na mesma aba sem bloqueios
+    window.location.assign(`https://wa.me/${whatsappNumero}?text=${mensagem}`);
+});
     </script>
+
 </body>
 </html>

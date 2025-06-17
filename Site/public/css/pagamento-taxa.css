@@ -1,0 +1,69 @@
+/* 🌟 Estilo para o corpo da página */
+body {
+    background-color: #f4f4f4;
+    color: #333;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    flex-direction: column; /* 🔄 Organiza tudo verticalmente */
+    text-align: center; /* 🔄 Centraliza os textos */
+}
+
+/* 📌 Estilo do campo PIX */
+/* 🔹 Estilizando a caixa do PIX */
+#pixFixo {
+    width: 65%;
+    max-width: 400px;
+    padding: 8px;
+    font-size: 20px;
+    text-align: center;
+    background-color: #fff;
+    color: #333;
+    border: 2px solid #030303;
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+/* 🔹 Botão de copiar PIX */
+/* 🔹 Botão de Copiar abaixo do campo PIX */
+.copy-button {
+    display: block;
+    margin: 15px auto; /* 🔄 Centraliza e ajusta posição */
+    width: 30%;
+    max-width: 85px;
+    padding: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #840b00;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* 🔥 Botão menor de Confirmação */
+.small-confirm-button {
+    display: block;
+    margin: 25px auto; /* 🔄 Centraliza e mantém abaixo do botão "Copiar PIX" */
+    width: 100%;
+    max-width: 190px;
+    padding: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: darkred;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.small-confirm-button:hover {
+    background-color: #8b0000;
+}
