@@ -310,10 +310,10 @@ if (overlay) {
 
   setTimeout(() => {
     overlay.classList.add("hidden");
-    if (whatsappLink) window.open(whatsappLink, "_blank");
-  }, 5000);
-} else {
-  if (whatsappLink) window.open(whatsappLink, "_blank");
+
+    // 🔥 Agora força a abertura direta no WhatsApp Web ou App
+    window.open(whatsappLink, "_blank");
+  }, 3000);
 }
 
   // 🚀 Agora envia os dados pro backend
