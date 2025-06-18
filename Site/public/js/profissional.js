@@ -301,17 +301,16 @@ function handleClick(event) {
   }
 
 const overlay = document.getElementById("whatsappOverlay");
+const continueBtn = document.getElementById("continueButton");
 const whatsappLink = target.getAttribute("href");
 
-if (overlay) {
+if (overlay && continueBtn) {
   overlay.classList.remove("hidden");
 
-  setTimeout(() => {
+  continueBtn.onclick = () => {
     overlay.classList.add("hidden");
-
-    // 🔥 Agora força a abertura direta no WhatsApp Web ou App
     window.open(whatsappLink, "_blank");
-  }, 5000);
+  };
 }
 
   // 🚀 Agora envia os dados pro backend

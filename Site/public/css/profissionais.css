@@ -531,3 +531,19 @@ header img {
   display: none;
 }
 
+.continue-btn {
+  margin-top: 15px;
+  padding: 10px 18px;
+  font-size: 15px;
+  background-color: #25d366;
+  border: none;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.continue-btn:hover {
+  background-color: #1ebe5b;
+}
+
