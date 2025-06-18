@@ -313,7 +313,7 @@ if (overlay) {
 
     // 🔥 Agora força a abertura direta no WhatsApp Web ou App
     window.open(whatsappLink, "_blank");
-  }, 3000);
+  }, 5000);
 }
 
   // 🚀 Agora envia os dados pro backend
