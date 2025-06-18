@@ -295,6 +295,8 @@ mainContainer.innerHTML = "";
 filteredProfessionals.forEach(professional => {
     const card = document.createElement("div");
 
+    
+
     if (highlightedProfessionals.includes(professional.name)) {
         card.classList.add("card", "highlighted");
     } else {
@@ -311,12 +313,11 @@ filteredProfessionals.forEach(professional => {
         <p>Avaliação: ${professional.stars}</p>
         <p>${professional.comment}</p>
         ${highlightedProfessionals.includes(professional.name) ? '<p class="destaque">Destaque</p>' : ''}
-<a class="whatsapp-button"
-   href="${whatsappLink}"
-   target="_blank"
-   data-id="${professional.id}"
-   data-nome="${professional.name}"> <!-- ✅ Certifique-se de que esse atributo existe -->
-   Contato via WhatsApp
+<a class="whatsapp-button" 
+   href="javascript:void(0);"
+   data-id="${professional.id}" 
+   data-nome="${professional.name}">
+   Perfil e Contato
 </a>
     `;
 
@@ -327,12 +328,28 @@ filteredProfessionals.forEach(professional => {
     });
 
     // ✅ Captura o ID e o nome corretamente agora!
-    const whatsappButton = card.querySelector(".whatsapp-button");
-    whatsappButton.addEventListener("click", function (event) {
-        event.stopPropagation();
+const whatsappButton = document.createElement("a");
+whatsappButton.classList.add("whatsapp-button");
+whatsappButton.textContent = "Contato via WhatsApp";
+whatsappButton.href = "javascript:void(0);"; // Evita redirecionamento nativo
+whatsappButton.setAttribute("data-id", professional.id);
+whatsappButton.setAttribute("data-nome", professional.name);
 
-        const profissionalId = whatsappButton.getAttribute("data-id");
-        const nomeProfissional = whatsappButton.getAttribute("data-nome"); // ✅ Agora pega o nome corretamente!
+// Faz o clique do botão redirecionar igual ao do card
+whatsappButton.addEventListener("click", function (event) {
+    event.stopPropagation(); // Evita disparo duplo
+
+    const professionalName = encodeURIComponent(professional.name);
+    window.open(`profissional.html?name=${professionalName}`, "_blank");
+
+
+whatsappButton.addEventListener("click", function (event) {
+    event.stopPropagation(); // Impede que o clique dispare duas vezes (se necessário)
+    
+    // Redireciona igual ao clique no card
+    const professionalName = encodeURIComponent(professional.name);
+    window.open(`profissional.html?name=${professionalName}`, "_blank");
+});
         
 
 fetch("https://clientes-fhfe.onrender.com/api/click", {

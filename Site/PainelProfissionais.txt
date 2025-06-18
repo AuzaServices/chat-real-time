@@ -1,0 +1,143 @@
+AuzaPoli        
+        { id: 1, service: "AuzaPoli (Polivalente)", name: "Fagner Lucena", age: 47, city: "Fortaleza - CE", stars: "⭐⭐⭐", comment: "Eletricista, Bombeiro Hidráulico, Manutenção Predial", whatsapp: "558598581919" },
+        https://clientes-fhfe.onrender.com/painel-servicos.html?id=1&nome=FagnerLucena
+        { id: 163, service: "AuzaPoli (Polivalente)", name: "Rogério Alves", age: 38, city: "Fortaleza - CE", stars: "⭐⭐⭐", comment: "Motorista Particular e Segurança", whatsapp: "5585987997754" },
+        https://clientes-fhfe.onrender.com/painel-servicos.html?id=163&nome=RogerioAlves
+        { id: 102, service: "AuzaPoli (Polivalentes)", name: "Francisco Antônio", age: 33, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "Churrasqueiro Particular e Motorista Particular", whatsapp: "5585999858484" },
+        https://clientes-fhfe.onrender.com/painel-servicos.html?id=102&nome=FranciscoAntonio
+        
+Pedreiro
+        { id: 2, service: "Pedreiro", name: "Leonardo", age: 28, city: "Fortaleza - CE", stars: "⭐⭐", comment: "Pedreiro, Mestre de obra profissional. Entendo de projetos.", whatsapp: "5585988559085" },
+        https://clientes-fhfe.onrender.com/painel-servicos.html?id=2&nome=Leonardo
+        { id: 3, service: "Pedreiro", name: "Edilcimar Frazão", age: 53, city: "Fortaleza - CE", stars: "⭐⭐", comment: "Área de acabamento da constr. civil, PVC, Gesso, Porcel/Cerâmica.", whatsapp: "5585992363266" },
+        https://clientes-fhfe.onrender.com/painel-servicos.html?id=3&nome=Edilcimar
+        { id: 4, service: "Pedreiro", name: "Alberto", age: 33, city: "Fortaleza - CE", stars: "⭐⭐", comment: "Área de Construção. Dedicação, Qualidade e Compromisso", whatsapp: "5585994312887" },
+        https://clientes-fhfe.onrender.com/painel-servicos.html?id=4&nome=Alberto
+        { id: 5, service: "Pedreiro", name: "Adonias", age: 42, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "Trabalho de alvenaria impecável. Serviços em Geral", whatsapp: "5585992726761" },
+        https://clientes-fhfe.onrender.com/painel-servicos.html?id=5&nome=Adonias
+        { id: 6, service: "Pedreiro", name: "Charles Gomes", age: 47, city: "Fortaleza - CE", stars: "⭐⭐⭐", comment: "5 anos de experiência na área", whatsapp: "5585997225537" },
+        https://clientes-fhfe.onrender.com/painel-servicos.html?id=6&nome=Charles
+
+Servente
+        { id: 12, service: "Servente", name: "Micael Souza", age: 18, city: "Pacajus - CE", stars: "⭐⭐⭐", comment: "Ajudante de Pedreiro.", whatsapp: "5585921741466" },
+        https://clientes-fhfe.onrender.com/painel-servicos.html?id=12&nome=Micael
+
+Bombeiro Hidráulico
+        { id: 22, service: "Bombeiro Hidraulico", name: "Marcilano Costa", age: 42, city: "Pacajus - CE", stars: "⭐⭐⭐", comment: "Vazamentos, limpeza de caixa d'água e desentupimentos.", whatsapp: "5585992531487" },  
+        https://clientes-fhfe.onrender.com/painel-servicos.html?id=22&nome=Marciliano
+
+Pintor
+        { id: 32, service: "Pintor", name: "Luis Carlos", age: 34, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "Pintura simples, em gesso, Reparo em pintura, pinturas em geral", whatsapp: "5585991757150" },
+        https://clientes-fhfe.onrender.com/painel-servicos.html?id=32&nome=Luis
+        { id: 33, service: "Pintor", name: "Daniel Souza", age: 27, city: "Pacajus - CE", stars: "⭐⭐⭐", comment: "2 anos na função de pintura e manutenção de serviços.", whatsapp: "5585994148055" },
+        https://clientes-fhfe.onrender.com/painel-servicos.html?id=33&nome=Daniel
+        { id: 34, service: "Pintor", name: "Leonardo Silva", age: 26, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "Aplicação de massa corrida, texturas em geral.", whatsapp: "5585992745163" },         
+        https://clientes-fhfe.onrender.com/painel-servicos.html?id=34&nome=Leonardo
+
+Capinador
+        { id: 42, service: "Capinador", name: "Adriano Costa", age: 31, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "Tenho experiência na área.", whatsapp: "5585992318130" },
+        https://clientes-fhfe.onrender.com/painel-servicos.html?id=42&nome=Adriano
+
+
+Eletricista
+        { id: 52, service: "Eletricista", name: "Roberto Evangelista", age: 39, city: "Horizonte - CE", stars: "⭐⭐⭐⭐⭐", comment: "Experiência na área de Eletricidade.", whatsapp: "5585981737165" },
+        https://clientes-fhfe.onrender.com/painel-servicos.html?id=52&nome=Roberto
+        { id: 53, service: "Eletricista", name: "Marcelo Lima", age: 30, city: "Fortaleza - CE", stars: "⭐⭐⭐", comment: "Eletricista Residencial e Predial.", whatsapp: "5585992726101" },
+        https://clientes-fhfe.onrender.com/painel-servicos.html?id=53&nome=Marcelo
+
+Montador de Móveis
+        { id: 62, service: "Montador de Móveis", name: "Naldo", age: 51, city: "Pacajus - CE", stars: "⭐⭐⭐", comment: "29 anos de experiência na área. Experiência com móveis de loja.", whatsapp: "5585992038039" }, 
+        https://clientes-fhfe.onrender.com/painel-servicos.html?id=62&nome=Naldo
+        { id: 63, service: "Montador de Móveis", name: "Felipe Araújo", age: 30, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "Montagens em Geral.", whatsapp: "5588920007471" },
+        https://clientes-fhfe.onrender.com/painel-servicos.html?id=63&nome=Felipe
+        { id: 64, service: "Montador de Móveis", name: "Robson", age: 27, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "9 anos de Experiência na área.", whatsapp: "5585994050965" },
+        https://clientes-fhfe.onrender.com/painel-servicos.html?id=64&nome=Robson
+        { id: 65, service: "Montador de Móveis", name: "Bergson Nunes", age: 36, city: "Horizonte - CE", stars: "⭐⭐⭐⭐⭐", comment: "18 anos de experiência. Atendo em Fortaleza e Regiões metropolitanas", whatsapp: "5585994316980" },
+        https://clientes-fhfe.onrender.com/painel-servicos.html?id=65&nome=Bergson
+        { id: 66, service: "Montador de Móveis", name: "Joilson Nunes", age: 40, city: "Caucaia - CE", stars: "⭐⭐⭐", comment: "Experiência com Montagem de Móveis", whatsapp: "5585988741249" },
+        https://clientes-fhfe.onrender.com/painel-servicos.html?id=66&nome=Joilson
+
+Caminhão de Frete
+
+        { id: 72, service: "Frete e Mudanças", name: "Marcio", age: 45, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "Fretes rápidos e seguros para qualquer destino.", whatsapp: "5585991979580" },
+        https://clientes-fhfe.onrender.com/painel-servicos.html?id=72&nome=Marcio
+        { id: 73, service: "Frete e Mudanças", name: "Fernando", age: 52, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "Transporte de cargas com total cuidado e eficiência.", whatsapp: "5585991450130" },
+        https://clientes-fhfe.onrender.com/painel-servicos.html?id=73&nome=Fernando
+        { id: 74, service: "Frete e Mudanças", name: "Duilio", age: 48, city: "Horizonte - CE", stars: "⭐⭐⭐⭐⭐", comment: "Especialista em mudanças.", whatsapp: "5585992767286" },
+        https://clientes-fhfe.onrender.com/painel-servicos.html?id=74&nome=Duilio
+        { id: 75, service: "Frete e Mudanças", name: "Vinicius", age: 26, city: "Pacajus - CE", stars: "⭐⭐⭐⭐", comment: "Frete residencial com atendimento ágil.", whatsapp: "5585992324911" },
+        https://clientes-fhfe.onrender.com/painel-servicos.html?id=75&nome=Vinicius
+        { id: 76, service: "Frete e Mudanças", name: "Primo Fretes", age: 54, city: "Pacajus - CE", stars: "⭐⭐⭐⭐", comment: "Serviço confiável.", whatsapp: "5585991557742" },
+        https://clientes-fhfe.onrender.com/painel-servicos.html?id=76&nome=Primo
+        { id: 77, service: "Frete e Mudanças", name: "Cristiano", age: 47, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "Carregamento seguro e entrega rápida.", whatsapp: "5585992962940" },
+        https://clientes-fhfe.onrender.com/painel-servicos.html?id=77&nome=Cristiano
+
+Faxineira
+
+        { id: 82, service: "Faxineira", name: "Andreza Lima", age: 28, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "Experiênte em limpezas detalhadas, pontual e organizada.", whatsapp: "5585992333281" },
+        https://clientes-fhfe.onrender.com/painel-servicos.html?id=82&nome=Andreza
+        { id: 83, service: "Faxineira", name: "Alexandra Reis", age: 31, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "Tenho experiência como Diarista á anos com competência", whatsapp: "5585992460837" },
+        https://clientes-fhfe.onrender.com/painel-servicos.html?id=83&nome=Alexandra
+        { id: 84, service: "Faxineira", name: "Andrea Carneiro", age: 42, city: "Fortaleza - CE", stars: "⭐⭐⭐", comment: "6 anos de experiência", whatsapp: "5585989282316" },
+        https://clientes-fhfe.onrender.com/painel-servicos.html?id=84&nome=Andrea
+4       { id: 85, service: "Faxineira", name: "Daniele Ribeiro", age: 37, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "Bastante experiência na área", whatsapp: "5585991738251" },
+        https://clientes-fhfe.onrender.com/painel-servicos.html?id=85&nome=Daniele
+        { id: 86, service: "Faxineira", name: "Emília Costa", age: 39, city: "Fortaleza - CE", stars: "⭐⭐⭐", comment: "Tenho experiência na área.", whatsapp: "5585989506095" },
+        https://clientes-fhfe.onrender.com/painel-servicos.html?id=86&nome=Emilia
+        { id: 87, service: "Faxineira", name: "Emanuele Pereira", age: 46, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "10 anos de experiência em faxinas.", whatsapp: "5575998229065" },
+        https://clientes-fhfe.onrender.com/painel-servicos.html?id=87&nome=Emanuele
+        { id: 88, service: "Faxineira", name: "Mariana Ailis", age: 28, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "Sou organizada, responsável e pontual", whatsapp: "5585989386823" },
+        https://clientes-fhfe.onrender.com/painel-servicos.html?id=88&nome=Mariana
+
+Tec em Refrigeração
+
+        { id: 122, service: "Téc. em Refrigeração", name: "Maycon", age: 22, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "Experiência de 2 anos, trabalho com máquinas Split, piso teto e Cassete.", whatsapp: "5585994088415" },
+        https://clientes-fhfe.onrender.com/painel-servicos.html?id=122&nome=Maycon
+        { id: 123, service: "Téc. em Refrigeração", name: "Matheus Alves", age: 21, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "4 anos de Exp. na área de Ar Condicionado. Split e Máquinas de lavar.", whatsapp: "5585992081178" },
+        https://clientes-fhfe.onrender.com/painel-servicos.html?id=123&nome=Matheus
+        { id: 124, service: "Téc. em Refrigeração", name: "Adriano", age: 35, city: "Pacajus - CE", stars: "⭐⭐⭐", comment: "Mecânico de ar condicionado instalação, manutenção e conserto.", whatsapp: "5585991368616" },
+        https://clientes-fhfe.onrender.com/painel-servicos.html?id=124&nome=Adriano
+
+Metalurgico
+
+        { id: 132, service: "Metalurgico", name: "Gabriel", age: 35, city: "Horizonte - CE", stars: "⭐⭐⭐⭐⭐", comment: "Experiência em fabricação de peças metálicas sob medida.", whatsapp: "5585992768448" },
+        https://clientes-fhfe.onrender.com/painel-servicos.html?id=132&nome=Gabriel
+        { id: 164, service: "Metalurgico", name: "Daniel Brandão", age: 37, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "Trabalho com Soldas e etc...", whatsapp: "5585996747368" },
+        https://clientes-fhfe.onrender.com/painel-servicos.html?id=164&nome=Daniel
+
+Cabeleireiro a Domicilio
+
+        { id: 148, service: "Cabeleireiro(a) a Domicílio", name: "Francisco Romario", age: 31, city: "Fortaleza - CE", stars: "⭐⭐⭐", comment: "3 anos de Experiência", whatsapp: "5585987494767" },
+        https://clientes-fhfe.onrender.com/painel-servicos.html?id=148&nome=Francisco
+
+Manicure á Domicilio
+
+        { id: 153, service: "Manicure a Domicílio", name: "Renata Rodrigues", age: 31, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "4 anos de experiência da área", whatsapp: "5585992272181" },
+        https://clientes-fhfe.onrender.com/painel-servicos.html?id=153&nome=Renata
+        
+Designer
+
+        { id: 157, service: "Designer", name: "Mondesson Linardis", age: 29, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "3 anos de experiência em design e redes sociais, tenho uma gráfica há 5 meses.", whatsapp: "5585991774021" },
+        https://clientes-fhfe.onrender.com/painel-servicos.html?id=157&nome=Mondesson
+        { id: 158, service: "Designer", name: "Mateus Santos", age: 26, city: "Horizonte - CE", stars: "⭐⭐⭐⭐⭐", comment: "Experiência como designer na grafica Connect.com e designer Autônomo á 5 anos.", whatsapp: "5585992975877" },
+        https://clientes-fhfe.onrender.com/painel-servicos.html?id=158&nome=Mateus
+
+Adestramento
+
+        { id: 159, service: "Adestramento", name: "César Freire", age: 41, city: "Aquiraz - CE", stars: "⭐⭐⭐⭐", comment: "Adestrador de cães há 10 anos. Hospedagem, Taxi Dog, DayCare/Creche", whatsapp: "5585991661174" },
+        https://clientes-fhfe.onrender.com/painel-servicos.html?id=159&nome=Cesar
+
+Marceneiro
+
+        { id: 160, service: "Marceneiro", name: "Halison Santos", age: 36, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "A mais de 12 anos ná área de Móveis Planejados", whatsapp: "5585991893493" },
+        https://clientes-fhfe.onrender.com/painel-servicos.html?id=160&nome=Halison
+
+Chaveiro
+
+        { id: 161, service: "Chaveiro", name: "André Batista", age: 50, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "10 anos de chaveiro / Técnico Mecânico", whatsapp: "5585992438122" },
+        https://clientes-fhfe.onrender.com/painel-servicos.html?id=161&nome=Andre
+
+Caminhão Reboque
+
+        { id: 162, service: "Caminhão Reboque", name: "Edimilson Camara", age: 18, city: "Aquiraz - CE", stars: "⭐⭐⭐⭐⭐", comment: "5 anos de experiência na área", whatsapp: "5585992885324" },
+        https://clientes-fhfe.onrender.com/painel-servicos.html?id=162&nome=Edimilson

@@ -275,6 +275,8 @@ document.addEventListener("DOMContentLoaded", function () {
         `;
 
         // 🚀 **Corrigindo evento de clique no botão do WhatsApp**
+
+        
         const whatsappButton = document.querySelector(".whatsapp-button");
 
         if (whatsappButton) {
@@ -290,43 +292,43 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // ✅ **Função para capturar clique e enviar dados ao banco**
 function handleClick(event) {
-    console.log("📌 Clique detectado! Enviando dados ao backend…");
+  event.preventDefault(); // 🔥 Isso impede que o WhatsApp abra imediatamente!
 
-    const target = event.target.closest(".whatsapp-button"); // Garante que pegamos o botão correto
+  console.log("📌 Clique detectado! Exibindo alerta antes de enviar dados ao backend…");
 
-    if (!target) {
-        console.error("🚨 Erro: botão não encontrado!");
-        return;
-    }
+  const target = event.target.closest(".whatsapp-button");
+  if (!target) {
+    console.error("🚨 Erro: botão não encontrado!");
+    return;
+  }
 
-    console.log("✅ Profissional selecionado →", {
-        id: target.getAttribute("data-id"),
-        nome: target.getAttribute("data-nome"),
-        profissao: target.getAttribute("data-profissao")
-    });
+const overlay = document.getElementById("whatsappOverlay");
+const whatsappLink = target.getAttribute("href");
 
-    fetch("https://clientes-fhfe.onrender.com/api/click", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-            profissionalId: target.getAttribute("data-id"),
-            nomeProfissional: target.getAttribute("data-nome"),
-            profissao: target.getAttribute("data-profissao")
-        })
+if (overlay) {
+  overlay.classList.remove("hidden");
+
+  setTimeout(() => {
+    overlay.classList.add("hidden");
+    if (whatsappLink) window.open(whatsappLink, "_blank");
+  }, 5000);
+} else {
+  if (whatsappLink) window.open(whatsappLink, "_blank");
+}
+
+  // 🚀 Agora envia os dados pro backend
+  fetch("https://clientes-fhfe.onrender.com/api/click", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      profissionalId: target.getAttribute("data-id"),
+      nomeProfissional: target.getAttribute("data-nome"),
+      profissao: target.getAttribute("data-profissao")
     })
-    .then(response => response.json())
-    .then(data => {
-        console.log("✅ Clique registrado com sucesso!");
-
-        // 🚀 Agora abre o WhatsApp em outra aba para evitar bloqueios
-        const whatsappLink = target.getAttribute("href");
-        window.open(whatsappLink, "_blank");
-    })
-    .catch(error => {
-        console.error("❌ Erro ao registrar clique:", error);
-        const whatsappLink = target.getAttribute("href");
-        window.open(whatsappLink, "_blank");
-    });
+  })
+    .then(res => res.json())
+    .then(data => console.log("✅ Clique registrado com sucesso!"))
+    .catch(err => console.error("❌ Erro ao registrar clique:", err));
 }
 
 

@@ -67,10 +67,11 @@ console.log("Nome Completo Capturado:", nomeCompleto);
         const vantagens = {
             prata: `<h3>Sem custo: AuzaFree</h3>
                     <ul id="listaVantagensPrata">
-                        <li>✅ 100% Gratuito</li>
+                        <li>✅ Cadastro 100% Gratuito</li>
                         <li>✅ Presença na plataforma</li>
                         <li>✅ Cadastro simples</li>
                         <li id="vantagemMisteriosaBtn" style="cursor: pointer;">➡️ Auza Rewards (Clique Aqui)</li>
+                        <li>ℹ️ Tava de 10% por serviço fechado</li>
                     </ul>`,
             dourado: `<h3>Vantagens de ser AuzaGold:</h3>
                       <ul>
@@ -79,6 +80,7 @@ console.log("Nome Completo Capturado:", nomeCompleto);
                           <li>🏆 Mais visibilidade</li>
                           <li>🏆 Maior Credibilidade</li>
                           <li>🏆 Contato prioritário</li>
+                          <li>ℹ️ Tava de 10% por serviço fechado</li>
                       </ul>`
         };
 

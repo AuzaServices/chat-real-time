@@ -1,52 +1,81 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <title>Profissional</title>
-    <link rel="icon" href="https://i.imgur.com/uLiAK9a.png" type="image/png">
-    <link rel="stylesheet" href="css/profissionais.css"> <!-- Importando o CSS exclusivo -->
-    <meta property="og:image" content="https://i.imgur.com/6k6NLOY.png">
-    <meta property="og:title" content="Auza Services - Profissionais">
+  <meta charset="UTF-8" />
+  <title>Profissional</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <link rel="icon" href="https://i.imgur.com/uLiAK9a.png" type="image/png" />
+  <link rel="stylesheet" href="css/profissionais.css" />
+  <meta property="og:image" content="https://i.imgur.com/6k6NLOY.png" />
+  <meta property="og:title" content="Auza Services - Profissionais" />
 </head>
 <body>
+  <div id="professional-card"></div>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <div id="professional-card"></div> <!-- Apenas um cartão, sem aninhamento -->
-    
-    <!-- Container separado para os botões -->
-<!-- Botões de ação -->
-<div class="action-buttons">
+  <div class="action-buttons">
     <button id="shareButton">
-        <img src="css/imagens/compartilhar.jpeg" alt="Compartilhar">
+      <img src="css/imagens/compartilhar.jpeg" alt="Compartilhar" />
     </button>
-
     <button id="optionsButton" style="position: absolute; top: -3px; left: 360px;">⋮</button>
-
-    <!-- Menu de opções -->
     <div id="optionsMenu" class="hidden">
-        <a id="reportButton" target="_blank">Reportar</a>
+      <a id="reportButton" target="_blank">Reportar</a>
     </div>
-</div>
-        <button id="backButton">Voltar</button>
-    </div>
-<div class="rating-container">
-    <p id="ratingQuestion">O que achou desse profissional?</p>
-    
+  </div>
+
+  <button id="backButton">Voltar</button>
+
+  <div class="service-confirmation">
+    <p id="serviceQuestion">Você realizou o serviço desejado com este(a) profissional?</p>
+    <button id="confirmService" class="confirm-btn">✅ SIM, foi realizado!</button>
+    <p class="report-note">
+      Se teve algum problema com o atendimento, use o botão <strong>“Reportar”</strong> nos três pontinhos para nos informar.
+    </p>
+  </div>
+
+  <div class="rating-container">
+    <p id="ratingQuestion">O que achou desse(a) profissional?</p>
     <div class="stars-container">
-        <span class="star" data-value="1">☆</span>
-        <span class="star" data-value="2">☆</span>
-        <span class="star" data-value="3">☆</span>
-        <span class="star" data-value="4">☆</span>
-        <span class="star" data-value="5">☆</span>
+      <span class="star" data-value="1">☆</span>
+      <span class="star" data-value="2">☆</span>
+      <span class="star" data-value="3">☆</span>
+      <span class="star" data-value="4">☆</span>
+      <span class="star" data-value="5">☆</span>
     </div>
     <button id="submitRating" disabled>Enviar Avaliação</button>
-</div>
-<div class="testimonial-container">
+  </div>
+
+  <div class="testimonial-container">
     <div class="testimonial active">
-        <p class="testimonial-text">“Adorei ter conhecido a Auza Services! Me economizou tempo e energia.”</p>
-        <span class="testimonial-name">— Francisco José</span>
+      <p class="testimonial-text">“Adorei ter conhecido a Auza Services! Me economizou tempo e energia.”</p>
+      <span class="testimonial-name">— Francisco José</span>
     </div>
+  </div>
+
+<div id="whatsappOverlay" class="overlay hidden">
+  <div class="overlay-message">
+    <p>📌 Após conversar com o profissional, volte aqui para confirmar se o serviço foi realizado!</p>
+  </div>
 </div>
-    <script src="js/profissional.js"></script>
+
+  <!-- Scripts -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const confirmButton = document.getElementById("confirmService");
+
+      if (confirmButton) {
+        confirmButton.addEventListener("click", function () {
+          const params = new URLSearchParams(window.location.search);
+          const nomeProfissional = params.get("name") || "Profissional não identificado";
+          const mensagem = `✅ Confirmo que fui atendido(a) com sucesso pelo(a) profissional *${nomeProfissional}* e o serviço foi concluído como combinado.`;
+          const numeroWhatsApp = "5585991340658";
+          const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
+          window.open(url, "_blank");
+        });
+      }
+    });
+  </script>
+
+  <!-- ✅ Agora carrega o JS depois de tudo -->
+  <script src="js/profissional.js"></script>
 </body>
 </html>
