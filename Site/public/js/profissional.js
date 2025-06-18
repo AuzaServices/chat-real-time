@@ -251,7 +251,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const professional = professionals.find(p => p.name.trim() === selectedName.trim());
 
     if (professional) {
-        const whatsappLink = `https://api.whatsapp.com/send?phone=${professional.whatsapp}&text=Olá, vim por meio da Auza Services, gostaria de realizar um orçamento de serviço.`;
+        const whatsappLink = `https://wa.me/${professional.whatsapp}?text=${encodeURIComponent("Olá, vim por meio da *Auza Services*, gostaria de realizar um orçamento de serviço.")}`;
 
         // Verifica se o profissional está na lista de destaques
         const isHighlighted = highlightedProfessionals.has(professional.name.trim());
