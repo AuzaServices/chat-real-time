@@ -71,7 +71,7 @@ console.log("Nome Completo Capturado:", nomeCompleto);
                         <li>✅ Presença na plataforma</li>
                         <li>✅ Cadastro simples</li>
                         <li id="vantagemMisteriosaBtn" style="cursor: pointer;">➡️ Auza Rewards (Clique Aqui)</li>
-                        <li>ℹ️ Tava de 10% por serviço fechado</li>
+                        <li>ℹ️ Taxa de 10% por serviço realizado</li>
                     </ul>`,
             dourado: `<h3>Vantagens de ser AuzaGold:</h3>
                       <ul>
@@ -80,7 +80,8 @@ console.log("Nome Completo Capturado:", nomeCompleto);
                           <li>🏆 Mais visibilidade</li>
                           <li>🏆 Maior Credibilidade</li>
                           <li>🏆 Contato prioritário</li>
-                          <li>ℹ️ Tava de 10% por serviço fechado</li>
+                          <li id="vantagemMisteriosaBtn" style="cursor: pointer;">➡️ Auza Rewards (Clique Aqui)</li>
+                          <li>ℹ️ Taxa de 10% por serviço realizado</li>
                       </ul>`
         };
 
