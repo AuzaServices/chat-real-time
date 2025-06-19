@@ -130,7 +130,7 @@ app.post("/api/click", (req, res) => {
 // Rota: retornar dados
 app.get("/api/dados", (req, res) => {
     const sqlTrafego = "SELECT pagina, acessos, data FROM trafego ORDER BY data DESC";
-    const sqlCliques = "SELECT Profissional, Profissão, Chamadas FROM cliques ORDER BY Chamadas DESC";
+    const sqlCliques = "SELECT Profissional, Profissão, Chamadas, dataHora FROM cliques ORDER BY Chamadas DESC";
 
     db.query(sqlTrafego, (errTrafego, trafegoResults) => {
         if (errTrafego) {

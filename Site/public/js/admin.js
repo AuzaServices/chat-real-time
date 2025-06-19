@@ -21,7 +21,7 @@ tabelaCliques.innerHTML = dados.cliques.map(item => `
     <td>${item.Profissional}</td>
     <td>${item.Profissão}</td>
     <td>${item.Chamadas}</td>
-    <td>${item.dataHora || "-"}</td> <!-- Preenche a nova coluna -->
+    <td>${item.dataHora || "-"}</td> <!-- Aqui entra a data -->
   </tr>
 `).join("");
 
