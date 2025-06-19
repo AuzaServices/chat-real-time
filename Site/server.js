@@ -79,11 +79,14 @@ app.post("/api/trafego", (req, res) => {
         return res.json({ message: "✅ Acesso ignorado!" });
     }
 
-    const sql = `
-        INSERT INTO trafego (pagina, acessos)
-        VALUES (?, 1)
-        ON DUPLICATE KEY UPDATE acessos = acessos + 1;
-    `;
+const sqlTrafego = `
+  SELECT 
+    pagina, 
+    acessos, 
+    DATE_FORMAT(data, '%d/%m/%Y %H:%i:%s') AS data
+  FROM trafego
+  ORDER BY data DESC
+`;
 
     db.query(sql, [pagina], (err) => {
         if (err) {

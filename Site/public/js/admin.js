@@ -8,13 +8,13 @@ async function carregarDados() {
             const tabelaTrafego = document.getElementById("tabela-trafego");
             const tabelaCliques = document.getElementById("tabela-cliques");
 
-            tabelaTrafego.innerHTML = dados.trafego.map(item => `
-                <tr>
-                    <td>${item.pagina}</td>
-                    <td>${item.acessos}</td>
-                    <td>${item.data}</td>
-                </tr>
-            `).join("");
+tabelaTrafego.innerHTML = dados.trafego.map(item => `
+  <tr>
+    <td>${item.pagina}</td>
+    <td>${item.acessos}</td>
+    <td>${item.data}</td>
+  </tr>
+`).join("");
 
 tabelaCliques.innerHTML = dados.cliques.map(item => `
   <tr>
