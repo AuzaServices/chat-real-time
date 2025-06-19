@@ -79,13 +79,10 @@ app.post("/api/trafego", (req, res) => {
         return res.json({ message: "✅ Acesso ignorado!" });
     }
 
-const sqlTrafego = `
-  SELECT 
-    pagina, 
-    acessos, 
-    DATE_FORMAT(data, '%d/%m/%Y %H:%i:%s') AS data
-  FROM trafego
-  ORDER BY data DESC
+const sql = `
+  INSERT INTO trafego (pagina, acessos, data)
+  VALUES (?, 1, NOW())
+  ON DUPLICATE KEY UPDATE acessos = acessos + 1;
 `;
 
     db.query(sql, [pagina], (err) => {
@@ -97,6 +94,7 @@ const sqlTrafego = `
         res.json({ message: "✅ Acesso registrado!" });
     });
 });
+
 
 // Rota: registrar clique
 app.post("/api/click", (req, res) => {
@@ -112,12 +110,17 @@ app.post("/api/click", (req, res) => {
         return res.status(400).json({ error: "🚨 Dados incompletos!" });
     }
 
+    
     const sql = `
         INSERT INTO cliques (profissional_id, \`Profissional\`, \`Profissão\`, Chamadas, \`dataHora\`)
         VALUES (?, ?, ?, 1, ?)
         ON DUPLICATE KEY UPDATE
             Chamadas = Chamadas + 1,
             \`Profissão\` = VALUES(\`Profissão\`);
+
+            
+
+            
     `;
 
     db.query(sql, [profissionalId, nomeProfissional, profissao, dataHora], (err) => {
