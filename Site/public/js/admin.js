@@ -16,13 +16,14 @@ async function carregarDados() {
                 </tr>
             `).join("");
 
-            tabelaCliques.innerHTML = dados.cliques.map(item => `
-                <tr>
-                    <td>${item.Profissional}</td>
-                    <td>${item.Profissão}</td>
-                    <td>${item.Chamadas}</td>
-                </tr>
-            `).join("");
+tabelaCliques.innerHTML = dados.cliques.map(item => `
+  <tr>
+    <td>${item.Profissional}</td>
+    <td>${item.Profissão}</td>
+    <td>${item.Chamadas}</td>
+    <td>${item.dataHora || "-"}</td> <!-- Preenche a nova coluna -->
+  </tr>
+`).join("");
 
             console.log("✅ Dados atualizados automaticamente!");
         }

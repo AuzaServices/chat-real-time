@@ -97,7 +97,7 @@ app.post("/api/trafego", (req, res) => {
 
 // Rota: registrar clique
 app.post("/api/click", (req, res) => {
-    const { profissionalId, nomeProfissional, profissao } = req.body;
+    const { profissionalId, nomeProfissional, profissao, dataHora } = req.body;
     const ipLimpo = obterIp(req);
 
     if (ipsIgnorados.includes(ipLimpo)) {
@@ -105,19 +105,19 @@ app.post("/api/click", (req, res) => {
         return res.json({ message: "✅ Clique ignorado (IP bloqueado)" });
     }
 
-    if (!profissionalId || !nomeProfissional || !profissao) {
+    if (!profissionalId || !nomeProfissional || !profissao || !dataHora) {
         return res.status(400).json({ error: "🚨 Dados incompletos!" });
     }
 
     const sql = `
-        INSERT INTO cliques (profissional_id, \`Profissional\`, \`Profissão\`, Chamadas)
-        VALUES (?, ?, ?, 1)
+        INSERT INTO cliques (profissional_id, \`Profissional\`, \`Profissão\`, Chamadas, \`dataHora\`)
+        VALUES (?, ?, ?, 1, ?)
         ON DUPLICATE KEY UPDATE
             Chamadas = Chamadas + 1,
             \`Profissão\` = VALUES(\`Profissão\`);
     `;
 
-    db.query(sql, [profissionalId, nomeProfissional, profissao], (err) => {
+    db.query(sql, [profissionalId, nomeProfissional, profissao, dataHora], (err) => {
         if (err) {
             console.error("🚨 Erro ao registrar clique:", err);
             return res.status(500).json({ error: "Erro ao registrar clique" });

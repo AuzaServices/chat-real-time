@@ -300,34 +300,40 @@ function handleClick(event) {
     return;
   }
 
-const overlay = document.getElementById("whatsappOverlay");
-const continueBtn = document.getElementById("continueButton");
-const whatsappLink = target.getAttribute("href");
+  const overlay = document.getElementById("whatsappOverlay");
+  const continueBtn = document.getElementById("continueButton");
+  const whatsappLink = target.getAttribute("href");
 
-if (overlay && continueBtn) {
-  overlay.classList.remove("hidden");
+  if (overlay && continueBtn) {
+    overlay.classList.remove("hidden");
 
-  continueBtn.onclick = () => {
-    overlay.classList.add("hidden");
-    window.open(whatsappLink, "_blank");
-  };
-}
+    continueBtn.onclick = () => {
+      overlay.classList.add("hidden");
+      window.open(whatsappLink, "_blank");
+    };
+  }
 
-  // 🚀 Agora envia os dados pro backend
+  // 🕒 Captura a data e hora do clique
+const agora = new Date();
+const dataHoraLocal = agora.toLocaleString("pt-BR", {
+  timeZone: "America/Fortaleza" // Fuso de Ceará (UTC-3)
+});
+
+  // 🚀 Envia os dados pro backend com data/hora
   fetch("https://clientes-fhfe.onrender.com/api/click", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       profissionalId: target.getAttribute("data-id"),
       nomeProfissional: target.getAttribute("data-nome"),
-      profissao: target.getAttribute("data-profissao")
+      profissao: target.getAttribute("data-profissao"),
+      dataHora: dataHoraLocal // ⏰ Adicionado aqui!
     })
   })
     .then(res => res.json())
-    .then(data => console.log("✅ Clique registrado com sucesso!"))
+    .then(data => console.log("✅ Clique registrado com data/hora!"))
     .catch(err => console.error("❌ Erro ao registrar clique:", err));
 }
-
 
 document.getElementById("shareButton").addEventListener("click", async () => {
     const params = new URLSearchParams(window.location.search);
