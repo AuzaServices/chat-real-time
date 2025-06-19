@@ -10,9 +10,9 @@ app.use(express.json());
 // Conexão com MySQL
 const db = mysql.createPool({
     host: "sql10.freesqldatabase.com",
-    user: "sql10784497",
-    password: "vXvEteTscU",
-    database: "sql10784497",
+    user: "sql10785803",
+    password: "841dAKRziR",
+    database: "sql10785803",
     port: 3306
 });
 

@@ -1,6 +1,4 @@
 Removidos do Sistema
 
-
-R$12,00
 { id: 82, service: "Faxineira", name: "Andreza Lima", age: 28, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "Experiênte em limpezas detalhadas, pontual e organizada.", whatsapp: "5585992333281" },
 R$(Indefinido pelo Profissional)
