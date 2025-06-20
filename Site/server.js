@@ -106,9 +106,12 @@ app.post("/api/click", (req, res) => {
         return res.json({ message: "✅ Clique ignorado (IP bloqueado)" });
     }
 
-    if (!profissionalId || !nomeProfissional || !profissao || !dataHora) {
-        return res.status(400).json({ error: "🚨 Dados incompletos!" });
-    }
+// Define um timestamp seguro
+const dataHoraFinal = dataHora?.trim() !== "" ? dataHora : new Date();
+
+if (!profissionalId || !nomeProfissional || !profissao) {
+    return res.status(400).json({ error: "🚨 Dados obrigatórios ausentes!" });
+}
 
     
     const sql = `
@@ -123,7 +126,7 @@ app.post("/api/click", (req, res) => {
             
     `;
 
-    db.query(sql, [profissionalId, nomeProfissional, profissao, dataHora], (err) => {
+    db.query(sql, [profissionalId, nomeProfissional, profissao, dataHoraFinal], (err) => {
         if (err) {
             console.error("🚨 Erro ao registrar clique:", err);
             return res.status(500).json({ error: "Erro ao registrar clique" });
