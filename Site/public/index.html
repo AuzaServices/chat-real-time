@@ -40,92 +40,6 @@
 </head>
 <body id="index" class="background-active">
 
-            <div id="notificacoes-container"></div>
-        <script>
-const nomesHomens = [
-  "João", "Carlos", "Pedro", "Lucas", "Rafael", "André", "Rodrigo", "Eduardo", "Marcelo", "Felipe",
-  "Gustavo", "Daniel", "Leonardo", "Bruno", "Henrique", "Igor", "Fábio", "Alex", "Otávio", "Caio",
-  "Luan", "Danilo", "Wesley", "Alan", "Samuel", "Douglas", "Vitor", "Nathan", "Matheus", "Hugo",
-  "Leandro", "Antônio", "José", "Roberto", "Sérgio", "Ricardo", "Alexandre", "Maurício", "Caíque", "Túlio",
-  "Cristiano", "Emanuel", "Raul", "Enzo", "Elias", "Celso", "Vicente", "Juliano", "Fabrício", "Davi",
-  "Breno", "Ítalo", "Cauã", "Washington", "Natan", "Cristian", "Jadson", "Adriano", "Maicon", "Erick",
-  "Elton", "Régis", "Almir", "Júlio", "Nícolas", "Kelvin", "Alessandro", "Isaque", "Hélio", "Érico",
-  "Nadson", "Wellington", "Sandro", "Weslley", "Everton", "Yuri", "Tiago", "Valmir", "Muriel", "Gilson",
-  "Renato", "Luciano", "Fernando", "Ronaldo", "Paulo", "César", "Jorge", "Adilson", "Marcos", "Nilson",
-  "Otávio", "Raimundo", "Afonso", "Cláudio", "Edson", "Gilberto", "Ivan", "Jair", "Lázaro", "Nelson"
-];
-
-const nomesMulheres = [
-  "Maria", "Ana", "Beatriz", "Fernanda", "Juliana", "Camila", "Larissa", "Isabela", "Patrícia", "Aline",
-  "Tatiane", "Letícia", "Bruna", "Natália", "Amanda", "Vanessa", "Carolina", "Renata", "Débora", "Elaine",
-  "Sabrina", "Simone", "Jéssica", "Paula", "Michele", "Tatiana", "Marina", "Bianca", "Nicole", "Viviane",
-  "Helena", "Cristina", "Rita", "Daniela", "Priscila", "Melissa", "Lorena", "Cláudia", "Marta", "Tainá",
-  "Rayssa", "Lívia", "Otávia", "Esther", "Joana", "Rebeca", "Luana", "Yasmin", "Valéria", "Clarice",
-  "Catarina", "Noemi", "Lorraine", "Alana", "Graciela", "Ariane", "Aline", "Deborah", "Lorena", "Melissa",
-  "Lorraine", "Mirella", "Giovanna", "Tatiana", "Sueli", "Emilly", "Solange", "Lohana", "Gisele", "Lucilene",
-  "Erika", "Isadora", "Gilmara", "Vanilda", "Paloma", "Darlene", "Iolanda", "Andressa", "Rosângela", "Zuleide",
-  "Carine", "Raquel", "Brenda", "Luciana", "Sheila", "Denise", "Marisa", "Soraya", "Adriana", "Lindalva",
-  "Bárbara", "Cristiane", "Silvana", "Tatielly", "Janaina", "Ariela", "Carina", "Célia", "Karina", "Neide"
-];
-
-const servicosHomens = ["Frete e Mudanças", "Metalúrgico", "Encanador",  "Encanador", "Servente", "Capinador", "Frete e Mudanças", "Designer", "Pintor", "Eletricista", "Faxineira"];
-const servicosMulheres = ["Manicure", "Pedreiro", "Encanador", "Servente", "Capinador", "Frete e Mudanças", "Designer", "Metalúrgico", "Pintor", "Eletricista", "Faxineira"];
-
-let notificacoesAtivas = 0;
-const maxNotificacoes = 2;
-
-function gerarNotificacao() {
-  const container = document.getElementById("notificacoes-container");
-  if (!container) return;
-
-  const homem = Math.random() < 0.5;
-
-  let nome, servico;
-  if (homem) {
-    nome = nomesHomens[Math.floor(Math.random() * nomesHomens.length)];
-    servico = servicosHomens[Math.floor(Math.random() * servicosHomens.length)];
-  } else {
-    nome = nomesMulheres[Math.floor(Math.random() * nomesMulheres.length)];
-    servico = servicosMulheres[Math.floor(Math.random() * servicosMulheres.length)];
-  }
-
-  const hora = new Date().toLocaleTimeString("pt-BR", {
-    hour: "2-digit",
-    minute: "2-digit",
-  });
-
-  const div = document.createElement("div");
-  div.className = "notificacao";
-div.innerHTML = `
-  <span style="flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-    🔔 ${nome} contratou <strong>${servico}</strong>
-  </span>
-  <span style="margin-left: 12px; color: #666;">${hora}</span>
-`;
-  container.appendChild(div);
-
-  notificacoesAtivas++;
-  setTimeout(() => {
-    div.remove();
-    notificacoesAtivas--;
-  }, 8000);
-}
-
-function iniciarNotificacoes() {
-  if (notificacoesAtivas < maxNotificacoes) {
-    gerarNotificacao();
-  }
-
-  // Gera um intervalo entre 7s e 12s
-  const intervalo = Math.floor(Math.random() * 5000) + 7000;
-
-  setTimeout(iniciarNotificacoes, intervalo);
-}
-
-window.addEventListener("DOMContentLoaded", iniciarNotificacoes);
-
-        </script>
-
     <header>
         <img src="css/imagens/background.png" alt="Logo Auza Services" width="150px">
         <h1 class="title"></h1>
@@ -268,7 +182,6 @@ window.addEventListener("DOMContentLoaded", iniciarNotificacoes);
     // Exibe a primeira imagem imediatamente
     window.onload = showAds;
 </script>
-
 
 
 </body>
