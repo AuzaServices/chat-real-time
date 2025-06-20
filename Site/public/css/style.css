@@ -555,9 +555,9 @@ header img {
 
 #notificacoes-container {
   position: fixed;
-  bottom: 600px; /* valor acima do rodapé */
+  bottom: 650px; /* valor acima do rodapé */
   left: 20px;
-  max-width: 320px;
+  width: 320px;
   z-index: 9999;
   font-family: sans-serif;
 }

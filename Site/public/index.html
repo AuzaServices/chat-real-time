@@ -43,34 +43,34 @@
 
             <div id="notificacoes-container"></div>
         <script>
-const nomes = [
-  "Maria", "João", "Ana", "Carlos", "Beatriz", "Lucas", "Fernanda", "Pedro", "Juliana", "Rafael",
-  "Camila", "Gabriel", "Larissa", "Felipe", "Isabela", "André", "Patrícia", "Rodrigo", "Aline", "Eduardo",
-  "Tatiane", "Vinícius", "Letícia", "Marcelo", "Bruna", "Diego", "Natália", "Thiago", "Amanda", "Gustavo",
-  "Vanessa", "Daniel", "Carolina", "Leonardo", "Renata", "Bruno", "Débora", "Murilo", "Elaine", "Henrique",
-  "Sabrina", "Igor", "Simone", "Fábio", "Jéssica", "Alex", "Paula", "Otávio", "Michele", "Caio",
-  "Luan", "Tatiana", "Danilo", "Marina", "Wesley", "Bianca", "Alan", "Nicole", "Samuel", "Viviane",
-  "Douglas", "Helena", "Vitor", "Cristina", "Nathan", "Rita", "Matheus", "Daniela", "Hugo", "Priscila",
-  "Leandro", "Melissa", "Antônio", "Lorena", "José", "Cláudia", "Roberto", "Marta", "Sérgio", "Eliane",
-  "Ricardo", "Tainá", "Alexandre", "Rayssa", "Maurício", "Lívia", "Otávia", "Caíque", "Esther", "Joana",
-  "Enzo", "Rebeca", "Luana", "Cristiano", "Yasmin", "Emanuel", "Valéria", "Raul", "Clarice", "Túlio",
-  "Catarina", "Elias", "Noemi", "Nathaniel", "Otto", "Lorraine", "Alana", "Ícaro", "Graciela", "Celso",
-  "Ariane", "Vicente", "Aline", "Erick", "Deborah", "Fabrício", "Lorena", "Juliano", "Melissa", "Davi",
-  "Breno", "Lorraine", "Mirella", "Ítalo", "Giovanna", "Cauã", "Tatiana", "Washington", "Natan", "Sueli",
-  "Emilly", "Cristian", "Solange", "Jadson", "Lohana", "Gisele", "Adriano", "Maicon", "Lucilene", "Erika",
-  "Elton", "Isadora", "Gilmara", "Régis", "Vanilda", "Almir", "Paloma", "Darlene", "Iolanda", "Andressa",
-  "Rosângela", "Júlio", "Zuleide", "Nícolas", "Carine", "Raquel", "Kelvin", "Brenda", "Alessandro", "Luciana",
-  "Clovis", "Isaque", "Sheila", "Hélio", "Denise", "Érico", "Marisa", "Nadson", "Soraya", "Adriana",
-  "Wellington", "Lindalva", "Bárbara", "Sandro", "Cristiane", "Weslley", "Silvana", "Tatielly", "Everton", "Janaina",
-  "Yuri", "Ariela", "Tiago", "Carina", "Célia", "Valmir", "Karina", "Muriel", "Neide", "Gilson"
+const nomesHomens = [
+  "João", "Carlos", "Pedro", "Lucas", "Rafael", "André", "Rodrigo", "Eduardo", "Marcelo", "Felipe",
+  "Gustavo", "Daniel", "Leonardo", "Bruno", "Henrique", "Igor", "Fábio", "Alex", "Otávio", "Caio",
+  "Luan", "Danilo", "Wesley", "Alan", "Samuel", "Douglas", "Vitor", "Nathan", "Matheus", "Hugo",
+  "Leandro", "Antônio", "José", "Roberto", "Sérgio", "Ricardo", "Alexandre", "Maurício", "Caíque", "Túlio",
+  "Cristiano", "Emanuel", "Raul", "Enzo", "Elias", "Celso", "Vicente", "Juliano", "Fabrício", "Davi",
+  "Breno", "Ítalo", "Cauã", "Washington", "Natan", "Cristian", "Jadson", "Adriano", "Maicon", "Erick",
+  "Elton", "Régis", "Almir", "Júlio", "Nícolas", "Kelvin", "Alessandro", "Isaque", "Hélio", "Érico",
+  "Nadson", "Wellington", "Sandro", "Weslley", "Everton", "Yuri", "Tiago", "Valmir", "Muriel", "Gilson",
+  "Renato", "Luciano", "Fernando", "Ronaldo", "Paulo", "César", "Jorge", "Adilson", "Marcos", "Nilson",
+  "Otávio", "Raimundo", "Afonso", "Cláudio", "Edson", "Gilberto", "Ivan", "Jair", "Lázaro", "Nelson"
 ];
 
-const servicos = [
-  "Pedreiro", "Eletricista", "Encanador", "Pintor", "Marceneiro",
-  "Jardineiro", "Faxineira", "Montador", "Serralheiro", "Gesseiro",
-  "Frete", "Manicure" , "Reboque",
-  "Chaveiro", "Servente", "Capinador", "Designer"
+const nomesMulheres = [
+  "Maria", "Ana", "Beatriz", "Fernanda", "Juliana", "Camila", "Larissa", "Isabela", "Patrícia", "Aline",
+  "Tatiane", "Letícia", "Bruna", "Natália", "Amanda", "Vanessa", "Carolina", "Renata", "Débora", "Elaine",
+  "Sabrina", "Simone", "Jéssica", "Paula", "Michele", "Tatiana", "Marina", "Bianca", "Nicole", "Viviane",
+  "Helena", "Cristina", "Rita", "Daniela", "Priscila", "Melissa", "Lorena", "Cláudia", "Marta", "Tainá",
+  "Rayssa", "Lívia", "Otávia", "Esther", "Joana", "Rebeca", "Luana", "Yasmin", "Valéria", "Clarice",
+  "Catarina", "Noemi", "Lorraine", "Alana", "Graciela", "Ariane", "Aline", "Deborah", "Lorena", "Melissa",
+  "Lorraine", "Mirella", "Giovanna", "Tatiana", "Sueli", "Emilly", "Solange", "Lohana", "Gisele", "Lucilene",
+  "Erika", "Isadora", "Gilmara", "Vanilda", "Paloma", "Darlene", "Iolanda", "Andressa", "Rosângela", "Zuleide",
+  "Carine", "Raquel", "Brenda", "Luciana", "Sheila", "Denise", "Marisa", "Soraya", "Adriana", "Lindalva",
+  "Bárbara", "Cristiane", "Silvana", "Tatielly", "Janaina", "Ariela", "Carina", "Célia", "Karina", "Neide"
 ];
+
+const servicosHomens = ["Frete", "Metalúrgico", "Encanador", "Capinador", "Pedreiro", "Pintor", "Servente", "Chaveiro", "Faxineira", "Designer"];
+const servicosMulheres = ["Manicure", "Montador", "Pintor", "Encanador", "Pedreiro", "Capinador", "Frete", "Metalúrgico", "Chaveiro", "Faxineira", "Designer"];
 
 let notificacoesAtivas = 0;
 const maxNotificacoes = 3;
@@ -79,15 +79,21 @@ function gerarNotificacao() {
   const container = document.getElementById("notificacoes-container");
   if (!container) return;
 
-  const nome = nomes[Math.floor(Math.random() * nomes.length)];
-  const servico = servicos[Math.floor(Math.random() * servicos.length)];
+  const homem = Math.random() < 0.5;
+
+  const nome = homem
+    ? nomesHomens[Math.floor(Math.random() * nomesHomens.length)]
+    : nomesMulheres[Math.floor(Math.random() * nomesMulheres.length)];
+
+  const servico = homem
+    ? servicosHomens[Math.floor(Math.random() * servicosHomens.length)]
+    : servicosMulheres[Math.floor(Math.random() * servicosMulheres.length)];
+
   const hora = new Date().toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" });
 
   const div = document.createElement("div");
   div.className = "notificacao";
-div.innerHTML = `
-  <span>🔔 ${nome} contratou <strong>${servico}</strong> às ${hora}</span>
-`;
+  div.innerHTML = `🔔 ${nome} contratou <strong>${servico}</strong> às ${hora}`;
   container.appendChild(div);
 
   notificacoesAtivas++;
@@ -98,7 +104,7 @@ div.innerHTML = `
 }
 
 function iniciarNotificacoes() {
-  const intervalo = Math.floor(Math.random() * 8000) + 4000; // entre 4s e 12s
+  const intervalo = Math.floor(Math.random() * 8000) + 4000;
   if (notificacoesAtivas < maxNotificacoes) {
     gerarNotificacao();
   }
