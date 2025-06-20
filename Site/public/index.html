@@ -123,6 +123,73 @@
                 
             </div>
         </div>
+        
+        <div id="notificacoes-container"></div>
+        <script>
+const nomes = [
+  "Maria", "João", "Ana", "Carlos", "Beatriz", "Lucas", "Fernanda", "Pedro", "Juliana", "Rafael",
+  "Camila", "Gabriel", "Larissa", "Felipe", "Isabela", "André", "Patrícia", "Rodrigo", "Aline", "Eduardo",
+  "Tatiane", "Vinícius", "Letícia", "Marcelo", "Bruna", "Diego", "Natália", "Thiago", "Amanda", "Gustavo",
+  "Vanessa", "Daniel", "Carolina", "Leonardo", "Renata", "Bruno", "Débora", "Murilo", "Elaine", "Henrique",
+  "Sabrina", "Igor", "Simone", "Fábio", "Jéssica", "Alex", "Paula", "Otávio", "Michele", "Caio",
+  "Luan", "Tatiana", "Danilo", "Marina", "Wesley", "Bianca", "Alan", "Nicole", "Samuel", "Viviane",
+  "Douglas", "Helena", "Vitor", "Cristina", "Nathan", "Rita", "Matheus", "Daniela", "Hugo", "Priscila",
+  "Leandro", "Melissa", "Antônio", "Lorena", "José", "Cláudia", "Roberto", "Marta", "Sérgio", "Eliane",
+  "Ricardo", "Tainá", "Alexandre", "Rayssa", "Maurício", "Lívia", "Otávia", "Caíque", "Esther", "Joana",
+  "Enzo", "Rebeca", "Luana", "Cristiano", "Yasmin", "Emanuel", "Valéria", "Raul", "Clarice", "Túlio",
+  "Catarina", "Elias", "Noemi", "Nathaniel", "Otto", "Lorraine", "Alana", "Ícaro", "Graciela", "Celso",
+  "Ariane", "Vicente", "Aline", "Erick", "Deborah", "Fabrício", "Lorena", "Juliano", "Melissa", "Davi",
+  "Breno", "Lorraine", "Mirella", "Ítalo", "Giovanna", "Cauã", "Tatiana", "Washington", "Natan", "Sueli",
+  "Emilly", "Cristian", "Solange", "Jadson", "Lohana", "Gisele", "Adriano", "Maicon", "Lucilene", "Erika",
+  "Elton", "Isadora", "Gilmara", "Régis", "Vanilda", "Almir", "Paloma", "Darlene", "Iolanda", "Andressa",
+  "Rosângela", "Júlio", "Zuleide", "Nícolas", "Carine", "Raquel", "Kelvin", "Brenda", "Alessandro", "Luciana",
+  "Clovis", "Isaque", "Sheila", "Hélio", "Denise", "Érico", "Marisa", "Nadson", "Soraya", "Adriana",
+  "Wellington", "Lindalva", "Bárbara", "Sandro", "Cristiane", "Weslley", "Silvana", "Tatielly", "Everton", "Janaina",
+  "Yuri", "Ariela", "Tiago", "Carina", "Célia", "Valmir", "Karina", "Muriel", "Neide", "Gilson"
+];
+
+const servicos = [
+  "Pedreiro", "Eletricista", "Encanador", "Pintor", "Marceneiro",
+  "Jardineiro", "Faxineira", "Montador", "Serralheiro", "Gesseiro",
+  "Frete", "Manicure", "Metalúrgico", "Churrasqueiro" , "Reboque",
+  "Chaveiro", "Servente", "Capinador", "Designer"
+];
+
+let notificacoesAtivas = 0;
+const maxNotificacoes = 3;
+
+function gerarNotificacao() {
+  const container = document.getElementById("notificacoes-container");
+  if (!container) return;
+
+  const nome = nomes[Math.floor(Math.random() * nomes.length)];
+  const servico = servicos[Math.floor(Math.random() * servicos.length)];
+  const hora = new Date().toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" });
+
+  const div = document.createElement("div");
+  div.className = "notificacao";
+div.innerHTML = `
+  <span>🔔 ${nome} contratou <strong>${servico}</strong> às ${hora}</span>
+`;
+  container.appendChild(div);
+
+  notificacoesAtivas++;
+  setTimeout(() => {
+    div.remove();
+    notificacoesAtivas--;
+  }, 8000);
+}
+
+function iniciarNotificacoes() {
+  const intervalo = Math.floor(Math.random() * 8000) + 4000; // entre 4s e 12s
+  if (notificacoesAtivas < maxNotificacoes) {
+    gerarNotificacao();
+  }
+  setTimeout(iniciarNotificacoes, intervalo);
+}
+
+window.addEventListener("DOMContentLoaded", iniciarNotificacoes);
+        </script>
     </main>
 
     <footer>
