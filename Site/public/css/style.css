@@ -564,6 +564,7 @@ header img {
   gap: 12px; /* espacinho entre as notificações */
 
   font-family: sans-serif;
+  pointer-events: none; /* Notificações não interceptam clique */
 }
 
 .notificacao {
