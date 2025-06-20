@@ -556,10 +556,15 @@ header img {
 #notificacoes-container {
   position: fixed;
   bottom: 100px;
-  top: 50px;
-  left: 30px;
+  top: 20px;
+  left: 35px;
   max-width: 320px;
+    max-height: 300px;
+  overflow-y: auto;
   z-index: 9999;
+    flex-direction: column-reverse; /* 👈 inverte a pilha */
+  gap: 12px; /* espacinho entre as notificações */
+
   font-family: sans-serif;
 }
 
