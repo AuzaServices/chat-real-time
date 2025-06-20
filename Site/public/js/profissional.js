@@ -291,13 +291,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // ✅ **Função para capturar clique e enviar dados ao banco**
 function handleClick(event) {
-  event.preventDefault(); // 🔥 Isso impede que o WhatsApp abra imediatamente!
-
-  console.log("📌 Clique detectado! Exibindo alerta antes de enviar dados ao backend…");
+  event.preventDefault(); // Bloqueia clique direto no WhatsApp
 
   const target = event.target.closest(".whatsapp-button");
   if (!target) {
-    console.error("🚨 Erro: botão não encontrado!");
+    console.error("🚨 Botão WhatsApp não encontrado.");
     return;
   }
 
@@ -310,35 +308,39 @@ function handleClick(event) {
 
     continueBtn.onclick = () => {
       overlay.classList.add("hidden");
-      window.open(whatsappLink, "_blank");
+
+      // Captura data e hora atual
+      const agora = new Date().toLocaleString("en-US", {
+        timeZone: "America/Fortaleza",
+        hour12: false
+      });
+
+      const [date, time] = agora.split(", ");
+      const [month, day, year] = date.split("/");
+      const dataHoraFormatada = `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")} ${time}`;
+
+      // Envia os dados para o backend
+      fetch("https://clientes-fhfe.onrender.com/api/click", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          profissionalId: target.getAttribute("data-id"),
+          nomeProfissional: target.getAttribute("data-nome"),
+          profissao: target.getAttribute("data-profissao"),
+          dataHora: dataHoraFormatada
+        })
+      })
+        .then(res => res.json())
+        .then(data => {
+          console.log("✅ Clique registrado:", dataHoraFormatada);
+          window.open(whatsappLink, "_blank"); // Só abre após resposta
+        })
+        .catch(err => {
+          console.error("❌ Erro ao registrar clique:", err);
+          window.open(whatsappLink, "_blank"); // Abre mesmo se o fetch falhar
+        });
     };
   }
-
-  // 🕒 Captura a data e hora do clique
-const agora = new Date().toLocaleString("en-US", {
-  timeZone: "America/Fortaleza",
-  hour12: false
-});
-
-const [date, time] = agora.split(", ");
-const [month, day, year] = date.split("/");
-const dataHoraFormatada = `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")} ${time}`;
-
-// 🚀 Envia os dados pro backend com data/hora formatada
-fetch("https://clientes-fhfe.onrender.com/api/click", {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({
-    profissionalId: target.getAttribute("data-id"),
-    nomeProfissional: target.getAttribute("data-nome"),
-    profissao: target.getAttribute("data-profissao"),
-    dataHora: dataHoraFormatada
-  })
-})
-  .then(res => res.json())
-  .then(data => console.log("✅ Clique registrado com data/hora:", dataHoraFormatada))
-  .catch(err => console.error("❌ Erro ao registrar clique:", err));
-
 }
 
 document.getElementById("shareButton").addEventListener("click", async () => {
