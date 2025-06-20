@@ -315,25 +315,30 @@ function handleClick(event) {
   }
 
   // 🕒 Captura a data e hora do clique
-const agora = new Date();
-const dataHoraLocal = agora.toLocaleString("pt-BR", {
-  timeZone: "America/Fortaleza" // Fuso de Ceará (UTC-3)
+const agora = new Date().toLocaleString("en-US", {
+  timeZone: "America/Fortaleza",
+  hour12: false
 });
 
-  // 🚀 Envia os dados pro backend com data/hora
-  fetch("https://clientes-fhfe.onrender.com/api/click", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      profissionalId: target.getAttribute("data-id"),
-      nomeProfissional: target.getAttribute("data-nome"),
-      profissao: target.getAttribute("data-profissao"),
-      dataHora: dataHoraLocal // ⏰ Adicionado aqui!
-    })
+const [date, time] = agora.split(", ");
+const [month, day, year] = date.split("/");
+const dataHoraFormatada = `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")} ${time}`;
+
+// 🚀 Envia os dados pro backend com data/hora formatada
+fetch("https://clientes-fhfe.onrender.com/api/click", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({
+    profissionalId: target.getAttribute("data-id"),
+    nomeProfissional: target.getAttribute("data-nome"),
+    profissao: target.getAttribute("data-profissao"),
+    dataHora: dataHoraFormatada
   })
-    .then(res => res.json())
-    .then(data => console.log("✅ Clique registrado com data/hora!"))
-    .catch(err => console.error("❌ Erro ao registrar clique:", err));
+})
+  .then(res => res.json())
+  .then(data => console.log("✅ Clique registrado com data/hora:", dataHoraFormatada))
+  .catch(err => console.error("❌ Erro ao registrar clique:", err));
+
 }
 
 document.getElementById("shareButton").addEventListener("click", async () => {

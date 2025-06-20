@@ -97,6 +97,7 @@ const sql = `
 
 
 // Rota: registrar clique
+// 📌 Rota: registrar clique
 app.post("/api/click", (req, res) => {
     const { profissionalId, nomeProfissional, profissao, dataHora } = req.body;
     const ipLimpo = obterIp(req);
@@ -106,24 +107,32 @@ app.post("/api/click", (req, res) => {
         return res.json({ message: "✅ Clique ignorado (IP bloqueado)" });
     }
 
-// Define um timestamp seguro
-const dataHoraFinal = dataHora?.trim() !== "" ? dataHora : new Date();
+    if (!profissionalId || !nomeProfissional || !profissao) {
+        return res.status(400).json({ error: "🚨 Dados obrigatórios ausentes!" });
+    }
 
-if (!profissionalId || !nomeProfissional || !profissao) {
-    return res.status(400).json({ error: "🚨 Dados obrigatórios ausentes!" });
-}
+    // ✅ Garante dataHora em formato compatível com MySQL
+    let dataHoraFinal;
+    try {
+        if (dataHora && typeof dataHora === "string") {
+            const parsed = new Date(dataHora);
+            if (!isNaN(parsed)) {
+                dataHoraFinal = parsed.toISOString().slice(0, 19).replace("T", " ");
+            }
+        }
+        if (!dataHoraFinal) {
+            dataHoraFinal = new Date().toISOString().slice(0, 19).replace("T", " ");
+        }
+    } catch (err) {
+        dataHoraFinal = new Date().toISOString().slice(0, 19).replace("T", " ");
+    }
 
-    
     const sql = `
         INSERT INTO cliques (profissional_id, \`Profissional\`, \`Profissão\`, Chamadas, \`dataHora\`)
         VALUES (?, ?, ?, 1, ?)
         ON DUPLICATE KEY UPDATE
             Chamadas = Chamadas + 1,
             \`Profissão\` = VALUES(\`Profissão\`);
-
-            
-
-            
     `;
 
     db.query(sql, [profissionalId, nomeProfissional, profissao, dataHoraFinal], (err) => {
