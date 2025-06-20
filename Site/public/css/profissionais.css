@@ -439,25 +439,58 @@ header img {
 }
 
 .confirm-btn, .deny-btn {
-    font-size: 18px;
-    font-weight: bold;
-    padding: 15px 25px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    display: block;
-    width: 80%;
-    margin: 10px auto; /* Maior espaçamento entre os botões */
+  font-size: 18px;
+  font-weight: 600;
+  padding: 16px 28px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: block;
+  width: 85%;
+  margin: 12px auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
 }
 
 .confirm-btn {
-    background-color: #4CAF50;
-    color: white;
-    border: 2px solid #388E3C;
+  background: linear-gradient(135deg, #4CAF50, #2E7D32);
+  color: #fff;
+  border: none;
+}
+
+@keyframes brilhoPassando {
+  0% {
+    left: -100%;
+  }
+  50% {
+    left: 120%;
+  }
+  100% {
+    left: 120%;
+  }
+}
+
+.confirm-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 40%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: skewX(-20deg);
+  animation: brilhoPassando 3s ease-in-out infinite;
+}
+
+.confirm-btn:hover::before {
+  left: 120%;
 }
 
 .confirm-btn:hover {
-    background-color: #388E3C;
+  background: linear-gradient(135deg, #43A047, #1B5E20);
+  transform: scale(1.03);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }
 
 .deny-btn {
@@ -533,17 +566,38 @@ header img {
 
 .continue-btn {
   margin-top: 15px;
-  padding: 10px 18px;
-  font-size: 15px;
-  background-color: #25d366;
+  padding: 12px 22px;
+  font-size: 16px;
+  background: linear-gradient(135deg, #25d366, #1ebe5b);
   border: none;
   color: white;
-  border-radius: 8px;
+  border-radius: 12px;
   cursor: pointer;
-  transition: background 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: transform 0.25s ease, box-shadow 0.3s ease, background 0.5s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.continue-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: skewX(-25deg);
+  transition: left 0.5s ease;
+}
+
+.continue-btn:hover::before {
+  left: 125%;
 }
 
 .continue-btn:hover {
-  background-color: #1ebe5b;
+  background: linear-gradient(135deg, #2be471, #16ac52);
+  transform: scale(1.03);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
