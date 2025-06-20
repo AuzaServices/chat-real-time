@@ -555,37 +555,71 @@ header img {
 
 #notificacoes-container {
   position: fixed;
-  bottom: 100px;
-  top: 20px;
+  top: 10px;
   left: 35px;
-  max-width: 320px;
   z-index: 9999;
-    flex-direction: column-reverse; /* 👈 inverte a pilha */
-  gap: 12px; /* espacinho entre as notificações */
-
-  font-family: sans-serif;
-  pointer-events: none; /* Notificações não interceptam clique */
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 16px;
+  width: 320px;
+  font-family: 'Segoe UI', sans-serif;
+  pointer-events: none;
 }
 
 .notificacao {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 20px;
-  background: #fff;
-  color: #000;
-  border-radius: 50px;
-  margin-bottom: 10px;
-  width: 320px;
+  padding: 14px 20px;
+  background: linear-gradient(145deg, #ffffff, #f2f2f2);
+  color: #2d2d2d;
+  border-radius: 60px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.4);
+  width: 100%;
   box-sizing: border-box;
-  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-  animation: fadeIn 0.5s ease;
+  white-space: nowrap;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(0,0,0,0.08);
+  animation: fadeLuxo 0.4s ease forwards;
+  position: relative;
 }
 
-@keyframes fadeIn {
+.notificacao::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 6px;
+  height: 100%;
+  background: linear-gradient(to bottom, #891500, #771600);
+  border-top-left-radius: 60px;
+  border-bottom-left-radius: 60px;
+}
+
+.notificacao .icone {
+  margin-right: 10px;
+  font-size: 18px;
+}
+
+@keyframes fadeLuxo {
   from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.fadeout {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.notificacao--sucesso {
+  background: linear-gradient(145deg, #e0ffe9, #f5fff9);
+  color: #1b5e20;
+}
+
+.notificacao--erro {
+  background: linear-gradient(145deg, #ffe8e8, #fff5f5);
+  color: #b00020;
 }
