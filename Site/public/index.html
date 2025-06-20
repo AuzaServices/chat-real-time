@@ -69,8 +69,8 @@ const nomesMulheres = [
   "Bárbara", "Cristiane", "Silvana", "Tatielly", "Janaina", "Ariela", "Carina", "Célia", "Karina", "Neide"
 ];
 
-const servicosHomens = ["Frete", "Metalúrgico", "Encanador", "Capinador", "Pedreiro", "Pintor", "Servente", "Chaveiro", "Faxineira", "Designer"];
-const servicosMulheres = ["Manicure", "Montador", "Pintor", "Encanador", "Pedreiro", "Capinador", "Frete", "Metalúrgico", "Chaveiro", "Faxineira", "Designer"];
+const servicosHomens = ["Frete e Mudanças", "Metalúrgico", "Encanador",  "Encanador", "Servente", "Capinador", "Frete e Mudanças", "Designer", "Pintor", "Eletricista", "Faxineira"];
+const servicosMulheres = ["Manicure", "Pedreiro", "Encanador", "Servente", "Capinador", "Frete e Mudanças", "Designer", "Metalúrgico", "Pintor", "Eletricista", "Faxineira"];
 
 let notificacoesAtivas = 0;
 const maxNotificacoes = 3;
@@ -81,19 +81,28 @@ function gerarNotificacao() {
 
   const homem = Math.random() < 0.5;
 
-  const nome = homem
-    ? nomesHomens[Math.floor(Math.random() * nomesHomens.length)]
-    : nomesMulheres[Math.floor(Math.random() * nomesMulheres.length)];
+  let nome, servico;
+  if (homem) {
+    nome = nomesHomens[Math.floor(Math.random() * nomesHomens.length)];
+    servico = servicosHomens[Math.floor(Math.random() * servicosHomens.length)];
+  } else {
+    nome = nomesMulheres[Math.floor(Math.random() * nomesMulheres.length)];
+    servico = servicosMulheres[Math.floor(Math.random() * servicosMulheres.length)];
+  }
 
-  const servico = homem
-    ? servicosHomens[Math.floor(Math.random() * servicosHomens.length)]
-    : servicosMulheres[Math.floor(Math.random() * servicosMulheres.length)];
-
-  const hora = new Date().toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" });
+  const hora = new Date().toLocaleTimeString("pt-BR", {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
 
   const div = document.createElement("div");
   div.className = "notificacao";
-  div.innerHTML = `🔔 ${nome} contratou <strong>${servico}</strong> às ${hora}`;
+div.innerHTML = `
+  <span style="flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+    🔔 ${nome} contratou <strong>${servico}</strong>
+  </span>
+  <span style="margin-left: 12px; color: #666;">${hora}</span>
+`;
   container.appendChild(div);
 
   notificacoesAtivas++;
