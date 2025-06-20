@@ -585,7 +585,6 @@ header img {
   animation: fadeLuxo 0.4s ease forwards;
   position: relative;
 }
-
 .notificacao::before {
   content: '';
   position: absolute;
@@ -593,7 +592,7 @@ header img {
   top: 0;
   width: 6px;
   height: 100%;
-  background: linear-gradient(to bottom, #891500, #771600);
+  background: linear-gradient(to bottom, #f5d76e, #e6b800, #c79700);
   border-top-left-radius: 60px;
   border-bottom-left-radius: 60px;
 }
