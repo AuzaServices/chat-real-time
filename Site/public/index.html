@@ -128,7 +128,7 @@ const nomesHomens = [
   "Felipe Augusto", "Fernando Henrique", "Filipe", "Flavio", "Francisco", "Frederico", "Gabriel", "Gael", "Gaspar", "Gerson",
   "Gil", "Giovani", "Goncalo", "Guilherme", "Gustavo Henrique", "Heitor", "Helder", "Andriel", "Henry", "Ian",
   "Ianis", "Igor Vinicius", "Isaac", "Isaias", "Isaque", "Ismael", "Israel", "Iuri", "Ivan", "Ivo",
-  "Jaime", "Jair", "James", "Jason", "Jesus", "Joao Afonso", "Joao Pedro", "Joao Miguel", "Joaquim", "Joel",
+  "Jaime", "Jair", "James", "Jason", "Joao Afonso", "Joao Pedro", "Joao Miguel", "Joaquim", "Joel",
   "Jonas", "Jonatas", "Jonathan", "Jorge Miguel", "Jose Antonio", "Juliano", "Julio Cesar", "Kaique", "Kevin", "Lauro",
   "Levi", "Lorenzo", "Lucca", "Lucio", "Luis Felipe", "Luiz", "Manoel", "Marcelo Augusto", "Marcio", "Marcos Paulo",
   "Martim", "Mateus", "Matheus Henrique", "Mauricio", "Miguel", "Murilo", "Nathaniel", "Nicolas", "Noah", "Oliver",
@@ -217,14 +217,19 @@ function iniciarNotificacoes() {
   }
 
   // Gera um intervalo entre 7s e 12s
-  const intervalo = Math.floor(Math.random() * 5000) + 7000;
+const intervalo = Math.floor(Math.random() * 10000) + 17000;
 
   setTimeout(iniciarNotificacoes, intervalo);
 }
 
-window.addEventListener("DOMContentLoaded", iniciarNotificacoes);
+window.addEventListener("DOMContentLoaded", () => {
+  // Aguarda 3 segundos antes de iniciar a primeira notificação
+  setTimeout(() => {
+    iniciarNotificacoes();
+  }, 3000);
+});
 
-        </script>
+</script>
 
 
     
