@@ -51,25 +51,35 @@
     </div>
   </div>
 
-<div id="whatsappOverlay" class="overlay hidden">
-  <div class="overlay-message">
-    <p><strong>Atenção:</strong> para sua garantia, após o serviço realizado, volte nessa página e clique em ✅ <strong>SIM, foi realizado!</strong>.
-
-</p>
-    <button id="continueButton" class="continue-btn">Continuar</button>
+  <div id="whatsappOverlay" class="overlay hidden">
+    <div class="overlay-message">
+      <p><strong>Atenção:</strong> para sua garantia, após o serviço realizado, volte nessa página e clique em ✅ <strong>SIM, foi realizado!</strong>.</p>
+      <button id="continueButton" class="continue-btn">Conversar</button>
+    </div>
   </div>
-</div>
 
   <!-- Scripts -->
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       const confirmButton = document.getElementById("confirmService");
+      const continueButton = document.getElementById("continueButton");
 
+      // Pega nome do profissional pela query string (?name=adonias)
+      const params = new URLSearchParams(window.location.search);
+      const nomeRaw = params.get("name");
+      const nomeProfissional = nomeRaw
+        ? nomeRaw.charAt(0).toUpperCase() + nomeRaw.slice(1)
+        : null;
+
+      // Atualiza botão do overlay com nome
+      if (nomeProfissional && continueButton) {
+        continueButton.textContent = `Conversar com ${nomeProfissional}`;
+      }
+
+      // Confirmação de serviço via WhatsApp
       if (confirmButton) {
         confirmButton.addEventListener("click", function () {
-          const params = new URLSearchParams(window.location.search);
-          const nomeProfissional = params.get("name") || "Profissional não identificado";
-          const mensagem = `✅ Confirmo que fui atendido(a) com sucesso pelo(a) profissional *${nomeProfissional}* e o serviço foi concluído como combinado.`;
+          const mensagem = `✅ Confirmo que fui atendido(a) com sucesso pelo(a) profissional *${nomeProfissional || "não identificado"}* e o serviço foi concluído como combinado.`;
           const numeroWhatsApp = "5585991340658";
           const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
           window.open(url, "_blank");
