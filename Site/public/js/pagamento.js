@@ -139,7 +139,7 @@ console.log("Nome Completo Capturado:", nomeCompleto);
             const linkWhatsApp = `https://wa.me/${whatsappNumero}?text=${encodeURIComponent(mensagem)}`;
             window.location.href = linkWhatsApp;
         } else if (tipoCartaoSelecionado === "dourado") {
-            window.location.href = window.location.href = `loading.html?nome=${encodeURIComponent(nome)}&sobrenome=${encodeURIComponent(sobrenome)}&idade=${encodeURIComponent(idade)}&experiencia=${encodeURIComponent(experiencia)}&estado=${encodeURIComponent(estado)}&cidade=${encodeURIComponent(cidade)}&profissao=${encodeURIComponent(profissao)}&indicador=${encodeURIComponent(indicador)}`;
+            window.location.href = window.location.href = `pagamento-pix.html?nome=${encodeURIComponent(nome)}&sobrenome=${encodeURIComponent(sobrenome)}&idade=${encodeURIComponent(idade)}&experiencia=${encodeURIComponent(experiencia)}&estado=${encodeURIComponent(estado)}&cidade=${encodeURIComponent(cidade)}&profissao=${encodeURIComponent(profissao)}&indicador=${encodeURIComponent(indicador)}`;
         } else {
             alert("Por favor, selecione um cartão antes de continuar.");
         }
