@@ -174,13 +174,22 @@ const servicosMulheres = ["Manicure", "Pedreiro", "Encanador", "Servente", "Capi
 let notificacoesAtivas = 0;
 const maxNotificacoes = 1;
 
+function obterPeriodoNoturno() {
+  const agora = new Date();
+  const hora = agora.getHours();
+
+  if (hora >= 20 || hora < 7) return "pausado";
+  if (hora === 7 || hora === 19) return "baixo";
+  return "normal";
+}
+
 function gerarNotificacao() {
   const container = document.getElementById("notificacoes-container");
   if (!container) return;
 
   const homem = Math.random() < 0.5;
-
   let nome, servico;
+
   if (homem) {
     nome = nomesHomens[Math.floor(Math.random() * nomesHomens.length)];
     servico = servicosHomens[Math.floor(Math.random() * servicosHomens.length)];
@@ -196,12 +205,12 @@ function gerarNotificacao() {
 
   const div = document.createElement("div");
   div.className = "notificacao";
-div.innerHTML = `
-  <span style="flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-    🔔 ${nome} contratou <strong>${servico}</strong>
-  </span>
-  <span style="margin-left: 12px; color: #666;">${hora}</span>
-`;
+  div.innerHTML = `
+    <span style="flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+      🔔 ${nome} contratou <strong>${servico}</strong>
+    </span>
+    <span style="margin-left: 12px; color: #666;">${hora}</span>
+  `;
   container.appendChild(div);
 
   notificacoesAtivas++;
@@ -212,18 +221,30 @@ div.innerHTML = `
 }
 
 function iniciarNotificacoes() {
+  const periodo = obterPeriodoNoturno();
+
+  if (periodo === "pausado") {
+    // Não gera notificações neste horário
+    setTimeout(iniciarNotificacoes, 60000); // Verifica novamente em 1 min
+    return;
+  }
+
   if (notificacoesAtivas < maxNotificacoes) {
     gerarNotificacao();
   }
 
-  // Gera um intervalo entre 7s e 12s
-const intervalo = Math.floor(Math.random() * 10000) + 17000;
+  // Ajusta intervalo com base no período
+  let intervalo;
+  if (periodo === "baixo") {
+    intervalo = Math.floor(Math.random() * 8000) + 25000; // entre 25s e 33s
+  } else {
+    intervalo = Math.floor(Math.random() * 10000) + 7000; // entre 7s e 17s
+  }
 
   setTimeout(iniciarNotificacoes, intervalo);
 }
 
 window.addEventListener("DOMContentLoaded", () => {
-  // Aguarda 3 segundos antes de iniciar a primeira notificação
   setTimeout(() => {
     iniciarNotificacoes();
   }, 3000);
