@@ -556,7 +556,7 @@ header img {
 #notificacoes-container {
   position: fixed;
   top: 10px;
-  left: 32px; /* reduzi um pouco a margem lateral */
+  left: 35px; /* reduzi um pouco a margem lateral */
   z-index: 9999;
   display: flex;
   flex-direction: column-reverse;
