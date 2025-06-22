@@ -556,12 +556,12 @@ header img {
 #notificacoes-container {
   position: fixed;
   top: 10px;
-  left: 35px;
+  left: 32px; /* reduzi um pouco a margem lateral */
   z-index: 9999;
   display: flex;
   flex-direction: column-reverse;
-  gap: 16px;
-  width: 320px;
+  gap: 12px;
+  width: 380px; /* aumentei a largura */
   font-family: 'Segoe UI', sans-serif;
   pointer-events: none;
 }
@@ -570,21 +570,24 @@ header img {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 20px;
+  padding: 8px 20px; /* diminuída a altura (padding vertical) */
   background: linear-gradient(145deg, #ffffff, #f2f2f2);
   color: #2d2d2d;
-  border-radius: 60px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.4);
-  width: 100%;
+  border-radius: 50px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  width: 80%;
   box-sizing: border-box;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   backdrop-filter: blur(8px);
-  border: 1px solid rgba(0,0,0,0.08);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   animation: fadeLuxo 0.4s ease forwards;
   position: relative;
+  font-size: 14px; /* menor tamanho da fonte, se quiser ainda mais compacto */
+  min-height: 38px; /* altura mínima mais enxuta */
 }
+
 .notificacao::before {
   content: '';
   position: absolute;
@@ -593,18 +596,8 @@ header img {
   width: 6px;
   height: 100%;
   background: linear-gradient(to bottom, #f5d76e, #e6b800, #c79700);
-  border-top-left-radius: 60px;
-  border-bottom-left-radius: 60px;
-}
-
-.notificacao .icone {
-  margin-right: 10px;
-  font-size: 18px;
-}
-
-@keyframes fadeLuxo {
-  from { opacity: 0; transform: translateY(10px); }
-  to   { opacity: 1; transform: translateY(0); }
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
 }
 
 .fadeout {
