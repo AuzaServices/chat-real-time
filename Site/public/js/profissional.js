@@ -314,10 +314,13 @@ function handleClick(event) {
   if (overlay && continueBtn) {
     overlay.classList.remove("hidden");
 
-    continueBtn.onclick = () => {
+    // Remove ouvintes antigos para evitar múltiplas chamadas
+    const novoBotao = continueBtn.cloneNode(true);
+    continueBtn.parentNode.replaceChild(novoBotao, continueBtn);
+
+    novoBotao.addEventListener("click", () => {
       overlay.classList.add("hidden");
 
-      // Captura data e hora atual
       const agora = new Date().toLocaleString("en-US", {
         timeZone: "America/Fortaleza",
         hour12: false
@@ -327,10 +330,8 @@ function handleClick(event) {
       const [month, day, year] = date.split("/");
       const dataHoraFormatada = `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")} ${time}`;
 
-      // Captura o número do cliente (removendo caracteres não numéricos)
       const numeroCliente = document.getElementById("numeroWhatsapp")?.value.replace(/\D/g, "") || "n/d";
 
-      // Envia os dados para o backend
       fetch("https://clientes-fhfe.onrender.com/api/click", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -343,15 +344,19 @@ function handleClick(event) {
         })
       })
         .then(res => res.json())
-        .then(data => {
-          console.log("✅ Clique registrado:", dataHoraFormatada);
-          window.open(whatsappLink, "_blank"); // Só abre após resposta
+        .then(() => {
+          // ⚠️ Usar setTimeout para garantir que iOS permita a abertura do link
+          setTimeout(() => {
+            window.open(whatsappLink, "_blank");
+          }, 100);
         })
         .catch(err => {
           console.error("❌ Erro ao registrar clique:", err);
-          window.open(whatsappLink, "_blank"); // Abre mesmo se o fetch falhar
+          setTimeout(() => {
+            window.open(whatsappLink, "_blank");
+          }, 100);
         });
-    };
+    }, { once: true }); // Garante que só clique uma vez
   }
 }
 
