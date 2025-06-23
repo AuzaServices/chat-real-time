@@ -16,15 +16,28 @@ tabelaTrafego.innerHTML = dados.trafego.map(item => `
   </tr>
 `).join("");
 
-tabelaCliques.innerHTML = dados.cliques.map(item => `
-  <tr>
-    <td>${item.Profissional}</td>
-    <td>${item.Profissão}</td>
-    <td>${item.Chamadas}</td>
-    <td>${item.dataHora || "-"}</td>
-    <td>${item.whatsappCliente || "-"}</td> <!-- Novo campo exibido -->
-  </tr>
-`).join("");
+tabelaCliques.innerHTML = dados.cliques.map(item => {
+  const numero = item.whatsappCliente?.replace(/\D/g, ""); // remove símbolos
+  const numeroInternacional = numero ? `55${numero}` : null;
+
+  const mensagem = encodeURIComponent(
+    `Olá, gostaria de confirmar com você se o serviço com o(a) profissional ${item.Profissional} foi realizado?`
+  );
+
+  const linkWhatsApp = numero
+    ? `<a href="https://wa.me/${numeroInternacional}?text=${mensagem}" target="_blank">${item.whatsappCliente}</a>`
+    : "-";
+
+  return `
+    <tr>
+      <td>${item.Profissional}</td>
+      <td>${item.Profissão}</td>
+      <td>${item.Chamadas}</td>
+      <td>${item.dataHora || "-"}</td>
+      <td>${linkWhatsApp}</td>
+    </tr>
+  `;
+}).join("");
 
             console.log("✅ Dados atualizados automaticamente!");
         }
