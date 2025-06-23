@@ -21,7 +21,7 @@ tabelaCliques.innerHTML = dados.cliques.map(item => {
   const numeroInternacional = numero ? `55${numero}` : null;
 
   const mensagem = encodeURIComponent(
-    `Olá, gostaria de confirmar se o serviço com ${item.Profissional} - ${item.Profissão} foi realizado?`
+    `Olá, gostaria de confirmar se o serviço com *${item.Profissional}* - *${item.Profissão}* foi realizado?`
   );
 
   const linkWhatsApp = numero
