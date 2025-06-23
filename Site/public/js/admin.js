@@ -17,11 +17,11 @@ tabelaTrafego.innerHTML = dados.trafego.map(item => `
 `).join("");
 
 tabelaCliques.innerHTML = dados.cliques.map(item => {
-  const numero = item.whatsappCliente?.replace(/\D/g, ""); // remove símbolos
+  const numero = item.whatsappCliente?.replace(/\D/g, "");
   const numeroInternacional = numero ? `55${numero}` : null;
 
   const mensagem = encodeURIComponent(
-    `Olá, gostaria de confirmar com você se o serviço com o(a) profissional ${item.Profissional} foi realizado?`
+    `Olá, gostaria de confirmar se o serviço com ${item.Profissional} - ${item.Profissão} foi realizado?`
   );
 
   const linkWhatsApp = numero
