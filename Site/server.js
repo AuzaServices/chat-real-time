@@ -58,7 +58,7 @@ db.query(criarTabelaCliques, (err) => {
 });
 
 // 🧱 Lista de IPs a serem ignorados
-const ipsIgnorados = [""]; // Pode adicionar mais IPs conforme necessário
+const ipsIgnorados = ["132.255.106.159"]; // Pode adicionar mais IPs conforme necessário
 
 // 🛡️ Função utilitária para capturar IP real do usuário
 function obterIp(req) {
@@ -100,52 +100,69 @@ const sql = `
 // Rota: registrar clique
 // 📌 Rota: registrar clique
 app.post("/api/click", (req, res) => {
-    const { profissionalId, nomeProfissional, profissao, dataHora, whatsappCliente } = req.body;
-    const ipLimpo = obterIp(req);
+  const {
+    profissionalId,
+    nomeProfissional,
+    profissao,
+    dataHora,
+    whatsappCliente // 🆕 captura o número do cliente
+  } = req.body;
 
-    if (ipsIgnorados.includes(ipLimpo)) {
-        console.log(`🔕 Clique ignorado do IP: ${ipLimpo}`);
-        return res.json({ message: "✅ Clique ignorado (IP bloqueado)" });
+  const ipLimpo = obterIp(req);
+
+  if (ipsIgnorados.includes(ipLimpo)) {
+    console.log(`🔕 Clique ignorado do IP: ${ipLimpo}`);
+    return res.json({ message: "✅ Clique ignorado (IP bloqueado)" });
+  }
+
+  if (!profissionalId || !nomeProfissional || !profissao) {
+    return res.status(400).json({ error: "🚨 Dados obrigatórios ausentes!" });
+  }
+
+  // ✅ Garante dataHora em formato compatível com MySQL
+  let dataHoraFinal;
+  try {
+    if (dataHora && typeof dataHora === "string") {
+      const parsed = new Date(dataHora);
+      if (!isNaN(parsed)) {
+        dataHoraFinal = parsed.toISOString().slice(0, 19).replace("T", " ");
+      }
     }
-
-    if (!profissionalId || !nomeProfissional || !profissao) {
-        return res.status(400).json({ error: "🚨 Dados obrigatórios ausentes!" });
+    if (!dataHoraFinal) {
+      dataHoraFinal = new Date().toISOString().slice(0, 19).replace("T", " ");
     }
+  } catch (err) {
+    dataHoraFinal = new Date().toISOString().slice(0, 19).replace("T", " ");
+  }
 
-    // ✅ Garante dataHora em formato compatível com MySQL
-    let dataHoraFinal;
-    try {
-        if (dataHora && typeof dataHora === "string") {
-            const parsed = new Date(dataHora);
-            if (!isNaN(parsed)) {
-                dataHoraFinal = parsed.toISOString().slice(0, 19).replace("T", " ");
-            }
-        }
-        if (!dataHoraFinal) {
-            dataHoraFinal = new Date().toISOString().slice(0, 19).replace("T", " ");
-        }
-    } catch (err) {
-        dataHoraFinal = new Date().toISOString().slice(0, 19).replace("T", " ");
+  const sql = `
+    INSERT INTO cliques (
+      profissional_id,
+      \`Profissional\`,
+      \`Profissão\`,
+      Chamadas,
+      \`dataHora\`,
+      whatsappCliente
+    )
+    VALUES (?, ?, ?, 1, ?, ?)
+    ON DUPLICATE KEY UPDATE
+      Chamadas = Chamadas + 1,
+      \`Profissão\` = VALUES(\`Profissão\`),
+      whatsappCliente = VALUES(whatsappCliente);
+  `;
+
+  db.query(
+    sql,
+    [profissionalId, nomeProfissional, profissao, dataHoraFinal, whatsappCliente],
+    (err) => {
+      if (err) {
+        console.error("🚨 Erro ao registrar clique:", err);
+        return res.status(500).json({ error: "Erro ao registrar clique" });
+      }
+
+      res.json({ message: "✅ Clique computado com sucesso!" });
     }
-
-    const sql = `
-        INSERT INTO cliques (
-            profissional_id, \`Profissional\`, \`Profissão\`, Chamadas, \`dataHora\`, \`whatsappCliente\`
-        )
-        VALUES (?, ?, ?, 1, ?, ?)
-        ON DUPLICATE KEY UPDATE
-            Chamadas = Chamadas + 1,
-            \`Profissão\` = VALUES(\`Profissão\`);
-    `;
-
-    db.query(sql, [profissionalId, nomeProfissional, profissao, dataHoraFinal, whatsappCliente], (err) => {
-        if (err) {
-            console.error("🚨 Erro ao registrar clique:", err);
-            return res.status(500).json({ error: "Erro ao registrar clique" });
-        }
-
-        res.json({ message: "✅ Clique computado com sucesso!" });
-    });
+  );
 });
 
 // Rota: retornar dados
