@@ -327,6 +327,9 @@ function handleClick(event) {
       const [month, day, year] = date.split("/");
       const dataHoraFormatada = `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")} ${time}`;
 
+      // Captura o número do cliente (removendo caracteres não numéricos)
+      const numeroCliente = document.getElementById("numeroWhatsapp")?.value.replace(/\D/g, "") || "n/d";
+
       // Envia os dados para o backend
       fetch("https://clientes-fhfe.onrender.com/api/click", {
         method: "POST",
@@ -335,7 +338,8 @@ function handleClick(event) {
           profissionalId: target.getAttribute("data-id"),
           nomeProfissional: target.getAttribute("data-nome"),
           profissao: target.getAttribute("data-profissao"),
-          dataHora: dataHoraFormatada
+          dataHora: dataHoraFormatada,
+          whatsappCliente: numeroCliente
         })
       })
         .then(res => res.json())

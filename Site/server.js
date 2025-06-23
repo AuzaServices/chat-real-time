@@ -99,7 +99,7 @@ const sql = `
 // Rota: registrar clique
 // 📌 Rota: registrar clique
 app.post("/api/click", (req, res) => {
-    const { profissionalId, nomeProfissional, profissao, dataHora } = req.body;
+    const { profissionalId, nomeProfissional, profissao, dataHora, whatsappCliente } = req.body;
     const ipLimpo = obterIp(req);
 
     if (ipsIgnorados.includes(ipLimpo)) {
@@ -128,14 +128,16 @@ app.post("/api/click", (req, res) => {
     }
 
     const sql = `
-        INSERT INTO cliques (profissional_id, \`Profissional\`, \`Profissão\`, Chamadas, \`dataHora\`)
-        VALUES (?, ?, ?, 1, ?)
+        INSERT INTO cliques (
+            profissional_id, \`Profissional\`, \`Profissão\`, Chamadas, \`dataHora\`, \`whatsappCliente\`
+        )
+        VALUES (?, ?, ?, 1, ?, ?)
         ON DUPLICATE KEY UPDATE
             Chamadas = Chamadas + 1,
             \`Profissão\` = VALUES(\`Profissão\`);
     `;
 
-    db.query(sql, [profissionalId, nomeProfissional, profissao, dataHoraFinal], (err) => {
+    db.query(sql, [profissionalId, nomeProfissional, profissao, dataHoraFinal, whatsappCliente], (err) => {
         if (err) {
             console.error("🚨 Erro ao registrar clique:", err);
             return res.status(500).json({ error: "Erro ao registrar clique" });

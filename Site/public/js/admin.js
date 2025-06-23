@@ -21,7 +21,8 @@ tabelaCliques.innerHTML = dados.cliques.map(item => `
     <td>${item.Profissional}</td>
     <td>${item.Profissão}</td>
     <td>${item.Chamadas}</td>
-    <td>${item.dataHora || "-"}</td> <!-- Aqui entra a data -->
+    <td>${item.dataHora || "-"}</td>
+    <td>${item.whatsappCliente || "-"}</td> <!-- Novo campo exibido -->
   </tr>
 `).join("");
 

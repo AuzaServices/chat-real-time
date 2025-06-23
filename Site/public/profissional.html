@@ -51,12 +51,51 @@
     </div>
   </div>
 
-  <div id="whatsappOverlay" class="overlay hidden">
-    <div class="overlay-message">
-      <p><strong>Atenção:</strong> para sua garantia, após o serviço realizado, volte nessa página e clique em ✅ <strong>SIM, foi realizado!</strong>.</p>
-      <button id="continueButton" class="continue-btn">Conversar</button>
-    </div>
-  </div>
+<div id="whatsappOverlay" class="overlay hidden">
+  <div class="overlay-message">
+    <p><strong>Atenção:</strong> para sua garantia, após o serviço realizado, volte nessa página e clique em ✅ <strong>SIM, foi realizado!</strong>.</p>
+
+<input type="tel" id="numeroWhatsapp" placeholder="Digite seu número de WhatsApp"
+       style="margin: 10px 0; padding: 10px; width: 100%; border-radius: 8px; border: 1px solid #ccc; font-size: 16px;" />
+
+<p id="erroNumero" style="color: red; font-size: 14px; display: none; margin: 0 0 8px;"></p>
+
+<button id="continueButton" class="continue-btn" disabled>Conversar</button>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const input = document.getElementById("numeroWhatsapp");
+    const btn = document.getElementById("continueButton");
+    const msgErro = document.getElementById("erroNumero");
+
+    input.addEventListener("input", function (e) {
+      let valorBruto = e.target.value.replace(/\D/g, ""); // só números
+      if (valorBruto.length > 11) valorBruto = valorBruto.slice(0, 11);
+
+      let formatado = valorBruto;
+      if (valorBruto.length > 6) {
+        formatado = `(${valorBruto.slice(0, 2)}) ${valorBruto.slice(2, 7)}-${valorBruto.slice(7)}`;
+      } else if (valorBruto.length > 2) {
+        formatado = `(${valorBruto.slice(0, 2)}) ${valorBruto.slice(2)}`;
+      } else if (valorBruto.length > 0) {
+        formatado = `(${valorBruto}`;
+      }
+
+      const cursorPos = input.selectionStart;
+      input.value = formatado;
+
+      // Habilita botão e exibe/oculta erro
+      const completo = valorBruto.length === 11;
+      btn.disabled = !completo;
+      msgErro.style.display = completo || valorBruto === "" ? "none" : "block";
+      msgErro.textContent = completo ? "" : "Número incompleto ou inválido. Use o formato (99) 99999-9999.";
+    });
+
+    btn.addEventListener("click", function () {
+      const numeroLimpo = input.value.replace(/\D/g, "");
+    });
+  });
+</script>
 
   <!-- Scripts -->
   <script>
