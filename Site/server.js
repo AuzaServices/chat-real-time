@@ -42,7 +42,8 @@ const criarTabelaCliques = `
         Profissional VARCHAR(100),
         Profissão VARCHAR(100),
         Chamadas INT DEFAULT 1,
-        data TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+        dataHora TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+        whatsappCliente VARCHAR(20)  -- 💬 Aqui entra o número do cliente
     );
 `;
 
