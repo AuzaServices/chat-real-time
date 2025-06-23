@@ -44,7 +44,8 @@ document.addEventListener("DOMContentLoaded", function () {
         { id: 1, service: "auzapoli", name: "Fagner Lucena", age: 47, city: "Fortaleza - CE", stars: "⭐⭐⭐", comment: "Eletricista, Bombeiro Hidráulico, Manutenção Predial", whatsapp: "558598581919" },
         { id: 163, service: "auzapoli", name: "Rogério Alves", age: 38, city: "Fortaleza - CE", stars: "⭐⭐⭐", comment: "Motorista Particular e Segurança", whatsapp: "5585987997754" },
         { id: 102, service: "auzapoli", name: "Francisco Antônio", age: 33, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "Churrasqueiro Particular e Motorista Particular", whatsapp: "5585999858484" },
-        
+        { id: 165, service: "auzapoli", name: "Luiz Carlos", age: 35, city: "Itaitinga - CE", stars: "⭐⭐⭐⭐⭐", comment: "Envelopamento no geral e Estética Automotiva", whatsapp: "5585987340517" },
+
         //Pedreiro 🧱🔨
 
         { id: 2, service: "pedreiro", name: "Leonardo", age: 28, city: "Fortaleza - CE", stars: "⭐⭐", comment: "Pedreiro, Mestre de obra profissional. Entendo de projetos.", whatsapp: "5585988559085" },
@@ -269,11 +270,11 @@ document.addEventListener("DOMContentLoaded", function () {
         { id: 164, service: "tec-em-eletrodomesticos", name: "Carlos Augusto", age: 55, city: "Pacajus - CE", stars: "⭐⭐⭐", comment: "Concerto máquina de lavar, micro-ondas, tanquinho e ventilador", whatsapp: "5585991072258" },
         
         //Envelopamento
-        { id: 165, service: "envelopamento", name: "Luiz Carlos", age: 35, city: "Itaitinga - CE", stars: "⭐⭐⭐⭐⭐", comment: "Envelopamento no geral", whatsapp: "5585987340517" },
+        
         //Costureira  
 
         //Motorista Particular
-{ id: 166, service: "motorista-particular", name: "Arimaci Cordeiro", age: 49, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "Motorista experiênte", whatsapp: "5585994044076" },
+        { id: 166, service: "motorista-particular", name: "Arimaci Cordeiro", age: 49, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "Motorista experiênte", whatsapp: "5585994044076" },
         //Segurança de Eventos
 
     ];
