@@ -167,24 +167,36 @@ app.post("/api/click", (req, res) => {
 
 // Rota: retornar dados
 app.get("/api/dados", (req, res) => {
-    const sqlTrafego = "SELECT pagina, acessos, data FROM trafego ORDER BY data DESC";
-    const sqlCliques = "SELECT Profissional, Profissão, Chamadas, dataHora FROM cliques ORDER BY Chamadas DESC";
+  const sqlCliques = `
+    SELECT profissional_id, Profissional, Profissão, Chamadas, dataHora, whatsappCliente
+    FROM cliques
+    ORDER BY dataHora DESC
+  `;
 
-    db.query(sqlTrafego, (errTrafego, trafegoResults) => {
-        if (errTrafego) {
-            console.error("❌ Erro dados trafego:", errTrafego);
-            return res.status(500).json({ error: "Erro ao buscar trafego" });
-        }
+  const sqlTrafego = `
+    SELECT pagina, acessos, data
+    FROM trafego
+    ORDER BY data DESC
+  `;
 
-        db.query(sqlCliques, (errCliques, cliquesResults) => {
-            if (errCliques) {
-                console.error("❌ Erro dados cliques:", errCliques);
-                return res.status(500).json({ error: "Erro ao buscar cliques" });
-            }
+  db.query(sqlCliques, (errCliques, resultadoCliques) => {
+    if (errCliques) {
+      console.error("❌ Erro ao carregar cliques:", errCliques);
+      return res.status(500).json({ error: "Erro ao buscar dados de cliques" });
+    }
 
-            res.json({ trafego: trafegoResults, cliques: cliquesResults });
-        });
+    db.query(sqlTrafego, (errTrafego, resultadoTrafego) => {
+      if (errTrafego) {
+        console.error("❌ Erro ao carregar tráfego:", errTrafego);
+        return res.status(500).json({ error: "Erro ao buscar dados de tráfego" });
+      }
+
+      res.json({
+        cliques: resultadoCliques,
+        trafego: resultadoTrafego
+      });
     });
+  });
 });
 
 
