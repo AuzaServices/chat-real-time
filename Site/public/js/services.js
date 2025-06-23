@@ -268,10 +268,12 @@ document.addEventListener("DOMContentLoaded", function () {
         //Tec. em Eletrodomesticos
         { id: 164, service: "tec-em-eletrodomesticos", name: "Carlos Augusto", age: 55, city: "Pacajus - CE", stars: "⭐⭐⭐", comment: "Concerto máquina de lavar, micro-ondas, tanquinho e ventilador", whatsapp: "5585991072258" },
         
+        //Envelopamento
+        { id: 165, service: "envelopamento", name: "Luiz Carlos", age: 35, city: "Itaitinga - CE", stars: "⭐⭐⭐⭐⭐", comment: "Envelopamento no geral", whatsapp: "5585987340517" },
         //Costureira  
 
         //Motorista Particular
-
+{ id: 166, service: "motorista-particular", name: "Arimaci Cordeiro", age: 49, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "Motorista experiênte", whatsapp: "5585994044076" },
         //Segurança de Eventos
 
     ];
