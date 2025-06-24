@@ -173,6 +173,7 @@ td .tentativas {
   background-color: #870000;
   font-weight: bold;
   cursor: pointer;
+  margin-top: -3px;
   flex: 0 0 auto;
   white-space: nowrap;
   text-align: center;
