@@ -168,9 +168,9 @@ td .tentativas {
 /* Estilo padrão dos botões */
 .btn-tentativa {
   padding: 6px 10px;
-  border: 1px solid #bbb;
+  border: 1px solid #870000;
   border-radius: 4px;
-  background-color: #f1f1f1;
+  background-color: #870000;
   font-weight: bold;
   cursor: pointer;
   flex: 0 0 auto;
