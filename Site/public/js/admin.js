@@ -1,32 +1,47 @@
-// 📊 Carregar dados do painel automaticamente
 async function carregarDados() {
-    try {
-        const response = await fetch("/api/dados");
-        const dados = await response.json();
+  try {
+    const response = await fetch("/api/dados");
+    const dados = await response.json();
 
-        if (dados.trafego && dados.cliques) {
-            const tabelaTrafego = document.getElementById("tabela-trafego");
-            const tabelaCliques = document.getElementById("tabela-cliques");
+    if (dados.trafego && dados.cliques) {
+      const tabelaTrafego = document.getElementById("tabela-trafego");
+      const tabelaCliques = document.getElementById("tabela-cliques");
 
-tabelaTrafego.innerHTML = dados.trafego.map(item => `
-  <tr>
-    <td>${item.pagina}</td>
-    <td>${item.acessos}</td>
-    <td>${item.data}</td>
-  </tr>
-`).join("");
+      tabelaTrafego.innerHTML = dados.trafego.map(item => `
+        <tr>
+          <td>${item.pagina}</td>
+          <td>${item.acessos}</td>
+          <td>${item.data}</td>
+        </tr>
+      `).join("");
 
-tabelaCliques.innerHTML = dados.cliques.map(item => {
+tabelaCliques.innerHTML = dados.cliques.map((item, index) => {
   const numero = item.whatsappCliente?.replace(/\D/g, "");
   const numeroInternacional = numero ? `55${numero}` : null;
 
-  const mensagem = encodeURIComponent(
-    `Olá, gostaria de confirmar se o serviço com *${item.Profissional}* - *${item.Profissão}* foi realizado?`
-  );
+  const mensagens = {
+    1: `Oii, tudo certo? Aqui é da Auza 👋\nSó pra saber mesmo: o serviço com *${item.Profissional}* - *${item.Profissão}* foi concluído direitinho ou ainda tá em andamento?`,
+    2: `Oi novamente! Conseguiu finalizar o serviço com *${item.Profissional}* - *${item.Profissão}*?\nSe tiver um minutinho, me avisa aqui 🙏`,
+    3: `Último lembrete: conseguimos confirmar o serviço com *${item.Profissional}* - *${item.Profissão}*?\nMe dá um ok por aqui rapidinho, por favor! ⚡`
+  };
 
-  const linkWhatsApp = numero
-    ? `<a href="https://wa.me/${numeroInternacional}?text=${mensagem}" target="_blank">${item.whatsappCliente}</a>`
-    : "-";
+  const botoesTentativas = numeroInternacional ? `
+<div class="tentativas" style="display: flex; flex-wrap: wrap; gap: 6px; align-items: center;">
+      ${[1, 2, 3].map(i => {
+        const localKey = `item-${index}-tentativa-${i}`;
+        const clicado = localStorage.getItem(localKey) === "true";
+        const classe = clicado ? "btn-tentativa clicked" : "btn-tentativa";
+        const link = `https://wa.me/${numeroInternacional}?text=${encodeURIComponent(mensagens[i])}`;
+        return `<button 
+                  class="${classe}" 
+                  data-key="${localKey}" 
+                  data-link="${link}" 
+                  data-tentativa="${i}">
+                  ${i}
+                </button>`;
+      }).join("")}
+    </div>
+  ` : "-";
 
   return `
     <tr>
@@ -34,16 +49,49 @@ tabelaCliques.innerHTML = dados.cliques.map(item => {
       <td>${item.Profissão}</td>
       <td>${item.Chamadas}</td>
       <td>${item.dataHora || "-"}</td>
-      <td>${linkWhatsApp}</td>
+      <td>${item.whatsappCliente || "-"}</td>
+      <td>${botoesTentativas}</td>
     </tr>
   `;
 }).join("");
 
-            console.log("✅ Dados atualizados automaticamente!");
-        }
-    } catch (error) {
-        console.error("❌ Erro ao carregar dados:", error);
+// Lógica dos botões de tentativa
+setTimeout(() => {
+  document.querySelectorAll(".btn-tentativa").forEach(btn => {
+    const key = btn.dataset.key;
+    const link = btn.dataset.link;
+    const tentativa = parseInt(btn.dataset.tentativa);
+    const delay = tentativa === 2 ? 24 : tentativa === 3 ? 48 : 0;
+    const savedTime = localStorage.getItem(`${key}-time`);
+
+    // Piscar após atraso (para tentativas 2 e 3)
+    if (!localStorage.getItem(key) && delay > 0) {
+      const baseTime = Number(savedTime || Date.now());
+      const diff = Date.now() - baseTime;
+      if (diff > delay * 60 * 60 * 1000) {
+        btn.classList.add("blink");
+      } else {
+        setTimeout(() => btn.classList.add("blink"), delay * 60 * 60 * 1000 - diff);
+        if (!savedTime) localStorage.setItem(`${key}-time`, baseTime);
+      }
     }
+
+    // Clique SEM BLOQUEIO
+    btn.onclick = () => {
+      window.open(link, "_blank");
+      btn.classList.add("clicked");
+      btn.classList.remove("blink");
+      localStorage.setItem(key, "true");
+      localStorage.setItem(`${key}-time`, Date.now());
+    };
+  });
+}, 500);
+
+      console.log("✅ Dados atualizados automaticamente!");
+    }
+  } catch (error) {
+    console.error("❌ Erro ao carregar dados:", error);
+  }
 }
 
 // 🔄 Atualiza dados a cada 2 segundos
@@ -202,4 +250,65 @@ document.addEventListener("DOMContentLoaded", () => {
 
     setInterval(carregarServicos, 5000);
     carregarServicos();
+});
+
+const mensagens = {
+  1: "Oi! Aqui é da Auza 😊 Só confirmando se o serviço com *{PROFISSIONAL}* — *{PROFISSAO}* foi concluído?",
+  2: "Passando de novo pra te lembrar da confirmação com *{PROFISSIONAL}* (*{PROFISSAO}*) 🙏",
+  3: "Último lembrete: conseguimos confirmar o serviço com *{PROFISSIONAL}* (*{PROFISSAO}*)? Me avisa aqui! ⚡"
+};
+
+const clienteNumero = "558599999999";
+const profissional = "Renata Rodrigues";
+const profissao = "Manicure a Domicílio";
+const now = Date.now();
+const ultimoClique = new Date("2025-06-24T14:46:11.000Z").getTime();
+
+const delays = {
+  2: 24 * 60 * 60 * 1000, // 1 dia
+  3: 48 * 60 * 60 * 1000  // 2 dias
+};
+
+document.querySelectorAll(".btn-tentativa").forEach(btn => {
+  const step = btn.dataset.step;
+  const key = `tentativa-${step}`;
+
+  const texto = mensagens[step]
+    .replace("{PROFISSIONAL}", profissional)
+    .replace("{PROFISSAO}", profissao);
+
+  const link = `https://wa.me/${clienteNumero}?text=${encodeURIComponent(texto)}`;
+  btn.setAttribute("data-key", key);
+
+  if (localStorage.getItem(key) === "true") {
+    btn.classList.add("clicked");
+  }
+
+  btn.addEventListener("click", () => {
+    // Agora sempre redireciona — verde, vermelho, azul ou cor que for!
+    window.open(link, "_blank");
+
+    btn.classList.add("clicked");
+    btn.classList.remove("blink");
+    localStorage.setItem(key, "true");
+    localStorage.setItem(`${key}-time`, Date.now());
+
+    console.log(`📤 Tentativa ${step} enviada para ${clienteNumero}`);
+  });
+});
+
+// Piscar automático
+Object.entries(delays).forEach(([step, delay]) => {
+  const key = `tentativa-${step}`;
+  const savedTime = localStorage.getItem(`${key}-time`) || ultimoClique;
+  const tempoRestante = new Date(savedTime).getTime() + delay - now;
+
+  if (!localStorage.getItem(key)) {
+    setTimeout(() => {
+      const btn = document.querySelector(`.btn-tentativa[data-step="${step}"]`);
+      if (btn && !btn.classList.contains("clicked")) {
+        btn.classList.add("blink");
+      }
+    }, Math.max(0, tempoRestante));
+  }
 });

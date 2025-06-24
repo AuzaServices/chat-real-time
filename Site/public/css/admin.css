@@ -134,3 +134,63 @@ button:hover {
     border-radius: 5px;
     font-weight: bold;
 }
+
+/* Define estilo da célula onde os botões ficam */
+td.tentativas-coluna {
+  min-width: 140px;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+/* Estilo do container de botões */
+.tentativas {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 6px;
+  align-items: center;
+  justify-content: flex-start;
+  white-space: nowrap;
+}
+
+/* Botões de tentativa */
+/* Célula da coluna de tentativas (ajuste a classe no <td> se precisar) */
+td .tentativas {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  min-width: 120px;
+}
+
+/* Estilo padrão dos botões */
+.btn-tentativa {
+  padding: 6px 10px;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  background-color: #f1f1f1;
+  font-weight: bold;
+  cursor: pointer;
+  flex: 0 0 auto;
+  white-space: nowrap;
+  text-align: center;
+}
+
+/* Após clique (verde) */
+.btn-tentativa.clicked {
+  background-color: #4caf50;
+  color: #fff;
+  border-color: #4caf50;
+}
+
+/* Quando aguardando envio */
+.btn-tentativa.blink {
+  animation: piscar 1s infinite;
+}
+
+@keyframes piscar {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
