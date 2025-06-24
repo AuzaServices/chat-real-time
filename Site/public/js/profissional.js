@@ -315,76 +315,85 @@ function handleClick(event) {
 
   const overlay = document.getElementById("whatsappOverlay");
   const continueBtn = document.getElementById("continueButton");
+  const inputWhatsapp = document.getElementById("numeroWhatsapp");
+  const msgErro = document.getElementById("erroNumero");
   const whatsappLink = target.getAttribute("href");
 
-  if (!whatsappLink || !overlay || !continueBtn) return;
+  if (!whatsappLink || !overlay || !continueBtn || !inputWhatsapp) return;
 
   overlay.classList.remove("hidden");
 
+  // Clona o botão para remover eventos anteriores
   const novoBtn = continueBtn.cloneNode(true);
   continueBtn.parentNode.replaceChild(novoBtn, continueBtn);
   novoBtn.disabled = false;
 
-  novoBtn.addEventListener(
-    "click",
-    () => {
-      overlay.classList.add("hidden");
+  // Evento do botão interno do overlay
+  novoBtn.addEventListener("click", () => {
+    const numeroCliente = inputWhatsapp.value.replace(/\D/g, "");
+    console.log("📞 Número digitado:", numeroCliente);
 
-      const win = window.open(whatsappLink, "_blank");
-      if (!win) {
-        alert("⚠️ O navegador bloqueou a abertura do WhatsApp.");
+    if (numeroCliente.length !== 11) {
+      if (msgErro) {
+        msgErro.style.display = "block";
+        msgErro.textContent = "Número de WhatsApp obrigatório no formato (99) 99999-9999.";
       }
+      return;
+    }
 
-      const agora = new Date().toLocaleString("en-US", {
-        timeZone: "America/Fortaleza",
-        hour12: false
-      });
+    // Número válido, então fecha overlay e limpa erro
+    msgErro.style.display = "none";
+    overlay.classList.add("hidden");
 
-      const [date, time] = agora.split(", ");
-      const [month, day, year] = date.split("/");
-      const dataHoraFormatada = `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")} ${time}`;
+    const win = window.open(whatsappLink, "_blank");
+    if (!win) {
+      alert("⚠️ O navegador bloqueou a abertura do WhatsApp.");
+    }
 
-      const numeroCliente =
-        document.getElementById("numeroWhatsapp")?.value.replace(/\D/g, "") || "n/d";
+    const agora = new Date().toLocaleString("en-US", {
+      timeZone: "America/Fortaleza",
+      hour12: false
+    });
 
-      const payload = {
-        profissionalId: target.getAttribute("data-id"),
-        nomeProfissional: target.getAttribute("data-nome"),
-        profissao: target.getAttribute("data-profissao"),
-        dataHora: dataHoraFormatada,
-        whatsappCliente: numeroCliente
-      };
+    const [date, time] = agora.split(", ");
+    const [month, day, year] = date.split("/");
+    const dataHoraFormatada = `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")} ${time}`;
 
-      console.log("📦 Enviando payload:", payload);
+    const payload = {
+      profissionalId: target.getAttribute("data-id"),
+      nomeProfissional: target.getAttribute("data-nome"),
+      profissao: target.getAttribute("data-profissao"),
+      dataHora: dataHoraFormatada,
+      whatsappCliente: numeroCliente
+    };
 
-      fetch("https://clientes-fhfe.onrender.com/api/click", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
+    console.log("📦 Enviando payload:", payload);
+
+    fetch("https://clientes-fhfe.onrender.com/api/click", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error("Erro no servidor");
+        return res.text();
       })
-        .then((res) => {
-          if (!res.ok) throw new Error("Erro no servidor");
-          return res.text();
-        })
-        .then((data) => {
-          console.log("✅ Registro enviado:", data);
-        })
-        .catch((err) => {
-          console.warn("⚠️ Falha no envio, tentando sendBeacon...", err);
-          try {
-            navigator.sendBeacon?.(
-              "https://clientes-fhfe.onrender.com/api/click",
-              new Blob([JSON.stringify(payload)], { type: "application/json" })
-            );
-          } catch (e) {
-            console.error("❌ sendBeacon falhou também:", e);
-          }
-        });
-    },
-    { once: true }
-  );
+      .then((data) => {
+        console.log("✅ Registro enviado:", data);
+      })
+      .catch((err) => {
+        console.warn("⚠️ Falha no envio, tentando sendBeacon...", err);
+        try {
+          navigator.sendBeacon?.(
+            "https://clientes-fhfe.onrender.com/api/click",
+            new Blob([JSON.stringify(payload)], { type: "application/json" })
+          );
+        } catch (e) {
+          console.error("❌ sendBeacon falhou também:", e);
+        }
+      });
+  });
 }
-
 document.getElementById("shareButton").addEventListener("click", async () => {
     const params = new URLSearchParams(window.location.search);
     const selectedName = params.get("name");
