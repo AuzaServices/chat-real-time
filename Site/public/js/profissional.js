@@ -85,6 +85,7 @@ document.addEventListener("DOMContentLoaded", function () {
         //Eletricista
         { id: 52, service: "Eletricista", name: "Roberto Evangelista", age: 39, city: "Horizonte - CE", stars: "⭐⭐⭐⭐⭐", comment: "Experiência na área de Eletricidade.", whatsapp: "5585981737165" },
         { id: 53, service: "Eletricista", name: "Marcelo Lima", age: 30, city: "Fortaleza - CE", stars: "⭐⭐⭐", comment: "Eletricista Residencial e Predial.", whatsapp: "5585992726101" },
+        { id: 167, service: "Eletricista", name: "Paulo Sergio", age: 55, city: "Horizonte - CE", stars: "⭐⭐⭐⭐⭐", comment: "Ampla experiência em Elétrica e Hidráulica", whatsapp: "5585992673555" },
         //
         { id: 54, service: "Eletricista", name: "Carlos Mendes", age: 45, city: "Pacajus - CE", stars: "⭐⭐⭐⭐", comment: "Experiência em circuitos e sistemas elétricos.", whatsapp: "551340713" },
         { id: 55, service: "Eletricista", name: "Diego Martins", age: 37, city: "Horizonte - CE", stars: "⭐⭐⭐⭐⭐", comment: "Instalações industriais e comerciais.", whatsapp: "55851340714" },
