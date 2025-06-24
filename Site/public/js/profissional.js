@@ -298,42 +298,26 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // ✅ **Função para capturar clique e enviar dados ao banco**
-document.body.addEventListener("click", (event) => {
-  const btn = event.target.closest(".whatsapp-button");
-  if (btn) {
-    handleClick(event);
-  }
-});
-
 function handleClick(event) {
-  event.preventDefault();
-  console.log("🔥 handleClick foi chamado");
+  event.preventDefault(); // Bloqueia clique direto no WhatsApp
 
   const target = event.target.closest(".whatsapp-button");
-  if (!target) return;
+  if (!target) {
+    console.error("🚨 Botão WhatsApp não encontrado.");
+    return;
+  }
 
   const overlay = document.getElementById("whatsappOverlay");
   const continueBtn = document.getElementById("continueButton");
   const whatsappLink = target.getAttribute("href");
 
-  if (!whatsappLink || !overlay || !continueBtn) return;
+  if (overlay && continueBtn) {
+    overlay.classList.remove("hidden");
 
-  overlay.classList.remove("hidden");
-
-  const novoBtn = continueBtn.cloneNode(true);
-  continueBtn.parentNode.replaceChild(novoBtn, continueBtn);
-  novoBtn.disabled = false;
-
-  novoBtn.addEventListener(
-    "click",
-    () => {
+    continueBtn.onclick = () => {
       overlay.classList.add("hidden");
 
-      const win = window.open(whatsappLink, "_blank");
-      if (!win) {
-        alert("⚠️ O navegador bloqueou a abertura do WhatsApp.");
-      }
-
+      // Captura data e hora atual
       const agora = new Date().toLocaleString("en-US", {
         timeZone: "America/Fortaleza",
         hour12: false
@@ -343,45 +327,32 @@ function handleClick(event) {
       const [month, day, year] = date.split("/");
       const dataHoraFormatada = `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")} ${time}`;
 
-      const numeroCliente =
-        document.getElementById("numeroWhatsapp")?.value.replace(/\D/g, "") || "n/d";
+      // Captura o número do cliente (removendo caracteres não numéricos)
+      const numeroCliente = document.getElementById("numeroWhatsapp")?.value.replace(/\D/g, "") || "n/d";
 
-      const payload = {
-        profissionalId: target.getAttribute("data-id"),
-        nomeProfissional: target.getAttribute("data-nome"),
-        profissao: target.getAttribute("data-profissao"),
-        dataHora: dataHoraFormatada,
-        whatsappCliente: numeroCliente
-      };
-
-      console.log("📦 Enviando payload:", payload);
-
+      // Envia os dados para o backend
       fetch("https://clientes-fhfe.onrender.com/api/click", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
+        body: JSON.stringify({
+          profissionalId: target.getAttribute("data-id"),
+          nomeProfissional: target.getAttribute("data-nome"),
+          profissao: target.getAttribute("data-profissao"),
+          dataHora: dataHoraFormatada,
+          whatsappCliente: numeroCliente
+        })
       })
-        .then((res) => {
-          if (!res.ok) throw new Error("Erro no servidor");
-          return res.text();
+        .then(res => res.json())
+        .then(data => {
+          console.log("✅ Clique registrado:", dataHoraFormatada);
+          window.open(whatsappLink, "_blank"); // Só abre após resposta
         })
-        .then((data) => {
-          console.log("✅ Registro enviado:", data);
-        })
-        .catch((err) => {
-          console.warn("⚠️ Falha no envio, tentando sendBeacon...", err);
-          try {
-            navigator.sendBeacon?.(
-              "https://clientes-fhfe.onrender.com/api/click",
-              new Blob([JSON.stringify(payload)], { type: "application/json" })
-            );
-          } catch (e) {
-            console.error("❌ sendBeacon falhou também:", e);
-          }
+        .catch(err => {
+          console.error("❌ Erro ao registrar clique:", err);
+          window.open(whatsappLink, "_blank"); // Abre mesmo se o fetch falhar
         });
-    },
-    { once: true }
-  );
+    };
+  }
 }
 
 document.getElementById("shareButton").addEventListener("click", async () => {
