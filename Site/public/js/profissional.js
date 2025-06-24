@@ -298,28 +298,41 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // ✅ **Função para capturar clique e enviar dados ao banco**
+document.body.addEventListener("click", (event) => {
+  const btn = event.target.closest(".whatsapp-button");
+  if (btn) {
+    handleClick(event);
+  }
+});
+
 function handleClick(event) {
-  event.preventDefault(); // Bloqueia clique direto no WhatsApp
+  event.preventDefault();
+  console.log("🔥 handleClick foi chamado");
 
   const target = event.target.closest(".whatsapp-button");
-  if (!target) {
-    console.error("🚨 Botão WhatsApp não encontrado.");
-    return;
-  }
+  if (!target) return;
 
   const overlay = document.getElementById("whatsappOverlay");
   const continueBtn = document.getElementById("continueButton");
   const whatsappLink = target.getAttribute("href");
 
-  if (overlay && continueBtn) {
-    overlay.classList.remove("hidden");
+  if (!whatsappLink || !overlay || !continueBtn) return;
 
-    // Remove ouvintes antigos para evitar múltiplas chamadas
-    const novoBotao = continueBtn.cloneNode(true);
-    continueBtn.parentNode.replaceChild(novoBotao, continueBtn);
+  overlay.classList.remove("hidden");
 
-    novoBotao.addEventListener("click", () => {
+  const novoBtn = continueBtn.cloneNode(true);
+  continueBtn.parentNode.replaceChild(novoBtn, continueBtn);
+  novoBtn.disabled = false;
+
+  novoBtn.addEventListener(
+    "click",
+    () => {
       overlay.classList.add("hidden");
+
+      const win = window.open(whatsappLink, "_blank");
+      if (!win) {
+        alert("⚠️ O navegador bloqueou a abertura do WhatsApp.");
+      }
 
       const agora = new Date().toLocaleString("en-US", {
         timeZone: "America/Fortaleza",
@@ -330,34 +343,45 @@ function handleClick(event) {
       const [month, day, year] = date.split("/");
       const dataHoraFormatada = `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")} ${time}`;
 
-      const numeroCliente = document.getElementById("numeroWhatsapp")?.value.replace(/\D/g, "") || "n/d";
+      const numeroCliente =
+        document.getElementById("numeroWhatsapp")?.value.replace(/\D/g, "") || "n/d";
+
+      const payload = {
+        profissionalId: target.getAttribute("data-id"),
+        nomeProfissional: target.getAttribute("data-nome"),
+        profissao: target.getAttribute("data-profissao"),
+        dataHora: dataHoraFormatada,
+        whatsappCliente: numeroCliente
+      };
+
+      console.log("📦 Enviando payload:", payload);
 
       fetch("https://clientes-fhfe.onrender.com/api/click", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          profissionalId: target.getAttribute("data-id"),
-          nomeProfissional: target.getAttribute("data-nome"),
-          profissao: target.getAttribute("data-profissao"),
-          dataHora: dataHoraFormatada,
-          whatsappCliente: numeroCliente
-        })
+        body: JSON.stringify(payload)
       })
-        .then(res => res.json())
-        .then(() => {
-          // ⚠️ Usar setTimeout para garantir que iOS permita a abertura do link
-          setTimeout(() => {
-            window.open(whatsappLink, "_blank");
-          }, 100);
+        .then((res) => {
+          if (!res.ok) throw new Error("Erro no servidor");
+          return res.text();
         })
-        .catch(err => {
-          console.error("❌ Erro ao registrar clique:", err);
-          setTimeout(() => {
-            window.open(whatsappLink, "_blank");
-          }, 100);
+        .then((data) => {
+          console.log("✅ Registro enviado:", data);
+        })
+        .catch((err) => {
+          console.warn("⚠️ Falha no envio, tentando sendBeacon...", err);
+          try {
+            navigator.sendBeacon?.(
+              "https://clientes-fhfe.onrender.com/api/click",
+              new Blob([JSON.stringify(payload)], { type: "application/json" })
+            );
+          } catch (e) {
+            console.error("❌ sendBeacon falhou também:", e);
+          }
         });
-    }, { once: true }); // Garante que só clique uma vez
-  }
+    },
+    { once: true }
+  );
 }
 
 document.getElementById("shareButton").addEventListener("click", async () => {
