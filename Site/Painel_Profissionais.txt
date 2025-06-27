@@ -121,6 +121,9 @@ Designer
         https://clientes-fhfe.onrender.com/painel-servicos.html?id=157&nome=Mondesson
         { id: 158, service: "Designer", name: "Mateus Santos", age: 26, city: "Horizonte - CE", stars: "⭐⭐⭐⭐⭐", comment: "Experiência como designer na grafica Connect.com e designer Autônomo á 5 anos.", whatsapp: "5585992975877" },
         https://clientes-fhfe.onrender.com/painel-servicos.html?id=158&nome=Mateus
+        { id: 168, service: "Designer", name: "Cleitomberg Barroso", age: 24, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "Experiência de 2 anos, posts no instagram em geral.", whatsapp: "5585992341985" },
+        https://clientes-fhfe.onrender.com/painel-servicos.html?id=168&nome=Cleitomberg
+
 
 Adestramento
 
