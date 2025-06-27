@@ -253,6 +253,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Designer 🎨✨
         { id: 157, service: "designer", name: "Mondesson Linardis", age: 29, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "3 anos de experiência em design e redes sociais, tenho uma gráfica há 5 meses.", whatsapp: "5585991774021" },
         { id: 158, service: "designer", name: "Mateus Santos", age: 26, city: "Horizonte - CE", stars: "⭐⭐⭐⭐⭐", comment: "Experiência como designer na grafica Connect.com e designer Autônomo á 5 anos.", whatsapp: "5585992975877" },
+        { id: 168, service: "Designer", name: "Cleitomberg Barroso", age: 24, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "Experiência de 2 anos, posts no instagram em geral.", whatsapp: "5585992341985" },
 
         // Adestamento
         { id: 159, service: "adestramento", name: "César Freire", age: 41, city: "Aquiraz - CE", stars: "⭐⭐⭐⭐", comment: "Adestrador de cães há 10 anos. Hospedagem, Taxi Dog, DayCare/Creche", whatsapp: "5585991661174" },
