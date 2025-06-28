@@ -51,83 +51,99 @@
     </div>
   </div>
 
-<div id="whatsappOverlay" class="overlay hidden">
-  <div class="overlay-message">
-    <p><strong>Atenção:</strong> para sua garantia, após o serviço realizado, volte nessa página e clique em ✅ <strong>SIM, foi realizado!</strong>.</p>
+  <!-- ✅ Modal de confirmação -->
+  <div id="overlay-confirmacao" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 9999; justify-content: center; align-items: center;">
+    <div class="modal-confirmacao" style="background: #fff; padding: 24px; border-radius: 8px; max-width: 300px; text-align: center; font-family: sans-serif; box-shadow: 0 0 10px rgba(0,0,0,0.3); margin: auto;">
+      <p><strong>Atenção:</strong> você está confirmando que esse(a) profissional realizou um serviço para você.</p>
+      <p>Deseja continuar?</p>
+      <div style="margin-top: 16px; display: flex; gap: 12px; justify-content: center;">
+        <button id="btn-confirmar-envio" style="background: #4caf50; color: white; padding: 8px 14px; font-weight: bold; border: none; border-radius: 4px;">Sim, confirmar</button>
+        <button id="btn-cancelar-envio" style="background: #f44336; color: white; padding: 8px 14px; font-weight: bold; border: none; border-radius: 4px;">Cancelar</button>
+      </div>
+    </div>
+  </div>
 
-<input type="tel" id="numeroWhatsapp" placeholder="Digite seu número de WhatsApp"
-       style="margin: 10px 0; padding: 10px; width: 100%; border-radius: 8px; border: 1px solid #ccc; font-size: 16px;" />
+  <!-- 📲 Overlay WhatsApp -->
+  <div id="whatsappOverlay" class="overlay hidden">
+    <div class="overlay-message">
+      <p><strong>Atenção:</strong> para sua garantia, após o serviço realizado, volte nessa página e clique em ✅ <strong>SIM, foi realizado!</strong>.</p>
 
-<p id="erroNumero" style="color: red; font-size: 14px; display: none; margin: 0 0 8px;"></p>
+      <input type="tel" id="numeroWhatsapp" placeholder="Digite seu número de WhatsApp"
+        style="margin: 10px 0; padding: 10px; width: 100%; border-radius: 8px; border: 1px solid #ccc; font-size: 16px;" />
+      <p id="erroNumero" style="color: red; font-size: 14px; display: none; margin: 0 0 8px;"></p>
+      <button id="continueButton" class="continue-btn">Conversar</button>
+    </div>
+  </div>
 
-<button id="continueButton" class="continue-btn">Conversar</button>
-
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const input = document.getElementById("numeroWhatsapp");
-    const btn = document.getElementById("continueButton");
-    const msgErro = document.getElementById("erroNumero");
-
-    input.addEventListener("input", function (e) {
-      let valorBruto = e.target.value.replace(/\D/g, ""); // só números
-      if (valorBruto.length > 11) valorBruto = valorBruto.slice(0, 11);
-
-      let formatado = valorBruto;
-      if (valorBruto.length > 6) {
-        formatado = `(${valorBruto.slice(0, 2)}) ${valorBruto.slice(2, 7)}-${valorBruto.slice(7)}`;
-      } else if (valorBruto.length > 2) {
-        formatado = `(${valorBruto.slice(0, 2)}) ${valorBruto.slice(2)}`;
-      } else if (valorBruto.length > 0) {
-        formatado = `(${valorBruto}`;
-      }
-
-      const cursorPos = input.selectionStart;
-      input.value = formatado;
-
-      // Habilita botão e exibe/oculta erro
-      const completo = valorBruto.length === 11;
-      btn.disabled = !completo;
-      msgErro.style.display = completo || valorBruto === "" ? "none" : "block";
-      msgErro.textContent = completo ? "" : "Número incompleto ou inválido. Use o formato (99) 99999-9999.";
-    });
-
-    btn.addEventListener("click", function () {
-      const numeroLimpo = input.value.replace(/\D/g, "");
-    });
-  });
-</script>
-
-  <!-- Scripts -->
+  <!-- ✅ Script -->
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       const confirmButton = document.getElementById("confirmService");
       const continueButton = document.getElementById("continueButton");
+      const input = document.getElementById("numeroWhatsapp");
+      const msgErro = document.getElementById("erroNumero");
 
-      // Pega nome do profissional pela query string (?name=adonias)
       const params = new URLSearchParams(window.location.search);
       const nomeRaw = params.get("name");
       const nomeProfissional = nomeRaw
         ? nomeRaw.charAt(0).toUpperCase() + nomeRaw.slice(1)
         : null;
 
-      // Atualiza botão do overlay com nome
       if (nomeProfissional && continueButton) {
         continueButton.textContent = `Conversar com ${nomeProfissional}`;
       }
 
-      // Confirmação de serviço via WhatsApp
+      if (input && continueButton) {
+        input.addEventListener("input", function (e) {
+          let valorBruto = e.target.value.replace(/\D/g, "");
+          if (valorBruto.length > 11) valorBruto = valorBruto.slice(0, 11);
+
+          let formatado = valorBruto;
+          if (valorBruto.length > 6) {
+            formatado = `(${valorBruto.slice(0, 2)}) ${valorBruto.slice(2, 7)}-${valorBruto.slice(7)}`;
+          } else if (valorBruto.length > 2) {
+            formatado = `(${valorBruto.slice(0, 2)}) ${valorBruto.slice(2)}`;
+          } else if (valorBruto.length > 0) {
+            formatado = `(${valorBruto}`;
+          }
+
+          input.value = formatado;
+
+          const completo = valorBruto.length === 11;
+          continueButton.disabled = !completo;
+          msgErro.style.display = completo || valorBruto === "" ? "none" : "block";
+          msgErro.textContent = completo ? "" : "Número incompleto ou inválido. Use o formato (99) 99999-9999.";
+        });
+      }
+
       if (confirmButton) {
         confirmButton.addEventListener("click", function () {
+          const overlay = document.getElementById("overlay-confirmacao");
+          if (overlay) overlay.style.display = "flex";
+
+          const btnConfirmar = document.getElementById("btn-confirmar-envio");
+          const btnCancelar = document.getElementById("btn-cancelar-envio");
+
           const mensagem = `✅ Confirmo que fui atendido(a) com sucesso pelo(a) profissional *${nomeProfissional || "não identificado"}* e o serviço foi concluído como combinado.`;
           const numeroWhatsApp = "5585991340658";
           const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
-          window.open(url, "_blank");
+
+          if (btnConfirmar)
+            btnConfirmar.onclick = () => {
+              window.open(url, "_blank");
+              overlay.style.display = "none";
+            };
+
+          if (btnCancelar)
+            btnCancelar.onclick = () => {
+              overlay.style.display = "none";
+            };
         });
       }
     });
   </script>
 
-  <!-- ✅ Agora carrega o JS depois de tudo -->
+  <!-- Extra script se precisar -->
   <script src="js/profissional.js"></script>
 </body>
 </html>
