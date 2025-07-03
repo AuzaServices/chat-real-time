@@ -161,8 +161,8 @@ document.addEventListener("DOMContentLoaded", function () {
         { id: 87, service: "faxineira", name: "Emanuele Pereira", age: 46, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "10 anos de experiência em faxinas.", whatsapp: "5575998229065" },
         { id: 88, service: "faxineira", name: "Mariana Ailis", age: 28, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "Sou organizada, responsável e pontual", whatsapp: "5585989386823" },
         { id: 169, service: "faxineira", name: "Maria Zenilda", age: 48, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "Serviços Gerais", whatsapp: "5585992865147" },
+        { id: 170, service: "faxineira", name: "Maria Darlene", age: 50, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "Limpeza de casa em geral.", whatsapp: "5585992616174" },
         //
-        { id: 89, service: "faxineira", name: "Helena Lima", age: 40, city: "Itaitinga - CE", stars: "⭐⭐⭐⭐", comment: "Profissional dedicada e comprometida.", whatsapp: "55859940748" },
         { id: 90, service: "faxineira", name: "Isabela Ferreira", age: 34, city: "Pacajus - CE", stars: "⭐⭐⭐⭐", comment: "Ótima opção para limpeza profunda.", whatsapp: "55859913749" },
         { id: 91, service: "faxineira", name: "Juliana Nunes", age: 43, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "Ótima opção para limpeza profunda.", whatsapp: "55859913407" },
         

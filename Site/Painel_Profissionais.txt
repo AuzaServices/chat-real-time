@@ -90,6 +90,8 @@ Faxineira
         https://clientes-fhfe.onrender.com/painel-servicos.html?id=88&nome=Mariana
         { id: 169, service: "Faxineira", name: "Maria Zenilda", age: 48, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "Serviços Gerais", whatsapp: "5585992865147" },
         https://clientes-fhfe.onrender.com/painel-servicos.html?id=169&nome=Zenilda
+        { id: 170, service: "faxineira", name: "Maria Darlene", age: 50, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "Limpeza de casa em geral.", whatsapp: "5585992616174" },
+        https://clientes-fhfe.onrender.com/painel-servicos.html?id=170&nome=Darlene
 Tec em Refrigeração
 
         { id: 122, service: "Téc. em Refrigeração", name: "Maycon", age: 22, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "Experiência de 2 anos, trabalho com máquinas Split, piso teto e Cassete.", whatsapp: "5585994088415" },
