@@ -291,6 +291,19 @@ footer {
 
 }
 
+@media screen and (max-width: 768px) {
+  footer {
+    height: 48px;           /* ⬅️ Altura menor só no mobile */
+    font-size: 12px;
+    padding: 0 16px;
+  }
+
+  footer p {
+    margin: 0;
+    line-height: 1.2;
+  }
+}
+
 /* RESPONSIVO */
 @media (max-width: 768px) {
   header {
@@ -675,16 +688,4 @@ footer {
   border-radius: 6px;
   cursor: pointer;
   font-size: 16px;
-}
-
-@media screen and (max-width: 768px) {
-  footer {
-    font-size: 12px;
-    padding: 8px;
-  }
-
-  .footer-logo,
-  .footer-links {
-    display: none; /* Esconde elementos decorativos se tiver */
-  }
 }
