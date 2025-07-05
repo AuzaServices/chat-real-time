@@ -17,7 +17,7 @@ html, body {
 header {
   position: sticky;
   top: 0;
-  background: #111;
+  background: #1a1a1a;
   color: #fff;
   display: flex;
   justify-content: space-between;
@@ -71,7 +71,7 @@ nav a:hover {
 /* HERO */
 #inicio {
   background: linear-gradient(to right, #f4f4f4, #ffffff);
-  color: #111;
+  color: #1a1a1a;
   text-align: center;
   padding: 6rem 2rem;
   clip-path: none;
@@ -234,7 +234,7 @@ nav a:hover {
 .contato-coluna h3 {
   font-size: 2rem;
   margin-bottom: 1.5rem;
-  color: #111;
+  color: #333;
 }
 .contato-info {
   list-style: none;
@@ -284,10 +284,10 @@ footer {
   align-items: center;
   justify-content: center;
   height: 80px; /* equivalente à altura total do cabeçalho */
-  background: #111;
+  background: #333;
   color: #fff;
   font-size: 0.95rem;
-  border-top: 1px solid #333;
+  border-top: 1px solid #1a1a1a;
 
 }
 
@@ -355,7 +355,7 @@ footer {
 }
 
 .institucional-section {
-  background: #111;
+  background: #1a1a1a;
   color: #fff;
   padding: 4rem 2rem;
 }
