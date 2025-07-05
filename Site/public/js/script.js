@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("service-select-form");
   const select = document.getElementById("servico");
@@ -13,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (selectedService) {
         localStorage.setItem("selectedService", selectedService);
-        window.location.href = "services.html"; // redireciona para a tela de profissionais
+        window.location.href = "services.html";
       } else {
         alert("Por favor, selecione um serviço antes de continuar!");
       }
@@ -26,4 +25,16 @@ document.addEventListener("DOMContentLoaded", function () {
       window.location.href = "cadastro.html";
     });
   }
+
+  // Clique nos cards do carrossel de serviços
+  const cards = document.querySelectorAll(".servico-card");
+  cards.forEach(card => {
+    card.addEventListener("click", () => {
+      const selected = card.dataset.value;
+      if (selected) {
+        localStorage.setItem("selectedService", selected);
+        window.location.href = "services.html";
+      }
+    });
+  });
 });
