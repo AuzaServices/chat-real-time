@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+    <script>
+    if (!sessionStorage.getItem("sessionStarted")) {
+        sessionStorage.setItem("sessionStarted", "true"); // Marca a sessão iniciada
+        window.location.replace("splash.html"); // 🔥 Agora garante que o splash aparece antes do index
+    }
+    </script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Auza Services</title>
+  <link rel="stylesheet" href="css/style1.css" />
+  <script defer src="js/script.js"></script>
+
+    <meta property="og:title" content="Encontre profissionais perto de você! Tudo na palma da mão.">
+    <meta property="og:description" content="Conecte-se com especialistas e serviços confiáveis em Horizonte e região.">
+    <meta property="og:url" content="https://clientes-fhfe.onrender.com/index.html">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://i.imgur.com/vEJWsQ7.png">
+
+</head>
+<body>
+
+  <header>
+    <div class="logo-area">
+      <img src="css/imagens/logo-auza.png" alt="Logo Auza" class="logo" />
+      <h1>Auza Services</h1>
+    </div>
+    <nav>
+      <a href="#inicio">Início</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#beneficios">Por que Auza</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <button class="menu-toggle" aria-label="Abrir menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+    
+  </header>
+
+      <script>
+    fetch("https://clientes-fhfe.onrender.com/api/trafego", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            pagina: "Página Inicial" // Identifica que o usuário acessou a página inicial
+        })
+    })
+    .then(response => response.json())
+    .then(data => console.log("✅ Acesso registrado:", data))
+    .catch(error => console.error("❌ Erro ao registrar acesso:", error));
+</script>
+
+  <main>
+<section id="inicio" class="scroll-reveal">
+  <h2>Mais fácil do que sair perguntando</h2>
+  <p>Selecione abaixo o serviço que você está procurando:</p>
+
+  <form id="service-select-form" class="form-servico">
+    <select name="servico" id="servico">
+      <option value="">Selecione um serviço</option>
+      <option value="arquiteto">AuzaPoli (Polivalentes)</option>
+      <option value="arquiteto">📐 Arquiteto(a)</option>
+      <option value="pedreiro">🧱 Pedreiro</option>
+      <option value="servente">🏗️ Servente</option>
+      <option value="gesseiro">👷‍♂️ Gesseiro</option>
+      <option value="bombeiro-hidraulico">🚿 Bombeiro Hidráulico</option>
+      <option value="metalurgico">⚙️ Metalúrgico</option>
+      <option value="pintor">🎨 Pintor</option>
+      <option value="capinador">🌿 Capinador</option>
+      <option value="jardineiro">🪴 Jardineiro</option>
+      <option value="eletricista">⚡ Eletricista</option>
+      <option value="vidraceiro">🪟 Vidraceiro</option>
+      <option value="chaveiro">🔑 Chaveiro</option>
+      <option value="envelopamento">📏 Envelopamento</option>
+      <option value="piscineiro">🏊‍♂️ Piscineiro</option>
+      <option value="tecnico-em-refrigeracao">❄️ Tec. em Refrigeração</option>
+      <option value="tec-de-cercas-eletricas">🔧 Tec. de Cerca Elétrica</option>
+      <option value="tec-em-eletrodomesticos">📺 Tec. em Eletrodomésticos</option>
+      <option value="tec-em-dispositivos_moveis">📱 Tec. em Dispositivos Móveis</option>
+      <option value="montador-de-moveis">🛠️ Montador de Móveis</option>
+      <option value="marceneiro">🪚 Marceneiro</option>
+      <option value="reboque">🚛 Caminhão Reboque</option>
+      <option value="caminhão-limpa-fossa">💧 Caminhão Limpa-Fossa</option>
+      <option value="motorista-particular">🚗 Motorista Particular</option>
+      <option value="mudanças-e-carretos">🚚 Fretes e Mudanças</option>
+      <option value="ajudante-de-frete">📦 Ajudante de Frete</option>
+      <option value="faxineira">🧹 Faxineira</option>
+      <option value="costureira">🧵 Costureira</option>
+      <option value="baba">🍼 Babá</option>
+      <option value="cuidador-de-idosos">❤️ Cuidador(a) de Idosos</option>
+      <option value="churrasqueiro">🔥 Churrasqueiro</option>
+      <option value="bartender">🍸 Bartender</option>
+      <option value="confeiteira">🧁 Confeiteiro(a)</option>
+      <option value="pegue-e-monte">🎉 Pegue e Monte</option>
+      <option value="cabeleireiro-a-domicilio">💇‍♂️ Cabeleireiro a Domicílio</option>
+      <option value="manicure-a-domicilio">💅 Manicure a Domicílio</option>
+      <option value="designer">🖥️ Designer</option>
+      <option value="fotógrafo">📸 Fotógrafo(a)</option>
+      <option value="dj">🎶 DJ</option>
+      <option value="adestramento">🦴 Adestramento</option>
+      <option value="cuidador-de-animais">🐶 Cuidador(a) de Animais</option>
+      <option value="advogado">⚖️ Advogado(a)</option>
+      <option value="psicologo">🧠 Psicólogo(a)</option>
+      <option value="professor">🎓 Professor(a) Particular</option>
+      <option value="nutricionista">🥑 Nutricionista</option>
+      <option value="personal-trainer">💪 Personal Trainer</option>
+      <option value="segurança_de_eventos">🛡️ Segurança de Eventos</option>
+    </select>
+    <button type="submit" class="btn-auza">Continuar</button>
+  </form>
+</section>
+
+<section id="servicos" class="carrossel-servicos scroll-reveal">
+  <div class="servico-card">
+    <img src="css/imagens/frete.jpg" alt="Frete e Mudanças" />
+    <h3>Frete e Mudanças</h3>
+    <p>Transporte seguro, rápido e sob medida para residências e empresas.</p>
+  </div>
+
+  <div class="servico-card">
+    <img src="css/imagens/reformas.jpg" alt="Reformas e Reparos" />
+    <h3>Reformas e Reparos</h3>
+    <p>Pintura, elétrica, hidráulica, pisos e muito mais com profissionais confiáveis.</p>
+  </div>
+
+  <div class="servico-card">
+    <img src="css/imagens/moveis.jpg" alt="Montagem de Móveis" />
+    <h3>Montagem de Móveis</h3>
+    <p>Montadores experientes para closets, estantes, racks, armários e mais.</p>
+  </div>
+
+  <div class="servico-card">
+    <img src="css/imagens/faxina.jpg" alt="Faxina" />
+    <h3>Faxina</h3>
+    <p>Limpeza residencial e comercial com agilidade e produtos de qualidade.</p>
+  </div>
+
+  <div class="servico-card">
+    <img src="css/imagens/metalurgico.jpg" alt="Serviços Metalúrgicos" />
+    <h3>Metalúrgico</h3>
+    <p>Fabricação, manutenção e soldagem de estruturas metálicas sob medida.</p>
+  </div>
+
+  <div class="servico-card">
+    <img src="css/imagens/chaveiro.jpg" alt="Chaveiro" />
+    <h3>Chaveiro</h3>
+    <p>Atendimento emergencial e cópias de chaves residenciais e automotivas.</p>
+  </div>
+
+  <div class="servico-card">
+    <img src="css/imagens/tecnico.jpg" alt="Técnico em Eletrodomésticos" />
+    <h3>Técnico em Eletrodomésticos</h3>
+    <p>Conserto de geladeiras, fogões, ar-condicionados, lavadoras e outros.</p>
+  </div>
+
+  <div class="servico-card">
+    <img src="css/imagens/capina.jpg" alt="Capinador" />
+    <h3>Capinador</h3>
+    <p>Limpeza de terrenos, roçagem de mato e manutenção de jardins.</p>
+  </div>
+
+  <div class="servico-card">
+    <img src="css/imagens/envelopamento.jpg" alt="Envelopamento" />
+    <h3>Envelopamento</h3>
+    <p>Envelopamento automotivo e residencial com acabamento profissional.</p>
+  </div>
+
+  <div class="servico-card">
+    <img src="css/imagens/vidraceiro.jpg" alt="Vidraceiro" />
+    <h3>Vidraceiro</h3>
+    <p>Instalação e reparo de janelas, portas de vidro, box de banheiro e mais.</p>
+  </div>
+</div>
+</section>
+
+<section id="beneficios" class="scroll-reveal bloco-auza-destaque">
+  <div class="auza-container">
+    <div class="texto-auza">
+      <h2 class="titulo-auza">Presta serviços? Conecte-se com clientes reais agora mesmo.</h2>
+      <p class="descricao-auza">A Auza é o jeito mais prático de atrair novos clientes e conquistar oportunidades com poucos cliques.</p>
+      <a href="https://clientes-fhfe.onrender.com/cadastro.html" class="btn-auza" target="_blank" rel="noopener">Quero ser Auza</a>
+    </div>
+    <div class="imagem-auza">
+      <img src="css/imagens/prestador-auza.jpg" alt="Profissional atendendo cliente" />
+    </div>
+  </div>
+  <div class="linha-base"></div>
+</section>
+
+    <section id="faq" class="faq-bloco scroll-reveal">
+      <h2 class="faq-titulo">Dúvidas frequentes</h2>
+      <div class="faq-grid">
+        <div class="faq-card">
+          <h3 class="faq-pergunta">A Auza cobra para o cliente?</h3>
+          <p class="faq-resposta">Não. Buscar e contratar pela Auza é gratuito. Prestadores podem optar por planos com visibilidade.</p>
+        </div>
+        <div class="faq-card">
+          <h3 class="faq-pergunta">Como recebo propostas?</h3>
+          <p class="faq-resposta">Você descreve sua necessidade e profissionais compatíveis entram em contato direto com você.</p>
+        </div>
+        <div class="faq-card">
+          <h3 class="faq-pergunta">Quem são os profissionais?</h3>
+          <p class="faq-resposta">São especialistas verificados, com avaliações reais, que atuam nas mais diversas áreas.</p>
+        </div>
+      </div>
+    </section>
+
+
+<section id="feedbacks" class="scroll-reveal feedbacks-heroico">
+  <h2 class="secao-titulo">O que dizem nossos clientes</h2>
+  <div class="feedbacks-blocos">
+
+    <div class="bloco-feedback">
+      <div class="aspas decorativa">“</div>
+      <p class="comentario">A Auza transformou minha rotina. Encontrei profissionais confiáveis com rapidez e total segurança.</p>
+      <span class="autor">— Marcos, Fortaleza - CE</span>
+    </div>
+
+    <div class="bloco-feedback">
+      <div class="aspas decorativa">“</div>
+      <p class="comentario">Encontrei atendimento de qualidade em poucas horas. Nunca foi tão simples contratar um serviço.</p>
+      <span class="autor">— Carla, Maracanaú - CE</span>
+    </div>
+
+    <div class="bloco-feedback">
+      <div class="aspas decorativa">“</div>
+      <p class="comentario">A experiência foi impecável. Plataforma eficiente e profissionais dedicados. Estou 100% satisfeito.</p>
+      <span class="autor">— Thiago, Eusébio - CE</span>
+    </div>
+
+  </div>
+</section>
+
+<section id="regiao" class="scroll-reveal">
+  <h2 class="secao-titulo">Atendemos em toda a região metropolitana de Fortaleza</h2>
+  <p class="regiao-subtexto">
+    Nossa rede de profissionais cobre diversas cidades do Ceará, incluindo Horizonte, Eusébio, Maracanaú, Pacajus, entre outras.
+  </p>
+  <div class="mapa-container">
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63649.207313542576!2d-38.5175806!3d-4.0960196!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7c0a1a1cf57e333%3A0x2d2a6284c43e28e9!2sHorizonte%2C%20CE!5e0!3m2!1spt-BR!2sbr!4v1714567890000" 
+      width="100%" 
+      height="350" 
+      style="border:0;" 
+      allowfullscreen="" 
+      loading="lazy" 
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+</section>
+
+<section id="institucional" class="institucional-section scroll-reveal">
+  <div class="institucional-grid">
+    
+    <div class="institucional-col">
+      <img src="css/imagens/logo-auza.png" alt="Logo Auza" class="institucional-logo" />
+      <p>Auza Services é a plataforma que conecta clientes a profissionais de forma inteligente, rápida e personalizada.</p>
+      <p><strong>Endereço:</strong> Rua. João Domingos da Silva, 120D — Horizonte, CE</p>
+      <p><strong>Tel:</strong> (85) 99134-0658</p>
+    </div>
+
+    <div class="institucional-col">
+      <h4>Menu rápido</h4>
+      <ul>
+        <li><a href="#inicio">Início</a></li>
+        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </div>
+
+    <div class="institucional-col">
+      <h4>Institucional</h4>
+      <ul>
+        <li><a href="#">Política de Privacidade</a></li>
+        <li><a href="#">Termos de Uso</a></li>
+        <li><a href="#">Trabalhe Conosco</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Ícones sociais -->
+  <div class="redes-sociais">
+    <a href="https://wa.me/5585991340658" target="_blank" aria-label="WhatsApp">
+      <img src="css/icones/whatsapp.svg" alt="WhatsApp" />
+    </a>
+    <a href="https://instagram.com/auzaservices" target="_blank" aria-label="Instagram">
+      <img src="css/icones/instagram.svg" alt="Instagram" />
+    </a>
+    <a href="https://twitter.com/auzaservices" target="_blank" aria-label="X">
+      <img src="css/icones/x.svg" alt="X" />
+    </a>
+    <a href="https://facebook.com/auzaservices" target="_blank" aria-label="Facebook">
+      <img src="css/icones/facebook.svg" alt="Facebook" />
+    </a>
+  </div>
+</section>
+  </main>
+
+  <footer>
+    <p>© 2025 Auza Services - Todos os Direitos Reservados</p>
+  </footer>
+
+  <script>
+    // Menu hamburguer
+    const toggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('nav');
+    toggle.addEventListener('click', () => {
+      nav.classList.toggle('active');
+    });
+
+    // Scroll reveal
+    const revealElements = document.querySelectorAll('.scroll-reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    revealElements.forEach(el => observer.observe(el));
+  </script>
+  <script>
+  window.addEventListener("pageshow", function () {
+    window.scrollTo(0, 0);
+  });
+</script>
+</body>
+</html>
