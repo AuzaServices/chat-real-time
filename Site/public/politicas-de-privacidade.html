@@ -1,73 +1,225 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Política de Privacidade - Auza Services</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 20px;
-            padding: 20px;
-            background-color: #f4f4f4;
-        }
-        .container {
-            max-width: 800px;
-            margin: auto;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        h1, h2 {
-            color: #333;
-        }
-        ul {
-            padding-left: 20px;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Política de Privacidade</title>
+  <link rel="icon" href="css/imagens/logo-sem-fundo.png" type="image/png" />
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+      background-color: #f9f9f9;
+      color: #222;
+    }
+
+    header {
+      background-color: #333;
+      padding: 20px;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      position: relative;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-area img {
+      height: 70px;
+    }
+
+    header h1 {
+      font-size: 20px;
+      margin: 0;
+    }
+
+    nav {
+      display: flex;
+      gap: 15px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 4px 8px;
+      transition: background 0.3s;
+    }
+
+    nav a:hover {
+      background-color: rgba(255,255,255,0.1);
+      border-radius: 4px;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 28px;
+      height: 20px;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .menu-toggle .bar {
+      height: 3px;
+      background: white;
+      border-radius: 3px;
+    }
+
+    main {
+      padding: 40px 20px;
+      max-width: 800px;
+      margin: auto;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+
+    h2, h3 {
+      color: #244556;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 16px;
+      background-color: #f1f1f1;
+      font-size: 14px;
+      color: #666;
+      margin-top: 40px;
+    }
+
+    @media screen and (max-width: 992px) {
+      header h1 {
+        display: none;
+      }
+
+      nav {
+        display: none;
+        flex-direction: column;
+        background: #b0b0b0;
+        position: absolute;
+        top: 70px;
+        right: 20px;
+        padding: 10px;
+        border-radius: 6px;
+        z-index: 999;
+      }
+
+      nav.active {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      main {
+        padding: 20px 16px;
+      }
+    }
+
+    
+  </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>Política de Privacidade - Auza Services</h1>
-        <p>A proteção da privacidade dos usuários é uma prioridade para a Auza Services. Esta política descreve como coletamos, utilizamos e protegemos as informações dos profissionais que se cadastram na plataforma.</p>
+  <header>
+<div class="logo-area">
+  <a href="index.html">
+    <img src="css/imagens/logo-auza.png" alt="Logo Auza" />
+  </a>
+  <h1>Auza Services</h1>
+</div>
 
-        <h2>1. Informações Coletadas</h2>
-        <p>Coletamos apenas os seguintes dados dos profissionais que se cadastram na plataforma:</p>
-        <ul>
-            <li>Nome</li>
-            <li>Idade</li>
-            <li>Cidade onde mora</li>
-            <li>Whatsapp</li>
-        </ul>
-        <p><strong>Os profissionais que se cadastram na plataforma autorizam que seu número de contato fique disponível publicamente para que qualquer usuário possa entrar em contato diretamente com eles.</strong></p>
-        <p><strong>Ao realizar o cadastro, o profissional declara estar ciente de que seus dados de contato poderão ser acessados por qualquer usuário da plataforma, sem intervenção da Auza Services.</strong></p>
+    <button class="menu-toggle" aria-label="Abrir menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
 
-        <h2>2. Uso das Informações</h2>
-        <p>Os dados coletados dos profissionais são utilizados para:</p>
-        <ul>
-            <li>Gerenciar e facilitar o funcionamento da plataforma.</li>
-            <li>Permitir que profissionais se conectem com clientes.</li>
-            <li>Garantir segurança e prevenir fraudes.</li>
-        </ul>
+    <nav>
+      <a href="index.html">Início</a>
+      <a href="index.html#faq">FAQ</a>
+    </nav>
+  </header>
 
-        <h2>3. Compartilhamento de Dados</h2>
-        <p>A Auza Services não compartilha ou vende dados pessoais a terceiros sem autorização, exceto quando necessário para cumprimento de obrigações legais.</p>
+  <main>
+    <h2>Política de Privacidade — Auza Services</h2>
 
-        <h2>4. Proteção das Informações</h2>
-        <p>Implementamos medidas de segurança para proteger os dados dos profissionais contra acessos não autorizados, perdas ou alterações.</p>
+    <p>A proteção da privacidade dos usuários é uma prioridade para a Auza Services. Esta política descreve como coletamos, utilizamos e protegemos as informações dos profissionais que se cadastram na plataforma.</p>
 
-        <h2>5. Cookies e Tecnologias de Rastreamento</h2>
-        <p>Utilizamos cookies para melhorar a experiência dos usuários na plataforma. Você pode configurar seu navegador para recusar cookies caso prefira.</p>
+    <h3>1. Informações Coletadas</h3>
+    <p>Coletamos os seguintes dados dos profissionais:</p>
+    <ul>
+      <li>Nome</li>
+      <li>Idade</li>
+      <li>Cidade onde mora</li>
+      <li>WhatsApp</li>
+    </ul>
+    <p><strong>Os profissionais autorizam que seu número de contato fique disponível publicamente para que qualquer usuário possa entrar em contato diretamente com eles.</strong></p>
 
-        <h2>6. Alterações na Política</h2>
-        <p>Podemos atualizar esta Política de Privacidade periodicamente. Recomendamos que revise regularmente para se manter informado.</p>
+    <h3>2. Uso das Informações</h3>
+    <ul>
+      <li>Gerenciar e facilitar o funcionamento da plataforma</li>
+      <li>Conectar profissionais e clientes</li>
+      <li>Prevenir fraudes</li>
+    </ul>
 
-        <h2>7. Contato</h2>
-        <p>Se tiver dúvidas sobre nossa Política de Privacidade, entre em contato com a Auza Services.</p>
-    </div>
+    <h3>3. Compartilhamento de Dados</h3>
+    <p>A Auza Services não compartilha nem vende dados pessoais a terceiros sem consentimento, salvo por obrigação legal.</p>
+
+    <h3>4. Proteção das Informações</h3>
+    <p>Utilizamos medidas de segurança para proteger seus dados contra acessos não autorizados.</p>
+
+    <h3>5. Cookies e Rastreamento</h3>
+    <p>Utilizamos cookies para melhorar a experiência do usuário. Eles podem ser desativados no navegador.</p>
+
+    <h3>6. Atualizações</h3>
+    <p>Esta política pode ser alterada a qualquer momento. Recomendamos visita periódica para acompanhar mudanças.</p>
+
+    <h3>7. Contato</h3>
+    <p>Para dúvidas ou solicitações sobre esta política, entre em contato com a equipe Auza Services.</p>
+  </main>
+
+  <footer>
+    © 2025 Auza Services - Todos os Direitos Reservados
+  </footer>
+
+<script>
+  const toggle = document.querySelector('.menu-toggle');
+  const nav = document.querySelector('nav');
+
+  // Abre e fecha o menu ao clicar no botão
+  toggle.addEventListener('click', (event) => {
+    nav.classList.toggle('active');
+    event.stopPropagation(); // impede que o clique no botão feche o menu imediatamente
+  });
+
+  // Fecha o menu se o usuário clicar fora dele
+  document.addEventListener('click', (event) => {
+    const isClickInsideNav = nav.contains(event.target);
+    const isClickOnToggle = toggle.contains(event.target);
+
+    if (!isClickInsideNav && !isClickOnToggle) {
+      nav.classList.remove('active');
+    }
+  });
+</script>
 
 </body>
 </html>

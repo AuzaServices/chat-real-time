@@ -1,78 +1,223 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Termos de Uso - Auza Services</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 20px;
-            padding: 20px;
-            background-color: #f4f4f4;
-        }
-        .container {
-            max-width: 800px;
-            margin: auto;
-            background: rgb(255, 255, 255);
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        h1, h2 {
-            color: #333;
-        }
-        ul {
-            padding-left: 20px;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Termos de Uso — Auza Services</title>
+  <link rel="icon" href="css/imagens/logo-sem-fundo.png" type="image/png" />
+
+  <style>
+body {
+      margin: 0;
+      font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+      background-color: #f9f9f9;
+      color: #222;
+    }
+
+    header {
+      background-color: #333;
+      padding: 20px;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      position: relative;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-area img {
+      height: 70px;
+    }
+
+    header h1 {
+      font-size: 20px;
+      margin: 0;
+    }
+
+    nav {
+      display: flex;
+      gap: 15px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 4px 8px;
+      transition: background 0.3s;
+    }
+
+    nav a:hover {
+      background-color: rgba(255,255,255,0.1);
+      border-radius: 4px;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 28px;
+      height: 20px;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .menu-toggle .bar {
+      height: 3px;
+      background: white;
+      border-radius: 3px;
+    }
+
+    main {
+      padding: 40px 20px;
+      max-width: 800px;
+      margin: auto;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+
+    h2, h3 {
+      color: #244556;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 16px;
+      background-color: #f1f1f1;
+      font-size: 14px;
+      color: #666;
+      margin-top: 40px;
+    }
+
+    @media screen and (max-width: 992px) {
+      header h1 {
+        display: none;
+      }
+
+      nav {
+        display: none;
+        flex-direction: column;
+        background: #b0b0b0;
+        position: absolute;
+        top: 70px;
+        right: 20px;
+        padding: 10px;
+        border-radius: 6px;
+        z-index: 999;
+      }
+
+      nav.active {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      main {
+        padding: 20px 16px;
+      }
+    }
+
+    
+  </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>Termos de Uso - Auza Services</h1>
-        <p>Bem-vindo à Auza Services! Leia atentamente os seguintes termos antes de utilizar nossa plataforma.</p>
-
-        <h2>1. Aceitação dos Termos</h2>
-        <p>Ao acessar e utilizar a plataforma Auza Services, você concorda com estes Termos de Uso.</p>
-
-        <h2>2. Público-Alvo e Cadastro</h2>
-        <p>A Auza Services atende dois tipos de usuários:</p>
-        <ul>
-            <li>Profissionais: aqueles que clicam em “Junte-se a Nós” para oferecer seus serviços.</li>
-            <li>Clientes: aqueles que clicam em “Continuar” para buscar profissionais na plataforma.</li>
-        </ul>
-
-        <h2>3. Isenção de Responsabilidades</h2>
-        <p>A Auza Services atua exclusivamente como intermediadora, não sendo responsável por qualidade, prazos ou pagamentos dos serviços prestados.</p>
-        <p>Além disso, a empresa não tem qualquer compromisso sobre a relação entre cliente e profissional, incluindo questões financeiras.</p>
-
-<h2>4. Pagamentos e Taxas</h2>
-<p>Os valores e taxas aplicáveis são estabelecidos diretamente pelos profissionais, sem intervenção da Auza Services.</p>
-<p>Contudo, a Auza Services aplica uma <strong>taxa de 10%</strong> sobre o valor total de cada serviço fechado por meio da plataforma. Esta taxa é destinada à manutenção e operação do sistema, bem como ao suporte da comunidade de usuários.</p>
-
-<h3>Plano AuzaGold</h3>
-<p>Para os profissionais que desejam aumentar sua visibilidade na plataforma, oferecemos o serviço opcional <strong>AuzaGold</strong>.</p>
-<ul>
-    <li><strong>Valor:</strong> R$10,00 por mês.</li>
-    <li><strong>Renovação:</strong> O pagamento deve ser realizado manualmente pelo usuário. Caso não renove, retornará ao plano gratuito.</li>
-    <li><strong>Benefício:</strong> Maior exposição dentro da plataforma, facilitando contratações pelos clientes.</li>
-    <li><strong>Isenção de Garantia:</strong> A adesão ao <strong>AuzaGold</strong> não garante a obtenção de serviços, mas melhora as oportunidades de conexão entre clientes e profissionais.</li>
-</ul>
-            <li><strong>Valor:</strong> R$10,00 por mês.</li>
-            <li><strong>Renovação:</strong> O pagamento deve ser realizado manualmente pelo usuário. Caso não renove, retornará ao plano gratuito.</li>
-            <li><strong>Benefício:</strong> Maior exposição dentro da plataforma, facilitando contratações pelos clientes.</li>
-            <li><strong>Isenção de Garantia:</strong> A adesão ao <strong>AuzaGold</strong> não garante a obtenção de serviços, mas melhora as oportunidades de conexão entre clientes e profissionais.</li>
-        </ul>
-
-        <h2>5. Alterações nos Termos</h2>
-        <p>Podemos atualizar estes Termos de Uso periodicamente. Recomendamos revisar regularmente para se manter informado.</p>
-
-        <h2>6. Contato</h2>
-        <p>Se tiver dúvidas sobre estes termos, entre em contato com a Auza Services.</p>
-        <p>Telefone: +55(85)99134-0658 | E-mail: auzaservices@gmail.com</p>
+  <header>
+    <div class="logo-area">
+      <a href="index.html">
+        <img src="css/imagens/logo-auza.png" alt="Logo Auza" />
+      </a>
+      <h1>Auza Services</h1>
     </div>
 
+    <button class="menu-toggle" aria-label="Abrir menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+
+    <nav>
+      <a href="index.html">Início</a>
+      <a href="index.html#faq">FAQ</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Termos de Uso — Auza Services</h2>
+
+    <p>Bem-vindo à Auza Services! Leia atentamente os seguintes termos antes de utilizar nossa plataforma.</p>
+
+    <h3>1. Aceitação dos Termos</h3>
+    <p>Ao acessar e utilizar a plataforma Auza Services, você concorda com estes Termos de Uso.</p>
+
+    <h3>2. Público-Alvo e Cadastro</h3>
+    <p>A Auza Services atende dois tipos de usuários:</p>
+    <ul>
+      <li>Profissionais: aqueles que clicam em “Junte-se a Nós” para oferecer seus serviços.</li>
+      <li>Clientes: aqueles que clicam em “Continuar” para buscar profissionais na plataforma.</li>
+    </ul>
+
+    <h3>3. Isenção de Responsabilidades</h3>
+    <p>A Auza Services atua exclusivamente como intermediadora, não sendo responsável por qualidade, prazos ou pagamentos dos serviços prestados.</p>
+    <p>Além disso, a empresa não tem qualquer compromisso sobre a relação entre cliente e profissional, incluindo questões financeiras.</p>
+
+    <h3>4. Pagamentos e Taxas</h3>
+    <p>Os valores e taxas aplicáveis são estabelecidos diretamente pelos profissionais, sem intervenção da Auza Services.</p>
+    <p>Contudo, a Auza Services aplica uma <strong>taxa de 10%</strong> sobre o valor total de cada serviço fechado por meio da plataforma. Esta taxa é destinada à manutenção e operação do sistema, bem como ao suporte da comunidade de usuários.</p>
+
+    <h3>Plano AuzaGold</h3>
+    <p>Para os profissionais que desejam aumentar sua visibilidade na plataforma, oferecemos o serviço opcional <strong>AuzaGold</strong>:</p>
+    <ul>
+      <li><strong>Valor:</strong> R$10,00 por mês.</li>
+      <li><strong>Renovação:</strong> O pagamento deve ser realizado manualmente pelo usuário. Caso não renove, retornará ao plano gratuito.</li>
+      <li><strong>Benefício:</strong> Maior exposição dentro da plataforma, facilitando contratações pelos clientes.</li>
+      <li><strong>Isenção de Garantia:</strong> A adesão ao <strong>AuzaGold</strong> não garante a obtenção de serviços, mas melhora as oportunidades de conexão.</li>
+    </ul>
+
+    <h3>5. Alterações nos Termos</h3>
+    <p>Podemos atualizar estes Termos de Uso periodicamente. Recomendamos revisar regularmente para se manter informado.</p>
+
+    <h3>6. Contato</h3>
+    <p>Se tiver dúvidas sobre estes termos, entre em contato com a Auza Services.</p>
+    <p>Telefone: +55 (85) 99134-0658 | E-mail: auzaservices@gmail.com</p>
+  </main>
+
+  <footer>
+    © 2025 Auza Services - Todos os Direitos Reservados
+  </footer>
+
+  <script>
+    const toggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('nav');
+
+    toggle.addEventListener('click', (event) => {
+      nav.classList.toggle('active');
+      event.stopPropagation();
+    });
+
+    document.addEventListener('click', (event) => {
+      const isClickInsideNav = nav.contains(event.target);
+      const isClickOnToggle = toggle.contains(event.target);
+      if (!isClickInsideNav && !isClickOnToggle) {
+        nav.classList.remove('active');
+      }
+    });
+  </script>
 </body>
 </html>
