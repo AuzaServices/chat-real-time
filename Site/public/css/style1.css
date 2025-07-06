@@ -58,16 +58,18 @@ nav a:hover {
 .menu-toggle {
   display: none;
   flex-direction: column;
-  gap: 6px;
+  gap: 4px; /* diminui o espaço entre as barrinhas */
   background: none;
   border: none;
   cursor: pointer;
+  margin-top: -4px;
 }
+
 .menu-toggle .bar {
-  width: 24px;
-  height: 3px;
+  width: 18px;  /* antes era 24px */
+  height: 2px;  /* antes era 3px */
   background: #ffffff;
-  border-radius: 3px;
+  border-radius: 2px;
 }
 
 /* HERO */
