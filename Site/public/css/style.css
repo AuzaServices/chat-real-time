@@ -276,7 +276,7 @@ body.services-page footer {
 }
 
 .profissional-ideal {
-    color: rgb(191, 191, 191); /* Define a cor cinza */
+    color: rgb(237, 237, 237); /* Define a cor cinza */
     font-size: 1.6rem; /* Ajuste inicial */
     text-align: left; /* Mantém alinhado */
     margin-left: 10%; /* 🔥 Ajusta margem para telas maiores */
@@ -463,17 +463,6 @@ body.services-page footer {
     background: none !important;
     background-image: none !important;
     background-color: white !important;
-}
-.fixed-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: #1a1a1a;
-    padding: 1px 15px; /* Reduz a altura do cabeçalho */
-    text-align: center;
-    z-index: 1000;
-    border-bottom: 1px solid #ddd;
 }
 
 .profissional-ideal {
