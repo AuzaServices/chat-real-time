@@ -6,7 +6,7 @@
 }
 html, body {
   font-family: 'Segoe UI', sans-serif;
-  background: #ffffff;
+  background: linear-gradient(to right, #f4f4f4, #ffffff);
   color: #222;
   scroll-behavior: smooth;
   min-height: 100vh;

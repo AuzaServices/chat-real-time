@@ -1,161 +1,361 @@
-/* Reset básico */
+/* RESET E BASE */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
-body {
+html, body {
   font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to right, #f4f4f4, #ffffff);
+  background: linear-gradient(to right, #f4f4f4, #ffffff);
+  color: #222;
+  scroll-behavior: smooth;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* CABEÇALHO */
+header {
+  position: relative;
+  top: 0;
+  background: #1a1a1a;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 2rem;
+  z-index: 1000;
+  border-bottom: 1px solid #333;
+}
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.logo {
+  height: clamp(40px, 5vw, 52px);
+  margin-left: -18px; /* empurra mais pra esquerda */
+}
+
+header h1 {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+nav {
+  display: flex;
+  gap: 1.2rem;
+}
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+nav a:hover {
+  color: #cf2c2c;
+}
+
+/* BOTÃO HAMBÚRGUER */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 4px; /* diminui o espaço entre as barrinhas */
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-top: -4px;
+}
+
+.menu-toggle .bar {
+  width: 18px;  /* antes era 24px */
+  height: 2px;  /* antes era 3px */
+  background: #ffffff;
+  border-radius: 2px;
+}
+
+
+
+/* HERO */
+#inicio {
+  position: absolute;
+  background: linear-gradient(to right, #f4f4f4, #ffffff);
+  color: #1a1a1a;
+  text-align: center;
+  padding: 6rem 2rem;
+  clip-path: none;
+}
+#inicio h2 {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  margin-bottom: 1rem;
+}
+#inicio p {
+  font-size: 1.15rem;
+  max-width: 700px;
+  margin: 0 auto 2rem;
+  color: #555;
+}
+.btn-luxo {
+  background: #cf2c2c;
+  color: #fff;
+  padding: 1rem 2.2rem;
+  border-radius: 50px;
+  font-weight: bold;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.btn-luxo:hover {
+  background: #e83b3b;
+  transform: scale(1.05);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .contato-container {
+    flex-direction: column;
+    text-align: left;
+    padding: 3rem 1.5rem;
+  }
+  .contato-coluna.texto {
+    width: 100%;
+  }
+  .contato-coluna.imagem {
+    width: 100%;
+    margin-top: 2rem;
+  }
+}
+
+/* FOOTER */
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80px; /* equivalente à altura total do cabeçalho */
+  background: #333;
+  color: #fff;
+  font-size: 0.95rem;
+  border-top: 1px solid #1a1a1a;
+
+}
+
+@media screen and (max-width: 768px) {
+  footer {
+    height: 48px;           /* ⬅️ Altura menor só no mobile */
+    font-size: 12px;
+    padding: 0 16px;
+  }
+
+  footer p {
+    margin: 0;
+    line-height: 1.2;
+  }
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+  header {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+nav {
+  position: absolute;
+  top: 60px;
+  left: 10px;
+  right: 10px;
+  background: rgba(241, 241, 241, 0.7); /* Transparente pro blur aparecer */
+  backdrop-filter: blur(8px);           /* Efeito de blur leve */
+  -webkit-backdrop-filter: blur(8px);   /* Compatibilidade com Safari */
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.4s ease;
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.06);
+  border: 1px solid #ddd;
+}
+
+  nav.active {
+    max-height: 240px; /* altura reduzida */
+    padding: 0.2rem 0;
+  }
+
+  nav a {
+    display: block;
+    width: 100%;
+    padding: 0.6rem;
+    color: #111;
+    text-align: center;
+    font-size: 0.9rem;
+    border-bottom: 1px solid #e2e2e2;
+  }
+
+  nav a:last-child {
+    border-bottom: none;
+  }
+
+  nav a:hover {
+    background: #eaeaea;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+}
+
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  will-change: opacity, transform;
+}
+
+.scroll-reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Estilo do Banner de Cookies */
+.cookie-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.6); /* fundo semi-transparente */
+  backdrop-filter: blur(6px);                /* efeito de desfoque leve */
+  -webkit-backdrop-filter: blur(6px);        /* compatível com Safari */
+  border-top: 1px solid #ddd;
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.05);
+  padding: 20px;
+  z-index: 9999;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.95rem;
+  color: #333;
+  transition: opacity 0.4s ease;
+}
+
+.cookie-banner p {
+  margin: 0;
+  line-height: 1.5;
+  flex: 1 1 auto;
+}
+
+.cookie-banner a {
+  color: #a61b1b;
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.cookie-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.accept-btn,
+.config-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 50px; /* deixa os botões mais suaves e modernos */
+  font-weight: 500;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.3s ease;
+}
+
+/* Estilos específicos para o mobile */
+@media (max-width: 768px) {
+  .cookie-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .cookie-buttons {
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .accept-btn,
+  .config-btn {
+    width: auto;
+  }
+}
+
+.accept-btn {
+  background-color: #1a1a1a;
+  color: white;
+}
+
+.accept-btn:hover {
+  background-color: #cf2c2c;
+}
+
+.config-btn {
+  background-color: #f1f1f1;
   color: #333;
 }
 
-/* Cabeçalho Auza */
-header {
-    position: sticky;
-    top: 0;
-    background: #1a1a1a;
-    color: #fff;
-    display: flex
-;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.8rem 0rem;
-    z-index: 1000;
-    border-bottom: 1px solid #333;
+.config-btn:hover {
+  background-color: #e0e0e0;
 }
 
-.logo-area {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 16px;
-}
-
-.logo {
-    height: clamp(40px, 5vw, 52px);
-    margin-left: 14px;
-}
-
-nav {
-  margin-top: 16px;
-  display: flex;
-  justify-content: center;
-  gap: 24px;
-  flex-wrap: wrap;
-}
-
-nav a {
-  color: #111(253, 253, 253);
-  text-decoration: none;
-  font-weight: 500;
-  transition: opacity 0.3s ease;
-}
-
-nav a:hover {
-  opacity: 0.7;
-}
-
-.menu-toggle {
-  display: none; /* padrão: escondido */
-}
-
-/* Mostrar o menu apenas em telas pequenas */
-@media screen and (max-width: 768px) {
- @media (max-width: 768px) {
-    .menu-toggle {
-        display: flex
-;
-    }
-}
-
-@media (max-width: 768px) {
-    .menu-toggle {
-        display: flex
-;
-    }
-}
-.menu-toggle {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    margin-left: 244px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    margin-top: -4px;
-}
-   nav a {
-    color: #111(91, 91, 91);
-    text-decoration: none;
-    font-weight: 500;
-    transition: opacity 0.3s ease;
-}
-
-@media (max-width: 768px) {
-    nav {
-        position: absolute;
-        top: 44px;
-        left: 10px;
-        right: 10px;
-        background: rgba(241, 241, 241, 0.7);
-        backdrop-filter: blur(8px);
-        -webkit-backdrop-filter: blur(8px);
-        flex-direction: column;
-        align-items: center;
-        padding: 0;
-        overflow: hidden;
-        max-height: 0;
-        transition: max-height 0.4s ease;
-        border-radius: 10px;
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.06);
-        border: 1px solid #ddd;
-    }
-}
-}
-/* Main do formulário */
+/* Área principal do conteúdo */
 .main-wrapper {
-  padding: 40px;
-}
-
-.container {
-  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
   width: 100%;
-  padding: 30px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 24px;
+  padding: 60px 5vw;
 }
 
+/* Formulário container */
+.container {
+  width: 100%;
+  max-width: 1000px;
+  padding: 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 32px;
+  margin-left: 0;
+}
+
+/* Título principal */
 .container h2 {
   grid-column: span 2;
   text-align: center;
-  margin-left: -480px;
-  margin-bottom: 20px;
-  font-size: 1.6rem;
+  font-size: 2rem;
   color: #a61b1b;
+  margin-bottom: 20px;
 }
 
-/* Grupos e campos */
-.form-group {
-  display: flex;
-  flex-direction: column;
-}
-
+/* Labels e campos */
 label {
   font-weight: 500;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
+  display: block;
 }
 
 input,
 select {
-  padding: 12px;
+  width: 100%;
+  padding: 14px;
   border-radius: 10px;
   border: 1px solid #ccd4e0;
   background-color: #f9f9f9;
   font-size: 1rem;
-  width: 100%;
   transition: border 0.2s ease;
 }
 
@@ -165,7 +365,7 @@ select:focus {
   outline: none;
 }
 
-/* Experiência com contador */
+/* Campo "experiência" com contador */
 .experiencia-container {
   position: relative;
   grid-column: span 2;
@@ -188,19 +388,19 @@ select:focus {
   grid-column: span 2;
   display: flex;
   justify-content: space-between;
-  gap: 16px;
-  margin-top: 16px;
+  gap: 20px;
+  margin-top: 32px;
 }
 
 button {
   flex: 1;
-  padding: 14px;
+  padding: 14px 20px;
+  font-size: 1rem;
+  font-weight: 600;
   border: none;
   border-radius: 50px;
-  font-size: 1rem;
-  font-weight: bold;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
 #submit-button {
@@ -210,6 +410,7 @@ button {
 
 #submit-button:hover {
   background-color: #c72929;
+  transform: scale(1.03);
 }
 
 #back-button {
@@ -219,69 +420,24 @@ button {
 
 #back-button:hover {
   background-color: #d0d0d0;
+  transform: scale(1.03);
 }
 
-/* Rodapé Auza */
-footer {
-  background-color: #333;
-  color: white;
-  text-align: center;
-  padding: 20px;
-  font-size: 0.9rem;
-  margin-top: 40px;
-}
-
-/* Cookie banner */
-.cookie-banner {
-  background: #fff;
-  border-top: 1px solid #ccc;
-  padding: 16px;
-  font-size: 0.95rem;
-  text-align: center;
-}
-
-.cookie-banner p {
-  margin-bottom: 8px;
-}
-
-.cookie-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-}
-
-.cookie-buttons button {
-  padding: 8px 16px;
-  border: none;
-  border-radius: 8px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background 0.2s ease;
-}
-
-.accept-btn {
-  background: #a61b1b;
-  color: white;
-}
-
-.accept-btn:hover {
-  background: #c72929;
-}
-
-.config-btn {
-  background: #eee;
-  color: #333;
-}
-
-.config-btn:hover {
-  background: #ddd;
-}
-
-/* Responsivo */
+/* Responsividade para telas menores */
 @media screen and (max-width: 768px) {
+  .main-wrapper {
+    padding: 30px 16px;
+  }
+
   .container {
     grid-template-columns: 1fr;
-    padding: 20px;
+    padding: 0;
+  }
+
+  .container h2 {
+    font-size: 1.5rem;
+    grid-column: span 1;
+    padding: 0 10px;
   }
 
   .experiencia-container {
@@ -294,32 +450,5 @@ footer {
 
   button {
     width: 100%;
-  }
-}
-
-@media screen and (min-width: 1024px) {
-  .main-wrapper {
-    display: flex;
-    justify-content: center;         /* centraliza o bloco */
-    align-items: flex-start;
-    width: 100%;
-    padding: 60px 5vw;               /* margem fluida nas laterais */
-  }
-
-  .container {
-    width: 100%;
-    max-width: 1000px;               /* controla largura máxima */
-    transform: translateX(190px);    /* leve deslocamento para esquerda */
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .container h2 {
-    grid-column: span 1;
-    text-align: center;
-    font-size: 1.5rem;
-    margin-left: -5px;
-    margin-bottom: 16px;
-    padding: 0 10px;
   }
 }
