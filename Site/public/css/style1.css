@@ -319,22 +319,24 @@ footer {
     display: flex;
   }
 
-  nav {
-    position: absolute;
-    top: 60px;
-    left: 10px;
-    right: 10px;
-    background: #f1f1f1; /* sem transparência */
-    flex-direction: column;
-    align-items: center;
-    padding: 0;
-    overflow: hidden;
-    max-height: 0;
-    transition: max-height 0.4s ease;
-    border-radius: 10px;
-    box-shadow: 0 6px 12px rgba(0,0,0,0.06);
-    border: 1px solid #ddd;
-  }
+nav {
+  position: absolute;
+  top: 60px;
+  left: 10px;
+  right: 10px;
+  background: rgba(241, 241, 241, 0.7); /* Transparente pro blur aparecer */
+  backdrop-filter: blur(8px);           /* Efeito de blur leve */
+  -webkit-backdrop-filter: blur(8px);   /* Compatibilidade com Safari */
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.4s ease;
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.06);
+  border: 1px solid #ddd;
+}
 
   nav.active {
     max-height: 240px; /* altura reduzida */
@@ -573,12 +575,14 @@ footer {
 
 .btn-auza {
   display: inline-block;
-  background: #cf2c2c;
+  background: #1a1a1a;
   color: #fff;
   font-weight: bold;
-  padding: 1rem 2rem;
+  padding: 14px 32px;
+  border-radius: 50px !important;
   border-radius: 8px;
   text-decoration: none;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.25);
   transition: background 0.3s ease;
 }
 .btn-auza:hover {

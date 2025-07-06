@@ -38,3 +38,15 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
+document.addEventListener('click', function (event) {
+  const nav = document.querySelector('nav');
+  const toggle = document.querySelector('.menu-toggle');
+
+  const isClickInsideNav = nav.contains(event.target);
+  const isClickOnToggle = toggle.contains(event.target);
+
+  if (nav.classList.contains('active') && !isClickInsideNav && !isClickOnToggle) {
+    nav.classList.remove('active');
+  }
+});

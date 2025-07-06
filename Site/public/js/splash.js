@@ -31,3 +31,4 @@ window.addEventListener("load", function () {
         window.location.replace("index.html"); // 🔥 Redireciona para o index após o splash
     }, 3000); // Ajuste o tempo conforme necessário
 });
+
