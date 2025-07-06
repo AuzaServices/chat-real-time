@@ -651,9 +651,9 @@ nav {
 }
 
 .imagem-auza img {
-  max-width: 340px;
+  max-width: 480px; /* aumento de tamanho (ex: de 340px para 480px) */
   width: 100%;
-  margin-bottom: -4px; /* encosta perfeitamente na linha preta */
+  margin-bottom: -3px;
   object-fit: contain;
   background: transparent;
   border-radius: 12px;
