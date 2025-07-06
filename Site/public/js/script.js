@@ -51,22 +51,41 @@ document.addEventListener('click', function (event) {
   }
 });
 
-  // Executa quando a página carrega
-  window.addEventListener('DOMContentLoaded', () => {
-    const banner = document.querySelector('.cookie-banner');
-    const acceptBtn = document.querySelector('.accept-btn');
+  const banner = document.querySelector('.cookie-banner');
+  const acceptBtn = document.querySelector('.accept-btn');
 
-    // Se já aceitou cookies antes, não mostra o banner
-    if (localStorage.getItem('cookiesAccepted')) {
+  // Evento ao aceitar
+  acceptBtn.addEventListener('click', () => {
+    localStorage.setItem('cookiesAccepted', 'true');
+    localStorage.setItem('leaveTime', Date.now().toString()); // salva o momento de saída inicial
+    banner.style.opacity = '0';
+    setTimeout(() => {
       banner.style.display = 'none';
-    }
+    }, 400);
+  });
 
-    // Ao clicar no botão "Aceitar e continuar"
-    acceptBtn.addEventListener('click', () => {
-      localStorage.setItem('cookiesAccepted', 'true');
-      banner.style.opacity = '0';
-      setTimeout(() => {
-        banner.style.display = 'none';
-      }, 400); // tempo pra animar o desaparecimento
-    });
+  // Ao sair da página (antes de fechar ou atualizar)
+  window.addEventListener('beforeunload', () => {
+    if (localStorage.getItem('cookiesAccepted')) {
+      localStorage.setItem('leaveTime', Date.now().toString());
+    }
+  });
+
+  // Ao voltar ou abrir a página
+  window.addEventListener('DOMContentLoaded', () => {
+    const consent = localStorage.getItem('cookiesAccepted');
+    const leaveTime = localStorage.getItem('leaveTime');
+
+    if (consent && leaveTime) {
+      const now = Date.now();
+      const tenMinutes = 10 * 60 * 1000;
+      const difference = now - parseInt(leaveTime);
+
+      if (difference < tenMinutes) {
+        banner.style.display = 'none'; // ainda dentro da janela de 10 min
+      } else {
+        localStorage.removeItem('cookiesAccepted'); // expirou
+        localStorage.removeItem('leaveTime');
+      }
+    }
   });
