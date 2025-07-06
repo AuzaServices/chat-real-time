@@ -55,21 +55,35 @@ nav a:hover {
 }
 
 /* BOTÃO HAMBÚRGUER */
+
+/* Oculta por padrão (desktop) */
 .menu-toggle {
   display: none;
   flex-direction: column;
-  gap: 4px; /* diminui o espaço entre as barrinhas */
+  gap: 4px;
   background: none;
   border: none;
   cursor: pointer;
   margin-top: -4px;
 }
 
+/* Estilo das barrinhas do hamburguer */
 .menu-toggle .bar {
-  width: 18px;  /* antes era 24px */
-  height: 2px;  /* antes era 3px */
+  width: 18px;
+  height: 2px;
   background: #ffffff;
   border-radius: 2px;
+}
+
+/* Ativa no mobile */
+@media screen and (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+    position: absolute;
+    top: 14px;
+    right: -290px;
+    z-index: 1100;
+  }
 }
 
 
