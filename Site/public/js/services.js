@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
             isScrolling = setTimeout(function () {
                 voltarButton.style.opacity = "1";
                 voltarButton.style.transform = "translateY(0)";
-            }, 1000);
+            }, 500);
         });
     }
 
