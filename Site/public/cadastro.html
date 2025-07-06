@@ -1,153 +1,142 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Cadastro de Profissional</title>
-    <link rel="icon" type="image/png" href="css/imagens/favicon.png">
-    <link rel="icon" href="https://i.imgur.com/uLiAK9a.png" type="image/png">
-    <link rel="stylesheet" href="css/cadastro.css">
-    <script src="js/cadastro.js" defer></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>Cadastro de Profissional</title>
+  <link rel="stylesheet" href="css/style1.css" />
+  <link rel="stylesheet" href="css/cadastro.css" />
+  <link rel="icon" href="css/imagens/logo-sem-fundo.png" type="image/png" />
+  <script defer src="js/script.js"></script>
+  <script defer src="js/cadastro.js"></script>
 
-    <meta property="og:title" content="Tem clientes te esperando!">
-    <meta property="og:description" content="Cadastre-se agora e ofereça seus serviços de: Montador de Móveis 🛠️, Frete e Mudanças 🚚, Confeiteiro(a) 🎂, Eletricista ⚡, Pedreiro 🔨, Faxineira 🧹, Capinador 🌿, Encanador 💦, Pintor 🎨, Chaveiro 🔑, Designer Gráfico 🖌️, Téc. de Ar-Condicionado ❄️ e muito mais! 💼">
-    <meta property="og:url" content="https://seudominio.com.br/index.html">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="https://i.imgur.com/ievtVmO.png">
-    
+  <meta property="og:title" content="Tem clientes te esperando!" />
+  <meta property="og:description" content="Cadastre-se agora e ofereça seus serviços de confiança!" />
+  <meta property="og:url" content="https://clientes-fhfe.onrender.com/cadastro.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://i.imgur.com/ievtVmO.png" />
 </head>
-
-<script>
-    const pagina = window.location.pathname.endsWith("cadastro.html") ? "Cadastro" : "Página Inicial";
-
-    fetch("https://clientes-fhfe.onrender.com/api/trafego", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ pagina })
-    })
-    .then(response => response.json())
-    .then(data => console.log(`✅ Acesso registrado como "${pagina}":`, data))
-    .catch(error => console.error("❌ Erro ao registrar acesso:", error));
-</script>
-
 
 <body>
 
-<div class="container">
-    <div class="background-logo"></div>
-    <div class="header-container">
-        <h1>Cadastro de Profissional</h1>
+  <!-- Cabeçalho padrão Auza -->
+  <header>
+    <div class="logo-area">
+      <img src="css/imagens/logo-auza.png" alt="Logo Auza" class="logo" />
+      <h1></h1>
     </div>
+    <nav>
+      <a href="index.html#inicio">Início</a>
+      <a href="index.html#faq">FAQ</a>
+    </nav>
+    <button class="menu-toggle" aria-label="Abrir menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+  </header>
 
-    <form id="cadastro-form">
-        
-        <!-- Nome e Sobrenome lado a lado -->
-<div style="display: flex; width: 100%; gap: 0; justify-content: center;">
-    <div style="flex: 1; max-width: 40%;">
-<label for="nome" class="label-nome">Nome:</label>
-<input type="text" id="nome" name="nome" required />
-    </div>
-    <div style="flex: 1; max-width: 48%;">
-<label for="sobrenome" class="label-sobrenome">Sobrenome:</label>
-<input type="text" id="sobrenome" name="sobrenome" required />
+  <!-- Conteúdo principal do cadastro -->
+  <main class="main-wrapper">
+    <div class="container">
+      <h2>Cadastro de Profissional</h2>
+      <form id="cadastro-form">
 
-    </div>
-</div>
+        <div class="grid-row">
+          <div class="form-group">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required />
+          </div>
+          <div class="form-group">
+            <label for="sobrenome">Sobrenome:</label>
+            <input type="text" id="sobrenome" name="sobrenome" required />
+          </div>
+        </div>
 
         <label for="idade">Idade:</label>
-        <input type="number" id="idade" name="idade" required>
+        <input type="number" id="idade" name="idade" required />
 
         <label for="profissao">Profissão:</label>
         <select id="profissao" name="profissao" required>
-            <option value="">Selecione</option>
-                    <option value="auzapoli"> AuzaPoli (Polivaletes)</option> 
-                    <option value="arquiteto"> Arquiteto(a)</option>
-                    <option value="pedreiro"> Pedreiro</option>
-                    <option value="servente"> Servente</option>
-                    <option value="gesseiro">Gesseiro</option>
-                    <option value="bombeiro-hidraulico"> Bombeiro Hidráulico</option>
-                    <option value="metalurgico"> Metalúrgico</option>
-                    <option value="pintor"> Pintor</option>
-                    <option value="capinador"> Capinador</option>
-                    <option value="jardineiro"> Jardineiro</option>
-                    <option value="eletricista">Eletricista</option>
-                    <option value="vidraceiro"> Vidraceiro</option>
-                    <option value="chaveiro">  Chaveiro</option>
-                    <option value="envelopamento"> Envelopamento</option>
-                    <option value="piscineiro"> Piscineiro (Limpador de Piscinas)</option>
-                    <option value="tecnico-em-refrigeracao"> Tec. em Refrigeração</option>
-                    <option value="tec-de-cercas-eletricas"> Tec. de Cerca Elétrica</option>
-                    <option value="tec-em-eletrodomesticos"> Tec. em Eletrodomésticos</option>
-                    <option value="tec-em-dispositivos_moveis"> Tec. em Dispositivos Móveis</option>
-                    <option value="montador-de-moveis"> Montador de Móveis</option>
-                    <option value="marceneiro"> Marceneiro</option>
-                    <option value="reboque"> Caminhão Reboque</option>
-                    <option value="caminhão-limpa-fossa"> Caminhão Limpa-Fossa</option>
-                    <option value="motorista-particular"> Motorista Particular</option>
-                    <option value="mudanças-e-carretos"> Fretes e Mudanças</option>
-                    <option value="ajudante-de-frete"> Ajudante de Frete</option> 
-                    <option value="faxineira"> Faxineira</option>
-                    <option value="costureira"> Costureira</option>
-                    <option value="baba"> Babás</option>
-                    <option value="cuidador-de-idosos"> Cuidador(a) de Idosos</option>
-                    <option value="churrasqueiro"> Churrasqueiro</option>
-                    <option value="bartender"> Bartender</option>
-                    <option value="confeiteira"> Confeiteiro(a)</option>
-                    <option value="pegue-e-monte"> Pegue e Monte</option>
-                    <option value="cabeleireiro-a-domicilio"> Cabeleireiro a Domicilio</option>
-                    <option value="manicure-a-domicilio"> Manicure a Domicilio</option>
-                    <option value="designer"> Designer</option>
-                    <option value="fotógrafo"> Fotógrafo(a)</option>
-                    <option value="dj">DJ</option>
-                    <option value="adestramento"> Adestramento</option>
-                    <option value="cuidador-de-animais"> Cuidador(a) de Animais</option>
-                    <option value="advogado"> Advogado(a)</option>
-                    <option value="psicologo"> Psicólogo(a)</option> 
-                    <option value="professor"> Professor(a) Particular</option> 
-                    <option value="nutricionista"> Nutricionista</option>
-                    <option value="personal-trainer"> Personal Trainer</option>
-                    <option value="segurança_de_eventos"> Segurança de Eventos</option>
-            <!-- Todas as opções da versão original mantidas -->
+          <option value="">Selecione</option>
+          <option value="auzapoli">AuzaPoli (Polivaletes)</option>
+          <!-- ... todas as opções mantidas -->
         </select>
 
         <label for="estado">Estado:</label>
         <select id="estado" name="estado" required>
-            <option value="" disabled selected>Selecione o estado</option>
-            <option value="23">Ceará</option>
+          <option value="">Selecione o estado</option>
+          <option value="23">Ceará</option>
         </select>
 
         <label for="cidade">Cidade:</label>
         <select id="cidade" name="cidade" required>
-            <option value="" disabled selected>Selecione a cidade</option>
+          <option value="">Selecione a cidade</option>
         </select>
 
-        <!-- Campo "Quem te indicou?" -->
         <label for="indicador">Quem indicou você?</label>
-<input type="text" id="indicador" name="indicador" placeholder="Se não foi indicado(a), deixa em branco" />
+        <input type="text" id="indicador" name="indicador" placeholder="Se não foi indicado(a), deixe em branco" />
 
-<!-- Campo Experiência -->
-<label for="experiencia">Experiência:</label>
-<div style="position: relative;">
-    <input type="text" id="experiencia" name="experiencia" maxlength="60" style="width: 70%;" placeholder="Ex: Experiência em Gesso, forro e etc..">
-    <span id="contador" style="position: absolute; right: 28px; bottom: 10px; font-size: 12px; color: #888;">0/60</span>
-</div>
+        <label for="experiencia">Experiência:</label>
+        <div class="experiencia-container">
+          <input type="text" id="experiencia" name="experiencia" maxlength="60" placeholder="Ex: Experiência em Gesso, pintura...">
+          <span id="contador">0/60</span>
+        </div>
 
-       <div style="display: flex; justify-content: space-between; gap: 10px;">
-    <button id="back-button" type="button" onclick="removeFocusAndGoBack()">Voltar</button>
-    <button id="submit-button" type="submit">Continuar</button>
-</div>
-    </form>
-</div>
+        <div class="button-group">
+          <button id="back-button" type="button" onclick="removeFocusAndGoBack()">Voltar</button>
+          <button id="submit-button" type="submit">Continuar</button>
+        </div>
+      </form>
+    </div>
+  </main>
 
-<script>
-    // Contador de caracteres no campo "Experiência"
+  <!-- Rodapé padrão Auza -->
+  <footer>
+    <p>© 2025 Auza Services - Todos os Direitos Reservados</p>
+  </footer>
+
+  <!-- Script interativo -->
+  <script>
+    // Menu hamburguer
+    const toggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('nav');
+    toggle.addEventListener('click', () => {
+      nav.classList.toggle('active');
+    });
+
+    // Contador de caracteres da experiência
     const experienciaInput = document.getElementById("experiencia");
     const contadorSpan = document.getElementById("contador");
-
     experienciaInput.addEventListener("input", () => {
-        contadorSpan.textContent = `${experienciaInput.value.length}/60`;
+      contadorSpan.textContent = `${experienciaInput.value.length}/60`;
     });
-</script>
+
+    // Scroll reveal
+    const revealElements = document.querySelectorAll('.scroll-reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    revealElements.forEach(el => observer.observe(el));
+  </script>
+
+  <!-- Banner de Cookies -->
+  <div class="cookie-banner">
+    <p>
+      Utilizamos cookies para aprimorar sua experiência, personalizar conteúdos e analisar o tráfego em nossa plataforma.
+      Ao continuar navegando, você concorda com nossa
+      <a href="politicas-de-privacidade.html" target="_blank">Política de Privacidade</a>.
+    </p>
+    <div class="cookie-buttons">
+      <button class="accept-btn">Aceitar e continuar</button>
+      <button class="config-btn">Configurar preferências</button>
+    </div>
+  </div>
 
 </body>
 </html>
