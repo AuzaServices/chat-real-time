@@ -706,3 +706,95 @@ nav {
   box-shadow: 0 12px 36px rgba(0, 0, 0, 0.3); /* ainda mais intensa no hover */
   transform: translateY(-2px);
 }
+
+/* Estilo do Banner de Cookies */
+.cookie-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.6); /* fundo semi-transparente */
+  backdrop-filter: blur(6px);                /* efeito de desfoque leve */
+  -webkit-backdrop-filter: blur(6px);        /* compatível com Safari */
+  border-top: 1px solid #ddd;
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.05);
+  padding: 20px;
+  z-index: 9999;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.95rem;
+  color: #333;
+  transition: opacity 0.4s ease;
+}
+
+.cookie-banner p {
+  margin: 0;
+  line-height: 1.5;
+  flex: 1 1 auto;
+}
+
+.cookie-banner a {
+  color: #a61b1b;
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.cookie-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.accept-btn,
+.config-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 50px; /* deixa os botões mais suaves e modernos */
+  font-weight: 500;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.3s ease;
+}
+
+/* Estilos específicos para o mobile */
+@media (max-width: 768px) {
+  .cookie-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .cookie-buttons {
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .accept-btn,
+  .config-btn {
+    width: auto;
+  }
+}
+
+.accept-btn {
+  background-color: #a61b1b;
+  color: white;
+}
+
+.accept-btn:hover {
+  background-color: #cf2c2c;
+}
+
+.config-btn {
+  background-color: #f1f1f1;
+  color: #333;
+}
+
+.config-btn:hover {
+  background-color: #e0e0e0;
+}
