@@ -16,17 +16,19 @@
         }
 
         /* Cabeçalho fixo apenas nesta página */
-        .fixed-header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: #1a1a1a;
-            padding: 15px;
-            text-align: center;
-            z-index: 1000;
-            border-bottom: 1px solid #ddd; /* Pequeno detalhe para separação */
-        }
+.fixed-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(26, 26, 26, 0.7); /* Transparente pra ver o blur */
+  padding: 15px;
+  text-align: center;
+  z-index: 1000;
+  border-bottom: 1px solid #ddd;
+  backdrop-filter: blur(6px); /* Efeito de desfoque */
+  -webkit-backdrop-filter: blur(6px); /* Compatibilidade com Safari */
+}
 
         /* Garante espaço abaixo do header fixo */
         main {
