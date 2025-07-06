@@ -492,16 +492,6 @@ header img {
     margin-left: 40px; /* Ajusta a posição para a direita */
 }
 
-.junina-theme {
-    width: 550px; /* Ajuste o tamanho conforme necessário */
-    position: absolute;
-    margin-left: -5px;
-    left: -90px;
-    top: -45px;
-    right: 20px;
-    
-}
-
 /* Estilos para o container de anúncios */
 #adContainer {
     width: 100%;
