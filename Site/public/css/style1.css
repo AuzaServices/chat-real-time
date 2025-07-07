@@ -339,7 +339,7 @@ nav {
 }
 
   nav.active {
-    max-height: 240px; /* altura reduzida */
+    max-height: 300px; /* altura reduzida */
     padding: 0.2rem 0;
   }
 
