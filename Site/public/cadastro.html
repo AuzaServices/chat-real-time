@@ -149,6 +149,13 @@
     </div>
   </main>
 
+  <script>
+  const input = document.querySelector('.experiencia-container input');
+  input.addEventListener('input', () => {
+    input.scrollLeft = input.scrollWidth;
+  });
+</script>
+
   <!-- Rodapé padrão Auza -->
   <footer>
     <p>© 2025 Auza Services - Todos os Direitos Reservados</p>

@@ -363,14 +363,20 @@ select:focus {
   grid-column: span 2;
 }
 
+
 .experiencia-container input {
   width: 100%;
+  padding-right: 58px; /* espaço reservado pro contador */
+  box-sizing: border-box;
+  overflow-x: auto;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .experiencia-container span {
     position: absolute;
     right: 15px;
-    top: 16px;
+    top: 15px;
     bottom: 10px;
     font-size: 0.8rem;
     color: #666;
