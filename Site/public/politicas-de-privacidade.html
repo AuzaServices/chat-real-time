@@ -1,202 +1,97 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Política de Privacidade - Auza Services</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>Politicas de Privacidade</title>
+  <link rel="stylesheet" href="css/cadastro.css" />
   <link rel="icon" href="css/imagens/logo-sem-fundo.png" type="image/png" />
-
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body {
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to right, #f4f4f4, #ffffff);
-      color: #222;
-      scroll-behavior: smooth;
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
-
-    header {
-      position: sticky;
-      top: 0;
-      background: #1a1a1a;
-      color: #fff;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0.8rem 2rem;
-      z-index: 1000;
-      border-bottom: 1px solid #333;
-      flex-wrap: wrap;
-    }
-
-    .logo-area {
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-    }
-
-    .logo-area img {
-      height: clamp(40px, 5vw, 52px);
-      margin-left: -18px;
-    }
-
-    nav {
-      display: flex;
-      gap: 1.2rem;
-    }
-
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s ease;
-    }
-
-    nav a:hover {
-      color: #cf2c2c;
-    }
-
-    .menu-toggle {
-      display: none;
-      flex-direction: column;
-      gap: 4px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      margin-top: -4px;
-    }
-
-    .menu-toggle .bar {
-      width: 18px;
-      height: 2px;
-      background: #ffffff;
-      border-radius: 2px;
-    }
-
-    main {
-      padding: 60px 5vw;
-      max-width: 800px;
-      margin: auto;
-      background: #fff;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.05);
-    }
-
-    h2, h3 {
-      color: #244556;
-    }
-
-    ul {
-      padding-left: 20px;
-    }
-
-    footer {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 80px;
-      background: #333;
-      color: #fff;
-      font-size: 0.95rem;
-      border-top: 1px solid #1a1a1a;
-      margin-top: 40px;
-    }
-
-    @media screen and (max-width: 768px) {
-      header {
-        justify-content: space-between;
-      }
-
-      .menu-toggle {
-        display: flex;
-        position: absolute;
-        right: 16px;
-        top: 28px;
-        z-index: 1100;
-      }
-
-      nav {
-        position: absolute;
-        top: 60px;
-        left: 10px;
-        right: 10px;
-        background: rgba(241, 241, 241, 0.7);
-        backdrop-filter: blur(8px);
-        -webkit-backdrop-filter: blur(8px);
-        flex-direction: column;
-        align-items: center;
-        padding: 0;
-        overflow: hidden;
-        max-height: 0;
-        transition: max-height 0.4s ease;
-        border-radius: 10px;
-        box-shadow: 0 6px 12px rgba(0,0,0,0.06);
-        border: 1px solid #ddd;
-      }
-
-      nav.active {
-        max-height: 240px;
-        padding: 0.2rem 0;
-      }
-
-      nav a {
-        display: block;
-        width: 100%;
-        padding: 0.6rem;
-        color: #111;
-        text-align: center;
-        font-size: 0.9rem;
-        border-bottom: 1px solid #e2e2e2;
-      }
-
-      nav a:last-child {
-        border-bottom: none;
-      }
-
-      nav a:hover {
-        background: #eaeaea;
-      }
-
-      main {
-        padding: 30px 16px;
-      }
-
-      footer {
-        height: 48px;
-        font-size: 12px;
-        padding: 0 16px;
-      }
-
-      footer p {
-        margin: 0;
-        line-height: 1.2;
-      }
-    }
-  </style>
+  <script defer src="js/script.js"></script>
+  <script defer src="js/cadastro.js"></script>
 </head>
+
 <body>
 
+  <!-- Cabeçalho padrão Auza -->
   <header>
-<div class="logo-area">
-  <a href="index.html">
-    <img src="css/imagens/logo-auza.png" alt="Logo Auza" />
-  </a>
-  <h1></h1>
-</div>
-
+    <div class="logo-area">
+      <img src="css/imagens/logo-auza.png" alt="Logo Auza" class="logo" />
+      <h1></h1>
+    </div>
+    <nav>
+      <a href="index.html#inicio">Início</a>
+      <a href="index.html#faq">FAQ</a>
+    </nav>
     <button class="menu-toggle" aria-label="Abrir menu">
       <span class="bar"></span>
       <span class="bar"></span>
       <span class="bar"></span>
     </button>
-
-    <nav>
-      <a href="index.html">Início</a>
-      <a href="index.html#faq">FAQ</a>
-    </nav>
   </header>
+
+<style>
+html, body {
+  font-family: 'Segoe UI', sans-serif;
+  color: #222;
+}
+
+main {
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 60px 24px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+h2, h3 {
+  color: #244556;
+  margin-bottom: 16px;
+}
+
+p {
+  margin-bottom: 16px;
+  line-height: 1.6;
+}
+
+ul {
+  padding-left: 20px;
+  margin-bottom: 16px;
+}
+
+ul li {
+  margin-bottom: 8px;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #cf2c2c;
+}
+
+footer {
+  color: #fff;
+  font-size: 0.95rem;
+}
+
+@media screen and (max-width: 768px) {
+  nav a {
+    color: #111;
+    text-align: center;
+    font-size: 0.9rem;
+  }
+
+  footer {
+    font-size: 12px;
+  }
+}
+</style>
 
   <main>
     <h2>Política de Privacidade — Auza Services</h2>
@@ -236,30 +131,51 @@
     <p>Para dúvidas ou solicitações sobre esta política, entre em contato com a equipe Auza Services.</p>
   </main>
 
-  <footer>
-    © 2025 Auza Services - Todos os Direitos Reservados
+<footer>
+    <p>© 2025 Auza Services - Todos os Direitos Reservados</p>
   </footer>
 
-<script>
-  const toggle = document.querySelector('.menu-toggle');
-  const nav = document.querySelector('nav');
+  <!-- Script interativo -->
+  <script>
+    // Menu hamburguer
+    const toggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('nav');
+    toggle.addEventListener('click', () => {
+      nav.classList.toggle('active');
+    });
 
-  // Abre e fecha o menu ao clicar no botão
-  toggle.addEventListener('click', (event) => {
-    nav.classList.toggle('active');
-    event.stopPropagation(); // impede que o clique no botão feche o menu imediatamente
-  });
+    // Contador de caracteres da experiência
+    const experienciaInput = document.getElementById("experiencia");
+    const contadorSpan = document.getElementById("contador");
+    experienciaInput.addEventListener("input", () => {
+      contadorSpan.textContent = `${experienciaInput.value.length}/60`;
+    });
 
-  // Fecha o menu se o usuário clicar fora dele
-  document.addEventListener('click', (event) => {
-    const isClickInsideNav = nav.contains(event.target);
-    const isClickOnToggle = toggle.contains(event.target);
+    // Scroll reveal
+    const revealElements = document.querySelectorAll('.scroll-reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    revealElements.forEach(el => observer.observe(el));
+  </script>
 
-    if (!isClickInsideNav && !isClickOnToggle) {
-      nav.classList.remove('active');
-    }
-  });
-</script>
+  <!-- Banner de Cookies -->
+  <div class="cookie-banner">
+    <p>
+      Utilizamos cookies para aprimorar sua experiência, personalizar conteúdos e analisar o tráfego em nossa plataforma.
+      Ao continuar navegando, você concorda com nossa
+      <a href="politicas-de-privacidade.html" target="_blank">Política de Privacidade</a>.
+    </p>
+    <div class="cookie-buttons">
+      <button class="accept-btn">Aceitar e continuar</button>
+      <button class="config-btn">Configurar preferências</button>
+    </div>
+  </div>
 
 </body>
 </html>
