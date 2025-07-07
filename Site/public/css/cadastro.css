@@ -368,11 +368,13 @@ select:focus {
 }
 
 .experiencia-container span {
-  position: absolute;
-  right: 12px;
-  bottom: 10px;
-  font-size: 0.8rem;
-  color: #666;
+    position: absolute;
+    right: 15px;
+    top: 16px;
+    bottom: 10px;
+    font-size: 0.8rem;
+    color: #666;
+
 }
 
 /* Botões */
