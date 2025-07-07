@@ -1,6 +1,6 @@
 /* 🔥 Layout mais leve e moderno */
 body {
-    background-color: #cdcdcd;
+    background: linear-gradient(to right, #f4f4f4, #ffffff);
     color: #f8f8f8;
     font-family: 'Poppins', sans-serif;
     margin: 0;
