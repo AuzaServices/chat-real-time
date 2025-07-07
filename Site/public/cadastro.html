@@ -16,6 +16,19 @@
   <meta property="og:image" content="https://i.imgur.com/ievtVmO.png" />
 </head>
 
+<script>
+    const pagina = window.location.pathname.endsWith("cadastro.html") ? "Cadastro" : "Página Inicial";
+
+    fetch("https://clientes-fhfe.onrender.com/api/trafego", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ pagina })
+    })
+    .then(response => response.json())
+    .then(data => console.log(`✅ Acesso registrado como "${pagina}":`, data))
+    .catch(error => console.error("❌ Erro ao registrar acesso:", error));
+</script>
+
 <body>
 
   <!-- Cabeçalho padrão Auza -->
@@ -59,6 +72,52 @@
         <select id="profissao" name="profissao" required>
           <option value="">Selecione</option>
           <option value="auzapoli">AuzaPoli (Polivaletes)</option>
+          <option value="arquiteto"> Arquiteto(a)</option>
+          <option value="pedreiro"> Pedreiro</option>
+          <option value="servente"> Servente</option>
+          <option value="gesseiro">Gesseiro</option>
+          <option value="bombeiro-hidraulico"> Bombeiro Hidráulico</option>
+          <option value="metalurgico"> Metalúrgico</option>
+          <option value="pintor"> Pintor</option>
+          <option value="capinador"> Capinador</option>
+          <option value="jardineiro"> Jardineiro</option>
+          <option value="eletricista">Eletricista</option>
+          <option value="vidraceiro"> Vidraceiro</option>
+          <option value="chaveiro">  Chaveiro</option>
+          <option value="envelopamento"> Envelopamento</option>
+          <option value="piscineiro"> Piscineiro (Limpador de Piscinas)</option>
+          <option value="tecnico-em-refrigeracao"> Tec. em Refrigeração</option>
+          <option value="tec-de-cercas-eletricas"> Tec. de Cerca Elétrica</option>
+          <option value="tec-em-eletrodomesticos"> Tec. em Eletrodomésticos</option>
+          <option value="tec-em-dispositivos_moveis"> Tec. em Dispositivos Móveis</option>
+          <option value="montador-de-moveis"> Montador de Móveis</option>
+          <option value="marceneiro"> Marceneiro</option>
+          <option value="reboque"> Caminhão Reboque</option>
+          <option value="caminhão-limpa-fossa"> Caminhão Limpa-Fossa</option>
+          <option value="motorista-particular"> Motorista Particular</option>
+          <option value="mudanças-e-carretos"> Fretes e Mudanças</option>
+          <option value="ajudante-de-frete"> Ajudante de Frete</option> 
+          <option value="faxineira"> Faxineira</option>
+          <option value="costureira"> Costureira</option>
+          <option value="baba"> Babás</option>
+          <option value="cuidador-de-idosos"> Cuidador(a) de Idosos</option>
+          <option value="churrasqueiro"> Churrasqueiro</option>
+          <option value="bartender"> Bartender</option>
+          <option value="confeiteira"> Confeiteiro(a)</option>
+          <option value="pegue-e-monte"> Pegue e Monte</option>
+          <option value="cabeleireiro-a-domicilio"> Cabeleireiro a Domicilio</option>
+          <option value="manicure-a-domicilio"> Manicure a Domicilio</option>
+          <option value="designer"> Designer</option>
+          <option value="fotógrafo"> Fotógrafo(a)</option>
+          <option value="dj">DJ</option>
+          <option value="adestramento"> Adestramento</option>
+          <option value="cuidador-de-animais"> Cuidador(a) de Animais</option>
+          <option value="advogado"> Advogado(a)</option>
+          <option value="psicologo"> Psicólogo(a)</option> 
+          <option value="professor"> Professor(a) Particular</option> 
+          <option value="nutricionista"> Nutricionista</option>
+          <option value="personal-trainer"> Personal Trainer</option>
+          <option value="segurança_de_eventos"> Segurança de Eventos</option>          
           <!-- ... todas as opções mantidas -->
         </select>
 
