@@ -2,142 +2,463 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Termos de Uso - Auza Services</title>
   <link rel="icon" href="css/imagens/logo-sem-fundo.png" type="image/png" />
-
   <style>
-body {
-      margin: 0;
-      font-family: 'Segoe UI', Roboto, Arial, sans-serif;
-      background-color: #f9f9f9;
-      color: #222;
-    }
+/* RESET E BASE */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html, body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to right, #f4f4f4, #ffffff);
+  color: #222;
+  scroll-behavior: smooth;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
 
-    header {
-      background-color: #1a1a1a;
-      padding: 5px;
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      position: relative;
-    }
-    .logo-area {
-      display: flex;
-      align-items: center;
-      margin-left: 10px;
-      gap: 10px;
-    }
+/* CABEÇALHO */
+header {
+  position: sticky;
+  top: 0;
+  background: #1a1a1a;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.66rem 2rem;
+  z-index: 1000;
+  border-bottom: 1px solid #333;
+}
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.logo {
+  height: clamp(40px, 5vw, 52px);
+  margin-left: -18px; /* empurra mais pra esquerda */
+}
 
-    .logo-area img {
-      height: 50px;
-      margin-top: 4px;
-    }
+header h1 {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+nav {
+  display: flex;
+  gap: 1.2rem;
+}
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+nav a:hover {
+  color: #cf2c2c;
+}
 
-    header h1 {
-      font-size: 20px;
-      margin: 0;
-    }
+/* BOTÃO HAMBÚRGUER */
 
-    nav {
-      display: flex;
-      gap: 15px;
-    }
+/* Oculta por padrão (desktop) */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-top: -4px;
+}
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: 500;
-      padding: 4px 8px;
-      transition: background 0.3s;
-    }
+/* Estilo das barrinhas do hamburguer */
+.menu-toggle .bar {
+  width: 18px;
+  height: 2px;
+  background: #ffffff;
+  border-radius: 2px;
+}
 
-    nav a:hover {
-      background-color: rgba(255,255,255,0.1);
-      border-radius: 4px;
-    }
+/* Ativa no mobile */
 
-    .menu-toggle {
-      display: none;
-      flex-direction: column;
-      justify-content: space-between;
-      width: 28px;
-      height: 20px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      position: absolute;
-      left: 320px;
-      top: 22px;
 
-    }
 
-    .menu-toggle .bar {
-      height: 3px;
-      background: white;
-      
-    }
+/* HERO */
+#inicio {
+  position: absolute;
+  background: linear-gradient(to right, #f4f4f4, #ffffff);
+  color: #1a1a1a;
+  text-align: center;
+  padding: 6rem 2rem;
+  clip-path: none;
+}
+#inicio h2 {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  margin-bottom: 1rem;
+}
+#inicio p {
+  font-size: 1.15rem;
+  max-width: 700px;
+  margin: 0 auto 2rem;
+  color: #555;
+}
+.btn-luxo {
+  background: #cf2c2c;
+  color: #fff;
+  padding: 1rem 2.2rem;
+  border-radius: 50px;
+  font-weight: bold;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.btn-luxo:hover {
+  background: #e83b3b;
+  transform: scale(1.05);
+}
 
-    main {
-      padding: 40px 20px;
-      max-width: 800px;
-      margin: auto;
-      background: #fff;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.05);
-    }
+/* Mobile */
+@media (max-width: 768px) {
+  .contato-container {
+    flex-direction: column;
+    text-align: left;
+    padding: 3rem 1.5rem;
+  }
+  .contato-coluna.texto {
+    width: 100%;
+  }
+  .contato-coluna.imagem {
+    width: 100%;
+    margin-top: 2rem;
+  }
+}
 
-    h2, h3 {
-      color: #244556;
-    }
+/* FOOTER */
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80px; /* equivalente à altura total do cabeçalho */
+  background: #333;
+  color: #fff;
+  font-size: 0.95rem;
+  border-top: 1px solid #1a1a1a;
 
-    ul {
-      padding-left: 20px;
-    }
+}
 
-    footer {
-      text-align: center;
-      padding: 16px;
-      background-color: #f1f1f1;
-      font-size: 14px;
-      color: #666;
-      margin-top: 40px;
-    }
+@media screen and (max-width: 768px) {
+  footer {
+    height: 48px;           /* ⬅️ Altura menor só no mobile */
+    font-size: 12px;
+    padding: 0 16px;
+  }
 
-    @media screen and (max-width: 992px) {
-      header h1 {
-        display: none;
-      }
+  footer p {
+    margin: 0;
+    line-height: 1.2;
+  }
+}
 
-      nav {
-        display: none;
-        flex-direction: column;
-        background: #b0b0b0;
-        position: absolute;
-        top: 70px;
-        right: 20px;
-        padding: 10px;
-        border-radius: 6px;
-        z-index: 999;
-      }
+/* RESPONSIVO */
+@media (max-width: 768px) {
+  header {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
 
-      nav.active {
-        display: flex;
-      }
+  .menu-toggle {
+    display: flex;
+  }
 
-      .menu-toggle {
-        display: flex;
-      }
-    }
+nav {
+  position: absolute;
+  top: 60px;
+  left: 10px;
+  right: 10px;
+  background: rgba(241, 241, 241, 0.7); /* Transparente pro blur aparecer */
+  backdrop-filter: blur(8px);           /* Efeito de blur leve */
+  -webkit-backdrop-filter: blur(8px);   /* Compatibilidade com Safari */
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.4s ease;
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.06);
+  border: 1px solid #ddd;
+}
 
-    @media screen and (max-width: 768px) {
-      main {
-        padding: 20px 16px;
-      }
-    }
-    
+  nav.active {
+    max-height: 240px; /* altura reduzida */
+    padding: 0.2rem 0;
+  }
+
+  nav a {
+    display: block;
+    width: 100%;
+    padding: 0.6rem;
+    color: #111;
+    text-align: center;
+    font-size: 0.9rem;
+    border-bottom: 1px solid #e2e2e2;
+  }
+
+  nav a:last-child {
+    border-bottom: none;
+  }
+
+  nav a:hover {
+    background: #eaeaea;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+}
+
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  will-change: opacity, transform;
+}
+
+.scroll-reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Estilo do Banner de Cookies */
+.cookie-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.6); /* fundo semi-transparente */
+  backdrop-filter: blur(6px);                /* efeito de desfoque leve */
+  -webkit-backdrop-filter: blur(6px);        /* compatível com Safari */
+  border-top: 1px solid #ddd;
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.05);
+  padding: 20px;
+  z-index: 9999;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.95rem;
+  color: #333;
+  transition: opacity 0.4s ease;
+}
+
+.cookie-banner p {
+  margin: 0;
+  line-height: 1.5;
+  flex: 1 1 auto;
+}
+
+.cookie-banner a {
+  color: #a61b1b;
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.cookie-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.accept-btn,
+.config-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 50px; /* deixa os botões mais suaves e modernos */
+  font-weight: 500;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.3s ease;
+}
+
+/* Estilos específicos para o mobile */
+@media (max-width: 768px) {
+  .cookie-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .cookie-buttons {
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .accept-btn,
+  .config-btn {
+    width: auto;
+  }
+}
+
+.accept-btn {
+  background-color: #1a1a1a;
+  color: white;
+}
+
+.accept-btn:hover {
+  background-color: #cf2c2c;
+}
+
+.config-btn {
+  background-color: #f1f1f1;
+  color: #333;
+}
+
+.config-btn:hover {
+  background-color: #e0e0e0;
+}
+
+/* Área principal do conteúdo */
+.main-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  padding: 60px 5vw;
+}
+.container h2 {
+  grid-column: span 2;
+  text-align: center;
+  font-size: 2rem;
+  color: #111;
+  margin-bottom: 20px;
+}
+
+/* Labels e campos */
+label {
+  font-weight: 500;
+  margin-bottom: 8px;
+  display: block;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid #ccd4e0;
+  background-color: #f9f9f9;
+  font-size: 1rem;
+  transition: border 0.2s ease;
+}
+
+input:focus,
+select:focus {
+  border-color: #a61b1b;
+  outline: none;
+}
+
+/* Campo "experiência" com contador */
+.experiencia-container {
+  position: relative;
+  grid-column: span 2;
+}
+
+.experiencia-container input {
+  width: 100%;
+}
+
+.experiencia-container span {
+  position: absolute;
+  right: 12px;
+  bottom: 10px;
+  font-size: 0.8rem;
+  color: #666;
+}
+
+/* Botões */
+.button-group {
+  grid-column: span 2;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: 32px;
+}
+
+#submit-button {
+  background-color: #a61b1b;
+  color: white;
+}
+
+#submit-button:hover {
+  background-color: #c72929;
+  transform: scale(1.03);
+}
+
+#back-button {
+  background-color: #e0e0e0;
+  color: #333;
+}
+
+#back-button:hover {
+  background-color: #d0d0d0;
+  transform: scale(1.03);
+}
+
+@media screen and (max-width: 768px) {
+  .main-wrapper {
+    padding: 30px 16px;
+  }
+
+  .container {
+    grid-template-columns: 1fr;
+    padding: 0;
+  }
+
+  
+  .container h2 {
+    font-size: 1.5rem;
+    grid-column: span 1;
+    padding: 0 10px;
+  }
+
+    .experiencia-container {
+    grid-column: span 1;
+  }
+
+  .button-group {
+    flex-direction: column;
+  }
+
+}
+
+/* Estilo só para botões do formulário */
+.container button,
+.button-group button {
+  flex: 1;
+  padding: 14px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+/* No mobile, só os botões do formulário ganham width 100% */
+@media screen and (max-width: 768px) {
+  .container button,
+  .button-group button {
+    width: 100%;
+  }
+}
   </style>
 </head>
 <body>
@@ -145,9 +466,8 @@ body {
   <header>
     <div class="logo-area">
       <a href="index.html">
-        <img src="css/imagens/logo-auza.png" alt="Logo Auza" />
+        <img src="css/imagens/logo-auza.png" alt="Logo Auza" class="logo" />
       </a>
-      <h1></h1>
     </div>
 
     <button class="menu-toggle" aria-label="Abrir menu">
@@ -189,9 +509,9 @@ body {
     <p>Para os profissionais que desejam aumentar sua visibilidade na plataforma, oferecemos o serviço opcional <strong>AuzaGold</strong>:</p>
     <ul>
       <li><strong>Valor:</strong> R$10,00 por mês.</li>
-      <li><strong>Renovação:</strong> O pagamento deve ser realizado manualmente pelo usuário. Caso não renove, retornará ao plano gratuito.</li>
-      <li><strong>Benefício:</strong> Maior exposição dentro da plataforma, facilitando contratações pelos clientes.</li>
-      <li><strong>Isenção de Garantia:</strong> A adesão ao <strong>AuzaGold</strong> não garante a obtenção de serviços, mas melhora as oportunidades de conexão.</li>
+      <li><strong>Renovação:</strong> Manual pelo usuário. Caso não renove, volta ao plano gratuito.</li>
+      <li><strong>Benefício:</strong> Maior exposição dentro da plataforma.</li>
+      <li><strong>Isenção de Garantia:</strong> O plano AuzaGold não garante serviços, apenas aumenta as chances de contratação.</li>
     </ul>
 
     <h3>5. Alterações nos Termos</h3>
@@ -216,12 +536,7 @@ body {
     });
 
     document.addEventListener('click', (event) => {
-      const isClickInsideNav = nav.contains(event.target);
-      const isClickOnToggle = toggle.contains(event.target);
-      if (!isClickInsideNav && !isClickOnToggle) {
+      if (!nav.contains(event.target) && !toggle.contains(event.target)) {
         nav.classList.remove('active');
       }
     });
-  </script>
-</body>
-</html>
