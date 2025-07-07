@@ -135,21 +135,17 @@ app.post("/api/click", (req, res) => {
     dataHoraFinal = new Date().toISOString().slice(0, 19).replace("T", " ");
   }
 
-  const sql = `
-    INSERT INTO cliques (
-      profissional_id,
-      \`Profissional\`,
-      \`Profissão\`,
-      Chamadas,
-      \`dataHora\`,
-      whatsappCliente
-    )
-    VALUES (?, ?, ?, 1, ?, ?)
-    ON DUPLICATE KEY UPDATE
-      Chamadas = Chamadas + 1,
-      \`Profissão\` = VALUES(\`Profissão\`),
-      whatsappCliente = VALUES(whatsappCliente);
-  `;
+const sql = `
+  INSERT INTO cliques (
+    profissional_id,
+    \`Profissional\`,
+    \`Profissão\`,
+    Chamadas,
+    \`dataHora\`,
+    whatsappCliente
+  )
+  VALUES (?, ?, ?, 1, ?, ?);
+`;
 
   db.query(
     sql,
