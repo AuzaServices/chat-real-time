@@ -15,7 +15,7 @@ body {
 }
 
 .container {
-    background: #f4f4f4;
+    background: linear-gradient(to right, #f4f4f4, #ffffff);
     padding: 20px;
     border-radius: 8px;
     max-width: 400px;
@@ -68,11 +68,11 @@ input[type="radio"] {
 }
 
 button {
-    background-color: #860d04;
+    background-color: #cf2c2c;
     color: white;
     padding: 10px 20px;
     border: none;
-    border-radius: 5px;
+    border-radius: 50px;
     font-size: 16px;
     cursor: pointer;
     margin-top: 15px;
