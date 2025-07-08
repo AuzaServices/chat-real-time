@@ -680,6 +680,10 @@ header {
   background: #1a1a1a;
   color: #fff;
   display: flex;
+    margin: 0;
+  padding-top: 0;
+  position: relative;
+  top: 0;
   width: 100%;
   justify-content: space-between;
   align-items: center;
