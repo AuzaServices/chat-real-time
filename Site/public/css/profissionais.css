@@ -366,7 +366,7 @@ header img {
 .card {
     position: relative;
     padding: 15px;
-    top: -28px;
+    top: -38px;
     border-radius: 8px;
     box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
     background: linear-gradient(135deg, #d7d7d7, #ededed, #bfbfbf); /* 🔥 Gradiente metálico/plástico */
