@@ -440,14 +440,16 @@ const shareData = {
         alert("Seu navegador não suporta compartilhamento nativo.");
     }
 });
-document.getElementById("backButton").addEventListener("click", function () {
+const backBtn = document.getElementById("backButton");
+if (backBtn) {
+  backBtn.addEventListener("click", function () {
     if (window.history.length > 1) {
-        window.history.back(); // Volta para a página anterior
+      window.history.back();
     } else {
-        window.location.href = "index.html"; // Caso não haja histórico, volta para a página inicial
+      window.location.href = "index.html";
     }
-
-});
+  });
+}
 
 document.getElementById("shareButton").addEventListener("click", function () {
     const cardElement = document.getElementById("professional-card");

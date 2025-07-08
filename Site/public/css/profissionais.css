@@ -285,10 +285,6 @@ header img {
     cursor: pointer;
 }
 
-#reportButton:hover {
-    background-color: darkred;
-}
-
 #optionsButton {
     margin-top: -44px; /* 🔥 Subir */
     margin-left: -40px; /* 🔥 Mover para a direita */

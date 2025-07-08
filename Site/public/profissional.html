@@ -17,7 +17,7 @@
       <h1></h1>
     </div>
     <nav>
-      <a href="index.html#inicio">Voltar</a>
+      <a href="index.html#inicio" class="btn-secondary">Voltar</a>
       <a id="shareButton">Compartilhar Perfil</a>
       <a id="reportButton" target="_blank">Reportar Profissional</a>
     </nav>
@@ -35,8 +35,6 @@
       <a id="reportButton" target="_blank">Reportar</a>
     </div>
   </div>
-
-  <button id="backButton">Voltar</button>
 
   <div class="service-confirmation">
     <p id="serviceQuestion">Você realizou o serviço desejado com este(a) profissional?</p>
@@ -149,6 +147,7 @@
         });
       }
     });
+    
   </script>
 
     <script>
@@ -159,6 +158,12 @@
       nav.classList.toggle('active');
     });
 
+document.addEventListener("click", function (event) {
+  if (!nav.contains(event.target) && !toggle.contains(event.target)) {
+    nav.classList.remove("active");
+  }
+});
+    
     </script>
 
   <!-- Extra script se precisar -->
