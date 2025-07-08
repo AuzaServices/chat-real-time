@@ -1,22 +1,20 @@
 /* Reset básico */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 /* Corpo da página */
-body {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* 🔥 Agora todos os elementos ficam centralizados */
-    justify-content: center;
-    min-height: 100vh;
-    background-color: #ffffff;
-    padding: 0;
-
+html, body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to right, #f4f4f4, #ffffff);
+  color: #222;
+  scroll-behavior: smooth;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
+
 
 /* Cartão de serviço */
 .card {
@@ -680,10 +678,6 @@ header {
   background: #1a1a1a;
   color: #fff;
   display: flex;
-    margin: 0;
-  padding-top: 0;
-  position: relative;
-  top: 0;
   width: 100%;
   justify-content: space-between;
   align-items: center;
