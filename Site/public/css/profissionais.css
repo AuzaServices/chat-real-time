@@ -7,25 +7,206 @@
 }
 
 /* Corpo da página */
-html, body {
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(to right, #f4f4f4, #ffffff);
-  color: #222;
+body {
   display: flex;
   flex-direction: column;
-  scroll-behavior: smooth;
+  align-items: center;
+  justify-content: space-between; /* 🧠 Distribui verticalmente */
   min-height: 100vh;
-  overflow-x: hidden;
 }
 
-main {
-  flex: 1;
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80px; /* equivalente à altura total do cabeçalho */
+  background: #333;
+  width: 100%;
+  color: #fff;
+  font-size: 0.95rem;
+  border-top: 1px solid #1a1a1a;
+
 }
 
+@media screen and (max-width: 768px) {
+  footer {
+    height: 48px;           /* ⬅️ Altura menor só no mobile */
+    font-size: 12px;
+    width: 100%;
+    padding: 0 16px;
+  }
+
+  footer p {
+    margin: 0;
+    line-height: 1.2;
+  }
+}
+
+header {
+  position: sticky;
+  top: 0;
+  background: #1a1a1a;
+  color: #fff;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 2rem;
+  z-index: 1000;
+  border-bottom: 1px solid #333;
+}
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.logo {
+  height: clamp(40px, 5vw, 52px);
+  margin-left: -18px; /* empurra mais pra esquerda */
+}
+
+header h1 {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+nav {
+  display: flex;
+  gap: 1.2rem;
+}
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+nav a:hover {
+  color: #cf2c2c;
+}
+
+/* BOTÃO HAMBÚRGUER */
+
+/* Oculta por padrão (desktop) */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-top: -4px;
+}
+
+/* Estilo das barrinhas do hamburguer */
+.menu-toggle .bar {
+  width: 18px;
+  height: 2px;
+  background: #ffffff;
+  border-radius: 2px;
+}
+
+@media (max-width: 768px) {
+  header {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+nav {
+  position: absolute;
+  top: 60px;
+  left: 10px;
+  right: 10px;
+  background: rgba(241, 241, 241, 0.7); /* Transparente pro blur aparecer */
+  backdrop-filter: blur(8px);           /* Efeito de blur leve */
+  -webkit-backdrop-filter: blur(8px);   /* Compatibilidade com Safari */
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.4s ease;
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.06);
+  border: 1px solid #ddd;
+}
+
+  nav.active {
+    max-height: 240px; /* altura reduzida */
+    padding: 0.2rem 0;
+  }
+
+  nav a {
+    display: block;
+    width: 100%;
+    padding: 0.6rem;
+    color: #111;
+    text-align: center;
+    font-size: 0.9rem;
+    border-bottom: 1px solid #e2e2e2;
+  }
+
+  nav a:last-child {
+    border-bottom: none;
+  }
+
+  nav a:hover {
+    background: #eaeaea;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .nav-desktop {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-top: 16px;
+  }
+
+  .btn-voltar {
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 14px;
+    margin-top: -14px !important;
+    font-weight: 600;
+    margin-right: -150px !important;
+    text-decoration: none;
+    transition: background 0.3s ease;
+  }
+
+  .btn-compartilhar {
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 8px;
+    top: -1px !important;
+    margin-right: -140px !important;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .btn-reportar {
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 14px;
+    margin-top: -15px !important;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+}
 
 /* Cartão de serviço */
 .card {
-    position: absolute;
     background-color: #ededed;
     color: black;
     transform: translateX(-8px); /* 🔥 Move para a esquerda sem afetar layout */
@@ -651,194 +832,4 @@ header img {
     transform: translateY(0);
     opacity: 1;
   }
-}
-
-footer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 80px; /* equivalente à altura total do cabeçalho */
-  background: #333;
-  width: 100%;
-  color: #fff;
-  font-size: 0.95rem;
-  border-top: 1px solid #1a1a1a;
-
-}
-
-@media screen and (max-width: 768px) {
-  footer {
-    height: 48px;           /* ⬅️ Altura menor só no mobile */
-    font-size: 12px;
-    width: 100%;
-    padding: 0 16px;
-  }
-
-  footer p {
-    margin: 0;
-    line-height: 1.2;
-  }
-}
-
-header {
-  position: sticky;
-  top: 0;
-  background: #1a1a1a;
-  color: #fff;
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.8rem 2rem;
-  z-index: 1000;
-  border-bottom: 1px solid #333;
-}
-.logo-area {
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-}
-.logo {
-  height: clamp(40px, 5vw, 52px);
-  margin-left: -18px; /* empurra mais pra esquerda */
-}
-
-header h1 {
-  font-size: 1.3rem;
-  font-weight: 600;
-}
-nav {
-  display: flex;
-  gap: 1.2rem;
-}
-nav a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s ease;
-}
-nav a:hover {
-  color: #cf2c2c;
-}
-
-/* BOTÃO HAMBÚRGUER */
-
-/* Oculta por padrão (desktop) */
-.menu-toggle {
-  display: none;
-  flex-direction: column;
-  gap: 4px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  margin-top: -4px;
-}
-
-/* Estilo das barrinhas do hamburguer */
-.menu-toggle .bar {
-  width: 18px;
-  height: 2px;
-  background: #ffffff;
-  border-radius: 2px;
-}
-
-@media (max-width: 768px) {
-  header {
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-
-  .menu-toggle {
-    display: flex;
-  }
-
-nav {
-  position: absolute;
-  top: 60px;
-  left: 10px;
-  right: 10px;
-  background: rgba(241, 241, 241, 0.7); /* Transparente pro blur aparecer */
-  backdrop-filter: blur(8px);           /* Efeito de blur leve */
-  -webkit-backdrop-filter: blur(8px);   /* Compatibilidade com Safari */
-  flex-direction: column;
-  align-items: center;
-  padding: 0;
-  overflow: hidden;
-  max-height: 0;
-  transition: max-height 0.4s ease;
-  border-radius: 10px;
-  box-shadow: 0 6px 12px rgba(0,0,0,0.06);
-  border: 1px solid #ddd;
-}
-
-  nav.active {
-    max-height: 240px; /* altura reduzida */
-    padding: 0.2rem 0;
-  }
-
-  nav a {
-    display: block;
-    width: 100%;
-    padding: 0.6rem;
-    color: #111;
-    text-align: center;
-    font-size: 0.9rem;
-    border-bottom: 1px solid #e2e2e2;
-  }
-
-  nav a:last-child {
-    border-bottom: none;
-  }
-
-  nav a:hover {
-    background: #eaeaea;
-  }
-
-  .menu-toggle {
-    display: flex;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .nav-desktop {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 16px;
-    margin-top: 16px;
-  }
-
-  .btn-voltar {
-    color: #fff;
-    padding: 10px 18px;
-    border-radius: 8px;
-    font-size: 14px;
-    margin-top: -14px !important;
-    font-weight: 600;
-    margin-right: -150px !important;
-    text-decoration: none;
-    transition: background 0.3s ease;
-  }
-
-  .btn-compartilhar {
-    color: #fff;
-    padding: 10px 18px;
-    border-radius: 8px;
-    top: -1px !important;
-    margin-right: -140px !important;
-    font-size: 14px;
-    font-weight: 600;
-    text-decoration: none;
-  }
-
-  .btn-reportar {
-    color: #fff;
-    padding: 10px 18px;
-    border-radius: 8px;
-    font-size: 14px;
-    margin-top: -15px !important;
-    font-weight: 600;
-    text-decoration: none;
-  }
-
 }
