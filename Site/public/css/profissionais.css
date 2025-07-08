@@ -11,10 +11,17 @@ html, body {
   font-family: 'Segoe UI', sans-serif;
   background: linear-gradient(to right, #f4f4f4, #ffffff);
   color: #222;
+  display: flex;
+  flex-direction: column;
   scroll-behavior: smooth;
   min-height: 100vh;
   overflow-x: hidden;
 }
+
+main {
+  flex: 1;
+}
+
 
 /* Cartão de serviço */
 .card {
