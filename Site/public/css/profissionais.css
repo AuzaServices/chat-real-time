@@ -1,8 +1,9 @@
 /* Reset básico */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
 }
 
 /* Corpo da página */
@@ -15,9 +16,9 @@ html, body {
   overflow-x: hidden;
 }
 
-
 /* Cartão de serviço */
 .card {
+    position: absolute;
     background-color: #ededed;
     color: black;
     transform: translateX(-8px); /* 🔥 Move para a esquerda sem afetar layout */
