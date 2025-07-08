@@ -28,6 +28,17 @@ footer {
 
 }
 
+.service-confirmation,
+.rating-container,
+#professional-card {
+  flex-grow: 0;            /* ⬅️ não empurra o conteúdo pra preencher a tela */
+  margin: 20px 0;          /* ⬅️ espaço vertical controlado */
+  padding: 12px 20px;      /* ⬅️ menor espaçamento interno */
+  max-width: 600px;        /* ⬅️ restringe largura em desktops */
+  width: 100%;
+}
+
+
 @media screen and (max-width: 768px) {
   footer {
     height: 48px;           /* ⬅️ Altura menor só no mobile */
