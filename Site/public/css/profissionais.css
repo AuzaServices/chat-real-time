@@ -388,9 +388,22 @@ header img {
 }
 
 .confirm-btn {
-  background: linear-gradient(135deg, #4CAF50, #2E7D32);
-  color: #fff;
+  background: linear-gradient(135deg, #FFD700, #DAA520); /* ouro reluzente */
+  color: #111;
+  font-weight: 700;
+  font-family: 'Segoe UI', sans-serif;
   border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: 15px;
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.6); /* brilho dourado */
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.confirm-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 18px rgba(255, 223, 0, 0.8); /* mais brilho no hover */
 }
 
 @keyframes brilhoPassando {
