@@ -9,6 +9,21 @@
 </head>
 <body>
 
+      <header>
+    <div class="logo-area">
+      <img src="css/imagens/logo-auza.png" alt="Logo Auza" class="logo" />
+      <h1></h1>
+    </div>
+<nav class="nav-desktop">
+  <a href="cadastro.html" class="btn-voltar">Voltar</a>
+</nav>
+    <button class="menu-toggle" aria-label="Abrir menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+  </header>
+
     <div class="container">
 
         <h2>Escolha seu tipo de Cartão</h2>
@@ -53,6 +68,31 @@
             if (nomeDouradoEl) nomeDouradoEl.innerHTML = `<strong>${nomeCompleto}</strong>`;
         });
     </script>
+
+      <footer>
+    <p>© 2025 Auza Services - Todos os Direitos Reservados</p>
+  </footer>
+
+    <script>
+    // Menu hamburguer
+    const toggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('nav');
+    toggle.addEventListener('click', () => {
+      nav.classList.toggle('active');
+    });
+
+    // Scroll reveal
+    const revealElements = document.querySelectorAll('.scroll-reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    revealElements.forEach(el => observer.observe(el));
+  </script>
 
 </body>
 </html>
