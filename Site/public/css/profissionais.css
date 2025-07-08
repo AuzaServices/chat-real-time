@@ -153,14 +153,9 @@ p.destaque {
     margin-top: 15px;
 }
 
-#shareButton:hover {
-    background-color: #474747;
-}
-
 /* Estilo do botão Voltar */
 #backButton {
-    background-color: #930606;
-    color: white;
+    color: rgb(0, 0, 0);
     padding: 6px 12px; /* Reduzi o padding */
     border: none;
     border-radius: 5px;
@@ -184,6 +179,7 @@ header img {
 .card {
     position: relative;
     padding: 15px;
+    top: -28px;
     border-radius: 8px;
     box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
     background: linear-gradient(135deg, #d7d7d7, #ededed, #bfbfbf); /* 🔥 Gradiente metálico/plástico */
@@ -227,7 +223,7 @@ header img {
 #shareButton {
     position: relative;
     bottom: 10px; /* 🔥 Fica no canto inferior */
-    right: 10px; /* 🔥 Alinhado à direita */
+    right: 173px; /* 🔥 Alinhado à direita */
     background: none; /* Remove fundo */
     border: none; /* Remove borda */
     cursor: pointer;
@@ -280,10 +276,10 @@ header img {
 /* Botão de denúncia */
 #reportButton {
     display: block;
-    background-color: red;
-    color: white;
+    color: rgb(255, 0, 0);
     text-align: center;
     padding: 8px 12px;
+    margin-top: -32px;
     border-radius: 2px;
     text-decoration: none;
     cursor: pointer;
@@ -318,7 +314,7 @@ header img {
 
 #ratingQuestion {
     font-size: 18px;
-    margin-top: -20px;
+    margin-top: -50px;
     font-weight: bold;
     text-align: center;
     margin-bottom: 10px;
@@ -352,64 +348,6 @@ header img {
     cursor: not-allowed;
 }
 
-.testimonial-container {
-    width: 100%;
-    max-width: 600px;
-    margin: auto;
-    padding: 50px;
-    border: 1px solid #e7e7e7;
-    border-radius: 0px;
-    text-align: center;
-    background: #f1f1f1;
-    box-shadow: 0 2px 5px rgba(0, 0, 5, 0.5);
-
-}
-
-.testimonial-text {
-    font-size: 18px;
-    font-style: italic;
-    color: #444;
-    line-height: 1.5;
-}
-
-.testimonial-name {
-    font-size: 16px;
-    font-weight: bold;
-    color: #666;
-    margin-top: 8px;
-}
-
-.testimonial.active {
-    opacity: 1;
-    filter: blur(0);
-}
-
-.testimonial.exiting {
-    opacity: 0;
-    filter: blur(5px);
-}
-
-.testimonial {
-    position: absolute;
-    opacity: 0;
-    margin-top: -39px;
-    right: 6px;
-    filter: blur(5px);
-    transition: opacity 1.5s ease-in-out, filter 1.5s ease-in-out;
-}
-
-.testimonial-text::before,
-.testimonial-text::after {
-    content: "“"; /* 🔥 Aspas de abertura */
-    font-size: 20px; /* 🔥 Aspas maiores */
-    font-weight: bold; /* 🔥 Negrito */
-    color: darkred; /* 🔥 Darkred para destaque */
-}
-
-.testimonial-text::after {
-    content: "”"; /* 🔥 Aspas de fechamento */
-}
-
 .share-container {
     position: absolute;
     top: -50px;
@@ -432,7 +370,7 @@ header img {
 
 #serviceQuestion {
     font-size: 18px;
-    margin-top: 30px;
+    margin-top: -61px;
     font-weight: bold;
     color: #333;
     margin-bottom: 20px;
@@ -699,3 +637,150 @@ header img {
     opacity: 1;
   }
 }
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80px; /* equivalente à altura total do cabeçalho */
+  background: #333;
+  width: 100%;
+  color: #fff;
+  font-size: 0.95rem;
+  border-top: 1px solid #1a1a1a;
+
+}
+
+@media screen and (max-width: 768px) {
+  footer {
+    height: 48px;           /* ⬅️ Altura menor só no mobile */
+    font-size: 12px;
+    width: 100%;
+    padding: 0 16px;
+  }
+
+  footer p {
+    margin: 0;
+    line-height: 1.2;
+  }
+}
+
+header {
+  position: sticky;
+  top: 0;
+  background: #1a1a1a;
+  color: #fff;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 2rem;
+  z-index: 1000;
+  border-bottom: 1px solid #333;
+}
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.logo {
+  height: clamp(40px, 5vw, 52px);
+  margin-left: -18px; /* empurra mais pra esquerda */
+}
+
+header h1 {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+nav {
+  display: flex;
+  gap: 1.2rem;
+}
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+nav a:hover {
+  color: #cf2c2c;
+}
+
+/* BOTÃO HAMBÚRGUER */
+
+/* Oculta por padrão (desktop) */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-top: -4px;
+}
+
+/* Estilo das barrinhas do hamburguer */
+.menu-toggle .bar {
+  width: 18px;
+  height: 2px;
+  background: #ffffff;
+  border-radius: 2px;
+}
+
+@media (max-width: 768px) {
+  header {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+nav {
+  position: absolute;
+  top: 60px;
+  left: 10px;
+  right: 10px;
+  background: rgba(241, 241, 241, 0.7); /* Transparente pro blur aparecer */
+  backdrop-filter: blur(8px);           /* Efeito de blur leve */
+  -webkit-backdrop-filter: blur(8px);   /* Compatibilidade com Safari */
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.4s ease;
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.06);
+  border: 1px solid #ddd;
+}
+
+  nav.active {
+    max-height: 240px; /* altura reduzida */
+    padding: 0.2rem 0;
+  }
+
+  nav a {
+    display: block;
+    width: 100%;
+    padding: 0.6rem;
+    color: #111;
+    text-align: center;
+    font-size: 0.9rem;
+    border-bottom: 1px solid #e2e2e2;
+  }
+
+  nav a:last-child {
+    border-bottom: none;
+  }
+
+  nav a:hover {
+    background: #eaeaea;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+}
+
