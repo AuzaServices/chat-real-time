@@ -1,22 +1,171 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Cadastro - Auza Services</title>
-    <link rel="stylesheet" href="css/pagamento.css">
-    <script defer src="js/pagamento.js"></script>
-</head>
-<body>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>Cadastro - Auza Services</title>
+  <link rel="stylesheet" href="css/pagamento.css" />
+  <script defer src="js/pagamento.js"></script>
+  <style>
+    /* Cabeçalho padrão Auza */
+    header {
+      position: sticky;
+      top: 0;
+        width: 100vw; /* 🔥 força o header a ocupar toda a largura da viewport */
+  margin: 0;
+  padding: 0.8rem 2rem;
+  box-sizing: border-box;
+      background: #1a1a1a;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.8rem 2rem;
+      z-index: 1000;
+      border-bottom: 1px solid #333;
+    }
 
-      <header>
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .logo {
+      height: clamp(40px, 5vw, 52px);
+      margin-left: -18px;
+    }
+
+    header h1 {
+      font-size: 1.3rem;
+      font-weight: 600;
+    }
+
+    nav {
+      display: flex;
+      gap: 1.2rem;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #cf2c2c;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      margin-top: -4px;
+    }
+
+    .menu-toggle .bar {
+      width: 18px;
+      height: 2px;
+      background: #ffffff;
+      border-radius: 2px;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      nav {
+        position: absolute;
+        top: 60px;
+        left: 10px;
+        right: 10px;
+        background: rgba(241, 241, 241, 0.7);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
+        overflow: hidden;
+        max-height: 0;
+        transition: max-height 0.4s ease;
+        border-radius: 10px;
+        box-shadow: 0 6px 12px rgba(0,0,0,0.06);
+        border: 1px solid #ddd;
+      }
+
+      nav.active {
+        max-height: 240px;
+        padding: 0.2rem 0;
+      }
+
+      nav a {
+        display: block;
+        width: 100%;
+        padding: 0.6rem;
+        color: #111;
+        text-align: center;
+        font-size: 0.9rem;
+        border-bottom: 1px solid #e2e2e2;
+      }
+
+      nav a:last-child {
+        border-bottom: none;
+      }
+
+      nav a:hover {
+        background: #eaeaea;
+      }
+    }
+
+    /* Rodapé padrão Auza */
+    footer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 80px;
+      background: #333;
+      color: #fff;
+      font-size: 0.95rem;
+      border-top: 1px solid #1a1a1a;
+      margin-top: 40px;
+    }
+
+    @media screen and (max-width: 768px) {
+      footer {
+        height: 48px;
+        font-size: 12px;
+        padding: 0 16px;
+      }
+
+      footer p {
+        margin: 0;
+        line-height: 1.2;
+      }
+    }
+  </style>
+</head>
+<body style="display: flex; flex-direction: column; min-height: 100vh;">
+
+  <!-- 🔝 Cabeçalho fixo padrão -->
+  <header>
     <div class="logo-area">
       <img src="css/imagens/logo-auza.png" alt="Logo Auza" class="logo" />
       <h1></h1>
     </div>
-<nav class="nav-desktop">
-  <a href="cadastro.html" class="btn-voltar">Voltar</a>
-</nav>
+    <nav>
+      <a href="index.html#inicio">Início</a>
+      <a href="index.html#faq">FAQ</a>
+    </nav>
     <button class="menu-toggle" aria-label="Abrir menu">
       <span class="bar"></span>
       <span class="bar"></span>
@@ -24,74 +173,61 @@
     </button>
   </header>
 
-    <div class="container">
+  <!-- 🧩 Cards intocados no centro -->
+  <div class="container" style="flex-grow: 1;">
+    <h2>Escolha seu tipo de Cartão</h2>
 
-        <h2>Escolha seu tipo de Cartão</h2>
-
-        <!-- 🔥 Cartão Prata -->
-        <div class="card" id="cardPrata">
-            <img class="card-logo" src="css/imagens/favicon.png" alt="Logo da Empresa">
-            <span id="nomePrata" class="bold"></span> <!-- Nome completo atualizado -->
-            <span id="cidadeEstadoPrata"></span>
-            <span class="avaliacao">Avaliação: ⭐⭐⭐</span>
-            <span id="comentarioPrata"></span>
-            <a class="whatsapp-button" id="whatsappPrata" href="#" target="_blank">Contato via WhatsApp</a>
-        </div>
-
-        <!-- 🔥 Cartão Dourado -->
-        <div class="card highlighted" id="cardDourado">
-            <img class="card-logo" src="css/imagens/favicon.png" alt="Logo da Empresa">
-            <span id="nomeDourado" class="bold"></span> <!-- Nome completo atualizado -->
-            <span id="cidadeEstadoDourado"></span>
-            <span class="avaliacao">Avaliação: ⭐⭐⭐</span>
-            <span id="comentarioDourado"></span>
-            <a class="whatsapp-button" id="whatsappDourado" href="#" target="_blank">Contato via WhatsApp</a>
-        </div>
-
-        <!-- 🔥 Exibição de vantagens -->
-        <div id="vantagens-container"></div>
-
-        <button id="continuar-btn">Continuar</button>
+    <div class="card" id="cardPrata">
+      <img class="card-logo" src="css/imagens/favicon.png" alt="Logo da Empresa" />
+      <span id="nomePrata" class="bold"></span>
+      <span id="cidadeEstadoPrata"></span>
+      <span class="avaliacao">Avaliação: ⭐⭐⭐</span>
+      <span id="comentarioPrata"></span>
+      <a class="whatsapp-button" id="whatsappPrata" href="#" target="_blank">Contato via WhatsApp</a>
     </div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const urlParams = new URLSearchParams(window.location.search);
-            const nome = urlParams.get("nome") || "Nome não informado";
-            const sobrenome = urlParams.get("sobrenome") || ""; // Captura o sobrenome
-            const nomeCompleto = sobrenome ? `${nome} ${sobrenome}` : nome; // Concatena nome e sobrenome
+    <div class="card highlighted" id="cardDourado">
+      <img class="card-logo" src="css/imagens/favicon.png" alt="Logo da Empresa" />
+      <span id="nomeDourado" class="bold"></span>
+      <span id="cidadeEstadoDourado"></span>
+      <span class="avaliacao">Avaliação: ⭐⭐⭐</span>
+      <span id="comentarioDourado"></span>
+      <a class="whatsapp-button" id="whatsappDourado" href="#" target="_blank">Contato via WhatsApp</a>
+    </div>
 
-            const nomePrataEl = document.getElementById("nomePrata");
-            const nomeDouradoEl = document.getElementById("nomeDourado");
+    <div id="vantagens-container"></div>
 
-            if (nomePrataEl) nomePrataEl.innerHTML = `<strong>${nomeCompleto}</strong>`;
-            if (nomeDouradoEl) nomeDouradoEl.innerHTML = `<strong>${nomeCompleto}</strong>`;
-        });
-    </script>
+    <button id="continuar-btn">Continuar</button>
+  </div>
 
-      <footer>
+  <!-- 🔻 Rodapé fixo -->
+  <footer>
     <p>© 2025 Auza Services - Todos os Direitos Reservados</p>
   </footer>
 
-    <script>
-    // Menu hamburguer
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const urlParams = new URLSearchParams(window.location.search);
+      const nome = urlParams.get("nome") || "Nome não informado";
+      const sobrenome = urlParams.get("sobrenome") || "";
+      const nomeCompleto = sobrenome ? `${nome} ${sobrenome}` : nome;
+
+      document.getElementById("nomePrata").innerHTML = `<strong>${nomeCompleto}</strong>`;
+      document.getElementById("nomeDourado").innerHTML = `<strong>${nomeCompleto}</strong>`;
+    });
+
+    // Menu hambúrguer
     const toggle = document.querySelector('.menu-toggle');
     const nav = document.querySelector('nav');
     toggle.addEventListener('click', () => {
       nav.classList.toggle('active');
     });
 
-    // Scroll reveal
-    const revealElements = document.querySelectorAll('.scroll-reveal');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.2 });
-    revealElements.forEach(el => observer.observe(el));
+    document.addEventListener("click", function (e) {
+      if (!nav.contains(e.target) && !toggle.contains(e.target)) {
+        nav.classList.remove("active");
+      }
+    });
   </script>
 
 </body>
