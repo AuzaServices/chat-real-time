@@ -16,25 +16,28 @@
       <img src="css/imagens/logo-auza.png" alt="Logo Auza" class="logo" />
       <h1></h1>
     </div>
-    <nav>
-      <a href="index.html#inicio">Voltar</a>
-      <a id="shareButton">Compartilhar Perfil</a>
-      <a id="reportButton">Reportar Profissional</a>
-    </nav>
-    <button class="menu-toggle" aria-label="Abrir menu">
-      <span class="bar"></span>
-      <span class="bar"></span>
-      <span class="bar"></span>
-    </button>
-  </header>
+<nav>
+  <a href="index.html#inicio">Voltar</a>
+  <button id="shareButton">Compartilhar Perfil</button>
+  <button id="reportTrigger">Reportar Profissional</button>
+</nav>
 
-  <div id="professional-card"></div>
-    </button>
-    <button id="optionsButton" style="position: absolute; top: -3px; left: 360px;">⋮</button>
-    <div id="optionsMenu" class="hidden">
-      <a id="reportButton" target="_blank">Reportar</a>
-    </div>
-  </div>
+<button class="menu-toggle" aria-label="Abrir menu">
+  <span class="bar"></span>
+  <span class="bar"></span>
+  <span class="bar"></span>
+</button>
+</header>
+
+<div id="professional-card"></div>
+
+<!-- Botão de opções flutuante -->
+<button id="optionsButton" style="position: absolute; top: -3px; left: 360px;">⋮</button>
+
+<!-- Menu suspenso de opções -->
+<div id="optionsMenu" class="hidden">
+  <a id="reportLink" target="_blank">Reportar</a>
+</div>
 
   <div class="service-confirmation">
     <p id="serviceQuestion">Você realizou o serviço desejado com este(a) profissional?</p>
