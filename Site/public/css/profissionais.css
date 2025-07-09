@@ -840,3 +840,29 @@ header img {
     opacity: 1;
   }
 }
+
+.detalhes-galeria {
+  margin-top: 16px;
+  text-align: center;
+}
+
+.detalhes-galeria h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.imagens-detalhes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.imagens-detalhes img {
+  width: 70px;
+  height: 70px;
+  border-radius: 6px;
+  object-fit: cover;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+}

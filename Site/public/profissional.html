@@ -45,6 +45,29 @@
 </p>
   </div>
 
+  <section class="detalhes-galeria">
+  <h2>Detalhes</h2>
+  <div class="imagens-detalhes">
+    <img src="" alt="Detalhe 1" />
+    <img src="" alt="Detalhe 2" />
+    <img src="" alt="Detalhe 3" />
+    <img src="" alt="Detalhe 4" />
+  </div>
+</section>
+
+<script>// Se houver imagens, injeta diretamente no body antes da avaliação
+if (professional.imagens && professional.imagens.length > 0) {
+  const imagensHtml = `
+    <section class="detalhes-galeria">
+      <h2>Detalhes</h2>
+      <div class="imagens-detalhes">
+        ${professional.imagens.map(url => `<img src="${url}" alt="Detalhe do serviço">`).join("")}
+      </div>
+    </section>
+  `;
+  document.body.insertAdjacentHTML("beforebegin", imagensHtml); // ou "afterbegin" se quiser no topo
+}</script>
+
   <div class="rating-container">
     <p id="ratingQuestion">O que achou desse(a) profissional?</p>
     <div class="stars-container">
