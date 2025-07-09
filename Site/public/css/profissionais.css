@@ -847,8 +847,9 @@ header img {
 }
 
 .detalhes-galeria h2 {
-  font-size: 1.2rem;
+  font-size: 18px;
   margin-bottom: 12px;
+  color: #333;
   font-weight: 600;
 }
 
