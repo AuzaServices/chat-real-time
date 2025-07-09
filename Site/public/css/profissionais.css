@@ -859,14 +859,13 @@ header img {
   padding: 0 12px;
 }
 
-.imagens-detalhes.unica {
-  display: flex;
-  justify-content: center;
-}
-
 .imagens-detalhes.unica img {
-  max-width: 320px;
+  max-width: 240px;
   height: auto;
+  transition: transform 0.2s;
+}
+.imagens-detalhes.unica img:hover {
+  transform: scale(1.05);
 }
 
 /* 2 imagens lado a lado */
