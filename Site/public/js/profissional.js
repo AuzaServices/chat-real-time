@@ -308,14 +308,16 @@ const highlightedProfessionals = new Set([
     const count = professional.imagens.length;
     const classeExtra = count === 1 ? "unica" : count === 2 ? "duas" : count === 3 ? "tres" : "quatro";
 
-    const imagensHtml = `
-      <section class="detalhes-galeria">
-        <h2>Detalhes</h2>
-        <div class="imagens-detalhes ${classeExtra}">
-          ${professional.imagens.map(url => `<img src="${url}" alt="Detalhe do serviço">`).join("")}
-        </div>
-      </section>
-    `;
+const primeiroNome = professional.name.trim().split(" ")[0];
+
+const imagensHtml = `
+  <section class="detalhes-galeria">
+    <h2>Serviços feitos por ${primeiroNome}</h2>
+    <div class="imagens-detalhes ${classeExtra}">
+      ${professional.imagens.map(url => `<img src="${url}" alt="Detalhe do serviço">`).join("")}
+    </div>
+  </section>
+`;
     ratingContainer.insertAdjacentHTML("beforebegin", imagensHtml);
   }
 
