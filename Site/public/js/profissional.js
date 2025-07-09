@@ -254,13 +254,12 @@ const highlightedProfessionals = new Set([
     "Fernanda Ramos", "Gustavo Ramos", "Diego Martins", "Carlos Nogueira", "José Lima"
   ]);
 
-  // 🧠 Lógica de busca
-  let professional = null;
+  // 🎯 Busca por ID (prioritário)
+  let professional = !isNaN(selectedId)
+    ? professionals.find(p => p.id === selectedId)
+    : null;
 
-  if (!isNaN(selectedId)) {
-    professional = professionals.find(p => p.id === selectedId);
-  }
-
+  // 🔄 Fallback por nome, se id não estiver presente
   if (!professional && selectedName) {
     const matches = professionals.filter(p => p.name.trim() === selectedName);
     professional = matches.find(p => p.imagens?.length > 0) || matches[0];
@@ -271,12 +270,15 @@ const highlightedProfessionals = new Set([
     return;
   }
 
+  // 🌟 Destaque visual
   const isHighlighted = highlightedProfessionals.has(professional.name.trim());
   const highlightedClass = isHighlighted ? "highlighted" : "";
   const nameClass = isHighlighted ? "highlighted-name" : "";
+
+  // 📲 Link WhatsApp
   const whatsappLink = `https://wa.me/${professional.whatsapp}?text=${encodeURIComponent("Olá, vim por meio da *Auza Services*, gostaria de realizar um orçamento de serviço.")}`;
 
-  // 🧱 Card
+  // 🧱 Renderiza card
   document.getElementById("professional-card").innerHTML = `
     <div class="card ${highlightedClass}">
       <img class="card-logo" src="css/imagens/background.png" alt="Logo">
@@ -293,16 +295,14 @@ const highlightedProfessionals = new Set([
     </div>
   `;
 
-  // 🔁 Evento WhatsApp
+  // 🔁 Evento WhatsApp personalizado
   const whatsappButton = document.querySelector(".whatsapp-button");
   if (whatsappButton) {
     whatsappButton.removeEventListener("click", handleClick);
     whatsappButton.addEventListener("click", handleClick);
-  } else {
-    console.error("🚨 Erro: Botão de WhatsApp não encontrado!");
   }
 
-  // 🖼️ Galeria
+  // 🖼️ Galeria de imagens
   const ratingContainer = document.querySelector('.rating-container');
   if (ratingContainer && professional.imagens?.length > 0) {
     const count = professional.imagens.length;
@@ -319,7 +319,7 @@ const highlightedProfessionals = new Set([
     ratingContainer.insertAdjacentHTML("beforebegin", imagensHtml);
   }
 
-  // 🔍 Modal
+  // 🔍 Modal de imagem
   document.addEventListener("click", function (e) {
     const clickedImg = e.target.closest(".imagens-detalhes img");
     const modal = document.getElementById("imagemModal");
