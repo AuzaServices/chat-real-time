@@ -281,7 +281,7 @@ if (ratingContainer && professional.imagens && professional.imagens.length > 0) 
       </div>
     </section>
   `;
-  ratingContainer.insertAdjacentHTML("beforebegin", imagensHtml);
+  document.getElementById("professional-card").insertAdjacentHTML("beforeend", imagensHtml);
 }
 
 // 👇 Evento global para exibir modal da imagem
