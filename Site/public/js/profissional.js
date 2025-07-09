@@ -104,7 +104,7 @@ document.addEventListener("DOMContentLoaded", function () {
         { id: 64, service: "Montador de Móveis", name: "Robson", age: 27, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "9 anos de Experiência na área.", whatsapp: "5585994050965" },
         { id: 66, service: "Montador de Móveis", name: "Joilson Nunes", age: 40, city: "Caucaia - CE", stars: "⭐⭐⭐", comment: "Experiência com Montagem de Móveis", whatsapp: "5585988741249" },
         //
-        { id: 67, service: "Montador de Móveis", name: "Gustavo Ramos", age: 42, city: "Pacajus - CE", stars: "⭐⭐⭐⭐", comment: "Garantia de serviço bem executado.", whatsapp: "55859913407" },
+        { id: 67, service: "Montador de Móveis", name: "Gustavo Ramos", age: 42, city: "Pacajus - CE", stars: "⭐⭐⭐⭐", comment: "Garantia de serviço bem executado.", whatsapp: "55859913407", imagens: [ "https://i.imgur.com/NgHHEKd.jpeg", "https://i.imgur.com/uAr2BvV.jpeg", "https://i.imgur.com/pzN0aAl.png", "https://i.imgur.com/2EYNkdl.png" ]},
         { id: 68, service: "Montador de Móveis", name: "Henrique Nunes", age: 36, city: "Horizonte - CE", stars: "⭐⭐⭐⭐⭐", comment: "Experiência com todos os tipos de móveis.", whatsapp: "55851340727" },
         { id: 69, service: "Montador de Móveis", name: "José Silva", age: 41, city: "Itaitinga - CE", stars: "⭐⭐⭐⭐", comment: "Precisão na montagem e ajustes personalizados.", whatsapp: "55859940728" },
         { id: 70, service: "Montador de Móveis", name: "Ricardo Costa", age: 35, city: "Pacajus - CE", stars: "⭐⭐⭐⭐", comment: "Montagem ágil sem erros.", whatsapp: "55859913409" },
