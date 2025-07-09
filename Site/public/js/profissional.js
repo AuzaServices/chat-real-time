@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
         { id: 102, service: "AuzaPoli (Polivalentes)", name: "Francisco Antônio", age: 33, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "Churrasqueiro Particular e Motorista Particular", whatsapp: "5585999858484", imagens: [
        "https://i.imgur.com/b7IAdOV.jp",
        ]},
-        { id: 165, service: "AuzaPoli (Polivalentes)", name: "Luiz Carlos", age: 35, city: "Itaitinga - CE", stars: "⭐⭐⭐⭐⭐", comment: "Envelopamento no geral e Estética Automotiva", whatsapp: "5585987340517" , imagens: [
+        { id: 165, service: "AuzaPoli (Polivalentes)", name: "Luiz Carlos", age: 35, city: "Itaitinga - CE", stars: "⭐⭐⭐⭐⭐", comment: "Envelopamento no geral e Estética Automotiva", whatsapp: "5585987340517", imagens: [
        "https://i.imgur.com/b7IAdOV.jg",
        ]},
 
