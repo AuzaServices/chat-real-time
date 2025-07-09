@@ -264,10 +264,6 @@ document.addEventListener("DOMContentLoaded", function () {
     // Encontrar o profissional selecionado
     const professional = professionals.find(p => p.name.trim() === selectedName.trim());
 
-    document.addEventListener("DOMContentLoaded", function () {
-  // ...aqui seu código que recupera o profissional da URL e monta o card...
-
-  // Insere galeria ANTES da área de avaliação
   const ratingContainer = document.querySelector('.rating-container');
   if (ratingContainer && professional.imagens && professional.imagens.length > 0) {
     const imagensHtml = `
@@ -281,8 +277,6 @@ document.addEventListener("DOMContentLoaded", function () {
     ratingContainer.insertAdjacentHTML("beforebegin", imagensHtml);
   }
 
-  // ... resto do JS como envio de avaliação, botões, etc.
-});
 
     if (professional) {
         const whatsappLink = `https://wa.me/${professional.whatsapp}?text=${encodeURIComponent("Olá, vim por meio da *Auza Services*, gostaria de realizar um orçamento de serviço.")}`;
