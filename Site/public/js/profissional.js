@@ -13,11 +13,22 @@ document.addEventListener("DOMContentLoaded", function () {
         //AuzaPoli
        { id: 1, service: "AuzaPoli (Polivalente)", name: "Fagner Lucena", age: 47, city: "Fortaleza - CE", stars: "⭐⭐⭐", comment: "Eletricista, Bombeiro Hidráulico, Manutenção Predial", whatsapp: "558598581919", imagens: [
        "https://i.imgur.com/b7IAdOV.jpeg",
-       "https://i.imgur.com/AFH74zs.png",
        ]},
-        { id: 163, service: "AuzaPoli (Polivalente)", name: "Rogério Alves", age: 38, city: "Fortaleza - CE", stars: "⭐⭐⭐", comment: "Motorista Particular e Segurança", whatsapp: "5585987997754" },
-        { id: 102, service: "AuzaPoli (Polivalentes)", name: "Francisco Antônio", age: 33, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "Churrasqueiro Particular e Motorista Particular", whatsapp: "5585999858484" },
-        { id: 165, service: "AuzaPoli (Polivalentes)", name: "Luiz Carlos", age: 35, city: "Itaitinga - CE", stars: "⭐⭐⭐⭐⭐", comment: "Envelopamento no geral e Estética Automotiva", whatsapp: "5585987340517" },
+        { id: 163, service: "AuzaPoli (Polivalente)", name: "Rogério Alves", age: 38, city: "Fortaleza - CE", stars: "⭐⭐⭐", comment: "Motorista Particular e Segurança", whatsapp: "5585987997754", imagens: [
+       "https://i.imgur.com/b7IAdOV.jpeg",
+       "https://i.imgur.com/b7IAdOV.jpeg",
+       ]},
+        { id: 102, service: "AuzaPoli (Polivalentes)", name: "Francisco Antônio", age: 33, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "Churrasqueiro Particular e Motorista Particular", whatsapp: "5585999858484", imagens: [
+       "https://i.imgur.com/b7IAdOV.jpeg",
+       "https://i.imgur.com/b7IAdOV.jpeg",
+       "https://i.imgur.com/b7IAdOV.jpeg",
+       ]},
+        { id: 165, service: "AuzaPoli (Polivalentes)", name: "Luiz Carlos", age: 35, city: "Itaitinga - CE", stars: "⭐⭐⭐⭐⭐", comment: "Envelopamento no geral e Estética Automotiva", whatsapp: "5585987340517" , imagens: [
+       "https://i.imgur.com/b7IAdOV.jpeg",
+       "https://i.imgur.com/b7IAdOV.jpeg",
+       "https://i.imgur.com/b7IAdOV.jpeg",
+       "https://i.imgur.com/b7IAdOV.jpeg",
+       ]},
 
         //Pedreiro
         { id: 2, service: "Pedreiro", name: "Leonardo", age: 28, city: "Fortaleza - CE", stars: "⭐⭐", comment: "Pedreiro, Mestre de obra profissional. Entendo de projetos.", whatsapp: "5585988559085" }, 
@@ -265,11 +276,20 @@ document.addEventListener("DOMContentLoaded", function () {
 const ratingContainer = document.querySelector('.rating-container');
 
 if (ratingContainer && professional.imagens && professional.imagens.length > 0) {
+  const imagens = professional.imagens;
+  const count = imagens.length;
+
+  let classeExtra = "";
+  if (count === 1) classeExtra = "unica";
+  else if (count === 2) classeExtra = "duas";
+  else if (count === 3) classeExtra = "tres";
+  else classeExtra = "quatro";
+
   const imagensHtml = `
     <section class="detalhes-galeria">
       <h2>Detalhes</h2>
-      <div class="imagens-detalhes">
-        ${professional.imagens.map(url => `<img src="${url}" alt="Detalhe do serviço">`).join("")}
+      <div class="imagens-detalhes ${classeExtra}">
+        ${imagens.map(url => `<img src="${url}" alt="Detalhe do serviço">`).join("")}
       </div>
     </section>
   `;

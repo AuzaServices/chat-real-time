@@ -859,12 +859,6 @@ header img {
   padding: 0 12px;
 }
 
-/* Quando há 2 ou mais imagens */
-.imagens-detalhes.multiplas {
-  grid-template-columns: repeat(2, 1fr);
-}
-
-/* Quando há apenas 1 imagem */
 .imagens-detalhes.unica {
   display: flex;
   justify-content: center;
@@ -875,7 +869,28 @@ header img {
   height: auto;
 }
 
-/* Estilo comum das imagens */
+/* 2 imagens lado a lado */
+.imagens-detalhes.duas {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* 3 imagens: duas em cima, uma centralizada embaixo */
+.imagens-detalhes.tres {
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto auto;
+}
+.imagens-detalhes.tres img:nth-child(3) {
+  grid-column: 1 / span 2;
+  justify-self: center;
+  max-width: 220px;
+}
+
+/* 4 imagens: 2x2 padrão */
+.imagens-detalhes.quatro {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* Todas as imagens padrão */
 .imagens-detalhes img {
   width: 100%;
   max-width: 180px;
@@ -886,26 +901,6 @@ header img {
   transition: transform 0.2s;
   box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
-
 .imagens-detalhes img:hover {
   transform: scale(1.05);
-}
-
-/* Modal ampliado */
-#imagemModal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.85);
-  z-index: 9999;
-  justify-content: center;
-  align-items: center;
-  cursor: zoom-out;
-}
-
-#imagemModal img {
-  max-width: 90%;
-  max-height: 85%;
-  border-radius: 10px;
-  box-shadow: 0 0 16px rgba(255,255,255,0.3);
 }
