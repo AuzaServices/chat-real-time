@@ -842,55 +842,70 @@ header img {
 }
 
 .detalhes-galeria {
-  margin-top: 16px;
+  margin-top: 24px;
   text-align: center;
 }
 
 .detalhes-galeria h2 {
-  font-size: 1rem;
+  font-size: 1.2rem;
+  margin-bottom: 12px;
   font-weight: 600;
-  margin-bottom: 8px;
 }
 
-/* Galeria 2x2 com quadrados maiores */
 .imagens-detalhes {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-  justify-items: center;
-  padding: 8px;
+  gap: 12px;
+  justify-content: center;
+  padding: 0 12px;
 }
 
+/* Quando há 2 ou mais imagens */
+.imagens-detalhes.multiplas {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* Quando há apenas 1 imagem */
+.imagens-detalhes.unica {
+  display: flex;
+  justify-content: center;
+}
+
+.imagens-detalhes.unica img {
+  max-width: 320px;
+  height: auto;
+}
+
+/* Estilo comum das imagens */
 .imagens-detalhes img {
   width: 100%;
-  max-width: 160px;
-  height: 110px;
+  max-width: 180px;
+  height: 120px;
   object-fit: cover;
   border-radius: 8px;
   cursor: pointer;
   transition: transform 0.2s;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
+
 .imagens-detalhes img:hover {
   transform: scale(1.05);
 }
 
-/* Modal com fundo escuro e imagem em destaque */
+/* Modal ampliado */
 #imagemModal {
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.8);
-  z-index: 99999;
+  background: rgba(0,0,0,0.85);
+  z-index: 9999;
   justify-content: center;
   align-items: center;
+  cursor: zoom-out;
 }
 
 #imagemModal img {
   max-width: 90%;
-  max-height: 80%;
+  max-height: 85%;
   border-radius: 10px;
-  box-shadow: 0 0 12px rgba(255,255,255,0.2);
-}
-#imagemModal.close-area {
-  cursor: zoom-out;
+  box-shadow: 0 0 16px rgba(255,255,255,0.3);
 }
