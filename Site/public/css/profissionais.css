@@ -419,7 +419,7 @@ header img {
     bottom: 10px; /* 🔥 Fica no canto inferior */
     right: 173px; /* 🔥 Alinhado à direita */
     background: none; /* Remove fundo */
-    border: none; /* Remove borda */
+    border-bottom: 1px solid #e2e2e2;
     cursor: pointer;
     margin-top: -12px ;
     margin-left: 350px;
@@ -926,3 +926,4 @@ header img {
   border-radius: 10px;
   box-shadow: 0 0 16px rgba(255,255,255,0.3);
 }
+
