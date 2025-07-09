@@ -330,8 +330,8 @@ filteredProfessionals.forEach(professional => {
 
     card.style.cursor = "pointer";
     card.addEventListener("click", function () {
-        const professionalName = encodeURIComponent(professional.name);
-        window.open(`profissional.html?name=${professionalName}`, "_blank");
+const professionalName = encodeURIComponent(professional.name);
+window.open(`profissional.html?id=${professional.id}&name=${professionalName}`, "_blank");
     });
 
     // ✅ Captura o ID e o nome corretamente agora!
