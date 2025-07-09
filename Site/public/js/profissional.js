@@ -10,19 +10,13 @@ document.addEventListener("DOMContentLoaded", function () {
     // Lista de profissionais
     window.professionals = [
 
+        //imagens: [ "https://i.imgur.com/b7IAdOV.jg", ]},
+
         //AuzaPoli
-       { id: 1, service: "AuzaPoli (Polivalente)", name: "Fagner Lucena", age: 47, city: "Fortaleza - CE", stars: "⭐⭐⭐", comment: "Eletricista, Bombeiro Hidráulico, Manutenção Predial", whatsapp: "558598581919", imagens: [
-       "",
-       ]},
-        { id: 163, service: "AuzaPoli (Polivalente)", name: "Rogério Alves", age: 38, city: "Fortaleza - CE", stars: "⭐⭐⭐", comment: "Motorista Particular e Segurança", whatsapp: "5585987997754", imagens: [
-       "",
-       ]},
-        { id: 102, service: "AuzaPoli (Polivalentes)", name: "Francisco Antônio", age: 33, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "Churrasqueiro Particular e Motorista Particular", whatsapp: "5585999858484", imagens: [
-       "",
-       ]},
-        { id: 165, service: "AuzaPoli (Polivalentes)", name: "Luiz Carlos", age: 35, city: "Itaitinga - CE", stars: "⭐⭐⭐⭐⭐", comment: "Envelopamento no geral e Estética Automotiva", whatsapp: "5585987340517", imagens: [
-       "",
-       ]},
+        { id: 1, service: "AuzaPoli (Polivalente)", name: "Fagner Lucena", age: 47, city: "Fortaleza - CE", stars: "⭐⭐⭐", comment: "Eletricista, Bombeiro Hidráulico, Manutenção Predial", whatsapp: "558598581919", imagens: [ "https://i.imgur.com/b7IAdOV.jg", ]},
+        { id: 163, service: "AuzaPoli (Polivalente)", name: "Rogério Alves", age: 38, city: "Fortaleza - CE", stars: "⭐⭐⭐", comment: "Motorista Particular e Segurança", whatsapp: "5585987997754"},
+        { id: 102, service: "AuzaPoli (Polivalentes)", name: "Francisco Antônio", age: 33, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "Churrasqueiro Particular e Motorista Particular", whatsapp: "5585999858484"},
+        { id: 165, service: "AuzaPoli (Polivalentes)", name: "Luiz Carlos", age: 35, city: "Itaitinga - CE", stars: "⭐⭐⭐⭐⭐", comment: "Envelopamento no geral e Estética Automotiva", whatsapp: "5585987340517"},
 
         //Pedreiro
         { id: 2, service: "Pedreiro", name: "Leonardo", age: 28, city: "Fortaleza - CE", stars: "⭐⭐", comment: "Pedreiro, Mestre de obra profissional. Entendo de projetos.", whatsapp: "5585988559085" }, 
