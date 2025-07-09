@@ -852,17 +852,45 @@ header img {
   margin-bottom: 8px;
 }
 
+/* Galeria 2x2 com quadrados maiores */
 .imagens-detalhes {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 8px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  justify-items: center;
+  padding: 8px;
 }
 
 .imagens-detalhes img {
-  width: 70px;
-  height: 70px;
-  border-radius: 6px;
+  width: 100%;
+  max-width: 160px;
+  height: 110px;
   object-fit: cover;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.imagens-detalhes img:hover {
+  transform: scale(1.05);
+}
+
+/* Modal com fundo escuro e imagem em destaque */
+#imagemModal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  z-index: 99999;
+  justify-content: center;
+  align-items: center;
+}
+
+#imagemModal img {
+  max-width: 90%;
+  max-height: 80%;
+  border-radius: 10px;
+  box-shadow: 0 0 12px rgba(255,255,255,0.2);
+}
+#imagemModal.close-area {
+  cursor: zoom-out;
 }

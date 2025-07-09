@@ -22,12 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
         { id: 165, service: "AuzaPoli (Polivalentes)", name: "Luiz Carlos", age: 35, city: "Itaitinga - CE", stars: "⭐⭐⭐⭐⭐", comment: "Envelopamento no geral e Estética Automotiva", whatsapp: "5585987340517" },
 
         //Pedreiro
-        { id: 2, service: "Pedreiro", name: "Leonardo", age: 28, city: "Fortaleza - CE", stars: "⭐⭐", comment: "Pedreiro, Mestre de obra profissional. Entendo de projetos.", whatsapp: "5585988559085", imagens: [
-       "https://i.imgur.com/b7IAdOV.jpeg",
-       "https://exemplo.com/imagem2.jpg",
-       "https://exemplo.com/imagem3.jpg",
-       "https://exemplo.com/imagem4.jpg"
-       ]},
+        { id: 2, service: "Pedreiro", name: "Leonardo", age: 28, city: "Fortaleza - CE", stars: "⭐⭐", comment: "Pedreiro, Mestre de obra profissional. Entendo de projetos.", whatsapp: "5585988559085" }, 
         { id: 3, service: "Pedreiro", name: "Edilcimar Frazão", age: 53, city: "Fortaleza - CE", stars: "⭐⭐", comment: "Área de acabamento da constr. civil, PVC, Gesso, Porcel/Cerâmica.", whatsapp: "5585992363266" },
         { id: 4, service: "Pedreiro", name: "Alberto", age: 33, city: "Fortaleza - CE", stars: "⭐⭐", comment: "Área de Construção. Dedicação, Qualidade e Compromisso", whatsapp: "5585994312887" },
         { id: 5, service: "Pedreiro", name: "Adonias", age: 42, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "Trabalho de alvenaria impecável. Serviços em Geral", whatsapp: "5585992726761" },
@@ -269,19 +264,35 @@ document.addEventListener("DOMContentLoaded", function () {
     // Encontrar o profissional selecionado
     const professional = professionals.find(p => p.name.trim() === selectedName.trim());
 
-  const ratingContainer = document.querySelector('.rating-container');
-  if (ratingContainer && professional.imagens && professional.imagens.length > 0) {
-    const imagensHtml = `
-      <section class="detalhes-galeria">
-        <h2>Detalhes</h2>
-        <div class="imagens-detalhes">
-          ${professional.imagens.map(url => `<img src="${url}" alt="Detalhe do serviço">`).join("")}
-        </div>
-      </section>
-    `;
-    ratingContainer.insertAdjacentHTML("beforebegin", imagensHtml);
+const ratingContainer = document.querySelector('.rating-container');
+
+if (ratingContainer && professional.imagens && professional.imagens.length > 0) {
+  const imagensHtml = `
+    <section class="detalhes-galeria">
+      <h2>Detalhes</h2>
+      <div class="imagens-detalhes">
+        ${professional.imagens.map(url => `<img src="${url}" alt="Detalhe do serviço">`).join("")}
+      </div>
+    </section>
+  `;
+  ratingContainer.insertAdjacentHTML("beforebegin", imagensHtml);
+}
+
+// 👇 Evento global para exibir modal da imagem
+document.addEventListener("click", function (e) {
+  const clickedImg = e.target.closest(".imagens-detalhes img");
+  const modal = document.getElementById("imagemModal");
+
+  if (clickedImg && modal) {
+    modal.querySelector("img").src = clickedImg.src;
+    modal.style.display = "flex";
   }
 
+  // Fechar ao clicar fora da imagem
+  if (e.target.id === "imagemModal") {
+    modal.style.display = "none";
+  }
+});
 
     if (professional) {
         const whatsappLink = `https://wa.me/${professional.whatsapp}?text=${encodeURIComponent("Olá, vim por meio da *Auza Services*, gostaria de realizar um orçamento de serviço.")}`;
