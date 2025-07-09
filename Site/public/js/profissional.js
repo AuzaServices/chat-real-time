@@ -12,22 +12,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
         //AuzaPoli
        { id: 1, service: "AuzaPoli (Polivalente)", name: "Fagner Lucena", age: 47, city: "Fortaleza - CE", stars: "⭐⭐⭐", comment: "Eletricista, Bombeiro Hidráulico, Manutenção Predial", whatsapp: "558598581919", imagens: [
-       "https://i.imgur.com/b7IAdOV.jpeg",
+       "https://i.imgur.com/b7IAdOV.jpe",
        ]},
         { id: 163, service: "AuzaPoli (Polivalente)", name: "Rogério Alves", age: 38, city: "Fortaleza - CE", stars: "⭐⭐⭐", comment: "Motorista Particular e Segurança", whatsapp: "5585987997754", imagens: [
-       "https://i.imgur.com/b7IAdOV.jpeg",
-       "https://i.imgur.com/b7IAdOV.jpeg",
+       "https://i.imgur.com/b7IAdOV.jp",
        ]},
         { id: 102, service: "AuzaPoli (Polivalentes)", name: "Francisco Antônio", age: 33, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "Churrasqueiro Particular e Motorista Particular", whatsapp: "5585999858484", imagens: [
-       "https://i.imgur.com/b7IAdOV.jpeg",
-       "https://i.imgur.com/b7IAdOV.jpeg",
-       "https://i.imgur.com/b7IAdOV.jpeg",
+       "https://i.imgur.com/b7IAdOV.jp",
        ]},
         { id: 165, service: "AuzaPoli (Polivalentes)", name: "Luiz Carlos", age: 35, city: "Itaitinga - CE", stars: "⭐⭐⭐⭐⭐", comment: "Envelopamento no geral e Estética Automotiva", whatsapp: "5585987340517" , imagens: [
-       "https://i.imgur.com/b7IAdOV.jpeg",
-       "https://i.imgur.com/b7IAdOV.jpeg",
-       "https://i.imgur.com/b7IAdOV.jpeg",
-       "https://i.imgur.com/b7IAdOV.jpeg",
+       "https://i.imgur.com/b7IAdOV.jg",
        ]},
 
         //Pedreiro
