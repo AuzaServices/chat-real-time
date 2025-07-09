@@ -1,11 +1,11 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const params = new URLSearchParams(window.location.search);
-    const selectedName = params.get("name");
+  const params = new URLSearchParams(window.location.search);
+  const selectedName = decodeURIComponent(params.get("name") || "").trim();
 
-    if (!selectedName) {
-        document.getElementById("professional-card").innerHTML = "<p>Profissional não encontrado.</p>";
-        return;
-    }
+  if (!selectedName) {
+    document.getElementById("professional-card").innerHTML = "<p>Profissional não encontrado.</p>";
+    return;
+  }
 
     // Lista de profissionais
     window.professionals = [
@@ -252,95 +252,88 @@ document.addEventListener("DOMContentLoaded", function () {
     ];
 
     // Lista de profissionais destacados
-    const highlightedProfessionals = new Set([
-        "Edimilson Camara","Mateus Santos", "Bruna Costa", "Carlos Costa", "Ana Souza", "Lucas Oliveira", "André Souza",
-        "Diego Rocha", "Marcos Vinicius", "Bruno Ferreira", "Carlos Mendes", "Eduarda Nunes",
-        "Fernanda Ramos", "Gustavo Ramos", "Diego Martins", "Carlos Nogueira", "José Lima"
-    ]);
+const highlightedProfessionals = new Set([
+    "Edimilson Camara", "Mateus Santos", "Bruna Costa", "Carlos Costa", "Ana Souza", "Lucas Oliveira", "André Souza",
+    "Diego Rocha", "Marcos Vinicius", "Bruno Ferreira", "Carlos Mendes", "Eduarda Nunes",
+    "Fernanda Ramos", "Gustavo Ramos", "Diego Martins", "Carlos Nogueira", "José Lima"
+  ]);
 
-    // Encontrar o profissional selecionado
-    const professional = professionals.find(p =>
-  p.name.trim() === selectedName.trim() &&
-  p.service === "Montador de Móveis"
-);
+  // 🔍 Verificação inteligente para nomes duplicados
+  const matches = professionals.filter(p => p.name.trim() === selectedName);
+  let professional = null;
 
-const ratingContainer = document.querySelector('.rating-container');
+  if (matches.length === 1) {
+    professional = matches[0];
+  } else if (matches.length > 1) {
+    console.warn("⚠️ Mais de um profissional chamado:", selectedName);
+    professional = matches.find(p => p.imagens && p.imagens.length > 0) || matches[0];
+  } else {
+    document.getElementById("professional-card").innerHTML = "<p>Profissional não encontrado.</p>";
+    return;
+  }
 
-if (ratingContainer && professional.imagens && professional.imagens.length > 0) {
-  const imagens = professional.imagens;
-  const count = imagens.length;
+  // 🟦 Renderiza card
+  const whatsappLink = `https://wa.me/${professional.whatsapp}?text=${encodeURIComponent("Olá, vim por meio da *Auza Services*, gostaria de realizar um orçamento de serviço.")}`;
+  const isHighlighted = highlightedProfessionals.has(professional.name.trim());
+  const highlightedClass = isHighlighted ? "highlighted" : "";
+  const nameClass = isHighlighted ? "highlighted-name" : "";
 
-  let classeExtra = "";
-  if (count === 1) classeExtra = "unica";
-  else if (count === 2) classeExtra = "duas";
-  else if (count === 3) classeExtra = "tres";
-  else classeExtra = "quatro";
-
-  const imagensHtml = `
-    <section class="detalhes-galeria">
-      <h2>Detalhes</h2>
-      <div class="imagens-detalhes ${classeExtra}">
-        ${imagens.map(url => `<img src="${url}" alt="Detalhe do serviço">`).join("")}
-      </div>
-    </section>
+  document.getElementById("professional-card").innerHTML = `
+    <div class="card ${highlightedClass}">
+      <img class="card-logo" src="css/imagens/background.png" alt="Logo">
+      <h3 class="${nameClass}">${professional.name}</h3>
+      <p>${professional.city}</p>
+      <p>Idade: ${professional.age} anos</p>
+      <p>Avaliação: ${professional.stars}</p>
+      <p>${professional.comment}</p>
+      <a class="whatsapp-button" href="${whatsappLink}" target="_blank"
+        data-id="${professional.id}" data-nome="${professional.name}" 
+        data-profissao="${professional.service}">
+        Contato via WhatsApp
+      </a>
+    </div>
   `;
-  ratingContainer.insertAdjacentHTML("beforebegin", imagensHtml);
-}
 
-// 👇 Evento global para exibir modal da imagem
-document.addEventListener("click", function (e) {
-  const clickedImg = e.target.closest(".imagens-detalhes img");
-  const modal = document.getElementById("imagemModal");
-
-  if (clickedImg && modal) {
-    modal.querySelector("img").src = clickedImg.src;
-    modal.style.display = "flex";
+  // ✅ Reativa evento personalizado do botão WhatsApp
+  const whatsappButton = document.querySelector(".whatsapp-button");
+  if (whatsappButton) {
+    whatsappButton.removeEventListener("click", handleClick);
+    whatsappButton.addEventListener("click", handleClick);
+  } else {
+    console.error("🚨 Erro: Botão de WhatsApp não encontrado!");
   }
 
-  // Fechar ao clicar fora da imagem
-  if (e.target.id === "imagemModal") {
-    modal.style.display = "none";
+  // 🖼️ Galeria de imagens
+  const ratingContainer = document.querySelector('.rating-container');
+  if (ratingContainer && professional.imagens && professional.imagens.length > 0) {
+    const count = professional.imagens.length;
+    let classeExtra = count === 1 ? "unica" : count === 2 ? "duas" : count === 3 ? "tres" : "quatro";
+
+    const imagensHtml = `
+      <section class="detalhes-galeria">
+        <h2>Detalhes</h2>
+        <div class="imagens-detalhes ${classeExtra}">
+          ${professional.imagens.map(url => `<img src="${url}" alt="Detalhe do serviço">`).join("")}
+        </div>
+      </section>
+    `;
+    ratingContainer.insertAdjacentHTML("beforebegin", imagensHtml);
   }
-});
 
-    if (professional) {
-        const whatsappLink = `https://wa.me/${professional.whatsapp}?text=${encodeURIComponent("Olá, vim por meio da *Auza Services*, gostaria de realizar um orçamento de serviço.")}`;
+  // 🔎 Modal de imagem ampliada
+  document.addEventListener("click", function (e) {
+    const clickedImg = e.target.closest(".imagens-detalhes img");
+    const modal = document.getElementById("imagemModal");
 
-        // Verifica se o profissional está na lista de destaques
-        const isHighlighted = highlightedProfessionals.has(professional.name.trim());
-        const highlightedClass = isHighlighted ? "highlighted" : "";
-        const nameClass = isHighlighted ? "highlighted-name" : "";
-
-        document.getElementById("professional-card").innerHTML = `
-            <div class="card ${highlightedClass}">
-                <img class="card-logo" src="css/imagens/background.png" alt="Logo">
-                <h3 class="${nameClass}">${professional.name}</h3>
-                <p>${professional.city}</p>
-                <p>Idade: ${professional.age} anos</p>
-                <p>Avaliação: ${professional.stars}</p>
-                <p>${professional.comment}</p>
-<a class="whatsapp-button" href="${whatsappLink}" target="_blank"
-    data-id="${professional.id}" data-nome="${professional.name}" 
-    data-profissao="${professional.service}">
-    Contato via WhatsApp
-</a>
-            </div>
-        `;
-
-        // 🚀 **Corrigindo evento de clique no botão do WhatsApp**
-
-        
-        const whatsappButton = document.querySelector(".whatsapp-button");
-
-        if (whatsappButton) {
-            whatsappButton.removeEventListener("click", handleClick); // 🔥 Remove evento duplicado antes de adicionar
-            whatsappButton.addEventListener("click", handleClick);
-        } else {
-            console.error("🚨 Erro: Botão de WhatsApp não encontrado!");
-        }
-    } else {
-        document.getElementById("professional-card").innerHTML = "<p>Profissional não encontrado.</p>";
+    if (clickedImg && modal) {
+      modal.querySelector("img").src = clickedImg.src;
+      modal.style.display = "flex";
     }
+
+    if (e.target.id === "imagemModal") {
+      modal.style.display = "none";
+    }
+  });
 });
 
 // ✅ **Função para capturar clique e enviar dados ao banco**
