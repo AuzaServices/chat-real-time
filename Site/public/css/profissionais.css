@@ -904,3 +904,24 @@ header img {
 .imagens-detalhes img:hover {
   transform: scale(1.05);
 }
+
+#imagemModal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.85);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#imagemModal img {
+  max-width: 90vw;
+  max-height: 85vh;
+  border-radius: 10px;
+  box-shadow: 0 0 16px rgba(255,255,255,0.3);
+}
