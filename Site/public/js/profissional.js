@@ -259,7 +259,10 @@ document.addEventListener("DOMContentLoaded", function () {
     ]);
 
     // Encontrar o profissional selecionado
-    const professional = professionals.find(p => p.name.trim() === selectedName.trim());
+    const professional = professionals.find(p =>
+  p.name.trim() === selectedName.trim() &&
+  p.service === "Montador de Móveis"
+);
 
 const ratingContainer = document.querySelector('.rating-container');
 
