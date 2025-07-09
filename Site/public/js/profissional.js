@@ -1,11 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   const params = new URLSearchParams(window.location.search);
+  const selectedId = parseInt(params.get("id"), 10);
   const selectedName = decodeURIComponent(params.get("name") || "").trim();
-
-  if (!selectedName) {
-    document.getElementById("professional-card").innerHTML = "<p>Profissional não encontrado.</p>";
-    return;
-  }
 
     // Lista de profissionais
     window.professionals = [
@@ -223,7 +219,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         //Designer 
         { id: 157, service: "Designer", name: "Mondesson Linardis", age: 29, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "3 anos de experiência em design e redes sociais, tenho uma gráfica há 5 meses.", whatsapp: "5585991774021" },
-        { id: 158, service: "Designer", name: "Mateus Santos", age: 26, city: "Horizonte - CE", stars: "⭐⭐⭐⭐⭐", comment: "Experiência como designer na grafica Connect.com e designer Autônomo á 5 anos.", whatsapp: "5585992975877" , imagens: [ "https://i.imgur.com/NgHHEKd.jpeg", "https://i.imgur.com/uAr2BvV.jpeg", "https://i.imgur.com/pzN0aAl.png", "https://i.imgur.com/2EYNkdl.png" ]},
+        { id: 158, service: "Designer", name: "Mateus Santos", age: 26, city: "Horizonte - CE", stars: "⭐⭐⭐⭐⭐", comment: "Experiência como designer na grafica Connect.com e designer Autônomo á 5 anos.", whatsapp: "5585992975877" , imagens: [ "https://i.imgur.com/uAr2BvV.jpeg", "https://i.imgur.com/pzN0aAl.png", "https://i.imgur.com/2EYNkdl.png" ]},
         { id: 168, service: "Designer", name: "Cleitomberg Barroso", age: 24, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "Experiência de 2 anos, posts no instagram em geral.", whatsapp: "5585992341985" },
 
         //Adestramento
@@ -258,26 +254,29 @@ const highlightedProfessionals = new Set([
     "Fernanda Ramos", "Gustavo Ramos", "Diego Martins", "Carlos Nogueira", "José Lima"
   ]);
 
-  // 🔍 Verificação inteligente para nomes duplicados
-  const matches = professionals.filter(p => p.name.trim() === selectedName);
+  // 🧠 Lógica de busca
   let professional = null;
 
-  if (matches.length === 1) {
-    professional = matches[0];
-  } else if (matches.length > 1) {
-    console.warn("⚠️ Mais de um profissional chamado:", selectedName);
-    professional = matches.find(p => p.imagens && p.imagens.length > 0) || matches[0];
-  } else {
+  if (!isNaN(selectedId)) {
+    professional = professionals.find(p => p.id === selectedId);
+  }
+
+  if (!professional && selectedName) {
+    const matches = professionals.filter(p => p.name.trim() === selectedName);
+    professional = matches.find(p => p.imagens?.length > 0) || matches[0];
+  }
+
+  if (!professional) {
     document.getElementById("professional-card").innerHTML = "<p>Profissional não encontrado.</p>";
     return;
   }
 
-  // 🟦 Renderiza card
-  const whatsappLink = `https://wa.me/${professional.whatsapp}?text=${encodeURIComponent("Olá, vim por meio da *Auza Services*, gostaria de realizar um orçamento de serviço.")}`;
   const isHighlighted = highlightedProfessionals.has(professional.name.trim());
   const highlightedClass = isHighlighted ? "highlighted" : "";
   const nameClass = isHighlighted ? "highlighted-name" : "";
+  const whatsappLink = `https://wa.me/${professional.whatsapp}?text=${encodeURIComponent("Olá, vim por meio da *Auza Services*, gostaria de realizar um orçamento de serviço.")}`;
 
+  // 🧱 Card
   document.getElementById("professional-card").innerHTML = `
     <div class="card ${highlightedClass}">
       <img class="card-logo" src="css/imagens/background.png" alt="Logo">
@@ -294,7 +293,7 @@ const highlightedProfessionals = new Set([
     </div>
   `;
 
-  // ✅ Reativa evento personalizado do botão WhatsApp
+  // 🔁 Evento WhatsApp
   const whatsappButton = document.querySelector(".whatsapp-button");
   if (whatsappButton) {
     whatsappButton.removeEventListener("click", handleClick);
@@ -303,11 +302,11 @@ const highlightedProfessionals = new Set([
     console.error("🚨 Erro: Botão de WhatsApp não encontrado!");
   }
 
-  // 🖼️ Galeria de imagens
+  // 🖼️ Galeria
   const ratingContainer = document.querySelector('.rating-container');
-  if (ratingContainer && professional.imagens && professional.imagens.length > 0) {
+  if (ratingContainer && professional.imagens?.length > 0) {
     const count = professional.imagens.length;
-    let classeExtra = count === 1 ? "unica" : count === 2 ? "duas" : count === 3 ? "tres" : "quatro";
+    const classeExtra = count === 1 ? "unica" : count === 2 ? "duas" : count === 3 ? "tres" : "quatro";
 
     const imagensHtml = `
       <section class="detalhes-galeria">
@@ -320,7 +319,7 @@ const highlightedProfessionals = new Set([
     ratingContainer.insertAdjacentHTML("beforebegin", imagensHtml);
   }
 
-  // 🔎 Modal de imagem ampliada
+  // 🔍 Modal
   document.addEventListener("click", function (e) {
     const clickedImg = e.target.closest(".imagens-detalhes img");
     const modal = document.getElementById("imagemModal");
