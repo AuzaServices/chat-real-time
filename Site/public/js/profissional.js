@@ -169,7 +169,7 @@ document.addEventListener("DOMContentLoaded", function () {
     
         //Tecnico em Arcondicionado
         { id: 122, service: "Téc. em Refrigeração", name: "Maycon", age: 22, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "Experiência de 2 anos, trabalho com máquinas Split, piso teto e Cassete.", whatsapp: "5585994088415" },
-        { id: 123, service: "Téc. em Refrigeração", name: "Matheus Alves", age: 21, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "4 anos de Exp. na área de Ar Condicionado. Split e Máquinas de lavar.", whatsapp: "5585992081178" },
+        { id: 123, service: "Téc. em Refrigeração", name: "Matheus Alves", age: 21, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "4 anos de Exp. na área de Ar Condicionado. Split e Máquinas de lavar.", whatsapp: "5585992081178", imagens: [ "https://i.imgur.com/X4fDWDU.jpeg", "https://i.imgur.com/V6fEcyg.jpeg", "https://i.imgur.com/LUC7A4u.jpeg", "https://i.imgur.com/6lssIPo.jpeg" ]},
         { id: 124, service: "Téc. em Refrigeração", name: "Adriano", age: 35, city: "Pacajus - CE", stars: "⭐⭐⭐", comment: "Mecânico de ar condicionado instalação, manutenção e conserto.", whatsapp: "5585991368616" },
         //
         { id: 125, service: "Téc. em Refrigeração", name: "André Souza", age: 37, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "Manutenção preventiva de equipamentos de refrigeração.", whatsapp: "55851340783" },
@@ -218,7 +218,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         //Designer 
         { id: 157, service: "Designer", name: "Mondesson Linardis", age: 29, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "3 anos de experiência em design e redes sociais, tenho uma gráfica há 5 meses.", whatsapp: "5585991774021" },
-        { id: 158, service: "Designer", name: "Mateus Santos", age: 26, city: "Horizonte - CE", stars: "⭐⭐⭐⭐⭐", comment: "Experiência como designer na grafica Connect.com e designer Autônomo á 5 anos.", whatsapp: "5585992975877" , imagens: [ "https://i.imgur.com/uAr2BvV.jpeg", "https://i.imgur.com/pzN0aAl.png", "https://i.imgur.com/2EYNkdl.png" ]},
+        { id: 158, service: "Designer", name: "Mateus Santos", age: 26, city: "Horizonte - CE", stars: "⭐⭐⭐⭐⭐", comment: "Experiência como designer na grafica Connect.com e designer Autônomo á 5 anos.", whatsapp: "5585992975877"},
         { id: 168, service: "Designer", name: "Cleitomberg Barroso", age: 24, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "Experiência de 2 anos, posts no instagram em geral.", whatsapp: "5585992341985" },
 
         //Adestramento
