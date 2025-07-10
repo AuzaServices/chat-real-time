@@ -6,7 +6,8 @@
   const params = new URLSearchParams(window.location.search);
   const veioDeDentro = params.get("interno");
 
-  if (!veioDeDentro) {
+  // Redireciona pro splash só se NÃO veio de dentro
+  if (!veioDeDentro && !localStorage.getItem("splashVisto")) {
     window.location.replace("splash.html");
   }
 </script>

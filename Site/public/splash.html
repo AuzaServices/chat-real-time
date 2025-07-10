@@ -20,10 +20,13 @@
     </div>
 
 <script>
-  localStorage.setItem("splashJaVisto", "true"); // Marca que já passou pelo splash
+  // Marcar que o splash já foi exibido
+  localStorage.setItem("splashVisto", "true");
+
+  // Redireciona para index com parâmetro interno=1
   setTimeout(() => {
-    window.location.href = "index.html";
-  }, 3000); // tempo que dura seu splash
+    window.location.href = "index.html?interno=1";
+  }, 3000);
 </script>
 
 </body>
