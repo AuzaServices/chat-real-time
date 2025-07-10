@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  
+
 <script>
-  // Se o splash ainda não foi visto, redireciona para ele
-  if (!localStorage.getItem("splashJaVisto")) {
-    window.location.replace("splash.html"); // ✅ só na primeira vez
+  const params = new URLSearchParams(window.location.search);
+  const veioDeDentro = params.get("interno");
+
+  if (!veioDeDentro) {
+    window.location.replace("splash.html");
   }
 </script>
 
