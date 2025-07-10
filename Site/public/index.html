@@ -3,9 +3,8 @@
 <head>
 
 <script>
-  // Verifica se o splash já foi visto
   if (!localStorage.getItem("splashJaVisto")) {
-    window.location.href = "splash.html"; // redireciona para o splash
+    window.location.replace("splash.html"); // Redireciona só se nunca viu
   }
 </script>
 

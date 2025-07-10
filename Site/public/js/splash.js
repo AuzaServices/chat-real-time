@@ -26,12 +26,9 @@ document.addEventListener("DOMContentLoaded", function() {
     typeEffect();
 });
 
-  // Marca que o splash foi visto (salva no navegador)
-  localStorage.setItem("splashJaVisto", "true");
-
-  // Redireciona para index.html após 4 segundos (ou seu tempo padrão)
-  setTimeout(() => {
-    window.location.href = "index.html";
-  }, 3000);
-
+window.addEventListener("load", function () {
+    setTimeout(function () {
+        window.location.replace("index.html"); // 🔥 Redireciona para o index após o splash
+    }, 3000); // Ajuste o tempo conforme necessário
+});
 
