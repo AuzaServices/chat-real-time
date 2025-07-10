@@ -72,12 +72,13 @@ html, body {
 <script>
 
 document.addEventListener("DOMContentLoaded", function () {
-  if (sessionStorage.getItem("cadastroSplashShown")) {
+  // Verifica se já passou pelo splash 2
+  if (sessionStorage.getItem("cadastroSplashFeito")) {
     window.location.href = "cadastro.html";
     return;
   }
 
-  sessionStorage.setItem("cadastroSplashShown", "true");
+  sessionStorage.setItem("cadastroSplashFeito", "true");
 
   const sloganElement = document.getElementById("slogan-text");
   const sloganText = "Tudo em Serviços de A a Z";
@@ -92,7 +93,7 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
       setTimeout(() => {
         window.location.href = "cadastro.html";
-      }, 3000);
+      }, 2000);
     }
   }
 
