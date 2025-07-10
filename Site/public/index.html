@@ -1,17 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-
-<script>
-  const params = new URLSearchParams(window.location.search);
-  const vindoDeDentro = params.get("interno");
-
-  if (!vindoDeDentro) {
-    // Se não veio de dentro, mostra o splash
-    window.location.replace("splash.html");
-  }
-  // Se veio de dentro (interno=1), segue direto pro index
-</script>
+    <script>
+    if (!sessionStorage.getItem("sessionStarted")) {
+        sessionStorage.setItem("sessionStarted", "true"); // Marca a sessão iniciada
+        window.location.replace("splash.html"); // 🔥 Agora garante que o splash aparece antes do index
+    }
+    </script>
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
