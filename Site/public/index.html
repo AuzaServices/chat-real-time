@@ -6,10 +6,11 @@
   const params = new URLSearchParams(window.location.search);
   const vindoDeDentro = params.get("interno");
 
-  // Verifica se o usuário já passou pelo splash nessa navegação
-  if (!vindoDeDentro && !localStorage.getItem("indexSplashVisto")) {
+  if (!vindoDeDentro) {
+    // Se não veio de dentro, mostra o splash
     window.location.replace("splash.html");
   }
+  // Se veio de dentro (interno=1), segue direto pro index
 </script>
 
   <meta charset="UTF-8" />
