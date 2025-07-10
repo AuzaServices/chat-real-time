@@ -90,7 +90,7 @@
     <input type="tel" id="whatsapp" placeholder="Ex: 5585999999999" maxlength="13" />
 
     <label for="imagens">Envie até 4 imagens do serviço:</label>
-    <input type="file" id="imagens" accept="image/*" multiple />
+    <input type="file" id="imagens" multiple accept="image/*" />
 
     <div id="preview"></div>
 
@@ -99,74 +99,73 @@
   </form>
 
   <script>
-    const params = new URLSearchParams(window.location.search);
-    const id = params.get("id");
-    if (!id) {
-      document.body.innerHTML = "<p style='color: red; text-align:center;'>❌ ID do profissional ausente na URL.</p>";
-      throw new Error("ID ausente");
-    }
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get("id");
+  if (!id) {
+    document.body.innerHTML = "<p style='color: red; text-align:center;'>❌ ID do profissional ausente na URL.</p>";
+    throw new Error("ID ausente");
+  }
 
-    const form = document.getElementById("painelForm");
-    const nomeInput = document.getElementById("nome");
-    const descricaoInput = document.getElementById("descricao");
-    const whatsappInput = document.getElementById("whatsapp");
-    const imagensInput = document.getElementById("imagens");
-    const preview = document.getElementById("preview");
-    const mensagem = document.getElementById("mensagem");
+  const form = document.getElementById("painelForm");
+  const nomeInput = document.getElementById("nome");
+  const descricaoInput = document.getElementById("descricao");
+  const whatsappInput = document.getElementById("whatsapp");
+  const imagensInput = document.getElementById("imagens");
+  const preview = document.getElementById("preview");
+  const mensagem = document.getElementById("mensagem");
 
-    // Carregar dados existentes
-    const dadosSalvos = localStorage.getItem(`edit-${id}`);
-    if (dadosSalvos) {
-      const { nome, descricao, whatsapp, imagens } = JSON.parse(dadosSalvos);
-      if (nome) nomeInput.value = nome;
-      if (descricao) descricaoInput.value = descricao;
-      if (whatsapp) whatsappInput.value = whatsapp;
-      if (imagens) {
-        imagens.forEach(url => {
-          const img = document.createElement("img");
-          img.src = url;
-          preview.appendChild(img);
-        });
-      }
-    }
+  // 📸 Preview das imagens
+  imagensInput.addEventListener("change", () => {
+    preview.innerHTML = "";
+    const files = Array.from(imagensInput.files).slice(0, 4);
+    files.forEach(file => {
+      const reader = new FileReader();
+      reader.onload = e => {
+        const img = document.createElement("img");
+        img.src = e.target.result;
+        img.style.width = "100px";
+        img.style.borderRadius = "8px";
+        preview.appendChild(img);
+      };
+      reader.readAsDataURL(file);
+    });
+  });
 
-    // Preview das imagens selecionadas
-    imagensInput.addEventListener("change", () => {
-      preview.innerHTML = "";
-      const files = Array.from(imagensInput.files).slice(0, 4);
-      files.forEach(file => {
-        const reader = new FileReader();
-        reader.onload = e => {
-          const img = document.createElement("img");
-          img.src = e.target.result;
-          preview.appendChild(img);
-        };
-        reader.readAsDataURL(file);
-      });
+  // 💾 Envio dos dados e imagens para o backend
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+    const nome = nomeInput.value.trim();
+    const descricao = descricaoInput.value.trim();
+    const whatsapp = whatsappInput.value.trim();
+    const arquivos = Array.from(imagensInput.files).slice(0, 4);
+
+    const formData = new FormData();
+    formData.append("id", id);
+    formData.append("nome", nome);
+    formData.append("descricao", descricao);
+    formData.append("whatsapp", whatsapp);
+
+    arquivos.forEach((file, index) => {
+      formData.append(`imagem${index + 1}`, file);
     });
 
-    // Salvamento dos dados
-    form.addEventListener("submit", e => {
-      e.preventDefault();
-      const nome = nomeInput.value.trim();
-      const descricao = descricaoInput.value.trim();
-      const whatsapp = whatsappInput.value.trim();
-      const arquivos = Array.from(imagensInput.files).slice(0, 4);
-
-      const promises = arquivos.map(file => {
-        return new Promise(resolve => {
-          const reader = new FileReader();
-          reader.onload = () => resolve(reader.result);
-          reader.readAsDataURL(file);
-        });
-      });
-
-      Promise.all(promises).then(imagens => {
-        const dados = { nome, descricao, whatsapp, imagens };
-        localStorage.setItem(`edit-${id}`, JSON.stringify(dados));
+    fetch("https://seu-backend.com/api/updateProfissional", {
+      method: "POST",
+      body: formData
+    })
+    .then(res => res.json())
+    .then(res => {
+      if (res.ok) {
         mensagem.textContent = "✅ Alterações salvas com sucesso!";
-      });
+      } else {
+        mensagem.textContent = "❌ Erro ao salvar os dados.";
+      }
+    })
+    .catch(err => {
+      mensagem.textContent = "❌ Falha ao conectar com o servidor.";
+      console.error("Erro ao salvar:", err);
     });
-  </script>
+  });
+</script>
 </body>
 </html>

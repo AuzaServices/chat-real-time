@@ -253,6 +253,20 @@ app.get("/api/listar-servicos", (req, res) => {
     });
 });
 
+const multer = require("multer");
+const upload = multer({ dest: "uploads/" }); // pasta onde as imagens serão salvas
+
+app.post("/api/updateProfissional", upload.array("imagem", 4), (req, res) => {
+  const { id, nome, descricao, whatsapp } = req.body;
+  const imagens = req.files.map(file => `/uploads/${file.filename}`);
+
+  const sql = `UPDATE profissionais SET name=?, comment=?, whatsapp=?, imagens=? WHERE id=?`;
+  db.query(sql, [nome, descricao, whatsapp, JSON.stringify(imagens), id], (err) => {
+    if (err) return res.status(500).send({ ok: false });
+    res.send({ ok: true });
+  });
+});
+
 // 🚀 Iniciar servidor
 app.listen(port, () => {
     console.log(`🚀 Servidor rodando na porta ${port}`);
