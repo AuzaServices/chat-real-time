@@ -3,11 +3,11 @@
 <head>
 
 <script>
-  const params = new URLSearchParams(window.location.search);
-  const vindoDeDentro = params.get("interno");
+  const urlParams = new URLSearchParams(window.location.search);
+  const vindoDeDentro = urlParams.get("interno");
 
-  // Se NÃO veio de dentro, exibe o splash
-  if (!vindoDeDentro) {
+  // Redireciona para o splash SOMENTE se o parâmetro estiver ausente
+  if (vindoDeDentro !== "1") {
     window.location.href = "splash.html";
   }
 </script>
