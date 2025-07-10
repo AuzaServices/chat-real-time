@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Auza Services</title>
+</head>
+
+<style>body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.splash-container {
+    opacity: 1;
+    transition: opacity 2s ease-in-out;
+}
+
+.fade-out {
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+}
+
+#splash-logo {
+    width: 750px; /* Ajuste para o tamanho desejado */
+    margin-top: -250px;
+    height: auto; /* Mantém a proporção original da imagem */
+}
+
+html, body {
+    overflow: hidden; /* Impede qualquer movimento na página */
+    width: 100vw;
+    height: 100vh;
+}
+
+.slogan-container {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    font-family: 'Inter', sans-serif; /* Aplica a fonte Inter */
+    display: block; /* Garante que o slogan ocupe uma linha inteira */
+    text-align: center;
+    margin-top: -130px; /* Ajusta a distância entre a logo e o slogan */
+
+}
+
+.cursor {
+    font-size: 24px;
+    font-weight: bold; /* Agora o cursor ficará em negrito */
+    color: #333;
+    animation: blink 0.6s infinite alternate;
+}
+
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+.slogan-container {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    font-family: 'Inter', sans-serif; /* Aplica a fonte Inter */
+    display: block; /* Garante que o slogan ocupe uma linha inteira */
+    text-align: center;
+    margin-top: -130px; /* Ajusta a distância entre a logo e o slogan */
+}</style>
+
+<script>document.addEventListener("DOMContentLoaded", function() {
+    if (sessionStorage.getItem("splashShown")) {
+        window.location.href = "index.html"; // Se já viu o splash, pula direto para index.html
+        return;
+    }
+
+    sessionStorage.setItem("splashShown", "true");
+
+    const sloganElement = document.getElementById("slogan-text");
+    const sloganText = "Tudo em Serviços de A a Z";
+    const typingSpeed = 68;
+    let index = 0;
+
+    function typeEffect() {
+        if (index < sloganText.length) {
+            sloganElement.innerHTML += sloganText.charAt(index);
+            index++;
+            setTimeout(typeEffect, typingSpeed);
+        } else {
+            setTimeout(() => {
+                window.location.href = "index.html"; // Redireciona após animação
+            }, 2000);
+        }
+    }
+
+    typeEffect();
+});
+
+window.addEventListener("load", function () {
+    setTimeout(function () {
+        window.location.replace("cadastro.html"); // 🔥 Redireciona para o index após o splash
+    }, 3000); // Ajuste o tempo conforme necessário
+});
+
+</script>
+
+<body>
+
+    <div class="splash-container">
+        <img src="css/imagens/logo2.png" alt="Auza Services" id="splash-logo">
+        <div class="slogan-container">
+    <span id="slogan-text"></span><span class="cursor">|</span>
+</div>
+        <div class="slogan-container">
+            <span id="slogan-text"></span>
+        </div>
+    </div>
+
+</body>
+</html>
