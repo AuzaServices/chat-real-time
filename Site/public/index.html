@@ -3,12 +3,12 @@
 <head>
 
 <script>
-  const urlParams = new URLSearchParams(window.location.search);
-  const vindoDeDentro = urlParams.get("interno");
+  const params = new URLSearchParams(window.location.search);
+  const vindoDeDentro = params.get("interno");
 
-  // Redireciona para o splash SOMENTE se o parâmetro estiver ausente
-  if (vindoDeDentro !== "1") {
-    window.location.href = "splash.html";
+  // Verifica se o usuário já passou pelo splash nessa navegação
+  if (!vindoDeDentro && !localStorage.getItem("indexSplashVisto")) {
+    window.location.replace("splash.html");
   }
 </script>
 
