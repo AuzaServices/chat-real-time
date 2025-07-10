@@ -26,9 +26,7 @@ document.addEventListener("DOMContentLoaded", function() {
     typeEffect();
 });
 
-window.addEventListener("load", function () {
-    setTimeout(function () {
-        window.location.replace("index.html"); // 🔥 Redireciona para o index após o splash
-    }, 3000); // Ajuste o tempo conforme necessário
-});
+  setTimeout(() => {
+    window.location.href = "index.html?interno=1";
+  }, 3000); // ou o tempo do splash
 
