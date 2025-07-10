@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Meu Painel - Auza Services</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="https://i.imgur.com/uLiAK9a.png" />
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background: #f4f4f4;
+      padding: 20px;
+      color: #333;
+    }
+    form {
+      background: #fff;
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      max-width: 500px;
+      margin: auto;
+    }
+    h2 {
+      text-align: center;
+      color: #0a4edc;
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin-top: 18px;
+      font-weight: bold;
+      color: #555;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 6px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+    input[type="file"] {
+      padding: 4px;
+    }
+    button {
+      margin-top: 24px;
+      background-color: #0a4edc;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      width: 100%;
+      font-size: 16px;
+    }
+    button:hover {
+      background-color: #083db3;
+    }
+    .msg-sucesso {
+      margin-top: 16px;
+      color: green;
+      font-weight: bold;
+      text-align: center;
+    }
+    #preview {
+      margin-top: 14px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    #preview img {
+      width: 100px;
+      border-radius: 8px;
+      box-shadow: 0 0 6px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
+  <form id="painelForm">
+    <h2>🛠️ Meu Painel Profissional</h2>
+
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" placeholder="Ex: Gustavo Ramos" maxlength="50" />
+
+    <label for="descricao">Descrição:</label>
+    <textarea id="descricao" rows="4" maxlength="300" placeholder="Conte brevemente sobre seu serviço..."></textarea>
+
+    <label for="whatsapp">WhatsApp:</label>
+    <input type="tel" id="whatsapp" placeholder="Ex: 5585999999999" maxlength="13" />
+
+    <label for="imagens">Envie até 4 imagens do serviço:</label>
+    <input type="file" id="imagens" accept="image/*" multiple />
+
+    <div id="preview"></div>
+
+    <button type="submit">💾 Salvar Alterações</button>
+    <div class="msg-sucesso" id="mensagem"></div>
+  </form>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id");
+    if (!id) {
+      document.body.innerHTML = "<p style='color: red; text-align:center;'>❌ ID do profissional ausente na URL.</p>";
+      throw new Error("ID ausente");
+    }
+
+    const form = document.getElementById("painelForm");
+    const nomeInput = document.getElementById("nome");
+    const descricaoInput = document.getElementById("descricao");
+    const whatsappInput = document.getElementById("whatsapp");
+    const imagensInput = document.getElementById("imagens");
+    const preview = document.getElementById("preview");
+    const mensagem = document.getElementById("mensagem");
+
+    // Carregar dados existentes
+    const dadosSalvos = localStorage.getItem(`edit-${id}`);
+    if (dadosSalvos) {
+      const { nome, descricao, whatsapp, imagens } = JSON.parse(dadosSalvos);
+      if (nome) nomeInput.value = nome;
+      if (descricao) descricaoInput.value = descricao;
+      if (whatsapp) whatsappInput.value = whatsapp;
+      if (imagens) {
+        imagens.forEach(url => {
+          const img = document.createElement("img");
+          img.src = url;
+          preview.appendChild(img);
+        });
+      }
+    }
+
+    // Preview das imagens selecionadas
+    imagensInput.addEventListener("change", () => {
+      preview.innerHTML = "";
+      const files = Array.from(imagensInput.files).slice(0, 4);
+      files.forEach(file => {
+        const reader = new FileReader();
+        reader.onload = e => {
+          const img = document.createElement("img");
+          img.src = e.target.result;
+          preview.appendChild(img);
+        };
+        reader.readAsDataURL(file);
+      });
+    });
+
+    // Salvamento dos dados
+    form.addEventListener("submit", e => {
+      e.preventDefault();
+      const nome = nomeInput.value.trim();
+      const descricao = descricaoInput.value.trim();
+      const whatsapp = whatsappInput.value.trim();
+      const arquivos = Array.from(imagensInput.files).slice(0, 4);
+
+      const promises = arquivos.map(file => {
+        return new Promise(resolve => {
+          const reader = new FileReader();
+          reader.onload = () => resolve(reader.result);
+          reader.readAsDataURL(file);
+        });
+      });
+
+      Promise.all(promises).then(imagens => {
+        const dados = { nome, descricao, whatsapp, imagens };
+        localStorage.setItem(`edit-${id}`, JSON.stringify(dados));
+        mensagem.textContent = "✅ Alterações salvas com sucesso!";
+      });
+    });
+  </script>
+</body>
+</html>
