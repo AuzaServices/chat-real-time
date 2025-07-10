@@ -2,6 +2,13 @@
 <html lang="pt-br">
 <head>
 
+<script>
+  // Verifica se o splash já foi visto
+  if (!localStorage.getItem("splashJaVisto")) {
+    window.location.href = "splash.html"; // redireciona para o splash
+  }
+</script>
+
     <script>
     if (!sessionStorage.getItem("sessionStarted")) {
         sessionStorage.setItem("sessionStarted", "true"); // Marca a sessão iniciada
