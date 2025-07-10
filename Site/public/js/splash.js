@@ -26,11 +26,8 @@ document.addEventListener("DOMContentLoaded", function() {
     typeEffect();
 });
 
-  localStorage.setItem("indexSplashVisto", "true");
-
-  // Redireciona pro index com marca de origem interna
-  setTimeout(() => {
-    window.location.href = "index.html?interno=1";
-  }, 4000); // ou o tempo do seu splash
+setTimeout(() => {
+  window.location.href = "index.html?interno=1";
+}, 4000);
 
 

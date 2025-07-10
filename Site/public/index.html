@@ -6,9 +6,9 @@
   const params = new URLSearchParams(window.location.search);
   const vindoDeDentro = params.get("interno");
 
-  // Verifica se o usuário já passou pelo splash nessa navegação
-  if (!vindoDeDentro && !localStorage.getItem("indexSplashVisto")) {
-    window.location.replace("splash.html");
+  // Se NÃO veio de dentro, exibe o splash
+  if (!vindoDeDentro) {
+    window.location.href = "splash.html";
   }
 </script>
 
