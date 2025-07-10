@@ -1,19 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-
+  
 <script>
+  // Se o splash ainda não foi visto, redireciona para ele
   if (!localStorage.getItem("splashJaVisto")) {
-    window.location.replace("splash.html"); // Redireciona só se nunca viu
+    window.location.replace("splash.html"); // ✅ só na primeira vez
   }
 </script>
-
-    <script>
-    if (!sessionStorage.getItem("sessionStarted")) {
-        sessionStorage.setItem("sessionStarted", "true"); // Marca a sessão iniciada
-        window.location.replace("splash.html"); // 🔥 Agora garante que o splash aparece antes do index
-    }
-    </script>
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
