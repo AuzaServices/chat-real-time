@@ -83,9 +83,11 @@ document.addEventListener("DOMContentLoaded", function () {
       index++;
       setTimeout(typeEffect, typingSpeed);
     } else {
+      // 👇 Marcação da sessão + redirecionamento
       setTimeout(() => {
+        sessionStorage.setItem("passouPeloSplash2", "true");
         window.location.href = "cadastro.html";
-      }, 2000); // tempo de espera depois da digitação
+      }, 3000);
     }
   }
 

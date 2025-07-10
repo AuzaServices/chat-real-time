@@ -2,6 +2,13 @@
 <html lang="pt-br">
 <head>
 
+<script>
+  if (!sessionStorage.getItem("passouPeloSplash2")) {
+    // 👷 Se o usuário não veio do splash2, redireciona
+    window.location.href = "splash2.html";
+  }
+</script>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
   <title>Cadastro de Profissional</title>
