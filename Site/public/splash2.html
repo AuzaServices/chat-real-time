@@ -69,37 +69,35 @@ html, body {
     margin-top: -130px; /* Ajusta a distância entre a logo e o slogan */
 }</style>
 
-<script>document.addEventListener("DOMContentLoaded", function() {
-    if (sessionStorage.getItem("splashShown")) {
-        window.location.href = "index.html"; // Se já viu o splash, pula direto para index.html
-        return;
-    }
+<script>
 
-    sessionStorage.setItem("splashShown", "true");
-
-    const sloganElement = document.getElementById("slogan-text");
-    const sloganText = "Tudo em Serviços de A a Z";
-    const typingSpeed = 68;
-    let index = 0;
-
-    function typeEffect() {
-        if (index < sloganText.length) {
-            sloganElement.innerHTML += sloganText.charAt(index);
-            index++;
-            setTimeout(typeEffect, typingSpeed);
-        } else {
-            setTimeout(() => {
-                window.location.href = "index.html"; // Redireciona após animação
-            }, 2000);
-        }
-    }
-
-    typeEffect();
-});
-
-  setTimeout(() => {
+document.addEventListener("DOMContentLoaded", function () {
+  if (sessionStorage.getItem("cadastroSplashShown")) {
     window.location.href = "cadastro.html";
-  }, 2000);
+    return;
+  }
+
+  sessionStorage.setItem("cadastroSplashShown", "true");
+
+  const sloganElement = document.getElementById("slogan-text");
+  const sloganText = "Tudo em Serviços de A a Z";
+  const typingSpeed = 68;
+  let index = 0;
+
+  function typeEffect() {
+    if (index < sloganText.length) {
+      sloganElement.innerHTML += sloganText.charAt(index);
+      index++;
+      setTimeout(typeEffect, typingSpeed);
+    } else {
+      setTimeout(() => {
+        window.location.href = "cadastro.html";
+      }, 3000);
+    }
+  }
+
+  typeEffect();
+});
 
 </script>
 
