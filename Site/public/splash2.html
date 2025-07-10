@@ -97,11 +97,9 @@ html, body {
     typeEffect();
 });
 
-window.addEventListener("load", function () {
-    setTimeout(function () {
-        window.location.replace("cadastro.html"); // 🔥 Redireciona para o index após o splash
-    }, 3000); // Ajuste o tempo conforme necessário
-});
+  setTimeout(() => {
+    window.location.href = "cadastro.html";
+  }, 3000);
 
 </script>
 
