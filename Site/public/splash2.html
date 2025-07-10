@@ -72,14 +72,6 @@ html, body {
 <script>
 
 document.addEventListener("DOMContentLoaded", function () {
-  // Verifica se já passou pelo splash 2
-  if (sessionStorage.getItem("cadastroSplashFeito")) {
-    window.location.href = "cadastro.html";
-    return;
-  }
-
-  sessionStorage.setItem("cadastroSplashFeito", "true");
-
   const sloganElement = document.getElementById("slogan-text");
   const sloganText = "Tudo em Serviços de A a Z";
   const typingSpeed = 68;
@@ -93,7 +85,7 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
       setTimeout(() => {
         window.location.href = "cadastro.html";
-      }, 2000);
+      }, 2000); // tempo de espera depois da digitação
     }
   }
 
