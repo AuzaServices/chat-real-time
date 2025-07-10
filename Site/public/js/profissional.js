@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
         { id: 21, service: "Servente", name: "Vinícius Ramos", age: 34, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "Ótimo suporte aos pedreiros.", whatsapp: "55859913406" },
     
         //Bombeiro Hidráulico
-        { id: 22, service: "Bombeiro Hidraulico", name: "Marcilano Costa", age: 42, city: "Pacajus - CE", stars: "⭐⭐⭐", comment: "Vazamentos, limpeza de caixa d'água e desentupimentos.", whatsapp: "5585992531487" },
+        { id: 22, service: "Bombeiro Hidraulico", name: "Marcilano Costa", age: 42, city: "Pacajus - CE", stars: "⭐⭐⭐", comment: "Vazamentos, limpeza de caixa d'água e desentupimentos.", whatsapp: "5585992531487", imagens: [ "https://i.imgur.com/Gh3Dnk2.jpeg", "https://i.imgur.com/4OqNuKO.jpeg", "https://i.imgur.com/hKbrFoH.jpeg", "https://i.imgur.com/ouA5KrR.jpeg" ]},
         //
         { id: 23, service: "Bombeiro Hidraulico", name: "Carlos Nogueira", age: 45, city: "Itaitinga - CE", stars: "⭐⭐⭐⭐⭐", comment: "Experiente em instalações de água e esgoto.", whatsapp: "55851340682" },
         { id: 24, service: "Bombeiro Hidraulico", name: "Eduardo Ferreira", age: 38, city: "Pacajus - CE", stars: "⭐⭐⭐", comment: "Bom trabalho com manutenções emergenciais.", whatsapp: "55859940683" },
@@ -95,7 +95,7 @@ document.addEventListener("DOMContentLoaded", function () {
         { id: 61, service: "Eletricista", name: "Thiago Silva", age: 44, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "Instalação de painéis elétricos e quadros de distribuição.", whatsapp: "55859940719" },
 
         //Montador de Móveis
-        { id: 65, service: "Montador de Móveis", name: "Bergson Nunes", age: 36, city: "Horizonte - CE", stars: "⭐⭐⭐⭐⭐", comment: "18 anos de experiência. Atendo em Fortaleza e Regiões metropolitanas", whatsapp: "5585994316980" }, 
+        { id: 65, service: "Montador de Móveis", name: "Bergson Nunes", age: 36, city: "Horizonte - CE", stars: "⭐⭐⭐⭐⭐", comment: "18 anos de experiência. Atendo em Fortaleza e Regiões metropolitanas", whatsapp: "5585994316980", imagens: [ "https://i.imgur.com/vHmajBm.jpeg", "https://i.imgur.com/2gT7GFA.jpeg", "https://i.imgur.com/EzSGs4g.jpeg", "https://i.imgur.com/I4kxg4A.jpeg" ]},
         { id: 63, service: "Montador de Móveis", name: "Felipe Araújo", age: 30, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "Montagens em Geral.", whatsapp: "5588920007471" },
         { id: 64, service: "Montador de Móveis", name: "Robson", age: 27, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "9 anos de Experiência na área.", whatsapp: "5585994050965" },
         { id: 66, service: "Montador de Móveis", name: "Joilson Nunes", age: 40, city: "Caucaia - CE", stars: "⭐⭐⭐", comment: "Experiência com Montagem de Móveis", whatsapp: "5585988741249"},
