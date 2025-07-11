@@ -127,8 +127,8 @@ document.addEventListener("DOMContentLoaded", function () {
         { id: 88, service: "Faxineira", name: "Mariana Ailis", age: 28, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "Sou organizada, responsável e pontual", whatsapp: "5585989386823" },
         { id: 169, service: "Faxineira", name: "Maria Zenilda", age: 48, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "Serviços Gerais", whatsapp: "5585992865147" },
         { id: 170, service: "Faxineira", name: "Maria Darlene", age: 50, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "Limpeza de casa em geral.", whatsapp: "5585992616174" },
+        { id: 171, service: "Faxineira", name: "Elisângela Vasconcelos", age: 41, city: "Fortaleza - CE", stars: "⭐⭐⭐", comment: "Limpeza", whatsapp: "5585994530245" },
         //
-        { id: 90, service: "Faxineira", name: "Isabela Ferreira", age: 34, city: "Pacajus - CE", stars: "⭐⭐⭐⭐", comment: "Ótima opção para limpeza profunda.", whatsapp: "55859913749" },
         { id: 91, service: "Faxineira", name: "Juliana Nunes", age: 43, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "Ótima opção para limpeza profunda.", whatsapp: "55859913407" },
     
         //Vidraceiro
