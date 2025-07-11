@@ -94,6 +94,8 @@ Faxineira
         https://clientes-fhfe.onrender.com/painel-servicos.html?id=170&nome=Darlene
         { id: 171, service: "faxineira", name: "Elisângela Vasconcelos", age: 41, city: "Fortaleza - CE", stars: "⭐⭐⭐", comment: "Limpeza", whatsapp: "5585994530245" },
         https://clientes-fhfe.onrender.com/painel-servicos.html?id=171&nome=Elisangela
+        { id: 172, service: "Faxineira", name: "Samila Rodrigues", age: 28, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "Serviços Gerais.", whatsapp: "5585986563788" },
+        https://clientes-fhfe.onrender.com/painel-servicos.html?id=172&nome=Samila 
 
 Tec em Refrigeração
 
