@@ -159,7 +159,7 @@ footer p {
 
   </style>
 </head>
-<body style="display: flex; flex-direction: column; min-height: 100vh;">
+<body style="min-height: 100vh; display: flex; flex-direction: column;">
 
   <!-- 🔝 Cabeçalho fixo padrão -->
   <header>
@@ -178,31 +178,81 @@ footer p {
   </header>
 
   <!-- 🧩 Cards intocados no centro -->
-  <div class="container" style="flex-grow: 1;">
-    <h2>Escolha seu tipo de Cartão</h2>
+<main style="flex: 1; display: flex; justify-content: center; align-items: center; padding: 40px 0;">
+  <div class="carrossel-wrapper" style="position: relative; width: 300px;">
+    <div class="carrossel-container" style="position: relative; overflow: hidden; border-radius: 6px; background: #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+      <div class="carrossel" id="carrosselPlanos" style="display: flex; transition: transform 0.4s ease; width: 600px;">
+        <div class="plano-card" style="flex: 0 0 300px; padding: 28px; box-sizing: border-box; text-align: center; background: #f9f9f9;">
+          <h2 style="color: #cf2c2c; font-size: 1.4rem; margin-bottom: 16px;">Plano Platinum</h2>
+          <ul style="list-style: none; padding: 0; text-align: left; margin-bottom: 20px; font-size: 0.95rem;">
+            <li style="margin-bottom: 8px;">✔ 1 perfil profissional</li>
+            <li style="margin-bottom: 8px;">✔ 2 fotos no Perfil</li>
+            <li style="margin-bottom: 8px;">✔ WhatsApp direto</li>
+            <li style="margin-bottom: 8px;">✔ Página exclusiva</li>
+            <li style="margin-bottom: 8px;">Taxa de Comissão de 10%</li>
+          </ul>
+          <p style="font-size: 1.2rem; font-weight: bold; margin-bottom: 12px;">R$ 00,00/mês</p>
+<button id="assinar-platinum" style="padding: 10px 20px; background: #cf2c2c; border: none; border-radius: 6px; color: white; cursor: pointer;">Assinar agora</button>
+          <small style="display: block; margin-top: 12px; color: #666;">Cancele a qualquer momento sem taxas.</small>
+        </div>
 
-    <div class="card" id="cardPrata">
-      <img class="card-logo" src="css/imagens/favicon.png" alt="Logo da Empresa" />
-      <span id="nomePrata" class="bold"></span>
-      <span id="cidadeEstadoPrata"></span>
-      <span class="avaliacao">Avaliação: ⭐⭐⭐</span>
-      <span id="comentarioPrata"></span>
-      <a class="whatsapp-button" id="whatsappPrata" href="#" target="_blank">Contato via WhatsApp</a>
+        <div class="plano-card" style="flex: 0 0 300px; padding: 28px; box-sizing: border-box; text-align: center; background: #f9f9f9;">
+          <h2 style="color: #cf2c2c; font-size: 1.4rem; margin-bottom: 16px;">Plano Gold</h2>
+          <ul style="list-style: none; padding: 0; text-align: left; margin-bottom: 20px; font-size: 0.95rem;">
+            <li style="margin-bottom: 8px;">✔ 5 perfis profissionais</li>
+            <li style="margin-bottom: 8px;">✔ 4 fotos no perfil</li>
+            <li style="margin-bottom: 8px;">✔ WhatsApp direto</li>
+            <li style="margin-bottom: 8px;">✖ Página exclusiva</li>
+            <li style="margin-bottom: 8px;">Taxa de Comissão 5%</li>
+          </ul>
+          <p style="font-size: 1.2rem; font-weight: bold; margin-bottom: 12px;">R$ 9,99/mês</p>
+          <button onclick="irProximoPasso()">Assinar agora</button>
+          <small style="display: block; margin-top: 12px; color: #666;">Cancele a qualquer momento sem taxas.</small>
+        </div>
+      </div>
+
+<button id="setaAlternada" aria-label="Navegar entre planos">
+  <svg class="seta-icon" width="34" height="34" viewBox="0 0 24 24">
+    <polyline id="svgSeta" points="8 4 16 12 8 20" 
+              fill="none" stroke="white" stroke-width="4" 
+              stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</button>
     </div>
 
-    <div class="card highlighted" id="cardDourado">
-      <img class="card-logo" src="css/imagens/favicon.png" alt="Logo da Empresa" />
-      <span id="nomeDourado" class="bold"></span>
-      <span id="cidadeEstadoDourado"></span>
-      <span class="avaliacao">Avaliação: ⭐⭐⭐</span>
-      <span id="comentarioDourado"></span>
-      <a class="whatsapp-button" id="whatsappDourado" href="#" target="_blank">Contato via WhatsApp</a>
-    </div>
-
-    <div id="vantagens-container"></div>
-
-    <button id="continuar-btn">Continuar</button>
   </div>
+</main>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  let index = 0;
+  const carrossel = document.getElementById('carrosselPlanos');
+  const seta = document.getElementById('setaAlternada');
+  const svgSeta = document.getElementById('svgSeta');
+
+  function atualizarSeta() {
+    if (index === 0) {
+      seta.classList.remove('esquerda');
+      seta.classList.add('direita');
+      svgSeta.setAttribute("points", "8 4 16 12 8 20"); // 👉 aponta pra direita
+    } else {
+      seta.classList.remove('direita');
+      seta.classList.add('esquerda');
+      svgSeta.setAttribute("points", "16 4 8 12 16 20"); // 👈 aponta pra esquerda
+    }
+  }
+
+  seta.addEventListener('click', () => {
+    index = index === 0 ? 1 : 0;
+    carrossel.style.transform = `translateX(-${index * 300}px)`; // ajuste conforme largura do plano
+    atualizarSeta();
+  });
+
+  atualizarSeta();
+
+  
+});
+</script>
 
   <!-- 🔻 Rodapé fixo -->
   <footer>
@@ -210,29 +260,75 @@ footer p {
   </footer>
 
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const urlParams = new URLSearchParams(window.location.search);
-      const nome = urlParams.get("nome") || "Nome não informado";
-      const sobrenome = urlParams.get("sobrenome") || "";
-      const nomeCompleto = sobrenome ? `${nome} ${sobrenome}` : nome;
+ const carrossel = document.getElementById('carrosselPlanos');
+const seta = document.getElementById('setaAlternada');
+const svgSeta = document.getElementById('svgSeta');
+let index = 0;
 
-      document.getElementById("nomePrata").innerHTML = `<strong>${nomeCompleto}</strong>`;
-      document.getElementById("nomeDourado").innerHTML = `<strong>${nomeCompleto}</strong>`;
-    });
+// Botão alterna slides
+seta.addEventListener('click', () => {
+  const totalCards = carrossel.children.length;
+  const larguraCard = carrossel.children[0].offsetWidth + 16;
 
-    // Menu hambúrguer
-    const toggle = document.querySelector('.menu-toggle');
-    const nav = document.querySelector('nav');
-    toggle.addEventListener('click', () => {
-      nav.classList.toggle('active');
-    });
+  index = index === totalCards - 1 ? 0 : index + 1;
+  carrossel.style.transform = `translateX(-${index * larguraCard}px)`;
+  atualizarSeta();
+});
 
-    document.addEventListener("click", function (e) {
-      if (!nav.contains(e.target) && !toggle.contains(e.target)) {
-        nav.classList.remove("active");
-      }
-    });
+// Troca a direção da seta visual
+function atualizarSeta() {
+  if (index === 0) {
+    seta.classList.remove('esquerda');
+    seta.classList.add('direita');
+    svgSeta.setAttribute("points", "8 4 16 12 8 20"); // 👉
+  } else {
+    seta.classList.remove('direita');
+    seta.classList.add('esquerda');
+    svgSeta.setAttribute("points", "16 4 8 12 16 20"); // 👈
+  }
+}
+atualizarSeta();
+
+// 👆 Arraste manual com mouse
+let isDragging = false;
+let startX = 0;
+let scrollStart = 0;
+
+carrossel.addEventListener('mousedown', (e) => {
+  isDragging = true;
+  startX = e.pageX;
+  scrollStart = carrossel.scrollLeft;
+  carrossel.style.cursor = 'grabbing';
+});
+
+carrossel.addEventListener('mousemove', (e) => {
+  if (!isDragging) return;
+  const walk = e.pageX - startX;
+  carrossel.scrollLeft = scrollStart - walk;
+});
+
+carrossel.addEventListener('mouseup', () => {
+  isDragging = false;
+  carrossel.style.cursor = 'grab';
+});
+
+carrossel.addEventListener('mouseleave', () => {
+  isDragging = false;
+  carrossel.style.cursor = 'grab';
+});
+
+// 📱 Arraste manual com toque
+carrossel.addEventListener('touchstart', (e) => {
+  startX = e.touches[0].pageX;
+  scrollStart = carrossel.scrollLeft;
+}, { passive: true });
+
+carrossel.addEventListener('touchmove', (e) => {
+  const walk = e.touches[0].pageX - startX;
+  carrossel.scrollLeft = scrollStart - walk;
+}, { passive: true });
   </script>
+  
 
 </body>
 </html>
