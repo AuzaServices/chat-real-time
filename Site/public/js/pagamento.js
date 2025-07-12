@@ -24,7 +24,7 @@ document.getElementById("assinar-platinum").addEventListener("click", function (
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-  const confirmarPagamentoBtn = document.getElementById("confirmar-pagamento-btn");
+  const confirmarPagamentoBtn = document.getElementById("assinar-gold");
 
   if (confirmarPagamentoBtn) {
     confirmarPagamentoBtn.addEventListener("click", function () {

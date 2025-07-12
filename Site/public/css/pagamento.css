@@ -272,6 +272,7 @@ input#pixCode {
   position: relative; /* 👈 obrigatório pra .setaAlternada se posicionar corretamente */
   overflow: hidden;
   width: 100%;
+  min-height: 500px;
   height: 360px;
   border-radius: 8px;
   background: #fff;
