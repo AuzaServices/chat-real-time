@@ -267,6 +267,18 @@ app.get("/splash", (req, res) => {
     res.sendFile(__dirname + "/public/splash.html");
 });
 
+app.get("/splash2", (req, res) => {
+  res.sendFile(__dirname + "/public/splash2.html");
+});
+
+app.get("/politicas-de-privacidade", (req, res) => {
+  res.sendFile(__dirname + "/public/politicas-de-privacidade.html");
+});
+
+app.get("/termos-de-uso", (req, res) => {
+  res.sendFile(__dirname + "/public/termos-de-uso.html");
+});
+
 // 🚀 Iniciar servidor
 app.listen(port, () => {
     console.log(`🚀 Servidor rodando na porta ${port}`);
