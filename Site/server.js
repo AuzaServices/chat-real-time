@@ -287,10 +287,6 @@ app.get("/profissional", (req, res) => {
   res.sendFile(__dirname + "/public/profissional.html");
 });
 
-app.get("/profissional/:nome/:profissao", (req, res) => {
-  res.sendFile(__dirname + "/public/profissional.html");
-});
-
 // 🚀 Iniciar servidor
 app.listen(port, () => {
     console.log(`🚀 Servidor rodando na porta ${port}`);
