@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
     if (sessionStorage.getItem("splashShown")) {
-        window.location.href = "index.html"; // Se já viu o splash, pula direto para index.html
+        window.location.href = "/"; // Se já viu o splash, pula direto para index.html
         return;
     }
 
@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function() {
             setTimeout(typeEffect, typingSpeed);
         } else {
             setTimeout(() => {
-                window.location.href = "index.html"; // Redireciona após animação
+                window.location.href = "/"; // Redireciona após animação
             }, 2000);
         }
     }
@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 setTimeout(() => {
-  window.location.href = "index.html";
+  window.location.href = "/";
 }, 4000);
 
 
