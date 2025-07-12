@@ -254,6 +254,20 @@ app.get("/api/listar-servicos", (req, res) => {
 });
 
 // 🚀 Iniciar servidor
+// Rotas amigáveis sem .html
+app.get("/", (req, res) => {
+    res.sendFile(__dirname + "/public/index.html");
+});
+
+app.get("/cadastro", (req, res) => {
+    res.sendFile(__dirname + "/public/cadastro.html");
+});
+
+app.get("/splash", (req, res) => {
+    res.sendFile(__dirname + "/public/splash.html");
+});
+
+// 🚀 Iniciar servidor
 app.listen(port, () => {
     console.log(`🚀 Servidor rodando na porta ${port}`);
 });
