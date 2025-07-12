@@ -66,7 +66,7 @@ function removeFocusAndGoBack() {
     nomeInput.setAttribute("readonly", "true"); // Impede que receba foco antes de sair
 
     setTimeout(() => {
-        window.location.href = "index.html";
+        window.location.href = "/";
     }, 100); // Redireciona sem dar tempo do teclado aparecer
 }
 

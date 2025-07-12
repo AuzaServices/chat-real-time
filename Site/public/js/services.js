@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     if (!localStorage.getItem("selectedService")) {
-        window.location.href = "index.html";
+        window.location.href = "/";
         return;
     }
 
@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const selectedService = localStorage.getItem("selectedService");
 
     if (!selectedService) {
-        mainContainer.innerHTML = "<p>Nenhum serviço selecionado. <a href='index.html'>Voltar</a></p>";
+        mainContainer.innerHTML = "<p>Nenhum serviço selecionado. <a href='/'>Voltar</a></p>";
         return;
     }
 
