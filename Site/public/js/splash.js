@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 setTimeout(() => {
-  window.location.href = "index.html?interno=1";
+  window.location.href = "index.html";
 }, 4000);
 
 
