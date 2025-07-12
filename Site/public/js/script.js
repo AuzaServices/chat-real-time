@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (selectedService) {
         localStorage.setItem("selectedService", selectedService);
-        window.location.href = "services.html";
+        window.location.href = "/services";
       } else {
         alert("Por favor, selecione um serviço antes de continuar!");
       }
@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const selected = card.dataset.value;
       if (selected) {
         localStorage.setItem("selectedService", selected);
-        window.location.href = "services.html";
+        window.location.href = "/services";
       }
     });
   });

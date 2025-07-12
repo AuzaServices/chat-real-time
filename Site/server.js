@@ -279,6 +279,18 @@ app.get("/termos-de-uso", (req, res) => {
   res.sendFile(__dirname + "/public/termos-de-uso.html");
 });
 
+app.get("/services", (req, res) => {
+  res.sendFile(__dirname + "/public/services.html");
+});
+
+app.get("/profissional", (req, res) => {
+  res.sendFile(__dirname + "/public/profissional.html");
+});
+
+app.get("/profissional/:nome/:profissao", (req, res) => {
+  res.sendFile(__dirname + "/public/profissional.html");
+});
+
 // 🚀 Iniciar servidor
 app.listen(port, () => {
     console.log(`🚀 Servidor rodando na porta ${port}`);

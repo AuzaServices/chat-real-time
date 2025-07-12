@@ -329,7 +329,7 @@ filteredProfessionals.forEach(professional => {
     card.style.cursor = "pointer";
     card.addEventListener("click", function () {
 const professionalName = encodeURIComponent(professional.name);
-window.open(`profissional.html?id=${professional.id}&name=${professionalName}`, "_blank");
+window.open(`/profissional?id=${professional.id}&name=${professionalName}`, "_blank");
     });
 
     // ✅ Captura o ID e o nome corretamente agora!
@@ -345,7 +345,7 @@ whatsappButton.addEventListener("click", function (event) {
     event.stopPropagation(); // Evita disparo duplo
 
     const professionalName = encodeURIComponent(professional.name);
-    window.open(`profissional.html?name=${professionalName}`, "_blank");
+    window.open(`/profissional?name=${professionalName}`, "_blank");
 
 
 whatsappButton.addEventListener("click", function (event) {
@@ -353,7 +353,7 @@ whatsappButton.addEventListener("click", function (event) {
     
     // Redireciona igual ao clique no card
     const professionalName = encodeURIComponent(professional.name);
-    window.open(`profissional.html?name=${professionalName}`, "_blank");
+    window.open(`/profissional?name=${professionalName}`, "_blank");
 });
         
 

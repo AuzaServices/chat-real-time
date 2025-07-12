@@ -173,6 +173,20 @@ document.addEventListener("click", function (event) {
   <img src="" alt="Imagem ampliada">
 </div>
 
+  <script>
+    const parts = window.location.pathname.split("/"); // [ '', 'profissional', 'gabriel', 'pintor' ]
+    const nome = decodeURIComponent(parts[2]);
+    const profissao = decodeURIComponent(parts[3]);
+
+    console.log("Nome:", nome);
+    console.log("Profissão:", profissao);
+
+    // Exemplo: mostrar os dados na tela
+    document.getElementById("titulo-profissional").textContent = nome;
+    document.getElementById("descricao-profissional").textContent = `Profissional da área: ${profissao}`;
+  </script>
+
+
   <footer>
     <p>© 2025 Auza Services - Todos os Direitos Reservados</p>
   </footer>
