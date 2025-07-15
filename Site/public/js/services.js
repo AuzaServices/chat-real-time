@@ -280,7 +280,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     // **Defina os profissionais destacados**
-    const highlightedProfessionals = ["Edimilson Camara","Mateus Santos","Bruna Costa","Carlos Costa","Ana Souza","Lucas Oliveira","André Souza","Diego Rocha","Marcos Vinicius","Bruno Ferreira","Carlos Mendes","Eduarda Nunes","Fernanda Ramos","Gustavo Ramos","Diego Martins","Carlos Nogueira","José Lima"]; // Adicione os nomes dos profissionais que devem ser destacados
+    const highlightedProfessionals = ["Mateus Santos","Bruna Costa","Carlos Costa","Ana Souza","Lucas Oliveira","André Souza","Diego Rocha","Marcos Vinicius","Bruno Ferreira","Carlos Mendes","Eduarda Nunes","Fernanda Ramos","Gustavo Ramos","Diego Martins","Carlos Nogueira","José Lima"]; // Adicione os nomes dos profissionais que devem ser destacados
 
     const filteredProfessionals = professionals.filter(professional => professional.service === selectedService);
 

@@ -247,7 +247,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Lista de profissionais destacados
 const highlightedProfessionals = new Set([
-    "Edimilson Camara", "Mateus Santos", "Bruna Costa", "Carlos Costa", "Ana Souza", "Lucas Oliveira", "André Souza",
+    "Mateus Santos", "Bruna Costa", "Carlos Costa", "Ana Souza", "Lucas Oliveira", "André Souza",
     "Diego Rocha", "Marcos Vinicius", "Bruno Ferreira", "Carlos Mendes", "Eduarda Nunes",
     "Fernanda Ramos", "Gustavo Ramos", "Diego Martins", "Carlos Nogueira", "José Lima"
   ]);
