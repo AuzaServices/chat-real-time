@@ -26,7 +26,7 @@
 </head>
 
 <script>
-    const pagina = window.location.pathname.endsWith("cadastro.html") ? "Cadastro" : "Página Inicial";
+    const pagina = window.location.pathname.endsWith("/cadastro") ? "Cadastro" : "Página Inicial";
 
     fetch("https://www.auzaservices.com.br/api/trafego", {
         method: "POST",
