@@ -374,6 +374,25 @@ carrossel.addEventListener('touchmove', (e) => {
   const walk = e.touches[0].pageX - startX;
   carrossel.scrollLeft = scrollStart - walk;
 }, { passive: true });
+
+    const toggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('nav');
+    toggle.addEventListener('click', () => {
+      nav.classList.toggle('active');
+    });
+
+    // Scroll reveal
+    const revealElements = document.querySelectorAll('.scroll-reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    revealElements.forEach(el => observer.observe(el));
+
   </script>
   
 
