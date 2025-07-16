@@ -357,7 +357,7 @@ whatsappButton.addEventListener("click", function (event) {
 });
         
 
-fetch("https://clientes-fhfe.onrender.com/api/click", {
+fetch("https://www.auzaservices.com.br/api/click", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
