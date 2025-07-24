@@ -21,7 +21,7 @@ tabelaCliques.innerHTML = dados.cliques.map((item, index) => {
 
   const mensagens = {
     1: `Oii! Tudo certo? 👋 O serviço com *${item.Profissional}* - *${item.Profissão}* já foi concluído ou ainda tá rolando? Se já terminou, dá uma passadinha no perfil e clica em *"SIM, foi realizado"* 😉`,
-    2: `Oi! O serviço com *${item.Profissional}* - *${item.Profissão}* rolou? Me dá um alô 🙏 E se deu certo, não esquece de voltar lá no perfil do profissional e clicar em *"SIM, foi realizado"* 😉`,
+    2: `Oi! O serviço com *${item.Profissional}* - *${item.Profissão}* rolou? Me dá um alô 🙏 E se deu certo, não esquece de voltar lá no perfil do profissional e clicar em *"SIM, foi realizado"*`,
     3: `Só pra fechar: o serviço com *${item.Profissional}* - *${item.Profissão}* foi feito, pendente ou cancelado? Dá um toque aqui ⚡ E se já rolou, volta no perfil e clica em *"SIM, foi realizado"*!`
   };
 
