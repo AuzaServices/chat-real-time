@@ -58,7 +58,7 @@ db.query(criarTabelaCliques, (err) => {
 });
 
 // 🧱 Lista de IPs a serem ignorados
-const ipsIgnorados = ["132.255.105.133"]; // Pode adicionar mais IPs conforme necessário
+const ipsIgnorados = ["132.255.106.189"]; // Pode adicionar mais IPs conforme necessário
 
 // 🛡️ Função utilitária para capturar IP real do usuário
 function obterIp(req) {
