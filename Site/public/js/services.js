@@ -117,8 +117,8 @@ document.addEventListener("DOMContentLoaded", function () {
         { id: 52, service: "eletricista", name: "Roberto Evangelista", age: 39, city: "Horizonte - CE", stars: "⭐⭐⭐⭐⭐", comment: "Experiência na área de Eletricidade.", whatsapp: "5585981737165" },
         { id: 53, service: "eletricista", name: "Marcelo Lima", age: 30, city: "Fortaleza - CE", stars: "⭐⭐⭐", comment: "Eletricista Residencial e Predial.", whatsapp: "5585992726101" },
         { id: 167, service: "eletricista", name: "Paulo Sergio", age: 55, city: "Horizonte - CE", stars: "⭐⭐⭐⭐⭐", comment: "Ampla experiência em Elétrica e Hidráulica", whatsapp: "5585992673555" },
+        { id: 174, service: "eletricista", name: "Jorge Souza", age: 44, city: "Caucaia - CE", stars: "⭐⭐⭐", comment: "Eletricista, Residêncial, Predial e Comercial.", whatsapp: "5585986600683" },
         //
-        { id: 55, service: "eletricista", name: "Diego Martins", age: 37, city: "Horizonte - CE", stars: "⭐⭐⭐⭐⭐", comment: "Instalações industriais e comerciais.", whatsapp: "55851340714" },
         { id: 56, service: "eletricista", name: "Fernando Costa", age: 40, city: "Itaitinga - CE", stars: "⭐⭐⭐", comment: "Reparos elétricos rápidos e seguros.", whatsapp: "55859913405" },
         { id: 57, service: "eletricista", name: "Gustavo Pereira", age: 43, city: "Pacajus - CE", stars: "⭐⭐⭐⭐", comment: "Experiência com sistemas de energia renovável.", whatsapp: "55859940716" },
         { id: 58, service: "eletricista", name: "Henrique Rocha", age: 38, city: "Horizonte - CE", stars: "⭐⭐⭐⭐⭐", comment: "Especialista em instalações elétricas complexas.", whatsapp: "55891340717" },

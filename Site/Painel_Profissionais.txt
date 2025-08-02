@@ -44,7 +44,8 @@ Eletricista
         https://clientes-fhfe.onrender.com/painel-servicos.html?id=52&nome=Roberto
         { id: 53, service: "Eletricista", name: "Marcelo Lima", age: 30, city: "Fortaleza - CE", stars: "⭐⭐⭐", comment: "Eletricista Residencial e Predial.", whatsapp: "5585992726101" },
         https://clientes-fhfe.onrender.com/painel-servicos.html?id=53&nome=Marcelo
-
+        { id: 174, service: "Eletricista", name: "Jorge Souza", age: 44, city: "Caucaia - CE", stars: "⭐⭐⭐", comment: "Eletricista, Residêncial, Predial e Comercial.", whatsapp: "5585986600683" },
+        https://auzaservices.com/painel-servicos.html?id=174&nome=Jorge
 Montador de Móveis
         { id: 62, service: "Montador de Móveis", name: "Naldo", age: 51, city: "Pacajus - CE", stars: "⭐⭐⭐", comment: "29 anos de experiência na área. Experiência com móveis de loja.", whatsapp: "5585992038039" }, 
         https://clientes-fhfe.onrender.com/painel-servicos.html?id=62&nome=Naldo
