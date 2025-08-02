@@ -6,6 +6,7 @@ const port = process.env.PORT || 3000;
 // Middleware
 app.use(express.static("public"));
 app.use(express.json());
+app.use(express.static(path.join(__dirname)));
 
 // Conexão com MySQL
 const db = mysql.createPool({
