@@ -594,3 +594,26 @@ header img {
   background: linear-gradient(145deg, #ffe8e8, #fff5f5);
   color: #b00020;
 }
+
+.passos-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+  margin-top: 32px;
+}
+
+.passo {
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  padding: 24px;
+  width: 280px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+}
+
+.passo:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
