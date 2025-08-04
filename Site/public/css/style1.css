@@ -799,25 +799,57 @@ nav {
   background-color: #e0e0e0;
 }
 
-.passos-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 24px;
-  justify-content: center;
-  margin-top: 32px;
-}
-
-.passo {
-  background-color: #f9f9f9;
-  border-radius: 12px;
-  padding: 24px;
-  width: 280px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.como-funciona-section {
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #f5f7fa, #e4ecf7);
   text-align: center;
 }
 
+.como-funciona-section .secao-titulo {
+  font-size: 2.2rem;
+  margin-bottom: 40px;
+  color: #333;
+  font-weight: 600;
+}
+
+.passos-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 32px;
+}
+
+.passo {
+  background-color: #fff;
+  border-radius: 16px;
+  padding: 32px 24px;
+  width: 300px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
 .passo:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+}
+
+.icone-passo {
+  margin-bottom: 16px;
+}
+
+.icone-passo img {
+  width: 48px;
+  height: 48px;
+}
+
+.passo h3 {
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+  color: #007cf0;
+}
+
+.passo p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.5;
 }
