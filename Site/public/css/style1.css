@@ -637,11 +637,10 @@ nav {
 
 /* Linha preta no final da section */
 .linha-base {
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(to right, #ffb300, #ffd54f);
-  margin-top: 40px;
-  border-radius: 1px;
+  width: 80%;
+  height: 1px;
+  background-color: #e0e0e0;
+  margin: 40px auto;
 }
 
 .imagem-auza {
