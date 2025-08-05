@@ -244,13 +244,16 @@ document.addEventListener("DOMContentLoaded", function () {
         { id: 166, service: "Motorista Particular", name: "Arimaci Cordeiro", age: 49, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "Motorista experiênte", whatsapp: "5585994044076" },
 
         //Segurança de Eventos
+
+        //Desenvolvedor de Sistemas
+        { id: 176, service: "Desenvolvedor de Sistemas", name: "Andrielyson David", age: 26, city: "Horizonte - CE", stars: "⭐⭐⭐⭐⭐", comment: "Faço Sites de todos os tipos", whatsapp: "5585991340658" },        
     ];
 
     // Lista de profissionais destacados
 const highlightedProfessionals = new Set([
     "Mateus Santos", "Bruna Costa", "Carlos Costa", "Ana Souza", "Lucas Oliveira", "André Souza",
     "Diego Rocha", "Marcos Vinicius", "Bruno Ferreira", "Carlos Mendes", "Eduarda Nunes",
-    "Fernanda Ramos", "Gustavo Ramos", "Diego Martins", "Carlos Nogueira", "José Lima"
+    "Fernanda Ramos", "Gustavo Ramos", "Diego Martins", "Carlos Nogueira", "José Lima", "Andrielyson David"
   ]);
 
   // 🎯 Busca por ID (prioritário)

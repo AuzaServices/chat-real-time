@@ -277,11 +277,14 @@ document.addEventListener("DOMContentLoaded", function () {
         { id: 166, service: "motorista-particular", name: "Arimaci Cordeiro", age: 49, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "Motorista experiênte", whatsapp: "5585994044076" },
         //Segurança de Eventos
 
+        //Desenvolvedor de Sistemas
+        { id: 176, service: "desenvolvedor-de-sistemas", name: "Andrielyson David", age: 26, city: "Horizonte - CE", stars: "⭐⭐⭐⭐⭐", comment: "Faço Sites de todos os tipos", whatsapp: "5585991340658" },
+
     ];
 
 
     // **Defina os profissionais destacados**
-    const highlightedProfessionals = ["Mateus Santos","Bruna Costa","Carlos Costa","Ana Souza","Lucas Oliveira","André Souza","Diego Rocha","Marcos Vinicius","Bruno Ferreira","Carlos Mendes","Eduarda Nunes","Fernanda Ramos","Gustavo Ramos","Diego Martins","Carlos Nogueira","José Lima"]; // Adicione os nomes dos profissionais que devem ser destacados
+    const highlightedProfessionals = ["Mateus Santos","Bruna Costa","Carlos Costa","Ana Souza","Lucas Oliveira","André Souza","Diego Rocha","Marcos Vinicius","Bruno Ferreira","Carlos Mendes","Eduarda Nunes","Fernanda Ramos","Gustavo Ramos","Diego Martins","Carlos Nogueira","José Lima", "Andrielyson Santos"]; // Adicione os nomes dos profissionais que devem ser destacados
 
     const filteredProfessionals = professionals.filter(professional => professional.service === selectedService);
 
