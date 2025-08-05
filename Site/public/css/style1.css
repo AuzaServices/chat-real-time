@@ -926,15 +926,7 @@ nav {
   width: 100%;
   max-width: 300px;
   border-radius: 12px;
-  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
-  animation: flutuar 3s ease-in-out infinite;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
   display: block;
   margin: 0 auto;
-}
-
-/* Animação de flutuação */
-@keyframes flutuar {
-  0%   { transform: translateY(0); }
-  50%  { transform: translateY(-10px); }
-  100% { transform: translateY(0); }
 }
