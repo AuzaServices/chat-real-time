@@ -284,11 +284,13 @@ box-shadow: 0 12px 28px rgba(207, 44, 44, 0.15);
   display: flex;
   overflow-x: auto;
   scroll-behavior: smooth;
-  cursor: grab;
+  gap: 0; /* ou 16px se quiser espaçamento */
 }
+
 
 .plano-box {
   flex: 0 0 280px;
+
   padding: 24px;
   background: #f7f7f7;
   box-sizing: border-box;
@@ -335,4 +337,5 @@ box-shadow: 0 12px 28px rgba(207, 44, 44, 0.15);
 #setaAlternada.esquerda .seta-icon {
   transform: translateX(10px);
 }
+
 
