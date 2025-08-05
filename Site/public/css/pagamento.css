@@ -270,14 +270,13 @@ input#pixCode {
 
 .carrossel-container {
   position: relative; /* 👈 obrigatório pra .setaAlternada se posicionar corretamente */
-  overflow: hidden;
+  overflow-x: auto;
   width: 100%;
   min-height: 500px;
-  height: 360px;
+  height: auto; /* ✅ altura automática para evitar corte */
   border-radius: 8px;
-background: linear-gradient(to bottom right, #fafafa, #eaeaea);
-
-box-shadow: 0 12px 28px rgba(207, 44, 44, 0.15);
+  background: linear-gradient(to bottom right, #fafafa, #eaeaea);
+  box-shadow: 0 12px 28px rgba(207, 44, 44, 0.15);
 }
 
 .carrossel {
@@ -287,17 +286,18 @@ box-shadow: 0 12px 28px rgba(207, 44, 44, 0.15);
   gap: 0; /* ou 16px se quiser espaçamento */
 }
 
-
 .plano-box {
-  flex: 0 0 280px;
-
+  flex: 0 0 300px;
   padding: 24px;
   background: #f7f7f7;
   box-sizing: border-box;
+  padding-bottom: 90px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between; /* ✅ distribui melhor os elementos */
   text-align: center;
+  height: auto; /* ✅ altura automática */
+  min-height: 100%; /* garante que todos os planos tenham altura mínima igual */
 }
 
 /* Seta refinada */
@@ -321,7 +321,7 @@ box-shadow: 0 12px 28px rgba(207, 44, 44, 0.15);
 
 #setaAlternada.esquerda {
   left: -37px;
-  top: -180px;
+  top: -290px;
   right: auto;
 }
 
@@ -337,5 +337,4 @@ box-shadow: 0 12px 28px rgba(207, 44, 44, 0.15);
 #setaAlternada.esquerda .seta-icon {
   transform: translateX(10px);
 }
-
 
