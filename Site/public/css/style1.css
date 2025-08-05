@@ -855,67 +855,61 @@ nav {
 }
 
 .bloco-destaque {
-  padding: 60px 20px;
   background: linear-gradient(135deg, #f9f9f9, #ffffff);
-  text-align: center;
+  padding: 60px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.destaque-container {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  gap: 40px;
+  align-items: center;
+  justify-content: center;
+}
+
+.destaque-imagem img {
+  width: 300px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.destaque-texto {
+  max-width: 500px;
+  text-align: left;
 }
 
 .destaque-titulo {
-  font-size: 2rem;
-  margin-bottom: 30px;
+  font-size: 2.2rem;
   color: #333;
+  margin-bottom: 10px;
 }
 
-.carrossel-container {
-  position: relative;
-  overflow: hidden;
-  max-width: 1200px;
-  margin: 0 auto;
+.destaque-nome {
+  font-size: 1.4rem;
+  color: #444;
+  margin-bottom: 5px;
 }
 
-.carrossel {
-  display: flex;
-  transition: transform 0.4s ease;
-  gap: 20px;
-}
-
-.perfil-card {
-  min-width: 300px;
-  max-width: 300px;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-  padding: 20px;
-  text-align: center;
-  flex-shrink: 0;
-}
-
-.perfil-card img {
-  width: 100%;
-  border-radius: 8px;
+.destaque-cidade {
+  font-size: 1.2rem;
+  color: #777;
   margin-bottom: 15px;
 }
 
-.perfil-card h3 {
-  margin: 0;
-  font-size: 1.2rem;
-  color: #222;
-}
-
-.perfil-card p {
-  font-size: 0.95rem;
+.destaque-descricao {
+  font-size: 1rem;
   color: #555;
-  margin: 5px 0;
-}
-
-.descricao {
-  font-style: italic;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .btn-destaque {
   display: inline-block;
-  padding: 10px 20px;
+  padding: 12px 24px;
   background-color: #ffb300;
   color: #fff;
   font-weight: bold;
@@ -926,54 +920,4 @@ nav {
 
 .btn-destaque:hover {
   background-color: #e09e00;
-}
-
-.carrossel-seta {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: #ffb300;
-  color: #fff;
-  border: none;
-  font-size: 1.5rem;
-  padding: 10px;
-  cursor: pointer;
-  z-index: 1;
-  border-radius: 50%;
-}
-
-.carrossel-seta.esquerda {
-  left: -10px;
-}
-
-.carrossel-seta.direita {
-  right: -10px;
-}
-
-.linha-base {
-  margin-top: 40px;
-  height: 2px;
-  background: linear-gradient(to right, #ffb300, #ffd54f);
-  border-radius: 1px;
-}
-
-/* 📱 Mobile: mostra 1 card por vez */
-@media (max-width: 768px) {
-  .carrossel {
-    gap: 0;
-    transform: translateX(0);
-  }
-
-  .perfil-card {
-    min-width: 100%;
-    max-width: 100%;
-  }
-
-  .carrossel-seta.esquerda {
-    left: 10px;
-  }
-
-  .carrossel-seta.direita {
-    right: 10px;
-  }
 }
