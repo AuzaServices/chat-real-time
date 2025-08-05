@@ -921,3 +921,18 @@ nav {
 .btn-destaque:hover {
   background-color: #e09e00;
 }
+
+.perfil-card img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
+  transform: translateY(-10px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efeito ao passar o mouse */
+.perfil-card:hover img {
+  transform: translateY(-20px);
+  box-shadow: 0 30px 40px rgba(0, 0, 0, 0.2);
+}
