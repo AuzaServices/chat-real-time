@@ -853,3 +853,71 @@ nav {
   color: #555;
   line-height: 1.5;
 }
+
+.bloco-destaque {
+  background: linear-gradient(135deg, #f9f9f9, #ffffff);
+  padding: 60px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.destaque-container {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  gap: 40px;
+  align-items: center;
+  justify-content: center;
+}
+
+.destaque-imagem img {
+  width: 300px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.destaque-texto {
+  max-width: 500px;
+  text-align: left;
+}
+
+.destaque-titulo {
+  font-size: 2.2rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.destaque-nome {
+  font-size: 1.4rem;
+  color: #444;
+  margin-bottom: 5px;
+}
+
+.destaque-cidade {
+  font-size: 1.2rem;
+  color: #777;
+  margin-bottom: 15px;
+}
+
+.destaque-descricao {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.btn-destaque {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #ffb300;
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+}
+
+.btn-destaque:hover {
+  background-color: #e09e00;
+}
