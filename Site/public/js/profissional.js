@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
         { id: 163, service: "AuzaPoli (Polivalente)", name: "Rogério Alves", age: 38, city: "Fortaleza - CE", stars: "⭐⭐⭐", comment: "Motorista Particular e Segurança", whatsapp: "5585987997754"},
         { id: 102, service: "AuzaPoli (Polivalentes)", name: "Francisco Antônio", age: 33, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "Churrasqueiro Particular e Motorista Particular", whatsapp: "5585999858484"},
         { id: 165, service: "AuzaPoli (Polivalentes)", name: "Luiz Carlos", age: 35, city: "Itaitinga - CE", stars: "⭐⭐⭐⭐⭐", comment: "Envelopamento no geral e Estética Automotiva", whatsapp: "5585987340517"},
-        { id: 175, service: "AuzaPoli (Polivalentes)", name: "Edinildo Oliveira", age: 45, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "Conserto e instalação de motores elétricos e poços", whatsapp: "5585991760052" , imagens: [ "https://i.imgur.com/X2ILycP.jpeg", "https://i.imgur.com/GkQhSzq.jpeg" ]},
+        { id: 175, service: "AuzaPoli (Polivalentes)", name: "Francisco Oliveira", age: 45, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "Conserto e instalação de motores elétricos e poços", whatsapp: "5585991760052" , imagens: [ "https://i.imgur.com/X2ILycP.jpeg", "https://i.imgur.com/GkQhSzq.jpeg" ]},
 
         //Pedreiro
         { id: 2, service: "Pedreiro", name: "Leonardo", age: 28, city: "Fortaleza - CE", stars: "⭐⭐", comment: "Pedreiro, Mestre de obra profissional. Entendo de projetos.", whatsapp: "5585988559085" }, 
