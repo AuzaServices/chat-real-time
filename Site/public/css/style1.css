@@ -910,7 +910,7 @@ nav {
 .btn-destaque {
   display: inline-block;
   padding: 12px 24px;
-  background-color: #ffb300;
+  background-color: #cf2c2c;
   color: #fff;
   font-weight: bold;
   text-decoration: none;
@@ -919,7 +919,7 @@ nav {
 }
 
 .btn-destaque:hover {
-  background-color: #e09e00;
+  background-color: #e23636;
 }
 
 .destaque-imagem img {
