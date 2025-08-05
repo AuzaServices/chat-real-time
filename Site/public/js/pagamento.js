@@ -1,4 +1,4 @@
-document.getElementById("assinar-platinum").addEventListener("click", function () {
+document.getElementById("assinar-gratuito").addEventListener("click", function () {
   const urlParams = new URLSearchParams(window.location.search);
   const nome = urlParams.get("nome") || "Nome não informado";
   const sobrenome = urlParams.get("sobrenome") || ""; 
@@ -24,59 +24,96 @@ document.getElementById("assinar-platinum").addEventListener("click", function (
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-  const confirmarPagamentoBtn = document.getElementById("assinar-gold");
+  const assinarBtn = document.getElementById("assinar-gold");
 
-  if (confirmarPagamentoBtn) {
-    confirmarPagamentoBtn.addEventListener("click", function () {
+  if (assinarBtn) {
+    assinarBtn.addEventListener("click", function () {
       const urlParams = new URLSearchParams(window.location.search);
       const indicador = urlParams.get("indicador") || "Não fui indicado(a)";
       const nome = urlParams.get("nome") || "Nome não informado";
-      const sobrenome = urlParams.get("sobrenome") || ""; 
-      const nomeCompleto = sobrenome ? `${nome} ${sobrenome}` : nome;
+      const sobrenome = urlParams.get("sobrenome") || "";
       const idade = urlParams.get("idade") || "Idade não informada";
       const experiencia = urlParams.get("experiencia") || "Experiência não informada";
       const estado = urlParams.get("estado") || "Estado não informado";
       const cidade = urlParams.get("cidade") || "Cidade não informada";
       const profissao = urlParams.get("profissao") || "Profissão não informada";
-      const whatsappNumero = "5585991340658";
 
-      const mensagem = `*Quero fazer parte do Time Auza Gold!*\n
-👤 *Nome:* ${nomeCompleto}
-🔢 *Idade:* ${idade}
-💼 *Profissão:* ${profissao}
-📍 *Cidade/Estado:* ${cidade} - ${estado}
-⭐ *Experiência:* ${experiencia}
-👤 *Indicado por:* ${indicador}
------------------------------------------------------------
-*⬇️ Comprovante de Pagamento ⬇️*`;
+      const queryString = new URLSearchParams({
+        indicador,
+        nome,
+        sobrenome,
+        idade,
+        experiencia,
+        estado,
+        cidade,
+        profissao
+      }).toString();
 
-      const linkWhatsApp = `https://wa.me/${whatsappNumero}?text=${encodeURIComponent(mensagem)}`;
-      console.log("Link gerado para WhatsApp:", linkWhatsApp);
-      window.location.href = linkWhatsApp;
+      window.location.href = `pagamento-pix1.html?${queryString}`;
     });
   } else {
-    console.error("❌ O botão 'Confirmar Pagamento' não foi encontrado.");
+    console.error("❌ Botão 'assinar-gold' não encontrado.");
   }
 });
 
+// 🔥 Apague este bloco se o botão não existe mais
 document.addEventListener("DOMContentLoaded", function () {
-  const topBtn = document.getElementById("assinar-top");
+  const assinarBtn = document.getElementById("assinar-gold");
 
-  if (topBtn) {
-    topBtn.addEventListener("click", function () {
+  if (assinarBtn) {
+    assinarBtn.addEventListener("click", function () {
       const urlParams = new URLSearchParams(window.location.search);
+      const indicador = urlParams.get("indicador") || "Não fui indicado(a)";
       const nome = urlParams.get("nome") || "Nome não informado";
       const sobrenome = urlParams.get("sobrenome") || "";
-      const nomeCompleto = sobrenome ? `${nome} ${sobrenome}` : nome;
       const idade = urlParams.get("idade") || "Idade não informada";
       const experiencia = urlParams.get("experiencia") || "Experiência não informada";
       const estado = urlParams.get("estado") || "Estado não informado";
       const cidade = urlParams.get("cidade") || "Cidade não informada";
       const profissao = urlParams.get("profissao") || "Profissão não informada";
-      const indicador = urlParams.get("indicador") || "Não fui indicado(a)";
-      const whatsappNumero = "5585991340658";
 
-      const mensagem = `*Quero fazer parte do Time Auza Top!*\n
+      const queryString = new URLSearchParams({
+        indicador,
+        nome,
+        sobrenome,
+        idade,
+        experiencia,
+        estado,
+        cidade,
+        profissao
+      }).toString();
+
+      window.location.href = `pagamento-pix1.html?${queryString}`;
+    });
+  } else {
+    console.error("❌ Botão 'assinar-gold' não encontrado.");
+  }
+});
+
+  document.addEventListener("DOMContentLoaded", function () {
+    function configurarBotaoTop() {
+      const topBtn = document.getElementById("assinar-top");
+
+      if (!topBtn) {
+        console.warn("⏳ Aguardando botão 'assinar-top'...");
+        setTimeout(configurarBotaoTop, 500); // tenta de novo em 0.5s
+        return;
+      }
+
+      topBtn.addEventListener("click", function () {
+        const urlParams = new URLSearchParams(window.location.search);
+        const nome = urlParams.get("nome") || "Nome não informado";
+        const sobrenome = urlParams.get("sobrenome") || "";
+        const nomeCompleto = sobrenome ? `${nome} ${sobrenome}` : nome;
+        const idade = urlParams.get("idade") || "Idade não informada";
+        const experiencia = urlParams.get("experiencia") || "Experiência não informada";
+        const estado = urlParams.get("estado") || "Estado não informado";
+        const cidade = urlParams.get("cidade") || "Cidade não informada";
+        const profissao = urlParams.get("profissao") || "Profissão não informada";
+        const indicador = urlParams.get("indicador") || "Não fui indicado(a)";
+        const whatsappNumero = "5585991340658";
+
+        const mensagem = `*Quero fazer parte do Time Auza Top!*\n
 👤 *Nome:* ${nomeCompleto}
 🔢 *Idade:* ${idade}
 💼 *Profissão:* ${profissao}
@@ -86,13 +123,17 @@ document.addEventListener("DOMContentLoaded", function () {
 -----------------------------------------------------------
 *✅ Plano sem taxa de comissão!*`;
 
-      const linkWhatsApp = `https://wa.me/${whatsappNumero}?text=${encodeURIComponent(mensagem)}`;
-      window.location.href = linkWhatsApp;
-    });
-  } else {
-    console.error("❌ O botão 'Assinar Top' não foi encontrado.");
-  }
-});
+        const linkWhatsApp = `https://wa.me/${whatsappNumero}?text=${encodeURIComponent(mensagem)}`;
+        console.log("🔗 Redirecionando para:", linkWhatsApp);
+        window.location.href = linkWhatsApp;
+      });
+
+      console.log("✅ Botão 'assinar-top' configurado com sucesso.");
+    }
+
+    configurarBotaoTop();
+  });
+
 
 document.addEventListener("DOMContentLoaded", function () {
     const copiarPixBtn = document.getElementById("copiarPix");
@@ -115,3 +156,4 @@ document.addEventListener("DOMContentLoaded", function () {
         console.error("❌ O botão de copiar não foi encontrado.");
     }
 });
+

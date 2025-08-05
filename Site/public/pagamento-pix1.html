@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Pagamento via PIX</title>
+    <link rel="stylesheet" href="css/pagamento.css">
+    <link rel="icon" href="css/imagens/logo-sem-fundo.png" type="image/png" />
+</head>
+<body>
+
+    <div class="container">
+        <h1>Pagamento via PIX</h1>
+        <p>Copie o código abaixo e realize o pagamento.</p>
+
+        <label for="pixCode">Código PIX (Copia e Cola):</label>
+        <input type="text" id="pixCode" value="00020126440014BR.GOV.BCB.PIX0122auzaservices@gmail.com520400005303986540510.005802BR5925Andrielyson David Nascime6009SAO PAULO62140510QYJmG30JBb6304AFDA" readonly>
+        <button id="copiarPix" class="copy-button">📋 Copiar</button>
+
+        <p class="pix-value">Valor: <strong>R$4,99</strong></p>
+
+        <button id="confirmar-pagamento-btn">Confirmar Pagamento</button>
+
+<script>
+  // 🔥 Cola o código aqui
+  document.addEventListener("DOMContentLoaded", function () {
+    const confirmarPagamentoBtn = document.getElementById("confirmar-pagamento-btn");
+
+    if (confirmarPagamentoBtn) {
+      confirmarPagamentoBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+        console.log("✅ Botão de confirmação clicado");
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const indicador = urlParams.get("indicador") || "Não fui indicado(a)";
+        const nome = urlParams.get("nome") || "Nome não informado";
+        const sobrenome = urlParams.get("sobrenome") || "";
+        const nomeCompleto = sobrenome ? `${nome} ${sobrenome}` : nome;
+        const idade = urlParams.get("idade") || "Idade não informada";
+        const experiencia = urlParams.get("experiencia") || "Experiência não informada";
+        const estado = urlParams.get("estado") || "Estado não informado";
+        const cidade = urlParams.get("cidade") || "Cidade não informada";
+        const profissao = urlParams.get("profissao") || "Profissão não informada";
+        const whatsappNumero = "5585991340658";
+
+  const mensagem = `\u200E*Quero fazer parte do Time Auza!*\n
+\u200E👤 *Nome:* ${nomeCompleto}
+\u200E🔢 *Idade:* ${idade}
+\u200E💼 *Profissão:* ${profissao}
+\u200E📍 *Cidade/Estado:* ${cidade} - ${estado}
+\u200E⭐ *Experiência:* ${experiencia}
+\u200E👤 *Indicado por:* ${indicador}
+-----------------------------------------------------------
+*⬇️ Comprovante de Pagamento ⬇️*`;
+
+        const linkWhatsApp = `https://wa.me/${whatsappNumero}?text=${encodeURIComponent(mensagem)}`;
+        console.log("🔗 Redirecionando para:", linkWhatsApp);
+        window.location.href = linkWhatsApp;
+      });
+    } else {
+      console.error("❌ Botão 'confirmar-pagamento-btn' não encontrado.");
+    }
+  });
+</script>
+
+
+        <p class="envio-comprovante">
+            Após realizar o pagamento, clique no botão acima para enviar o <strong>Comprovante</strong>.
+        </p>
+
+        <!-- 🔥 Aqui o indicador aparece! -->
+        <p id="indicadorPagamento" class="indicador-info"></p> 
+
+    </div>
+
+    <!-- 🔥 Logo minimalista adicionada no rodapé -->
+    <div class="footer-container">
+        <img src="css/imagens/background.png" alt="Logo Minimalista" class="footer-logo">
+    </div>
+
+    <script src="js/pagamento.js"></script>
+
+</body>
+</html>
