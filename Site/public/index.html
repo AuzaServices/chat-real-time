@@ -199,23 +199,72 @@
   <div class="linha-base"></div>
 </section>
 
-<section id="destaque-profissional" class="bloco-destaque scroll-reveal">
-  <div class="destaque-container">
-    <div class="destaque-imagem">
-      <img src="https://i.imgur.com/1ds1HrV.png" alt="Profissional Destaque">
+<section id="destaque-profissionais" class="bloco-destaque scroll-reveal">
+  <h2 class="destaque-titulo">Profissionais em Destaque</h2>
+  <div class="carrossel-container">
+    <button class="carrossel-seta esquerda">◀</button>
+
+    <div class="carrossel">
+      <div class="perfil-card">
+        <img src="https://i.imgur.com/1ds1HrV.png" alt="Andrielyson David">
+        <h3>Andrielyson David</h3>
+        <p>Horizonte - CE</p>
+        <p class="descricao">Excelência, dedicação e atendimento impecável.</p>
+        <a href="https://www.auzaservices.com.br/profissional?id=176&name=Andrielyson%20David" class="btn-destaque">Ver Perfil</a>
+      </div>
+
+      <div class="perfil-card">
+        <img src="https://i.imgur.com/1ds1HrV.png" alt="Maria Silva">
+        <h3>Maria Silva</h3>
+        <p>Fortaleza - CE</p>
+        <p class="descricao">Especialista em beleza e bem-estar.</p>
+        <a href="#" class="btn-destaque">Ver Perfil</a>
+      </div>
+
+      <div class="perfil-card">
+        <img src="https://i.imgur.com/1ds1HrV.png" alt="João Oliveira">
+        <h3>João Oliveira</h3>
+        <p>Maracanaú - CE</p>
+        <p class="descricao">Atendimento rápido e confiável.</p>
+        <a href="#" class="btn-destaque">Ver Perfil</a>
+      </div>
     </div>
-    <div class="destaque-texto">
-      <h2 class="destaque-titulo">Profissional Destaque</h2>
-      <p class="destaque-nome"><strong>Andrielyson David</strong></p>
-      <p class="destaque-cidade">Horizonte - CE</p>
-      <p class="destaque-descricao">
-        Reconhecido por sua excelência, dedicação e atendimento impecável. Um verdadeiro exemplo de profissionalismo na comunidade Auza.
-      </p>
-      <a href="https://www.auzaservices.com.br/profissional?id=176&name=Andrielyson%20David" class="btn-destaque">Ver Perfil</a>
-    </div>
+
+    <button class="carrossel-seta direita">▶</button>
   </div>
   <div class="linha-base"></div>
 </section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const carrossel = document.querySelector(".carrossel");
+    const esquerda = document.querySelector(".carrossel-seta.esquerda");
+    const direita = document.querySelector(".carrossel-seta.direita");
+
+    let index = 0;
+
+    function atualizarCarrossel() {
+      const larguraCard = carrossel.querySelector(".perfil-card").offsetWidth + 20;
+      carrossel.style.transform = `translateX(-${index * larguraCard}px)`;
+    }
+
+    esquerda.addEventListener("click", () => {
+      if (index > 0) {
+        index--;
+        atualizarCarrossel();
+      }
+    });
+
+    direita.addEventListener("click", () => {
+      if (index < carrossel.children.length - 1) {
+        index++;
+        atualizarCarrossel();
+      }
+    });
+
+    window.addEventListener("resize", atualizarCarrossel);
+  });
+</script>
 
 <section id="como-funciona" class="scroll-reveal como-funciona-section">
   <h2 class="secao-titulo">Como funciona a Auza?</h2>
