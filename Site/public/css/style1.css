@@ -922,17 +922,19 @@ nav {
   background-color: #e09e00;
 }
 
-.perfil-card img {
+.destaque-imagem img {
   width: 100%;
-  border-radius: 8px;
-  margin-bottom: 15px;
+  max-width: 300px;
+  border-radius: 12px;
   box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
-  transform: translateY(-10px);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: flutuar 3s ease-in-out infinite;
+  display: block;
+  margin: 0 auto;
 }
 
-/* Efeito ao passar o mouse */
-.perfil-card:hover img {
-  transform: translateY(-20px);
-  box-shadow: 0 30px 40px rgba(0, 0, 0, 0.2);
+/* Animação de flutuação */
+@keyframes flutuar {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
 }
