@@ -60,6 +60,41 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
+  const topBtn = document.getElementById("assinar-top");
+
+  if (topBtn) {
+    topBtn.addEventListener("click", function () {
+      const urlParams = new URLSearchParams(window.location.search);
+      const nome = urlParams.get("nome") || "Nome não informado";
+      const sobrenome = urlParams.get("sobrenome") || "";
+      const nomeCompleto = sobrenome ? `${nome} ${sobrenome}` : nome;
+      const idade = urlParams.get("idade") || "Idade não informada";
+      const experiencia = urlParams.get("experiencia") || "Experiência não informada";
+      const estado = urlParams.get("estado") || "Estado não informado";
+      const cidade = urlParams.get("cidade") || "Cidade não informada";
+      const profissao = urlParams.get("profissao") || "Profissão não informada";
+      const indicador = urlParams.get("indicador") || "Não fui indicado(a)";
+      const whatsappNumero = "5585991340658";
+
+      const mensagem = `*Quero fazer parte do Time Auza Top!*\n
+👤 *Nome:* ${nomeCompleto}
+🔢 *Idade:* ${idade}
+💼 *Profissão:* ${profissao}
+📍 *Cidade/Estado:* ${cidade} - ${estado}
+⭐ *Experiência:* ${experiencia}
+👤 *Indicado por:* ${indicador}
+-----------------------------------------------------------
+*✅ Plano sem taxa de comissão!*`;
+
+      const linkWhatsApp = `https://wa.me/${whatsappNumero}?text=${encodeURIComponent(mensagem)}`;
+      window.location.href = linkWhatsApp;
+    });
+  } else {
+    console.error("❌ O botão 'Assinar Top' não foi encontrado.");
+  }
+});
+
+document.addEventListener("DOMContentLoaded", function () {
     const copiarPixBtn = document.getElementById("copiarPix");
 
     if (copiarPixBtn) {
