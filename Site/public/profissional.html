@@ -86,20 +86,24 @@
 <div id="whatsappOverlay" class="overlay hidden">
   <div class="overlay-message">
 
-    <!-- Campos principais -->
-    <input type="date" id="dataServico" placeholder="Data do serviço"
-      style="margin: 10px 0; padding: 10px; width: 100%; border-radius: 8px; border: 1px solid #ccc; font-size: 16px;" />
+    <!-- Texto acima do campo de data -->
+    <label for="dataServico" style="font-weight: bold; margin-top: 10px; display: block;">📅 Data do serviço</label>
+    <input type="date" id="dataServico"
+      style="margin: 5px 0 10px; padding: 10px; width: 100%; border-radius: 8px; border: 1px solid #ccc; font-size: 16px;" />
 
-    <input type="time" id="horaServico" placeholder="Horário do serviço"
-      style="margin: 10px 0; padding: 10px; width: 100%; border-radius: 8px; border: 1px solid #ccc; font-size: 16px;" />
+    <!-- Campo de hora com texto abaixo -->
+    <input type="time" id="horaServico"
+      style="margin: 10px 0 5px; padding: 10px; width: 100%; border-radius: 8px; border: 1px solid #ccc; font-size: 16px;" />
+    <label for="horaServico" style="font-weight: bold; margin-bottom: 10px; display: block;">⏰ Hora do serviço</label>
 
+    <!-- Campo de detalhes -->
     <textarea id="detalhesServico" placeholder="Detalhes do serviço"
       style="margin: 10px 0; padding: 10px; width: 100%; height: 80px; border-radius: 8px; border: 1px solid #ccc; font-size: 16px;"></textarea>
 
     <!-- Mensagem de atenção -->
     <p style="margin-top: 20px;"><strong>Atenção:</strong> para sua garantia, após o serviço realizado, volte nessa página e clique em ✅ <strong>SIM, foi realizado!</strong>.</p>
 
-    <!-- Campo de número do WhatsApp acima do botão -->
+    <!-- Campo de número do WhatsApp -->
     <input type="tel" id="numeroWhatsapp" placeholder="Digite seu número de WhatsApp"
       style="margin: 10px 0; padding: 10px; width: 100%; border-radius: 8px; border: 1px solid #ccc; font-size: 16px;" />
     <p id="erroNumero" style="color: red; font-size: 14px; display: none; margin: 0 0 8px;"></p>
