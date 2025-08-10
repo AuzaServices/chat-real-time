@@ -83,16 +83,50 @@
   </div>
 
   <!-- 📲 Overlay WhatsApp -->
-  <div id="whatsappOverlay" class="overlay hidden">
-    <div class="overlay-message">
-      <p><strong>Atenção:</strong> para sua garantia, após o serviço realizado, volte nessa página e clique em ✅ <strong>SIM, foi realizado!</strong>.</p>
+<div id="whatsappOverlay" class="overlay hidden">
+  <div class="overlay-message">
 
-      <input type="tel" id="numeroWhatsapp" placeholder="Digite seu número de WhatsApp"
-        style="margin: 10px 0; padding: 10px; width: 100%; border-radius: 8px; border: 1px solid #ccc; font-size: 16px;" />
-      <p id="erroNumero" style="color: red; font-size: 14px; display: none; margin: 0 0 8px;"></p>
-      <button id="continueButton" class="continue-btn">Conversar</button>
-    </div>
+    <!-- Campos de preenchimento -->
+    <input type="tel" id="numeroWhatsapp" placeholder="Digite seu número de WhatsApp"
+      style="margin: 10px 0; padding: 10px; width: 100%; border-radius: 8px; border: 1px solid #ccc; font-size: 16px;" />
+    <p id="erroNumero" style="color: red; font-size: 14px; display: none; margin: 0 0 8px;"></p>
+
+    <input type="date" id="dataServico" placeholder="Data do serviço"
+      style="margin: 10px 0; padding: 10px; width: 100%; border-radius: 8px; border: 1px solid #ccc; font-size: 16px;" />
+
+    <input type="time" id="horaServico" placeholder="Horário do serviço"
+      style="margin: 10px 0; padding: 10px; width: 100%; border-radius: 8px; border: 1px solid #ccc; font-size: 16px;" />
+
+    <textarea id="detalhesServico" placeholder="Detalhes do serviço"
+      style="margin: 10px 0; padding: 10px; width: 100%; height: 80px; border-radius: 8px; border: 1px solid #ccc; font-size: 16px;"></textarea>
+
+    <!-- Mensagem de atenção acima do botão -->
+    <p style="margin-top: 20px;"><strong>Atenção:</strong> para sua garantia, após o serviço realizado, volte nessa página e clique em ✅ <strong>SIM, foi realizado!</strong>.</p>
+
+    <!-- Botão final -->
+    <button id="continueButton" class="continue-btn" style="margin-top: 15px;">Conversar com o profissional</button>
   </div>
+</div>
+
+<script>
+  document.getElementById("continueButton").addEventListener("click", function () {
+    const numero = document.getElementById("numeroWhatsapp").value.trim();
+    const data = document.getElementById("dataServico").value;
+    const hora = document.getElementById("horaServico").value;
+    const detalhes = document.getElementById("detalhesServico").value.trim();
+
+    if (!numero) {
+      document.getElementById("erroNumero").textContent = "Por favor, insira seu número de WhatsApp.";
+      document.getElementById("erroNumero").style.display = "block";
+      return;
+    }
+
+    const mensagem = `Olá Vim por meio da *Auza Services*, gostaria de conversar sobre um serviço:\n\n📅 Data: ${data}\n⏰ Horário: ${hora}\n📝 Detalhes: ${detalhes}\n `;
+
+    const link = `https://wa.me/<NUMERO_DO_PROFISSIONAL>?text=${encodeURIComponent(mensagem)}`;
+    window.open(link, "_blank");
+  });
+</script>
 
   <!-- ✅ Script -->
   <script>
