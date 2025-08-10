@@ -86,11 +86,7 @@
 <div id="whatsappOverlay" class="overlay hidden">
   <div class="overlay-message">
 
-    <!-- Campos de preenchimento -->
-    <input type="tel" id="numeroWhatsapp" placeholder="Digite seu número de WhatsApp"
-      style="margin: 10px 0; padding: 10px; width: 100%; border-radius: 8px; border: 1px solid #ccc; font-size: 16px;" />
-    <p id="erroNumero" style="color: red; font-size: 14px; display: none; margin: 0 0 8px;"></p>
-
+    <!-- Campos principais -->
     <input type="date" id="dataServico" placeholder="Data do serviço"
       style="margin: 10px 0; padding: 10px; width: 100%; border-radius: 8px; border: 1px solid #ccc; font-size: 16px;" />
 
@@ -100,8 +96,13 @@
     <textarea id="detalhesServico" placeholder="Detalhes do serviço"
       style="margin: 10px 0; padding: 10px; width: 100%; height: 80px; border-radius: 8px; border: 1px solid #ccc; font-size: 16px;"></textarea>
 
-    <!-- Mensagem de atenção acima do botão -->
+    <!-- Mensagem de atenção -->
     <p style="margin-top: 20px;"><strong>Atenção:</strong> para sua garantia, após o serviço realizado, volte nessa página e clique em ✅ <strong>SIM, foi realizado!</strong>.</p>
+
+    <!-- Campo de número do WhatsApp acima do botão -->
+    <input type="tel" id="numeroWhatsapp" placeholder="Digite seu número de WhatsApp"
+      style="margin: 10px 0; padding: 10px; width: 100%; border-radius: 8px; border: 1px solid #ccc; font-size: 16px;" />
+    <p id="erroNumero" style="color: red; font-size: 14px; display: none; margin: 0 0 8px;"></p>
 
     <!-- Botão final -->
     <button id="continueButton" class="continue-btn" style="margin-top: 15px;">Conversar com o profissional</button>
@@ -121,7 +122,7 @@
       return;
     }
 
-    const mensagem = `Olá Vim por meio da *Auza Services*, gostaria de conversar sobre um serviço:\n\n📅 Data: ${data}\n⏰ Horário: ${hora}\n📝 Detalhes: ${detalhes}\n `;
+    const mensagem = `Olá vim pela *Auza Services*, gostaria de fazer um orçamento de serviço:\n\n📅 Data: ${data}\n⏰ Horário: ${hora}\n📝 Detalhes: ${detalhes}\n `;
 
     const link = `https://wa.me/<NUMERO_DO_PROFISSIONAL>?text=${encodeURIComponent(mensagem)}`;
     window.open(link, "_blank");
