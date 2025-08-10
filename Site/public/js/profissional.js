@@ -272,6 +272,7 @@ const highlightedProfessionals = new Set([
   const nameClass = isHighlighted ? "highlighted-name" : "";
 
   // 📲 Link WhatsApp
+  const whatsappLink = `https://wa.me/${professional.whatsapp}?text=${encodeURIComponent("Olá, vim por meio da *Auza Services*, gostaria de realizar um orçamento de serviço.")}`;
 
   // 🧱 Renderiza card
   document.getElementById("professional-card").innerHTML = `
