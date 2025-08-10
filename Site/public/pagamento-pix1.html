@@ -36,7 +36,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Tenta copiar usando clipboard API
         navigator.clipboard.writeText(pixCodeInput.value).then(() => {
-          alert("✅ Código PIX copiado com sucesso!");
         }).catch(err => {
           console.warn("⚠️ Clipboard API falhou, tentando método alternativo...");
 
@@ -44,6 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
           try {
             const sucesso = document.execCommand("copy");
             if (sucesso) {
+              alert("✅ Código PIX copiado com sucesso!");
             } else {
               throw new Error("execCommand falhou");
             }
