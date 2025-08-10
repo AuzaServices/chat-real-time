@@ -22,6 +22,48 @@
         <button id="confirmar-pagamento-btn">Confirmar Pagamento</button>
 
 <script>
+document.addEventListener("DOMContentLoaded", function () {
+  const copiarPixBtn = document.getElementById("copiarPix");
+
+  if (copiarPixBtn) {
+    copiarPixBtn.addEventListener("click", function () {
+      const pixCodeInput = document.getElementById("pixCode");
+
+      if (pixCodeInput) {
+        // Seleciona o conteúdo do input
+        pixCodeInput.select();
+        pixCodeInput.setSelectionRange(0, pixCodeInput.value.length); // garante seleção completa
+
+        // Tenta copiar usando clipboard API
+        navigator.clipboard.writeText(pixCodeInput.value).then(() => {
+          alert("✅ Código PIX copiado com sucesso!");
+        }).catch(err => {
+          console.warn("⚠️ Clipboard API falhou, tentando método alternativo...");
+
+          // Método alternativo para navegadores que não suportam clipboard API
+          try {
+            const sucesso = document.execCommand("copy");
+            if (sucesso) {
+              alert("✅ Código PIX copiado com sucesso!");
+            } else {
+              throw new Error("execCommand falhou");
+            }
+          } catch (erro) {
+            console.error("❌ Erro ao copiar:", erro);
+            alert("❌ Erro ao copiar o código PIX. Tente manualmente.");
+          }
+        });
+      } else {
+        console.error("❌ Campo 'pixCode' não encontrado.");
+      }
+    });
+  } else {
+    console.error("❌ Botão 'copiarPix' não encontrado.");
+  }
+});
+</script>
+
+<script>
   // 🔥 Cola o código aqui
   document.addEventListener("DOMContentLoaded", function () {
     const confirmarPagamentoBtn = document.getElementById("confirmar-pagamento-btn");
