@@ -91,26 +91,3 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-
-document.addEventListener("DOMContentLoaded", function () {
-    const copiarPixBtn = document.getElementById("copiarPix");
-
-    if (copiarPixBtn) {
-        copiarPixBtn.addEventListener("click", function () {
-            const pixCodeInput = document.getElementById("pixCode");
-
-            // 🔥 Seleciona todo o texto e copia
-            pixCodeInput.select();
-            pixCodeInput.setSelectionRange(0, 99999); 
-
-            navigator.clipboard.writeText(pixCodeInput.value).then(() => {
-            }).catch(err => {
-                console.error("❌ Erro ao copiar:", err);
-                alert("❌ Erro ao copiar o código PIX. Tente manualmente.");
-            });
-        });
-    } else {
-        console.error("❌ O botão de copiar não foi encontrado.");
-    }
-});
-

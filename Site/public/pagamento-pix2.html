@@ -44,7 +44,6 @@ document.addEventListener("DOMContentLoaded", function () {
           try {
             const sucesso = document.execCommand("copy");
             if (sucesso) {
-              alert("✅ Código PIX copiado com sucesso!");
             } else {
               throw new Error("execCommand falhou");
             }
