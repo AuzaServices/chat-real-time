@@ -358,7 +358,7 @@ function handleClick(event) {
   const msgErro = document.getElementById("erroNumero");
   const numeroProfissional = target.dataset.whatsapp;
 
-  if (!whatsappLink || !overlay || !continueBtn || !inputWhatsapp) return;
+  if (!numeroProfissional || !overlay || !continueBtn || !inputWhatsapp) return;
 
   overlay.classList.remove("hidden");
 
@@ -384,18 +384,33 @@ function handleClick(event) {
     msgErro.style.display = "none";
     overlay.classList.add("hidden");
 
-const dataServico = document.getElementById("dataServico")?.value || "";
-const horaServico = document.getElementById("horaServico")?.value || "";
-const detalhesServico = document.getElementById("detalhesServico")?.value || "";
+    // Monta a mensagem personalizada
+    const dataServico = document.getElementById("dataServico")?.value || "";
+    const horaServico = document.getElementById("horaServico")?.value || "";
+    const detalhesServico = document.getElementById("detalhesServico")?.value || "";
 
-const mensagem = `Olá, vim por meio da *Auza Services*, gostaria de realizar um orçamento de serviço:\n\n📅 Data: ${dataServico}\n⏰ Horário: ${horaServico}\n📝 Detalhes: ${detalhesServico}\n📱 Meu número: ${numeroCliente}`;
+    const mensagem = `Olá, vim por meio da *Auza Services*, gostaria de realizar um orçamento de serviço:\n\n📅 Data: ${dataServico}\n⏰ Horário: ${horaServico}\n📝 Detalhes: ${detalhesServico}\n📱 Meu número: ${numeroCliente}`;
 
-const whatsappLinkFinal = `https://wa.me/${numeroProfissional}?text=${encodeURIComponent(mensagem)}`;
-const win = window.open(whatsappLinkFinal, "_blank");
+    const whatsappLinkFinal = `https://wa.me/${numeroProfissional}?text=${encodeURIComponent(mensagem)}`;
+    const win = window.open(whatsappLinkFinal, "_blank");
+
+    if (!win) {
+      alert("⚠️ O navegador bloqueou a abertura do WhatsApp.");
+    }
 
     const agora = new Date().toLocaleString("en-US", {
       timeZone: "America/Fortaleza",
       hour12: false
+    });
+
+    // Aqui você pode enviar os dados ao banco, se quiser
+    console.log("📤 Enviando dados:", {
+      profissional: numeroProfissional,
+      cliente: numeroCliente,
+      data: dataServico,
+      hora: horaServico,
+      detalhes: detalhesServico,
+      timestamp: agora
     });
 
     const [date, time] = agora.split(", ");
