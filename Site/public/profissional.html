@@ -125,7 +125,7 @@
              border: 1px solid #ccc; font-size: 16px;" />
 
     <!-- Valor proposto -->
-<input type="number" id="valorProposto" placeholder="Quanto pretende pagar pelo serviço"
+<input type="text" id="valorProposto" placeholder="Quanto pretende pagar pelo serviço"
   style="margin-bottom: 10px; padding: 10px; width: 100%; border-radius: 8px;
          border: 1px solid #ccc; font-size: 16px;" />
 
@@ -146,6 +146,20 @@
     </button>
   </div>
 </div>
+
+<script>
+  const valorInput = document.getElementById('valorProposto');
+
+  valorInput.addEventListener('input', function () {
+    let valor = this.value.replace(/\D/g, ''); // Remove tudo que não for número
+    valor = (parseInt(valor, 10) / 100).toFixed(2); // Divide por 100 e fixa 2 casas decimais
+    this.value = 'R$ ' + valor.replace('.', ','); // Formata como R$ 0,00
+  });
+
+  valorInput.addEventListener('blur', function () {
+    if (this.value === 'R$ 0,00') this.value = ''; // Limpa se não foi digitado nada
+  });
+</script>
 
 <script>
   document.getElementById("continueButton").addEventListener("click", function () {
