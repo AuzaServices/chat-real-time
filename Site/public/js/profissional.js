@@ -384,12 +384,24 @@ function handleClick(event) {
     msgErro.style.display = "none";
     overlay.classList.add("hidden");
 
-    // Monta a mensagem personalizada
+    // Captura os dados do formulário
     const dataServico = document.getElementById("dataServico")?.value || "";
     const horaServico = document.getElementById("horaServico")?.value || "";
     const detalhesServico = document.getElementById("detalhesServico")?.value || "";
+    const cidade = document.getElementById("cidadeServico")?.value || "";
+    const bairro = document.getElementById("bairroServico")?.value || "";
+    const nomeRecebedor = document.getElementById("nomeRecebedor")?.value || "";
+    const valorProposto = document.getElementById("valorProposto")?.value || "";
 
-    const mensagem = `Olá, vim por meio da *Auza Services*, gostaria de realizar um orçamento de serviço:\n\n📅 Data: ${dataServico}\n⏰ Horário: ${horaServico}\n📝 Detalhes: ${detalhesServico}\n📱 Meu número: ${numeroCliente}`;
+    // Monta a mensagem personalizada
+    const mensagem = `Olá, vim pela *Auza Services*, gostaria de fazer um orçamento de serviço:\n
+📅 Data: ${dataServico}
+⏰ Horário: ${horaServico}
+📝 Serviço: ${detalhesServico}
+📍 Local: ${bairro}, ${cidade}
+👤 Quem vai receber: ${nomeRecebedor}
+💰 Valor que pretendo pagar: R$ ${valorProposto}
+📱 Meu número: ${numeroCliente}`;
 
     const whatsappLinkFinal = `https://wa.me/${numeroProfissional}?text=${encodeURIComponent(mensagem)}`;
     const win = window.open(whatsappLinkFinal, "_blank");
@@ -398,9 +410,23 @@ function handleClick(event) {
       alert("⚠️ O navegador bloqueou a abertura do WhatsApp.");
     }
 
+    // Log opcional para banco ou debug
     const agora = new Date().toLocaleString("en-US", {
       timeZone: "America/Fortaleza",
       hour12: false
+    });
+
+    console.log("📤 Dados enviados:", {
+      profissional: numeroProfissional,
+      cliente: numeroCliente,
+      data: dataServico,
+      hora: horaServico,
+      detalhes: detalhesServico,
+      cidade,
+      bairro,
+      nomeRecebedor,
+      valorProposto,
+      timestamp: agora
     });
 
     // Aqui você pode enviar os dados ao banco, se quiser
