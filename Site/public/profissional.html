@@ -86,7 +86,7 @@
 <div id="whatsappOverlay" class="overlay hidden">
   <div class="overlay-message" style="font-family: Arial, sans-serif;">
 
-    <!-- Data do serviço -->
+    <!-- Data do serviço (obrigatório) -->
     <label for="dataServico"
       style="display: block; margin-bottom: 4px; font-size: 16px; color: #666; text-align: left;">
       Data do serviço <span style="color: red;">*</span>
@@ -95,7 +95,7 @@
       style="margin-bottom: 10px; padding: 10px; width: 100%; border-radius: 8px;
              border: 1px solid #ccc; font-size: 16px;" />
 
-    <!-- Hora do serviço -->
+    <!-- Hora do serviço (obrigatório) -->
     <label for="horaServico"
       style="display: block; margin-bottom: 4px; font-size: 16px; color: #666; text-align: left;">
       Hora do serviço <span style="color: red;">*</span>
@@ -104,12 +104,8 @@
       style="margin-bottom: 10px; padding: 10px; width: 100%; border-radius: 8px;
              border: 1px solid #ccc; font-size: 16px;" />
 
-    <!-- Detalhes do serviço -->
-    <label for="detalhesServico"
-      style="display: block; margin-bottom: 4px; font-size: 16px; color: #666; text-align: left;">
-      Detalhes do serviço <span style="color: red;">*</span>
-    </label>
-    <textarea id="detalhesServico" placeholder="Detalhes do serviço" required
+    <!-- Detalhes do serviço (sem label) -->
+    <textarea id="detalhesServico" placeholder="Detalhes do serviço"
       style="margin-bottom: 10px; padding: 10px; width: 100%; border-radius: 8px;
              border: 1px solid #ccc; font-size: 16px; resize: vertical;"></textarea>
 
@@ -138,12 +134,8 @@
       <strong>Atenção:</strong> para sua garantia, após o serviço realizado, volte nessa página e clique em ✅ <strong>SIM, foi realizado!</strong>.
     </p>
 
-    <!-- Número do WhatsApp -->
-    <label for="numeroWhatsapp"
-      style="display: block; margin-bottom: 4px; font-size: 16px; color: #666; text-align: left;">
-      Número de WhatsApp <span style="color: red;">*</span>
-    </label>
-    <input type="tel" id="numeroWhatsapp" placeholder="Digite seu número de WhatsApp" required
+    <!-- Número do WhatsApp (sem label) -->
+    <input type="tel" id="numeroWhatsapp" placeholder="Digite seu número de WhatsApp"
       style="margin-bottom: 10px; padding: 10px; width: 100%; border-radius: 8px;
              border: 1px solid #ccc; font-size: 16px;" />
     <p id="erroNumero" style="color: red; font-size: 14px; display: none; margin: 0 0 8px;"></p>
