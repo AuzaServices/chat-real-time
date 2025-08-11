@@ -400,7 +400,7 @@ function handleClick(event) {
 📝 Serviço: ${detalhesServico}
 📍 Local: ${bairro}, ${cidade}
 👤 Quem vai receber: ${nomeRecebedor}
-💰 Valor que pretendo pagar: R$ ${valorProposto}`;
+💰 Valor que pretendo pagar: ${valorProposto}`;
 
     const whatsappLinkFinal = `https://wa.me/${numeroProfissional}?text=${encodeURIComponent(mensagem)}`;
     const win = window.open(whatsappLinkFinal, "_blank");
