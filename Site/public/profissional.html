@@ -84,25 +84,32 @@
 
   <!-- 📲 Overlay WhatsApp -->
 <div id="whatsappOverlay" class="overlay hidden">
-  <div class="overlay-message">
+  <div class="overlay-message" style="font-family: Arial, sans-serif;">
 
     <!-- Data do serviço -->
-<!-- Data do serviço -->
-<label for="dataServico"
-  style="display: block; margin-bottom: 4px; font-size: 16px; color: #666; text-align: left;">Data do serviço</label>
-<input type="date" id="dataServico"
-  style="margin-bottom: 10px; padding: 10px; width: 100%; border-radius: 8px;
-         border: 1px solid #ccc; font-size: 16px;" />
+    <label for="dataServico"
+      style="display: block; margin-bottom: 4px; font-size: 16px; color: #666; text-align: left;">
+      Data do serviço <span style="color: red;">*</span>
+    </label>
+    <input type="date" id="dataServico" required
+      style="margin-bottom: 10px; padding: 10px; width: 100%; border-radius: 8px;
+             border: 1px solid #ccc; font-size: 16px;" />
 
-<!-- Hora do serviço -->
-<label for="horaServico"
-  style="display: block; margin-bottom: 4px; font-size: 16px; color: #666; text-align: left;">Hora do serviço</label>
-<input type="time" id="horaServico"
-  style="margin-bottom: 10px; padding: 10px; width: 100%; border-radius: 8px;
-         border: 1px solid #ccc; font-size: 16px;" />
+    <!-- Hora do serviço -->
+    <label for="horaServico"
+      style="display: block; margin-bottom: 4px; font-size: 16px; color: #666; text-align: left;">
+      Hora do serviço <span style="color: red;">*</span>
+    </label>
+    <input type="time" id="horaServico" required
+      style="margin-bottom: 10px; padding: 10px; width: 100%; border-radius: 8px;
+             border: 1px solid #ccc; font-size: 16px;" />
 
     <!-- Detalhes do serviço -->
-    <textarea id="detalhesServico" placeholder="Detalhes do serviço"
+    <label for="detalhesServico"
+      style="display: block; margin-bottom: 4px; font-size: 16px; color: #666; text-align: left;">
+      Detalhes do serviço <span style="color: red;">*</span>
+    </label>
+    <textarea id="detalhesServico" placeholder="Detalhes do serviço" required
       style="margin-bottom: 10px; padding: 10px; width: 100%; border-radius: 8px;
              border: 1px solid #ccc; font-size: 16px; resize: vertical;"></textarea>
 
@@ -132,13 +139,19 @@
     </p>
 
     <!-- Número do WhatsApp -->
-    <input type="tel" id="numeroWhatsapp" placeholder="Digite seu número de WhatsApp"
-      style="margin: 10px 0; padding: 10px; width: 100%; border-radius: 8px;
+    <label for="numeroWhatsapp"
+      style="display: block; margin-bottom: 4px; font-size: 16px; color: #666; text-align: left;">
+      Número de WhatsApp <span style="color: red;">*</span>
+    </label>
+    <input type="tel" id="numeroWhatsapp" placeholder="Digite seu número de WhatsApp" required
+      style="margin-bottom: 10px; padding: 10px; width: 100%; border-radius: 8px;
              border: 1px solid #ccc; font-size: 16px;" />
     <p id="erroNumero" style="color: red; font-size: 14px; display: none; margin: 0 0 8px;"></p>
 
     <!-- Botão final -->
-    <button id="continueButton" class="continue-btn" style="margin-top: 15px;">Conversar com o profissional</button>
+    <button id="continueButton" class="continue-btn" style="margin-top: 15px;">
+      Conversar com o profissional
+    </button>
   </div>
 </div>
 
