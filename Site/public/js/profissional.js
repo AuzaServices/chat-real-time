@@ -283,11 +283,15 @@ const highlightedProfessionals = new Set([
       <p>Idade: ${professional.age} anos</p>
       <p>Avaliação: ${professional.stars}</p>
       <p>${professional.comment}</p>
-      <a class="whatsapp-button" href="${whatsappLink}" target="_blank"
-        data-id="${professional.id}" data-nome="${professional.name}" 
-        data-profissao="${professional.service}">
-        Contato via WhatsApp
-      </a>
+<a class="whatsapp-button"
+   href="https://wa.me/${professional.whatsapp}"
+   target="_blank"
+   data-id="${professional.id}"
+   data-nome="${professional.name}"
+   data-profissao="${professional.service}"
+   data-whatsapp="${professional.whatsapp}">
+   Contato via WhatsApp
+</a>
     </div>
   `;
 
@@ -352,7 +356,7 @@ function handleClick(event) {
   const continueBtn = document.getElementById("continueButton");
   const inputWhatsapp = document.getElementById("numeroWhatsapp");
   const msgErro = document.getElementById("erroNumero");
-  const whatsappLink = target.getAttribute("href");
+  const numeroProfissional = target.dataset.whatsapp;
 
   if (!whatsappLink || !overlay || !continueBtn || !inputWhatsapp) return;
 
@@ -380,10 +384,14 @@ function handleClick(event) {
     msgErro.style.display = "none";
     overlay.classList.add("hidden");
 
-    const win = window.open(whatsappLink, "_blank");
-    if (!win) {
-      alert("⚠️ O navegador bloqueou a abertura do WhatsApp.");
-    }
+const dataServico = document.getElementById("dataServico")?.value || "";
+const horaServico = document.getElementById("horaServico")?.value || "";
+const detalhesServico = document.getElementById("detalhesServico")?.value || "";
+
+const mensagem = `Olá, vim por meio da *Auza Services*, gostaria de realizar um orçamento de serviço:\n\n📅 Data: ${dataServico}\n⏰ Horário: ${horaServico}\n📝 Detalhes: ${detalhesServico}\n📱 Meu número: ${numeroCliente}`;
+
+const whatsappLinkFinal = `https://wa.me/${numeroProfissional}?text=${encodeURIComponent(mensagem)}`;
+const win = window.open(whatsappLinkFinal, "_blank");
 
     const agora = new Date().toLocaleString("en-US", {
       timeZone: "America/Fortaleza",

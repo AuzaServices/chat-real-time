@@ -134,9 +134,10 @@
       return;
     }
 
-    const mensagem = `Olá vim pela *Auza Services*, gostaria de fazer um orçamento de serviço:\n\n📅 Data: ${data}\n⏰ Horário: ${hora}\n📝 Detalhes: ${detalhes}\n `;
+    const mensagem = `Olá vim pela *Auza Services*, gostaria de fazer um orçamento de serviço:\n\n📅 Data: ${data}\n⏰ Horário: ${hora}\n📝 Detalhes: ${detalhes}\n📱 Meu número: ${numero}`;
 
-    const link = `https://wa.me/<NUMERO_DO_PROFISSIONAL>?text=${encodeURIComponent(mensagem)}`;
+    // Usa o número do profissional vindo do JS
+    const link = `https://wa.me/${professional.whatsapp}?text=${encodeURIComponent(mensagem)}`;
     window.open(link, "_blank");
   });
 </script>
