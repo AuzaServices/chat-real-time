@@ -164,6 +164,7 @@ document.addEventListener("DOMContentLoaded", function () {
         { id: 170, service: "faxineira", name: "Maria Darlene", age: 50, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "Limpeza de casa em geral.", whatsapp: "5585992616174" },
         { id: 171, service: "faxineira", name: "Elisângela Vasconcelos", age: 41, city: "Fortaleza - CE", stars: "⭐⭐⭐", comment: "Limpeza", whatsapp: "5585994530245" },
         { id: 172, service: "faxineira", name: "Samila Rodrigues", age: 28, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "Serviços Gerais.", whatsapp: "5585986563788" },
+        { id: 178, service: "faxineira", name: "Maria Stephany", age: 19, city: "Pacajus - CE", stars: "⭐⭐⭐", comment: "Tenho experiência, mas não comprovada, com limpeza e serviços gerais.", whatsapp: "5562982428206" },
         
         //Vidraceiro 🔨🪟
         { id: 92, service: "vidraceiro", name: "André Sousa", age: 40, city: "Horizonte - CE", stars: "⭐⭐⭐⭐", comment: "Instalação de vidros temperados e laminados.", whatsapp: "55851340751" },
