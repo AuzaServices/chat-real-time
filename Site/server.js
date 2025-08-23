@@ -191,9 +191,22 @@ app.post("/api/click", (req, res) => {
 // Rota: retornar dados
 app.get("/api/dados", (req, res) => {
   const sqlCliques = `
-    SELECT profissional_id, Profissional, Profissão, Chamadas, dataHora, whatsappCliente
-    FROM cliques
-    ORDER BY dataHora DESC
+SELECT 
+  profissional_id,
+  Profissional,
+  Profissão,
+  Chamadas,
+  dataHora,
+  whatsappCliente,
+  dataServico,
+  horaServico,
+  cidadeServico,
+  bairroServico,
+  detalhesServico,
+  nomeRecebedor,
+  valorProposto
+FROM cliques
+ORDER BY dataHora DESC
   `;
 
   const sqlTrafego = `
