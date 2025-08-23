@@ -363,12 +363,10 @@ function handleClick(event) {
 
   overlay.classList.remove("hidden");
 
-  // Clona o botão para remover eventos anteriores
   const novoBtn = continueBtn.cloneNode(true);
   continueBtn.parentNode.replaceChild(novoBtn, continueBtn);
   novoBtn.disabled = false;
 
-  // Evento do botão interno do overlay
   novoBtn.addEventListener("click", () => {
     const numeroCliente = inputWhatsapp.value.replace(/\D/g, "");
     console.log("📞 Número digitado:", numeroCliente);
@@ -381,11 +379,9 @@ function handleClick(event) {
       return;
     }
 
-    // Número válido, então fecha overlay e limpa erro
     msgErro.style.display = "none";
     overlay.classList.add("hidden");
 
-    // Captura os dados do formulário
     const dataServico = document.getElementById("dataServico")?.value || "";
     const horaServico = document.getElementById("horaServico")?.value || "";
     const detalhesServico = document.getElementById("detalhesServico")?.value || "";
@@ -394,7 +390,6 @@ function handleClick(event) {
     const nomeRecebedor = document.getElementById("nomeRecebedor")?.value || "";
     const valorProposto = document.getElementById("valorProposto")?.value || "";
 
-    // Monta a mensagem personalizada
     const mensagem = `Olá, vim pela *Auza Services*, gostaria de fazer um orçamento de serviço:\n
 📅 Data: ${dataServico}
 ⏰ Horário: ${horaServico}
@@ -410,33 +405,9 @@ function handleClick(event) {
       alert("⚠️ O navegador bloqueou a abertura do WhatsApp.");
     }
 
-    // Log opcional para banco ou debug
     const agora = new Date().toLocaleString("en-US", {
       timeZone: "America/Fortaleza",
       hour12: false
-    });
-
-    console.log("📤 Dados enviados:", {
-      profissional: numeroProfissional,
-      cliente: numeroCliente,
-      data: dataServico,
-      hora: horaServico,
-      detalhes: detalhesServico,
-      cidade,
-      bairro,
-      nomeRecebedor,
-      valorProposto,
-      timestamp: agora
-    });
-
-    // Aqui você pode enviar os dados ao banco, se quiser
-    console.log("📤 Enviando dados:", {
-      profissional: numeroProfissional,
-      cliente: numeroCliente,
-      data: dataServico,
-      hora: horaServico,
-      detalhes: detalhesServico,
-      timestamp: agora
     });
 
     const [date, time] = agora.split(", ");
@@ -444,11 +415,16 @@ function handleClick(event) {
     const dataHoraFormatada = `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")} ${time}`;
 
     const payload = {
-      profissionalId: target.getAttribute("data-id"),
-      nomeProfissional: target.getAttribute("data-nome"),
-      profissao: target.getAttribute("data-profissao"),
+      profissionalId: 52,
+      nomeProfissional: "Roberto Evangelista",
+      profissao: "Eletricista",
       dataHora: dataHoraFormatada,
-      whatsappCliente: numeroCliente
+      whatsappCliente: numeroCliente,
+      cidadeServico: cidade,
+      bairroServico: bairro,
+      detalhesServico: detalhesServico,
+      nomeRecebedor: nomeRecebedor,
+      valorProposto: valorProposto
     };
 
     console.log("📦 Enviando payload:", payload);
@@ -469,7 +445,7 @@ function handleClick(event) {
         console.warn("⚠️ Falha no envio, tentando sendBeacon...", err);
         try {
           navigator.sendBeacon?.(
-            "https://clientes-fhfe.onrender.com/api/click",
+            "https://www.auzaservices.com.br/api/click",
             new Blob([JSON.stringify(payload)], { type: "application/json" })
           );
         } catch (e) {

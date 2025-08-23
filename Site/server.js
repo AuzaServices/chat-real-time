@@ -105,7 +105,12 @@ app.post("/api/click", (req, res) => {
     nomeProfissional,
     profissao,
     dataHora,
-    whatsappCliente // 🆕 captura o número do cliente
+    whatsappCliente,
+    cidadeServico,
+    bairroServico,
+    detalhesServico,
+    nomeRecebedor,
+    valorProposto
   } = req.body;
 
   const ipLimpo = obterIp(req);
@@ -135,21 +140,37 @@ app.post("/api/click", (req, res) => {
     dataHoraFinal = new Date().toISOString().slice(0, 19).replace("T", " ");
   }
 
-const sql = `
-  INSERT INTO cliques (
-    profissional_id,
-    \`Profissional\`,
-    \`Profissão\`,
-    Chamadas,
-    \`dataHora\`,
-    whatsappCliente
-  )
-  VALUES (?, ?, ?, 1, ?, ?);
-`;
+  const sql = `
+    INSERT INTO cliques (
+      profissional_id,
+      \`Profissional\`,
+      \`Profissão\`,
+      Chamadas,
+      \`dataHora\`,
+      whatsappCliente,
+      cidadeServico,
+      bairroServico,
+      detalhesServico,
+      nomeRecebedor,
+      valorProposto
+    )
+    VALUES (?, ?, ?, 1, ?, ?, ?, ?, ?, ?, ?);
+  `;
 
   db.query(
     sql,
-    [profissionalId, nomeProfissional, profissao, dataHoraFinal, whatsappCliente],
+    [
+      profissionalId,
+      nomeProfissional,
+      profissao,
+      dataHoraFinal,
+      whatsappCliente,
+      cidadeServico,
+      bairroServico,
+      detalhesServico,
+      nomeRecebedor,
+      valorProposto
+    ],
     (err) => {
       if (err) {
         console.error("🚨 Erro ao registrar clique:", err);
