@@ -15,45 +15,52 @@ async function carregarDados() {
         </tr>
       `).join("");
 
-tabelaCliques.innerHTML = dados.cliques.map((item, index) => {
-  const numero = item.whatsappCliente?.replace(/\D/g, "");
-  const numeroInternacional = numero ? `55${numero}` : null;
+      tabelaCliques.innerHTML = dados.cliques.map((item, index) => {
+        const numero = item.whatsappCliente?.replace(/\D/g, "");
+        const numeroInternacional = numero ? `55${numero}` : null;
 
-  const mensagens = {
-    1: `Oii! Tudo certo? 👋 O serviço com *${item.Profissional}* - *${item.Profissão}* já foi concluído ou ainda tá rolando? Se já terminou, dá uma passadinha no perfil e clica em *"SIM, foi realizado"* 😉`,
-    2: `Oi! O serviço com *${item.Profissional}* - *${item.Profissão}* rolou? Me dá um alô 🙏 E se deu certo, não esquece de voltar lá no perfil do profissional e clicar em *"SIM, foi realizado"*`,
-    3: `Só pra fechar: o serviço com *${item.Profissional}* - *${item.Profissão}* foi feito, pendente ou cancelado? Dá um toque aqui ⚡ E se já rolou, volta no perfil e clica em *"SIM, foi realizado"*!`
-  };
+        const mensagens = {
+          1: `Oii! Tudo certo? 👋 O serviço com *${item.Profissional}* - *${item.Profissão}* já foi concluído ou ainda tá rolando? Se já terminou, dá uma passadinha no perfil e clica em *"SIM, foi realizado"* 😉`,
+          2: `Oi! O serviço com *${item.Profissional}* - *${item.Profissão}* rolou? Me dá um alô 🙏 E se deu certo, não esquece de voltar lá no perfil do profissional e clicar em *"SIM, foi realizado"*`,
+          3: `Só pra fechar: o serviço com *${item.Profissional}* - *${item.Profissão}* foi feito, pendente ou cancelado? Dá um toque aqui ⚡ E se já rolou, volta no perfil e clica em *"SIM, foi realizado"!*`
+        };
 
-  const botoesTentativas = numeroInternacional ? `
-<div class="tentativas" style="display: flex; flex-wrap: wrap; gap: 6px; align-items: center;">
-      ${[1, 2, 3].map(i => {
-        const localKey = `item-${index}-tentativa-${i}`;
-        const clicado = localStorage.getItem(localKey) === "true";
-        const classe = clicado ? "btn-tentativa clicked" : "btn-tentativa";
-        const link = `https://wa.me/${numeroInternacional}?text=${encodeURIComponent(mensagens[i])}`;
-        return `<button 
-                  class="${classe}" 
-                  data-key="${localKey}" 
-                  data-link="${link}" 
-                  data-tentativa="${i}">
-                  ${i}
-                </button>`;
-      }).join("")}
-    </div>
-  ` : "-";
+        const botoesTentativas = numeroInternacional ? `
+          <div class="tentativas" style="display: flex; flex-wrap: wrap; gap: 6px; align-items: center;">
+            ${[1, 2, 3].map(i => {
+              const localKey = `item-${index}-tentativa-${i}`;
+              const clicado = localStorage.getItem(localKey) === "true";
+              const classe = clicado ? "btn-tentativa clicked" : "btn-tentativa";
+              const link = `https://wa.me/${numeroInternacional}?text=${encodeURIComponent(mensagens[i])}`;
+              return `<button 
+                        class="${classe}" 
+                        data-key="${localKey}" 
+                        data-link="${link}" 
+                        data-tentativa="${i}">
+                        ${i}
+                      </button>`;
+            }).join("")}
+          </div>
+        ` : "-";
 
-  return `
-    <tr>
-      <td>${item.Profissional}</td>
-      <td>${item.Profissão}</td>
-      <td>${item.Chamadas}</td>
-      <td>${item.dataHora || "-"}</td>
-      <td>${item.whatsappCliente || "-"}</td>
-      <td>${botoesTentativas}</td>
-    </tr>
-  `;
-}).join("");
+        return `
+          <tr>
+            <td>${item.Profissional}</td>
+            <td>${item.Profissão}</td>
+            <td>${item.Chamadas}</td>
+            <td>${item.dataHora || "-"}</td>
+            <td>${item.whatsappCliente || "-"}</td>
+            <td>${item.dataServico || "-"}</td>
+            <td>${item.horaServico || "-"}</td>
+            <td>${item.cidadeServico || "-"}</td>
+            <td>${item.bairroServico || "-"}</td>
+            <td>${item.detalhesServico || "-"}</td>
+            <td>${item.nomeRecebedor || "-"}</td>
+            <td>${item.valorProposto || "-"}</td>
+            <td>${botoesTentativas}</td>
+          </tr>
+        `;
+      }).join("");
 
 // Lógica dos botões de tentativa
 setTimeout(() => {
