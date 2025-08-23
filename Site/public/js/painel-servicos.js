@@ -319,7 +319,7 @@ document.getElementById("formServico").addEventListener("submit", function(event
     const descricao = document.getElementById("descricao").value;
     const valor = document.getElementById("valor").value;
 
-    fetch("https://clientes-fhfe.onrender.com/api/salvar-servico", {
+    fetch("https://auzaservices.com.br/api/salvar-servico", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
