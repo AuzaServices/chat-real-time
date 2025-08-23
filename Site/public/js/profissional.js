@@ -358,6 +358,9 @@ function handleClick(event) {
   const inputWhatsapp = document.getElementById("numeroWhatsapp");
   const msgErro = document.getElementById("erroNumero");
   const numeroProfissional = target.dataset.whatsapp;
+  const profissionalId = target.dataset.id;
+  const nomeProfissional = target.dataset.nome;
+  const profissao = target.dataset.profissao;
 
   if (!numeroProfissional || !overlay || !continueBtn || !inputWhatsapp) return;
 
@@ -415,9 +418,9 @@ function handleClick(event) {
     const dataHoraFormatada = `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")} ${time}`;
 
     const payload = {
-      profissionalId: 52,
-      nomeProfissional: "Roberto Evangelista",
-      profissao: "Eletricista",
+      profissionalId: profissionalId,
+      nomeProfissional: nomeProfissional,
+      profissao: profissao,
       dataHora: dataHoraFormatada,
       whatsappCliente: numeroCliente,
       cidadeServico: cidade,
