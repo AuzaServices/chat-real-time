@@ -105,6 +105,8 @@ app.post("/api/click", (req, res) => {
     nomeProfissional,
     profissao,
     dataHora,
+    dataServico,      // novo campo
+    horaServico,      // novo campo
     whatsappCliente,
     cidadeServico,
     bairroServico,
@@ -147,6 +149,8 @@ app.post("/api/click", (req, res) => {
       \`Profissão\`,
       Chamadas,
       \`dataHora\`,
+      \`dataServico\`,
+      \`horaServico\`,
       whatsappCliente,
       cidadeServico,
       bairroServico,
@@ -154,7 +158,7 @@ app.post("/api/click", (req, res) => {
       nomeRecebedor,
       valorProposto
     )
-    VALUES (?, ?, ?, 1, ?, ?, ?, ?, ?, ?, ?);
+    VALUES (?, ?, ?, 1, ?, ?, ?, ?, ?, ?, ?, ?, ?);
   `;
 
   db.query(
@@ -164,6 +168,8 @@ app.post("/api/click", (req, res) => {
       nomeProfissional,
       profissao,
       dataHoraFinal,
+      dataServico,
+      horaServico,
       whatsappCliente,
       cidadeServico,
       bairroServico,

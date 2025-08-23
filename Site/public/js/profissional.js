@@ -417,18 +417,21 @@ function handleClick(event) {
     const [month, day, year] = date.split("/");
     const dataHoraFormatada = `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")} ${time}`;
 
-    const payload = {
-      profissionalId: profissionalId,
-      nomeProfissional: nomeProfissional,
-      profissao: profissao,
-      dataHora: dataHoraFormatada,
-      whatsappCliente: numeroCliente,
-      cidadeServico: cidade,
-      bairroServico: bairro,
-      detalhesServico: detalhesServico,
-      nomeRecebedor: nomeRecebedor,
-      valorProposto: valorProposto
-    };
+const payload = {
+  profissionalId: profissionalId,
+  nomeProfissional: nomeProfissional,
+  profissao: profissao,
+  dataHora: dataHoraFormatada, // momento do clique
+  dataServico: dataServico,    // data do serviço
+  horaServico: horaServico,    // hora do serviço
+  whatsappCliente: numeroCliente,
+  cidadeServico: cidade,
+  bairroServico: bairro,
+  detalhesServico: detalhesServico,
+  nomeRecebedor: nomeRecebedor,
+  valorProposto: valorProposto
+};
+
 
     console.log("📦 Enviando payload:", payload);
 
