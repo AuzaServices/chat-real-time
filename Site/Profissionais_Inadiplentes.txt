@@ -2,3 +2,5 @@ Removidos do Sistema
 
 { id: 82, service: "Faxineira", name: "Andreza Lima", age: 28, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "Experiênte em limpezas detalhadas, pontual e organizada.", whatsapp: "5585992333281" },
 R$(Indefinido pelo Profissional)
+
+{ id: 175, service: "AuzaPoli (Polivalentes)", name: "Francisco Oliveira", age: 45, city: "Horizonte - CE", stars: "⭐⭐⭐", comment: "Conserto e instalação de motores elétricos e poços", whatsapp: "5585991760052" , imagens: [ "https://i.imgur.com/X2ILycP.jpeg", "https://i.imgur.com/GkQhSzq.jpeg" ]},
